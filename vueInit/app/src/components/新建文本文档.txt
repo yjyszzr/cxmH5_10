@@ -1,0 +1,12 @@
+index        首页
+register     注册
+password     密码登录
+SMS          短信登录
+back         找回密码
+modify       修改密码
+my           我的
+real         实名认证
+recharge      充值
+withdrawals    提现
+card         管理银行卡
+add_card     添加银行卡
