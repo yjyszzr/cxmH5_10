@@ -232,7 +232,7 @@ input::-webkit-inner-spin-button{
 .msg_list li>a>div{
   display: block;
   position: relative;
-  height: px2rem(87px);
+  height: px2rem(88px);
 }
 .msg_list li>a>div .text1{
   width: 50%;
@@ -359,4 +359,24 @@ input::-webkit-inner-spin-button{
 .section{
   background: #fff;
   margin-top: px2rem(20px);
+}
+.foot{
+  height: px2rem(98px);
+  background: #fff;
+}
+.foot ul li{
+  width: 33%;
+  float: left;
+  text-align: center;
+  padding-top: 0.1rem;
+}
+.foot ul li img{
+  width: px2rem(46px);
+  text-align: center;
+  margin: 0 auto;
+}
+.foot ul li p{
+  color: #A0A0A0;
+  font-size: px2rem(20px);
+  margin-top: 0.1rem;
 }

@@ -9,6 +9,8 @@ import VueScroller from 'vue-scroller';
 import units from './tools/units'
 import logins from './router/login'
 import layer from './tools/layer.m'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper)
 
 Vue.config.productionTip = false
 Vue.use(VueResource);

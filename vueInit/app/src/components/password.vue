@@ -57,7 +57,15 @@
         msg: 'Welcome to Your Vue.js App'
       }
     },
-    created:function () {}
+    created:function () {
+        //http://192.168.1.143:7071/login/loginByPass
+        this.$http.post("http://192.168.1.143:7071/login/loginByPass", units.params({
+          sw: 'info'
+        })).then(function (res) {
+          this.info = res.data.info;
+          console.log(res)
+        });
+    }
   }
 </script>
 

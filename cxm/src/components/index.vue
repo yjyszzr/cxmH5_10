@@ -1,8 +1,9 @@
-<style scoped>
+<style scoped lang="scss">
+  @import '../assets/css/function.scss';
   .header{
     position: relative;
-    height: 1rem;
-    line-height: 1rem;
+    height: px2rem(100px);
+    line-height: px2rem(100px);
     background-color: #fff;
   }
   .banner{
@@ -17,18 +18,18 @@
     /*height: 0.61rem;*/
     background: #fff;
     display: table-cell;
-    line-height: 0.61rem;
-    padding-left: 0.3rem;
+    line-height: px2rem(61px);
+    padding-left: px2rem(30px);
     display: block;
   }
   .mation img{
     vertical-align: middle;
-    width: 0.3rem;
-    margin-right: 0.15rem;
+    width: px2rem(30px);
+    margin-right: px2rem(15px);
     display: inline-block;
   }
   .mation p{
-    font-size: 0.28rem;
+    font-size: px2rem(28px);
     color: #A0A0A0;
   }
   .mation p span{
@@ -38,56 +39,38 @@
     width: 100%;
     background: #fff;
   }
+  .center ul{
+    padding-bottom:px2rem(28px) ;
+    overflow: hidden;
+  }
   .center ul li{
-    width: 22%;
+    width: 25%;
     text-align: center;
-    font-size: 0.3rem;
-    margin-top: 0.32rem;
+    font-size: px2rem(30px);
+    margin-top: px2rem(32px);
+    float: left;
   }
   .center ul li img{
-    width: 0.93rem;
+    width: px2rem(93px);
     margin: 0 auto;
   }
   .center ul li p{
-    margin-top: 0.18rem;
-    font-size: 0.3rem;
+    margin-top: px2rem(18px);
+    font-size: px2rem(30px);
     color: #505050;
   }
   .boll{
-    height: 0.8rem;
-    font-size: 0.3rem;
-    line-height: 0.8rem;
-    margin-left: 0.3rem;
+    height: px2rem(80px);
+    font-size: px2rem(30px);
+    line-height: px2rem(80px);
+    margin-left: px2rem(30px);
     border-bottom: 1px solid #f1f1f1;
   }
-  .foot{
-    height: 0.98rem;
-    background: #fff;
-  }
-  .foot ul li{
-    width: 33%;
-    float: left;
-    text-align: center;
-    padding-top: 0.1rem;
-  }
-  .foot ul li img{
-    width: 0.46rem;
-    text-align: center;
-    margin: 0 auto;
-  }
-  .foot ul li p{
-    color: #A0A0A0;
-    font-size: 0.2rem;
-    margin-top: 0.1rem;
-  }
+
 </style>
 <!--首页-->
 <template>
   <div class="wrap">
-    <div class="header">
-      <a href="javascript:history.go(-1);" class="go_return"></a>
-      <p>彩小秘·购彩大厅</p>
-    </div>
     <div class="banner">
       <img src="../assets/img/banner.jpg">
     </div>
@@ -131,22 +114,6 @@
         <li>
           <img src="../assets/img/img1.png">
           <p>省省</p>
-        </li>
-      </ul>
-    </div>
-    <div class="section foot">
-      <ul>
-        <li>
-          <img src="../assets/img/dating.png">
-          <p>大厅</p>
-        </li>
-        <li>
-          <img src="../assets/img/dating.png">
-          <p>大厅</p>
-        </li>
-        <li>
-          <img src="../assets/img/dating.png">
-          <p>大厅</p>
         </li>
       </ul>
     </div>

@@ -1,4 +1,4 @@
-<style scoped>
+<style scoped rel="stylesheet/less" type="text/less" lang="less">
   .header{
     position: relative;
     height: 1rem;
@@ -14,7 +14,6 @@
     display: block;
   }
   .mation{
-    /*height: 0.61rem;*/
     background: #fff;
     display: table-cell;
     line-height: 0.61rem;
@@ -89,7 +88,22 @@
       <p>彩小秘·购彩大厅</p>
     </div>
     <div class="banner">
-      <img src="../assets/img/banner.jpg">
+      <swiper :options="swiperOption" ref="mySwiperA">
+        <swiper-slide>
+          <img src="../../src/assets/img/banner.jpg">
+        </swiper-slide>
+        <swiper-slide>
+          <img src="../../src/assets/img/banner.jpg">
+        </swiper-slide>
+        <swiper-slide>
+          <img src="../../src/assets/img/banner.jpg">
+        </swiper-slide>
+        <swiper-slide>
+          <img src="../../src/assets/img/banner.jpg">
+        </swiper-slide>
+
+        <div class="swiper-pagination"  slot="pagination"></div>
+      </swiper>
     </div>
     <div class="section mation">
       <p><img src="../assets/img/not.png">恭喜【138…672】投注竟足中奖<span>1888888.88</span>元</p>
@@ -142,7 +156,7 @@
         </li>
         <li>
           <img src="../assets/img/dating.png">
-          <p>大厅</p>
+          <p>开奖</p>
         </li>
         <li>
           <img src="../assets/img/dating.png">
@@ -154,15 +168,34 @@
 </template>
 
 <script>
-  import http from '../api/http'
-  export default {
+  import units from '../tools/units'
+  import { swiper, swiperSlide } from 'vue-awesome-swiper'
+  import 'swiper/dist/css/swiper.css'
+  // import swiperer from 'swiper.js'
+  // import 'swiper/vue.min.js'
+  // import 'swiper/dist/vue-awesome-swiper.js'
+  export default{
     name: 'index',
     data () {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        host: units.getHost(),
+        swiperOption: {
+          autoplay: 5000,
+          loop: true,
+          pagination: '.swiper-pagination',
+          onSlideChangeEnd: swiper => {}
+        }
       }
     },
-    created:function () {}
+    computed: {
+      swiper() {
+        return this.$refs.mySwiperA.swiper
+      }
+    },
+    components: {
+      swiper,
+      swiperSlide
+    },
   }
 </script>
 

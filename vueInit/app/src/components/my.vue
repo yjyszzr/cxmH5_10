@@ -1,6 +1,5 @@
 <style scoped>
   .center{
-
     background: #fff;
   }
   .portrait{

@@ -1,0 +1,64 @@
+@import '../../../assets/css/function.scss';
+.section{
+  padding: px2rem(24px) px2rem(38px) 0 px2rem(38px);
+}
+.presented{
+  font-size: px2rem(30px);
+  color: #505050;
+}
+.msg_list li>a {
+  display: block;
+  position: relative;
+  margin-right: px2rem(30px);
+  margin-left: 0;
+  padding:0;
+  /*border-bottom: 1px solid #e5e5e5;*/
+  height: px2rem(88px);
+}
+.arrow_right{
+  position: relative;
+  display: block;
+  height:px2rem(88px);
+  width: auto;
+  background-size: auto 30%;
+  color: #A0A0A0;
+  font-size: px2rem(30px);
+  padding-right: px2rem(30px);
+}
+.msg_list li>a>div .text1 {
+  width: 65%;
+}
+.msg_list li a>div>label {
+  color: #A0A0A0;
+}
+.msg_list li>a>div .text3 {
+  width: 75%;
+  border: none;
+  float: left;
+  height: px2rem(88px);
+}
+.msg_list li > a {
+  height: px2rem(110px);
+}
+.msg_list li > a > div {
+  height: px2rem(110px);
+}
+.msg_list li>a>div>.whole{
+  font-size: px2rem(30px);
+  color: #A0A0A0;
+  border-left: 1px solid #f1f1f1;
+  height: px2rem(50px);
+  float: left;
+  line-height: px2rem(50px);
+  padding-left: px2rem(20px);
+  margin-top: px2rem(20px);
+}
+.plain{
+  margin-top: px2rem(88px);
+  margin-left: px2rem(30px);
+}
+.plain p{
+  line-height: px2rem(39px);
+  color: #A0A0A0;
+  font-size: px2rem(26px);
+}

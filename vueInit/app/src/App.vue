@@ -1,3 +1,4 @@
+
 <template>
     <div id="main" :class="{'setBk':$store.state.gloub.bkgroundStatus}">
         <router-view></router-view>
