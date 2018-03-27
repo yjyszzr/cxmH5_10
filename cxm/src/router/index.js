@@ -74,7 +74,7 @@ const router = new Router({
           },
       },
       {
-          path: 'user/recharge',
+          path: '/user/recharge',
           name: 'recharge',
           cname:'充值',
           component: function (resolve) {
