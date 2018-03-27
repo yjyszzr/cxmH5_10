@@ -121,6 +121,14 @@ const router = new Router({
               require(['../components/user/suggestion/suggestion.vue'], resolve)
           },
       },
+      {
+          path: '/user/insurance',
+          name: 'insurance',
+          cname:'安全保障',
+          component: function (resolve) {
+              require(['../components/user/insurance/insurance.vue'], resolve)
+          },
+      },
   ]
 })
 
