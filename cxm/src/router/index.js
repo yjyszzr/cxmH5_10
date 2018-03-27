@@ -63,8 +63,8 @@ const router = new Router({
           },
       },
       {
-          path: '/index',
-          name: 'index',
+          path: '/user',
+          name: 'user',
           cname:'我的',
           meta: {
             requireAuth: true
@@ -74,7 +74,7 @@ const router = new Router({
           },
       },
       {
-          path: '/recharge',
+          path: 'user/recharge',
           name: 'recharge',
           cname:'充值',
           component: function (resolve) {
@@ -82,7 +82,7 @@ const router = new Router({
           },
       },
       {
-          path: '/withdraw',
+          path: 'user/withdraw',
           name: 'withdraw',
           cname:'提现',
           component: function (resolve) {
@@ -90,11 +90,35 @@ const router = new Router({
           },
       },
       {
-          path: '/credit_card',
+          path: 'user/credit_card',
           name: 'credit_card',
           cname:'管理银行卡',
           component: function (resolve) {
               require(['../components/user/credit_card/card.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/detail',
+          name: 'detail',
+          cname:'账户明细',
+          component: function (resolve) {
+              require(['../components/user/detail/detail.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/about',
+          name: 'about',
+          cname:'关于我们',
+          component: function (resolve) {
+              require(['../components/user/about/about.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/suggestion',
+          name: 'suggestion',
+          cname:'投诉建议',
+          component: function (resolve) {
+              require(['../components/user/suggestion/suggestion.vue'], resolve)
           },
       },
   ]

@@ -2,7 +2,6 @@
 
 </style>
 
-2345678
 <!--我的-->
 <template>
     <div class="wrap">
