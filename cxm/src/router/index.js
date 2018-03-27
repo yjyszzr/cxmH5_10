@@ -90,11 +90,44 @@ const router = new Router({
           },
       },
       {
+
           path: '/user/credit_card',
           name: 'credit_card',
           cname:'管理银行卡',
           component: function (resolve) {
               require(['../components/user/credit_card/card.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/detail',
+          name: 'detail',
+          cname:'账户明细',
+          component: function (resolve) {
+              require(['../components/user/detail/detail.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/about',
+          name: 'about',
+          cname:'关于我们',
+          component: function (resolve) {
+              require(['../components/user/about/about.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/suggestion',
+          name: 'suggestion',
+          cname:'投诉建议',
+          component: function (resolve) {
+              require(['../components/user/suggestion/suggestion.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/insurance',
+          name: 'insurance',
+          cname:'安全保障',
+          component: function (resolve) {
+              require(['../components/user/insurance/insurance.vue'], resolve)
           },
       },
   ]

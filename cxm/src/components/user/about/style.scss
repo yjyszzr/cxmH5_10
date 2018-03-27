@@ -1,0 +1,34 @@
+@import '../../../assets/css/function.scss';
+.logo{
+    height: px2rem(385px);
+    line-height: px2rem(385px);
+    text-align: center;
+    background: #fff;
+    img{
+        width: px2rem(93px);
+        height: px2rem(93px);
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+.wechat{
+    border-top: 1px solid #f1f1f1;
+    margin-right: px2rem(40px);
+    margin-left: px2rem(40px);
+    a{
+        margin-right: px2rem(0px);
+        margin-left: px2rem(0px);
+    }
+}
+.guanwang{
+    margin-top: px2rem(354px);
+    margin-left: 27%;
+    p{
+        font-size: px2rem(26px);
+        color: #787878;
+        margin-top: px2rem(10px);
+        span{
+            color: #f7931e;
+        }
+    }
+}

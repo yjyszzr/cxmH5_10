@@ -1,0 +1,27 @@
+@import '../../../assets/css/function.scss';
+.rance{
+    background: #fff;
+    display: block;
+    .box1{
+        margin:0  px2rem(30px);
+        padding: px2rem(35px);
+        border-bottom: 1px dashed #f1f1f1;
+        img{
+            width: 5%;
+            display: inline-block;
+            margin-right: px2rem(16px);
+            vertical-align: middle;
+        }
+        span{
+            font-size: px2rem(30px);
+            color: #E95504;
+        }
+        div{
+            margin-left: 8%;
+            p{
+                font-size: px2rem(28px);
+                color: #505050;
+            }
+        }
+    }
+}
