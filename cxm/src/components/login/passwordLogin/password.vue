@@ -31,7 +31,7 @@
       </li>
     </ul>
     <section class="button">
-      <a class="determine">登录</a>
+      <a class="determine" @click="_login">登录</a>
       <a class="mine">新用户注册</a>
     </section>
     <section class="forget">

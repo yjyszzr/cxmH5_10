@@ -3,12 +3,15 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
       name: 'index',
       cname:'首页',
+      meta: {
+        requireAuth: true
+      },
       component: function (resolve) {
           require(['../components/index.vue'], resolve)
       }
@@ -17,6 +20,9 @@ export default new Router({
       path: '/password',
       name: 'password',
       cname:'密码登录',
+      meta: {
+        requireAuth: false
+      },
       component: function (resolve) {
         require(['../components/login/passwordLogin/password.vue'], resolve)
       },
@@ -25,6 +31,9 @@ export default new Router({
         path: '/sms',
         name: 'sms',
         cname:'短信登录',
+        meta: {
+            requireAuth: false
+        },
         component: function (resolve) {
             require(['../components/login/sms/sms.vue'], resolve)
         },
@@ -57,6 +66,9 @@ export default new Router({
           path: '/index',
           name: 'index',
           cname:'我的',
+          meta: {
+            requireAuth: true
+          },
           component: function (resolve) {
               require(['../components/user/index/index.vue'], resolve)
           },
@@ -87,3 +99,23 @@ export default new Router({
       },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+	if(to.matched.some(record => record.meta.requireAuth)) {
+		if(!localStorage.getItem('token')) {
+			next({
+				path: '/password',
+				query: {
+					redirect: to.fullPath
+				}
+			})
+		} else {
+			next()
+		}
+	} else {
+		next()
+	}
+})
+
+
+export default router
