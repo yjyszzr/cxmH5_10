@@ -6,11 +6,6 @@
 <!--密码登录-->
 <template>
   <div class="wrap">
-    <div class="header">
-      <a href="javascript:history.go(-1);" class="go_return">返回</a>
-      <p>彩小秘·注册</p>
-      <a class="right_btn">登录</a>
-    </div>
     <ul class="section msg_list">
       <li>
         <a href="javascript:void(0);">
@@ -32,11 +27,11 @@
     </ul>
     <section class="button">
       <a class="determine" @click="_login">登录</a>
-      <a class="mine">新用户注册</a>
+      <router-link to='/user/register' class="mine">新用户注册</router-link>
     </section>
     <section class="forget">
-      <a class="x_in">短信验证码登录</a>
-      <a class="x_sel">忘记密码？</a>
+      <router-link to='/user/sms' class="x_in">短信验证码登录</router-link>
+      <router-link to='/user/find' class="x_sel">忘记密码？</router-link>
 
     </section>
     <div class="prompt"></div>

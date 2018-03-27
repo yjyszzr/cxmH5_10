@@ -23,7 +23,7 @@ export default {
             'loginSource': '4'
         }
         // console.log(JSON.parse(data))
-        api.Login(data)
+        api.LoginByPass(data)
         .then(res => {
             if(res.code==0) {
                 localStorage.setItem('token',res.data.token)

@@ -61,8 +61,20 @@ export function fetchGet(url, params) {
 }
 
 export default {
-    // 登录
-    Login(params) {
+    // 密码登录
+    LoginByPass(params) {
         return fetchPost('member/login/loginByPass', params)
+    },
+    //短信登录
+    loginBySms(params) {
+        return fetchPost('member/login/loginBySms', params)
+    },
+    //注册
+    Register(params) {
+        return fetchPost('member/user/register', params)
+    },
+    //验证码
+    SendSmsCode(params){
+        return fetchPost('member/sms/sendSmsCode',params)
     }
 }

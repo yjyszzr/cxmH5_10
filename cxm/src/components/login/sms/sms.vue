@@ -6,16 +6,12 @@
 <!--密码登录-->
 <template>
     <div class="wrap">
-        <div class="header">
-            <a href="javascript:history.go(-1);" class="go_return">返回</a>
-            <p>彩小秘·短信登录</p>
-        </div>
         <ul class="msg_list">
             <li>
                 <a href="javascript:void(0);">
                     <div>
                         <img src="../../../assets/img/pho_nor.png">
-                        <input type="text" class="text" placeholder="请输入手机号"/>
+                        <input v-model="phoneVal" type="tel" class="text" placeholder="请输入手机号"/>
                         <em><img class="img" src="../../../assets/img/sut.png"></em>
                     </div>
 
@@ -23,17 +19,17 @@
                 <a href="javascript:void(0);">
                     <div>
                         <img src="../../../assets/img/tes_nor.png">
-                        <input type="text" class="text1"  placeholder="输入验证码"/>
-                        <a>获取短信验证码</a>
+                        <input v-model="telVal" type="text" class="text1"  placeholder="输入验证码"/>
+                        <button :disabled='$store.state.smsCode.disabled' @click="changeNum()">{{$store.state.smsCode.changeText}}</button>
                     </div>
                 </a>
             </li>
         </ul>
         <section class="button">
-            <a class="determine">登录</a>
+            <a class="determine" @click="_login()">登录</a>
         </section>
         <section class="forget">
-            <a class="x_in">密码登录</a>
+            <router-link to='/user/password' class="x_in">密码登录</router-link>
 
         </section>
         <div class="prompt"></div>

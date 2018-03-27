@@ -242,16 +242,18 @@ input::-webkit-inner-spin-button{
   line-height: px2rem(87px);
 
 }
-.msg_list li>a>div a{
+.msg_list li>a>div button{
   color: #A0A0A0;
   font-size: px2rem(30px);
   height: px2rem(60px);
   line-height: px2rem(60px);
   display: block;
   float: right;
+  border: none;
   border-left: 1px solid #f1f1f1;
   padding-left: px2rem(20px);
   margin-top: px2rem(15px);
+  background: none;
 }
 .msg_list .message{
   position: relative;
@@ -359,24 +361,4 @@ input::-webkit-inner-spin-button{
 .section{
   background: #fff;
   margin-top: px2rem(20px);
-}
-.foot{
-  height: px2rem(98px);
-  background: #fff;
-}
-.foot ul li{
-  width: 33%;
-  float: left;
-  text-align: center;
-  padding-top: 0.1rem;
-}
-.foot ul li img{
-  width: px2rem(46px);
-  text-align: center;
-  margin: 0 auto;
-}
-.foot ul li p{
-  color: #A0A0A0;
-  font-size: px2rem(20px);
-  margin-top: 0.1rem;
 }

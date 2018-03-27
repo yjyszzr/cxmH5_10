@@ -12,7 +12,7 @@
             <a href="javascript:void(0);">
                 <div>
                     <img src="../../../assets/img/pho_nor.png">
-                    <input type="text" class="text"/>
+                    <input v-model="phoneVal" type="tel" placeholder="请输入手机号" class="text"/>
                     <em><img class="img" src="../../../assets/img/sut.png"></em>
                 </div>
 
@@ -20,20 +20,20 @@
             <a href="javascript:void(0);">
                 <div>
                     <img src="../../../assets/img/sec_nor.png">
-                    <input type="text" class="text"/>
+                    <input v-model="passwordVal" placeholder="请输入密码" type="password" class="text"/>
                     <em><img src="../../../assets/img/hid.png"></em>
                 </div>
             </a>
             <a href="javascript:void(0);">
                 <div>
                     <img src="../../../assets/img/tes_nor.png">
-                    <input type="text" class="text1"/>
-                    <a>获取短信验证码</a>
+                    <input v-model="telVal" type="tel" placeholder="请输入验证码" class="text1"/>
+                    <button :disabled='$store.state.smsCode.disabled' @click="changeNum()">{{$store.state.smsCode.changeText}}</button>
                 </div>
             </a>
         </li>
     </ul>
-    <section class="button">
+    <section class="button" @click="reg">
         <a class="determine">注册</a>
     </section>
     <p class="ment">注册表明您已同意<span>《彩小秘彩票服务协议》</span></p>
