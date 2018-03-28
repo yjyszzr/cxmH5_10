@@ -141,7 +141,7 @@ const router = new Router({
       {
           path: '/user/order',
           name: 'order',
-          cname:'消息中心',
+          cname:'订单详情',
           component: function (resolve) {
               require(['../components/user/order/index.vue'], resolve)
           },
