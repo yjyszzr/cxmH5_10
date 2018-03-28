@@ -154,6 +154,14 @@ const router = new Router({
               require(['../components/user/certification/index.vue'], resolve)
           },
       },
+      {
+          path: '/user/record',
+          name: 'record',
+          cname:'购彩记录',
+          component: function (resolve) {
+              require(['../components/user/record/index.vue'], resolve)
+          },
+      },
   ]
 })
 
