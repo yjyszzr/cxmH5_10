@@ -31,19 +31,19 @@
             </div>
             <div class="nav">
                 <router-link to='/user/recharge'>充值</router-link>
-                <a>提现</a>
+                <router-link to="/user/withdraw">提现</router-link>
             </div>
         </section>
         <section class="section">
             <ul class="msg_list">
                 <li>
-                    <a href="javascript:void(0);">
+                    <router-link to="/user/record">
                         <div>
                             <img src="../../../assets/img/pho_nor.png">
                             <span class="arrow_right float_right"></span>
                             <span class="message">投注记录</span>
                         </div>
-                    </a>
+                    </router-link>
                     <router-link to='/user/detail'>
                         <div>
                             <img src="../../../assets/img/pho_nor.png">
@@ -51,13 +51,20 @@
                             <span class="message">账户明细</span>
                         </div>
                     </router-link>
-                    <a href="javascript:void(0);">
+                    <router-link to='/user/detail'>
+                        <div>
+                            <img src="../../../assets/img/pho_nor.png">
+                            <span class="arrow_right float_right"></span>
+                            <span class="message">消息中心</span>
+                        </div>
+                    </router-link>
+                    <router-link to='/user/detail'>
                         <div>
                             <img src="../../../assets/img/pho_nor.png">
                             <span class="arrow_right float_right"></span>
                             <span class="message">我的卡卷<em></em></span>
                         </div>
-                    </a>
+                    </router-link>
 
                 </li>
             </ul>
@@ -65,14 +72,14 @@
         <section class="section">
             <ul class="msg_list">
                 <li>
-                    <a href="javascript:void(0);">
+                    <a>
                         <div>
                             <img src="../../../assets/img/pho_nor.png">
                             <span class="arrow_right float_right"></span>
                             <span class="message">帮助中心</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0);">
+                    <a href="tel:400-123-1234">
                         <div>
                             <img src="../../../assets/img/pho_nor.png">
                             <span class="arrow_kefu float_right">400-123-1234</span>

@@ -101,7 +101,7 @@ const router = new Router({
       {
           path: '/user/detail',
           name: 'detail',
-          cname:'账户明细',
+          cname:'我的卡卷',
           component: function (resolve) {
               require(['../components/user/detail/detail.vue'], resolve)
           },
