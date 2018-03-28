@@ -44,7 +44,7 @@
                             <span class="message">投注记录</span>
                         </div>
                     </router-link>
-                    <router-link to='/user/detail'>
+                    <router-link to='/user/account'>
                         <div>
                             <img src="../../../assets/img/pho_nor.png">
                             <span class="arrow_right float_right"></span>
