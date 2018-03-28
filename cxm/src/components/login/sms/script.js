@@ -51,5 +51,9 @@ export default {
     },
     mounted(){
         
+    },
+    beforeRouteLeave (to, from, next) {
+        next()
+        this.$store.dispatch("reset")
     }
 }

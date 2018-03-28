@@ -7,6 +7,7 @@ export default {
         phoneVal: '',
         passwordVal: '',
         telVal: '',
+        eyehide: false   //控制眼睛
       }
     },
     created(){
@@ -53,5 +54,9 @@ export default {
     },
     mounted(){
         
+    },
+    beforeRouteLeave (to, from, next) {
+        next()
+        this.$store.dispatch("reset")
     }
 }

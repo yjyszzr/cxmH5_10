@@ -11,14 +11,14 @@
                 <a href="javascript:void(0);">
                     <div>
                         <img src="../../../assets/img/pho_nor.png">
-                        <input type="tel" class="text" placeholder="请输入手机号"/>
+                        <mt-field type='tel' placeholder="请输入手机号" v-model="phoneVal"></mt-field>
                         <em><img class="img" src="../../../assets/img/sut.png"></em>
                     </div>
                 </a>
             </li>
         </ul>
         <section class="button">
-            <a class="determine">下一步</a>
+            <a class="determine" @click='next()'>下一步</a>
         </section>
         <div class="prompt"></div>
     </div>

@@ -1,11 +1,12 @@
 import api from '../../../fetch/api'
 import { Toast } from 'mint-ui'
 export default {
-    name: 'index',
+    name: 'password',
     data () {
       return {
         phoneVal: '',
-        passwordVal: ''
+        passwordVal: '',
+        eyehide: false   //控制眼睛
       }
     },
     created(){

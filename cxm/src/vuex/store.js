@@ -12,7 +12,8 @@ const state = {
         changeText: '获取短信验证码',
         disabled: false,
         timer: ''
-    }
+    },
+    findphone: '',   //找回密码手机号
 }
 
 const mutations = {
@@ -26,23 +27,32 @@ const mutations = {
         .catch(error => {
             Toast('网络错误')
         })
-        state.timer = setInterval(()=>{
+        state.smsCode.timer = setInterval(()=>{
             state.smsCode.changeNumber--;
             if(state.smsCode.changeNumber<=0){
                 state.smsCode.changeText = '重新获取验证码'
-              clearInterval(state.timer)
+              clearInterval(state.smsCode.timer)
               state.smsCode.changeNumber = 60
               state.smsCode.disabled = false
             }else{
                 state.smsCode.changeText = state.smsCode.changeNumber+'s后重新获取'
             }
           },1000)
+    },
+    RESET(state){
+        clearInterval(state.smsCode.timer)
+        state.smsCode.disabled = false
+        state.smsCode.changeNumber = 60
+        state.smsCode.changeText = '获取短信验证码'
     }
 }
 
 const actions = {
     getSmsCode({commit}, value) {
         commit("GETSMSCODE",value);
+    },
+    reset({commit}){
+        commit("RESET");
     }
 }
 

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-header :title='title()'></v-header>
+    <v-header :title='title()' v-show='isShowHeader'></v-header>
     <div class="content">
         <transition name="slide-left">
             <router-view></router-view>
@@ -19,9 +19,15 @@ export default {
     'v-header': header,
     'v-footer': footer
   },
+  data(){
+    return {
+      isShowHeader: false
+    }
+  },
   methods: {
     title () {
       if(this.$route.path.split('/')[2]){
+          this.isShowHeader=true
           switch (this.$route.path.split('/')[2]) {
             case 'register':
               return '注册'
@@ -31,12 +37,15 @@ export default {
               return '短信登录'
             case 'find':
               return '找回密码'
+            case 'revise':
+              return '修改密码'
           }
       }else{
-          switch (this.$route.path.split('/')[1]) {
-            case '':
-              return "首页"
-          }
+        this.isShowHeader=false
+          // switch (this.$route.path.split('/')[1]) {
+          //   case '':
+          //     return "首页"
+          // }
       }
     },
   }

@@ -76,5 +76,13 @@ export default {
     //验证码
     SendSmsCode(params){
         return fetchPost('member/sms/sendSmsCode',params)
-    }
+    },
+    //校验手机号
+    validateMobile(params){
+        return fetchPost('member/user/validateMobile',params)
+    },
+    //修改密码
+    updateLoginPass(params){
+        return fetchPost('member/user/updateLoginPass',params)
+    },
 }

@@ -332,7 +332,7 @@ input::-webkit-inner-spin-button{
 }
 
 .prompt{
-  width: px2rem(54px);
+  width: px2rem(540px);
   height: px2rem(80px);
   color: #F7931E;
   font-size: px2rem(26px);
@@ -361,4 +361,14 @@ input::-webkit-inner-spin-button{
 .section{
   background: #fff;
   margin-top: px2rem(20px);
+}
+.mint-cell{
+  height: px2rem(87px);
+  line-height: px2rem(87px);
+  min-height: 0;
+  .mint-cell-wrapper{
+    padding: 0;
+    font-size: px2rem(20px);
+    background-size: 120% 0;
+  }
 }
