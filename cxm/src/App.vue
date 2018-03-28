@@ -39,13 +39,30 @@ export default {
               return '找回密码'
             case 'revise':
               return '修改密码'
+            case 'about':
+              return '关于我们'
+            case 'detail':
+              return '账户明细'
+            case 'certification':
+              return '实名认证'
+            case 'insurance':
+              return '安全保障'
+            case 'suggestion':
+              return '投诉建议'
+            case 'recharge':
+              return '充值'
           }
       }else{
-        this.isShowHeader=false
-          // switch (this.$route.path.split('/')[1]) {
-          //   case '':
-          //     return "首页"
-          // }
+          if(this.$route.path.split('/')[1]=='user'){
+            this.isShowHeader=true
+          }else{
+            this.isShowHeader=false
+          }
+          //this.isShowHeader=false
+          switch (this.$route.path.split('/')[1]) {
+            case 'user':
+              return "个人中心"
+          }
       }
     },
   }

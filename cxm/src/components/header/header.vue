@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <a @click="return_back()" class="go_return">返回</a>
+        <a @click="return_back()" class="go_return"></a>
         <p>彩小秘·{{title}}</p>
     </div>
 </template>

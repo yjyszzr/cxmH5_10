@@ -7,6 +7,18 @@ axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 axios.defaults.baseURL = 'http://39.106.18.39:8765/api/';
 
+//拦截 token
+axios.interceptors.request.use(
+    config => {
+        if (localStorage.getItem('token')) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
+            config.headers.token = `${localStorage.getItem('token')}`;
+        }
+        return config;
+    },
+    err => {
+        return Promise.reject(err);
+});
+
 //POST传参序列化
 // axios.interceptors.request.use((config) => {
 //     if(config.method  === 'post'){
@@ -85,4 +97,16 @@ export default {
     updateLoginPass(params){
         return fetchPost('member/user/updateLoginPass',params)
     },
+    //退出登录
+    logout(params){
+        return fetchPost('member/login/logout',params)
+    },
+    //查询用户个人信息
+    userInfoExceptPass(params){
+        return fetchPost('member/user/userInfoExceptPass',params)
+    },
+    //实名认证
+    realNameAuth(params){
+        return fetchPost('member/user/real/realNameAuth',params)
+    }
 }

@@ -1,10 +1,9 @@
 import api from '../../../fetch/api'
 export default {
-    name: 'index',
+    name: 'recharge',
     data () {
       return {
-        phoneVal: '',
-        passwordVal: ''
+        userInfo: this.$store.state.userInfo
       }
     },
     created(){

@@ -12,7 +12,7 @@
                     <div>
                         <img src="../../../assets/img/pho_nor.png">
                         <label>真实姓名：</label>
-                        <input type="text" class="text2" placeholder="确认后不可修改"/>
+                        <input v-model="userName" type="text" class="text2" placeholder="确认后不可修改"/>
                         <em><img class="img" src="../../../assets/img/sut.png"></em>
                     </div>
                 </a>
@@ -20,14 +20,14 @@
                     <div>
                         <img src="../../../assets/img/pho_nor.png">
                         <label>身份证号：</label>
-                        <input type="text" class="text2" placeholder="确认后不可修改"/>
+                        <input v-model="userToken" type="text" class="text2" placeholder="确认后不可修改"/>
                         <em><img class="img" src="../../../assets/img/sut.png"></em>
                     </div>
                 </a>
             </li>
         </ul>
         <section class="button">
-            <a class="determine">认证</a>
+            <a class="determine" @click='rzBtn()'>认证</a>
         </section>
     </div>
 </template>

@@ -1,4 +1,7 @@
 @import '../../../assets/css/function.scss';
+.wrap{
+    height: 100%;
+}
 .center{
     background: #fff;
 }
@@ -8,6 +11,10 @@
 .people{
     float: left;
     margin-right:px2rem(30px);
+    width: px2rem(112px);
+    height: px2rem(112px);
+    border-radius: 100%;
+    overflow: hidden;
 }
 .people img{
     width: px2rem(112px);

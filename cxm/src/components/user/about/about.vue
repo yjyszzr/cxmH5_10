@@ -12,16 +12,16 @@
             <section class=" wechat">
                 <ul class="msg_list">
                     <li>
-                        <a href="javascript:void(0);">
+                        <router-link to="/user/suggestion">
                             <div>
                                 <span class="message">投诉建议</span>
                             </div>
-                        </a>
-                        <a href="javascript:void(0);">
+                        </router-link>
+                        <router-link to="/user/insurance">
                             <div>
                                 <span class="message">安全保障</span>
                             </div>
-                        </a>
+                        </router-link>
                     </li>
                 </ul>
             </section>

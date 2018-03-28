@@ -1,6 +1,5 @@
 import api from '../../../fetch/api'
 import { Toast } from 'mint-ui'
-import { getSmsCode } from '../../../util/filter'
 export default {
     name: 'sms',
     data () {

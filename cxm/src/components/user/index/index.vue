@@ -6,29 +6,31 @@
 <!--我的-->
 <template>
     <div class="wrap">
+        <mt-loadmore :top-method="loadTop" ref="loadmore" @top-status-change="handleTopChange">
         <section class="center">
             <div class="portrait clearfix">
                 <div class="people">
-                    <img src="../../../assets/img/portrait.png">
+                    <img src="../../../assets/img/portrait.png" v-if="userInfo.headimg==''">
+                    <img :src="userInfo.headimg" alt="" v-if="userInfo.headimg!=''">
                 </div>
                 <div class="por-right">
-                    <span>189****9000</span>
-                    <!--<b class="certified"></b>-->
-                    <p>您还未实名认证，尽快实名认证</p>
+                    <span>{{userInfo.mobile}}</span>
+                    <b class="certified" v-show='userInfo.isReal==1'></b>
+                    <p v-show='userInfo.isReal!=1' @click='gorz()'>您还未实名认证，尽快实名认证</p>
                 </div>
             </div>
             <div class="money clearfix">
                 <div class="left">
-                    <span>100.00元</span>
+                    <span>{{userInfo.totalMoney}}元</span>
                     <p>账户余额</p>
                 </div>
                 <div class="left">
-                    <span>100.00元</span>
-                    <p>账户余额</p>
+                    <span>{{userInfo.userMoney}}元</span>
+                    <p>可提现余额</p>
                 </div>
             </div>
             <div class="nav">
-                <a>充值</a>
+                <router-link to='/user/recharge'>充值</router-link>
                 <a>提现</a>
             </div>
         </section>
@@ -42,13 +44,13 @@
                             <span class="message">投注记录</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0);">
+                    <router-link to='/user/detail'>
                         <div>
                             <img src="../../../assets/img/pho_nor.png">
                             <span class="arrow_right float_right"></span>
                             <span class="message">账户明细</span>
                         </div>
-                    </a>
+                    </router-link>
                     <a href="javascript:void(0);">
                         <div>
                             <img src="../../../assets/img/pho_nor.png">
@@ -77,19 +79,20 @@
                             <span class="message">联系客服</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0);">
+                    <router-link to='/user/about'>
                         <div>
                             <img src="../../../assets/img/pho_nor.png">
                             <span class="arrow_right float_right"></span>
                             <span class="message">关于我们</span>
                         </div>
-                    </a>
+                    </router-link>
                 </li>
             </ul>
         </section>
-        <section class="button">
+        <section class="button" @click="loginout()">
             <a class="determine">退出登录</a>
         </section>
+        </mt-loadmore>
     </div>
 </template>
 

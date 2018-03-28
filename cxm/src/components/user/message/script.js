@@ -1,10 +1,9 @@
 import api from '../../../fetch/api'
 export default {
-    name: 'index',
+    name: 'message',
     data () {
       return {
-        phoneVal: '',
-        passwordVal: ''
+        
       }
     },
     created(){

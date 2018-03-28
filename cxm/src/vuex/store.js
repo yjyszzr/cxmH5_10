@@ -14,6 +14,7 @@ const state = {
         timer: ''
     },
     findphone: '',   //找回密码手机号
+    userInfo: {},   //个人信息
 }
 
 const mutations = {

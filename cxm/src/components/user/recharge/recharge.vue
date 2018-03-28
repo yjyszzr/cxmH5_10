@@ -6,13 +6,9 @@
 <!--我的-->
 <template>
     <div class="wrap">
-        <div class="header">
-            <a href="javascript:history.go(-1);" class="go_return">返回</a>
-            <p>彩小秘·充值</p>
-        </div>
         <span class="head">小秘提示：充值金额可购彩但不能提现，中奖金额可提现</span>
         <div class="section current clearfix">
-            <p>当前账号：18910****4060 <br/>当前余额：100000.00元</p>
+            <p>当前账号：{{userInfo.mobile}} <br/>当前余额：{{userInfo.totalMoney}}元</p>
         </div>
         <section class="section amount">
             <p>充值金额</p>
