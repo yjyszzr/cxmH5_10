@@ -31,7 +31,7 @@
             </div>
             <div class="nav">
                 <router-link to='/user/recharge'>充值</router-link>
-                <a>提现</a>
+                <router-link to='/user/withdraw'>提现</router-link>
             </div>
         </section>
         <section class="section">

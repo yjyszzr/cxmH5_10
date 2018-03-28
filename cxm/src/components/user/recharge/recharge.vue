@@ -12,12 +12,9 @@
         </div>
         <section class="section amount">
             <p>充值金额</p>
-            <input type="text" class="money" placeholder="确认后不可修改"/>
+            <input v-model="recharge_val" type="tel" class="money" placeholder="确认后不可修改"/>
             <ul class="clearfix">
-                <li>20</li>
-                <li>50</li>
-                <li>100</li>
-                <li>200</li>
+                <li v-for="(item,i) in list_num" :key='i' @click='changenum(item)'>{{item}}</li>
             </ul>
         </section>
         <section class="section wechat ">

@@ -51,6 +51,8 @@ export default {
               return '投诉建议'
             case 'recharge':
               return '充值'
+            case 'withdraw':
+              return '提现'
           }
       }else{
           if(this.$route.path.split('/')[1]=='user'){

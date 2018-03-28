@@ -5,7 +5,7 @@
 <template>
     <div class="wrap">
         <section class="section">
-            <p class="presented">可提现金额：100.00元</p>
+            <p class="presented">可提现金额：{{userInfo.userMoney}}元</p>
             <ul class=" msg_list">
                 <li>
                     <a href="javascript:void(0);">
