@@ -1,0 +1,35 @@
+ @import '../../../assets/css/function.scss';
+ .send{
+   height: px2rem(88px);
+   background: #fff;
+   overflow: hidden;
+   display: flex;
+   li{
+     flex: 1;
+     height: px2rem(48px);
+     margin-top: px2rem(20px);
+     border-right: 1px solid #f1f1f1;
+     color: #505050;
+     font-size: px2rem(30px);
+     text-align: center;
+     p{
+       height: px2rem(64px);
+       display: block;
+       margin: 0 auto;
+     }
+   }
+   .cur p{
+     color: #E95504;
+     width: 50%;
+     border-bottom: 2px solid #E95504;
+     display: block;
+   }
+   li:last-child{
+     border-right: none;
+   }
+ }
+ .data{
+   height: px2rem(40px);
+   line-height: px2rem(40px);
+   color: #A0A0A0;
+ }

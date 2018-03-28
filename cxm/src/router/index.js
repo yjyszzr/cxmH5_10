@@ -162,6 +162,14 @@ const router = new Router({
               require(['../components/user/record/index.vue'], resolve)
           },
       },
+      {
+          path: '/user/account',
+          name: 'account',
+          cname:'账户明细',
+          component: function (resolve) {
+              require(['../components/user/account/index.vue'], resolve)
+          },
+      },
   ]
 })
 
