@@ -130,6 +130,30 @@ const router = new Router({
               require(['../components/user/insurance/insurance.vue'], resolve)
           },
       },
+      {
+          path: '/user/message',
+          name: 'message',
+          cname:'消息中心',
+          component: function (resolve) {
+              require(['../components/user/message/mess.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/order',
+          name: 'order',
+          cname:'消息中心',
+          component: function (resolve) {
+              require(['../components/user/order/index.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/certification',
+          name: 'certification',
+          cname:'实名认证',
+          component: function (resolve) {
+              require(['../components/user/certification/index.vue'], resolve)
+          },
+      },
   ]
 })
 

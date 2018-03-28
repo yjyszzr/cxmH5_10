@@ -1,0 +1,59 @@
+@import '../../../assets/css/function.scss';
+.order_center{
+  .subnav{
+    background: #fff;
+    padding: px2rem(20px) px2rem(30px);
+  }
+  .box1{
+    img{
+      width: px2rem(64px);
+      height: px2rem(64px);
+      float: left;
+      margin-right: px2rem(16px);
+    }
+    div{
+      display: inline-block;
+      width: 86%;
+      p{
+        color: #505050;
+        font-size: px2rem(30px);
+        width: 100%;
+        span{
+          float: right;
+          color: #505050;
+          font-size: px2rem(30px);
+        }
+      }
+      span{
+        color: #787878;
+        font-size: px2rem(22px);
+      }
+    }
+  }
+  .box2{
+    margin-top: px2rem(20px);
+    border-top: 1px solid #f1f1f1;
+    padding:px2rem(20px) 0;
+    span{
+      color: #A0A0A0;
+      font-size: px2rem(24px);
+    }
+    p{
+      font-size: px2rem(28px);
+      color: #505050;
+      margin-top: px2rem(10px);
+      span{
+        font-size: px2rem(28px);
+        color: #505050;
+        float: right;
+      }
+    }
+  }
+}
+.table{
+  h5{
+    font-size: px2rem(28px);
+    color: #A0A0A0;
+    height: px2rem(72px);
+  }
+}

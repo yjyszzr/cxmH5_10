@@ -1,0 +1,26 @@
+ @import '../../../assets/css/function.scss';
+.msg_list li>a>div em .img{
+  float: left;
+  width: px2rem(30px);
+  padding-top: px2rem(35px);
+  margin-right: px2rem(15px);
+  display: none;
+}
+.head{
+  /*height: 0.8rem;*/
+  font-size: px2rem(26px);
+  color: #A0A0A0;
+  background: #f4f4f4;
+  position: absolute;
+  top: 7%;
+  text-align: center;
+  width: 100%;
+
+}
+.msg_list li>a>div .text2 {
+  width: 65%;
+  float: left;
+  border: none;
+  height: px2rem(87px);
+  line-height: px2rem(109px);
+}

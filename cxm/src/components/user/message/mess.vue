@@ -1,0 +1,43 @@
+<style lang='scss' scoped src='./style.scss'>
+
+</style>
+
+
+<!--消息中心-->
+<template>
+    <div class="wrap">
+        <ul class="send">
+            <li class="cur"><p>通知</p></li>
+            <li><p>消息</p></li>
+        </ul>
+        <section class="box_cen">
+            <div class="box1">
+                <h5>中奖通知</h5>
+                <span>01月30日&nbsp;&nbsp;08:30</span>
+            </div>
+            <!--<div class="box2">-->
+                <!--<p>中奖3000.00元</p>-->
+                <!--<span>奖金已打入您的可用余额</span>-->
+            <!--</div>-->
+            <!--<div class="box4">-->
+                <!--<p>中奖3000.00元</p>-->
+                <!--<span>奖金已打入您的可用余额</span>-->
+            <!--</div>-->
+            <div class="box5">
+                <p>出票成功，祝您中大奖！</p>
+            </div>
+            <div class="box3">
+                <p>彩种：<span>竞彩足球 </span></p>
+                <p>投注金额：<span>50.00元</span> </p>
+                <p>投注时间：<span>2018年02月03日</span></p>
+            </div>
+            <a class="rout">查看详情></a>
+        </section>
+    </div>
+</template>
+
+<script src='./script.js'>
+    // import http from '../api/http'
+
+</script>
+
