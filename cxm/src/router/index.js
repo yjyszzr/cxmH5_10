@@ -101,7 +101,7 @@ const router = new Router({
       {
           path: '/user/detail',
           name: 'detail',
-          cname:'账户明细',
+          cname:'我的卡卷',
           component: function (resolve) {
               require(['../components/user/detail/detail.vue'], resolve)
           },
@@ -160,6 +160,14 @@ const router = new Router({
           cname:'购彩记录',
           component: function (resolve) {
               require(['../components/user/record/index.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/account',
+          name: 'account',
+          cname:'账户明细',
+          component: function (resolve) {
+              require(['../components/user/account/index.vue'], resolve)
           },
       },
   ]
