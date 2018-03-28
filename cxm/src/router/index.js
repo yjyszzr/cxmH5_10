@@ -141,7 +141,7 @@ const router = new Router({
       {
           path: '/user/order',
           name: 'order',
-          cname:'消息中心',
+          cname:'订单详情',
           component: function (resolve) {
               require(['../components/user/order/index.vue'], resolve)
           },
@@ -152,6 +152,14 @@ const router = new Router({
           cname:'实名认证',
           component: function (resolve) {
               require(['../components/user/certification/index.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/record',
+          name: 'record',
+          cname:'购彩记录',
+          component: function (resolve) {
+              require(['../components/user/record/index.vue'], resolve)
           },
       },
   ]
