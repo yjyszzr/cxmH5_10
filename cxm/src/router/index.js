@@ -178,6 +178,22 @@ const router = new Router({
               require(['../components/user/add_card/index.vue'], resolve)
           },
       },
+      {
+          path: '/user/give_details',
+          name: 'give_details',
+          cname:'提现详情',
+          component: function (resolve) {
+              require(['../components/user/give_details/index.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/draw',
+          name: 'draw',
+          cname:'出票方案',
+          component: function (resolve) {
+              require(['../components/user/draw/index.vue'], resolve)
+          },
+      },
   ]
 })
 
