@@ -8,13 +8,13 @@
             <p class="presented">可提现金额：{{userInfo.userMoney}}元</p>
             <ul class=" msg_list">
                 <li>
-                    <router-link to="/user/credit_card">
+                    <a>
                         <div>
                             <label>银行卡：</label>
                             <input type="tel" class="text1" placeholder="请添加银行卡"/>
                             <router-link to="/user/credit_card" class="arrow_right float_right">管理</router-link>
                         </div>
-                    </router-link>
+                    </a>
                     <a href="javascript:void(0);">
                         <div>
                             <input type="tel" class="text3" placeholder="请输入提现金额"/>
@@ -25,7 +25,7 @@
             </ul>
         </section>
         <section class="button">
-            <a class="determine">立即支付</a>
+            <a class="determine">立即提现</a>
         </section>
         <section class="plain">
             <p>说明：</p>
