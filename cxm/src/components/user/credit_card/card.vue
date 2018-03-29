@@ -19,7 +19,7 @@
         <section class="section">
             <ul class="msg_list">
                 <li>
-                    <router-link to="/user/credit_card">
+                    <router-link to="/user/add_card">
                         <div>
                             <img src="../../../assets/img/pho_nor.png">
                             <span class="arrow_right float_right"></span>

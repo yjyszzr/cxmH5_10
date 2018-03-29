@@ -170,6 +170,14 @@ const router = new Router({
               require(['../components/user/account/index.vue'], resolve)
           },
       },
+      {
+          path: '/user/add_card',
+          name: 'add_card',
+          cname:'账户明细',
+          component: function (resolve) {
+              require(['../components/user/add_card/index.vue'], resolve)
+          },
+      },
   ]
 })
 
