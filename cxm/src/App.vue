@@ -2,7 +2,7 @@
   <div id="app">
     <v-header :title='title()' v-show='isShowHeader'></v-header>
     <div class="content">
-        <transition name="slide-left">
+        <transition  mode="out-in" enter-active-class='bounce-enter' leave-active-class="bounce-leave">
             <router-view></router-view>
         </transition>  
     </div>
@@ -81,7 +81,7 @@ export default {
     .color {
         background-color: #ffffff;
     }
-
+    
     a.active {
       text-decoration: none;
     }
@@ -121,19 +121,65 @@ export default {
       // }
 
       //左滑动效
-      .slide-left-enter-active {
-        animation: slideLeft .3s;
+      // .slide-left-enter-active {
+      //   animation: slideLeft .3s;
+      // }
+      // .slide-left-leave-active {
+      //   animation: slideRight .3s;
+      // }
+      /*
+      从右至左切入
+      */
+      .bounce-enter {
+        animation: bounce-in .3s;
+      }
+      .bounce-leave {
+        animation: bounce-out .3s;
+      }
+
+    }
+    @keyframes bounce-in {
+      0% {
+        opacity: 0;
+        -webkit-transform: translateX(100%);
+      }
+      100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+      }
+    }
+    @keyframes bounce-out {
+      0% {
+        opacity: 0;
+        -webkit-transform: translateX(0);
+      }
+      100% {
+        opacity: 1;
+        -webkit-transform: translateX(-100%);
       }
     }
 
-    @keyframes slideLeft {
-      from {
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-      }
+    // @keyframes slideLeft {
+    //   from {
+    //     transform: translate3d(100%, 0, 0);
+    //     visibility: visible;
+    //   }
 
-      to {
-        transform: translate3d(0, 0, 0);
-      }
-    }
+    //   to {
+    //     transform: translate3d(0, 0, 0);
+    //   }
+    // }
+
+    // @keyframes slideRight {
+    //   from {
+    //     transform: translate3d(0, 0, 0);
+    //     visibility: hidden;
+    //   }
+
+    //   to {
+    //     transform: translate3d(-100%, 0, 0);
+    //     visibility: visible;
+    //   }
+    // }
+
 </style>
