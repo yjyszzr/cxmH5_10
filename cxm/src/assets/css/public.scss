@@ -65,14 +65,15 @@ ul,ol,li{
 }
 .header{
     position: relative;
-    height: px2rem(146px);
-    line-height: px2rem(146px);
+    height: px2rem(100px);
+    line-height: px2rem(100px);
     background: #f4f4f4;
 }
 .header>p{
     text-align: center;
     font-size: px2rem(30px);
     overflow: hidden;
+
     white-space: nowrap;
     text-overflow: ellipsis;
     color: #505050;
@@ -103,7 +104,6 @@ ul,ol,li{
   background-size: px2rem(30px) auto;
   vertical-align: middle;
   color: #787878;
-  padding-right: px2rem(45px);
 }
 /* loader footer加载 */
 .loading_footer{position:relative;border-bottom: 1px solid #EAEFF1;width:100%;text-align:center;background-color:#f9f9f9;font-size: 0.46rem;padding: 0.3rem 0;}

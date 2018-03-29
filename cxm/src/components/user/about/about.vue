@@ -2,13 +2,14 @@
 
 </style>
 
-<!--账户明细-->
+<!--关于我们-->
 <template>
     <div class="wrap" >
         <div class="logo">
             <img src="../../../assets/img/img1.png">
         </div>
         <section style="background: #fff">
+
             <section class=" wechat">
                 <ul class="msg_list">
                     <li>
