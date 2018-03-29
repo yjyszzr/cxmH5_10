@@ -19,13 +19,13 @@
         <section class="section">
             <ul class="msg_list">
                 <li>
-                    <a href="javascript:void(0);">
+                    <router-link to="/user/credit_card">
                         <div>
                             <img src="../../../assets/img/pho_nor.png">
                             <span class="arrow_right float_right"></span>
                             <span class="message">添加银行卡</span>
                         </div>
-                    </a>
+                    </router-link>
                 </li>
             </ul>
         </section>

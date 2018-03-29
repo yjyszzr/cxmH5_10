@@ -2,7 +2,7 @@
 
 </style>
 
-<!--账户明细-->
+<!--关于我们-->
 <template>
     <div class="wrap" >
         <div class="logo">
