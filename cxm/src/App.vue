@@ -53,6 +53,8 @@ export default {
               return '充值'
             case 'withdraw':
               return '提现'
+            case 'record':
+              return '投注记录'
           }
       }else{
           if(this.$route.path.split('/')[1]=='user'){
