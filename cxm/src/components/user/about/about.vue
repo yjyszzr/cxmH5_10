@@ -9,6 +9,7 @@
             <img src="../../../assets/img/img1.png">
         </div>
         <section style="background: #fff">
+
             <section class=" wechat">
                 <ul class="msg_list">
                     <li>
