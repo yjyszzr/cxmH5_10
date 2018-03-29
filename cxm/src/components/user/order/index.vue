@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class=" section plan">
-            <h5>方案内容<span>查看出票方案></span></h5>
+            <router-link to="/user/draw" class="solecd" >方案内容<span>查看出票方案></span></router-link>
             <div>
                 <p>方案编号： <span>10000010001010adbd</span></p>
                 <p>创建时间：<span>2018-03-17  11:34:02 </span></p>
