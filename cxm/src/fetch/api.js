@@ -109,6 +109,10 @@ export default {
     realNameAuth(params){
         return fetchPost('member/user/real/realNameAuth',params)
     },
+    //消息中心
+    newlist(params){
+        return fetchPost('member/user/message/list',params)
+    },
     //查询银行卡
     queryUserBankList(params){
         return fetchPost('member/user/bank/queryUserBankList',params)
