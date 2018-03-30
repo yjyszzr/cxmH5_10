@@ -1,4 +1,4 @@
-<style lang='scss' scoped src='./style.scss'>
+<style lang='scss' src='./style.scss'>
 
 </style>
 
@@ -6,29 +6,41 @@
 <template>
     <div class="wrap" >
         <ul class="send">
-            <li class="cur"><p>全部</p></li>
-            <li><p>奖金</p></li>
-            <li><p>充值</p></li>
-            <li><p>购彩</p></li>
-            <li><p>提现</p></li>
-            <li><p>红包</p></li>
+            <li class="cur"><p @click='curClick($event)'>全部</p></li>
+            <li><p @click='curClick($event)'>奖金</p></li>
+            <li><p @click='curClick($event)'>充值</p></li>
+            <li><p @click='curClick($event)'>购彩</p></li>
+            <li><p @click='curClick($event)'>提现</p></li>
+            <li><p @click='curClick($event)'>红包</p></li>
         </ul>
         <section class="count">
-            <p class="data">2018年2月19日</p>
-            <ul class="list">
-                <li>
-                    <img src="../../../assets/img/img1.png">
-                    <div>
-                        <p>微信充值<i>+ ¥1.000.00</i></p>
-                        <b>微信支付1.5元</b>
-                        <span>14：00：36</span>
-                    </div>
-                </li>
-            </ul>
+            <mt-loadmore :bottom-method="loadBottom" :auto-fill="false" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleTopChange">
+                <div class="zhmxlist" v-for="(item,i) in mxList" :key='i' style="background: white;">
+                        <p class="data" style='background: #f4f4f4;' v-if="i==0||(i>0&&item.addTime!=mxList[i-1].addTime)">{{item.addTime}}</p>
+                        <ul class="list">
+                            <li>
+                               <p class="gczt" :style="{'background':item.processType==3||item.processType==4?'#86c46b':'#f6ad41'}">{{item.processTypeChar}}</p>
+                                <div>
+                                    <p>{{item.processTypeName}}<i>{{item.changeAmount}}</i></p>
+                                    <b v-html='item.note'></b>
+                                    <span>{{item.shotTime}}</span>
+                                </div>
+                            </li>
+                        </ul>
+                </div>
+                <div class="nullstatus" v-if="mxList.length==0">
+                    <img src="../../../assets/img/juan.png" alt="">
+                    <span>此项暂无账户明细</span>
+                </div>
+                <div slot="bottom" class="mint-loadmore-bottom">
+					<span v-show="bottomStatus !== 'loading'" :class="{ 'rotate': bottomStatus === 'drop' }">↓</span>
+					<mt-spinner :type="1" v-show="bottomStatus === 'loading'" color="#e82822"></mt-spinner>
+				</div>
+			</mt-loadmore>
+            <div class="section base" v-if="mxList.length==0">
+                    <p>3月合计：充值<span>{{totalNum.rechargeMoney}}元</span>，提现<span>{{totalNum.withDrawMoney}}元</span>，购彩<span>{{totalNum.buyMoney}}元</span> ，中奖<span>{{totalNum.rewardMoney}}元</span></p>
+            </div>
         </section>
-        <div class="section base">
-            <p>3月合计：充值<span>100元</span>，提现<span>100元</span>，购彩<span>100元</span> ，中奖<span>100元</span></p>
-        </div>
     </div>
 </template>
 

@@ -108,5 +108,29 @@ export default {
     //实名认证
     realNameAuth(params){
         return fetchPost('member/user/real/realNameAuth',params)
-    }
+    },
+    //查询银行卡
+    queryUserBankList(params){
+        return fetchPost('member/user/bank/queryUserBankList',params)
+    },
+    //设置默认银行卡
+    updateUserBankDefault(params){
+        return fetchPost('member/user/bank/updateUserBankDefault',params)
+    },
+    //删除银行卡
+    deleteUserBank(params){
+        return fetchPost('member/user/bank/deleteUserBank',params)
+    },
+    //添加银行卡
+    addBankCard(params){
+        return fetchPost('member/user/bank/addBankCard',params)
+    },
+    //账户明细列表
+    getUserAccountList(params){
+        return fetchPost('member/user/account/getUserAccountList',params)
+    },
+    //合计
+    countMoneyCurrentMonth(params){
+        return fetchPost('member/user/account/countMoneyCurrentMonth',params)
+    },
 }

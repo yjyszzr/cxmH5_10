@@ -10,18 +10,18 @@
                 <a href="javascript:void(0);">
                     <div>
                         <label>姓名：</label>
-                        <input type="text" class="text1" placeholder="请输入姓名"/>
+                        <input disabled type="text" class="text1" :value="this.$store.state.userInfo.realName"/>
                     </div>
                 </a>
                 <a href="javascript:void(0);">
                     <div>
-                        <input type="text" class="text" placeholder="请输入银行卡号"/>
+                        <input type="number" v-model="blankNum" class="text" placeholder="请输入银行卡号"/>
                     </div>
                 </a>
             </li>
         </ul>
         <p class="make">注：该卡号为默认收款</p>
-        <section class="button">
+        <section class="button" @click="add_card()">
             <a class="determine">添加</a>
         </section>
         <section class="plain">
@@ -34,3 +34,7 @@
     </div>
 </template>
 
+<script src='./script.js'>
+    // import http from '../api/http'
+
+</script>

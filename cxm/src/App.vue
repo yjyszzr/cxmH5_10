@@ -2,9 +2,10 @@
   <div id="app">
     <v-header :title='title()' v-show='isShowHeader'></v-header>
     <div class="content">
-        <transition  mode="out-in" enter-active-class='bounce-enter' leave-active-class="bounce-leave">
+        <!-- <transition  mode="out-in" enter-active-class='bounce-enter' leave-active-class="bounce-leave">
             <router-view></router-view>
-        </transition>  
+        </transition>   -->
+        <router-view></router-view>
     </div>
     <v-footer></v-footer>
   </div>
@@ -55,6 +56,12 @@ export default {
               return '提现'
             case 'record':
               return '投注记录'
+            case 'add_card':
+              return '添加银行卡'
+            case 'credit_card':
+              return '管理银行卡'
+            case 'account':
+              return '账户明细'
           }
       }else{
           if(this.$route.path.split('/')[1]=='user'){
@@ -121,14 +128,6 @@ export default {
       // .slide-left-leave-active {
       //   opacity: 0;
       // }
-
-      //左滑动效
-      // .slide-left-enter-active {
-      //   animation: slideLeft .3s;
-      // }
-      // .slide-left-leave-active {
-      //   animation: slideRight .3s;
-      // }
       /*
       从右至左切入
       */
@@ -138,8 +137,22 @@ export default {
       .bounce-leave {
         animation: bounce-out .3s;
       }
-
     }
+    .mint-msgbox {
+        .mint-msgbox-title{
+          font-size: px2rem(32px);
+        }
+        .mint-msgbox-message{
+          font-size: px2rem(32px);
+        }
+        .mint-msgbox-btn{
+          font-size: px2rem(26px);
+        }
+      }
+      input,
+      textarea {
+          -webkit-appearance: none; /* 方法2 */
+      }
     @keyframes bounce-in {
       0% {
         opacity: 0;
@@ -160,28 +173,5 @@ export default {
         -webkit-transform: translateX(-100%);
       }
     }
-
-    // @keyframes slideLeft {
-    //   from {
-    //     transform: translate3d(100%, 0, 0);
-    //     visibility: visible;
-    //   }
-
-    //   to {
-    //     transform: translate3d(0, 0, 0);
-    //   }
-    // }
-
-    // @keyframes slideRight {
-    //   from {
-    //     transform: translate3d(0, 0, 0);
-    //     visibility: hidden;
-    //   }
-
-    //   to {
-    //     transform: translate3d(-100%, 0, 0);
-    //     visibility: visible;
-    //   }
-    // }
 
 </style>

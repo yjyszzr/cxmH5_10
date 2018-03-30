@@ -1,19 +1,27 @@
-<style lang='scss' scoped src='./style.scss'>
+<style lang='scss' src='./style.scss'>
 
 </style>
 
-<!--我的-->
 <template>
-    <div class="wrap">
+    <div class="wrap cardbox">
         <section class="give">
-            <div class="card clearfix">
+            <div class="card clearfix" v-for="(item,i) in bankList" :key='item.userBankId'>
                 <div class="china_bank clearfix">
-                    <img class="img" src="../../../assets/img/img1.png">
-                    <p>中国银行<br/><span>储蓄卡</span></p>
-                    <img class="img1" src="../../../assets/img/sut.png">
+                    <div class="bank_box">
+                        <img class="img" :src="item.bankLogo">
+                    </div>
+                    <p>{{item.bankName}}<br/><span>{{item.cardType}}</span></p>
+                    <img class="img1" src="../../../assets/img/sut.png" @click='removeBank(i,item.userBankId)'>
                 </div>
-                <div class="china_bank_card">6224&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;&nbsp;5643</div>
-                <div class="china_bank_default"><img src="../../../assets/img/cue.png">默认收款卡</div>
+                <div class="china_bank_card">{{item.cardNo.substr(0,4)}}&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;&nbsp;{{item.cardNo.substr(-4)}}</div>
+                <div class="china_bank_default">
+                    <mt-checklist
+                    v-model="value"
+                    :options="[i]"
+                    @change='checkselect(i,item.userBankId)'>
+                    </mt-checklist>
+                    <span>默认收款卡</span>
+                </div>
             </div>
         </section>
         <section class="section">
