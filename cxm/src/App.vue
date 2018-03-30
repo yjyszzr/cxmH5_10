@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-header :title='title()' v-show='isShowHeader'></v-header>
-    <div class="content">
+    <div id='content' class="content">
         <!-- <transition  mode="out-in" enter-active-class='bounce-enter' leave-active-class="bounce-leave">
             <router-view></router-view>
         </transition>   -->
@@ -43,7 +43,7 @@ export default {
             case 'about':
               return '关于我们'
             case 'detail':
-              return '账户明细'
+              return '优惠券'
             case 'certification':
               return '实名认证'
             case 'insurance':
@@ -75,7 +75,7 @@ export default {
               return "个人中心"
           }
       }
-    },
+    }
   }
 }
 </script>
@@ -138,6 +138,22 @@ export default {
         animation: bounce-out .3s;
       }
     }
+    /*
+      上拉动画
+    */
+    .mint-spinner-double-bounce{
+     margin: 0 auto;
+    }
+    /*
+      吸顶
+    */
+    .isFixed{
+      position: fixed;
+      z-index: 10;
+    }
+    /*
+      弹窗样式
+    */
     .mint-msgbox {
         .mint-msgbox-title{
           font-size: px2rem(32px);

@@ -11,7 +11,8 @@ export default {
         mxList: [],
         bottomStatus: '',
         allLoaded: false,
-        totalNum: {} //合计对象
+        totalNum: {}, //合计对象
+        searchBarFixed: false
       }
     },
     beforeCreate() {
@@ -31,7 +32,7 @@ export default {
         .then(res => {
           // console.log(res)
             if(res.code==0) {
-              if(res.data.list.length < 10) {
+              if(res.data.isLastPage == 'true') {
                 		this.pageNum = -1
                 		this.allLoaded = true
               }
@@ -76,9 +77,17 @@ export default {
           this.amountType = 5
         }
         this.mxfetch()
+      },
+      handleScroll(e){
+        if(e.target.scrollTop>$('.send').height()){
+          this.searchBarFixed = true
+        }else{
+          this.searchBarFixed = false
+        }
       }
     },
     mounted(){
+        document.querySelector('#content').addEventListener('scroll', this.handleScroll)
         this.mxfetch()
         let data = {
           'str': ''

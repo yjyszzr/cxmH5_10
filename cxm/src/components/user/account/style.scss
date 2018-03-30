@@ -1,7 +1,5 @@
  @import '../../../assets/css/function.scss';
  .send{
-   position: absolute;
-   top: px2rem(88px);
    width: 100%;
    height: px2rem(88px);
    background: #fff;
@@ -40,7 +38,6 @@
    margin-top: -1px;
  }
  .count{
-   margin-top: px2rem(88px);
    .zhmxlist{
     .list{
       margin:0  px2rem(30px);
@@ -79,9 +76,13 @@
            }
            span{
              color: #A0A0A0;
-             font-size: px2rem(20px);
+             font-size: px2rem(24px);
              margin-top: px2rem(8px);
              display: block;
+             i{
+              font-style: normal;
+              float: right;
+            }
            }
          }
        }
@@ -90,6 +91,21 @@
       }
     }
    }
+   .nullstatus{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+     padding-top: px2rem(350px);
+     img{
+       width: px2rem(96px);
+       margin-bottom: px2rem(10px); 
+     }
+     span{
+       font-size: px2rem(26px);
+       color: #999;
+     }
+    }
  }
  .base{
    padding: px2rem(30px) 0;
@@ -101,8 +117,5 @@
        color: #e95504;
      }
    }
- }
- .mint-spinner-double-bounce{
-   margin: 0 auto;
  }
  

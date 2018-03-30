@@ -1,32 +1,99 @@
 @import '../../../assets/css/function.scss';
-.send{
-    height: px2rem(88px);
-    background: #fff;
-    overflow: hidden;
-    display: flex;
-    li{
-        flex: 1;
-        height: px2rem(48px);
-        margin-top: px2rem(20px);
-        border-right: 1px solid #f1f1f1;
-        color: #505050;
-        font-size: px2rem(30px);
-        text-align: center;
-        p{
-            height: px2rem(64px);
+.bonus{
+    .send{
+        width: 100%;
+        height: px2rem(88px);
+        background: #fff;
+        overflow: hidden;
+        display: flex;
+        box-shadow: 0px 2px 3px rgba(0,0,0,0.2); 
+        li{
+            flex: 1;
+            height: px2rem(48px);
+            margin-top: px2rem(20px);
+            border-right: 1px solid #f1f1f1;
+            color: #505050;
+            font-size: px2rem(30px);
+            text-align: center;
+            p{
+                height: px2rem(64px);
+                display: block;
+                margin: 0 auto;
+            }
+        }
+        .cur p{
+             color: #E95504;
+            width: 50%;
+    
+             border-bottom: 2px solid #E95504;
             display: block;
-            margin: 0 auto;
+         }
+        li:last-child{
+            border-right: none;
+        }
+    
+    }
+    .yh_Item{
+        position: relative;
+        width: px2rem(720px);
+        margin: px2rem(15px) auto 0;
+        .yh_ItemTop{
+            background: white;
+            padding: px2rem(27px) 0 px2rem(27px) px2rem(38px);
+            border-bottom: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            p:first-of-type{
+                width: px2rem(300px);
+                color: #e95504;
+                span:first-of-type{
+                    font-size: px2rem(36px);
+                }
+                span:last-of-type{
+                    font-size: px2rem(60px);
+                }
+            }
+            p:last-of-type{
+                display: flex;
+                justify-content: space-around;
+                flex-direction: column;
+                font-weight: 600;
+                color: #666;
+                font-size: px2rem(30px);
+            }
+        }
+        .yh_ItemBottom{
+            background: white;
+            padding: px2rem(35px) 0 px2rem(35px) px2rem(38px);
+            p{
+                font-size: px2rem(20px);
+                span:first-of-type{
+                    color: #c8c8c8;
+                }
+                span:last-of-type{
+                    color: #a0a0a0;
+                }
+            }
+        }
+        img{
+            position: absolute;
+            right: 0;
+            width: px2rem(98px);
         }
     }
-    .cur p{
-         color: #E95504;
-        width: 50%;
-
-         border-bottom: 2px solid #E95504;
-        display: block;
-     }
-    li:last-child{
-        border-right: none;
-    }
-
+    .nullstatus{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-top: px2rem(350px);
+        img{
+          width: px2rem(96px);
+          margin-bottom: px2rem(10px); 
+        }
+        span{
+          font-size: px2rem(26px);
+          color: #999;
+        }
+       }
 }

@@ -133,4 +133,8 @@ export default {
     countMoneyCurrentMonth(params){
         return fetchPost('member/user/account/countMoneyCurrentMonth',params)
     },
+    //红包列表
+    queryBonusListByStatus(params){
+        return fetchPost('member/user/bonus/queryBonusListByStatus',params)
+    }
 }
