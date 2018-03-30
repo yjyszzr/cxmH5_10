@@ -51,7 +51,7 @@
                             <span class="message">账户明细</span>
                         </div>
                     </router-link>
-                    <router-link to='/user/detail'>
+                    <router-link to='/user/message'>
                         <div>
                             <img src="../../../assets/img/pho_nor.png">
                             <span class="arrow_right float_right"></span>

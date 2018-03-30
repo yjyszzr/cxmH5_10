@@ -113,12 +113,13 @@
 }
 .plan {
   padding: 0 px2rem(20px) 0 px2rem(30px);
-  h5 {
+  .solecd {
     font-size: px2rem(28px);
     color: #A0A0A0;
     height: px2rem(72px);
     line-height: px2rem(72px);
     border-bottom: 1px solid #f1f1f1;
+    display: block;
     span {
       float: right;
       color: #505050;

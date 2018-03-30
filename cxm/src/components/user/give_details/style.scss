@@ -1,0 +1,67 @@
+@import '../../../assets/css/function.scss';
+.give{
+    background: #fff;
+    .box{
+        padding-top: px2rem(60px);
+        text-align: center;
+        .p1{
+            font-size: px2rem(48px);
+            color: #E95504;
+            i{
+                font-size: px2rem(30px);
+                font-style: normal;
+            }
+        }
+        .chuli{
+            margin-top: px2rem(10px);
+            color: #787878;
+            font-size: px2rem(28px);
+        }
+    }
+    .give_cen{
+        padding: px2rem(125px);
+        b{
+            border: 1px solid #A0A0A0;
+            display: inline-block;
+            height: px2rem(220px);
+            float: left;
+            margin-top: px2rem(30px);
+        }
+        .sent{
+            margin-top: px2rem(25px);
+            p{
+                display: inline-block;
+                img{
+                    width: px2rem(49px);
+                    height: px2rem(49px);
+                    float: left;
+                    margin-right: px2rem(30px);
+                    margin-left: px2rem(-25px);
+                    z-index: 999;
+                }
+                color: #505050;
+                font-size: px2rem(30px);
+                span{
+                    color:#A0A0A0;
+                    font-size: px2rem(20px);
+                }
+            }
+        }
+    }
+    .msg_list{
+        li{
+            a{
+                border-top: 1px solid #f1f1f1;
+                div{
+                    span{
+                        color: #505050;
+                    }
+                    p{
+                        float: right;
+                        color: #A0A0A0;
+                    }
+                }
+            }
+        }
+    }
+}
