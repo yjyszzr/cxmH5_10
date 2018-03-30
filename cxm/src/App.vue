@@ -62,6 +62,8 @@ export default {
               return '管理银行卡'
             case 'account':
               return '账户明细'
+            case 'message':
+              return '消息中心'
           }
       }else{
           if(this.$route.path.split('/')[1]=='user'){
@@ -138,37 +140,7 @@ export default {
         animation: bounce-out .3s;
       }
     }
-    /*
-      上拉动画
-    */
-    .mint-spinner-double-bounce{
-     margin: 0 auto;
-    }
-    /*
-      吸顶
-    */
-    .isFixed{
-      position: fixed;
-      z-index: 10;
-    }
-    /*
-      弹窗样式
-    */
-    .mint-msgbox {
-        .mint-msgbox-title{
-          font-size: px2rem(32px);
-        }
-        .mint-msgbox-message{
-          font-size: px2rem(32px);
-        }
-        .mint-msgbox-btn{
-          font-size: px2rem(26px);
-        }
-      }
-      input,
-      textarea {
-          -webkit-appearance: none; /* 方法2 */
-      }
+
     @keyframes bounce-in {
       0% {
         opacity: 0;

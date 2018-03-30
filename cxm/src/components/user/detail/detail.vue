@@ -5,7 +5,12 @@
 <!--账户明细-->
 <template>
     <div class="wrap bonus">
-        <ul class="send" :class="(searchBarFixed==true)?'isFixed':''">
+        <ul class="send isFixed" v-if="searchBarFixed==true">
+            <li class="cur"><p @click='curClick($event)'>未使用</p></li>
+            <li><p @click='curClick($event)'>已使用</p></li>
+            <li><p @click='curClick($event)'>已过期</p></li>
+        </ul>
+        <ul class="send">
             <li class="cur"><p @click='curClick($event)'>未使用</p></li>
             <li><p @click='curClick($event)'>已使用</p></li>
             <li><p @click='curClick($event)'>已过期</p></li>

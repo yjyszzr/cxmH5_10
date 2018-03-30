@@ -81,19 +81,4 @@
             width: px2rem(98px);
         }
     }
-    .nullstatus{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding-top: px2rem(350px);
-        img{
-          width: px2rem(96px);
-          margin-bottom: px2rem(10px); 
-        }
-        span{
-          font-size: px2rem(26px);
-          color: #999;
-        }
-       }
 }

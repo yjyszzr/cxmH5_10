@@ -5,7 +5,15 @@
 <!--账户明细-->
 <template>
     <div class="wrap">
-        <ul class="send" :class="(searchBarFixed==true)?'isFixed':''">
+        <ul class="send isFixed" v-if="searchBarFixed==true">
+            <li class="cur"><p @click='curClick($event)'>全部</p></li>
+            <li><p @click='curClick($event)'>奖金</p></li>
+            <li><p @click='curClick($event)'>充值</p></li>
+            <li><p @click='curClick($event)'>购彩</p></li>
+            <li><p @click='curClick($event)'>提现</p></li>
+            <li><p @click='curClick($event)'>红包</p></li>
+        </ul>
+        <ul class="send">
             <li class="cur"><p @click='curClick($event)'>全部</p></li>
             <li><p @click='curClick($event)'>奖金</p></li>
             <li><p @click='curClick($event)'>充值</p></li>

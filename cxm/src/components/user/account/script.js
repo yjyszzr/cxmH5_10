@@ -79,7 +79,7 @@ export default {
         this.mxfetch()
       },
       handleScroll(e){
-        if(e.target.scrollTop>$('.send').height()){
+        if(e.target.scrollTop>0){
           this.searchBarFixed = true
         }else{
           this.searchBarFixed = false
