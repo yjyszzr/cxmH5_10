@@ -5,7 +5,8 @@ export default {
     data () {
       return {
           mess : [],
-          msgType:0
+          msgType:0,
+          messNew :{}
       }
     },
     beforeCreate() {
@@ -25,7 +26,8 @@ export default {
             .then(res => {
                 console.log(res)
                 if(res.code==0) {
-                    console.log(res)
+                    this.mess = res.data.list
+                    console.log(res.data.list)
                 }else{
                     Toast(res.msg)
                 }
