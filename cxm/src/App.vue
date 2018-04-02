@@ -64,6 +64,10 @@ export default {
               return '账户明细'
             case 'message':
               return '消息中心'
+            case 'order':
+              return '订单详情'
+            case 'draw':
+              return '出票方案'
           }
       }else{
           if(this.$route.path.split('/')[1]=='user'){
@@ -93,7 +97,7 @@ export default {
         background-color: #ffffff;
     }
     
-    a.active {
+    a:hover {
       text-decoration: none;
     }
 
@@ -108,8 +112,6 @@ export default {
       justify-content: space-between;
       align-items: center;
       .content{
-        // padding-top: px2rem(100px);
-        // background: #F5F5F5;
         width: 100%;
         flex-grow: 1;
         flex-shrink: 1;

@@ -140,5 +140,17 @@ export default {
     //红包列表
     queryBonusListByStatus(params){
         return fetchPost('member/user/bonus/queryBonusListByStatus',params)
-    }
+    },
+    //查询订单列表状态
+    getOrderInfoList(params){
+        return fetchPost('order/order/getOrderInfoList',params)
+    },
+    //查询订单详情
+    getOrderDetail(params){
+        return fetchPost('order/order/getOrderDetail',params)
+    },
+    //查询出票方案
+    getTicketScheme(params){
+        return fetchPost('order/order/getTicketScheme',params)
+    },
 }

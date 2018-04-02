@@ -6,15 +6,12 @@
 <!--消息中心-->
 <template>
     <div class="wrap">
-        <ul class="send isFixed" v-if="searchBarFixed==true">
+        <ul class="send" id='searchBar' :class="searchBarFixed?'isFixed':''">
             <li class="cur"><p @click='curClick($event)'>通知</p></li>
             <li><p @click='curClick($event)'>消息</p></li>
         </ul>
-        <ul class="send">
-            <li class="cur"><p @click='curClick($event)'>通知</p></li>
-            <li><p @click='curClick($event)'>消息</p></li>
-        </ul>
-        <mt-loadmore :bottom-method="loadBottom" :auto-fill="false" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleTopChange" @scroll='handleScroll($event)'>
+        <div class="zwf" v-show="searchBarFixed"></div>
+        <mt-loadmore :bottom-method="loadBottom" :bottom-distance='-20' :auto-fill="false" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleTopChange" @scroll='handleScroll($event)'>
                 <section class="box_cen" v-for="(item,i) in mess" :key='i'>
                         <div class="box1">
                             <h5>{{item.title}}</h5>

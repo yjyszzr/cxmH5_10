@@ -9,15 +9,21 @@
         <div class="order_center">
             <div class="subnav">
                 <div class="box1">
-                    <img src="../../../assets/img/img1.png">
+                    <img :src="orderObj.lotteryClassifyImg">
                     <div>
-                        <p>竞彩足球<span>再接再厉</span></p>
-                        <span>￥25.00</span>
+                        <p>{{orderObj.lotteryClassifyName}}<span :style="{'color':orderObj.orderStatus=='5'?'#e95504':'#505050'}">{{orderObj.processResult}}</span></p>
+                        <span>￥{{orderObj.moneyPaid}}</span>
                     </div>
                 </div>
                 <div class="box2">
-                    <span>方案状态</span>
-                    <p>未中奖<span>感谢您助力公益事业</span></p>
+                    <p>
+                        <span style="color: #999;">方案状态</span>
+                        <span :style="{'color':orderObj.orderStatus=='2'?'#f7931e':'#505050'}">{{orderObj.orderStatusDesc}}</span>
+                    </p>
+                    <p>
+                        <span v-if="orderObj.orderStatus=='5'">中奖金额</span>
+                        <span>{{orderObj.processStatusDesc}}</span>
+                    </p>
                 </div>
             </div>
             <div class="section table">
@@ -25,32 +31,32 @@
                 <ul class="list">
                     <div class="title">
                         <p>场次</p>
-                        <p>场次</p>
-                        <p>场次</p>
-                        <p>场次</p>
-                        <p>场次</p>
+                        <p>赛事</p>
+                        <p>玩法</p>
+                        <p>投注</p>
+                        <p>赛果</p>
                     </div>
-                    <li>
-                        <div class="item">周一001</div>
-                        <div class="item"><span>巴萨罗那</span><span>VS</span><span>切尔西</span></div>
-                        <div class="item">胜平负</div>
-                        <div class="item"><span>主胜</span><spna>【1.33】</spna><span><img src="../../../assets/img/cue.png"></span></div>
-                        <div class="item">主胜</div>
+                    <li v-for='(item,i) in orderObj.matchInfos' :key='i'>
+                        <div class="item">{{item.changci}}</div>
+                        <div class="item">{{item.match}}</div>
+                        <div class="item">{{item.playType}}</div>
+                        <div class="item"><span>{{item.cathectic}}</span><span><img src="../../../assets/img/cue.png" v-if="item.matchResult=='0'"><img src="../../../assets/img/accont_img/guess@2x.png" v-if="item.matchResult=='1'"></span></div>
+                        <div class="item">{{item.result}}</div>
                     </li>
                 </ul>
                 <div class="menu">
-                    <p>过关方式：<span>2串1&nbsp;&nbsp;3串1</span></p>
-                    <p>投注倍数：<span>4注2倍</span></p>
+                    <p>过关方式：<span>{{orderObj.passType}}</span></p>
+                    <p>投注倍数：<span>{{orderObj.cathectic}}</span></p>
                 </div>
             </div>
         </div>
         <div class=" section plan">
-            <router-link to="/user/draw" class="solecd" >方案内容<span>查看出票方案></span></router-link>
+            <div class="solecd" >方案内容<span @click='goDraw(orderObj.programmeSn)'>查看出票方案></span></div>
             <div>
-                <p>方案编号： <span>10000010001010adbd</span></p>
-                <p>创建时间：<span>2018-03-17  11:34:02 </span></p>
-                <p>店主接单：<span>2018-03-17  11:38:02 </span></p>
-                <p>店主出票：<span>2018-03-17  11:52:02</span></p>
+                <p>方案编号： <span>{{orderObj.programmeSn}}</span></p>
+                <p>创建时间：<span>{{orderObj.createTime}}</span></p>
+                <p>店主接单：<span>{{orderObj.acceptTime}}</span></p>
+                <p>店主出票：<span>{{orderObj.ticketTime}}</span></p>
             </div>
         </div>
     </div>

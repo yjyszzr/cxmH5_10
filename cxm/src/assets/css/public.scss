@@ -483,6 +483,7 @@ input::-webkit-inner-spin-button {
 
 .isFixed {
   position: fixed;
+  top: px2rem(98px);
   z-index: 10;
 }
 
@@ -511,4 +512,11 @@ textarea {
 
 .rotate {
   transform: rotate(180deg);
+}
+
+/* 
+吸顶占位符
+*/
+.zwf{
+  height: px2rem(98px);
 }
