@@ -2,14 +2,17 @@
     <div class="foot" @touchmove.prevent v-show="isShowTabbar()">
             <router-link to='/'>
                 <img src="../../assets/img/dating.png">
+                <!--<img src="../../assets/img/tab_home_sel.png">-->
                 <span>大厅</span>
             </router-link>
             <router-link to='/'>
-                <img src="../../assets/img/dating.png">
+                <img src="../../assets/img/qiu.png">
+                <!--<img src="../../assets/img/tab_lot_sel.png">-->
                 <span>开奖</span>
             </router-link>
             <router-link to='/user'>
-                <img src="../../assets/img/dating.png">
+                <img src="../../assets/img/my.png">
+                <!--<img src="../../assets/img/tab_min_sel.png">-->
                 <span>我的</span>
             </router-link>
     </div>
