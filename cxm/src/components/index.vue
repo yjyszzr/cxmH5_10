@@ -31,13 +31,13 @@
   .entry_status{
     position: absolute;
     top: px2rem(-12px);
-    right: px2rem(5spx);
+    right: px2rem(5px);
     width: px2rem(60px);
   }
   .lottery{
     width: px2rem(64px);
-    top: px2rem(-5px);
-    right: px2rem(1px);
+    top: px2rem(-7px);
+    right: px2rem(0px);
   }
 }
 .center ul li .entry_icon {
@@ -169,7 +169,7 @@ export default {
       .getHallData(data)
       .then(res => {
         if (res.code == 0) {
-          console.log(res)
+          //console.log(res)
           this.bannerList = res.data.navBanners
           this.activity = res.data.activity
           this.y_Carousel = res.data.winningMsgs
