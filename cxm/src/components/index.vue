@@ -27,8 +27,20 @@
   font-size: px2rem(30px);
   margin-top: px2rem(32px);
   float: left;
+  position: relative;
+  .entry_status{
+    position: absolute;
+    top: px2rem(-12px);
+    right: px2rem(5spx);
+    width: px2rem(60px);
+  }
+  .lottery{
+    width: px2rem(64px);
+    top: px2rem(-5px);
+    right: px2rem(1px);
+  }
 }
-.center ul li img {
+.center ul li .entry_icon {
   width: px2rem(93px);
   margin: 0 auto;
 }
@@ -94,9 +106,13 @@
     <div class="section center">
       <p class="boll">竞彩足球</p>
       <ul>
-        <li v-for='(item,i) in dlPlay' :key='i'>
-          <img src="../assets/img/img1.png">
+        <li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.playClassifyId)">
+          <img src="../assets/img/img1.png" class="entry_icon">
           <p>{{item.playClassifyName}}</p>
+          <img src="../assets/img/Awards@2x.png" class="entry_status" alt="" v-if="item.playClassifyLabelId=='3'">
+          <img src="../assets/img/Lottery@2x.png" class="entry_status lottery" alt="" v-if="item.playClassifyLabelId=='2'">
+          <img src="../assets/img/Popular@2x.png" class="entry_status" alt="" v-if="item.playClassifyLabelId=='4'">
+          <img src="../assets/img/Singlepass@2x.png" class="entry_status" alt="" v-if="item.playClassifyLabelId=='1'">
         </li>
       </ul>
     </div>
@@ -133,6 +149,15 @@ export default {
   computed: {
     top() {
       return -this.activeIndex * 0.81333+'rem';
+    }
+  },
+  methods: {
+    goFreebuy(c){
+      this.$store.state.freebuyId = c
+      this.$router.push({
+          path: '/freebuy/singleNote',
+          replace: false
+      })
     }
   },
   created: function() {},

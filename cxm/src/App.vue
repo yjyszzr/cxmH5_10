@@ -68,6 +68,10 @@ export default {
               return '订单详情'
             case 'draw':
               return '出票方案'
+            case 'singleNote':
+              if(this.$store.state.freebuyId=='1'){
+                return '胜平负'
+              }
           }
       }else{
           if(this.$route.path.split('/')[1]=='user'){

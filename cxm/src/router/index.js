@@ -194,6 +194,14 @@ const router = new Router({
               require(['../components/user/draw/index.vue'], resolve)
           },
       },
+      {
+          path: '/freebuy/singleNote',
+          name: 'singleNote',
+          cname:'单注页面',
+          component: function (resolve) {
+              require(['../components/freebuy/singleNote.vue'], resolve)
+          },
+      },
   ]
 })
 

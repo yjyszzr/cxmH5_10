@@ -15,6 +15,7 @@ const state = {
     },
     findphone: '',   //找回密码手机号
     userInfo: {},   //个人信息
+    freebuyId: '',   //玩法页面区分
 }
 
 const mutations = {

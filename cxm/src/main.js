@@ -7,10 +7,12 @@ import 'mint-ui/lib/style.css'
 import router from './router'
 import store from './vuex/store'
 import $ from './util/zepto'
+import { Collapse,CollapseItem } from 'element-ui';
 
 Vue.config.productionTip = false
 Vue.use(MintUI)
-
+Vue.use(Collapse)
+Vue.use(CollapseItem)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
