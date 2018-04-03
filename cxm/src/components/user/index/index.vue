@@ -39,33 +39,32 @@
                 <li>
                     <router-link to="/user/record">
                         <div>
-                            <img src="../../../assets/img/pho_nor.png">
+                            <img src="../../../assets/img/recording.png">
                             <span class="arrow_right float_right"></span>
                             <span class="message">投注记录</span>
                         </div>
                     </router-link>
                     <router-link to='/user/account'>
                         <div>
-                            <img src="../../../assets/img/pho_nor.png">
+                            <img src="../../../assets/img/Details.png">
                             <span class="arrow_right float_right"></span>
                             <span class="message">账户明细</span>
                         </div>
                     </router-link>
-                    <router-link to='/user/message'>
-                        <div>
-                            <img src="../../../assets/img/pho_nor.png">
-                            <span class="arrow_right float_right"></span>
-                            <span class="message">消息中心</span>
-                        </div>
-                    </router-link>
                     <router-link to='/user/detail'>
                         <div>
-                            <img src="../../../assets/img/pho_nor.png">
+                            <img src="../../../assets/img/coupon.png">
                             <span class="arrow_right float_right"></span>
                             <span class="message">我的卡卷<em></em></span>
                         </div>
                     </router-link>
-
+                    <router-link to='/user/message'>
+                        <div>
+                            <img src="../../../assets/img/not.png">
+                            <span class="arrow_right float_right"></span>
+                            <span class="message">消息中心</span>
+                        </div>
+                    </router-link>
                 </li>
             </ul>
         </section>
@@ -74,21 +73,21 @@
                 <li>
                     <a>
                         <div>
-                            <img src="../../../assets/img/pho_nor.png">
+                            <img src="../../../assets/img/help.png">
                             <span class="arrow_right float_right"></span>
                             <span class="message">帮助中心</span>
                         </div>
                     </a>
                     <a href="tel:400-123-1234">
                         <div>
-                            <img src="../../../assets/img/pho_nor.png">
+                            <img src="../../../assets/img/serive.png">
                             <span class="arrow_kefu float_right">400-123-1234</span>
                             <span class="message">联系客服</span>
                         </div>
                     </a>
                     <router-link to='/user/about'>
                         <div>
-                            <img src="../../../assets/img/pho_nor.png">
+                            <img src="../../../assets/img/tab_min_sel.png">
                             <span class="arrow_right float_right"></span>
                             <span class="message">关于我们</span>
                         </div>
