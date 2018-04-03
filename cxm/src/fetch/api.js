@@ -153,4 +153,8 @@ export default {
     getTicketScheme(params){
         return fetchPost('order/order/getTicketScheme',params)
     },
+    //获取大厅数据
+    getHallData(params){
+        return fetchPost('lottery/lottery/hall/getHallData',params)
+    },
 }

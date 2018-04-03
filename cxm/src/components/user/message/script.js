@@ -58,6 +58,7 @@ export default {
             api.newlist(data)
                 .then(res => {
                     if (res.code == 0) {
+                        //console.log(res)
                         if(res.data.isLastPage == 'true') {
                             this.pageNum = -1
                             this.allLoaded = true

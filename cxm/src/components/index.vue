@@ -1,119 +1,102 @@
 <style scoped lang="scss">
-  @import '../assets/css/function.scss';
-  .header{
-    position: relative;
-    height: px2rem(100px);
-    line-height: px2rem(100px);
-    background-color: #fff;
-  }
-  .banner{
-    width: 100%;
-    display: block;
-  }
-  .banner img{
-    width: 100%;
-    display: block;
-  }
-  .mation{
-    /*height: 0.61rem;*/
-    background: #fff;
-    display: table-cell;
-    line-height: px2rem(61px);
-    padding-left: px2rem(30px);
-    display: block;
-  }
-  .mation img{
+@import "../assets/css/function.scss";
+.header {
+  position: relative;
+  height: px2rem(100px);
+  line-height: px2rem(100px);
+  background-color: #fff;
+}
+.mation p {
+  font-size: px2rem(28px);
+  color: #a0a0a0;
+}
+.mation p span {
+  color: #505050;
+}
+.center {
+  width: 100%;
+  background: #fff;
+}
+.center ul {
+  padding-bottom: px2rem(28px);
+  overflow: hidden;
+}
+.center ul li {
+  width: 25%;
+  text-align: center;
+  font-size: px2rem(30px);
+  margin-top: px2rem(32px);
+  float: left;
+}
+.center ul li img {
+  width: px2rem(93px);
+  margin: 0 auto;
+}
+.center ul li p {
+  margin-top: px2rem(18px);
+  font-size: px2rem(30px);
+  color: #505050;
+}
+.boll {
+  height: px2rem(80px);
+  font-size: px2rem(30px);
+  line-height: px2rem(80px);
+  margin-left: px2rem(30px);
+  border-bottom: 1px solid #f1f1f1;
+}
+.scroll-wrap {
+  background: #fff;
+  height: px2rem(61px);
+  padding-left: px2rem(30px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  img {
     vertical-align: middle;
     width: px2rem(30px);
     margin-right: px2rem(15px);
     display: inline-block;
   }
-  .mation p{
+  p {
     font-size: px2rem(28px);
-    color: #A0A0A0;
+    color: #a0a0a0;
   }
-  .mation p span{
-    color: #505050;
+  .scroll-content {
+    position: relative;
+	transition: top 0.5s;
   }
-  .center{
-    width: 100%;
-    background: #fff;
+  .scroll-content li {
+    text-align: left;
+    font-size: px2rem(28px);
+    color: #666;
+	height: px2rem(61px);
+	display: flex;
+	align-items: center;
   }
-  .center ul{
-    padding-bottom:px2rem(28px) ;
-    overflow: hidden;
-  }
-  .center ul li{
-    width: 25%;
-    text-align: center;
-    font-size: px2rem(30px);
-    margin-top: px2rem(32px);
-    float: left;
-  }
-  .center ul li img{
-    width: px2rem(93px);
-    margin: 0 auto;
-  }
-  .center ul li p{
-    margin-top: px2rem(18px);
-    font-size: px2rem(30px);
-    color: #505050;
-  }
-  .boll{
-    height: px2rem(80px);
-    font-size: px2rem(30px);
-    line-height: px2rem(80px);
-    margin-left: px2rem(30px);
-    border-bottom: 1px solid #f1f1f1;
-  }
-
+}
 </style>
 <!--首页-->
 <template>
   <div class="wrap">
-    <div class="banner">
-      <img src="../assets/img/banner.jpg">
+    <v-slider :bannerList='bannerList'></v-slider>
+    <div class="carousel">
+      <div class="scroll-wrap">
+        <img src="../assets/img/not.png">
+        <p v-if='show'>温馨提示:理性投注,长跟长红</p>
+        <ul class="scroll-content" :style="{top}" v-if='hide'>
+          <li v-for="(data,item) in y_Carousel" :key='item'>
+            {{data.winningMsg}}
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="section mation">
-      <p><img src="../assets/img/not.png">恭喜【138…672】投注竟足中奖<span>1888888.88</span>元</p>
-    </div>
-    <div class="section banner">
-      <img src="../assets/img/img.jpg">
-    </div>
+    <v-activity :activity='activity'></v-activity>
     <div class="section center">
       <p class="boll">竞彩足球</p>
       <ul>
-        <li>
+        <li v-for='(item,i) in dlPlay' :key='i'>
           <img src="../assets/img/img1.png">
-          <p>胜平负</p>
-        </li>
-        <li>
-          <img src="../assets/img/img1.png">
-          <p>胜平负</p>
-        </li>
-        <li>
-          <img src="../assets/img/img1.png">
-          <p>胜平负</p>
-        </li>
-        <li>
-          <img src="../assets/img/img1.png">
-          <p>胜平负</p>
-        </li>
-        <li>
-        <img src="../assets/img/img1.png">
-        <p>胜平负</p>
-      </li>
-        <li>
-          <img src="../assets/img/img1.png">
-          <p>省省</p>
-        </li>
-        <li>
-          <img src="../assets/img/img1.png">
-          <p>胜平负</p>
-        </li>
-        <li>
-          <img src="../assets/img/img1.png">
-          <p>省省</p>
+          <p>{{item.playClassifyName}}</p>
         </li>
       </ul>
     </div>
@@ -121,15 +104,74 @@
 </template>
 
 <script>
-  // import http from '../api/http'
-  export default {
-    name: 'index',
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App'
-      }
-    },
-    created:function () {}
+// import http from '../api/http'
+import api from "../fetch/api";
+import { Toast } from "mint-ui";
+import { Indicator } from "mint-ui";
+import silder from "./index/lunbo"
+import activity from './index/activity'
+export default {
+  name: "index",
+  data() {
+    return {
+      bannerList: [], //banner
+      activity: {}, //活动
+      y_Carousel: [],  //中奖信息
+      dlPlay: [],
+      activeIndex: -1,
+      show: true,
+	    hide: false,
+    }
+  },
+  beforeCreate() {
+			Indicator.open()
+  },
+  components:{
+    'v-slider': silder,
+    'v-activity': activity
+  },
+  computed: {
+    top() {
+      return -this.activeIndex * 0.81333+'rem';
+    }
+  },
+  created: function() {},
+  mounted() {
+    let data = {
+      
+    };
+    api
+      .getHallData(data)
+      .then(res => {
+        if (res.code == 0) {
+          console.log(res)
+          this.bannerList = res.data.navBanners
+          this.activity = res.data.activity
+          this.y_Carousel = res.data.winningMsgs
+          this.dlPlay = res.data.dlPlayClassifyDetailDTOs
+          if (this.y_Carousel.length == 0) {
+            this.show = true;
+            this.hide = false;
+          } else {
+            this.show = false;
+            this.hide = true;
+            setInterval(_ => {
+              if (this.activeIndex < this.y_Carousel.length - 2) {
+                this.activeIndex += 1;
+              } else {
+                this.activeIndex = -1;
+          }
+            }, 3000);
+          }
+        } else {
+          Toast(res.msg);
+        }
+        Indicator.close();
+      })
+      .catch(error => {
+        Toast("网络错误");
+      });
   }
+};
 </script>
 
