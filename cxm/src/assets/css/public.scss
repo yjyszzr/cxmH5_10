@@ -112,7 +112,7 @@ li {
   padding-left: px2rem(80px);
   height: 100%;
   background: url(./assets/img/ret.png) no-repeat;
-  background-position: px2rem(45px) center;
+  background-position: px2rem(34px) center;
   background-size: px2rem(30px) auto;
   vertical-align: middle;
 }
@@ -519,4 +519,30 @@ textarea {
 */
 .zwf{
   height: px2rem(98px);
+}
+
+/* 
+折叠面板样式
+*/
+.el-collapse{
+  border: none;
+  .el-collapse-item{
+    margin-bottom: px2rem(10px);
+  }
+  .el-collapse-item__content{
+    padding-bottom: px2rem(22px);
+  }
+  .el-collapse-item__arrow{
+    margin-right: px2rem(30px);
+  }
+}
+.el-collapse-item__header{
+  height: px2rem(72px);
+  line-height: px2rem(72px);
+  font-size: px2rem(28px);
+  padding-left: px2rem(24px);
+  border-bottom: none;
+  .el-collapse-item__arrow{
+    line-height: px2rem(72px);
+  }
 }

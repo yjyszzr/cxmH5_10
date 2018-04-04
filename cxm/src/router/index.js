@@ -199,7 +199,7 @@ const router = new Router({
           name: 'singleNote',
           cname:'单注页面',
           component: function (resolve) {
-              require(['../components/freebuy/singleNote.vue'], resolve)
+              require(['../components/freebuy/singleNote/singleNote.vue'], resolve)
           },
       },
   ]

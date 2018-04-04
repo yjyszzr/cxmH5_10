@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import api from '../fetch/api'
 import { Toast } from 'mint-ui'
+import {Indicator} from 'mint-ui'
 
 Vue.use(Vuex)
 
@@ -16,6 +17,8 @@ const state = {
     findphone: '',   //找回密码手机号
     userInfo: {},   //个人信息
     freebuyId: '',   //玩法页面区分
+    mark_show: false,  //控制遮罩
+    matchObj: {},  //赛事列表
 }
 
 const mutations = {
@@ -46,6 +49,21 @@ const mutations = {
         state.smsCode.disabled = false
         state.smsCode.changeNumber = 60
         state.smsCode.changeText = '获取短信验证码'
+    },
+    MATCHLIST(state,data){
+        api.getMatchList(data)
+        .then(res => {
+            if(res.code==0) {
+            console.log(res)
+            state.matchObj = res.data
+            }else{
+            Toast(res.msg)
+            }
+            Indicator.close()
+        })
+        .catch(error => {
+            Toast('网络错误')
+        })
     }
 }
 
@@ -55,7 +73,10 @@ const actions = {
     },
     reset({commit}){
         commit("RESET");
-    }
+    },
+    getMatchList({commit}, value) {
+        commit("MATCHLIST",value);
+    },
 }
 
 export default new Vuex.Store({

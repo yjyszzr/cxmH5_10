@@ -157,4 +157,12 @@ export default {
     getHallData(params){
         return fetchPost('lottery/lottery/hall/getHallData',params)
     },
+    //获取比赛列表
+    getMatchList(params){
+        return fetchPost('lottery/lottery/match/getMatchList',params)
+    },
+    //获取筛选条件列表
+    filterConditions(params){
+        return fetchPost('lottery/lottery/match/filterConditions',params)
+    },
 }

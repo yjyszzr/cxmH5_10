@@ -1,15 +1,15 @@
 <template>
     <div class="foot" @touchmove.prevent v-show="isShowTabbar()">
             <router-link to='/'>
-                <img src="../../assets/img/dating.png">
+                <img src="../../../assets/img/dating.png">
                 <span>大厅</span>
             </router-link>
             <router-link to='/'>
-                <img src="../../assets/img/qiu.png">
+                <img src="../../../assets/img/qiu.png">
                 <span>开奖</span>
             </router-link>
             <router-link to='/user'>
-                <img src="../../assets/img/my.png">
+                <img src="../../../assets/img/my.png">
                 <span>我的</span>
             </router-link>
     </div>
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style lang='scss'>
-    @import '../../assets/css/function.scss';
+    @import '../../../assets/css/function.scss';
     .foot {
         flex-grow: 0;
         flex-shrink: 0;

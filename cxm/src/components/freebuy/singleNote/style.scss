@@ -1,0 +1,75 @@
+@import '../../../assets/css/function.scss';
+.singleNote{
+    .matchTitle{
+        background: white;
+        height: px2rem(72px);
+        display: flex;
+        align-items: center;
+        padding-left: px2rem(34px);
+        color: #9f9f9f;
+        font-size: px2rem(28px);
+        margin-bottom: px2rem(10px);
+    }
+    .hotMatch{
+        color: #e85504;
+    }
+    .spfList{
+        color: #9f9f9f;
+        font-size: px2rem(28px);
+    }
+    .hotMatchList{
+        width: px2rem(686px);
+        margin: 0 auto;
+        li{
+            border-top: 1px solid #f0f0f0;
+            padding-top: px2rem(27px);
+            width: 100%;
+            height: px2rem(139px);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .matchLeft{
+            height: px2rem(111px);
+            line-height: px2rem(32px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+            font-size: px2rem(22px);
+            color: #9f9f9f;
+        }
+        .matchRight{
+            height: px2rem(106px);
+            border: 1px solid #f0f0f0;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            p{
+                height: px2rem(106px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                width: px2rem(110px);
+                background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
+                background-size: 1px px2rem(74px); 
+                span:first-of-type{
+                    font-size: px2rem(24px);
+                    color: #505050;
+                }
+                span:last-of-type{
+                    font-size: px2rem(20px);
+                    color: #9f9f9f;
+                }
+            }
+            P:first-of-type,p:last-of-type{
+                width: px2rem(218px);
+            }
+            p:last-of-type{
+                background: none;
+            }
+        }
+    }
+}

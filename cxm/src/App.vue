@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-header :title='title()' v-show='isShowHeader'></v-header>
+    <v-header :title='title()' :menu-display="menuDisplay()" v-show='isShowHeader'></v-header>
     <div id='content' class="content">
         <!-- <transition  mode="out-in" enter-active-class='bounce-enter' leave-active-class="bounce-leave">
             <router-view></router-view>
@@ -8,17 +8,22 @@
         <router-view></router-view>
     </div>
     <v-footer></v-footer>
+    <transition name="fade"> 
+      <v-mark v-if="this.$store.state.mark_show"></v-mark>
+    </transition>
   </div>
 </template>
 
 <script>
-import header from './components/header/header'
-import footer from './components/footer/footer'
+import header from './components/public/header/header'
+import footer from './components/public/footer/footer'
+import mark from './components/public/mark/mark'
 export default {
   name: 'App',
   components: {
     'v-header': header,
-    'v-footer': footer
+    'v-footer': footer,
+    'v-mark': mark
   },
   data(){
     return {
@@ -85,8 +90,15 @@ export default {
               return "个人中心"
           }
       }
-    }
-  }
+    },
+    menuDisplay () {
+        if (this.$route.path.split('/')[2] == 'singleNote') {
+          return true
+        } else {
+          return false
+        }
+    },
+  },
 }
 </script>
 
@@ -144,6 +156,12 @@ export default {
       }
       .bounce-leave {
         animation: bounce-out .3s;
+      }
+      .fade-enter-active, .fade-leave-active {
+        transition: opacity .3s
+      }
+      .fade-enter, .fade-leave-active {
+        opacity: 0
       }
     }
 
