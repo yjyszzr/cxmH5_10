@@ -19,6 +19,7 @@ const state = {
     freebuyId: '',   //玩法页面区分
     mark_show: false,  //控制遮罩
     matchObj: {},  //赛事列表
+    matchSelectedList: [],  //选中赛事处理
 }
 
 const mutations = {

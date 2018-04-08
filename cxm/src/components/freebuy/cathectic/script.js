@@ -13,5 +13,6 @@ export default {
     methods: {
     },
     mounted(){
+      
     }
 }

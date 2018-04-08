@@ -23,6 +23,13 @@
 		},
 		methods: {
 			return_back() {
+                if(this.$route.path.split('/')[2]){
+                    if(this.$route.path.split('/')[2]=='cathectic'){
+                        localStorage.setItem('tab',true)
+                    }else if(this.$route.path.split('/')[2]=='singleNote'){
+                        this.$store.state.matchSelectedList = []
+                    }
+                }
 				this.$router.go(-1)
             },
             filter(){
