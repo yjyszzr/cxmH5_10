@@ -77,6 +77,8 @@ export default {
               if(this.$store.state.freebuyId=='1'){
                 return '胜平负'
               }
+            case 'cathectic':
+                return '投注确认'
           }
       }else{
           if(this.$route.path.split('/')[1]=='user'){
