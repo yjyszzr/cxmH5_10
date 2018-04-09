@@ -210,6 +210,14 @@ const router = new Router({
               require(['../components/freebuy/cathectic/index.vue'], resolve)
           },
       },
+      {
+          path: '/freebuy/payment',
+          name: 'payment',
+          cname:'投注确认',
+          component: function (resolve) {
+              require(['../components/freebuy/payment/index.vue'], resolve)
+          },
+      },
   ]
 })
 

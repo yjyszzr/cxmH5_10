@@ -73,6 +73,8 @@ export default {
               return '订单详情'
             case 'draw':
               return '出票方案'
+              case 'payment':
+                  return '支付订单'
             case 'singleNote':
               if(this.$store.state.freebuyId=='1'){
                 return '胜平负'
