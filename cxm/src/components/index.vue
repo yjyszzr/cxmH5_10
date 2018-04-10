@@ -106,7 +106,7 @@
     <div class="section center">
       <p class="boll">竞彩足球</p>
       <ul>
-        <li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.playClassifyId,item.playType)">
+        <li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.playClassifyId,item.playType,item.lotteryId)">
           <img src="../assets/img/img1.png" class="entry_icon">
           <p>{{item.playClassifyName}}</p>
           <img src="../assets/img/Awards@2x.png" class="entry_status" alt="" v-if="item.playClassifyLabelId=='3'">
@@ -152,12 +152,14 @@ export default {
     }
   },
   methods: {
-    goFreebuy(c,s){
+    goFreebuy(c,s,t){
       this.$store.state.freebuyId = c
       this.$router.push({
           path: '/freebuy/singleNote',
           query:{
-            id: s
+            id: s,
+            cltId: c,
+            ltId: t
           },
           replace: false
       })

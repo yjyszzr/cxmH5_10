@@ -165,4 +165,8 @@ export default {
     filterConditions(params){
         return fetchPost('lottery/lottery/match/filterConditions',params)
     },
+    //计算投注信息
+    getBetInfo(params){
+        return fetchPost('lottery/lottery/match/getBetInfo',params)
+    },
 }

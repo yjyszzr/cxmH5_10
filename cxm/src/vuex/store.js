@@ -20,6 +20,12 @@ const state = {
     mark_show: false,  //控制遮罩
     matchObj: {},  //赛事列表
     matchSelectedList: [],  //选中赛事处理
+    mark_playObj: {        //控制上啦遮罩
+        mark_playBox: false,
+        mark_play: '',
+        playtList: [],  //玩法列表控制
+        playutText: [],  //串数
+    },
 }
 
 const mutations = {

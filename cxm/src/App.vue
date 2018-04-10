@@ -11,6 +11,7 @@
     <transition name="fade"> 
       <v-mark v-if="this.$store.state.mark_show"></v-mark>
     </transition>
+    <v-pmark v-show="this.$store.state.mark_playObj.mark_playBox"></v-pmark>
   </div>
 </template>
 
@@ -18,12 +19,14 @@
 import header from './components/public/header/header'
 import footer from './components/public/footer/footer'
 import mark from './components/public/mark/mark'
+import pmark from './components/public/mark/match_playut/mark_playut'
 export default {
   name: 'App',
   components: {
     'v-header': header,
     'v-footer': footer,
-    'v-mark': mark
+    'v-mark': mark,
+    'v-pmark': pmark
   },
   data(){
     return {

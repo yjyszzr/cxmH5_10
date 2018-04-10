@@ -21,48 +21,65 @@
      }
      .mat_cen{
        height: px2rem(106px);
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
        div{
          height: px2rem(106px);
-         float: left;
-         width: 8%;
+
          img{
-           width: 42%;
+           width: px2rem(30px);
            padding-top: px2rem(43px);
          }
        }
        ul{
-         float: left;
-         width: 75%;
+         display: flex;
+         align-items: center;
+         width: px2rem(546px);
+         box-sizing: border-box;
          height: px2rem(106px);
          border: 1px solid #f1f1f1;
          li{
            width:px2rem(95px);
-           padding-top: px2rem(19px);
-           padding-bottom: px2rem(16px);
-           line-height: px2rem(35px);
-           color: #505050;
-           font-size: px2rem(24px);
-           float: left;
-           text-align: center;
-           margin: 0 auto;
-           span{
+           display: flex;
+           height: 100%;
+           width: px2rem(218px);
+           align-items: center;
+           justify-content: center;
+           flex-direction: column;
+           background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
+           background-size: 1px px2rem(68px); 
+           position: relative;
+           span:first-of-type{
+             font-size: px2rem(28px);
+             color: #505050;
+           }
+           span:last-of-type{
              color: #9f9f9f;
-             font-size: px2rem(20px);
+             font-size: px2rem(24px);
+           }
+           p{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 5;
            }
          }
-         li:nth-child(1){
-           width: px2rem(208px);
+         li:nth-child(2){
+           width: px2rem(110px);
          }
-
          li:last-of-type{
-           width: px2rem(208px);
+           background: none;
+           border-right: none;
          }
          .cont_cur{
-           background: #e95504;
-           color: #fff;
-         }
-         .cont_cur span{
-           color: #fff;
+           background: #e95504!important;
+           border-right: 1px solid #fff;
+           box-sizing: border-box;
+           span{
+              color: #fff!important;
+           }
          }
          .split-symbol{
            float: left;
@@ -78,21 +95,23 @@
        }
         p{
           height: px2rem(106px);
-          line-height: px2rem(106px);
-          text-align: center;
-          margin-left: 5%;
-          float: left;
-          width: 10%;
+          box-sizing: border-box;
+          width: px2rem(62px);
           border: 1px solid #f1f1f1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
      }
    }
 
    .fixed{
+     box-shadow: 0px -2px 3px rgba(0,0,0,0.2);
      position: fixed;
      background: #fff;
      width: 100%;
      bottom: 0;
+     z-index: 10;
      small{
        height: px2rem(64px);
        line-height: px2rem(64px);
@@ -229,56 +248,6 @@
          p:last-child{
            border-bottom:none;
          }
-       }
-     }
-   }
-   .popup_down{
-     background: #fff;
-     display: none;
-     p{
-       line-height: px2rem(104px);
-       text-align: center;
-       font-size: px2rem(24px);
-       color: #9f9f9f;
-     }
-     ul{
-       padding:0 px2rem(60px);
-       li{
-         line-height: px2rem(60px);
-         margin-top: 1.7%;
-         width: 30%;
-         margin-left: 1%;
-         margin-right: 1%;
-         text-align: center;
-         border: 1px solid #f1f1f1;
-         color: #505050;
-         font-size: px2rem(24px);
-       }
-       .current{
-         border:1px solid #e95504;
-         color: #e95504;
-       }
-     }
-     button{
-       margin-top: px2rem(48px);
-       height: px2rem(72px);
-       width: 100%;
-       border: none;
-       background: none;
-       display: flex;
-       border-top: 1px solid #f1f1f1;
-       a{
-         color: #505050;
-         line-height: px2rem(72px);
-         flex: 1;
-         display: block;
-         border-right: 1px solid #f1f1f1;
-       }
-       .pop_cur{
-         color: #e95504;
-       }
-       a:last-child{
-         border-right: none;
        }
      }
    }

@@ -12,6 +12,8 @@ export default {
     return {
       activeName: '1',
       playType: this.$route.query.id,
+      lottoyId: this.$route.query.ltId,
+      classlootoyId: this.$route.query.cltId,
       leagueId: '',
       matchObj: {},
       flag: true,
@@ -106,6 +108,7 @@ export default {
     },
     clear_match() {
       this.matchSelectObj.clear()
+      this.id = ''
       this.text = `<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>`
       this.flag = true
       this.classFlag = true
@@ -113,7 +116,6 @@ export default {
     },
     confirm() {
       this.$store.state.matchSelectedList = []
-
       this.$store.state.matchObj.hotPlayList.forEach(item => {
         delete item.myspf
         for (let [key, value] of this.matchSelectObj) {
@@ -137,6 +139,11 @@ export default {
 
       this.$router.push({
         path: '/freebuy/cathectic',
+        query:{
+          playType: this.playType,
+          lottoyId: this.lottoyId,
+          classlootoyId: this.classlootoyId
+        },
         replace: false
       })
     }

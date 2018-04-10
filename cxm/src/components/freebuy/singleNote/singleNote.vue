@@ -20,15 +20,18 @@
                         </span>
                     </div>
                     <div class="matchRight">
-                        <p>
+                        <p :class="data.myspf&&data.myspf.indexOf(3)!=-1?'selected':''">
+                            <b class="mMark" @click="selectedClick($event)"></b>
                             <span>{{data.homeTeamAbbr}}</span>
                             <span>{{data.homeCell.cellName}}{{data.homeCell.cellOdds}}</span>
                         </p>
-                        <p>
+                        <p :class="data.myspf&&data.myspf.indexOf(1)!=-1?'selected':''">
+                            <b class="mMark" @click="selectedClick($event)"></b>
                             <span>VS</span>
                             <span>{{data.flatCell.cellName}}{{data.flatCell.cellOdds}}</span>
                         </p>
-                        <p>
+                        <p :class="data.myspf&&data.myspf.indexOf(0)!=-1?'selected':''">
+                            <b class="mMark" @click="selectedClick($event)"></b>
                             <span>{{data.visitingTeamAbbr}}</span>
                             <span>{{data.visitingCell.cellName}}{{data.visitingCell.cellOdds}}</span>
                         </p>
