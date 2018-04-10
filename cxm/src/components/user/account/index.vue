@@ -39,7 +39,7 @@
 				</div>
 			</mt-loadmore>
             <div class="section base" v-if="mxList.length!=0">
-                    <p>3月合计：充值<span>{{totalNum.rechargeMoney}}元</span>，提现<span>{{totalNum.withDrawMoney}}元</span>，购彩<span>{{totalNum.buyMoney}}元</span> ，中奖<span>{{totalNum.rewardMoney}}元</span></p>
+                    <p><i>3月合计</i><br/>充值<span>{{totalNum.rechargeMoney}}元</span>，提现<span>{{totalNum.withDrawMoney}}元</span>，购彩<span>{{totalNum.buyMoney}}元</span> ，中奖<span>{{totalNum.rewardMoney}}元</span></p>
             </div>
         </section>
     </div>
