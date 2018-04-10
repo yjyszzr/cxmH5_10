@@ -24,7 +24,7 @@
                     <a href="javascript:void(0);">
                         <div>
                             <img src="../../../assets/img/wei.png">
-                            <span class="arrow_kefu float_right"><img src="../../../assets/img/cue.png"></span>
+                            <span class="arrow_kefu float_right"><img src="../../../assets/img/cur.png"></span>
                             <span class="message">投注记录</span>
                         </div>
                     </a>
