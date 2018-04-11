@@ -10,9 +10,10 @@ export default {
         matchSelectObj: new Map(),
         id: '',
         arr: new Set(),
-        mupNum: '5',  //倍数
         betObj: {},
-        matchBetCells: [],
+        matchBetPlays: [],
+        disable: false,
+        danNUm: 0,  //统计胆数量
       }
     },
     beforeCreate() {
@@ -24,6 +25,14 @@ export default {
     methods: {
       datePd(c) {
         return datefilter(Number(c * 1000), 1)
+      },
+      betObjFun(){
+        this.betObj.betNum = 0
+            this.betObj.times = 0
+            this.betObj.money = 0.0
+            this.betObj.minBonus = 0.00
+            this.betObj.maxBonus = 0.00
+            this.disable = true
       },
       deleteList(c,s){
         this.$store.state.matchSelectedList.forEach(item => {
@@ -44,7 +53,17 @@ export default {
           }
         });
         this.nonTouDate()
-        this.playt()
+        if(this.$store.state.matchSelectedList.length>1){
+          this.playt()
+        }else if(this.$store.state.matchSelectedList.length==1){
+          if(this.$store.state.matchSelectedList[0].single!='1'){
+            this.betObjFun()
+          }else{
+            this.playt()
+          }
+        }else{
+          this.betObjFun()
+        }
       },
       datep(c){
         return datefilter(Number(c * 1000), 3)
@@ -67,14 +86,13 @@ export default {
           arr.push(item.single)
         })
         if(arr.length>0){
-          if(arr.indexOf('0')!=-1){
-            for(let i=2;i<=arr.length;i++){
+          if(arr.length==1&&arr.indexOf('0')==-1){
+            for(let i=1;i<=arr.length;i++){
               if(i<=8){
                 this.$store.state.mark_playObj.playtList.push(i+'&'+ 1)
               }
             }
           }else{
-            this.playutList = ['单关']
             for(let i=2;i<=arr.length;i++){
               if(i<=8){
                 this.$store.state.mark_playObj.playtList.push(i+'&'+ 1)
@@ -85,6 +103,7 @@ export default {
         this.$store.state.mark_playObj.playutText.push(this.$store.state.mark_playObj.playtList[this.$store.state.mark_playObj.playtList.length-1])
       },
       selectedClick(c){
+        let n = this.$store.state.matchSelectedList  //初始化比赛条目
         if (c.target.parentElement.parentElement.parentElement.id != this.id) {
           this.arr = new Set()
           for (let [key, value] of this.matchSelectObj) {
@@ -140,63 +159,84 @@ export default {
           }
         });
         this.nonTouDate()
-        this.fetchData()
+        if(this.$store.state.matchSelectedList.length>1){
+          Indicator.open()
+          if(n.length>this.$store.state.matchSelectedList.length){
+            this.playt()
+          }else{
+            this.fetchData()
+          }
+        }else if(this.$store.state.matchSelectedList.length==1){
+          if(this.$store.state.matchSelectedList[0].single!='1'){
+            this.betObjFun()
+          }else{
+            this.playt()
+          }
+        }else{
+          this.betObjFun()
+        }
       },
       cgClick(){
         this.$store.state.mark_playObj.mark_playBox = true
         this.$store.state.mark_playObj.mark_play = '1'       
       },
+      mupClick(){
+        this.$store.state.mark_playObj.mark_playBox = true
+        this.$store.state.mark_playObj.mark_play = '2'  
+      },
       fetchData(){
-        this.matchBetCells = []
+        this.matchBetPlays = []
         this.$store.state.matchSelectedList.forEach(item => {
           let obj = {}
           obj.changci = item.changci
           obj.matchId = item.matchId
           obj.matchTime = item.matchTime
-          obj.playType = item.playType
           obj.playCode = item.playCode
           obj.matchTeam = item.homeTeamName+ 'VS' + item.visitingTeamName
           obj.isDan = 0
           obj.lotteryClassifyId = this.$route.query.lottoyId
           obj.lotteryPlayClassifyId = this.$route.query.classlootoyId
+          let matchBetCells = [],matchBetCellsObj = {}
           let arr1 = []
           for(let i=0;i<item.myspf.length;i++){
             let obj1 = {}
             if(item.myspf[i]==3){
-              obj1.cellName = item.homeCell.cellName
-              obj1.cellCode = item.homeCell.cellCode
-              obj1.cellOdds = item.homeCell.cellOdds
-              obj1.cellSons = item.homeCell.cellSons
+              obj1.cellName = item.matchPlays[0].homeCell.cellName
+              obj1.cellCode = item.matchPlays[0].homeCell.cellCode
+              obj1.cellOdds = item.matchPlays[0].homeCell.cellOdds
+              obj1.cellSons = item.matchPlays[0].homeCell.cellSons
             }else if(item.myspf[i]==1){
-              obj1.cellName = item.flatCell.cellName
-              obj1.cellCode = item.flatCell.cellCode
-              obj1.cellOdds = item.flatCell.cellOdds
-              obj1.cellSons = item.flatCell.cellSons
+              obj1.cellName = item.matchPlays[0].flatCell.cellName
+              obj1.cellCode = item.matchPlays[0].flatCell.cellCode
+              obj1.cellOdds = item.matchPlays[0].flatCell.cellOdds
+              obj1.cellSons = item.matchPlays[0].flatCell.cellSons
             }else{
-              obj1.cellName = item.visitingCell.cellName
-              obj1.cellCode = item.visitingCell.cellCode
-              obj1.cellOdds = item.visitingCell.cellOdds
-              obj1.cellSons = item.visitingCell.cellSons
+              obj1.cellName = item.matchPlays[0].visitingCell.cellName
+              obj1.cellCode = item.matchPlays[0].visitingCell.cellCode
+              obj1.cellOdds = item.matchPlays[0].visitingCell.cellOdds
+              obj1.cellSons = item.matchPlays[0].visitingCell.cellSons
             }
             arr1.push(obj1)
           }
-          obj.betCells = arr1
-          this.matchBetCells.push(obj)
+          matchBetCellsObj.betCells = arr1
+          matchBetCellsObj.playType = item.matchPlays[0].playType
+          matchBetCells.push(matchBetCellsObj)
+          obj.matchBetCells = matchBetCells
+          this.matchBetPlays.push(obj)
         })
         let data = {
           'betType': this.$store.state.mark_playObj.playutText.join(',').replace(/&/g,''),
           'bonusId': '',
           'lotteryClassifyId': this.$route.query.lottoyId,
           'lotteryPlayClassifyId': this.$route.query.classlootoyId,
-          'times': this.mupNum,
+          'times': this.$store.state.mark_playObj.mupNum,
           'playType': this.$route.query.playType,
-          'matchBetCells': this.matchBetCells
+          'matchBetPlays': this.matchBetPlays
         };
         api
           .getBetInfo(data)
           .then(res => {
             if (res.code == 0) {
-              console.log(res)
               this.betObj = res.data
             } else {
               Toast(res.msg);
@@ -206,20 +246,56 @@ export default {
           .catch(error => {
             Toast("网络错误");
         });
+      },
+      danClick(c,s){
+        //console.log(c)
+        if(s.target.id=='isDan'){
+          s.target.id=''
+          c.selectedDan = false
+          this.danNUm --
+        }else{
+          s.target.id='isDan'
+          c.selectedDan = true
+          this.danNUm ++
+        }
+        this.$store.state.matchSelectedList.forEach(item => {
+          if(this.danNUm>=Number(this.$store.state.mark_playObj.playutText[0].split('&')[0]-1)){
+            if(item.selectedDan==false){
+              item.isDan = true
+            }
+          }else{
+            item.isDan = false
+          }
+        })
       }
     },
     mounted(){
-      console.log(this.$store.state.matchSelectedList)
       this.nonTouDate()
       this.playt()
     },
     computed: {  
       status() {  
           return this.$store.state.mark_playObj.playutText; 
-      }  
+      },
+      mupStatus(){
+          return this.$store.state.mark_playObj.mupNum; 
+      }
     },  
     watch: {
       status(a,b){
+        this.fetchData()
+        this.$store.state.matchSelectedList.forEach(item => {
+          if(this.$store.state.matchSelectedList.length==Number(this.$store.state.mark_playObj.playutText[this.$store.state.mark_playObj.playutText.length-1].split('&')[0])){
+            item.isDan = true
+            $('#isDan').removeAttr('id')
+            this.danNUm = 0
+            item.selectedDan = false
+          }else{
+            item.isDan = false
+          }
+        })
+      },
+      mupStatus(a,b){
         this.fetchData()
       }
     },
@@ -227,5 +303,7 @@ export default {
       next()
       this.$store.state.mark_playObj.mark_playBox = false
       this.$store.state.mark_playObj.mark_play = '' 
+      this.$store.state.mark_playObj.mupNum = '5'
+      localStorage.setItem('tab',true)
     }
 }

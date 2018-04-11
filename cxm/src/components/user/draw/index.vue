@@ -15,7 +15,12 @@
             <li v-for='(item,i) in drawObj.ticketSchemeDetailDTOs' :key='i'>
                 <div class="item">{{item.number}}</div>
                 <!-- <div class="item"><span>周四001（负1.43）X</span><span>周四002（胜1.25）X</span><span>周四003（负1.32）</span></div> -->
-                <div class="item">{{item.tickeContent}}</div>
+                <div class="item">
+                    <!-- <span v-for="(item,i) in item.tickeContent.split('X')">
+
+                    </span> -->
+                    {{item.tickeContent}}
+                </div>
                 <div class="item">{{item.passType}}</div>
                 <div class="item">{{item.multiple}}</div>
             </li>

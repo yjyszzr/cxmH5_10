@@ -47,6 +47,7 @@ export default {
                 		this.allLoaded = true
               }
               this.recordList = this.recordList.concat(res.data.list)
+              console.log(res)
             }else{
               Toast(res.msg)
             }
@@ -76,14 +77,6 @@ export default {
           this.searchBarFixed = true
         }else{
           this.searchBarFixed = false
-        }
-      },
-      status(c){
-        switch (c){
-          case '2' : return '出票失败'
-          case '3' : return '待开奖'
-          case '4' : return '未中奖'
-          case '5' : return '已中奖'
         }
       },
       goDetail(c){

@@ -15,7 +15,7 @@
             <mt-loadmore :bottom-method="loadBottom" :bottom-distance='-20' :auto-fill="false" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleTopChange" @scroll='handleScroll($event)'>
                 <div class="section cont" v-for="(item,i) in recordList" :key='i'>
                     <a @click="goDetail(item.orderId)">
-                        <p class="picker_p1">{{item.lotteryName}}<span>{{status(item.orderStatus)}}&gt;</span></p>
+                        <p class="picker_p1">{{item.lotteryName}}<span>{{item.orderStatusDesc}}&gt;</span></p>
                         <p class="picker_p2">¥ {{item.moneyPaid}}</p>
                         <p class="picker_p3">{{item.payTime}}<span>{{item.orderStatusInfo}}</span></p>
                     </a>

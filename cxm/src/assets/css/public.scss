@@ -546,3 +546,7 @@ textarea {
     line-height: px2rem(72px);
   }
 }
+
+.mint-indicator-mask{
+  z-index: 10000;
+}

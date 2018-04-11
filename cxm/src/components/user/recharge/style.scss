@@ -34,19 +34,20 @@
   color: #e95504;
 }
 .amount ul{
-  display: block;
+  display: flex;
   margin-top:px2rem(27px);
+  width: px2rem(685px);
+  justify-content: space-between;
 }
 .amount ul li{
-  float: left;
-  width: 14%;
   border: 1px solid #f1f1f1;
   font-size:px2rem(26px);
+  box-sizing: border-box;
   color: #505050;
   padding: px2rem(20px);
   text-align: center;
   border-radius: 0.1rem;
-  margin-right: px2rem(41px);
+  width: px2rem(150px);
 }
 .amount ul li:last-child{
   margin-right: 0;

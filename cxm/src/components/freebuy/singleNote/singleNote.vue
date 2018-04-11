@@ -9,8 +9,8 @@
                 <span class="hotMatch">热门比赛</span>
             </template>
             <ul class="hotMatchList">
-                <li v-for="(data,i) in $store.state.matchObj.hotPlayList" :key='i' :id='data.matchId' :class="data.single=='1'?'single':''">
-                    <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="data.single=='1'">
+                <li v-for="(data,i) in $store.state.matchObj.hotPlayList" :key='i' :id='data.matchId' :class="data.matchPlays[0].single=='1'?'single':''">
+                    <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="data.matchPlays[0].single=='1'">
                     <div class="matchLeft">
                         <span>{{data.leagueAddr}}</span>
                         <span>{{data.changci}}</span>
@@ -23,17 +23,17 @@
                         <p :class="data.myspf&&data.myspf.indexOf(3)!=-1?'selected':''">
                             <b class="mMark" @click="selectedClick($event)"></b>
                             <span>{{data.homeTeamAbbr}}</span>
-                            <span>{{data.homeCell.cellName}}{{data.homeCell.cellOdds}}</span>
+                            <span>{{data.matchPlays[0].homeCell.cellName}}{{data.matchPlays[0].homeCell.cellOdds}}</span>
                         </p>
                         <p :class="data.myspf&&data.myspf.indexOf(1)!=-1?'selected':''">
                             <b class="mMark" @click="selectedClick($event)"></b>
                             <span>VS</span>
-                            <span>{{data.flatCell.cellName}}{{data.flatCell.cellOdds}}</span>
+                            <span>{{data.matchPlays[0].flatCell.cellName}}{{data.matchPlays[0].flatCell.cellOdds}}</span>
                         </p>
                         <p :class="data.myspf&&data.myspf.indexOf(0)!=-1?'selected':''">
                             <b class="mMark" @click="selectedClick($event)"></b>
                             <span>{{data.visitingTeamAbbr}}</span>
-                            <span>{{data.visitingCell.cellName}}{{data.visitingCell.cellOdds}}</span>
+                            <span>{{data.matchPlays[0].visitingCell.cellName}}{{data.matchPlays[0].visitingCell.cellOdds}}</span>
                         </p>
                     </div>
                 </li>
@@ -44,8 +44,8 @@
                 <span class="spfList">{{data.matchDay}} 共有{{data.playList.length}}场比赛可投</span>
             </template>
             <ul class="hotMatchList">
-                <li v-for="(item,index) in data.playList" :key='index' :id='item.matchId' :class="item.single=='1'?'single':''">
-                    <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="item.single=='1'">
+                <li v-for="(item,index) in data.playList" :key='index' :id='item.matchId' :class="item.matchPlays[0].single=='1'?'single':''">
+                    <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="item.matchPlays[0].single=='1'">
                     <div class="matchLeft">
                         <span>{{item.leagueAddr}}</span>
                         <span>{{item.changci}}</span>
@@ -58,17 +58,23 @@
                         <p :class="item.myspf&&item.myspf.indexOf(3)!=-1?'selected':''">
                             <b class="mMark" @click="selectedClick($event)"></b>
                             <span>{{item.homeTeamAbbr}}</span>
-                            <span>{{item.homeCell.cellName}}{{item.homeCell.cellOdds}}</span>
+                            <span>
+                                {{item.matchPlays[0].homeCell.cellName}}{{item.matchPlays[0].homeCell.cellOdds}}
+                            </span>
                         </p>
                         <p :class="item.myspf&&item.myspf.indexOf(1)!=-1?'selected':''">
                             <b class="mMark" @click="selectedClick($event)"></b>
                             <span>VS</span>
-                            <span>{{item.flatCell.cellName}}{{item.flatCell.cellOdds}}</span>
+                            <span>
+                                {{item.matchPlays[0].flatCell.cellName}}{{item.matchPlays[0].flatCell.cellOdds}}
+                            </span>
                         </p>
                         <p :class="item.myspf&&item.myspf.indexOf(0)!=-1?'selected':''">
                             <b class="mMark" @click="selectedClick($event)"></b>
                             <span>{{item.visitingTeamAbbr}}</span>
-                            <span>{{item.visitingCell.cellName}}{{item.visitingCell.cellOdds}}</span>
+                            <span>
+                                {{item.matchPlays[0].visitingCell.cellName}}{{item.matchPlays[0].visitingCell.cellOdds}}
+                            </span>
                         </p>
                     </div>
                 </li>

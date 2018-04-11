@@ -38,10 +38,16 @@
                     </div>
                     <li v-for='(item,i) in orderObj.matchInfos' :key='i'>
                         <div class="item">{{item.changci}}</div>
-                        <div class="item">{{item.match}}</div>
+                        <div class="item"><span>{{item.match.split('VS')[0]}}</span><span>VS</span><span>{{item.match.split('VS')[1]}}</span></div>
                         <div class="item">{{item.playType}}</div>
-                        <div class="item"><span>{{item.cathectic}}</span><span><img src="../../../assets/img/cue.png" v-if="item.matchResult=='0'"><img src="../../../assets/img/accont_img/guess@2x.png" v-if="item.matchResult=='1'"></span></div>
-                        <div class="item">{{item.result}}</div>
+                        <div class="item">
+                            <p v-for='(data,index) in item.cathecticResults' :key='index'>
+                                <span v-for='(data1,index1) in data.cathectics' :key='index1' :style='{"color":data1.isGuess=="1"?"#de3434":"#333"}'>{{data1.cathectic}}</span>
+                            </p>
+                        </div>
+                        <div class="item">
+                            <span v-for='(data,index) in item.cathecticResults' :key='index'>{{data.matchResult}}</span>
+                        </div>
                     </li>
                 </ul>
                 <div class="menu">

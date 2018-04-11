@@ -13,7 +13,7 @@
         <section class="section amount">
             <p>充值金额</p>
             <input v-model="recharge_val" type="tel" class="money" placeholder="确认后不可修改"/>
-            <ul class="clearfix">
+            <ul>
                 <li v-for="(item,i) in list_num" :key='i' @click='changenum(item)'>{{item}}</li>
             </ul>
         </section>

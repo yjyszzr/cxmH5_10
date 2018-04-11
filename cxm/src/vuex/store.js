@@ -25,6 +25,7 @@ const state = {
         mark_play: '',
         playtList: [],  //玩法列表控制
         playutText: [],  //串数
+        mupNum: '5',   //倍数
     },
 }
 
