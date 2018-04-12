@@ -14,6 +14,7 @@ export default {
         matchBetPlays: [],
         disable: false,
         danNUm: 0,  //统计胆数量
+        matchSave: {},  //接口数据保存
       }
     },
     beforeCreate() {
@@ -52,11 +53,16 @@ export default {
             }
           }
         });
+        for (let [key, value] of this.matchSelectObj) {
+          if (key == c) {
+            this.matchSelectObj.delete(key)
+          }
+        }
         this.nonTouDate()
         if(this.$store.state.matchSelectedList.length>1){
           this.playt()
         }else if(this.$store.state.matchSelectedList.length==1){
-          if(this.$store.state.matchSelectedList[0].single!='1'){
+          if(this.$store.state.matchSelectedList[0].matchPlays[0].single!='1'){
             this.betObjFun()
           }else{
             this.playt()
@@ -102,7 +108,7 @@ export default {
         }
         this.$store.state.mark_playObj.playutText.push(this.$store.state.mark_playObj.playtList[this.$store.state.mark_playObj.playtList.length-1])
       },
-      selectedClick(c){
+      selectedClick(c,s){
         let n = this.$store.state.matchSelectedList  //初始化比赛条目
         if (c.target.parentElement.parentElement.parentElement.id != this.id) {
           this.arr = new Set()
@@ -120,6 +126,8 @@ export default {
             this.arr.delete(1)
           } else if (c.target.parentElement.children[2].innerText.indexOf('客') != -1) {
             this.arr.delete(0)
+          } else {
+            this.arr.delete('jqs:'+s.cellCode)
           }
           if (this.arr.size <= 0) {
             this.matchSelectObj.delete(c.target.parentElement.parentElement.parentElement.id)
@@ -133,6 +141,8 @@ export default {
             this.arr.add(1)
           } else if (c.target.parentElement.children[2].innerText.indexOf('客') != -1) {
             this.arr.add(0)
+          } else {
+            this.arr.add('jqs:'+s.cellCode)
           }
           this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.id, this.arr)
         }
@@ -167,7 +177,7 @@ export default {
             this.fetchData()
           }
         }else if(this.$store.state.matchSelectedList.length==1){
-          if(this.$store.state.matchSelectedList[0].single!='1'){
+          if(this.$store.state.matchSelectedList[0].matchPlays[0].single!='1'){
             this.betObjFun()
           }else{
             this.playt()
@@ -184,16 +194,38 @@ export default {
         this.$store.state.mark_playObj.mark_playBox = true
         this.$store.state.mark_playObj.mark_play = '2'  
       },
-      fetchData(){
+      fetchData(c){
         this.matchBetPlays = []
         this.$store.state.matchSelectedList.forEach(item => {
           let obj = {}
+          obj.isDan = 0
+          if(c == 'dan'){
+            if(this.danNUm>=Number(this.$store.state.mark_playObj.playutText[0].split('&')[0]-1)){
+              if(item.selectedDan==false){
+                item.isDan = true
+              }
+            }else{
+              item.isDan = false
+            }
+            if(item.selectedDan==false){
+              obj.isDan = 0
+            }else{
+              obj.isDan = 1
+            }
+          }
+          if(c=='watch'){
+            if(this.$store.state.matchSelectedList.length==Number(this.$store.state.mark_playObj.playutText[this.$store.state.mark_playObj.playutText.length-1].split('&')[0])){
+              item.isDan = true
+            }else{
+              item.isDan = false
+            }
+            item.selectedDan = false
+          }
           obj.changci = item.changci
           obj.matchId = item.matchId
           obj.matchTime = item.matchTime
           obj.playCode = item.playCode
           obj.matchTeam = item.homeTeamName+ 'VS' + item.visitingTeamName
-          obj.isDan = 0
           obj.lotteryClassifyId = this.$route.query.lottoyId
           obj.lotteryPlayClassifyId = this.$route.query.classlootoyId
           let matchBetCells = [],matchBetCellsObj = {}
@@ -210,11 +242,20 @@ export default {
               obj1.cellCode = item.matchPlays[0].flatCell.cellCode
               obj1.cellOdds = item.matchPlays[0].flatCell.cellOdds
               obj1.cellSons = item.matchPlays[0].flatCell.cellSons
-            }else{
+            }else if(item.myspf[i]==0){
               obj1.cellName = item.matchPlays[0].visitingCell.cellName
               obj1.cellCode = item.matchPlays[0].visitingCell.cellCode
               obj1.cellOdds = item.matchPlays[0].visitingCell.cellOdds
               obj1.cellSons = item.matchPlays[0].visitingCell.cellSons
+            } else {
+              for(let j=0;j<item.matchPlays[0].matchCells.length;j++){
+                if(item.myspf[i].split(':')[1]==item.matchPlays[0].matchCells[j].cellCode){
+                  obj1.cellName = item.matchPlays[0].matchCells[j].cellName
+                  obj1.cellCode = item.matchPlays[0].matchCells[j].cellCode
+                  obj1.cellOdds = item.matchPlays[0].matchCells[j].cellOdds
+                  obj1.cellSons = item.matchPlays[0].matchCells[j].cellSons
+                }
+              }
             }
             arr1.push(obj1)
           }
@@ -233,6 +274,7 @@ export default {
           'playType': this.$route.query.playType,
           'matchBetPlays': this.matchBetPlays
         };
+        this.matchSave = data
         api
           .getBetInfo(data)
           .then(res => {
@@ -258,18 +300,18 @@ export default {
           c.selectedDan = true
           this.danNUm ++
         }
-        this.$store.state.matchSelectedList.forEach(item => {
-          if(this.danNUm>=Number(this.$store.state.mark_playObj.playutText[0].split('&')[0]-1)){
-            if(item.selectedDan==false){
-              item.isDan = true
-            }
-          }else{
-            item.isDan = false
-          }
+        this.fetchData('dan')
+      },
+      saveGo(){
+        this.$store.state.matchSaveInfo = this.matchSave
+        this.$router.push({
+          path: '/freebuy/payment',
+          replace: false
         })
       }
     },
     mounted(){
+      console.log(this.$store.state.matchSelectedList)
       this.nonTouDate()
       this.playt()
     },
@@ -283,17 +325,11 @@ export default {
     },  
     watch: {
       status(a,b){
-        this.fetchData()
-        this.$store.state.matchSelectedList.forEach(item => {
-          if(this.$store.state.matchSelectedList.length==Number(this.$store.state.mark_playObj.playutText[this.$store.state.mark_playObj.playutText.length-1].split('&')[0])){
-            item.isDan = true
-            $('#isDan').removeAttr('id')
-            this.danNUm = 0
-            item.selectedDan = false
-          }else{
-            item.isDan = false
-          }
-        })
+        this.fetchData('watch')
+        for(let i=0;i<this.$refs.isdan.length;i++){
+          this.$refs.isdan[i].id = ''
+        }
+        this.danNUm = 0
       },
       mupStatus(a,b){
         this.fetchData()

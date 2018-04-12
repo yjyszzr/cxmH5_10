@@ -46,7 +46,8 @@
                             </p>
                         </div>
                         <div class="item">
-                            <span v-for='(data,index) in item.cathecticResults' :key='index'>{{data.matchResult}}</span>
+                            <span v-for='(data,index) in item.cathecticResults' :key='index' v-if='item.cathecticResults==""'>{{data.matchResult}}</span>
+                            <span v-if='item.cathecticResults!=""'>未结束</span>
                         </div>
                     </li>
                 </ul>

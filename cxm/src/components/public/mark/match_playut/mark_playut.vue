@@ -4,6 +4,7 @@
 
         </div>
         <transition name="translate"> 
+            <!-- 串关 -->
             <div class="mark_footer" v-if="this.$store.state.mark_playObj.mark_play=='1'">
                 <p>可选串关方式</p>
                 <ul>
@@ -16,8 +17,7 @@
                     <a @click="closeMark()">取消</a>
                 </button>
             </div>
-        </transition>
-        <transition name="translate"> 
+            <!-- 数字键盘 -->
             <div class="popup" v-if="this.$store.state.mark_playObj.mark_play=='2'">
                 <div class="box">
                     <img src="../../../../assets/img/Jump.png" @click="closeMark()">
@@ -36,6 +36,33 @@
                         <p @click="deleteNum($event)">删除</p>
                         <p class="cur" @click="confirm_num()">确定</p>
                     </div>
+                </div>
+            </div>
+            <!-- 优惠券 -->
+            <div class="yhMark" v-if="this.$store.state.mark_playObj.mark_play=='3'">
+                <div class="yh_title">
+                    可用优惠券
+                </div>
+                <ul class="yhList">
+                    <li v-for="(item,i) in $store.state.mark_playObj.yhList" :key='i'>
+                        <p>
+                            <span>¥</span>
+                            <span>{{item.bonusPrice}}</span>
+                        </p>
+                        <p>
+                            <span>{{item.minGoodsAmount}}</span>
+                            <span>{{item.useRange}}</span>
+                        </p>
+                        <p :class="item.userBonusId == $store.state.mark_playObj.bounsId?'bounsId':''" @click="bounsSelected(item,$event)">
+                            
+                        </p>
+                    </li>
+                    <p class="yhNull" v-if="$store.state.mark_playObj.yhList.length==0">
+                        暂无优惠券
+                    </p>
+                </ul>
+                <div class="yhBtn" @click="yhBtn()">
+                    确定
                 </div>
             </div>
         </transition>

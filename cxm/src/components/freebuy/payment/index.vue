@@ -2,31 +2,31 @@
 
 </style>
 <template>
-    <div class="wrap">
+    <div class="wrap payment">
         <section class="section">
             <ul class="msg_list">
                 <li>
                     <a>
                         <div>
-                            <span class="arrow_kefu float_right">￥30.00</span>
+                            <span class="arrow_kefu float_right" style="color: #ea5504;">￥{{payment.orderMoney}}</span>
                             <span class="message">订单金额</span>
                         </div>
                     </a>
                     <a>
                         <div>
-                            <span class="arrow_kefu float_right">￥30.00</span>
+                            <span class="arrow_kefu float_right">-￥{{payment.surplus}}</span>
                             <span class="message">余额抵扣</span>
                         </div>
                     </a>
                     <a>
                         <div>
-                            <span class="arrow_kefu float_right">￥30.00</span>
+                            <span class="arrow_kefu float_right" @click='yhClick()'>-￥{{payment.bonusAmount}}&gt;</span>
                             <span class="message">优惠劵抵扣</span>
                         </div>
                     </a>
                     <a>
                         <div>
-                            <span class="arrow_kefu float_right">￥30.00</span>
+                            <span class="arrow_kefu float_right" style="color: #ea5504;">￥{{payment.thirdPartyPaid}}</span>
                             <span class="message">还需支付</span>
                         </div>
                     </a>
@@ -47,6 +47,9 @@
                 </li>
             </ul>
         </section>
+        <button class="paymentBtn" @click="payBtn()">
+            确认支付
+        </button>
     </div>
 </template>
 <script src='./script.js'>

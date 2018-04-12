@@ -26,9 +26,29 @@
                 if(this.$route.path.split('/')[2]){
                     if(this.$route.path.split('/')[2]=='singleNote'){
                         this.$store.state.matchSelectedList = []
+                    }else if(this.$route.path.split('/')[2]=='order'){
+                        this.$router.push({
+                            path: '/user/record',
+                            replace: false
+                        })
+                        return false
+                    }else if(this.$route.path.split('/')[2]=='record'){
+                        this.$router.push({
+                            path: '/user',
+                            replace: false
+                        })
+                        return false
+                    }
+                }else{
+                    if(this.$route.path.split('/')[1]=='user'){
+                        this.$router.push({
+                            path: '/',
+                            replace: false
+                        })
+                        return false
                     }
                 }
-				this.$router.go(-1)
+                this.$router.go(-1)
             },
             filter(){
                 this.$store.state.mark_show = true

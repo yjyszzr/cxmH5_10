@@ -1,11 +1,29 @@
  @import '../../../assets/css/function.scss';
- .mode{
-   color: #505050;
-   margin-left: px2rem(30px);
-   margin-right: px2rem(30px);
-   height: px2rem(90px);
-   display: block;
-   border-bottom: 1px solid #f1f1f1;
-   font-size: 0.4rem;
-   line-height: px2rem(90px);
+ .payment{
+  .mode{
+    color: #505050;
+    margin-left: px2rem(30px);
+    margin-right: px2rem(30px);
+    height: px2rem(90px);
+    display: block;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 0.4rem;
+    line-height: px2rem(90px);
+  }
+  .msg_list li > a{
+    padding: 0;
+    .float_right{
+      color: #505050;
+    }
+  }
+  .paymentBtn{
+    position: absolute;
+    bottom: 0;
+    height: px2rem(108px);
+    background: #ea5504;
+    border: none;
+    width: 100%;
+    font-size: px2rem(28px);
+    color: white;
+  }
  }

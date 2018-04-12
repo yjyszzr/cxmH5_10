@@ -50,15 +50,15 @@ export default {
         return Number(c + 1) + ''
       }
     },
-    selectedClick(c) {
-      if (c.target.parentElement.parentElement.parentElement.id != this.id) {
+    selectedClick(c,s) {
+      if (c.target.parentElement.parentElement.parentElement.parentElement.id != this.id) {
         this.arr = new Set()
         for (let [key, value] of this.matchSelectObj) {
-          if (c.target.parentElement.parentElement.parentElement.id == key) {
+          if (c.target.parentElement.parentElement.parentElement.parentElement.id == key) {
             this.arr = value
           }
         }
-        this.id = c.target.parentElement.parentElement.parentElement.id
+        this.id = c.target.parentElement.parentElement.parentElement.parentElement.id
       }
       if (c.target.parentElement.className == 'selected') {
         c.target.parentElement.className = ''
@@ -68,11 +68,13 @@ export default {
           this.arr.delete(1)
         } else if (c.target.parentElement.children[2].innerText.indexOf('客') != -1) {
           this.arr.delete(0)
+        } else {
+          this.arr.delete('jqs:'+s.cellCode)
         }
         if (this.arr.size <= 0) {
-          this.matchSelectObj.delete(c.target.parentElement.parentElement.parentElement.id)
+          this.matchSelectObj.delete(c.target.parentElement.parentElement.parentElement.parentElement.id)
         } else {
-          this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.id, this.arr)
+          this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.parentElement.id, this.arr)
         }
       } else {
         c.target.parentElement.className = 'selected'
@@ -82,12 +84,15 @@ export default {
           this.arr.add(1)
         } else if (c.target.parentElement.children[2].innerText.indexOf('客') != -1) {
           this.arr.add(0)
+        } else {
+          this.arr.add('jqs:'+s.cellCode)
         }
-        this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.id, this.arr)
+        this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.parentElement.id, this.arr)
       }
+      //console.log(this.matchSelectObj)
       if (this.matchSelectObj.size == 1) {
         let classDom = document.getElementsByClassName('selected')
-        if (classDom[0].parentElement.parentElement.className == 'single') {
+        if (classDom[0].parentElement.parentElement.parentElement.className == 'single') {
           this.text = `<p>已选1场单关比赛</p><p>可投注</p>`
           this.flag = false
           this.classFlag = false
@@ -158,7 +163,7 @@ export default {
         this.classFlag = true
       } else if (this.$store.state.matchSelectedList.length == 1) {
         let classDom = document.getElementsByClassName('selected')
-        if (classDom[0].parentElement.parentElement.className == 'single') {
+        if (classDom[0].parentElement.parentElement.parentElement.className == 'single') {
           this.text = `<p>已选1场单关比赛</p><p>可投注</p>`
           this.flag = false
           this.classFlag = false
@@ -176,7 +181,7 @@ export default {
         this.matchSelectObj.set(item.matchId, new Set(item.myspf))
       })
     }
-  },
+  },   
   beforeRouteLeave(to, from, next) {
     next()
     this.$store.state.mark_show = false

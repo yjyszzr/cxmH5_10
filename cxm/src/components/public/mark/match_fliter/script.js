@@ -68,7 +68,6 @@ export default {
     api.filterConditions({})
         .then(res => {
             if(res.code==0) {
-                console.log(res)
                 this.matchFilterList = res.data
             }else{
                 Toast(res.msg)

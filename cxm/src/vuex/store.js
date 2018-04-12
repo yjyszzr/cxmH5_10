@@ -20,12 +20,15 @@ const state = {
     mark_show: false,  //控制遮罩
     matchObj: {},  //赛事列表
     matchSelectedList: [],  //选中赛事处理
+    matchSaveInfo: {},   //付款接口数据保存
     mark_playObj: {        //控制上啦遮罩
         mark_playBox: false,
         mark_play: '',
         playtList: [],  //玩法列表控制
         playutText: [],  //串数
         mupNum: '5',   //倍数
+        yhList: [],  //优惠券列表
+        mybounsId: '',   //默认优惠券id
     },
 }
 

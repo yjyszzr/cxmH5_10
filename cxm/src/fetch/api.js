@@ -173,4 +173,8 @@ export default {
     getBetInfo(params){
         return fetchPost('lottery/lottery/match/getBetInfo',params)
     },
+    //下单
+    app(params){
+        return fetchPost('payment/payment/app',params)
+    },
 }

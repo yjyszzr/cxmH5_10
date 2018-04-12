@@ -47,7 +47,6 @@ export default {
                 		this.allLoaded = true
               }
               this.recordList = this.recordList.concat(res.data.list)
-              console.log(res)
             }else{
               Toast(res.msg)
             }

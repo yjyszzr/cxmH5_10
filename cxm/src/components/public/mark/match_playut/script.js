@@ -9,17 +9,21 @@ export default {
         mapArr: [5,10,20,50,100],
         numList: [1,2,3,4,5,6,7,8,9,'',0,''],
         mup: '5',
-        firstNum: 0
+        firstNum: 0,
+        bounsId: ''
     };
   },
   methods: {
+    closeMarkCz(){
+      this.$store.state.mark_playObj.mark_play = '' 
+      setTimeout(()=>{
+        this.$store.state.mark_playObj.mark_playBox = false
+      },250)
+    },
     closeMark(){
-        this.$store.state.mark_playObj.mark_play = '' 
         this.firstNum = 0
         this.mup = '5'  
-        setTimeout(()=>{
-            this.$store.state.mark_playObj.mark_playBox = false
-        },250)
+        this.closeMarkCz()
     },
     mupNumber(c,s){
        this.mup = c+''
@@ -66,7 +70,7 @@ export default {
       }
     },
     confirm(){
-      this.closeMark()
+      this.closeMarkCz()
       this.$store.state.mark_playObj.playutText = Array.from(this.list)
       this.$store.state.mark_playObj.playutText.sort((a,b)=>{
         return a.split('&')[0]-b.split('&')[0]
@@ -79,6 +83,15 @@ export default {
       }
       this.$store.state.mark_playObj.mupNum = this.mup
       this.closeMark()
+    },
+    bounsSelected(c,s){
+      $('.bounsId').removeClass('bounsId')
+      s.target.className = 'bounsId'
+      this.bounsId = c.userBonusId
+    },
+    yhBtn(){
+       this.closeMarkCz()
+       this.$store.state.mark_playObj.mybounsId = this.bounsId
     }
   },
   mounted(){
