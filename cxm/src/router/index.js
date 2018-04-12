@@ -213,9 +213,25 @@ const router = new Router({
       {
           path: '/freebuy/payment',
           name: 'payment',
-          cname:'投注确认',
+          cname:'支付订单',
           component: function (resolve) {
               require(['../components/freebuy/payment/index.vue'], resolve)
+          },
+      },
+      {
+          path: '/freebuy/score',
+          name: 'score',
+          cname:'投注确认',
+          component: function (resolve) {
+              require(['../components/freebuy/score/index.vue'], resolve)
+          },
+      },
+      {
+          path: '/freebuy/result',
+          name: 'result',
+          cname:'比赛结果',
+          component: function (resolve) {
+              require(['../components/freebuy/result/index.vue'], resolve)
           },
       },
   ]
