@@ -11,7 +11,6 @@ export default {
         yhList: [],
         bottomStatus: '',
         allLoaded: false,
-        searchBarFixed: false
       }
     },
     beforeCreate() {
@@ -55,31 +54,32 @@ export default {
             Toast('网络错误')
         })
       },
-      curClick(c){
-        $('.cur').removeClass('cur')
-        c.target.parentElement.className = 'cur'
+    },
+    computed: {  
+      tabstatus() {  
+          return this.$store.state.recordTab; 
+      }
+    },  
+    watch: {
+      tabstatus(a,b){
         Indicator.open()
         this.yhList = []
         this.pageNum = 1
-        if(c.target.innerText=='未使用'){
+        if(a=='d1'){
           this.status = 0
-        }else if(c.target.innerText=='已使用'){
+        }else if(a=='d2'){
           this.status = 1
-        }else if(c.target.innerText=='已过期'){
+        }else if(a=='d3'){
           this.status = 2
         }
-         this.yhData()
-      },
-      handleScroll(e){
-        if(e.target.scrollTop>0){
-          this.searchBarFixed = true
-        }else{
-          this.searchBarFixed = false
-        }
+        this.yhData()
       }
     },
     mounted(){
-        document.querySelector('#content').addEventListener('scroll', this.handleScroll)
         this.yhData()
+    },
+    beforeRouteLeave(to, from, next) {
+      next()
+      this.$store.state.recordTab = ''
     }
 }

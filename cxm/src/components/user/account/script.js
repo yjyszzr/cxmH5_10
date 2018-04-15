@@ -12,7 +12,6 @@ export default {
         bottomStatus: '',
         allLoaded: false,
         totalNum: {}, //合计对象
-        searchBarFixed: false
       }
     },
     beforeCreate() {
@@ -47,7 +46,7 @@ export default {
         })
       },
       handleTopChange(status) {
-        	this.bottomStatus = status;
+        this.bottomStatus = status;
       },
       loadBottom() {
           Indicator.open()
@@ -57,37 +56,35 @@ export default {
         			this.$refs.loadmore.onBottomLoaded();
         	}, 700)
       },
-      curClick(c){
-        $('.cur').removeClass('cur')
-        c.target.parentElement.className = 'cur'
+    },
+    computed: {  
+      tabstatus() {  
+          return this.$store.state.recordTab; 
+      }
+    },  
+    watch: {
+      tabstatus(a,b){
+        //console.log(a)
         Indicator.open()
         this.mxList = []
         this.pageNum = 1
-        if(c.target.innerText=='全部'){
+        if(a=='a1'){
           this.amountType = 0
-        }else if(c.target.innerText=='奖金'){
+        }else if(a=='a2'){
           this.amountType = 1
-        }else if(c.target.innerText=='充值'){
+        }else if(a=='a3'){
           this.amountType = 2
-        }else if(c.target.innerText=='购彩'){
+        }else if(a=='a4'){
           this.amountType = 3
-        }else if(c.target.innerText=='提现'){
+        }else if(a=='a5'){
           this.amountType = 4
-        }else if(c.target.innerText=='红包'){
+        }else if(a=='a6'){
           this.amountType = 5
         }
         this.mxfetch()
-      },
-      handleScroll(e){
-        if(e.target.scrollTop>0){
-          this.searchBarFixed = true
-        }else{
-          this.searchBarFixed = false
-        }
       }
     },
     mounted(){
-        document.querySelector('#content').addEventListener('scroll', this.handleScroll)
         this.mxfetch()
         let data = {
           'str': ''
@@ -104,5 +101,9 @@ export default {
         .catch(error => {
             Toast('网络错误')
         })
+    },
+    beforeRouteLeave(to, from, next) {
+      next()
+      this.$store.state.recordTab = ''
     }
 }

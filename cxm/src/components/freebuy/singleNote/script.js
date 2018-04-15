@@ -21,7 +21,8 @@ export default {
       matchSelectObj: new Map(),
       text: '<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>',
       id: '',
-      arr: new Set()
+      arr: new Set(),
+      mapKey: []
     }
   },
   beforeCreate() {
@@ -50,7 +51,49 @@ export default {
         return Number(c + 1) + ''
       }
     },
-    selectedClick(c,s) {
+    bfBtn(c){
+      this.$store.state.mark_playObj.mark_playBox = true
+      if(this.playType == '3'){
+        this.$store.state.mark_playObj.mark_play = '4'
+      }else{
+        this.$store.state.mark_playObj.mark_play = '5'
+      }
+      this.$store.state.mark_playObj.bfmatchId = c
+    },
+    confirm_disable(){
+      if (this.matchSelectObj.size == 1) {
+        let classDom = document.getElementsByClassName('selected')
+        if (classDom[0].parentElement.parentElement.parentElement.className == 'single') {
+          this.text = `<p>已选1场单关比赛</p><p>可投注</p>`
+          this.flag = false
+          this.classFlag = false
+        } else {
+          this.text = `<p>已选择1场比赛</p><p>还差1场比赛</p>`
+          this.flag = true
+          this.classFlag = true
+        }
+      } else if (this.matchSelectObj.size == 0) {
+        this.text = `<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>`
+        this.flag = true
+        this.classFlag = true
+      } else {
+        this.text = `<p>已选${this.matchSelectObj.size}场比赛</p><p>可投注</p>`
+        this.flag = false
+        this.classFlag = false
+      }
+    },
+    confirm_bf(){
+      if(this.matchSelectObj.size>=1){
+        this.text = `<p>已选${this.matchSelectObj.size}场比赛</p><p>可投注</p>`
+        this.flag = false
+        this.classFlag = false
+      }else{
+        this.text = `<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>`
+        this.flag = true
+        this.classFlag = true
+      }
+    },
+    idConfig(c){
       if (c.target.parentElement.parentElement.parentElement.parentElement.id != this.id) {
         this.arr = new Set()
         for (let [key, value] of this.matchSelectObj) {
@@ -60,6 +103,9 @@ export default {
         }
         this.id = c.target.parentElement.parentElement.parentElement.parentElement.id
       }
+    },
+    selectedClick(c,s) {
+      this.idConfig(c)
       if (c.target.parentElement.className == 'selected') {
         c.target.parentElement.className = ''
         if (c.target.parentElement.children[2].innerText.indexOf('主') != -1) {
@@ -90,33 +136,35 @@ export default {
         this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.parentElement.id, this.arr)
       }
       //console.log(this.matchSelectObj)
-      if (this.matchSelectObj.size == 1) {
-        let classDom = document.getElementsByClassName('selected')
-        if (classDom[0].parentElement.parentElement.parentElement.className == 'single') {
-          this.text = `<p>已选1场单关比赛</p><p>可投注</p>`
-          this.flag = false
-          this.classFlag = false
+      this.confirm_disable()
+    },
+    selectedTwoClick(c,s){
+      this.idConfig(c)
+      if (c.target.parentElement.className == 'selected') {
+        c.target.parentElement.className = ''
+        this.arr.delete(s)
+        if (this.arr.size <= 0) {
+          this.matchSelectObj.delete(c.target.parentElement.parentElement.parentElement.parentElement.id)
         } else {
-          this.text = `<p>已选择1场比赛</p><p>还差1场比赛</p>`
-          this.flag = true
-          this.classFlag = true
+          this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.parentElement.id, this.arr)
         }
-      } else if (this.matchSelectObj.size == 0) {
-        this.text = `<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>`
-        this.flag = true
-        this.classFlag = true
       } else {
-        this.text = `<p>已选${this.matchSelectObj.size}场比赛</p><p>可投注</p>`
-        this.flag = false
-        this.classFlag = false
+        c.target.parentElement.className = 'selected'
+        this.arr.add(s)
+        this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.parentElement.id, this.arr)
       }
+      //console.log(this.matchSelectObj)
+      this.confirm_disable()
     },
     clear_match() {
+      //console.log(this.matchSelectObj)
       this.matchSelectObj.clear()
       this.id = ''
       this.text = `<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>`
       this.flag = true
       this.classFlag = true
+      this.$store.state.mark_playObj.bfIdSaveMap.clear()
+      this.mapKey = []
       $('.selected').removeClass('selected')
     },
     confirm() {
@@ -153,37 +201,65 @@ export default {
       })
     }
   },
+  computed: {  
+    status() {  
+        return this.$store.state.mark_playObj.bfIdSaveMapFlag; 
+    }
+  },  
+  watch: {
+    status(a,b){
+      //console.log(this.$store.state.mark_playObj.bfIdSaveMap)
+      this.mapKey = []
+      this.matchSelectObj = this.$store.state.mark_playObj.bfIdSaveMap
+      for (let [key, value] of this.matchSelectObj) {
+        this.mapKey.push(key)
+      }
+      this.confirm_bf()
+      //console.log(this.$store.state.mark_playObj.bfIdSaveMap)
+      // this.confirm_disable()
+    }
+  },
   mounted() {
     if (!localStorage.getItem('tab')) {
       this.fetchData()
     } else {
-      if (this.$store.state.matchSelectedList.length == 0) {
-        this.text = `<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>`
-        this.flag = true
-        this.classFlag = true
-      } else if (this.$store.state.matchSelectedList.length == 1) {
-        let classDom = document.getElementsByClassName('selected')
-        if (classDom[0].parentElement.parentElement.parentElement.className == 'single') {
-          this.text = `<p>已选1场单关比赛</p><p>可投注</p>`
-          this.flag = false
-          this.classFlag = false
-        } else {
-          this.text = `<p>已选择1场比赛</p><p>还差1场比赛</p>`
+      if(this.playType == '3'||this.playType == '5'){
+        this.matchSelectObj = this.$store.state.mark_playObj.bfIdSaveMap
+        for (let [key, value] of this.matchSelectObj) {
+          this.mapKey.push(key)
+        }
+        this.confirm_bf()
+      }else{
+        this.$store.state.matchSelectedList.forEach(item => {
+          this.matchSelectObj.set(item.matchId, new Set(item.myspf))
+        })
+        if (this.$store.state.matchSelectedList.length == 0) {
+          this.text = `<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>`
           this.flag = true
           this.classFlag = true
+        } else if (this.$store.state.matchSelectedList.length == 1) {
+          let classDom = document.getElementsByClassName('selected')
+          if (classDom[0].parentElement.parentElement.parentElement.className == 'single') {
+            this.text = `<p>已选1场单关比赛</p><p>可投注</p>`
+            this.flag = false
+            this.classFlag = false
+          } else {
+            this.text = `<p>已选择1场比赛</p><p>还差1场比赛</p>`
+            this.flag = true
+            this.classFlag = true
+          }
+        } else if (this.$store.state.matchSelectedList.length > 1) {
+          this.text = `<p>已选${this.$store.state.matchSelectedList.length}场比赛</p><p>可投注</p>`
+          this.flag = false
+          this.classFlag = false
         }
-      } else if (this.$store.state.matchSelectedList.length > 1) {
-        this.text = `<p>已选${this.$store.state.matchSelectedList.length}场比赛</p><p>可投注</p>`
-        this.flag = false
-        this.classFlag = false
       }
-      this.$store.state.matchSelectedList.forEach(item => {
-        this.matchSelectObj.set(item.matchId, new Set(item.myspf))
-      })
     }
   },   
   beforeRouteLeave(to, from, next) {
     next()
+    this.$store.state.mark_playObj.mark_playBox = false
+    this.$store.state.mark_playObj.mark_play = '' 
     this.$store.state.mark_show = false
     localStorage.removeItem('tab')
   }

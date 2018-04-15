@@ -38,6 +38,7 @@ export default {
             })
         },
         payBtn(){
+            Indicator.open()
             let data = {
                 'payCode': '',
                 'payToken': this.payment.payToken
@@ -49,7 +50,7 @@ export default {
                     this.$router.push({
                         path: '/user/order',
                         query: {
-                          id: res.data.orderId
+                          id: res.data.orderId,
                         },
                         replace: false
                     })

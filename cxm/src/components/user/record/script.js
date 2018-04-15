@@ -16,7 +16,7 @@ export default {
     },
     beforeCreate() {
 			Indicator.open()
-		},
+    },
     created(){
       
     },
@@ -56,28 +56,6 @@ export default {
             Toast('网络错误')
         })
       },
-      curClick(c){
-        $('.cur').removeClass('cur')
-        c.target.parentElement.className = 'cur'
-        Indicator.open()
-        this.recordList = []
-        this.pageNum = 1
-        if(c.target.innerText=='全部'){
-          this.orderStatus = '-1'
-        }else if(c.target.innerText=='中奖'){
-          this.orderStatus = '5'
-        }else if(c.target.innerText=='待开奖'){
-          this.orderStatus = '3'
-        }
-        this.recordFetch()
-      },
-      handleScroll(e){
-        if(e.target.scrollTop>0){
-          this.searchBarFixed = true
-        }else{
-          this.searchBarFixed = false
-        }
-      },
       goDetail(c){
         this.$router.push({
           path: '/user/order',
@@ -88,8 +66,32 @@ export default {
         })
       }
     },
+    computed: {  
+      tabstatus() {  
+          return this.$store.state.recordTab; 
+      }
+    },  
+    watch: {
+      tabstatus(a,b){
+        //console.log(a)
+        Indicator.open()
+        this.recordList = []
+        this.pageNum = 1
+        if(a=='1'){
+          this.orderStatus = '-1'
+        }else if(a=='2'){
+          this.orderStatus = '5'
+        }else if(a=='3'){
+          this.orderStatus = '3'
+        }
+        this.recordFetch()
+      }
+    },
     mounted(){
-      document.querySelector('#content').addEventListener('scroll', this.handleScroll)
       this.recordFetch()
+    },
+    beforeRouteLeave(to, from, next) {
+      next()
+      this.$store.state.recordTab = ''
     }
 }

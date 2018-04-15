@@ -13,6 +13,10 @@ Vue.config.productionTip = false
 Vue.use(MintUI)
 Vue.use(Collapse)
 Vue.use(CollapseItem)
+
+router.afterEach((to,from,next) => {
+  document.querySelector('#content').scrollTo(0,0);
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

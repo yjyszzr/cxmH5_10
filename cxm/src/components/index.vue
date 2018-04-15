@@ -155,6 +155,8 @@ export default {
     goFreebuy(c,s,t){
       this.$store.state.matchObj = {}
       this.$store.state.freebuyId = c
+      this.$store.state.mark_playObj.bfIdSaveMapFlag = 0
+      this.$store.state.mark_playObj.bfIdSaveMap = new Map()
       this.$router.push({
           path: '/freebuy/singleNote',
           query:{

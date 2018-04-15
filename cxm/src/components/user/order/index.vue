@@ -66,6 +66,9 @@
                 <p>店主出票：<span>{{orderObj.ticketTime}}</span></p>
             </div>
         </div>
+        <button class="jxtz" @click="jxtz()">
+            继续投注
+        </button>
     </div>
 </template>
 

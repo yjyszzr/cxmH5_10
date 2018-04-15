@@ -1,4 +1,6 @@
 import api from '../../../../fetch/api.js'
+import score from './score/index.vue'
+import bqc from './bqc/index.vue'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 export default {
@@ -12,6 +14,10 @@ export default {
         firstNum: 0,
         bounsId: ''
     };
+  },
+  components:{
+    'v-score': score,
+    'v-bqc': bqc
   },
   methods: {
     closeMarkCz(){

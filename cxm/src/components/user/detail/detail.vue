@@ -5,12 +5,6 @@
 <!--账户明细-->
 <template>
     <div class="wrap bonus">
-        <ul class="send" id='searchBar' :class="searchBarFixed?'isFixed':''">
-            <li class="cur"><p @click='curClick($event)'>未使用</p></li>
-            <li><p @click='curClick($event)'>已使用</p></li>
-            <li><p @click='curClick($event)'>已过期</p></li>
-        </ul>
-        <div class="zwf" v-show="searchBarFixed"></div>
         <mt-loadmore :bottom-method="loadBottom" :bottom-distance='-20' :auto-fill="false" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleTopChange" @scroll='handleScroll($event)'>
                 <div class="yh_Item" v-for="(item,i) in yhList" :key='i'>
                         <img src="../../../assets/img/guoqi.png" alt="" v-if="item.bonusStatus==0">

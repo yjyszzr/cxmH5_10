@@ -83,69 +83,7 @@ export default {
           return a - b;
         })
       },
-      playt(){
-        let arr = []
-        this.$store.state.mark_playObj.playtList = []
-        this.$store.state.mark_playObj.playutText = []
-        this.$store.state.matchSelectedList.forEach(item => {
-          this.matchSelectObj.set(item.matchId, new Set(item.myspf))
-          arr.push(item.single)
-        })
-        if(arr.length>0){
-          if(arr.length==1&&arr.indexOf('0')==-1){
-            for(let i=1;i<=arr.length;i++){
-              if(i<=8){
-                this.$store.state.mark_playObj.playtList.push(i+'&'+ 1)
-              }
-            }
-          }else{
-            for(let i=2;i<=arr.length;i++){
-              if(i<=8){
-                this.$store.state.mark_playObj.playtList.push(i+'&'+ 1)
-              }
-            }
-          }
-        }
-        this.$store.state.mark_playObj.playutText.push(this.$store.state.mark_playObj.playtList[this.$store.state.mark_playObj.playtList.length-1])
-      },
-      selectedClick(c,s){
-        let n = this.$store.state.matchSelectedList  //初始化比赛条目
-        if (c.target.parentElement.parentElement.parentElement.id != this.id) {
-          this.arr = new Set()
-          for (let [key, value] of this.matchSelectObj) {
-            if (c.target.parentElement.parentElement.parentElement.id == key) {
-              this.arr = value
-            }
-          }
-          this.id = c.target.parentElement.parentElement.parentElement.id
-        }
-        if (c.target.parentElement.className == 'cont_cur') {
-          if (c.target.parentElement.children[2].innerText.indexOf('主') != -1) {
-            this.arr.delete(3)
-          } else if (c.target.parentElement.children[2].innerText.indexOf('平') != -1) {
-            this.arr.delete(1)
-          } else if (c.target.parentElement.children[2].innerText.indexOf('客') != -1) {
-            this.arr.delete(0)
-          } else {
-            this.arr.delete('jqs:'+s.cellCode)
-          }
-          if (this.arr.size <= 0) {
-            this.matchSelectObj.delete(c.target.parentElement.parentElement.parentElement.id)
-          } else {
-            this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.id, this.arr)
-          }
-        } else {
-          if (c.target.parentElement.children[2].innerText.indexOf('主') != -1) {
-            this.arr.add(3)
-          } else if (c.target.parentElement.children[2].innerText.indexOf('平') != -1) {
-            this.arr.add(1)
-          } else if (c.target.parentElement.children[2].innerText.indexOf('客') != -1) {
-            this.arr.add(0)
-          } else {
-            this.arr.add('jqs:'+s.cellCode)
-          }
-          this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.id, this.arr)
-        }
+      cshCz(n){
         this.$store.state.matchSelectedList = []
 
         this.$store.state.matchObj.hotPlayList.forEach(item => {
@@ -185,6 +123,93 @@ export default {
         }else{
           this.betObjFun()
         }
+      },
+      playt(){
+        let arr = []
+        this.$store.state.mark_playObj.playtList = []
+        this.$store.state.mark_playObj.playutText = []
+        this.$store.state.matchSelectedList.forEach(item => {
+          this.matchSelectObj.set(item.matchId, new Set(item.myspf))
+          arr.push(item.single)
+        })
+        if(arr.length>0){
+          if(arr.length==1&&arr.indexOf('0')==-1){
+            for(let i=1;i<=arr.length;i++){
+              if(i<=8){
+                this.$store.state.mark_playObj.playtList.push(i+'&'+ 1)
+              }
+            }
+          }else{
+            for(let i=2;i<=arr.length;i++){
+              if(i<=8){
+                this.$store.state.mark_playObj.playtList.push(i+'&'+ 1)
+              }
+            }
+          }
+        }
+        this.$store.state.mark_playObj.playutText.push(this.$store.state.mark_playObj.playtList[this.$store.state.mark_playObj.playtList.length-1])
+      },
+      idConfig(c){
+        if (c.target.parentElement.parentElement.parentElement.id != this.id) {
+          this.arr = new Set()
+          for (let [key, value] of this.matchSelectObj) {
+            if (c.target.parentElement.parentElement.parentElement.id == key) {
+              this.arr = value
+            }
+          }
+          this.id = c.target.parentElement.parentElement.parentElement.id
+        }
+      },
+      selectedClick(c,s){
+        let n = this.$store.state.matchSelectedList  //初始化比赛条目
+        this.idConfig(c)
+        if (c.target.parentElement.className == 'cont_cur') {
+          if (c.target.parentElement.children[2].innerText.indexOf('主') != -1) {
+            this.arr.delete(3)
+          } else if (c.target.parentElement.children[2].innerText.indexOf('平') != -1) {
+            this.arr.delete(1)
+          } else if (c.target.parentElement.children[2].innerText.indexOf('客') != -1) {
+            this.arr.delete(0)
+          } else {
+            this.arr.delete('jqs:'+s.cellCode)
+          }
+          if (this.arr.size <= 0) {
+            this.matchSelectObj.delete(c.target.parentElement.parentElement.parentElement.id)
+          } else {
+            this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.id, this.arr)
+          }
+        } else {
+          if (c.target.parentElement.children[2].innerText.indexOf('主') != -1) {
+            this.arr.add(3)
+          } else if (c.target.parentElement.children[2].innerText.indexOf('平') != -1) {
+            this.arr.add(1)
+          } else if (c.target.parentElement.children[2].innerText.indexOf('客') != -1) {
+            this.arr.add(0)
+          } else {
+            this.arr.add('jqs:'+s.cellCode)
+          }
+          this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.id, this.arr)
+        }
+        this.cshCz(n)
+      },
+      selectedTwoClick(c,s){
+        let n = this.$store.state.matchSelectedList  //初始化比赛条目
+        this.idConfig(c)
+        if (c.target.parentElement.className == 'cont_cur') {
+          c.target.parentElement.className = ''
+          this.arr.delete(s)
+          if (this.arr.size <= 0) {
+            this.matchSelectObj.delete(c.target.parentElement.parentElement.parentElement.id)
+          } else {
+            this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.id, this.arr)
+          }
+        } else {
+          c.target.parentElement.className = 'cont_cur'
+          this.arr.add(s)
+          this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.id, this.arr)
+        }
+        //console.log(this.matchSelectObj)
+        this.cshCz(n)
       },
       cgClick(){
         this.$store.state.mark_playObj.mark_playBox = true
@@ -248,13 +273,46 @@ export default {
               obj1.cellOdds = item.matchPlays[0].visitingCell.cellOdds
               obj1.cellSons = item.matchPlays[0].visitingCell.cellSons
             } else {
-              for(let j=0;j<item.matchPlays[0].matchCells.length;j++){
-                if(item.myspf[i].split(':')[1]==item.matchPlays[0].matchCells[j].cellCode){
-                  obj1.cellName = item.matchPlays[0].matchCells[j].cellName
-                  obj1.cellCode = item.matchPlays[0].matchCells[j].cellCode
-                  obj1.cellOdds = item.matchPlays[0].matchCells[j].cellOdds
-                  obj1.cellSons = item.matchPlays[0].matchCells[j].cellSons
+              if(item.playType=='3'){
+                let arrBf = [].concat(item.matchPlays[0].flatCell.cellSons,item.matchPlays[0].homeCell.cellSons,item.matchPlays[0].visitingCell.cellSons)
+                arrBf.forEach(c =>{
+                  if(c.cellName == item.myspf[i]){
+                    obj1.cellName = c.cellName
+                    obj1.cellCode = c.cellCode
+                    obj1.cellOdds = c.cellOdds
+                    obj1.cellSons = c.cellSons
+                  }
+                })
+              }if(item.playType=='5'){
+                for(let j=0;j<item.matchPlays[0].matchCells.length;j++){
+                  if(item.myspf[i]==item.matchPlays[0].matchCells[j].cellName){
+                    obj1.cellName = item.matchPlays[0].matchCells[j].cellName
+                    obj1.cellCode = item.matchPlays[0].matchCells[j].cellCode
+                    obj1.cellOdds = item.matchPlays[0].matchCells[j].cellOdds
+                    obj1.cellSons = item.matchPlays[0].matchCells[j].cellSons
+                  }
                 }
+              }else if(item.playType=='4'){
+                for(let j=0;j<item.matchPlays[0].matchCells.length;j++){
+                  if(item.myspf[i].split(':')[1]==item.matchPlays[0].matchCells[j].cellCode){
+                    obj1.cellName = item.matchPlays[0].matchCells[j].cellName
+                    obj1.cellCode = item.matchPlays[0].matchCells[j].cellCode
+                    obj1.cellOdds = item.matchPlays[0].matchCells[j].cellOdds
+                    obj1.cellSons = item.matchPlays[0].matchCells[j].cellSons
+                  }
+                }
+              }else if(item.playType=='7'){
+                  if(item.myspf[i]==item.matchPlays[0].homeCell.cellName){
+                    obj1.cellName = item.matchPlays[0].homeCell.cellName
+                    obj1.cellCode = item.matchPlays[0].homeCell.cellCode
+                    obj1.cellOdds = item.matchPlays[0].homeCell.cellOdds
+                    obj1.cellSons = item.matchPlays[0].homeCell.cellSons
+                  }else if(item.myspf[i]==item.matchPlays[0].visitingCell.cellName){
+                    obj1.cellName = item.matchPlays[0].visitingCell.cellName
+                    obj1.cellCode = item.matchPlays[0].visitingCell.cellCode
+                    obj1.cellOdds = item.matchPlays[0].visitingCell.cellOdds
+                    obj1.cellSons = item.matchPlays[0].visitingCell.cellSons
+                  }
               }
             }
             arr1.push(obj1)
@@ -308,6 +366,15 @@ export default {
           path: '/freebuy/payment',
           replace: false
         })
+      },
+      bfClick(c){
+        this.$store.state.mark_playObj.mark_playBox = true
+        if(this.$route.query.playType == '3'){
+          this.$store.state.mark_playObj.mark_play = '4'
+        }else{
+          this.$store.state.mark_playObj.mark_play = '5'
+        }
+        this.$store.state.mark_playObj.bfmatchId = c
       }
     },
     mounted(){
@@ -321,6 +388,9 @@ export default {
       },
       mupStatus(){
           return this.$store.state.mark_playObj.mupNum; 
+      },
+      bfMap() {
+          return this.$store.state.mark_playObj.bfIdSaveMapFlag;
       }
     },  
     watch: {
@@ -333,6 +403,11 @@ export default {
       },
       mupStatus(a,b){
         this.fetchData()
+      },
+      bfMap(a,b){
+        let n = this.$store.state.matchSelectedList  //初始化比赛条目
+        this.matchSelectObj = this.$store.state.mark_playObj.bfIdSaveMap
+        this.cshCz(n)
       }
     },
     beforeRouteLeave(to, from, next) {

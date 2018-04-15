@@ -5,15 +5,6 @@
 <!--账户明细-->
 <template>
     <div class="wrap">
-        <ul class="send" id='searchBar' :class="searchBarFixed?'isFixed':''">
-            <li class="cur"><p @click='curClick($event)'>全部</p></li>
-            <li><p @click='curClick($event)'>奖金</p></li>
-            <li><p @click='curClick($event)'>充值</p></li>
-            <li><p @click='curClick($event)'>购彩</p></li>
-            <li><p @click='curClick($event)'>提现</p></li>
-            <li><p @click='curClick($event)'>红包</p></li>
-        </ul>
-        <div class="zwf" v-show="searchBarFixed"></div>
         <section class="count">
             <mt-loadmore :bottom-method="loadBottom" :bottom-distance='-20' :auto-fill="false" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleTopChange" @scroll='handleScroll($event)'>
                 <div class="zhmxlist" v-for="(item,i) in mxList" :key='i' style="background: white;">

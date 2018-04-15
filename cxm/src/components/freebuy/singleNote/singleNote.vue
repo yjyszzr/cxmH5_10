@@ -53,6 +53,55 @@
                                 </p>
                             </div>
                         </div>
+                        <div class="matchRightbf" v-if="playType=='3'">
+                        <div class="bf_title">
+                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>VS</span>
+                            <span>{{item.visitingTeamAbbr}}</span>
+                        </div>
+                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item.matchId)">
+                            点击进行比分投注
+                        </div>
+                        <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item.matchId)">
+                            <span v-for="(data,index) in matchSelectObj.get(item.matchId)?Array.from(matchSelectObj.get(item.matchId)):[]" :key='index'>
+                                {{data}}&nbsp;
+                            </span>
+                        </div>
+                    </div>
+                    <div class="matchRightbf" v-if="playType=='5'">
+                        <div class="bf_title">
+                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>VS</span>
+                            <span>{{item.visitingTeamAbbr}}</span>
+                        </div>
+                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item.matchId)">
+                            点击进行半全场投注
+                        </div>
+                        <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item.matchId)">
+                            <span v-for="(data,index) in matchSelectObj.get(item.matchId)?Array.from(matchSelectObj.get(item.matchId)):[]" :key='index'>
+                                {{data}}&nbsp;
+                            </span>
+                        </div>
+                    </div>
+                    <div class="matchRightbf" v-if="playType=='7'">
+                        <div class="bf_title">
+                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>VS</span>
+                            <span>{{item.visitingTeamAbbr}}</span>
+                        </div>
+                        <div class="matchRightstoneBox">
+                            <p :class="item.myspf&&item.myspf.indexOf(item.matchPlays[0].homeCell.cellName)!=-1?'selected':''">
+                                <b class="mMark" @click="selectedTwoClick($event,item.matchPlays[0].homeCell.cellName)"></b>
+                                <span>{{item.matchPlays[0].homeCell.cellName}}</span>
+                                <span>{{item.matchPlays[0].homeCell.cellOdds}}</span>
+                            </p>
+                            <p :class="item.myspf&&item.myspf.indexOf(item.matchPlays[0].visitingCell.cellName)!=-1?'selected':''">
+                                <b class="mMark" @click="selectedTwoClick($event,item.matchPlays[0].visitingCell.cellName)"></b>
+                                <span>{{item.matchPlays[0].visitingCell.cellName}}</span>
+                                <span>{{item.matchPlays[0].visitingCell.cellOdds}}</span>
+                            </p>
+                        </div>
+                    </div>
                     </div>
                 </li>
             </ul>
@@ -111,6 +160,65 @@
                                     {{data.cellOdds}}
                                 </span>
                             </p>
+                        </div>
+                    </div>
+                    <div class="matchRightbf" v-if="playType=='3'">
+                        <div class="bf_title">
+                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>VS</span>
+                            <span>{{item.visitingTeamAbbr}}</span>
+                        </div>
+                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item.matchId)">
+                            点击进行比分投注
+                        </div>
+                        <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item.matchId)">
+                            <span v-for="(data,index) in matchSelectObj.get(item.matchId)?Array.from(matchSelectObj.get(item.matchId)):[]" :key='index'>
+                                {{data}}&nbsp;
+                            </span>
+                        </div>
+                    </div>
+                    <div class="matchRightbf" v-if="playType=='5'">
+                        <div class="bf_title">
+                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>VS</span>
+                            <span>{{item.visitingTeamAbbr}}</span>
+                        </div>
+                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item.matchId)">
+                            点击进行半全场投注
+                        </div>
+                        <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item.matchId)">
+                            <span v-for="(data,index) in matchSelectObj.get(item.matchId)?Array.from(matchSelectObj.get(item.matchId)):[]" :key='index'>
+                                {{data}}&nbsp;
+                            </span>
+                        </div>
+                    </div>
+                    <div class="matchRightbf" v-if="playType=='7'">
+                        <div class="bf_title">
+                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>VS</span>
+                            <span>{{item.visitingTeamAbbr}}</span>
+                        </div>
+                        <div class="matchRightstoneBox">
+                            <p :class="item.myspf&&item.myspf.indexOf(item.matchPlays[0].homeCell.cellName)!=-1?'selected':''">
+                                <b class="mMark" @click="selectedTwoClick($event,item.matchPlays[0].homeCell.cellName)"></b>
+                                <span>{{item.matchPlays[0].homeCell.cellName}}</span>
+                                <span>{{item.matchPlays[0].homeCell.cellOdds}}</span>
+                            </p>
+                            <p :class="item.myspf&&item.myspf.indexOf(item.matchPlays[0].visitingCell.cellName)!=-1?'selected':''">
+                                <b class="mMark" @click="selectedTwoClick($event,item.matchPlays[0].visitingCell.cellName)"></b>
+                                <span>{{item.matchPlays[0].visitingCell.cellName}}</span>
+                                <span>{{item.matchPlays[0].visitingCell.cellOdds}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="matchRightbf" v-if="playType=='6'">
+                        <div class="bf_title">
+                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>VS</span>
+                            <span>{{item.visitingTeamAbbr}}</span>
+                        </div>
+                        <div class="matchRightstoneBox">
+                            
                         </div>
                     </div>
                 </li>

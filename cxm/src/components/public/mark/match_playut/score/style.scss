@@ -1,7 +1,12 @@
- @import '../../../assets/css/function.scss';
+ @import '../../../../../assets/css/function.scss';
 .score{
   background: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 250;
   .table{
+    box-sizing: border-box;
     margin: 0 auto;
     border: 1px solid #f1f1f1;
     border-right: none;
@@ -21,35 +26,60 @@
       }
     }
     tr{
+      width: px2rem(640px);
+      display: flex;
+      flex-wrap: wrap;
       th{
         border:0;
-        width: px2rem(128px);
+        width: 20%;
         height: px2rem(88px);
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
         border-bottom: 1px solid #f1f1f1;
         border-right: 1px solid #f1f1f1;
-        line-height: px2rem(33px);
         font-size: px2rem(26px);
         color: #505050;
+        box-sizing: border-box;
+        position: relative;
+        b{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
         span{
           color: #9f9f9f;
           font-size: px2rem(22px);
         }
       }
-      .title0{
-        width: px2rem(46px);
-        font-size: px2rem(24px);
-        background: #f6ad41;
-        color: #fff;
+      .bfSelected{
+        background: #ea5504;
+        span{
+          color: white!important;
+        }
       }
-      .title1{
-        background: #65aadd;
-      }
-      .title2{
-        background: #85c36b;
-      }
-      .title3{
-        background: #eb6d8e;
+    }
+    .title0,.title1,.title2{
+      width: px2rem(46px);
+      font-size: px2rem(24px);
+      background: #f6ad41;
+      color: #fff;
+      text-align: center;
+      vertical-align: middle;
+      border: none;
+    }
+    .title1{
+      background: #65aadd;
+    }
+    .title2{
+      background: #85c36b;
+    }
+  }
+  .table:first-of-type,.table:last-of-type{
+    tr{
+      th:last-of-type{
+        width: 60%;
       }
     }
   }

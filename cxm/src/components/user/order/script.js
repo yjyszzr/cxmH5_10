@@ -21,6 +21,17 @@ export default {
           },
           replace: false
         })
+      },
+      jxtz(){
+        this.$router.push({
+          path: '/freebuy/singleNote',
+          query:{
+            id: this.orderObj.playType,
+            cltId: this.orderObj.lotteryPlayClassifyId,
+            ltId: this.orderObj.lotteryClassifyId
+          },
+          replace: false
+      })
       }
     },
     mounted(){
@@ -30,7 +41,7 @@ export default {
         api.getOrderDetail(data)
         .then(res => {
             if(res.code==0) {
-              //console.log(res)
+             // console.log(res)
               this.orderObj = res.data
             }else{
               Toast(res.msg)
@@ -40,5 +51,14 @@ export default {
         .catch(error => {
             Toast('网络错误')
         })
+    },
+    beforeRouteLeave(to, from, next) {
+      if(to.path!='/freebuy/payment'){
+        next()
+      }else{
+        this.$store.state.matchSelectedList = []
+        localStorage.removeItem('tab')
+        this.$router.push({path: '/'})
+      }
     }
 }

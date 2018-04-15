@@ -15,7 +15,6 @@ export default {
             loading: false,
             bottomStatus: '',
             allLoaded: false,
-            searchBarFixed: false
         }
     },
     beforeCreate() {
@@ -24,6 +23,24 @@ export default {
     created() {
 
     },
+    computed: {  
+        tabstatus() {  
+            return this.$store.state.recordTab; 
+        }
+      },  
+      watch: {
+        tabstatus(a,b){
+            Indicator.open()
+            this.mess = []
+            this.pageNum = 1
+            if (a == 'm1') {
+                this.msgType = 0
+            } else if (a == 'm2') {
+                this.msgType = 1
+            }
+            this.newsfetch()
+        }
+      },
     methods: {
         handleTopChange(status) {
             this.bottomStatus = status;
@@ -35,19 +52,6 @@ export default {
                 this.newsfetch()
                 this.$refs.loadmore.onBottomLoaded();
             }, 700)
-        },
-        curClick(c) {
-            $('.cur').removeClass('cur')
-            c.target.parentElement.className = 'cur'
-            Indicator.open()
-            this.mess = []
-            this.pageNum = 1
-            if (c.target.innerText == '通知') {
-                this.msgType = 0
-            } else if (c.target.innerText == '消息') {
-                this.msgType = 1
-            }
-            this.newsfetch()
         },
         newsfetch() {
             let data = {
@@ -76,5 +80,9 @@ export default {
     },
     mounted() {
         this.newsfetch()
+    },
+    beforeRouteLeave(to, from, next) {
+        next()
+        this.$store.state.recordTab = ''
     }
 }

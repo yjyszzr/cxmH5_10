@@ -29,7 +29,11 @@ const state = {
         mupNum: '5',   //倍数
         yhList: [],  //优惠券列表
         mybounsId: '',   //默认优惠券id
+        bfmatchId: '',  //选中比分的id
+        bfIdSaveMap: new Map(), //选取比分id，结果保存
+        bfIdSaveMapFlag: 0
     },
+    recordTab: '',  //个人中心子页导航
 }
 
 const mutations = {

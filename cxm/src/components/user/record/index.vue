@@ -6,11 +6,7 @@
 <template>
     <div class="wrap">
         <section>
-            <ul class="send" :class="searchBarFixed?'isFixed':''">
-                <li class="cur"><p @click='curClick($event)'>全部</p></li>
-                <li><p @click='curClick($event)'>中奖</p></li>
-                <li><p @click='curClick($event)'>待开奖</p></li>
-            </ul>
+            <!-- <v-userHeader :title='"投注明细"'></v-userHeader> -->
             <div class="zwf" v-show="searchBarFixed"></div>
             <mt-loadmore :bottom-method="loadBottom" :bottom-distance='-20' :auto-fill="false" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleTopChange" @scroll='handleScroll($event)'>
                 <div class="section cont" v-for="(item,i) in recordList" :key='i'>
