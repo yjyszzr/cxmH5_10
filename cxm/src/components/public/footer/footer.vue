@@ -4,7 +4,7 @@
                 <img src="../../../assets/img/dating.png">
                 <span>大厅</span>
             </router-link>
-            <router-link to='/'>
+            <router-link to='/lotteryResult'>
                 <img src="../../../assets/img/qiu.png">
                 <span>开奖</span>
             </router-link>

@@ -16,8 +16,10 @@ const state = {
     },
     findphone: '',   //找回密码手机号
     userInfo: {},   //个人信息
+
     freebuyId: '',   //玩法页面区分
     mark_show: false,  //控制遮罩
+    mark_show_type: 1, //遮罩显示类型
     matchObj: {},  //赛事列表
     matchSelectedList: [],  //选中赛事处理
     matchSaveInfo: {},   //付款接口数据保存

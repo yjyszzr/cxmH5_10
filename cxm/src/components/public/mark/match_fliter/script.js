@@ -1,4 +1,5 @@
 import api from '../../../../fetch/api.js'
+import time from '../data/data.vue'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 export default {
@@ -7,8 +8,12 @@ export default {
     return {
         matchFilterList: [],
         playType: this.$route.query.id,
+        mark_show_type: this.$store.state.mark_show_type
     };
   },
+    components:{
+      'v-time': time
+    },
   methods: {
     cancel() {
       this.$store.state.mark_show = false;

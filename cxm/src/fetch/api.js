@@ -177,4 +177,8 @@ export default {
     app(params){
         return fetchPost('payment/payment/app',params)
     },
+    //比赛结果
+    queryMatchResult(params){
+        return fetchPost('lottery/lottery/match/queryMatchResult',params)
+    },
 }

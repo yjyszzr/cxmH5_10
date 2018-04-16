@@ -86,7 +86,7 @@ export default {
               return '投注确认'
           }
       }else{
-          if(this.$route.path.split('/')[1]=='user'){
+          if(this.$route.path.split('/')[1]=='user' || this.$route.path.split('/')[1]=='lotteryResult'){
             this.isShowHeader=true
           }else{
             this.isShowHeader=false
@@ -95,6 +95,8 @@ export default {
           switch (this.$route.path.split('/')[1]) {
             case 'user':
               return "个人中心"
+              case 'lotteryResult':
+                  return "比赛结果"
           }
       }
     },

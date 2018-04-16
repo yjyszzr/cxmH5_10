@@ -1,6 +1,26 @@
 @import "../../../../assets/css/function.scss";
-.matchFilter {
+.match_f {
   width: px2rem(652px);
+  .look{
+    border-top: 1px dashed #f0f0f0;
+    padding-top: px2rem(34px);
+    padding-bottom: px2rem(34px);
+    margin-left: px2rem(20px);
+    color: #787878;
+    font-size: px2rem(24px);
+    p{
+      width: px2rem(190px);
+      height: px2rem(59px);
+      border: 1px solid #f0f0f0;
+      line-height: px2rem(59px);
+      text-align: center;
+      margin: px2rem(24px) 0 px2rem(32px);
+    }
+    p.lookactive{
+      color: white !important;
+      background: #e85504;
+    }
+  }
   .ft_title {
     text-align: center;
     font-size: px2rem(30px);

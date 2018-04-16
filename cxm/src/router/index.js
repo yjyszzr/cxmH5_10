@@ -217,6 +217,14 @@ const router = new Router({
           component: function (resolve) {
               require(['../components/freebuy/payment/index.vue'], resolve)
           },
+      },
+      {
+          path: '/lotteryResult',
+          name: 'result',
+          cname:'比赛结果',
+          component: function (resolve) {
+              require(['../components/lottery/result/index.vue'], resolve)
+          },
       }
   ]
 })
