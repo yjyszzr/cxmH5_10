@@ -7,7 +7,6 @@ export default {
     return {
         // define :[]
         playType: this.$route.query.id,
-        mark_show_type: this.$store.state.mark_show_type,
         cur_date:'',
     };
   },
@@ -41,7 +40,9 @@ computed: {
       cancel() {
           this.$store.state.mark_show = false;
       },
-      list_li(index){
+      list_li(c,index){
+          this.$store.state.mark_show = false;
+          this.$store.state.mark_showObj.mark_dateVal =c
           this.$refs.match_name.forEach(function(data_item,data_index){
               this.$refs.match_name[data_index].className = ''
           }, this)

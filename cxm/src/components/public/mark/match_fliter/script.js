@@ -7,8 +7,7 @@ export default {
   data() {
     return {
         matchFilterList: [],
-        playType: this.$route.query.id,
-        mark_show_type: this.$store.state.mark_show_type
+        playType: this.$route.query.id
     };
   },
     components:{
@@ -17,6 +16,7 @@ export default {
   methods: {
     cancel() {
       this.$store.state.mark_show = false;
+      this.$store.state.mark_Reset = 0
     },
     team(index) {
         if(this.$refs.match_name[index].className == 'filterActive') {
@@ -24,12 +24,14 @@ export default {
         } else {
             this.$refs.match_name[index].className = 'filterActive'
         }
+        this.$refs.lookac.className = ''
     },
     allFilter() {
         let arr = this.$refs.match_name
         for(let i = 0; i < arr.length; i++) {
             this.$refs.match_name[i].className = 'filterActive'
         }
+        this.$refs.lookac.className = ''
     },
     reserveFilter() {
         let arr = this.$refs.match_name
@@ -40,6 +42,7 @@ export default {
                 this.$refs.match_name[i].className = 'filterActive'
             }
         }
+        this.$refs.lookac.className = ''
     },
     hotFilter() {
         let arr = this.$refs.match_name
@@ -49,23 +52,54 @@ export default {
                 this.$refs.match_name[i].className = 'filterActive'
             }
         }
+        this.$refs.lookac.className = ''
+    },
+    lookClick(){
+        if(this.$refs.lookac.className == 'lookactive') {
+            this.$refs.lookac.className = ''
+        } else {
+            this.$refs.lookac.className = 'lookactive'
+            let arr = this.$refs.match_name
+            for(let i = 0; i < arr.length; i++) {
+                this.$refs.match_name[i].className = ''
+            }
+        }
     },
     confim(){
         let arr = this.$refs.match_name
         let arrTeam = []
         this.matchFilterList.forEach(item=>{
             for(let i=0;i<arr.length;i++){
-                if(arr[i].innerText==item.leagueAddr){
-                    arrTeam.push(item.leagueId)
+                if(arr[i].className == 'filterActive'){
+                    if(arr[i].innerText==item.leagueAddr){
+                        arrTeam.push(item.leagueId)
+                    }
                 }
             }
         })
-        let data = {
-            'leagueId': arrTeam.join(','),
-            'playType': this.playType
-        }
         Indicator.open()
-        this.$store.dispatch("getMatchList",data)
+        if(this.$route.path.split('/')[1]=='lotteryResult'){
+            if(this.$refs.lookac.className == 'lookactive'){
+                this.$store.state.mark_showObj.isAlreadyBuyMatch = '1'
+            }else{
+                this.$store.state.mark_showObj.isAlreadyBuyMatch = ''
+            }
+            this.$store.state.mark_showObj.leagueIds = arrTeam.join(',')
+            let data={
+                dateStr: this.$store.state.mark_showObj.mark_dateVal,
+                isAlreadyBuyMatch: this.$store.state.mark_showObj.isAlreadyBuyMatch,
+                leagueIds: this.$store.state.mark_showObj.leagueIds,
+                matchFinish: this.$store.state.mark_showObj.matchFinish
+            }
+            this.$store.dispatch("getResultList",data)
+        }else{
+            let data = {
+                'leagueId': arrTeam.join(','),
+                'playType': this.playType
+            }
+            this.$store.dispatch("getMatchList",data)
+            this.$store.state.mark_Reset++
+        }
         this.$store.state.mark_show = false
     }
   },

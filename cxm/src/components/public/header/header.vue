@@ -54,6 +54,7 @@ export default {
     },
     filter() {
       this.$store.state.mark_show = true;
+      this.$store.state.mark_showObj.mark_show_type = '2'
     },
     curClick(c){
         $('.cur').removeClass('cur')

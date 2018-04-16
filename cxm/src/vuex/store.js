@@ -16,10 +16,17 @@ const state = {
     },
     findphone: '',   //找回密码手机号
     userInfo: {},   //个人信息
-
     freebuyId: '',   //玩法页面区分
     mark_show: false,  //控制遮罩
-    mark_show_type: 1, //遮罩显示类型
+    mark_Reset: 0, //重制赛事数据
+    resultList: [],  //赛果列表
+    mark_showObj:{   //赛果遮罩
+        mark_show_type: 1, //遮罩显示类型
+        mark_dateVal: '',  //选中日期值
+        matchFinish: '', //全部
+        leagueIds: '', //更多条件
+        isAlreadyBuyMatch: '', //已购
+    },
     matchObj: {},  //赛事列表
     matchSelectedList: [],  //选中赛事处理
     matchSaveInfo: {},   //付款接口数据保存
@@ -93,6 +100,21 @@ const mutations = {
         .catch(error => {
             Toast('网络错误')
         })
+    },
+    RESULT(state,data){
+        api.queryMatchResult(data)
+                .then(res => {
+                    if(res.code==0) {
+                        //console.log(res)
+                        state.resultList = res.data
+                    }else{
+                        Toast(res.msg)
+                    }
+                    Indicator.close()
+                })
+                .catch(error => {
+                    Toast('网络错误')
+            })
     }
 }
 
@@ -105,6 +127,9 @@ const actions = {
     },
     getMatchList({commit}, value) {
         commit("MATCHLIST",value);
+    },
+    getResultList({commit}, value) {
+        commit("RESULT",value);
     },
 }
 

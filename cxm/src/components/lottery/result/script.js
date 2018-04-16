@@ -1,5 +1,6 @@
 import api from '../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
+import datefilter from '../../../util/datefilter'
 export default {
     name: 'result',
     beforeCreate() {
@@ -7,42 +8,76 @@ export default {
     },
     data () {
       return {
-          result:{}
+          result:{},
+          activeName: '1',
+          flag: true,
       }
     },
     created(){
       
     },
     mounted(){
-        let data={
-            dateStr:'2018-04-15',
-            isAlreadyBuyMatch:'',
-            leagueIds :[],
-        }
-        api.queryMatchResult(data)
-            .then(res => {
-                if(res.code==0) {
-                    console.log(res)
-                    this.result = res.data
-                }else{
-                    Toast(res.msg)
-                }
-                Indicator.close()
-            })
-            .catch(error => {
-                Toast('网络错误')
-            })
+        this.$store.state.mark_showObj.mark_dateVal  = datefilter(new Date().getTime(),2)
+        this.fetchData()
     },
+    computed: {
+        status() {
+          return this.$store.state.mark_showObj.mark_dateVal;
+        }
+      },
+      watch: {
+        status(a, b) {
+            this.$store.state.mark_showObj.mark_dateVal = a
+            Indicator.open()
+            this.fetchData()
+        }
+      },
     methods:{
         data_time(){
             this.$store.state.mark_show = true
-            this.$store.state.mark_show_type = 1
+            this.$store.state.mark_showObj.mark_show_type = 1
         },
         more(){
             this.$store.state.mark_show = true
-            this.$store.state.mark_show_type = 2
+            this.$store.state.mark_showObj.mark_show_type = 2
         },
-
+        all(c){
+            if(c.target.innerText == '全部'){
+                this.flag=false
+                this.$store.state.mark_showObj.matchFinish = '1'
+            }else{
+                this.flag=true
+                this.$store.state.mark_showObj.matchFinish = ''
+            }
+            Indicator.open()
+            this.fetchData()
+        },
+        fetchData(){
+            let data={
+                dateStr: this.$store.state.mark_showObj.mark_dateVal,
+                isAlreadyBuyMatch: this.$store.state.mark_showObj.isAlreadyBuyMatch,
+                leagueIds: this.$store.state.mark_showObj.leagueIds,
+                matchFinish: this.$store.state.mark_showObj.matchFinish
+            }
+            this.$store.dispatch("getResultList", data)
+        },
+        matchFilsh(){
+            let num = 0;
+            this.$store.state.resultList.forEach(item => {
+                if(item.matchFinish=='1'){
+                    num++
+                }
+            });
+            return num;
+        }
     },
-
+    beforeRouteLeave(to, from, next) {
+        next()
+        this.$store.state.mark_show = false
+        this.$store.state.mark_showObj.mark_show_type = ''
+        this.$store.state.mark_showObj.matchFinish = ''
+        this.$store.state.mark_showObj.mark_dateVal = ''
+        this.$store.state.mark_showObj.isAlreadyBuyMatch = ''
+        this.$store.state.mark_showObj.leagueIds = ''
+      }
 }

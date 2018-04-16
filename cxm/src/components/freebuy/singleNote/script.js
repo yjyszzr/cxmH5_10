@@ -350,6 +350,9 @@ export default {
   computed: {
     status() {
       return this.$store.state.mark_playObj.bfIdSaveMapFlag;
+    },
+    mark_obj(){
+      return this.$store.state.mark_Reset;
     }
   },
   watch: {
@@ -367,6 +370,11 @@ export default {
       }
       //console.log(this.$store.state.mark_playObj.bfIdSaveMap)
       // this.confirm_disable()
+    },
+    mark_obj(a,b){
+      if(a>0){
+        this.clear_match()
+      }
     }
   },
   mounted() {
@@ -412,9 +420,11 @@ export default {
   beforeRouteLeave(to, from, next) {
     next()
     this.$store.state.mark_playObj.mark_playBox = false
+    this.$store.state.mark_Reset = 0
     this.$store.state.mark_playObj.mark_play = ''
     this.$store.state.mark_show = false
     this.$store.state.mark_playObj.bfIdSaveMapFlag = 0
+    this.$store.state.mark_showObj.mark_show_type = ''
     localStorage.removeItem('tab')
   }
 }
