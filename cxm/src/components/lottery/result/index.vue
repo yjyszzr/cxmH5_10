@@ -13,7 +13,7 @@
             <el-collapse v-model="activeName">
                 <el-collapse-item name='1'>
                     <template slot="title" class="title">
-                        <span class="spfList">共有<span>{{$store.state.resultList.length}}</span>场比赛 已结束<span>{{matchFilsh()}}</span>场</span>
+                        <span class="spfList">共有{{$store.state.resultList.length}}场比赛 已结束<span>{{matchFilsh()}}</span>场</span>
                     </template>
                     <ul class="hotMatchList">
                         <li v-for="(list,i) in $store.state.resultList" :key='i'>
@@ -21,7 +21,7 @@
                             <div class="pink">
                                 <i><img src="../../../assets/img/img1.png"></i>
                                 <div>
-                                  <p>{{list.homeTeamAbbr}}<span>VS</span>{{list.visitingTeamAbbr}}</p>
+                                    <p><em>{{list.homeTeamAbbr}}</em><span>VS</span><em style="text-align: left">{{list.visitingTeamAbbr}}</em></p>
                                   <b>半场{{list.firstHalf}}<span>总比分{{list.whole}}</span></b>
                                 </div>
                                 <s><img src="../../../assets/img/img1.png"></s>
