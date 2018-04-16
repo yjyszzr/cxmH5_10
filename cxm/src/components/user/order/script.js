@@ -17,7 +17,8 @@ export default {
         this.$router.push({
           path: '/user/draw',
           query: {
-            id: c
+            id: c,
+            orderSn: this.orderObj.orderSn
           },
           replace: false
         })
@@ -41,7 +42,7 @@ export default {
         api.getOrderDetail(data)
         .then(res => {
             if(res.code==0) {
-             // console.log(res)
+             //console.log(res)
               this.orderObj = res.data
             }else{
               Toast(res.msg)

@@ -1,6 +1,7 @@
 import api from '../../../../fetch/api.js'
 import score from './score/index.vue'
 import bqc from './bqc/index.vue'
+import mix from './mix/index.vue'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 export default {
@@ -17,7 +18,8 @@ export default {
   },
   components:{
     'v-score': score,
-    'v-bqc': bqc
+    'v-bqc': bqc,
+    'v-mix': mix
   },
   methods: {
     closeMarkCz(){

@@ -68,6 +68,7 @@
             <!-- 比分，版全场 -->
             <v-score @closeMarkCz="closeMarkCz()" v-if="this.$store.state.mark_playObj.mark_play=='4'"></v-score>
             <v-bqc @closeMarkCz="closeMarkCz()" v-if="this.$store.state.mark_playObj.mark_play=='5'"></v-bqc>
+            <v-mix @closeMarkCz="closeMarkCz()" v-if="this.$store.state.mark_playObj.mark_play=='6'"></v-mix>
         </transition>
     </div>
 </template>

@@ -146,6 +146,60 @@
                     }
                 }
             }
+            .matchRighthhBox{
+                width: px2rem(540px);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border: 1px solid #f0f0f0;
+                box-sizing: border-box;
+                .team_left{
+                    flex: 6;
+                    .team_top,.team_bottom{
+                        display: flex;
+                        align-items: center;
+                        p{
+                            flex: 3;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: px2rem(26px);
+                            color: #999;
+                            height: px2rem(68px);
+                            background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
+                            background-size: 1px px2rem(30px); 
+                        }
+                        P:last-of-type{
+                            background: none;
+                        }
+                        p:first-of-type{
+                            flex: 1;
+                            background: #999;
+                            color: white;
+                            font-size: px2rem(24px);
+                        }
+                        p:nth-child(4n){
+                            border-right: none!important;
+                        }
+                    }
+                    .team_top{
+                        box-sizing: border-box;
+                        border-bottom: 1px solid #f0f0f0;
+                    }
+                }
+                .team_right{
+                    height: px2rem(136px);
+                    box-sizing: border-box;
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction:column;
+                    color: #505050; 
+                    font-size: px2rem(26px);
+                    border-left: 1px solid #f0f0f0;
+                }
+            }
             .matchRightBox{
                 box-sizing: border-box;
                 overflow: hidden;
@@ -189,6 +243,7 @@
             background: #e85504!important;
             border-right: 1px solid #fff;
             box-sizing: border-box;
+            color: #fff!important;
             span{
                 color: #fff!important;
             }

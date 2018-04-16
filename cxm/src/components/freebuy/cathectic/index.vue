@@ -9,10 +9,10 @@
         </section>
         <div style="padding-bottom: 3.2rem;">
             <section class="section" v-for="(item,i) in $store.state.matchSelectedList" :key='i'>
-                <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="item.matchPlays[0].single=='1'">
+                <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="item.matchPlays[0].single=='1'||(item.matchPlays[1]&&item.matchPlays[1].single=='1')">
                 <div class="cont">
                     <p class="cont_p" v-if="$route.query.playType=='1'||$route.query.playType=='2'">{{item.leagueAddr}} {{item.changci}} 截止{{datePd(item.matchTime)}}</p>
-                    <p class="cont_pt" v-if="$route.query.playType=='4'||$route.query.playType=='3'||$route.query.playType=='5'||$route.query.playType=='7'">
+                    <p class="cont_pt" v-if="$route.query.playType=='4'||$route.query.playType=='3'||$route.query.playType=='5'||$route.query.playType=='7'||$route.query.playType=='6'">
                         <span>{{item.homeTeamAbbr}}</span>
                         <span>VS</span>
                         <span>{{item.visitingTeamAbbr}}</span>
@@ -44,6 +44,13 @@
                                 <span>{{item.matchPlays[0].visitingCell.cellOdds}}</span>
                             </li>
                         </ul>
+                        <ul v-if="$route.query.playType=='6'" class="mixTz">
+                            <li @click="bfClick(item.matchId)">
+                                <span v-for="(data,index) in item.selectedList" :key='index'>
+                                    <b v-for="(a,index1) in data.betCells" :key='index1'>{{a.cellName}}&nbsp;</b>
+                                </span>
+                            </li>
+                        </ul>
                         <button :disabled='item.isDan' :class="item.isDan?'isdan':''" ref='isdan' @click="danClick(item,$event)">胆</button>
                     </div>
                 </div>
@@ -55,8 +62,10 @@
             <ul>
                 <li>
                     <button @click="cgClick()" v-show="disable==false">
-                        <p v-show='$store.state.matchSelectedList.length!=1||$store.state.matchSelectedList[0].matchPlays[0].single!="1"'>串关&nbsp;&nbsp;<span v-for="(item,i) in $store.state.mark_playObj.playutText" :key='i'>{{item.split('&')[0]}}串{{item.split('&')[1]}}</span><i></i></p>
-                        <p v-show='$store.state.matchSelectedList.length==1&&$store.state.matchSelectedList[0].matchPlays[0].single=="1"'>单关<i></i></p>
+                        <p v-show='!$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.matchSelectedList.length!=1||$store.state.matchSelectedList[0].matchPlays[0].single!="1")'>串关&nbsp;&nbsp;<span v-for="(item,i) in $store.state.mark_playObj.playutText" :key='i'>{{item.split('&')[0]}}串{{item.split('&')[1]}}</span><i></i></p>
+                        <p v-show='!$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.matchSelectedList.length==1&&$store.state.matchSelectedList[0].matchPlays[0].single=="1")'>单关<i></i></p>
+                        <p v-show='$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.matchSelectedList.length!=1||$store.state.matchSelectedList[0].matchPlays[1].single!="1")'>串关&nbsp;&nbsp;<span v-for="(item,i) in $store.state.mark_playObj.playutText" :key='i'>{{item.split('&')[0]}}串{{item.split('&')[1]}}</span><i></i></p>
+                        <p v-show='$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.matchSelectedList.length==1&&$store.state.matchSelectedList[0].matchPlays[1].single=="1")'>单关<i></i></p>
                     </button>
                     <button disabled='true' v-show="disable==true">
                         请重新选择比赛

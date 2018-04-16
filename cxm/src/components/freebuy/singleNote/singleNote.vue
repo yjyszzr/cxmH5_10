@@ -10,7 +10,7 @@
             </template>
             <ul class="hotMatchList">
                 <li v-for="(data,i) in $store.state.matchObj.hotPlayList" :key='i' :id='data.matchId' :class="data.matchPlays[0].single=='1'?'single':''">
-                    <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="data.matchPlays[0].single=='1'">
+                    <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="data.matchPlays[0].single=='1'||(item.matchPlays[1]&&item.matchPlays[1].single=='1')">
                     <div class="matchLeft">
                         <span>{{data.leagueAddr}}</span>
                         <span>{{data.changci}}</span>
@@ -102,6 +102,37 @@
                             </p>
                         </div>
                     </div>
+                    <div class="matchRightbf" v-if="playType=='6'">
+                        <div class="bf_title">
+                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>VS</span>
+                            <span>{{item.visitingTeamAbbr}}</span>
+                        </div>
+                        <div class="matchRighthhBox">
+                            <div class="team_left">
+                                <div class="team_top">
+                                    <p>0</p>
+                                    <p :class="item.matchPlays[1].homeCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].homeCell.cellName}} {{item.matchPlays[1].homeCell.cellOdds}}</p>
+                                    <p :class="item.matchPlays[1].flatCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].flatCell.cellName}} {{item.matchPlays[1].flatCell.cellOdds}}</p>
+                                    <p :class="item.matchPlays[1].visitingCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].visitingCell.cellName}} {{item.matchPlays[1].visitingCell.cellOdds}}</p>
+                                </div>
+                                <div class="team_bottom">
+                                    <p :style="{'background':item.matchPlays[0].fixedOdds.substr(0,1)=='+'?'orange':'green'}">{{item.matchPlays[0].fixedOdds}}</p>
+                                    <p :class="item.matchPlays[0].homeCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].homeCell.cellName}} {{item.matchPlays[0].homeCell.cellOdds}}</p>
+                                    <p :class="item.matchPlays[0].flatCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].flatCell.cellName}} {{item.matchPlays[0].flatCell.cellOdds}}</p>
+                                    <p :class="item.matchPlays[0].visitingCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].visitingCell.cellName}} {{item.matchPlays[0].visitingCell.cellOdds}}</p>
+                                </div>
+                            </div>
+                            <div class="team_right" v-if="item.selectedNum<=0" @click="bfBtn(item.matchId)">
+                                <span>更多</span>
+                                <span>玩法</span>
+                            </div>
+                            <div class="team_right" v-if="item.selectedNum>0" @click="bfBtn(item.matchId)">
+                                <span>已选</span>
+                                <span><b style="color: #ea5504;font-wight: 400;">{{item.selectedNum}}</b>项</span>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </li>
             </ul>
@@ -112,7 +143,7 @@
             </template>
             <ul class="hotMatchList">
                 <li v-for="(item,index) in data.playList" :key='index' :id='item.matchId' :class="item.matchPlays[0].single=='1'?'single':''">
-                    <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="item.matchPlays[0].single=='1'">
+                    <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="item.matchPlays[0].single=='1'||(item.matchPlays[1]&&item.matchPlays[1].single=='1')">
                     <div class="matchLeft">
                         <span>{{item.leagueAddr}}</span>
                         <span>{{item.changci}}</span>
@@ -217,8 +248,29 @@
                             <span>VS</span>
                             <span>{{item.visitingTeamAbbr}}</span>
                         </div>
-                        <div class="matchRightstoneBox">
-                            
+                        <div class="matchRighthhBox">
+                            <div class="team_left">
+                                <div class="team_top">
+                                    <p>0</p>
+                                    <p :class="item.matchPlays[1].homeCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].homeCell.cellName}} {{item.matchPlays[1].homeCell.cellOdds}}</p>
+                                    <p :class="item.matchPlays[1].flatCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].flatCell.cellName}} {{item.matchPlays[1].flatCell.cellOdds}}</p>
+                                    <p :class="item.matchPlays[1].visitingCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].visitingCell.cellName}} {{item.matchPlays[1].visitingCell.cellOdds}}</p>
+                                </div>
+                                <div class="team_bottom">
+                                    <p :style="{'background':item.matchPlays[0].fixedOdds.substr(0,1)=='+'?'orange':'green'}">{{item.matchPlays[0].fixedOdds}}</p>
+                                    <p :class="item.matchPlays[0].homeCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].homeCell.cellName}} {{item.matchPlays[0].homeCell.cellOdds}}</p>
+                                    <p :class="item.matchPlays[0].flatCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].flatCell.cellName}} {{item.matchPlays[0].flatCell.cellOdds}}</p>
+                                    <p :class="item.matchPlays[0].visitingCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].visitingCell.cellName}} {{item.matchPlays[0].visitingCell.cellOdds}}</p>
+                                </div>
+                            </div>
+                            <div class="team_right" v-if="item.selectedNum<=0" @click="bfBtn(item.matchId)">
+                                <span>更多</span>
+                                <span>玩法</span>
+                            </div>
+                            <div class="team_right" v-if="item.selectedNum>0" @click="bfBtn(item.matchId)">
+                                <span>已选</span>
+                                <span><b style="color: #ea5504;font-wight: 400;">{{item.selectedNum}}</b>项</span>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -226,6 +278,7 @@
         </el-collapse-item>
         </el-collapse>
         <div class="match_footer">
+            <i style="display:none;">{{$store.state.mark_playObj.bfIdSaveMapFlag}}</i>
             <div class="match_footer_left">
                 <div class="match_delete" @click="clear_match()">
                     <img src="../../../assets/img/freebuy_img/trashbin@2x.png" alt="">

@@ -34,6 +34,7 @@ const state = {
         bfIdSaveMapFlag: 0
     },
     recordTab: '',  //个人中心子页导航
+    chushihuaObj: {},  //初始化数据保存
 }
 
 const mutations = {
@@ -69,8 +70,19 @@ const mutations = {
         api.getMatchList(data)
         .then(res => {
             if(res.code==0) {
-            console.log(res)
+                console.log(res)
             state.matchObj = res.data
+            state.matchObj.hotPlayList.forEach(item => {
+                item.selectedNum = 0
+                item.selectedList = []
+            });
+            state.matchObj.playList.forEach(item => {
+                for(let i =0 ;i<item.playList.length;i++){
+                    item.playList[i].selectedNum = 0
+                    item.playList[i].selectedList = []
+                }
+            });
+            state.chushihuaObj = JSON.parse(JSON.stringify(state.matchObj))
             }else{
             Toast(res.msg)
             }

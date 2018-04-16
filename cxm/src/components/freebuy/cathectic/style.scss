@@ -32,7 +32,6 @@
        }
      }
      .mat_cen{
-       height: px2rem(106px);
        display: flex;
        align-items: center;
        justify-content: space-between;
@@ -178,6 +177,17 @@
             opacity: 0;
             z-index: 5;
            }
+        }
+       }
+       .mixTz{
+        li{
+          border: 1px solid #f0f0f0;
+         width: px2rem(486px);
+         line-height: px2rem(56px);
+         text-align: center;
+         padding: 0 px2rem(30px);
+         background: #ea5504;
+         color: white;
         }
        }
         button{

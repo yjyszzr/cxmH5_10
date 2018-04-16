@@ -14,6 +14,7 @@ export default {
     },
     mounted(){
       let data = {
+        'orderSn': this.$route.query.orderSn,
         'programmeSn': this.id
       }
       api.getTicketScheme(data)
