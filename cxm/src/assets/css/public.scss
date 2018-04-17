@@ -552,3 +552,8 @@ textarea {
 .mint-indicator-mask{
   z-index: 10000;
 }
+@media only screen and (device-width: 375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
+  .foot {
+    padding-bottom:34px;
+  }
+}
