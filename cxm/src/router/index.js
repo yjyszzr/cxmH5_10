@@ -225,6 +225,14 @@ const router = new Router({
           component: function (resolve) {
               require(['../components/lottery/result/index.vue'], resolve)
           },
+      },
+      {
+          path: '/lottery/teamDetail',
+          name: 'teamDetail',
+          cname:'球队详情',
+          component: function (resolve) {
+              require(['../components/lottery/teamDetail/index.vue'], resolve)
+          },
       }
   ]
 })
