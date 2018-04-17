@@ -101,9 +101,17 @@
               //display: block;
               color: #505050;
               font-size: px2rem(32px);
-              height: px2rem(30px);
-              line-height: px2rem(30px);
+              height: px2rem(35px);
+              line-height: px2rem(35px);
              display: inline;
+             em{
+               width: px2rem(180px);
+               text-align: right;
+               word-break:keep-all;
+               white-space:nowrap;
+               overflow:hidden;
+               text-overflow:ellipsis;
+             }
              span{
                color: #9f9f9f;
                display: inline;
