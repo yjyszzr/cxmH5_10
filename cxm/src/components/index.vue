@@ -106,7 +106,7 @@
     <div class="section center">
       <p class="boll">竞彩足球</p>
       <ul>
-        <li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.playClassifyId,item.playType,item.lotteryId)">
+        <li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.playType,item.playType,item.lotteryId)">
           <img :src="item.playClassifyImg" class="entry_icon">
           <p>{{item.playClassifyName}}</p>
           <img src="../assets/img/Awards@2x.png" class="entry_status" alt="" v-if="item.playClassifyLabelId=='3'">

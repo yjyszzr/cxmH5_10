@@ -1,13 +1,13 @@
-<style lang='scss' scoped src='./style.scss'>
+<style lang='scss' src='./style.scss'>
 
 </style>
 
 
 <!--我的-->
 <template>
-    <div class="wrap">
+    <div class="user">
         <mt-loadmore :top-method="loadTop" ref="loadmore" @top-status-change="handleTopChange">
-        <section class="center">
+        <div class="center">
             <div class="portrait clearfix">
                 <div class="people">
                     <img src="../../../assets/img/portrait.png" v-if="userInfo.headimg==''">
@@ -33,8 +33,8 @@
                 <router-link to='/user/recharge'>充值</router-link>
                 <router-link to="/user/withdraw">提现</router-link>
             </div>
-        </section>
-        <section class="section">
+        </div>
+        <div class="section">
             <ul class="msg_list">
                 <li>
                     <router-link to="/user/record">
@@ -55,7 +55,7 @@
                         <div>
                             <img src="../../../assets/img/coupon.png">
                             <span class="arrow_right float_right"></span>
-                            <span class="message">我的卡卷<em></em></span>
+                            <span class="message">我的卡券<em></em></span>
                         </div>
                     </router-link>
                     <router-link to='/user/message'>
@@ -67,8 +67,8 @@
                     </router-link>
                 </li>
             </ul>
-        </section>
-        <section class="section">
+        </div>
+        <div class="section">
             <ul class="msg_list">
                 <li>
                     <a>
@@ -94,10 +94,10 @@
                     </router-link>
                 </li>
             </ul>
-        </section>
-        <section class="button" @click="loginout()">
-            <a class="determine">退出登录</a>
-        </section>
+        </div>
+        <div class="button" @click="loginout()">
+            退出登录
+        </div>
         </mt-loadmore>
     </div>
 </template>

@@ -115,7 +115,4 @@ export default {
       this.list = new Set(this.$store.state.mark_playObj.playutText)
     }
   },
-  mounted(){
-
-  },
 };

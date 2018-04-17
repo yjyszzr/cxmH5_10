@@ -28,6 +28,8 @@
     </ul>
     <section class="button">
       <a class="determine" @click="_login">登录</a>
+    </section>
+    <section class="buttonZc">
       <router-link to='/user/register' class="mine">新用户注册</router-link>
     </section>
     <section class="forget">

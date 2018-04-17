@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-header :title='title()' :menu-display="menuDisplay()" v-show='isShowHeader'></v-header>
+    <v-headertop :title='title()' :menu-display="menuDisplay()" v-show='isShowHeader'></v-headertop>
     <div id='content' class="content">
         <!-- <transition  mode="out-in" enter-active-class='bounce-enter' leave-active-class="bounce-leave">
             <router-view></router-view>
@@ -16,183 +16,476 @@
 </template>
 
 <script>
-import header from './components/public/header/header'
-import footer from './components/public/footer/footer'
-import mark from './components/public/mark/mark'
-import pmark from './components/public/mark/match_playut/mark_playut'
+import HeaderTop from "./components/public/header/Header";
+import footer from "./components/public/footer/footer";
+import mark from "./components/public/mark/mark";
+import pmark from "./components/public/mark/match_playut/mark_playut"
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    'v-header': header,
-    'v-footer': footer,
-    'v-mark': mark,
-    'v-pmark': pmark
+    "v-headertop": HeaderTop,
+    "v-footer": footer,
+    "v-mark": mark,
+    "v-pmark": pmark
   },
-  data(){
+  data() {
     return {
       isShowHeader: false
-    }
+    };
   },
   methods: {
-    title () {
-      if(this.$route.path.split('/')[2]){
-          this.isShowHeader=true
-          switch (this.$route.path.split('/')[2]) {
-            case 'register':
-              return '注册'
-            case 'password':
-              return '密码登录'
-            case 'sms':
-              return '短信登录'
-            case 'find':
-              return '找回密码'
-            case 'revise':
-              return '修改密码'
-            case 'about':
-              return '关于我们'
-            case 'detail':
-              return '优惠券'
-            case 'certification':
-              return '实名认证'
-            case 'insurance':
-              return '安全保障'
-            case 'suggestion':
-              return '投诉建议'
-            case 'recharge':
-              return '充值'
-            case 'withdraw':
-              return '提现'
-            case 'record':
-              return '投注记录'
-            case 'add_card':
-              return '添加银行卡'
-            case 'credit_card':
-              return '管理银行卡'
-            case 'account':
-              return '账户明细'
-            case 'message':
-              return '消息中心'
-            case 'order':
-              return '订单详情'
-            case 'draw':
-              return '出票方案'
-              case 'payment':
-                  return '支付订单'
-            case 'singleNote':
-              if(this.$store.state.freebuyId=='1'){
-                return '胜平负'
-              }
-            case 'cathectic':
-              return '投注确认'
-          }
-      }else{
-          if(this.$route.path.split('/')[1]=='user' || this.$route.path.split('/')[1]=='lotteryResult'){
-            this.isShowHeader=true
-          }else{
-            this.isShowHeader=false
-          }
-          //this.isShowHeader=false
-          switch (this.$route.path.split('/')[1]) {
-            case 'user':
-              return "个人中心"
-              case 'lotteryResult':
-                  return "比赛结果"
-          }
+    title() {
+      if (this.$route.path.split("/")[2]) {
+        this.isShowHeader = true;
+        switch (this.$route.path.split("/")[2]) {
+          case "register":
+            return "注册";
+          case "password":
+            return "密码登录";
+          case "sms":
+            return "短信登录";
+          case "find":
+            return "找回密码";
+          case "revise":
+            return "修改密码";
+          case "about":
+            return "关于我们";
+          case "detail":
+            return "优惠券";
+          case "certification":
+            return "实名认证";
+          case "insurance":
+            return "安全保障";
+          case "suggestion":
+            return "投诉建议";
+          case "recharge":
+            return "充值";
+          case "withdraw":
+            return "提现";
+          case "record":
+            return "投注记录";
+          case "add_card":
+            return "添加银行卡";
+          case "credit_card":
+            return "管理银行卡";
+          case "account":
+            return "账户明细";
+          case "message":
+            return "消息中心";
+          case "order":
+            return "订单详情";
+          case "draw":
+            return "出票方案";
+          case "payment":
+            return "支付订单";
+          case "singleNote":
+            if (this.$store.state.freebuyId == "2") {
+              return "胜平负";
+            } else if (this.$store.state.freebuyId == "1") {
+              return "让球胜平负";
+            } else if (this.$store.state.freebuyId == "4") {
+              return "总进球";
+            } else if (this.$store.state.freebuyId == "5") {
+              return "半全场";
+            } else if (this.$store.state.freebuyId == "3") {
+              return "比分";
+            } else if (this.$store.state.freebuyId == "7") {
+              return "2选1";
+            } else if (this.$store.state.freebuyId == "6") {
+              return "混合投注";
+            }
+          case "cathectic":
+            return "投注确认";
+        }
+      } else {
+        if (
+          this.$route.path.split("/")[1] == "user" ||
+          this.$route.path.split("/")[1] == "lotteryResult"
+        ) {
+          this.isShowHeader = true;
+        } else {
+          this.isShowHeader = false;
+        }
+        //this.isShowHeader=false
+        switch (this.$route.path.split("/")[1]) {
+          case "user":
+            return "个人中心";
+          case "lotteryResult":
+            return "比赛结果";
+        }
       }
     },
-    menuDisplay () {
-        if (this.$route.path.split('/')[2] == 'singleNote') {
-          return true
-        } else {
-          return false
-        }
-    },
-  },
-}
+    menuDisplay() {
+      if (this.$route.path.split("/")[2] == "singleNote") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+};
 </script>
 
 <style lang='scss'>
-    @import "./assets/css/public.scss";
-    body ,html{
-        background-color: #f5f5f5;
-        height: 100%;
-    }
+@import "./assets/css/public.scss";
+@import "./assets/css/function.scss";
+body,
+html {
+  background-color: #f5f5f5;
+  height: 100%;
+}
 
-    .color {
-        background-color: #ffffff;
-    }
-    
-    a:hover {
-      text-decoration: none;
-    }
+.color {
+  background-color: #ffffff;
+}
 
-    #app {
-      font-family: 'Avenir', Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      height: 100%;
-      background: #F5F5F5;
-      display: flex;
-      flex-flow: column;
-      justify-content: space-between;
-      align-items: center;
-      .content{
-        width: 100%;
-        flex-grow: 1;
-        flex-shrink: 1;
-        overflow: scroll;
-        padding-bottom: px2rem(20px);
-        -webkit-overflow-scrolling: touch!important;
-      }
-      // .tabar {
-      //   margin-bottom: px2rem(120px);
-      // }
-      //渐变动效
-      // .slide-left-enter-active,
-      // .slide-left-leave-active {
-      //   transition: all .1s ease-in;
-      //   opacity: 1;
-      // }
-      // .slide-left-enter,
-      // .slide-left-leave-active {
-      //   opacity: 0;
-      // }
-      /*
-      从右至左切入
-      */
-      .bounce-enter {
-        animation: bounce-in .3s;
-      }
-      .bounce-leave {
-        animation: bounce-out .3s;
-      }
-      .fade-enter-active, .fade-leave-active {
-        transition: opacity .3s
-      }
-      .fade-enter, .fade-leave-active {
-        opacity: 0
-      }
-    }
+a:hover {
+  text-decoration: none;
+}
 
-    @keyframes bounce-in {
-      0% {
-        opacity: 0;
-        -webkit-transform: translateX(100%);
-      }
-      100% {
-        opacity: 1;
-        -webkit-transform: translateX(0);
-      }
-    }
-    @keyframes bounce-out {
-      0% {
-        opacity: 0;
-        -webkit-transform: translateX(0);
-      }
-      100% {
-        opacity: 1;
-        -webkit-transform: translateX(-100%);
-      }
-    }
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  background: #f5f5f5;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  .content {
+    width: 100%;
+    overflow: scroll;
+    padding-bottom: 0.2rem;
+    -webkit-overflow-scrolling: touch !important;
+    position: relative;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+  }
+  .bounce-enter {
+    animation: bounce-in 0.3s;
+  }
+  .bounce-leave {
+    animation: bounce-out 0.3s;
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.3s;
+  }
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0;
+  }
+}
 
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+@keyframes bounce-out {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+.button {
+  margin: px2rem(30px) auto 0;
+  width: 90%;
+  color: #fff;
+  height: px2rem(98px);
+  line-height: px2rem(98px);
+  text-align: center;
+  font-size: px2rem(30px);
+  background: #e95504;
+  display: block;
+  border: none;
+  a {
+    color: white;
+  }
+}
+
+.mint-cell {
+  height: px2rem(87px);
+  line-height: px2rem(87px);
+  min-height: 0;
+  .mint-cell-wrapper {
+    padding: 0;
+    font-size: px2rem(20px);
+    background-size: 120% 0;
+  }
+}
+
+/*
+  空状态公用
+*/
+
+.nullstatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: px2rem(350px);
+  img {
+    width: px2rem(96px);
+    margin-bottom: px2rem(10px);
+  }
+  span {
+    font-size: px2rem(26px);
+    color: #999;
+  }
+}
+
+/*
+      上拉动画
+    */
+
+.mint-spinner-double-bounce {
+  margin: 0 auto;
+}
+
+/*
+       弹窗样式
+     */
+
+.mint-msgbox {
+  .mint-msgbox-title {
+    font-size: px2rem(32px);
+  }
+  .mint-msgbox-message {
+    font-size: px2rem(32px);
+  }
+  .mint-msgbox-btn {
+    font-size: px2rem(26px);
+  }
+}
+
+input,
+textarea {
+  -webkit-appearance: none;
+  border: 1px solid #ccc;
+  /* 方法2 */
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* 
+折叠面板样式
+*/
+.el-collapse {
+  border: none;
+  .el-collapse-item {
+    margin-bottom: px2rem(10px);
+  }
+  .el-collapse-item__content {
+    padding-bottom: px2rem(22px);
+  }
+  .el-collapse-item__arrow {
+    margin-right: px2rem(30px);
+  }
+}
+.el-collapse-item__header {
+  height: px2rem(72px);
+  line-height: px2rem(72px);
+  font-size: px2rem(28px);
+  padding-left: px2rem(24px);
+  border-bottom: none;
+  .el-collapse-item__arrow {
+    line-height: px2rem(72px);
+  }
+}
+
+.mint-indicator-mask {
+  z-index: 10000;
+}
+.section {
+  background: #fff;
+  margin-top: px2rem(20px);
+}
+/*表单*/
+
+.msg_list {
+  position: relative;
+  line-height: px2rem(87px);
+  min-height: px2rem(87px);
+  background: #fff;
+}
+
+.msg_list li {
+  width: 100%;
+  display: block;
+}
+
+.msg_list li > a {
+  display: block;
+  position: relative;
+  margin-left: px2rem(30px);
+  margin-right: px2rem(30px);
+  border-bottom: 1px solid #e5e5e5;
+  height: px2rem(87px);
+  padding: 0 px2rem(20px);
+}
+
+.msg_list li > a:last-child {
+  border-bottom: none;
+}
+
+.msg_list li > a:after {
+  content: "";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  zoom: 0;
+}
+
+.msg_list li > a > div img {
+  float: left;
+  width: px2rem(40px);
+  padding-top: px2rem(22px);
+  margin-right: px2rem(15px);
+}
+
+.msg_list li > a > div .text {
+  width: 90%;
+  float: left;
+  border: none;
+  height: px2rem(87px); //line-height: px2rem(109px);
+}
+
+.msg_list li > a > div em {
+  position: absolute;
+  right: px2rem(0px);
+}
+
+.msg_list li > a > div {
+  display: block;
+  position: relative;
+  height: px2rem(88px);
+}
+
+.msg_list li > a > div .text1 {
+  width: 50%;
+  float: left;
+  border: none;
+  height: px2rem(87px); //line-height: px2rem(87px);
+}
+
+.msg_list li > a > div button {
+  color: #a0a0a0;
+  font-size: px2rem(30px);
+  height: px2rem(60px);
+  line-height: px2rem(60px);
+  display: block;
+  float: right;
+  border: none;
+  border-left: 1px solid #f1f1f1;
+  padding-left: px2rem(20px);
+  margin-top: px2rem(15px);
+  background: none;
+}
+
+.msg_list .message {
+  position: relative;
+  float: left;
+  margin: 0;
+  height: auto;
+  width: 25%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #787878;
+  font-size: px2rem(26px);
+}
+
+.msg_list .message em {
+  width: px2rem(18px);
+  height: px2rem(18px);
+  background: #e95504;
+  border-radius: 50%;
+  margin-top: px2rem(35px);
+}
+
+.arrow_right {
+  position: relative;
+  display: block;
+  width: 17px;
+  height: px2rem(87px);
+  background: url(./assets/img/arange.png) no-repeat;
+  background-position: right center;
+  background-size: auto 30%;
+}
+
+.arrow_kefu {
+  position: relative;
+  display: block;
+  /*width:17px;*/
+  height: px2rem(87px);
+  background-position: right center;
+  background-size: auto 30%;
+  font-size: px2rem(26px);
+  color: #a0a0a0;
+}
+
+.msg_list li a > div > label {
+  float: left;
+  color: #505050;
+  font-size: px2rem(30px);
+}
+.float_right {
+  float: right;
+}
+
+.ment {
+  text-align: center;
+  color: #A0A0A0;
+  font-size: px2rem(26px);
+  margin-top: px2rem(15px);
+}
+
+.ment span {
+  color: #787878;
+}
+
+.prompt {
+  width: px2rem(540px);
+  height: px2rem(80px);
+  color: #F7931E;
+  font-size: px2rem(26px);
+  background: #eaeaea;
+  text-align: center;
+  line-height: px2rem(80px);
+  margin: px2rem(50px) auto;
+  display: none;
+}
+
+.forget {
+  padding: 0 px2rem(35px);
+  height: px2rem(70px);
+  line-height: px2rem(70px);
+}
+
+.forget .x_in {
+  color: #787878;
+  font-size: px2rem(26px);
+  float: left;
+}
+
+.forget .x_sel {
+  color: #F7931E;
+  font-size: px2rem(26px);
+  float: right;
+}
 </style>

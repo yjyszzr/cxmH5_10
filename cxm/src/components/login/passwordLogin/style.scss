@@ -6,3 +6,17 @@
     margin-right: px2rem(15px);
     display: none;
   }
+  .buttonZc{
+    display: block;
+    width: 90%;
+    margin: 0.3rem auto;
+    a{
+      display: block;
+      height: 1.187rem;
+      border: 1px solid #e95504;
+      color: #e95504;
+      text-align: center;
+      line-height: 1.187rem;
+      font-size: px2rem(28px);
+    }
+  }

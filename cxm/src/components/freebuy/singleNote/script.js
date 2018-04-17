@@ -52,6 +52,7 @@ export default {
       }
     },
     bfBtn(c) {
+      console.log(1)
       this.$store.state.mark_playObj.mark_playBox = true
       if (this.playType == '3') {
         this.$store.state.mark_playObj.mark_play = '4'

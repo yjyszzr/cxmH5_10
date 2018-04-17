@@ -1,19 +1,22 @@
 <template>
-    <div class="header">
+    <div class="Header">
         <div class="headerTop">
             <a @click="return_back()" class="go_return"></a>
-            <p>彩小秘·{{title}}</p>
-            <p class="filter" v-show="menuDisplay">
+            <p class="headerText">彩小秘·{{title}}</p>
+            <p class="filter" v-show="menuDisplay==true">
                 <span @click='filter()'>筛选</span>
                 <span>帮助</span>
             </p>
+            <p class="filter" v-show="menuDisplay==false">
+                
+            </p>
         </div>
-        <ul class="send" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='record'">
+        <ul class="send" v-show="$route.path.split('/')[2]&&$route.path.split('/')[2]=='record'">
             <li class="cur"><p @click='curClick($event)'>全部</p></li>
             <li><p @click='curClick($event)'>中奖</p></li>
             <li><p @click='curClick($event)'>待开奖</p></li>
         </ul>
-        <ul class="sendaccount" id='searchBar' v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
+        <ul class="sendaccount" id='searchBar' v-show="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
             <li class="cur"><p @click='curClick1($event)'>全部</p></li>
             <li><p @click='curClick1($event)'>奖金</p></li>
             <li><p @click='curClick1($event)'>充值</p></li>
@@ -21,12 +24,12 @@
             <li><p @click='curClick1($event)'>提现</p></li>
             <li><p @click='curClick1($event)'>红包</p></li>
         </ul>
-        <ul class="senddetail" id='searchBar' v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='detail'">
+        <ul class="senddetail" id='searchBar' v-show="$route.path.split('/')[2]&&$route.path.split('/')[2]=='detail'">
             <li class="cur"><p @click='curClick2($event)'>未使用</p></li>
             <li><p @click='curClick2($event)'>已使用</p></li>
             <li><p @click='curClick2($event)'>已过期</p></li>
         </ul>
-        <ul class="send" id='searchBar' v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='message'">
+        <ul class="send" id='searchBar' v-show="$route.path.split('/')[2]&&$route.path.split('/')[2]=='message'">
             <li class="cur"><p @click='curClick3($event)'>通知</p></li>
             <li><p @click='curClick3($event)'>消息</p></li>
         </ul>
@@ -35,7 +38,7 @@
 
 <script>
 export default {
-  name: "header",
+  name: "Header",
   props: {
     title: String,
     menuDisplay: Boolean
@@ -109,21 +112,50 @@ export default {
 </script>
 
 
-<style lang='scss'>
+<style lang='scss' scoped>
 @import "../../../assets/css/function.scss";
-.header {
+.Header {
   width: 100%;
-  .filter {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
+  .headerTop {
+    overflow: hidden;
+    height: px2rem(100px);
+    background: #f4f4f4;
     display: flex;
-    padding-right: px2rem(29px);
-    span {
-      display: block;
+    align-items: center;
+    justify-content: space-between;
+    .go_return {
+      flex: 1;
+      // padding-left: px2rem(80px);
       height: 100%;
-      padding: 0 px2rem(5px);
+      background: url('../../../assets/img/ret.png') no-repeat;
+      background-position: px2rem(34px) center;
+      background-size: px2rem(30px) auto;
+      vertical-align: middle;
+    }
+    .filter {
+      flex: 1;
+      display: flex;
+      height: 100%;
+      width: px2rem(138px);
+      span {
+        display: block;
+        height: 100%;
+        padding: 0 px2rem(5px);
+        display: flex;
+        align-items: center;
+        font-size: px2rem(28px);
+        color: #505050;
+      }
+    }
+    .headerText{
+      flex: 3;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      //width: px2rem(500px);
+      font-size: px2rem(30px);
+      color: #505050;
+      justify-content: center;
     }
   }
   .send,.sendaccount,.senddetail {
