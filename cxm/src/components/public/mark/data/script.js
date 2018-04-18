@@ -38,11 +38,11 @@ computed: {
 },
   methods: {
       cancel() {
-          this.$store.state.mark_show = false;
+        this.$store.dispatch("getMarkShow",false)
       },
       list_li(c,index){
-          this.$store.state.mark_show = false;
-          this.$store.state.mark_showObj.mark_dateVal =c
+          this.$store.dispatch("getMarkShow",false)
+          this.$store.dispatch("getMarkDateVal",c)
           this.$refs.match_name.forEach(function(data_item,data_index){
               this.$refs.match_name[data_index].className = ''
           }, this)

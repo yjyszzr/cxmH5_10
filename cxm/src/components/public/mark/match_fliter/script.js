@@ -15,8 +15,8 @@ export default {
     },
   methods: {
     cancel() {
-      this.$store.state.mark_show = false;
-      this.$store.state.mark_Reset = 0
+      this.$store.dispatch("getMarkShow",false)
+      this.$store.dispatch("getMarkReset",0)
     },
     team(index) {
         if(this.$refs.match_name[index].className == 'filterActive') {
@@ -80,11 +80,11 @@ export default {
         Indicator.open()
         if(this.$route.path.split('/')[1]=='lotteryResult'){
             if(this.$refs.lookac.className == 'lookactive'){
-                this.$store.state.mark_showObj.isAlreadyBuyMatch = '1'
+                this.$store.dispatch("getisAlreadyBuyMatch",'1')
             }else{
-                this.$store.state.mark_showObj.isAlreadyBuyMatch = ''
+                this.$store.dispatch("getisAlreadyBuyMatch",'')
             }
-            this.$store.state.mark_showObj.leagueIds = arrTeam.join(',')
+            this.$store.dispatch("getLeagueIds",arrTeam.join(','))
             let data={
                 dateStr: this.$store.state.mark_showObj.mark_dateVal,
                 isAlreadyBuyMatch: this.$store.state.mark_showObj.isAlreadyBuyMatch,
@@ -98,9 +98,9 @@ export default {
                 'playType': this.playType
             }
             this.$store.dispatch("getMatchList",data)
-            this.$store.state.mark_Reset++
+            this.$store.dispatch("getMarkReset",1)
         }
-        this.$store.state.mark_show = false
+        this.$store.dispatch("getMarkShow",false)
     }
   },
   mounted(){

@@ -52,7 +52,7 @@ export default {
       }
     },
     bfBtn(c) {
-      console.log(1)
+      //console.log(1)
       this.$store.state.mark_playObj.mark_playBox = true
       if (this.playType == '3') {
         this.$store.state.mark_playObj.mark_play = '4'
@@ -346,6 +346,18 @@ export default {
         },
         replace: false
       })
+    },
+    matchDetail(c,s){
+      if (this.playType == '1'||this.playType == '2'||this.playType == '6'||this.playType == '7') {
+        if(s.target.parentElement.children[4].lastChild.className==''){
+          s.target.parentElement.children[4].lastChild.className='rotate'
+        }else{
+          s.target.parentElement.children[4].lastChild.className=''
+        }
+        this.$store.state.mark_playObj.mark_playBox = true
+        this.$store.state.mark_playObj.mark_play = '7'
+        this.$store.dispatch("getBfMatchId",c)
+      }
     }
   },
   computed: {
@@ -354,6 +366,9 @@ export default {
     },
     mark_obj(){
       return this.$store.state.mark_Reset;
+    },
+    matchDetailMark(){
+      return this.$store.state.mark_playObj.matchDetailFlag;
     }
   },
   watch: {
@@ -376,6 +391,9 @@ export default {
       if(a>0){
         this.clear_match()
       }
+    },
+    matchDetailMark(a,b){
+      $('.rotate').removeClass('rotate')
     }
   },
   mounted() {
@@ -416,6 +434,15 @@ export default {
           this.classFlag = false
         }
       }
+    }
+  },
+  beforeRouteEnter(to, from, next) {
+    if(from.path=='/user/order'){
+      next(vm=>{
+        vm.$store.state.mark_Reset++
+      })
+    }else{
+      next()
     }
   },
   beforeRouteLeave(to, from, next) {

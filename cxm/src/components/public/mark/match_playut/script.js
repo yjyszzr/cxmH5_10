@@ -2,6 +2,7 @@ import api from '../../../../fetch/api.js'
 import score from './score/index.vue'
 import bqc from './bqc/index.vue'
 import mix from './mix/index.vue'
+import matchDetail from './matchDetail/index.vue'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 export default {
@@ -19,7 +20,8 @@ export default {
   components:{
     'v-score': score,
     'v-bqc': bqc,
-    'v-mix': mix
+    'v-mix': mix,
+    'v-matchdetail': matchDetail
   },
   methods: {
     closeMarkCz(){
@@ -114,5 +116,8 @@ export default {
     status(a,b){
       this.list = new Set(this.$store.state.mark_playObj.playutText)
     }
+  },
+  mounted(){
+
   },
 };

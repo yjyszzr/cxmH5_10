@@ -12,6 +12,16 @@ export default {
     created(){
       
     },
+    methods:{
+      statusZt(c){
+        switch(c){
+          case 0 : return '待出票'
+          case 1 : return '已出票'
+          case 2 : return '出票失败'
+          case 3 : return '出票中'
+        }
+      }
+    },
     mounted(){
       let data = {
         'orderSn': this.$route.query.orderSn,

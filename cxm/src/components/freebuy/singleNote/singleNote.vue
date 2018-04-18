@@ -12,6 +12,7 @@
                 <li v-for="(data,i) in $store.state.matchObj.hotPlayList" :key='i' :id='data.matchId' :class="data.matchPlays[0].single=='1'?'single':''">
                     <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="data.matchPlays[0].single=='1'||(item.matchPlays[1]&&item.matchPlays[1].single=='1')">
                     <div class="matchLeft">
+                        <p @click="matchDetail(data.matchId,$event)"></p>
                         <span>{{data.leagueAddr}}</span>
                         <span>{{data.changci}}</span>
                         <span>截止{{datePd(data.matchTime)}}</span>
@@ -145,6 +146,7 @@
                 <li v-for="(item,index) in data.playList" :key='index' :id='item.matchId' :class="item.matchPlays[0].single=='1'?'single':''">
                     <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="item.matchPlays[0].single=='1'||(item.matchPlays[1]&&item.matchPlays[1].single=='1')">
                     <div class="matchLeft">
+                        <p @click="matchDetail(item.matchId,$event)"></p>
                         <span>{{item.leagueAddr}}</span>
                         <span>{{item.changci}}</span>
                         <span>截止{{datePd(item.matchTime)}}</span>

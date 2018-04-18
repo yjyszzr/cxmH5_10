@@ -181,4 +181,8 @@ export default {
     queryMatchResult(params){
         return fetchPost('lottery/lottery/match/queryMatchResult',params)
     },
+    //赛事详情分析弹窗
+    matchTeamInfosSum(params){
+        return fetchPost('lottery/lottery/match/matchTeamInfosSum',params)
+    }
 }

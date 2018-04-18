@@ -11,26 +11,26 @@
                 
             </p>
         </div>
-        <ul class="send" v-show="$route.path.split('/')[2]&&$route.path.split('/')[2]=='record'">
+        <ul class="send" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='record'">
             <li class="cur"><p @click='curClick($event)'>全部</p></li>
             <li><p @click='curClick($event)'>中奖</p></li>
             <li><p @click='curClick($event)'>待开奖</p></li>
         </ul>
-        <ul class="sendaccount" id='searchBar' v-show="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
-            <li class="cur"><p @click='curClick1($event)'>全部</p></li>
+        <ul class="sendaccount" id='searchBar' v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
+            <li class="cur1"><p @click='curClick1($event)'>全部</p></li>
             <li><p @click='curClick1($event)'>奖金</p></li>
             <li><p @click='curClick1($event)'>充值</p></li>
             <li><p @click='curClick1($event)'>购彩</p></li>
             <li><p @click='curClick1($event)'>提现</p></li>
             <li><p @click='curClick1($event)'>红包</p></li>
         </ul>
-        <ul class="senddetail" id='searchBar' v-show="$route.path.split('/')[2]&&$route.path.split('/')[2]=='detail'">
-            <li class="cur"><p @click='curClick2($event)'>未使用</p></li>
+        <ul class="senddetail" id='searchBar' v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='detail'">
+            <li class="cur2"><p @click='curClick2($event)'>未使用</p></li>
             <li><p @click='curClick2($event)'>已使用</p></li>
             <li><p @click='curClick2($event)'>已过期</p></li>
         </ul>
-        <ul class="send" id='searchBar' v-show="$route.path.split('/')[2]&&$route.path.split('/')[2]=='message'">
-            <li class="cur"><p @click='curClick3($event)'>通知</p></li>
+        <ul class="send" id='searchBar' v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='message'">
+            <li class="cur3"><p @click='curClick3($event)'>通知</p></li>
             <li><p @click='curClick3($event)'>消息</p></li>
         </ul>
     </div>
@@ -50,61 +50,61 @@ export default {
     return_back() {
       if (this.$route.path.split("/")[2]) {
         if (this.$route.path.split("/")[2] == "singleNote") {
-          this.$store.state.matchSelectedList = [];
+          this.$store.dispatch("getmatchSelectedList",[])
         }
       }
       this.$router.go(-1);
     },
     filter() {
-      this.$store.state.mark_show = true;
-      this.$store.state.mark_showObj.mark_show_type = '2'
+      this.$store.dispatch("getMarkShow",true)
+      this.$store.dispatch("getMarkShowType",'2')
     },
     curClick(c){
         $('.cur').removeClass('cur')
         c.target.parentElement.className = 'cur'
         if(c.target.innerText=='全部'){
-          this.$store.state.recordTab = '1'
+          this.$store.dispatch("changeRecordTab",'1')
         }else if(c.target.innerText=='中奖'){
-          this.$store.state.recordTab = '2'
+          this.$store.dispatch("changeRecordTab",'2')
         }else if(c.target.innerText=='待开奖'){
-          this.$store.state.recordTab = '3'
+          this.$store.dispatch("changeRecordTab",'3')
         }
     },
     curClick1(c){
-        $('.cur').removeClass('cur')
-        c.target.parentElement.className = 'cur'
+        $('.cur1').removeClass('cur1')
+        c.target.parentElement.className = 'cur1'
         if(c.target.innerText=='全部'){
-          this.$store.state.recordTab = 'a1'
+          this.$store.dispatch("changeRecordTab",'a1')
         }else if(c.target.innerText=='奖金'){
-          this.$store.state.recordTab = 'a2'
+          this.$store.dispatch("changeRecordTab",'a2')
         }else if(c.target.innerText=='充值'){
-          this.$store.state.recordTab = 'a3'
+          this.$store.dispatch("changeRecordTab",'a3')
         }else if(c.target.innerText=='购彩'){
-          this.$store.state.recordTab = 'a4'
+          this.$store.dispatch("changeRecordTab",'a4')
         }else if(c.target.innerText=='提现'){
-          this.$store.state.recordTab = 'a5'
+          this.$store.dispatch("changeRecordTab",'a5')
         }else if(c.target.innerText=='红包'){
-          this.$store.state.recordTab = 'a6'
+          this.$store.dispatch("changeRecordTab",'a6')
         }
       },
       curClick2(c){
-        $('.cur').removeClass('cur')
-        c.target.parentElement.className = 'cur'
+        $('.cur2').removeClass('cur2')
+        c.target.parentElement.className = 'cur2'
         if(c.target.innerText=='未使用'){
-          this.$store.state.recordTab = 'd1'
+          this.$store.dispatch("changeRecordTab",'d1')
         }else if(c.target.innerText=='已使用'){
-          this.$store.state.recordTab = 'd2'
+          this.$store.dispatch("changeRecordTab",'d2')
         }else if(c.target.innerText=='已过期'){
-          this.$store.state.recordTab = 'd3'
+          this.$store.dispatch("changeRecordTab",'d3')
         }
       },
       curClick3(c) {
-            $('.cur').removeClass('cur')
-            c.target.parentElement.className = 'cur'
+            $('.cur3').removeClass('cur3')
+            c.target.parentElement.className = 'cur3'
             if (c.target.innerText == '通知') {
-                this.$store.state.recordTab = 'm1'
+                this.$store.dispatch("changeRecordTab",'m1')
             } else if (c.target.innerText == '消息') {
-                this.$store.state.recordTab = 'm2'
+                this.$store.dispatch("changeRecordTab",'m2')
             }
     },
   }
@@ -178,7 +178,7 @@ export default {
         margin: 0 auto;
       }
     }
-    .cur p {
+    .cur p,.cur1 p,.cur2 p,.cur3 p {
       color: #e95504;
       width: 50%;
       border-bottom: 2px solid #e95504;

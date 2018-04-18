@@ -65,10 +65,12 @@
                     确定
                 </div>
             </div>
-            <!-- 比分，版全场 -->
+            <!-- 比分，版全场，混合 -->
             <v-score @closeMarkCz="closeMarkCz()" v-if="this.$store.state.mark_playObj.mark_play=='4'"></v-score>
             <v-bqc @closeMarkCz="closeMarkCz()" v-if="this.$store.state.mark_playObj.mark_play=='5'"></v-bqc>
             <v-mix @closeMarkCz="closeMarkCz()" v-if="this.$store.state.mark_playObj.mark_play=='6'"></v-mix>
+            <!-- 赛事详情 -->
+            <v-matchdetail @closeMarkCz="closeMarkCz()" v-if="this.$store.state.mark_playObj.mark_play=='7'"></v-matchdetail>
         </transition>
     </div>
 </template>

@@ -17,7 +17,7 @@ export default {
       
     },
     mounted(){
-        this.$store.state.mark_showObj.mark_dateVal  = datefilter(new Date().getTime(),2)
+        this.$store.dispatch("getMarkDateVal",datefilter(new Date().getTime(),2))
         this.fetchData()
     },
     computed: {
@@ -27,27 +27,27 @@ export default {
       },
       watch: {
         status(a, b) {
-            this.$store.state.mark_showObj.mark_dateVal = a
+            this.$store.dispatch("getMarkDateVal",a)
             Indicator.open()
             this.fetchData()
         }
       },
     methods:{
         data_time(){
-            this.$store.state.mark_show = true
-            this.$store.state.mark_showObj.mark_show_type = 1
+            this.$store.dispatch("getMarkShow",true)
+            this.$store.dispatch("getMarkShowType",1)
         },
         more(){
-            this.$store.state.mark_show = true
-            this.$store.state.mark_showObj.mark_show_type = 2
+            this.$store.dispatch("getMarkShow",true)
+            this.$store.dispatch("getMarkShowType",2)
         },
         all(c){
             if(c.target.innerText == '全部'){
                 this.flag=false
-                this.$store.state.mark_showObj.matchFinish = '1'
+                this.$store.dispatch("getMatchFinish",'1')
             }else{
                 this.flag=true
-                this.$store.state.mark_showObj.matchFinish = ''
+                this.$store.dispatch("getMatchFinish",'')
             }
             Indicator.open()
             this.fetchData()
@@ -59,7 +59,7 @@ export default {
                 leagueIds: this.$store.state.mark_showObj.leagueIds,
                 matchFinish: this.$store.state.mark_showObj.matchFinish
             }
-            this.$store.dispatch("getResultList", data)
+            this.$store.dispatch("getResultList",data)
         },
         matchFilsh(){
             let num = 0;
@@ -73,11 +73,11 @@ export default {
     },
     beforeRouteLeave(to, from, next) {
         next()
-        this.$store.state.mark_show = false
-        this.$store.state.mark_showObj.mark_show_type = ''
-        this.$store.state.mark_showObj.matchFinish = ''
-        this.$store.state.mark_showObj.mark_dateVal = ''
-        this.$store.state.mark_showObj.isAlreadyBuyMatch = ''
-        this.$store.state.mark_showObj.leagueIds = ''
+        this.$store.dispatch("getMarkShow",false)
+        this.$store.dispatch("getMarkShowType",'')
+        this.$store.dispatch("getMatchFinish",'')
+        this.$store.dispatch("getLeagueIds",'')
+        this.$store.dispatch("getisAlreadyBuyMatch",'')
+        this.$store.dispatch("getMarkDateVal",'')
       }
 }

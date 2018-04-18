@@ -15,7 +15,7 @@ export default {
         api.validateMobile(data)
         .then(res => {
             if(res.code==0) {
-              this.$store.state.findphone = this.phoneVal
+              this.$store.dispatch("changeFindphone",this.phoneVal)
               this.$router.push({
                   path: '/user/revise',
                   replace: true
