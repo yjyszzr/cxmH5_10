@@ -184,5 +184,9 @@ export default {
     //赛事详情分析弹窗
     matchTeamInfosSum(params){
         return fetchPost('lottery/lottery/match/matchTeamInfosSum',params)
+    },
+    //球队分析详情信息
+    matchTeamInfos(params){
+        return fetchPost('lottery/lottery/match/matchTeamInfos',params)
     }
 }

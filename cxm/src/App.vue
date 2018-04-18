@@ -94,6 +94,8 @@ export default {
             } else if (this.$store.state.freebuyId == "6") {
               return "混合投注";
             }
+          case "cathectic":
+            return "投注确认";
           case "teamDetail":
             return "查看详情";
         }

@@ -18,7 +18,13 @@ export default {
             this.$emit('closeMarkCz')
         },
         confirm(){
-            this.$store.dispatch("getMatchDetailFlag",false)
+            this.$router.push({
+                path: '/lottery/teamDetail',
+                query:{
+                    id: this.matchDetailObj.matchInfo.matchId
+                },
+                replace: true
+            })
         },
         matchTimeDate(c){
             return datefilter(c*1000,0)+' '+ datefilter(c*1000,1)
@@ -32,7 +38,7 @@ export default {
             .then(res => {
                 if(res.code==0) {
                     this.matchDetailObj = res.data
-                    console.log(res)
+                    //console.log(res)
                 }else{
                     Toast(res.msg)
                 }

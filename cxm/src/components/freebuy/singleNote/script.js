@@ -285,6 +285,7 @@ export default {
     //清除
     clear_match() {
       //console.log(this.$store.state.chushihuaObj)
+      //console.log(this.$store.state.chushihuaObj)
       if (this.playType == '6') {
         this.$store.state.matchObj = this.$store.state.chushihuaObj
       } else {
@@ -336,7 +337,7 @@ export default {
           }
         });
       }
-
+      //alert(this.$store.state.matchSelectedList)
       this.$router.push({
         path: '/freebuy/cathectic',
         query: {

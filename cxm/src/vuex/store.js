@@ -91,7 +91,7 @@ const mutations = {
                 item.playList[i].selectedList = []
             }
         });
-        state.chushihuaObj = JSON.parse(JSON.stringify(state.matchObj))
+        state.chushihuaObj = JSON.parse(JSON.stringify(data))
         state.matchObj = data
     },
     RESULT(state, data) {
