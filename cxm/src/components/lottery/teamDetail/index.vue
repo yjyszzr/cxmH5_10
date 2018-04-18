@@ -19,8 +19,8 @@
                 </ul>
             </div>
             <ul class="analytical">
-                <li>分析</li>
-                <li class="currer">赔率</li>
+                <li><span>分析</span></li>
+                <li class="currer"><span>赔率</span></li>
             </ul>
             <!--分析-->
             <div class="analysis">

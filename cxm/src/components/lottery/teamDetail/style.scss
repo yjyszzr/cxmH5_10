@@ -60,8 +60,12 @@
       font-size: px2rem(28px);
       color: #505050;
     }
-    .currer{
+    .currer span{
       color: #ea5504;
+      display: block;
+      width: px2rem(80px);
+      border-bottom: 2px solid #ea5504;
+      margin: 0 auto;
     }
     li:last-child{
       border-right: none;
