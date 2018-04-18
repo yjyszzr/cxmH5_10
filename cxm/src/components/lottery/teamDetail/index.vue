@@ -18,24 +18,85 @@
                     </li>
                 </ul>
             </div>
-            <div class="detail_list">
-                <p>历史交锋<span>近10场比赛</span><span>主队</span><small>2胜</small><i>2平</i><b>6负</b></p>
-            </div>
-            <div class="tableList">
-                <table class="table">
-                    <caption>
+            <ul class="analytical">
+                <li>分析</li>
+                <li class="currer">赔率</li>
+            </ul>
+            <!--分析-->
+            <div class="analysis">
+                <div class="detail_list">
+                    <p>历史交锋<span>近10场比赛</span><span>主队</span><small>2胜</small><i>2平</i><b>6负</b></p>
+                </div>
+                <div class="cen_list">
+                    <ul class="box_list_1">
+                        <li>赛事</li>
+                        <li>日期</li>
+                        <li></li>
+                        <li>比分</li>
+                        <li></li>
+                        <li>胜负</li>
+                    </ul>
+                    <div class="box_list_2">
+                        <ul>
+                            <li class="list_cur">德甲德甲</li>
+                            <li>2017-08-05</li>
+                            <li>阿森纳德甲</li>
+                            <li>1:1</li>
+                            <li>AC米兰</li>
+                            <li>负</li>
+                        </ul>
+                        <ul>
+                            <li>德甲</li>
+                            <li>2017-08-05</li>
+                            <li>阿森纳</li>
+                            <li>1:1</li>
+                            <li>AC米兰</li>
+                            <li>负</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ranking">
+                    <p>积分排名</p>
+                    <div>
 
-                    </caption>
-                    <tr>
-                        <th>德甲</th>
-                        <th>2017-08-05</th>
-                        <th>阿森纳</th>
-                        <th><span>1</span>:<i>1</i></th>
-                        <th>AC米兰</th>
-                        <th>负</th>
-                    </tr>
-                </table>
+                    </div>
+                </div>
             </div>
+            <!--赔率-->
+            <div class="odds">
+                <ul class="odd_ul">
+                    <li class="odd_cur"><span>欧赔</span></li>
+                    <li><span>压盘</span></li>
+                    <li><span>大小球</span></li>
+                </ul>
+                <div class="cen_list">
+                    <ul class="box_list_1">
+                        <li>赛事</li>
+                        <li>日期</li>
+                        <li></li>
+                        <li>比分</li>
+                        <li></li>
+                        <li>胜负</li>
+                    </ul>
+                    <div class="box_list_2">
+                        <ul>
+                            <li>澳彩</li>
+                            <li><span>初赔</span><span>初赔</span></li>
+                            <li><i>4.25</i><i>4.25</i></li>
+                            <li><i>4.25</i><i>4.25</i></li>
+                            <li><i>4.25</i><i>4.25</i></li>
+                        </ul>
+                        <ul>
+                            <li>澳彩</li>
+                            <li><span>初赔</span><span>初赔</span></li>
+                            <li><i>4.25</i><i>4.25</i></li>
+                            <li><i>4.25</i><i>4.25</i></li>
+                            <li><i>4.25</i><i>4.25</i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">去投注</div>
         </section>
     </div>
 </template>
