@@ -9,45 +9,46 @@
 .mation p {
   font-size: px2rem(28px);
   color: #a0a0a0;
+  span {
+    color: #505050;
+  }
 }
-.mation p span {
-  color: #505050;
-}
+/*.mation p*/
 .center {
   width: 100%;
   background: #fff;
-}
-.center ul {
-  padding-bottom: px2rem(28px);
-  overflow: hidden;
-}
-.center ul li {
-  width: 25%;
-  text-align: center;
-  font-size: px2rem(30px);
-  margin-top: px2rem(32px);
-  float: left;
-  position: relative;
-  .entry_status{
-    position: absolute;
-    top: px2rem(-12px);
-    right: px2rem(5px);
-    width: px2rem(60px);
+  ul {
+    padding-bottom: px2rem(28px);
+    overflow: hidden;
+    li {
+      width: 25%;
+      text-align: center;
+      font-size: px2rem(30px);
+      margin-top: px2rem(32px);
+      float: left;
+      position: relative;
+      .entry_status{
+        position: absolute;
+        top: px2rem(-12px);
+        right: px2rem(5px);
+        width: px2rem(60px);
+      }
+      .lottery{
+        width: px2rem(64px);
+        top: px2rem(-7px);
+        right: px2rem(0px);
+      }
+      p {
+        margin-top: px2rem(18px);
+        font-size: px2rem(30px);
+        color: #505050;
+      }
+    }
+    .entry_icon {
+      width: px2rem(93px);
+      margin: 0 auto;
+    }
   }
-  .lottery{
-    width: px2rem(64px);
-    top: px2rem(-7px);
-    right: px2rem(0px);
-  }
-}
-.center ul li .entry_icon {
-  width: px2rem(93px);
-  margin: 0 auto;
-}
-.center ul li p {
-  margin-top: px2rem(18px);
-  font-size: px2rem(30px);
-  color: #505050;
 }
 .boll {
   height: px2rem(80px);
