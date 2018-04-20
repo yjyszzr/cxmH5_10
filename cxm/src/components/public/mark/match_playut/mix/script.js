@@ -21,7 +21,7 @@ export default {
             this.$store.state.matchObj = this.mixObj
             this.$store.state.mark_playObj.bfIdSaveMapFlag++
         },
-        unSelectedClickspf(c, s, status) {
+        unSelectedClickspf(c, s, status,sig) {
             let arr = new Set(this.scoreObj.selectedList),
                 obj2 = {}
             let obj = {},
@@ -53,6 +53,7 @@ export default {
                 obj2.betCells.push(JSON.parse(item))
             })
             obj2.playType = status
+            obj2.single = sig
             if (this.scoreObj.selectedList.length <= 0) {
                 arr.add(obj2)
             } else {

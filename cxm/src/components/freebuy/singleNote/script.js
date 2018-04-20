@@ -225,6 +225,7 @@ export default {
       obj.cellName = s.cellName
       obj.cellOdds = s.cellOdds
       obj.cellSons = s.cellSons
+     // console.log(c)
       this.$store.state.mark_playObj.bfIdSaveMapFlag++
         if (s.isSelected == 'sld') {
           s.isSelected = false
@@ -241,6 +242,11 @@ export default {
         obj2.betCells.push(JSON.parse(item))
       })
       obj2.playType = status
+      if(status=='1'){
+      	obj2.single = c.matchPlays[1].single
+      }else if(status=='0'){
+      	obj2.single = c.matchPlays[0].single
+      }
       if (c.selectedList.length <= 0) {
         arr.add(obj2)
       } else {

@@ -3,6 +3,9 @@ import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 export default {
     name: 'order',
+    beforeCreate() {
+			Indicator.open()
+    },
     data () {
       return {
         orderId: this.$route.query.id,

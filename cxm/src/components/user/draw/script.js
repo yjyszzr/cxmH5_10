@@ -3,6 +3,9 @@ import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 export default {
     name: 'draw',
+    beforeCreate() {
+			Indicator.open()
+    },
     data () {
       return {
         id: this.$route.query.id,
@@ -15,10 +18,10 @@ export default {
     methods:{
       statusZt(c){
         switch(c){
-          case 0 : return '待出票'
-          case 1 : return '已出票'
-          case 2 : return '出票失败'
-          case 3 : return '出票中'
+          case '0' : return '待出票'
+          case '1' : return '已出票'
+          case '2' : return '出票失败'
+          case '3' : return '出票中'
         }
       }
     },

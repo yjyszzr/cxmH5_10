@@ -47,7 +47,7 @@
                         <ul v-if="$route.query.playType=='6'" class="mixTz">
                             <li @click="bfClick(item.matchId)">
                                 <span v-for="(data,index) in item.selectedList" :key='index'>
-                                    <b v-for="(a,index1) in data.betCells" :key='index1'>{{a.cellName}}&nbsp;</b>
+                                    <b v-for="(a,index1) in data.betCells" :key='index1'>{{data.playType=='0'?'让球'+a.cellName:a.cellName}}&nbsp;</b>
                                 </span>
                             </li>
                         </ul>
@@ -61,13 +61,13 @@
             <small>页面盘口，赔率仅供参考，请以出票盘口赔率为准</small>
             <ul>
                 <li>
-                    <button @click="cgClick()" v-show="disable==false">
-                        <p v-show='!$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.matchSelectedList.length!=1||$store.state.matchSelectedList[0].matchPlays[0].single!="1")'>串关&nbsp;&nbsp;<span v-for="(item,i) in $store.state.mark_playObj.playutText" :key='i'>{{item.split('&')[0]}}串{{item.split('&')[1]}}</span><i></i></p>
-                        <p v-show='!$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.matchSelectedList.length==1&&$store.state.matchSelectedList[0].matchPlays[0].single=="1")'>单关<i></i></p>
-                        <p v-show='$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.matchSelectedList.length!=1||$store.state.matchSelectedList[0].matchPlays[1].single!="1")'>串关&nbsp;&nbsp;<span v-for="(item,i) in $store.state.mark_playObj.playutText" :key='i'>{{item.split('&')[0]}}串{{item.split('&')[1]}}</span><i></i></p>
-                        <p v-show='$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.matchSelectedList.length==1&&$store.state.matchSelectedList[0].matchPlays[1].single=="1")'>单关<i></i></p>
+                    <button @click="cgClick()" v-if="disable==false">
+                        <p v-show='!$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.mark_playObj.playutText.length!=1||$store.state.mark_playObj.playutText.indexOf("1&1")=="-1")'>串关&nbsp;&nbsp;<span v-for="(item,i) in $store.state.mark_playObj.playutText" :key='i'>{{item.split('&')[0]==item.split('&')[1]?'单关 ':item.split('&')[0]+'串'+item.split('&')[1]}}</span><i></i></p>
+                        <p v-show='!$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.mark_playObj.playutText.length==1&&$store.state.mark_playObj.playutText.indexOf("1&1")!="-1")'>单关<i></i></p>
+                        <p v-show='$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.mark_playObj.playutText.length!=1||$store.state.mark_playObj.playutText.indexOf("1&1")=="-1")'>串关&nbsp;&nbsp;<span v-for="(item,i) in $store.state.mark_playObj.playutText" :key='i'>{{item.split('&')[0]==item.split('&')[1]?'单关 ':item.split('&')[0]+'串'+item.split('&')[1]}}</span><i></i></p>
+                        <p v-show='$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.mark_playObj.playutText.length==1&&$store.state.mark_playObj.playutText.indexOf("1&1")!="-1")'>单关<i></i></p>
                     </button>
-                    <button disabled='true' v-show="disable==true">
+                    <button disabled='true' v-if="disable==true">
                         请重新选择比赛
                     </button>
                 </li>

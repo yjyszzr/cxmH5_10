@@ -21,14 +21,28 @@
                 </ul>
             </div>
             <ul class="analytical">
-                <li class="currer"><span>分析</span></li>
-                <li><span>赔率</span></li>
+                <li class="currer"><p @click="fxTab($event,'1')"></p><span>分析</span></li>
+                <li><p @click="fxTab($event,'2')"></p><span>赔率</span></li>
             </ul>
             <!--分析-->
             <div class="analysis" v-if="flag==false">
                 <div class="detail_list">
                     <p>历史交锋<span>近{{ckxqObj.hvMatchTeamInfo.total}}场比赛</span><span>主队</span><span>{{ckxqObj.hvMatchTeamInfo.win}}胜</span><span>{{ckxqObj.hvMatchTeamInfo.draw}}平</span><span>{{ckxqObj.hvMatchTeamInfo.lose}}负</span></p>
                 </div>
+                <div class="progress">
+                    <div class="h_progress">
+                        <span>主胜</span>
+                        <el-progress :percentage="ckxqObj.hvMatchTeamInfo.win/ckxqObj.hvMatchTeamInfo.total" status="exception"></el-progress>
+                    </div>
+                    <div class="p_progress">
+                        <span>平</span>
+                        <el-progress :percentage="ckxqObj.hvMatchTeamInfo.draw/ckxqObj.hvMatchTeamInfo.total" :show-text='false'></el-progress>
+                    </div>
+                    <div class="f_progress">
+                        <span>客胜</span>
+                        <el-progress :percentage="ckxqObj.hvMatchTeamInfo.lose/ckxqObj.hvMatchTeamInfo.total" status="success"></el-progress>
+                    </div>
+                </div>
                 <div class="cen_list">
                     <ul class="box_list_1">
                         <li>赛事</li>
@@ -37,61 +51,129 @@
                         <li>胜负</li>
                     </ul>
                     <div class="box_list_2">
-                        <ul>
-                            <li class="list_cur">德甲德甲</li>
-                            <li>2017-08-05</li>
-                            <li><span>阿森纳</span>
-                            <span>1:1</span>
-                            <span>AC米兰</span>   </li>
-                            <li>负</li>
+                        <ul v-for="(item,i) in ckxqObj.hvMatchTeamInfo.matchInfos" :key='i'>
+                            <li class="list_cur">{{item.leagueAddr}}</li>
+                            <li>{{item.matchDay}}</li>
+                            <li><span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.homeTeamAbbr?'#505050':'#9f9f9f'}">{{item.homeTeamAbbr}}</span>
+                            <span>{{item.whole}}</span>
+                            <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.visitingTeamAbbr?'#505050':'#9f9f9f'}">{{item.visitingTeamAbbr}}</span></li>
+                            <li>{{item.matchRs}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cen_list">
+                    <div class="detail_list" style="border-bottom:1px solid #f0f0f0;">
+                        <p>最近战绩<span>近{{ckxqObj.hMatchTeamInfo.total}}场比赛</span><span style="color: #505050;">{{ckxqObj.matchInfo.homeTeamAbbr}} (主队)</span><span>{{ckxqObj.hMatchTeamInfo.win}}胜</span><span>{{ckxqObj.hMatchTeamInfo.draw}}平</span><span>{{ckxqObj.hMatchTeamInfo.lose}}负</span></p>
+                    </div>
+                    <ul class="box_list_1">
+                        <li>赛事</li>
+                        <li>日期</li>
+                        <li>比分</li>
+                        <li>胜负</li>
+                    </ul>
+                    <div class="box_list_2">
+                        <ul v-for="(item,i) in ckxqObj.hMatchTeamInfo.matchInfos" :key='i'>
+                            <li class="list_cur">{{item.leagueAddr}}</li>
+                            <li>{{item.matchDay}}</li>
+                            <li><span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.homeTeamAbbr?'#505050':'#9f9f9f'}">{{item.homeTeamAbbr}}</span>
+                            <span>{{item.whole}}</span>
+                            <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.visitingTeamAbbr?'#505050':'#9f9f9f'}">{{item.visitingTeamAbbr}}</span></li>
+                            <li>{{item.matchRs}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cen_list">
+                    <div class="detail_list" style="border-bottom:1px solid #f0f0f0;">
+                        <p>最近战绩<span>近{{ckxqObj.vMatchTeamInfo.total}}场比赛</span><span style="color: #505050;">{{ckxqObj.matchInfo.visitingTeamAbbr}} (客队)</span><span>{{ckxqObj.vMatchTeamInfo.win}}胜</span><span>{{ckxqObj.vMatchTeamInfo.draw}}平</span><span>{{ckxqObj.vMatchTeamInfo.lose}}负</span></p>
+                    </div>
+                    <ul class="box_list_1">
+                        <li>赛事</li>
+                        <li>日期</li>
+                        <li>比分</li>
+                        <li>胜负</li>
+                    </ul>
+                    <div class="box_list_2">
+                        <ul v-for="(item,i) in ckxqObj.vMatchTeamInfo.matchInfos" :key='i'>
+                            <li class="list_cur">{{item.leagueAddr}}</li>
+                            <li>{{item.matchDay}}</li>
+                            <li><span :style="{'color':ckxqObj.matchInfo.visitingTeamAbbr==item.homeTeamAbbr?'#505050':'#9f9f9f'}">{{item.homeTeamAbbr}}</span>
+                            <span>{{item.whole}}</span>
+                            <span :style="{'color':ckxqObj.matchInfo.visitingTeamAbbr==item.visitingTeamAbbr?'#505050':'#9f9f9f'}">{{item.visitingTeamAbbr}}</span></li>
+                            <li>{{item.matchRs}}</li>
                         </ul>
                     </div>
                 </div>
                 <div class="ranking">
                     <p>积分排名</p>
-                    <div>
+                    <div class="zcScore">
+						<div class="zcTitle">
+							阿森纳(主场)
+						</div>
+						<div class="tbLIst">
+							<ul class="tbListNav">
+								<li></li>
+								<li>场</li>
+								<li>胜</li>
+								<li>平</li>
+								<li>负</li>
+								<li>进/失</li>
+								<li>积分</li>
+								<li>名次</li>
+							</ul>
+							<div class="tbListBottom">
+								<div class="tabListLeft">
+									<span>总</span>
+									<span>主</span>
+									<span>客</span>
+								</div>
+								<div class="tabListRight">
+									<ul>
+										<li>29</li>
+										<li>13</li>
+										<li>9</li>
+										<li>7</li>
+										<li>51/36</li>
+										<li>48</li>
+										<li>4</li>
+									</ul>
+									<ul>
+										<li>29</li>
+										<li>13</li>
+										<li>9</li>
+										<li>7</li>
+										<li>51/36</li>
+										<li>48</li>
+										<li>4</li>
+									</ul>
+									<ul>
+										<li>29</li>
+										<li>13</li>
+										<li>9</li>
+										<li>7</li>
+										<li>51/36</li>
+										<li>48</li>
+										<li>4</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+                    </div>
+                    <div class="kcScore">
+						<div class="zcTitle">
+							阿森纳(客场)
+						</div>
+						<div class="tbLIst">
 
+						</div>
                     </div>
                 </div>
             </div>
             <!--赔率-->
-            <div class="odds" v-if="flag==true">
-                <ul class="odd_ul">
-                    <li class="odd_cur"><span>欧赔</span></li>
-                    <li><span>压盘</span></li>
-                    <li><span>大小球</span></li>
-                </ul>
-                <div class="cen_list">
-                    <ul class="box_list_1">
-                        <li>赛事</li>
-                        <li>日期</li>
-                        <li></li>
-                        <li>比分</li>
-                        <li></li>
-                        <li>胜负</li>
-                    </ul>
-                    <div class="box_list_2">
-                        <ul>
-                            <li>澳彩</li>
-                            <li><span>初赔</span><span>初赔</span></li>
-                            <li><i>4.25</i><i>4.25</i></li>
-                            <li><i>4.25</i><i>4.25</i></li>
-                            <li><i>4.25</i><i>4.25</i></li>
-                        </ul>
-                        <ul>
-                            <li>澳彩</li>
-                            <li><span>初赔</span><span>初赔</span></li>
-                            <li><i>4.25</i><i>4.25</i></li>
-                            <li><i>4.25</i><i>4.25</i></li>
-                            <li><i>4.25</i><i>4.25</i></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="bottom">去投注</div>
+            <v-detail v-if="flag==true" :leagueMatchAsias='ckxqObj.leagueMatchAsias' :leagueMatchEuropes='ckxqObj.leagueMatchEuropes'></v-detail>
+            <div class="bottom" @click="goTZ()">去投注</div>
         </section>
     </div>
 </template>
 <script src='./script.js'>
-// import http from '../api/http'
+
 </script>
