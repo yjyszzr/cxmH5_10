@@ -58,6 +58,12 @@
                             <span class="message">我的卡券<em></em></span>
                         </div>
                     </router-link>
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <ul class="msg_list">
+                <li>
                     <router-link to='/user/message'>
                         <div>
                             <img src="../../../assets/img/not.png">
@@ -65,12 +71,13 @@
                             <span class="message">消息中心</span>
                         </div>
                     </router-link>
-                </li>
-            </ul>
-        </div>
-        <div class="section">
-            <ul class="msg_list">
-                <li>
+                    <router-link to='/user/message'>
+                        <div>
+                            <img src="../../../assets/img/not.png">
+                            <span class="arrow_right float_right"></span>
+                            <span class="message">我的收藏</span>
+                        </div>
+                    </router-link>
                     <a>
                         <div>
                             <img src="../../../assets/img/help.png">

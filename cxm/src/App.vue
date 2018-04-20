@@ -212,6 +212,7 @@ a:hover {
   background: #e95504;
   display: block;
   border: none;
+  border-radius: px2rem(10px);
   a {
     color: white;
   }

@@ -15,13 +15,30 @@
     height: px2rem(112px);
     border-radius: 100%;
     overflow: hidden;
-}
-.people img{
-    width: px2rem(112px);
-    display: block;
+    img{
+        width: px2rem(112px);
+        display: block;
+    }
 }
 .por-right{
     float: left;
+    span{
+        color: #505050;
+        font-size: px2rem(32px);
+        display: -webkit-box;
+        margin-top: px2rem(10px);
+    }
+    p{
+        //height: px2rem(37px);
+        line-height: px2rem(37px);
+        background: #fbddcd url(../../../assets/img/poser.png) 0.1rem no-repeat;
+        color: #E95504;
+        font-size: px2rem(22px);
+        margin-top: px2rem(15px);
+        background-size: 95%;
+        padding: 0 px2rem(40px);
+        border-radius: px2rem(5px);
+    }
 }
 .certified{
     background: url(../../../assets/img/certified.png) no-repeat;
@@ -31,41 +48,24 @@
     height: px2rem(35px);
     display: block;
 }
-.por-right span{
-    color: #505050;
-    font-size: px2rem(32px);
-    display: -webkit-box;
-    margin-top: px2rem(10px);
-}
-.por-right p{
-    //height: px2rem(37px);
-    line-height: px2rem(37px);
-    background: #fbddcd url(../../../assets/img/poser.png) 0.1rem no-repeat;
-    color: #E95504;
-    font-size: px2rem(22px);
-    margin-top: px2rem(15px);
-    background-size: 95%;
-    padding: 0 px2rem(40px);
-    border-radius: px2rem(5px);
-}
 .money{
     clear: both;
     display: flex;
-}
-.money .left{
-    text-align: center;
-    flex: 1;
-    display: grid;
-}
-.money  span{
-    font-size: px2rem(42px);
-    color: #E95504;
-    margin-bottom:px2rem(10px);
-}
-.money .left p{
-    font-size: px2rem(24px);
-    color: #A0A0A0;
-    height: px2rem(50px);
+    span{
+        font-size: px2rem(42px);
+        color: #E95504;
+        margin-bottom:px2rem(10px);
+    }
+    .left{
+        text-align: center;
+        flex: 1;
+        display: grid;
+        p{
+            font-size: px2rem(24px);
+            color: #A0A0A0;
+            height: px2rem(50px);
+        }
+    }
 }
 .nav{
     display: flex;
@@ -73,16 +73,16 @@
     line-height: px2rem(88px);
     border-top: 1px solid #f1f1f1;
     margin-top: px2rem(30px);
-}
-.nav a{
-    flex: 1;
-    border-right: 1px solid #f1f1f1;
-    display: block;
-    font-size: px2rem(28px);
-    color: #F7931E;
-    height: px2rem(88px);
-    text-align: center;
-}
-.nav a:last-child{
-    border-right: none;
+    a{
+        flex: 1;
+        border-right: 1px solid #f1f1f1;
+        display: block;
+        font-size: px2rem(28px);
+        color: #F7931E;
+        height: px2rem(88px);
+        text-align: center;
+    }
+    a:last-child{
+        border-right: none;
+    }
 }
