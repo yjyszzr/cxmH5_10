@@ -98,6 +98,8 @@ export default {
             return "投注确认";
           case "teamDetail":
             return "查看详情";
+            case "consult":
+                return "资讯详情";
         }
       } else {
         if (
