@@ -9,33 +9,33 @@
                 <span class="hotMatch">热门比赛</span>
             </template>
             <ul class="hotMatchList">
-                <li v-for="(data,i) in $store.state.matchObj.hotPlayList" :key='i' :id='data.matchId' :class="data.matchPlays[0].single=='1'?'single':''">
-                    <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="data.matchPlays[0].single=='1'||(item.matchPlays[1]&&item.matchPlays[1].single=='1')">
+                <li v-for="(item,i) in $store.state.matchObj.hotPlayList" :key='i' :id='item.matchId' :class="item.matchPlays[0].single=='1'?'single':''">
+                    <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="item.matchPlays[0].single=='1'||(item.matchPlays[1]&&item.matchPlays[1].single=='1')">
                     <div class="matchLeft">
-                        <p @click="matchDetail(data.matchId,$event)"></p>
-                        <span>{{data.leagueAddr}}</span>
-                        <span>{{data.changci}}</span>
-                        <span>截止{{datePd(data.matchTime)}}</span>
+                        <p @click="matchDetail(item.matchId,$event)"></p>
+                        <span>{{item.leagueAddr}}</span>
+                        <span>{{item.changci}}</span>
+                        <span>截止{{datePd(item.matchTime)}}</span>
                         <span>
                             <img src="../../../assets/img/freebuy_img/Collapse@3x.png" alt="">
                         </span>
                     </div>
                     <div class="matchRight" v-if="playType=='1'||playType=='2'">
                         <div class="matchRightBox">
-                            <p :class="data.myspf&&data.myspf.indexOf(3)!=-1?'selected':''">
+                            <p :class="item.myspf&&item.myspf.indexOf(3)!=-1?'selected':''">
                                 <b class="mMark" @click="selectedClick($event)"></b>
-                                <span>{{data.homeTeamAbbr}}</span>
-                                <span>{{data.matchPlays[0].homeCell.cellName}}{{data.matchPlays[0].homeCell.cellOdds}}</span>
+                                <span>{{item.homeTeamAbbr}}</span>
+                                <span>{{item.matchPlays[0].homeCell.cellName}}{{item.matchPlays[0].homeCell.cellOdds}}</span>
                             </p>
-                            <p :class="data.myspf&&data.myspf.indexOf(1)!=-1?'selected':''">
+                            <p :class="item.myspf&&item.myspf.indexOf(1)!=-1?'selected':''">
                                 <b class="mMark" @click="selectedClick($event)"></b>
-                                <span>VS <i :style="{'color':item.matchPlays[0].fixedOdds.substr(0,1)=='+'?'#e85504':'#44ae35'}">{{data.matchPlays[0].fixedOdds}}</i></span>
-                                <span>{{data.matchPlays[0].flatCell.cellName}}{{data.matchPlays[0].flatCell.cellOdds}}</span>
+                                <span>VS <i :style="{'color':item.matchPlays[0].fixedOdds.substr(0,1)=='+'?'#e85504':'#44ae35'}">{{item.matchPlays[0].fixedOdds}}</i></span>
+                                <span>{{item.matchPlays[0].flatCell.cellName}}{{item.matchPlays[0].flatCell.cellOdds}}</span>
                             </p>
-                            <p :class="data.myspf&&data.myspf.indexOf(0)!=-1?'selected':''">
+                            <p :class="item.myspf&&item.myspf.indexOf(0)!=-1?'selected':''">
                                 <b class="mMark" @click="selectedClick($event)"></b>
-                                <span>{{data.visitingTeamAbbr}}</span>
-                                <span>{{data.matchPlays[0].visitingCell.cellName}}{{data.matchPlays[0].visitingCell.cellOdds}}</span>
+                                <span>{{item.visitingTeamAbbr}}</span>
+                                <span>{{item.matchPlays[0].visitingCell.cellName}}{{item.matchPlays[0].visitingCell.cellOdds}}</span>
                             </p>
                         </div>
                         <div class="matchRightjqs" v-if="playType=='4'">
@@ -111,7 +111,11 @@
                         </div>
                         <div class="matchRighthhBox">
                             <div class="team_left">
-                                <div class="team_top">
+                            		<div class="team_top" v-if="item.matchPlays[1].isShow=='0'">
+                            			<p>0</p>
+                            			<p style="flex: 9;">未开售</p>
+                            		</div>
+                                <div class="team_top" v-if="item.matchPlays[1].isShow=='1'">
                                     <p>0</p>
                                     <p :class="item.matchPlays[1].homeCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].homeCell.cellName}} {{item.matchPlays[1].homeCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[1].flatCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].flatCell.cellName}} {{item.matchPlays[1].flatCell.cellOdds}}</p>
@@ -252,7 +256,11 @@
                         </div>
                         <div class="matchRighthhBox">
                             <div class="team_left">
-                                <div class="team_top">
+                            		<div class="team_top" v-if="item.matchPlays[1].isShow=='0'">
+                            			<p>0</p>
+                            			<p style="flex: 9;">未开售</p>
+                            		</div>
+                                <div class="team_top" v-if="item.matchPlays[1].isShow=='1'">
                                     <p>0</p>
                                     <p :class="item.matchPlays[1].homeCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].homeCell.cellName}} {{item.matchPlays[1].homeCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[1].flatCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].flatCell.cellName}} {{item.matchPlays[1].flatCell.cellOdds}}</p>

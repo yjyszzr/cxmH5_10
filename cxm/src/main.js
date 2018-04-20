@@ -8,11 +8,13 @@ import router from './router'
 import store from './vuex/store'
 import $ from './util/zepto'
 import { Collapse,CollapseItem } from 'element-ui';
+import { Progress } from 'element-ui';
 
 Vue.config.productionTip = false
 Vue.use(MintUI)
 Vue.use(Collapse)
 Vue.use(CollapseItem)
+Vue.use(Progress)
 
 router.afterEach((to,from,next) => {
   document.querySelector('#content').scrollTop = 0;
