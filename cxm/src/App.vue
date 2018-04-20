@@ -219,9 +219,9 @@ a:hover {
 }
 
 .mint-cell {
-  height: px2rem(87px);
-  line-height: px2rem(87px);
-  min-height: 0;
+  height: px2rem(87px)!important;
+  line-height: px2rem(87px)!important;
+  min-height: 0!important;
   .mint-cell-wrapper {
     padding: 0;
     font-size: px2rem(20px);

@@ -52,15 +52,15 @@
                     <p>
                         <span>
                             <b>0</b>
-                            <b>77%</b>
-                            <b>16%</b>
-                            <b>7%</b>
+                            <b>{{matchDetailObj.hadTeamSupport.hSupport}}</b>
+                            <b>{{matchDetailObj.hadTeamSupport.dSupport}}</b>
+                            <b>{{matchDetailObj.hadTeamSupport.aSupport}}</b>
                         </span>
                         <span>
                             <b>+1</b>
-                            <b>49%</b>
-                            <b>26%</b>
-                            <b>25%</b>
+                            <b>{{matchDetailObj.hhadTeamSupport.hSupport}}</b>
+                            <b>{{matchDetailObj.hhadTeamSupport.dSupport}}</b>
+                            <b>{{matchDetailObj.hhadTeamSupport.aSupport}}</b>
                         </span>
                     </p>
                 </li>

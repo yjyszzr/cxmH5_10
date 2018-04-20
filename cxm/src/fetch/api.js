@@ -188,5 +188,9 @@ export default {
     //球队分析详情信息
     matchTeamInfos(params){
         return fetchPost('lottery/lottery/match/matchTeamInfos',params)
+    },
+    //资讯首页
+    dllist(params){
+        return fetchPost('lottery/dl/article/list',params)
     }
 }

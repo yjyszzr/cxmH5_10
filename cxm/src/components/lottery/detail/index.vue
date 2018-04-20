@@ -5,33 +5,35 @@
 			<li class="odd_cur">
 				<p @click="deTailTab($event,'1')"></p><span>欧赔</span></li>
 			<li>
-				<p @click="deTailTab($event,'2')"></p><span>压盘</span></li>
+				<p @click="deTailTab($event,'2')"></p><span>亚盘</span></li>
 			<li>
 				<p @click="deTailTab($event,'3')"></p><span>大小球</span></li>
 		</ul>
 		<div class="cen_list1" v-if="dFlag=='1'">
 			<ul class="box_list_1">
-				<li>赛事</li>
-				<li>日期</li>
+				<li>公司</li>
 				<li></li>
-				<li>比分</li>
-				<li></li>
-				<li>胜负</li>
+				<li>胜</li>
+				<li>平</li>
+				<li>负</li>
 			</ul>
 			<div class="box_list_2">
-				<ul>
-					<li>澳彩</li>
-					<li><span>初赔</span><span>初赔</span></li>
-					<li><i>4.25</i><i>4.25</i></li>
-					<li><i>4.25</i><i>4.25</i></li>
-					<li><i>4.25</i><i>4.25</i></li>
-				</ul>
-				<ul>
-					<li>澳彩</li>
-					<li><span>初赔</span><span>初赔</span></li>
-					<li><i>4.25</i><i>4.25</i></li>
-					<li><i>4.25</i><i>4.25</i></li>
-					<li><i>4.25</i><i>4.25</i></li>
+				<ul v-for="(data,i) in leagueMatchEuropes" :key='i'>
+					<li>{{data.comName}}</li>
+					<li><span>初赔</span><span>即赔</span></li>
+					<li><i>{{data.initWin}}</i>
+						<i v-if="data.winChange=='0'">{{data.realWin}}</i>
+						<i v-if="data.winChange=='1'" style="color: #ea5504;">{{data.realWin}}↑</i>
+						<i v-if="data.winChange=='2'" style="color: rgb(68, 174, 53);">{{data.realWin}}↓</i>
+					</li>
+					<li><i>{{data.initDraw}}</i>
+						<i v-if="data.drawChange=='0'">{{data.realDraw}}</i>
+						<i v-if="data.drawChange=='1'" style="color: #ea5504;">{{data.realDraw}}↑</i>
+						<i v-if="data.drawChange=='2'" style="color: rgb(68, 174, 53);">{{data.realDraw}}↓</i>
+					</li>
+					<li><i>{{data.initLose}}</i>
+						<i v-if="data.loseChange=='0'">{{data.realLose}}</i><i v-if="data.loseChange=='1'" style="color: #ea5504;">{{data.realLose}}↑</i><i v-if="data.loseChange=='2'" style="color: rgb(68, 174, 53);">{{data.realLose}}↓</i>
+					</li>
 				</ul>
 			</div>
 		</div>
