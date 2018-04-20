@@ -1,7 +1,6 @@
 <style lang='scss'>
     .consult{
         background: #fff;
-
         .article{
             h5{
                 padding: px2rem(30px) px2rem(20px);
