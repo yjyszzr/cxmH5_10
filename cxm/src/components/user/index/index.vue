@@ -71,7 +71,7 @@
                             <span class="message">消息中心</span>
                         </div>
                     </router-link>
-                    <router-link to='/user/message'>
+                    <router-link to='/user/collection'>
                         <div>
                             <img src="../../../assets/img/not.png">
                             <span class="arrow_right float_right"></span>

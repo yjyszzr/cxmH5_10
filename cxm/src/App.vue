@@ -100,6 +100,8 @@ export default {
             return "查看详情";
             case "consult":
                 return "资讯详情";
+            case "collection":
+                return "我的收藏";
         }
       } else {
         if (

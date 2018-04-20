@@ -24,7 +24,7 @@
         data(){
             return{
                 consult:{
-                    'title': ''
+
                 },
             }
         },

@@ -7,9 +7,8 @@
                 <span @click='filter()'>筛选</span>
                 <span>帮助</span>
             </p>
-            <p class="filter" v-show="menuDisplay==false">
-                
-            </p>
+            <p class="filter" v-show="menuDisplay==false"></p>
+            <p class="share filter" v-show="menuNosult==true"><img src="../../../assets/img/not.png">分享</p>
         </div>
         <ul class="send" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='record'">
             <li class="cur"><p @click='curClick($event)'>全部</p></li>
@@ -41,7 +40,8 @@ export default {
   name: "Header",
   props: {
     title: String,
-    menuDisplay: Boolean
+      menuDisplay: Boolean,
+      menuNosult: Boolean
   },
   data() {
     return {};
@@ -188,6 +188,23 @@ export default {
       border-right: none;
     }
   }
+    .share{
+        display: flex;
+        height: 100%;
+        width: 1.84rem;
+        font-size: 0.37333rem;
+        color: #505050;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        img{
+            display: inline-block;
+            width: px2rem(32px);
+            height: px2rem(32px);
+            margin-right: px2rem(10px);
+            vertical-align: middle;
+        }
+    }
 }
 </style>
 
