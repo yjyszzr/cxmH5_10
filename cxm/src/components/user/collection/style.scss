@@ -1,5 +1,34 @@
 @import '../../../assets/css/function.scss';
 .collection{
+  margin-top: px2rem(20px);
   background: #fff;
-  padding: px2rem(20px);
+  padding:0 px2rem(20px);
+  ul{
+    li{
+      padding: px2rem(20px) 0;
+      border-bottom: 1px solid #f0f0f0;
+      .choice{
+        h5{
+          color: #505050;
+          font-size: px2rem(30px);
+          margin-bottom: px2rem(10px);
+        }
+        p{
+          font-size: px2rem(24px);
+          color: #666666;
+          overflow:hidden;
+          text-overflow:ellipsis;
+          display:-webkit-box;
+          -webkit-box-orient:vertical;
+          -webkit-line-clamp:2;
+          margin-bottom: px2rem(15px);
+        }
+        span{
+          color: #9f9f9f;
+          margin-right: px2rem(30px);
+          font-size: px2rem(22px);
+        }
+      }
+    }
+  }
 }
