@@ -14,7 +14,6 @@
                     <img src="../../../assets/img/pho_nor.png">
                     <mt-field type='tel' placeholder="请输入手机号" v-model="phoneVal"></mt-field>
                     <!-- <input v-model="phoneVal" type="tel" placeholder="请输入手机号" class="text"/> -->
-                    <em><img class="img" src="../../../assets/img/sut.png"></em>
                 </div>
 
             </a>

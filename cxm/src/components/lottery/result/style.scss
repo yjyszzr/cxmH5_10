@@ -2,7 +2,7 @@
  .result{
    .list{
       height: px2rem(88px);
-      line-height: px2rem(88px);
+      //line-height: px2rem(88px);
       display: flex;
       background: #fff;
       margin-bottom: px2rem(20px);
@@ -11,7 +11,11 @@
      width: 100%;
      z-index: 9;
      border-bottom: 1px solid #f1f1f1;
+     box-sizing: border-box;
       li{
+        display: flex;
+        justify-content: center;
+        align-items: center;
          flex: 1;
           height: px2rem(88px);
          text-align: center;
@@ -20,12 +24,9 @@
          font-size: px2rem(28px);
          position: relative;
         i{
-          background: url(../../../assets/img/free/Clickable@2x.png);
-          background-size: 100%;
-          width: px2rem(20px);
-          height: px2rem(20px);
+          color: #ea5504;
+          font-size: px2rem(20px);
           right: 0;
-          transform:rotate(90deg);
           position: absolute;
           bottom: 0;
         }

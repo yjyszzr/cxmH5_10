@@ -8,7 +8,7 @@
         <ul class="section msg_list">
             <li>
                 <a href="javascript:void(0);">
-                    <div>
+                    <div style="display:flex;align-item:center;">
                         <label>姓名：</label>
                         <input disabled type="text" class="text1" :value="this.$store.state.userInfo.realName"/>
                     </div>

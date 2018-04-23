@@ -192,5 +192,17 @@ export default {
     //资讯首页
     dllist(params){
         return fetchPost('lottery/dl/article/list',params)
+    },
+    //资讯详情
+    articleDetail(params){
+        return fetchPost('lottery/dl/article/detail',params)
+    },
+    //收藏列表
+    collectList(params){
+        return fetchPost('member/user/collect/list',params)
+    },
+    //删除列表
+    collectdelete(params){
+        return fetchPost('member/user/collect/delete',params)
     }
 }

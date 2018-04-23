@@ -32,15 +32,15 @@
                 <div class="progress">
                     <div class="h_progress">
                         <span>主胜</span>
-                        <el-progress :percentage="ckxqObj.hvMatchTeamInfo.win/ckxqObj.hvMatchTeamInfo.total" status="exception"></el-progress>
+                        <el-progress :percentage="(ckxqObj.hvMatchTeamInfo.win/ckxqObj.hvMatchTeamInfo.total)*100" status="exception"></el-progress>
                     </div>
                     <div class="p_progress">
                         <span>平</span>
-                        <el-progress :percentage="ckxqObj.hvMatchTeamInfo.draw/ckxqObj.hvMatchTeamInfo.total" :show-text='false'></el-progress>
+                        <el-progress :percentage="(ckxqObj.hvMatchTeamInfo.draw/ckxqObj.hvMatchTeamInfo.total)*100" :show-text='false'></el-progress>
                     </div>
                     <div class="f_progress">
                         <span>客胜</span>
-                        <el-progress :percentage="ckxqObj.hvMatchTeamInfo.lose/ckxqObj.hvMatchTeamInfo.total" status="success"></el-progress>
+                        <el-progress :percentage="(ckxqObj.hvMatchTeamInfo.lose/ckxqObj.hvMatchTeamInfo.total)*100" status="success"></el-progress>
                     </div>
                 </div>
                 <div class="cen_list">
@@ -57,7 +57,7 @@
                             <li><span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.homeTeamAbbr?'#505050':'#9f9f9f'}">{{item.homeTeamAbbr}}</span>
                             <span>{{item.whole}}</span>
                             <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.visitingTeamAbbr?'#505050':'#9f9f9f'}">{{item.visitingTeamAbbr}}</span></li>
-                            <li>{{item.matchRs}}</li>
+                            <li :style="{'color':colorMatchRs(item.matchRs)}">{{item.matchRs}}</li>
                         </ul>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                             <li><span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.homeTeamAbbr?'#505050':'#9f9f9f'}">{{item.homeTeamAbbr}}</span>
                             <span>{{item.whole}}</span>
                             <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.visitingTeamAbbr?'#505050':'#9f9f9f'}">{{item.visitingTeamAbbr}}</span></li>
-                            <li>{{item.matchRs}}</li>
+                            <li :style="{'color':colorMatchRs(item.matchRs)}">{{item.matchRs}}</li>
                         </ul>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                             <li><span :style="{'color':ckxqObj.matchInfo.visitingTeamAbbr==item.homeTeamAbbr?'#505050':'#9f9f9f'}">{{item.homeTeamAbbr}}</span>
                             <span>{{item.whole}}</span>
                             <span :style="{'color':ckxqObj.matchInfo.visitingTeamAbbr==item.visitingTeamAbbr?'#505050':'#9f9f9f'}">{{item.visitingTeamAbbr}}</span></li>
-                            <li>{{item.matchRs}}</li>
+                            <li :style="{'color':colorMatchRs(item.matchRs)}">{{item.matchRs}}</li>
                         </ul>
                     </div>
                 </div>

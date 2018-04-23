@@ -54,6 +54,16 @@ export default {
       	}else{
       		this.flag=true
       	}
+      },
+      colorMatchRs(c){
+          switch (c) {
+              case '胜':
+                return '#ea5504'
+              case '平':
+                return '#0099d9'
+              case '负':
+                return '#44ae35'
+          }
       }
     },
     mounted(){

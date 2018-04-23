@@ -1,24 +1,23 @@
-<style lang='scss' scoped src='./style.scss'>
+<style lang='scss' src='./style.scss'>
 
 </style>
 
 
 <!--密码登录-->
 <template>
-    <div class="wrap">
+    <div class="wrap find">
         <ul class="section msg_list">
             <li>
                 <a href="javascript:void(0);">
                     <div>
                         <img src="../../../assets/img/pho_nor.png">
                         <mt-field type='tel' placeholder="请输入手机号" v-model="phoneVal"></mt-field>
-                        <em><img class="img" src="../../../assets/img/sut.png"></em>
                     </div>
                 </a>
             </li>
         </ul>
-        <section class="button">
-            <a class="determine" @click='next()'>下一步</a>
+        <section class="button" @click='next()'>
+            <a class="determine">下一步</a>
         </section>
         <div class="prompt"></div>
     </div>

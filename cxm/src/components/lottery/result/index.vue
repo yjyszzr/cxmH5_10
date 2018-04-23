@@ -3,10 +3,10 @@
     <div class="wrap result">
         <section>
             <ul class="list">
-                <li @click='data_time()'>{{$store.state.mark_showObj.mark_dateVal}}<i></i></li>
-                <li @click='more()'>更多条件<i></i></li>
-                <li @click='all($event)' v-if="flag==true">全部<i></i></li>
-                <li @click='all($event)' v-if="flag==false">未开始<i></i></li>
+                <li @click='data_time()'>{{$store.state.mark_showObj.mark_dateVal}}<i class="iconfont icon-icon-41"></i></li>
+                <li @click='more()'>更多条件<i class="iconfont icon-icon-41"></i></li>
+                <li @click='all($event)' v-if="flag==true">全部<i class="iconfont icon-icon-41"></i></li>
+                <li @click='all($event)' v-if="flag==false">未开始<i class="iconfont icon-icon-41"></i></li>
             </ul>
         </section>
         <section>
@@ -23,6 +23,7 @@
                                 <div>
                                     <p><em>{{list.homeTeamAbbr}}</em><span>VS</span><em style="text-align: left">{{list.visitingTeamAbbr}}</em></p>
                                   <b>半场{{list.firstHalf}}<span>总比分{{list.whole}}</span></b>
+                                  <b>未开始</b>
                                 </div>
                                 <s><img src="../../../assets/img/img1.png"></s>
                             </div>

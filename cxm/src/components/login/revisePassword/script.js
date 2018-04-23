@@ -4,7 +4,6 @@ export default {
     name: 'revise',
     data () {
       return {
-        phoneVal: this.$store.state.findphone,
         passwordVal: '',
         telVal: ''
       }
@@ -54,6 +53,11 @@ export default {
     },
     mounted(){
         
+    },
+    computed:{
+        phoneVal(){
+            return this.$store.state.findphone;
+        }
     },
     beforeRouteLeave (to, from, next) {
         next()

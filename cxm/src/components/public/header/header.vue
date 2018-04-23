@@ -4,12 +4,12 @@
             <a @click="return_back()" class="go_return"></a>
             <p class="headerText">彩小秘·{{title}}</p>
             <p class="filter" v-show="menuDisplay==true">
-                <span @click='filter()'>筛选</span>
-                <span>帮助</span>
+                <span @click='filter()' v-if="$route.path.split('/')[2]=='singleNote'">筛选</span>
+                <span v-if="$route.path.split('/')[2]=='singleNote'">帮助</span>
+                <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu()" class="colMenu">编辑</span>
             </p>
-            <p class="filter" v-show="menuDisplay==false">
-                
-            </p>
+            <p class="filter" v-show="menuDisplay==false"></p>
+            <p class="share filter" v-show="menuNosult==true"><img src="../../../assets/img/not.png">分享</p>
         </div>
         <ul class="send" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='record'">
             <li class="cur"><p @click='curClick($event)'>全部</p></li>
@@ -41,7 +41,8 @@ export default {
   name: "Header",
   props: {
     title: String,
-    menuDisplay: Boolean
+      menuDisplay: Boolean,
+      menuNosult: Boolean
   },
   data() {
     return {};
@@ -58,6 +59,13 @@ export default {
     filter() {
       this.$store.dispatch("getMarkShow",true)
       this.$store.dispatch("getMarkShowType",'2')
+    },
+    colMenu(){
+      if(this.deleteFlag==false){
+        this.$store.dispatch("deleteMyFlag",true)
+      }else{
+        this.$store.dispatch("deleteMyFlag",false)
+      }
     },
     curClick(c){
         $('.cur').removeClass('cur')
@@ -107,7 +115,12 @@ export default {
                 this.$store.dispatch("changeRecordTab",'m2')
             }
     },
-  }
+  },
+  computed: {  
+    deleteFlag() {  
+        return this.$store.state.deleteFlag; 
+    }  
+  },
 };
 </script>
 
@@ -145,6 +158,12 @@ export default {
         align-items: center;
         font-size: px2rem(28px);
         color: #505050;
+      }
+      .colMenu{
+       width: 100%;
+       justify-content: flex-end;
+       padding-right: px2rem(30px);
+       box-sizing: border-box;
       }
     }
     .headerText{
@@ -188,6 +207,23 @@ export default {
       border-right: none;
     }
   }
+    .share{
+        display: flex;
+        height: 100%;
+        width: 1.84rem;
+        font-size: 0.37333rem;
+        color: #505050;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        img{
+            display: inline-block;
+            width: px2rem(32px);
+            height: px2rem(32px);
+            margin-right: px2rem(10px);
+            vertical-align: middle;
+        }
+    }
 }
 </style>
 

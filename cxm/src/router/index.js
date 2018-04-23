@@ -233,6 +233,22 @@ const router = new Router({
           component: function (resolve) {
               require(['../components/lottery/teamDetail/index.vue'], resolve)
           },
+      },
+      {
+          path: '/index/consult',
+          name: 'consult',
+          cname:'资讯详情',
+          component: function (resolve) {
+              require(['../components/index/consult/consult.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/collection',
+          name: 'collection',
+          cname:'我的收藏',
+          component: function (resolve) {
+              require(['../components/user/collection/index.vue'], resolve)
+          },
       }
   ]
 })

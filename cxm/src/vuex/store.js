@@ -49,6 +49,7 @@ const state = {
     },
     recordTab: '', //个人中心子页导航
     chushihuaObj: {}, //初始化数据保存
+    deleteFlag: false, //收藏删除开关
 }
 
 const mutations = {
@@ -183,6 +184,9 @@ const mutations = {
     },
     MATCHDETAILFLAG(state, data){
         state.mark_playObj.matchDetailFlag = data
+    },
+    DELETEFLAG(state,data){
+        state.deleteFlag = data
     }
 }
 
@@ -325,6 +329,9 @@ const actions = {
     },
     getMatchDetailFlag({commit}, value){
         commit("MATCHDETAILFLAG", value);
+    },
+    deleteMyFlag({commit}, value){
+        commit("DELETEFLAG", value);
     }
 }
 

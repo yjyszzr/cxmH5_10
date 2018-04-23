@@ -39,21 +39,21 @@
                 <li>
                     <router-link to="/user/record">
                         <div>
-                            <img src="../../../assets/img/recording.png">
+                            <i class="iconfont icon-icon-3"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">投注记录</span>
                         </div>
                     </router-link>
                     <router-link to='/user/account'>
                         <div>
-                            <img src="../../../assets/img/Details.png">
+                            <i class="iconfont icon-icon-4"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">账户明细</span>
                         </div>
                     </router-link>
                     <router-link to='/user/detail'>
                         <div>
-                            <img src="../../../assets/img/coupon.png">
+                            <i class="iconfont icon-icon-6"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">我的卡券<em></em></span>
                         </div>
@@ -66,35 +66,35 @@
                 <li>
                     <router-link to='/user/message'>
                         <div>
-                            <img src="../../../assets/img/not.png">
+                            <i class="iconfont icon-icon-47"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">消息中心</span>
                         </div>
                     </router-link>
-                    <router-link to='/user/message'>
+                    <router-link to='/user/collection'>
                         <div>
-                            <img src="../../../assets/img/not.png">
+                            <i class="iconfont icon-icon-49"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">我的收藏</span>
                         </div>
                     </router-link>
                     <a>
                         <div>
-                            <img src="../../../assets/img/help.png">
+                            <i class="iconfont icon-icon-5"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">帮助中心</span>
                         </div>
                     </a>
                     <a href="tel:400-123-1234">
                         <div>
-                            <img src="../../../assets/img/serive.png">
+                            <i class="iconfont icon-icon-7"></i>
                             <span class="arrow_kefu float_right">400-123-1234</span>
                             <span class="message">联系客服</span>
                         </div>
                     </a>
                     <router-link to='/user/about'>
                         <div>
-                            <img src="../../../assets/img/tab_min_sel.png">
+                            <i class="iconfont icon-icon-9"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">关于我们</span>
                         </div>

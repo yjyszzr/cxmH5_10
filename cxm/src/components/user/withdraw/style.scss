@@ -13,20 +13,25 @@
   margin-left: 0;
   padding:0;
   /*border-bottom: 1px solid #e5e5e5;*/
-  height: px2rem(88px);
+}
+.msg_list li>a:first-of-type div{
+  display: flex;
+  align-items: flex-end;
 }
 .arrow_right{
   position: relative;
   display: block;
   height:px2rem(88px);
+  line-height: px2rem(92px);
   width: auto;
   background-size: auto 30%;
   color: #A0A0A0;
   font-size: px2rem(30px);
   padding-right: px2rem(30px);
+  margin-right: 0;
 }
 .msg_list li>a>div .text1 {
-  width: 65%;
+  width: 58%;
 }
 .msg_list li a>div>label {
   color: #A0A0A0;

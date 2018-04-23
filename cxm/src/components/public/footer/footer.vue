@@ -1,16 +1,19 @@
 <template>
     <div class="foot" @touchmove.prevent v-show="isShowTabbar()">
             <router-link to='/'>
-                <img src="../../../assets/img/dating.png">
-                <span>大厅</span>
+                <i class="iconfont icon-tab_home" v-if="$route.path.split('/')[1] != ''"></i>
+                <i style="color: #ea5504;" class="iconfont icon-tab_home_pre" v-if="$route.path.split('/')[1] == ''"></i>
+                <span :style="{'color': $route.path.split('/')[1] == ''?'#ea5504':'#505050'}">大厅</span>
             </router-link>
             <router-link to='/lotteryResult'>
-                <img src="../../../assets/img/qiu.png">
-                <span>开奖</span>
+                <i class="iconfont icon-tab_find" v-if="$route.path.split('/')[1] != 'lotteryResult'"></i>
+                <i style="color: #ea5504;" class="iconfont icon-tab_find_pre" v-if="$route.path.split('/')[1] == 'lotteryResult'"></i>
+                <span :style="{'color': $route.path.split('/')[1] == 'lotteryResult'?'#ea5504':'#505050'}">开奖</span>
             </router-link>
             <router-link to='/user'>
-                <img src="../../../assets/img/my.png">
-                <span>我的</span>
+                <i class="iconfont icon-tab_my" v-if="$route.path.split('/')[1] != 'user'"></i>
+                <i style="color: #ea5504;" class="iconfont icon-tab_my_pre" v-if="$route.path.split('/')[1] == 'user'"></i>
+                <span :style="{'color': $route.path.split('/')[1] == 'user'?'#ea5504':'#505050'}">我的</span>
             </router-link>
     </div>
 </template>
@@ -37,7 +40,7 @@ export default {
         flex-grow: 0;
         flex-shrink: 0;
         width: 100%;
-        box-shadow: 0px -2px 3px rgba(0,0,0,0.2);
+        border-top: 1px solid #f0f0f0;
         height: px2rem(98px);
         display: flex;
         background: white;
@@ -52,12 +55,11 @@ export default {
             align-items: center;
             justify-content: space-around;
             flex-direction: column;
-            img{
-                width:px2rem(46px);
+            i{
+                font-size: px2rem(42px);
             }
             span{
                 font-size: px2rem(20px);
-
             }
         }
     }
