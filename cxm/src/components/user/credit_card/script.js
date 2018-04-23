@@ -27,9 +27,6 @@ export default {
         .then(res => {
             Toast(res.msg)
         })
-        .catch(error => {
-            Toast('网络错误')
-        })
       },
       removeBank(num,id){
         let status = ''
@@ -55,9 +52,6 @@ export default {
               }
               Toast(res.msg)
           })
-          .catch(error => {
-              Toast('网络错误')
-          })
         },action => {
 
         })
@@ -77,9 +71,6 @@ export default {
               Toast(res.msg)
             }
             Indicator.close()
-        })
-        .catch(error => {
-            Toast('网络错误')
         })
       }
     },

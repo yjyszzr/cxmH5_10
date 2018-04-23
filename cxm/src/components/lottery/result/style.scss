@@ -54,10 +54,9 @@
      li{
        border-bottom: 1px dashed #f0f0f0;
        padding-top: px2rem(18px);
-       padding-bottom: px2rem(30px);
        width: 100%;
-       height: px2rem(134px);
        position: relative;
+       padding-bottom: px2rem(22px); 
        small{
          font-weight: normal;
          font-size: px2rem(22px);
@@ -68,7 +67,7 @@
          }
        }
        .pink{
-         margin-top: px2rem(17px);
+         margin-top: px2rem(27px);
          i{
            width: px2rem(80px);
            height: px2rem(80px);
@@ -77,7 +76,7 @@
            left: px2rem(24px);
            border-radius: 50%;
            position: absolute;
-           top: px2rem(51px);
+           top: px2rem(71px);
            img{
              width: 100%;
            }
@@ -90,7 +89,7 @@
            border-radius: 50%;
            position: absolute;
            right: px2rem(24px);
-           top: px2rem(51px);
+           top: px2rem(71px);
            img{
              width: 100%;
            }

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
 import { Toast } from 'mint-ui'
+import { Indicator } from 'mint-ui'
 
 // axios 配置
 axios.defaults.timeout = 5000;
@@ -30,17 +31,65 @@ axios.interceptors.request.use(
 //     return Promise.reject(error);
 // });
 
-//返回状态判断
-// axios.interceptors.response.use((res) =>{
-//     if(res.data.code!=0){
-//         Toast(res.data.msg);
-//         return Promise.reject(res);
-//     }
-//     return res;
-// }, (error) => {
-//     Toast("网络异常", 'fail');
-//     return Promise.reject(error);
-// });
+//返回状态错误处理
+axios.interceptors.response.use((res) =>{
+    return res;
+}, (error) => {
+    if (error && error.response) {
+        switch (error.response.status) {
+          case 400:
+          error.message = '请求错误'
+            break
+    
+          case 401:
+          error.message = '未授权，请登录'
+            break
+    
+          case 403:
+          error.message = '拒绝访问'
+            break
+    
+          case 404:
+          error.message = `请求地址出错: ${error.response.config.url}`
+            break
+    
+          case 408:
+          error.message = '请求超时'
+            break
+    
+          case 500:
+          error.message = '服务器内部错误'
+            break
+    
+          case 501:
+          error.message = '服务未实现'
+            break
+    
+          case 502:
+          error.message = '网关错误'
+            break
+    
+          case 503:
+          error.message = '服务不可用'
+            break
+    
+          case 504:
+          error.message = '网关超时'
+            break
+    
+          case 505:
+          error.message = 'HTTP版本不受支持'
+            break
+
+          default: '请求超时'
+    }
+}
+    setTimeout(()=>{
+        Indicator.close()
+        Toast('请求超时');
+    },10000)
+    return Promise.reject(error);
+});
 
 export function fetchPost(url, params) {
     return new Promise((resolve, reject) => {
@@ -204,5 +253,13 @@ export default {
     //删除列表
     collectdelete(params){
         return fetchPost('member/user/collect/delete',params)
-    }
+    },
+    //添加收藏
+    collectAdd(params){
+        return fetchPost('member/user/collect/add',params)
+    },
+    //资讯列表,查看更多
+    relatedArticles(params){
+        return fetchPost('lottery/dl/article/relatedArticles',params)
+    },
 }

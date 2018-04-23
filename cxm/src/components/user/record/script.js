@@ -53,9 +53,6 @@ export default {
             }
             Indicator.close()
         })
-        .catch(error => {
-            Toast('网络错误')
-        })
       },
       goDetail(c){
         this.$router.push({

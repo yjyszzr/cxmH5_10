@@ -41,9 +41,6 @@ export default {
             }
             Indicator.close()
         })
-        .catch(error => {
-            Toast('网络错误')
-        })
       },
       handleTopChange(status) {
         this.bottomStatus = status;
@@ -97,9 +94,6 @@ export default {
             }else{
               Toast(res.msg)
             }
-        })
-        .catch(error => {
-            Toast('网络错误')
         })
     },
     beforeRouteLeave(to, from, next) {

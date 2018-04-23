@@ -1,0 +1,138 @@
+<template>
+<div class="informalList">
+<div class="choice" v-for="(item,i) in zxList" :key='i' @click="goZxDetail(item.articleId)">
+						<div v-if="item.listStyle==2||item.listStyle==3||item.listStyle==0">
+							<h4>{{item.title}}</h4>
+						<p v-if="item.listStyle==2||item.listStyle==3">
+							<img :src="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
+						</p>
+            <p v-if="item.listStyle==0" class="summary">
+              {{item.summary}}
+            </p>
+						<span>{{item.extendCat}}</span><span>{{item.addTime}}</span><span>阅读{{item.clickNumber}}</span>
+						</div>
+						<div class="zxBox" v-if="item.listStyle==1||item.listStyle==4">
+							<div class="zxLeft">
+								<h5>{{item.title}}</h5>
+								<div class="zx_info"><span>{{item.extendCat}}</span><span>{{item.addTime}}</span><span>阅读{{item.clickNumber}}</span></div>
+							</div>
+							<div class="zxRight">
+								<img :src="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
+                <b v-if="item.listStyle==4">播放</b>
+							</div>
+						</div>
+					</div>
+</div>
+	
+</template>
+
+<script>
+export default {
+  name: "informalList",
+  data() {
+      return {
+
+      }
+  },
+  props: ["zxList"],
+  mounted() {},
+  methods: {
+      goZxDetail(c){
+          this.$router.push({
+                path: "/index/consult",
+                query: {
+                id: c
+                },
+                replace: false
+        });
+    }
+  }
+};
+</script>
+
+<style lang='scss'>
+@import "../../../assets/css/function.scss";
+.informalList{
+    .choice {
+        border-bottom: 1px solid #f0f0f0;
+        padding: px2rem(20px) 0;
+        h4 {
+          color: #505050;
+		  font-size: px2rem(30px);
+		  overflow: hidden;
+		  text-overflow:ellipsis;
+		  white-space: nowrap;
+        }
+        .summary{
+		  	overflow : hidden;
+					text-overflow: ellipsis;
+					display: -webkit-box;
+					-webkit-line-clamp: 2;
+					-webkit-box-orient: vertical;
+        }
+        p {
+          margin: px2rem(10px) 0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          img {
+            width: px2rem(230px);
+            height: px2rem(164px);
+            display: block;
+          }
+        }
+        span {
+          color: #9f9f9f;
+          margin-right: px2rem(30px);
+          font-size: px2rem(22px);
+		}
+		span:last-of-type{
+			margin: 0;
+		}
+		.zxBox{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.zxLeft{
+				width: px2rem(430px);
+				height: px2rem(164px);
+				display: flex;
+				justify-content: space-between;
+				flex-direction: column;
+				h5{
+					color: #505050;
+		  			font-size: px2rem(30px);
+					overflow : hidden;
+					text-overflow: ellipsis;
+					display: -webkit-box;
+					-webkit-line-clamp: 2;
+					-webkit-box-orient: vertical;
+				}
+			}
+			.zxRight{
+        position: relative;
+				img {
+            width: px2rem(230px);
+            height: px2rem(164px);
+            display: block;
+          }
+          b{
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            display: block;
+            width: px2rem(50px);
+            height: px2rem(28px);
+          }
+			}
+		}
+      }
+      .choice:last-of-type {
+        border: none;
+      }
+}
+</style>
+

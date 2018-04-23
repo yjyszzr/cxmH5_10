@@ -50,6 +50,7 @@ const state = {
     recordTab: '', //个人中心子页导航
     chushihuaObj: {}, //初始化数据保存
     deleteFlag: false, //收藏删除开关
+    zxCollectionFlag: false,  //收藏按钮是否选中
 }
 
 const mutations = {
@@ -59,9 +60,6 @@ const mutations = {
         api.SendSmsCode(data)
             .then(res => {
                 Toast(res.msg)
-            })
-            .catch(error => {
-                Toast('网络错误')
             })
         state.smsCode.timer = setInterval(() => {
             state.smsCode.changeNumber--;
@@ -187,6 +185,9 @@ const mutations = {
     },
     DELETEFLAG(state,data){
         state.deleteFlag = data
+    },
+    ZXCOLLEXCTIONFLAG(state,data){
+        state.zxCollectionFlag = data
     }
 }
 
@@ -214,9 +215,6 @@ const actions = {
                 }
                 Indicator.close()
             })
-            .catch(error => {
-                Toast('网络错误')
-            })
     },
     getResultList({
         commit
@@ -230,9 +228,6 @@ const actions = {
                     Toast(res.msg)
                 }
                 Indicator.close()
-            })
-            .catch(error => {
-                Toast('网络错误')
             })
     },
     changeFindphone({
@@ -332,6 +327,9 @@ const actions = {
     },
     deleteMyFlag({commit}, value){
         commit("DELETEFLAG", value);
+    },
+    getCollectionFlag({commit}, value){
+        commit("ZXCOLLEXCTIONFLAG",value)
     }
 }
 

@@ -23,9 +23,6 @@ export default {
             Indicator.close()
             this.$router.go(-1)
         })
-        .catch(error => {
-            Toast('网络错误')
-        })
       }
     },
     mounted(){

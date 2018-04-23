@@ -48,9 +48,6 @@ export default {
           }
           Indicator.close()
         })
-        .catch(error => {
-          Toast("网络错误");
-        });
     },
     deleteItem(c) {
       Indicator.open()
@@ -69,9 +66,6 @@ export default {
             Toast(res.msg);
           }
         })
-        .catch(error => {
-          Toast("网络错误");
-        });
     },
     handleScroll(e) {
       if (
@@ -88,7 +82,16 @@ export default {
           this.isbool = false;
         }
       }
-    }
+    },
+    goZxDetail(c){
+      this.$router.push({
+            path: "/index/consult",
+            query: {
+            id: c
+            },
+            replace: false
+    });
+}
   },
   mounted() {
     document

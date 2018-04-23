@@ -33,9 +33,6 @@ export default {
                 }
                 Indicator.close()
             })
-            .catch(error => {
-                Toast('网络错误')
-            })
         },
         payBtn(){
             Indicator.open()
@@ -57,9 +54,6 @@ export default {
                 }
                 Toast(res.msg)
                 Indicator.close()
-            })
-            .catch(error => {
-                Toast('网络错误')
             })
         }
     },

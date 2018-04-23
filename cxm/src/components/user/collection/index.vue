@@ -9,7 +9,7 @@
                     <div class="scDelete" v-if="deleteFlag" @click="deleteItem(item.articleId)">
                         <i class="iconfont icon-icon-50"></i>
                     </div>
-                    <div class="choice">
+                    <div class="choice" @click="goZxDetail(item.articleId)">
 						<div v-if="item.listStyle==2||item.listStyle==3||item.listStyle==0">
 							<h4>{{item.title}}</h4>
 						<p v-if="item.listStyle==2||item.listStyle==3">
@@ -34,6 +34,10 @@
                 </li>
                 </div>
             </ul>
+			<div class="nullstatus" v-if="scList.length==0">
+                    <img src="../../../assets/img/juan.png" alt="">
+                    <span>暂无收藏</span>
+            </div>
             <div class="triple" v-show="trFlag">
 				<mt-spinner type="triple-bounce" color="#999"></mt-spinner>&nbsp;<span>正在加载</span>
 			</div>

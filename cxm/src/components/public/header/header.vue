@@ -4,12 +4,13 @@
             <a @click="return_back()" class="go_return"></a>
             <p class="headerText">彩小秘·{{title}}</p>
             <p class="filter" v-show="menuDisplay==true">
-                <span @click='filter()' v-if="$route.path.split('/')[2]=='singleNote'">筛选</span>
+                <span @click='filter()' v-if="$route.path.split('/')[2]=='singleNote'" class="iconfont icon-icon-33"></span>
                 <span v-if="$route.path.split('/')[2]=='singleNote'">帮助</span>
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu()" class="colMenu">编辑</span>
+                <span v-if="$route.path.split('/')[2]=='consult'" class="iconfont icon-icon-49" @click="collection($event)"></span>
+                <span v-if="$route.path.split('/')[2]=='consult'">分享</span>
             </p>
             <p class="filter" v-show="menuDisplay==false"></p>
-            <p class="share filter" v-show="menuNosult==true"><img src="../../../assets/img/not.png">分享</p>
         </div>
         <ul class="send" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='record'">
             <li class="cur"><p @click='curClick($event)'>全部</p></li>
@@ -114,12 +115,24 @@ export default {
             } else if (c.target.innerText == '消息') {
                 this.$store.dispatch("changeRecordTab",'m2')
             }
-    },
+      },
+      collection(c){
+          if(c.target.className=='iconfont icon-icon-49'){
+            this.$store.dispatch("getCollectionFlag",true)
+            c.target.className='iconfont icon-icon-44'
+          }else{
+            this.$store.dispatch("getCollectionFlag",false)
+            c.target.className='iconfont icon-icon-49'
+          }
+      }
   },
   computed: {  
     deleteFlag() {  
         return this.$store.state.deleteFlag; 
-    }  
+    },
+    zxCollectionFlag(){
+        return this.$store.state.zxCollectionFlag;
+    }
   },
 };
 </script>
@@ -150,20 +163,27 @@ export default {
       display: flex;
       height: 100%;
       width: px2rem(138px);
+      box-sizing: border-box;
       span {
         display: block;
         height: 100%;
-        padding: 0 px2rem(5px);
+        padding: 0 px2rem(10px) 0 px2rem(10px);
         display: flex;
         align-items: center;
         font-size: px2rem(28px);
         color: #505050;
+      }
+      .iconfont{
+        font-size: px2rem(30px);
       }
       .colMenu{
        width: 100%;
        justify-content: flex-end;
        padding-right: px2rem(30px);
        box-sizing: border-box;
+      }
+      .icon-icon-44{
+        color: #787878;
       }
     }
     .headerText{

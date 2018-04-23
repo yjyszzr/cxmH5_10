@@ -102,6 +102,8 @@ export default {
                 return "资讯详情";
             case "collection":
                 return "我的收藏";
+            case "moreInfo":
+                return "更多资讯";
         }
       } else {
         if (
@@ -122,7 +124,7 @@ export default {
       }
     },
     menuDisplay() {
-      if (this.$route.path.split("/")[2] == "singleNote"||this.$route.path.split("/")[2] == "collection") {
+      if (this.$route.path.split("/")[2] == "singleNote"||this.$route.path.split("/")[2] == "collection"||this.$route.path.split("/")[2] == "consult") {
         return true;
       } else {
         return false;

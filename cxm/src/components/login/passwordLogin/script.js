@@ -35,9 +35,6 @@ export default {
             }
             Toast(res.msg)
         })
-        .catch(error => {
-            Toast('网络错误')
-        })
       }
     },
     mounted(){

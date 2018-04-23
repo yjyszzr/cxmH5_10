@@ -249,6 +249,14 @@ const router = new Router({
           component: function (resolve) {
               require(['../components/user/collection/index.vue'], resolve)
           },
+      },
+      {
+          path: '/index/moreInfo',
+          name: 'moreInfo',
+          cname:'相关文章',
+          component: function (resolve) {
+              require(['../components/index/moreInformation/moreInformation.vue'], resolve)
+          },
       }
   ]
 })

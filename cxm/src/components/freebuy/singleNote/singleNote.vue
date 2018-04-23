@@ -6,6 +6,7 @@
        <el-collapse v-model="activeName">
         <el-collapse-item name="1" v-if="$store.state.matchObj.hotPlayList&&$store.state.matchObj.hotPlayList.length>0">
             <template slot="title">
+                <span class="iconfont icon-icon-34"></span>
                 <span class="hotMatch">热门比赛</span>
             </template>
             <ul class="hotMatchList">

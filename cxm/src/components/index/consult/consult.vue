@@ -1,54 +1,30 @@
-<style lang='scss'>
-    .consult{
-        background: #fff;
-        .article{
-            h5{
-                padding: px2rem(30px) px2rem(20px);
-            }
-        }
-    }
+<style lang='scss' src='./style.scss'>
+
 </style>
 <template>
     <div class="wrap consult">
         <div class="article">
-            <h5>文章标题</h5>
+            <h4>{{consultObj.title}}</h4>
+            <div class="zxDetailTitle">
+                <span>{{consultObj.extendCat}}</span>
+                <span>{{consultObj.addTime}}</span>
+            </div>
+            <div v-html="consultObj.content"></div>
+            <div class="keywords">
+                <p v-for="(item,i) in consultObj.labelsArr" :key='i'>{{item}}</p>
+            </div>
         </div>
+        <div class="xgNews">
+            <h3>相关文章</h3>
+            <ul>
+                <li>
+					<v-informal :zxList='consultObj.articles'></v-informal>
+				</li>
+            </ul>
+        </div>
+        <button class="ckBtn" @click="ckBtn()">查看更多</button>
     </div>
 </template>
-<script>
-    import api from "../../../fetch/api";
-    import { Toast } from "mint-ui";
-    import { Indicator } from "mint-ui";
-    export default {
-        name: "consult",
-        data(){
-            return{
-                consult:{
-
-                },
-            }
-        },
-        // beforeCreate() {
-        //     Indicator.open()
-        // },
-        mounted(){
-            let data={
-                page:1,
-                size:10
-            }
-            api.articleDetail(data)
-                .then(res => {
-                    console.log(res)
-                    if(res.code==0) {
-                        this.consult = res.data
-                    }else{
-                        Toast(res.msg)
-                    }
-                    // Indicator.open()
-                })
-                .catch(error => {
-                    Toast('网络错误')
-                })
-        },
-    }
+<script src='./script.js'>
+    
 </script>

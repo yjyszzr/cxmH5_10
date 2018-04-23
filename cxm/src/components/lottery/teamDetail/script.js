@@ -36,9 +36,6 @@ export default {
                 }
                 Indicator.close()
             })
-            .catch(error => {
-                Toast('网络错误')
-        })
       },
       matchTimeDate(c){
           return datefilter(c*1000,0)+' '+ datefilter(c*1000,1)
