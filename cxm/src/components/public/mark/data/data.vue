@@ -1,5 +1,5 @@
 <template>
-    <div class="data" >
+    <div class="data1" >
         <div class="dt_title">
             日期
         </div>
