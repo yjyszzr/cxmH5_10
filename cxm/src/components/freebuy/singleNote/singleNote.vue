@@ -18,7 +18,8 @@
                         <span>{{item.changci}}</span>
                         <span>截止{{datePd(item.matchTime)}}</span>
                         <span>
-                            <img src="../../../assets/img/freebuy_img/Collapse@3x.png" alt="">
+                            <i class="iconfont icon-icon-22"></i>
+                            <!--<img src="../../../assets/img/freebuy_img/Collapse@3x.png" alt="">-->
                         </span>
                     </div>
                     <div class="matchRight" v-if="playType=='1'||playType=='2'">
@@ -156,7 +157,8 @@
                         <span>{{item.changci}}</span>
                         <span>截止{{datePd(item.matchTime)}}</span>
                         <span>
-                            <img src="../../../assets/img/freebuy_img/Collapse@3x.png" alt="">
+                            <i class="iconfont icon-icon-22"></i>
+                            <!--<img src="../../../assets/img/freebuy_img/Collapse@3x.png" alt="">-->
                         </span>
                     </div>
                     <div class="matchRight" v-if="playType=='1'||playType=='2'">
@@ -292,7 +294,8 @@
             <i style="display:none;">{{$store.state.mark_playObj.bfIdSaveMapFlag}}</i>
             <div class="match_footer_left">
                 <div class="match_delete" @click="clear_match()">
-                    <img src="../../../assets/img/freebuy_img/trashbin@2x.png" alt="">
+                    <i class="iconfont icon-icon-26"></i>
+                    <!--<img src="../../../assets/img/freebuy_img/trashbin@2x.png" alt="">-->
                 </div>
                 <div class="match_test_status" v-html="text">
                     
