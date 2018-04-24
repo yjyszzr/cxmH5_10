@@ -27,7 +27,23 @@ export default {
                 }
                 Toast(res.msg)
             })
-        }
+        },
+        handleCommentFocus(){
+            this.$refs.name.style.color = '#505050'
+        },
+        handleCommentBlur(c){
+            if(c.target.value==''){
+                this.$refs.name.style.color = '#9f9f9f'
+            }
+        },
+        handleCommentFocus1(){
+            this.$refs.card.style.color = '#505050'
+        },
+        handleCommentBlur1(c){
+            if(c.target.value==''){
+                this.$refs.card.style.color = '#9f9f9f'
+            }
+        },
     },
     mounted(){
         

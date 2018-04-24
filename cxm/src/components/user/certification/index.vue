@@ -10,17 +10,17 @@
             <li>
                 <a href="javascript:void(0);">
                     <div>
-                        <img src="../../../assets/img/pho_nor.png">
+                        <i class="iconfont icon-icon-9" ref="name"></i>
                         <label>真实姓名：</label>
-                        <input v-model="userName" type="text" class="text2" placeholder="确认后不可修改"/>
+                        <input @focus="handleCommentFocus" @blur="handleCommentBlur($event)" v-model="userName" type="text" class="text2" placeholder="确认后不可修改"/>
                         <em><img class="img" src="../../../assets/img/sut.png"></em>
                     </div>
                 </a>
                 <a href="javascript:void(0);">
                     <div>
-                        <img src="../../../assets/img/pho_nor.png">
+                        <i class="iconfont icon-icon-8" ref="card"></i>
                         <label>身份证号：</label>
-                        <input v-model="userToken" type="text" class="text2" placeholder="确认后不可修改"/>
+                        <input @focus="handleCommentFocus1" @blur="handleCommentBlur1($event)" v-model="userToken" type="text" class="text2" placeholder="确认后不可修改"/>
                         <em><img class="img" src="../../../assets/img/sut.png"></em>
                     </div>
                 </a>
