@@ -24,9 +24,14 @@
           font-size: px2rem(30px);
         }
       }
-      span{
-        color: #787878;
-        font-size: px2rem(22px);
+      p:last-of-type{
+        span{
+          color: #787878;
+          font-size: px2rem(22px);
+        }
+        span:first-of-type{
+          float: left;
+        }
       }
     }
   }

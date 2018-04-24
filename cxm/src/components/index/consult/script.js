@@ -11,39 +11,30 @@ export default {
     data() {
         return {
             id: this.$route.query.id,
-            consultObj: {
-
-            },
         }
     },
     beforeCreate() {
         Indicator.open()
     },
+    created(){
+        let data = {
+            articleId: this.id,
+        }
+        this.$store.dispatch("getDetailObj",data)
+    },
     components: {
         "v-informal": informal
     },
     mounted() {
-        let data = {
-            articleId: this.id,
-        }
-        api.articleDetail(data)
-            .then(res => {
-                //console.log(res)
-                if (res.code == 0) {
-                    this.consultObj = res.data
-                } else {
-                    Toast(res.msg)
-                }
-                Indicator.close()
-            })
+ 
     },
     methods:{
         ckBtn(){
             this.$router.push({
                 path: "/index/moreInfo",
                 query: {
-                    currentArticleId: this.consultObj.articleId,
-                    extendCat: this.consultObj.extendCat
+                    currentArticleId: this.$store.state.zxDetailObj.articleId,
+                    extendCat: this.$store.state.zxDetailObj.extendCat
                 },
                 replace: false
             });
@@ -51,8 +42,8 @@ export default {
         zxCollectionStatus(flag){
             if(flag==true){
                 let data = {
-                    articleId: this.consultObj.articleId,
-                    articleTitle: this.consultObj.title,
+                    articleId: this.$store.state.zxDetailObj.articleId,
+                    articleTitle: this.$store.state.zxDetailObj.title,
                     collectFrom: ''
                 }
                 api.collectAdd(data)
@@ -63,7 +54,7 @@ export default {
                     })
             }else{
                 let data = {
-                    id: this.consultObj.articleId
+                    id: this.$store.state.zxDetailObj.articleId
                   };
                   api
                     .collectdelete(data)
@@ -81,13 +72,14 @@ export default {
     },
     watch:{
         zxCollectionFlag(a,b){
-            console.log(a)
+            //console.log(a)
             Indicator.open()
             this.zxCollectionStatus(a)
         }
     },
     beforeRouteLeave(to, from, next) {
       next()
-      this.$store.dispatch("getCollectionFlag", false)
+      this.$store.dispatch("getCollectionFlag", '')
+      this.$store.state.zxDetailObj = {}
     }
 }

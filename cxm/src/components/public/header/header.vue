@@ -7,7 +7,7 @@
                 <span @click='filter()' v-if="$route.path.split('/')[2]=='singleNote'" class="iconfont icon-icon-33"></span>
                 <span v-if="$route.path.split('/')[2]=='singleNote'">帮助</span>
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu()" class="colMenu">编辑</span>
-                <span v-if="$route.path.split('/')[2]=='consult'" class="iconfont icon-icon-49" @click="collection($event)"></span>
+                <span v-if="$route.path.split('/')[2]=='consult'" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
                 <span v-if="$route.path.split('/')[2]=='consult'">分享</span>
             </p>
             <p class="filter" v-show="menuDisplay==false"></p>
@@ -117,12 +117,12 @@ export default {
             }
       },
       collection(c){
-          if(c.target.className=='iconfont icon-icon-49'){
+          if(c.target.className=='iconfont icon-icon-34'){
             this.$store.dispatch("getCollectionFlag",true)
-            c.target.className='iconfont icon-icon-44'
+            c.target.className='iconfont icon-icon-32'
           }else{
             this.$store.dispatch("getCollectionFlag",false)
-            c.target.className='iconfont icon-icon-49'
+            c.target.className='iconfont icon-icon-34'
           }
       }
   },

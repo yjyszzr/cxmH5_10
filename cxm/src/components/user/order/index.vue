@@ -12,7 +12,11 @@
                     <img :src="orderObj.lotteryClassifyImg">
                     <div>
                         <p>{{orderObj.lotteryClassifyName}}<span :style="{'color':orderObj.orderStatus=='5'?'#e95504':'#505050'}">{{orderObj.processResult}}</span></p>
-                        <span>￥{{orderObj.moneyPaid}}</span>
+                        <p>
+                            <span>￥{{orderObj.moneyPaid}}</span>
+                            <span>{{orderObj.forecastMoney}}</span>
+                        </p>
+                        
                     </div>
                 </div>
                 <div class="box2">
@@ -47,7 +51,7 @@
                         </div>
                         <div class="item">
                             <span v-for='(data,index) in item.cathecticResults' :key='index' v-if='item.cathecticResults==""'>{{data.matchResult}}</span>
-                            <span v-if='item.cathecticResults!=""'>未结束</span>
+                            <span v-if='item.cathecticResults!=""'>待定</span>
                         </div>
                     </li>
                 </ul>

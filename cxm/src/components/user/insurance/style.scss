@@ -6,11 +6,12 @@
         margin:0  px2rem(30px);
         padding: px2rem(35px);
         border-bottom: 1px dashed #f1f1f1;
-        img{
-            width: 7%;
+        i{
+            font-size: px2rem(50px);
             display: inline-block;
-            margin-right: px2rem(16px);
+            margin-right: px2rem(6px);
             vertical-align: middle;
+            color: #ea5504;
         }
         span{
             font-size: px2rem(30px);

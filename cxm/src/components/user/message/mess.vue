@@ -5,7 +5,7 @@
 
 <!--消息中心-->
 <template>
-    <div class="wrap">
+    <div class="wrap mess">
         <mt-loadmore :bottom-method="loadBottom" :bottom-distance='-20' :auto-fill="false" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleTopChange" @scroll='handleScroll($event)'>
                 <section class="box_cen" v-for="(item,i) in mess" :key='i'>
                         <div class="box1">
@@ -29,7 +29,7 @@
                             <p>投注时间：<span>2018年02月03日</span></p> -->
                             <p v-html="item.msgDesc"></p>
                         </div>
-                        <a class="rout">查看详情></a>
+                        <a class="rout">查看详情 <b class="iconfont icon-icon-14"></b> </a>
 
                 </section>
                 <div slot="bottom" class="mint-loadmore-bottom">

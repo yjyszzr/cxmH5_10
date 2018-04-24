@@ -50,7 +50,8 @@ const state = {
     recordTab: '', //个人中心子页导航
     chushihuaObj: {}, //初始化数据保存
     deleteFlag: false, //收藏删除开关
-    zxCollectionFlag: false,  //收藏按钮是否选中
+    zxCollectionFlag: '', //收藏按钮是否选中
+    zxDetailObj: '', //资讯详情数据
 }
 
 const mutations = {
@@ -59,7 +60,7 @@ const mutations = {
         api.SendSmsCode(data)
             .then(res => {
                 //console.log(res)
-                if(res.code=='0'){
+                if (res.code == '0') {
                     state.smsCode.disabled = true
                     state.smsCode.timer = setInterval(() => {
                         state.smsCode.changeNumber--;
@@ -74,7 +75,7 @@ const mutations = {
                     }, 1000)
                 }
                 Toast(res.msg)
-        })
+            })
     },
     RESET(state) {
         clearInterval(state.smsCode.timer)
@@ -133,64 +134,67 @@ const mutations = {
     ISAlREADYBUYMATCH(state, data) {
         state.mark_showObj.isAlreadyBuyMatch = data
     },
-    FREEBUYID(state, data){
+    FREEBUYID(state, data) {
         state.freebuyId = data
     },
-    MATCHOBJ(state, data){
+    MATCHOBJ(state, data) {
         state.matchObj = data
     },
-    MATCHSELECTEDLIST(state, data){
-        if(data==[]){
+    MATCHSELECTEDLIST(state, data) {
+        if (data == []) {
             state.matchSelectedList = []
-        }else{
+        } else {
             state.matchSelectedList.push(data)
         }
     },
-    MATCHSAVEINFO(state, data){
+    MATCHSAVEINFO(state, data) {
         state.matchSaveInfo = data
     },
-    MARKPLAYBOX(state, data){
+    MARKPLAYBOX(state, data) {
         state.mark_playObj.mark_playBox = data
     },
-    MARKPLAY(state, data){
+    MARKPLAY(state, data) {
         state.mark_playObj.mark_play = data
     },
-    PLAYLIST(state, data){
+    PLAYLIST(state, data) {
         state.mark_playObj.playtList = data
     },
-    PLAYUTTEXT(state, data){
+    PLAYUTTEXT(state, data) {
         state.mark_playObj.playutText = data
     },
-    MUPNUM(state, data){
+    MUPNUM(state, data) {
         state.mark_playObj.mupNum = data
     },
-    YHLIST(state, data){
+    YHLIST(state, data) {
         state.mark_playObj.yhList = data
     },
-    MYBOUNSID(state, data){
+    MYBOUNSID(state, data) {
         state.mark_playObj.mybounsId = data
     },
-    BFMATCHID(state, data){
+    BFMATCHID(state, data) {
         state.mark_playObj.bfmatchId = data
     },
-    BFIDSAVEMAP(state, data){
+    BFIDSAVEMAP(state, data) {
         state.mark_playObj.bfIdSaveMap = data
     },
-    BFIDSAVEMAPFLAG(state, data){
-        if(data==0){
+    BFIDSAVEMAPFLAG(state, data) {
+        if (data == 0) {
             state.mark_playObj.bfIdSaveMapFlag = data
-        }else{
+        } else {
             state.mark_playObj.bfIdSaveMapFlag++
         }
     },
-    MATCHDETAILFLAG(state, data){
+    MATCHDETAILFLAG(state, data) {
         state.mark_playObj.matchDetailFlag = data
     },
-    DELETEFLAG(state,data){
+    DELETEFLAG(state, data) {
         state.deleteFlag = data
     },
-    ZXCOLLEXCTIONFLAG(state,data){
+    ZXCOLLEXCTIONFLAG(state, data) {
         state.zxCollectionFlag = data
+    },
+    ZXDETAILOBJ(state, data) {
+        state.zxDetailObj = data
     }
 }
 
@@ -211,7 +215,7 @@ const actions = {
         api.getMatchList(value)
             .then(res => {
                 if (res.code == 0) {
-                //	console.log(res)
+                    //	console.log(res)
                     commit("MATCHLIST", res.data);
                 } else {
                     Toast(res.msg)
@@ -283,56 +287,104 @@ const actions = {
     }, value) {
         commit("ISAlREADYBUYMATCH", value);
     },
-    getFreebuyId({commit}, value){
+    getFreebuyId({
+        commit
+    }, value) {
         commit("FREEBUYID", value);
     },
-    getmatchobj({commit}, value){
+    getmatchobj({
+        commit
+    }, value) {
         commit("MATCHOBJ", value);
     },
-    getmatchSelectedList({commit}, value){
+    getmatchSelectedList({
+        commit
+    }, value) {
         commit("MATCHSELECTEDLIST", value);
     },
-    getmatchSaveInfo({commit}, value){
+    getmatchSaveInfo({
+        commit
+    }, value) {
         commit("MATCHSAVEINFO", value);
     },
-    getMarkplayBox({commit}, value){
+    getMarkplayBox({
+        commit
+    }, value) {
         commit("MARKPLAYBOX", value);
     },
-    getMarkplay({commit}, value){
+    getMarkplay({
+        commit
+    }, value) {
         commit("MARKPLAY", value);
     },
-    getPlayList({commit}, value){
+    getPlayList({
+        commit
+    }, value) {
         commit("PLAYLIST", value);
     },
-    getPlayuText({commit}, value){
+    getPlayuText({
+        commit
+    }, value) {
         commit("PLAYUTTEXT", value);
     },
-    changeMupNum({commit}, value){
+    changeMupNum({
+        commit
+    }, value) {
         commit("MUPNUM", value);
     },
-    changeYhList({commit}, value){
+    changeYhList({
+        commit
+    }, value) {
         commit("YHLIST", value);
     },
-    getMyBounsId({commit}, value){
+    getMyBounsId({
+        commit
+    }, value) {
         commit("MYBOUNSID", value);
     },
-    getBfMatchId({commit}, value){
+    getBfMatchId({
+        commit
+    }, value) {
         commit("BFMATCHID", value);
     },
-    getBfIdSaveMap({commit}, value){
+    getBfIdSaveMap({
+        commit
+    }, value) {
         commit("BFIDSAVEMAP", value);
     },
-    getBfIdSaveMapFlag({commit}, value){
+    getBfIdSaveMapFlag({
+        commit
+    }, value) {
         commit("BFIDSAVEMAPFLAG", value);
     },
-    getMatchDetailFlag({commit}, value){
+    getMatchDetailFlag({
+        commit
+    }, value) {
         commit("MATCHDETAILFLAG", value);
     },
-    deleteMyFlag({commit}, value){
+    deleteMyFlag({
+        commit
+    }, value) {
         commit("DELETEFLAG", value);
     },
-    getCollectionFlag({commit}, value){
-        commit("ZXCOLLEXCTIONFLAG",value)
+    getCollectionFlag({
+        commit
+    }, value) {
+        commit("ZXCOLLEXCTIONFLAG", value)
+    },
+    getDetailObj({
+        commit
+    }, value) {
+        api.articleDetail(value)
+            .then(res => {
+                //console.log(res)
+                if (res.code == 0) {
+                    commit("ZXDETAILOBJ", res.data)
+                } else {
+                    Toast(res.msg)
+                }
+                Indicator.close()
+            })
     }
 }
 

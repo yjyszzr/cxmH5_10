@@ -53,7 +53,7 @@ export default {
             justify-content: space-around;
             flex-direction: column;
             i{
-                font-size: px2rem(42px);
+                font-size: px2rem(52px);
             }
             span{
                 font-size: px2rem(20px);

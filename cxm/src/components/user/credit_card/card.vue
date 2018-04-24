@@ -29,7 +29,7 @@
                 <li>
                     <router-link to="/user/add_card">
                         <div>
-                            <img src="../../../assets/img/pho_nor.png">
+                            <span>+</span>
                             <span class="arrow_right float_right"></span>
                             <span class="message">添加银行卡</span>
                         </div>
