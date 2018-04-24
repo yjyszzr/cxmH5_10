@@ -12,8 +12,9 @@ export default {
       page: 1,
       scList: [],
       scObj: {},
-      trFlag: false,
-      isbool: true
+      trFlag: true,
+      isbool: true,
+      cxLoadFlag: false
     }
   },
   beforeCreate() {
@@ -36,6 +37,7 @@ export default {
             this.scObj = res.data
             if (this.page == 1) {
               this.scList = [].concat(res.data.list);
+              this.trFlag = false
             } else {
               setTimeout(() => {
                 this.trFlag = false;
@@ -47,6 +49,12 @@ export default {
             Toast(res.msg);
           }
           Indicator.close()
+        })
+        .catch(err=>{
+          setTimeout(() => {
+                this.trFlag = false;
+                this.cxLoadFlag = true;
+          }, 800);
         })
     },
     deleteItem(c) {
@@ -82,6 +90,11 @@ export default {
           this.isbool = false;
         }
       }
+    },
+    cxLoadClick(){
+      this.trFlag = true;
+      this.cxLoadFlag = false;
+      this.fetchData()
     },
     goZxDetail(c){
       this.$router.push({

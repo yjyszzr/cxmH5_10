@@ -1,19 +1,16 @@
 <template>
     <div class="foot" @touchmove.prevent v-show="isShowTabbar()">
-            <router-link to='/'>
-                <i class="iconfont icon-tab_home" v-if="$route.path.split('/')[1] != ''"></i>
-                <i style="color: #ea5504;" class="iconfont icon-tab_home_pre" v-if="$route.path.split('/')[1] == ''"></i>
-                <span :style="{'color': $route.path.split('/')[1] == ''?'#ea5504':'#505050'}">大厅</span>
+            <router-link to='/' :style="{'color': $route.path.split('/')[1] == ''?'#ea5504':'#505050'}">
+                <i class="iconfont icon-dibucaidan_svg_huaban"></i>
+                <span>大厅</span>
             </router-link>
-            <router-link to='/lotteryResult'>
-                <i class="iconfont icon-tab_find" v-if="$route.path.split('/')[1] != 'lotteryResult'"></i>
-                <i style="color: #ea5504;" class="iconfont icon-tab_find_pre" v-if="$route.path.split('/')[1] == 'lotteryResult'"></i>
-                <span :style="{'color': $route.path.split('/')[1] == 'lotteryResult'?'#ea5504':'#505050'}">开奖</span>
+            <router-link to='/lotteryResult' :style="{'color': $route.path.split('/')[1] == 'lotteryResult'?'#ea5504':'#505050'}">
+                <i class="iconfont icon-dibucaidan_svg_huabanfuben"></i>
+                <span>开奖</span>
             </router-link>
-            <router-link to='/user'>
-                <i class="iconfont icon-tab_my" v-if="$route.path.split('/')[1] != 'user'"></i>
-                <i style="color: #ea5504;" class="iconfont icon-tab_my_pre" v-if="$route.path.split('/')[1] == 'user'"></i>
-                <span :style="{'color': $route.path.split('/')[1] == 'user'?'#ea5504':'#505050'}">我的</span>
+            <router-link to='/user' :style="{'color': $route.path.split('/')[1] == 'user'?'#ea5504':'#505050'}">
+                <i class="iconfont icon-dibucaidan_svg_huabanfuben1"></i>
+                <span>我的</span>
             </router-link>
     </div>
 </template>

@@ -5,21 +5,20 @@
 
 <!--密码登录-->
 <template>
-    <div class="wrap">
+    <div class="wrap sms">
         <ul class="msg_list">
             <li>
                 <a href="javascript:void(0);">
                     <div>
-                        <img src="../../../assets/img/pho_nor.png">
-                        <mt-field type='tel' placeholder="请输入手机号" v-model="phoneVal"></mt-field>
-                        <em><img class="img" src="../../../assets/img/sut.png"></em>
+                        <i class="iconfont icon-huaban-" ref="sjh"></i>
+                        <mt-field type='tel' placeholder="请输入手机号" v-model="phoneVal" @focus.native.capture="handleCommentFocus" @blur.native.capture="handleCommentBlur($event)"></mt-field>
                     </div>
 
                 </a>
                 <a href="javascript:void(0);">
                     <div>
-                        <img src="../../../assets/img/tes_nor.png">
-                        <input v-model="telVal" type="text" class="text1"  placeholder="输入验证码"/>
+                        <i class="iconfont icon-huaban-2" ref="code"></i>
+                        <input @focus="handleCommentFocus2" @blur="handleCommentBlur2($event)" v-model="telVal" type="text" class="text1"  placeholder="输入验证码"/>
                         <button :disabled='$store.state.smsCode.disabled' @click="changeNum()">{{$store.state.smsCode.changeText}}</button>
                     </div>
                 </a>
@@ -28,7 +27,7 @@
         <section class="button">
             <a class="determine" @click="_login()">登录</a>
         </section>
-        <section class="forget">
+        <section class="forgetM">
             <router-link to='/user/password' class="x_in">密码登录</router-link>
 
         </section>

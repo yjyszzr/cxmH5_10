@@ -1,7 +1,13 @@
-.msg_list li>a>div em .img{
-    float: left;
-    width: 0.3rem;
-    padding-top: 0.35rem;
-    margin-right: 0.15rem;
-    display: none;
+@import '../../../assets/css/function.scss';
+.sms{
+  .iconfont{
+    color: #9f9f9f;
+}
+.forgetM{
+  margin: px2rem(14px) px2rem(36px);
+  .x_in{
+    font-size: px2rem(26px);
+    color: #787878;
   }
+}
+}

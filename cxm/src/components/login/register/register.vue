@@ -11,24 +11,24 @@
         <li>
             <a href="javascript:void(0);">
                 <div>
-                    <img src="../../../assets/img/pho_nor.png">
-                    <mt-field type='tel' placeholder="请输入手机号" v-model="phoneVal"></mt-field>
+                    <i class="iconfont icon-huaban-" ref="sjh"></i>
+                    <mt-field type='tel' placeholder="请输入手机号" v-model="phoneVal" @focus.native.capture="handleCommentFocus" @blur.native.capture="handleCommentBlur($event)"></mt-field>
                     <!-- <input v-model="phoneVal" type="tel" placeholder="请输入手机号" class="text"/> -->
                 </div>
 
             </a>
             <a href="javascript:void(0);">
                 <div>
-                    <img src="../../../assets/img/sec_nor.png">
-                    <input v-model="passwordVal" placeholder="请输入密码" type="password" class="text" v-show="eyehide==false"/>
-                    <input v-model="passwordVal" placeholder="请输入密码" type="text" class="text" v-show="eyehide==true"/>
-                    <em @click="eyehide==false?eyehide = true:eyehide = false"><img src="../../../assets/img/hid.png" v-show="eyehide==false"><img src="../../../assets/img/show.png" v-show="eyehide==true"/></em>
+                    <i class="iconfont icon-huaban-1" ref="mima"></i>
+                    <input @focus="handleCommentFocus1" @blur="handleCommentBlur1($event)" v-model="passwordVal" placeholder="请输入密码" type="password" class="text" v-show="eyehide==false"/>
+                    <input @focus="handleCommentFocus1" @blur="handleCommentBlur1($event)" v-model="passwordVal" placeholder="请输入密码" type="text" class="text" v-show="eyehide==true"/>
+                    <em @click="eyehide==false?eyehide = true:eyehide = false"><i class="iconfont icon-huaban-6" v-show="eyehide==false"></i><i class="iconfont icon-huaban-5" v-show="eyehide==true"></i></em>
                 </div>
             </a>
             <a href="javascript:void(0);">
                 <div>
-                    <img src="../../../assets/img/tes_nor.png">
-                    <input v-model="telVal" type="tel" placeholder="请输入验证码" class="text1"/>
+                    <i class="iconfont icon-huaban-2" ref="code"></i>
+                    <input @focus="handleCommentFocus2" @blur="handleCommentBlur2($event)" v-model="telVal" type="tel" placeholder="请输入验证码" class="text1"/>
                     <button :disabled='$store.state.smsCode.disabled' @click="changeNum()">{{$store.state.smsCode.changeText}}</button>
                 </div>
             </a>

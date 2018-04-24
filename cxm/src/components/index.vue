@@ -145,6 +145,9 @@
 				<div class="triple" v-show="trFlag">
 					<mt-spinner type="triple-bounce" color="#999"></mt-spinner>&nbsp;<span>正在加载</span>
 				</div>
+        <div class="cxLoad" v-show="cxLoadFlag" @click="cxLoadClick()">
+          加载失败,点击重试
+        </div>
 			</ul>
 		</div>
 	</div>
@@ -172,8 +175,9 @@ export default {
       page: 1,
       zxList: [],
       zxObj: {},
-      trFlag: false,
-      isbool: true
+      trFlag: true,
+      isbool: true,
+      cxLoadFlag: false
     };
   },
   beforeCreate() {
@@ -218,6 +222,7 @@ export default {
             this.zxObj = res.data;
             if (this.page == 1) {
               this.zxList = this.zxList.concat(res.data.list);
+              this.trFlag = false
             } else {
               setTimeout(() => {
                 this.trFlag = false;
@@ -229,6 +234,17 @@ export default {
             Toast(res.msg);
           }
         })
+        .catch(err=>{
+          setTimeout(() => {
+                this.trFlag = false;
+                this.cxLoadFlag = true;
+          }, 800);
+        })
+    },
+    cxLoadClick(){
+      this.trFlag = true;
+      this.cxLoadFlag = false;
+      this.fetchData()
     },
     handleScroll(e) {
       if (

@@ -283,6 +283,15 @@ a:hover {
   margin: 0 auto;
 }
 
+.cxLoad{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: px2rem(26px);
+  color: #9f9f9f;
+  height: px2rem(62px);
+}
+
 /*
        弹窗样式
      */
@@ -382,14 +391,25 @@ textarea {
           float: left;
           border: none;
           background: none;
+          font-size: px2rem(30px);
+          color: #505050;
           height: px2rem(87px); //line-height: px2rem(109px);
         }
         .text1 {
           width: 50%;
           float: left;
           border: none;
-          line-height: px2rem(88px);
+          height: px2rem(87px);
           background: none;
+          font-size: px2rem(30px);
+          color: #505050;
+        }
+        .mint-cell-value{
+          font-size: px2rem(30px);
+          color: #505050;
+        }
+        .mintui-field-error{
+          color: #9f9f9f;
         }
         em{
           position: absolute;
@@ -498,7 +518,6 @@ textarea {
 .forget {
   padding: 0 px2rem(35px);
   height: px2rem(70px);
-  line-height: px2rem(70px);
 }
 
 .forget .x_in {

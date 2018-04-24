@@ -17,8 +17,9 @@ export default {
 
             },
             moreInforList: [],
-            trFlag: false,
-            isbool: true
+            trFlag: true,
+            isbool: true,
+            cxLoadFlag: false
         }
     },
     beforeCreate() {
@@ -48,6 +49,7 @@ export default {
                         this.moreInformationObj = res.data
                         if (this.page == 1) {
                             this.moreInforList = [].concat(res.data.list);
+                            this.trFlag = false
                         } else {
                             setTimeout(() => {
                               this.trFlag = false;
@@ -60,6 +62,12 @@ export default {
                     }
                     Indicator.close()
                 })
+                .catch(err=>{
+                    setTimeout(() => {
+                          this.trFlag = false;
+                          this.cxLoadFlag = true;
+                    }, 800);
+                  })
         },
         handleScroll(e) {
             if (
@@ -76,6 +84,11 @@ export default {
                 this.isbool = false;
               }
             }
+        },
+        cxLoadClick(){
+            this.trFlag = true;
+            this.cxLoadFlag = false;
+            this.fetchData()
         },
     }
 }

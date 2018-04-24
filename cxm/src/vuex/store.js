@@ -55,23 +55,26 @@ const state = {
 
 const mutations = {
     GETSMSCODE(state, data) {
-        state.smsCode.disabled = true
         //获取验证码  
         api.SendSmsCode(data)
             .then(res => {
+                //console.log(res)
+                if(res.code=='0'){
+                    state.smsCode.disabled = true
+                    state.smsCode.timer = setInterval(() => {
+                        state.smsCode.changeNumber--;
+                        if (state.smsCode.changeNumber <= 0) {
+                            state.smsCode.changeText = '重新获取验证码'
+                            clearInterval(state.smsCode.timer)
+                            state.smsCode.changeNumber = 60
+                            state.smsCode.disabled = false
+                        } else {
+                            state.smsCode.changeText = state.smsCode.changeNumber + 's后重新获取'
+                        }
+                    }, 1000)
+                }
                 Toast(res.msg)
-            })
-        state.smsCode.timer = setInterval(() => {
-            state.smsCode.changeNumber--;
-            if (state.smsCode.changeNumber <= 0) {
-                state.smsCode.changeText = '重新获取验证码'
-                clearInterval(state.smsCode.timer)
-                state.smsCode.changeNumber = 60
-                state.smsCode.disabled = false
-            } else {
-                state.smsCode.changeText = state.smsCode.changeNumber + 's后重新获取'
-            }
-        }, 1000)
+        })
     },
     RESET(state) {
         clearInterval(state.smsCode.timer)

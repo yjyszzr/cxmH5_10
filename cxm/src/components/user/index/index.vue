@@ -39,23 +39,23 @@
                 <li>
                     <router-link to="/user/record">
                         <div>
-                            <i class="iconfont icon-icon-3"></i>
+                            <i class="iconfont icon-icon-1"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">投注记录</span>
                         </div>
                     </router-link>
                     <router-link to='/user/account'>
                         <div>
-                            <i class="iconfont icon-icon-4"></i>
+                            <i class="iconfont icon-icon-2"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">账户明细</span>
                         </div>
                     </router-link>
                     <router-link to='/user/detail'>
                         <div>
-                            <i class="iconfont icon-icon-6"></i>
+                            <i class="iconfont icon-icon-3"></i>
                             <span class="arrow_right float_right"></span>
-                            <span class="message">我的卡券<em></em></span>
+                            <span class="message">我的卡券</span>
                         </div>
                     </router-link>
                 </li>
@@ -66,35 +66,35 @@
                 <li>
                     <router-link to='/user/message'>
                         <div>
-                            <i class="iconfont icon-icon-47"></i>
+                            <i class="iconfont icon-icon-36"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">消息中心</span>
                         </div>
                     </router-link>
                     <router-link to='/user/collection'>
                         <div>
-                            <i class="iconfont icon-icon-49"></i>
+                            <i class="iconfont icon-icon-34"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">我的收藏</span>
                         </div>
                     </router-link>
                     <a>
                         <div>
-                            <i class="iconfont icon-icon-5"></i>
+                            <i class="iconfont icon-icon-7"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">帮助中心</span>
                         </div>
                     </a>
                     <a href="tel:400-123-1234">
                         <div>
-                            <i class="iconfont icon-icon-7"></i>
+                            <i class="iconfont icon-icon-4"></i>
                             <span class="arrow_kefu float_right">400-123-1234</span>
                             <span class="message">联系客服</span>
                         </div>
                     </a>
                     <router-link to='/user/about'>
                         <div>
-                            <i class="iconfont icon-icon-9"></i>
+                            <i class="iconfont icon-icon-5"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">关于我们</span>
                         </div>

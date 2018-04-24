@@ -47,6 +47,30 @@ export default {
               Toast(res.msg)
             }
         })
+      },
+      handleCommentFocus(){
+        this.$refs.sjh.style.color = '#505050'
+      },
+      handleCommentBlur(c){
+        if(c.target.value==''){
+          this.$refs.sjh.style.color = '#9f9f9f'
+        }
+      },
+      handleCommentFocus1(){
+        this.$refs.mima.style.color = '#505050'
+      },
+      handleCommentBlur1(c){
+        if(c.target.value==''){
+          this.$refs.mima.style.color = '#9f9f9f'
+        }
+      },
+      handleCommentFocus2(){
+        this.$refs.code.style.color = '#505050'
+      },
+      handleCommentBlur2(c){
+        if(c.target.value==''){
+          this.$refs.code.style.color = '#9f9f9f'
+        }
       }
     },
     mounted(){

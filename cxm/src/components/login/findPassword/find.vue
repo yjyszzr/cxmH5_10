@@ -10,8 +10,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <div>
-                        <img src="../../../assets/img/pho_nor.png">
-                        <mt-field type='tel' placeholder="请输入手机号" v-model="phoneVal"></mt-field>
+                        <i class="iconfont icon-huaban-" ref="sjh"></i>
+                        <mt-field type='tel' placeholder="请输入手机号" v-model="phoneVal" @focus.native.capture="handleCommentFocus" @blur.native.capture="handleCommentBlur($event)"></mt-field>
                     </div>
                 </a>
             </li>

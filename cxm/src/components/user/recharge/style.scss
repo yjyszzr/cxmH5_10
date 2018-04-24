@@ -10,6 +10,9 @@
   display: block;
   text-align: center;
 }
+.section{
+  margin-top: px2rem(10px);
+}
 .current{
   font-size: px2rem(30px);
   color: #505050;
@@ -20,7 +23,7 @@
   padding: px2rem(34px);
   p{
     color: #505050;
-    font-size: px2rem(45px);
+    font-size: px2rem(30px);
   }
   .money{
     padding: px2rem(20px);
@@ -70,4 +73,10 @@
   margin-left:px2rem(0px);
   height: px2rem(87px);
   margin-right: px2rem(-20px);
+}
+.arrow_kefu{
+  .icon-icon-29{
+    color: #44ae35;
+    margin-right: px2rem(18px);
+  }
 }

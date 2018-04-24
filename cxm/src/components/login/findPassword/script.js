@@ -23,7 +23,13 @@ export default {
             }
             Toast(res.msg)
         })
-      }
+      },
+      handleCommentFocus(){
+        this.$refs.sjh.style.color = '#505050'
+      },
+      handleCommentBlur(){
+        this.$refs.sjh.style.color = '#9f9f9f'
+      },
     },
     created(){
       

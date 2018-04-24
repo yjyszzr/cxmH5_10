@@ -5,21 +5,20 @@
 
 <!--密码登录-->
 <template>
-    <div class="wrap">
+    <div class="wrap revise">
         <ul class="section msg_list">
             <li>
                 <a href="javascript:void(0);">
                     <div>
-                        <img src="../../../assets/img/pho_nor.png">
-                        <input v-model="passwordVal" type="password" class="text" placeholder="请输入您的新密码6-20个字符"/>
-                        <em><img class="img" src="../../../assets/img/sut.png"></em>
+                        <i class="iconfont icon-huaban-1" ref="mima"></i>
+                        <input @focus="handleCommentFocus1" @blur="handleCommentBlur1($event)" v-model="passwordVal" type="password" class="text" placeholder="请输入您的新密码6-20个字符"/>
                     </div>
 
                 </a>
                 <a href="javascript:void(0);">
                     <div>
-                        <img src="../../../assets/img/tes_nor.png">
-                        <input v-model="telVal"  type="tel" class="text1" placeholder="输入验证码"/>
+                        <i class="iconfont icon-huaban-2" ref="code"></i>
+                        <input @focus="handleCommentFocus2" @blur="handleCommentBlur2($event)" v-model="telVal"  type="tel" class="text1" placeholder="输入验证码"/>
                         <button :disabled='$store.state.smsCode.disabled' @click="changeNum()">{{$store.state.smsCode.changeText}}</button>
                     </div>
                 </a>

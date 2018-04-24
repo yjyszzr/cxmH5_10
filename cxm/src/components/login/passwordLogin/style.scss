@@ -1,11 +1,5 @@
 @import '../../../assets/css/function.scss';
-.msg_list li>a>div em .img{
-    float: left;
-    width: px2rem(30px);
-    padding-top: px2rem(35px);
-    margin-right: px2rem(15px);
-    display: none;
-  }
+.login{
   .buttonZc{
     display: block;
     width: 90%;
@@ -21,3 +15,7 @@
       font-size: px2rem(28px);
     }
   }
+  .iconfont{
+    color: #9f9f9f;
+}
+}
