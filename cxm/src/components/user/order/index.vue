@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class=" section plan">
-            <div class="solecd" >方案内容<span @click='goDraw(orderObj.programmeSn)'>查看出票方案></span></div>
+            <div class="solecd" >方案内容<span @click='goDraw(orderObj.programmeSn)'>查看出票方案<i class="iconfont icon-icon-14"></i></span></div>
             <div>
                 <p>方案编号： <span>{{orderObj.programmeSn}}</span></p>
                 <p>创建时间：<span>{{orderObj.createTime}}</span></p>
