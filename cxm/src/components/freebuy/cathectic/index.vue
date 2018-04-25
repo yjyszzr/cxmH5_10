@@ -52,7 +52,7 @@
                     </div>
                 </div>
             </section>
-            <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"></i><p>我已阅读并同意<span>《彩小秘彩票服务协议》</span></p></div>
+            <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"></i><p>我已阅读并同意<span>《注册服务协议》</span></p></div>
         </div>
         <!--底部-->
         <section class="fixed">

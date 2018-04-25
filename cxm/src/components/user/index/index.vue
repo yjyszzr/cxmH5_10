@@ -78,13 +78,13 @@
                             <span class="message">我的收藏</span>
                         </div>
                     </router-link>
-                    <a>
+                    <router-link to="/user/help">
                         <div>
                             <i class="iconfont icon-icon-7"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">帮助中心</span>
                         </div>
-                    </a>
+                    </router-link>
                     <a href="tel:400-123-1234">
                         <div>
                             <i class="iconfont icon-icon-4"></i>

@@ -258,6 +258,22 @@ const router = new Router({
           component: function (resolve) {
               require(['../components/index/moreInformation/moreInformation.vue'], resolve)
           },
+      },
+      {
+          path: '/user/help',
+          name: 'help',
+          cname:'帮助中心',
+          component: function (resolve) {
+              require(['../components/user/help/index.vue'], resolve)
+          },
+      },
+      {
+          path: '/user/service',
+          name: 'service',
+          cname:'服务协议',
+          component: function (resolve) {
+              require(['../components/user/service/index.vue'], resolve)
+          },
       }
   ]
 })
