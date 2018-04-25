@@ -20,7 +20,7 @@
                     </a>
                     <a>
                         <div>
-                            <span class="arrow_kefu float_right" @click='yhClick()'>-￥{{payment.bonusAmount}}&gt;</span>
+                            <span class="arrow_kefu float_right" @click='yhClick()'>-￥{{payment.bonusAmount}}<i class="iconfont icon-icon-14"></i></span>
                             <span class="message">优惠劵抵扣</span>
                         </div>
                     </a>

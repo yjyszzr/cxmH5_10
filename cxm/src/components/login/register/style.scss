@@ -1,6 +1,23 @@
 // @import '../../../assets/css/function.scss';
 .register {
   .iconfont{
-      color: #9f9f9f;
+    color: #9f9f9f;
+    vertical-align: middle;
   }
+  .ment{
+    p{
+      margin-left: 4px;
+      display: inline-block;
+    }
+    color: #9f9f9f;
+    font-size: px2rem(26px);
+    span{
+      color: #787878;
+    }
+    .iconfont{
+      color: #e95504;
+      vertical-align: middle;
+    }
+  }
+
 }
