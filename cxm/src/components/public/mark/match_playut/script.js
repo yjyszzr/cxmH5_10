@@ -71,7 +71,7 @@ export default {
       this.tapactive(s)
     },
     changeColor(c,s){
-      if(c.target.className=='current'){
+      if(c.target.className=='current'&&this.list.size>1){
         c.target.className=''
         this.list.delete(s)
       }else{

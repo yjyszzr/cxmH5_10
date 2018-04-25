@@ -23,6 +23,7 @@ export default {
       id: '',
       arr: new Set(),
       mapKey: [],
+      arrNum: 0
     }
   },
   beforeCreate() {
@@ -52,7 +53,31 @@ export default {
       }
     },
     bfBtn(c) {
-      //console.log(1)
+      if(this.playType == '6'){
+        if(c.selectedList.length>0){
+          if(this.arrNum>15){
+            Toast('最多选择15注')
+            return false;
+          }
+        }else{
+          if(this.arrNum>=15){
+            Toast('最多选择15注')
+            return false;
+          }
+        }
+      }else{
+        if(this.matchSelectObj.has(c.matchId)){
+          if(this.matchSelectObj.size>15){
+            Toast('最多选择15注')
+            return false;
+          }
+        }else{
+          if(this.matchSelectObj.size>=15){
+            Toast('最多选择15注')
+            return false;
+          }
+        }
+      }
       this.$store.state.mark_playObj.mark_playBox = true
       if (this.playType == '3') {
         this.$store.state.mark_playObj.mark_play = '4'
@@ -61,7 +86,7 @@ export default {
       } else if (this.playType == '6') {
         this.$store.state.mark_playObj.mark_play = '6'
       }
-      this.$store.state.mark_playObj.bfmatchId = c
+      this.$store.state.mark_playObj.bfmatchId = c.matchId
     },
     confirm_disable() {
       if (this.matchSelectObj.size == 1) {
@@ -97,27 +122,27 @@ export default {
       }
     },
     confirm_mix() {
-      let num = 0;
+      this.arrNum = 0;
       let obj = {};
       this.$store.state.matchObj.hotPlayList.forEach(item => {
         if (item.selectedNum && item.selectedNum > 0) {
-          num++
+          this.arrNum++
           obj = item
         }
       });
       this.$store.state.matchObj.playList.forEach(item => {
         for (let i = 0; i < item.playList.length; i++) {
           if (item.playList[i].selectedNum && item.playList[i].selectedNum > 0) {
-            num++
+            this.arrNum++
             obj = item.playList[i]
           }
         }
       });
-      if (num > 1) {
-        this.text = `<p>已选${num}场比赛</p><p>可投注</p>`
+      if (this.arrNum > 1) {
+        this.text = `<p>已选${this.arrNum}场比赛</p><p>可投注</p>`
         this.flag = false
         this.classFlag = false
-      } else if (num == 1) {
+      } else if (this.arrNum == 1) {
         if (obj.matchPlays[1].single == '1') {
           if (obj.matchPlays[0].homeCell.isSelected || obj.matchPlays[0].flatCell.isSelected || obj.matchPlays[0].visitingCell.isSelected) {
             this.text = `<p>已选择1场比赛</p><p>还差1场比赛</p>`
@@ -158,6 +183,18 @@ export default {
     },
     selectedClick(c, s) {
       this.idConfig(c)
+      if(this.matchSelectObj.has(this.id)){
+        if(this.matchSelectObj.size>15){
+          Toast('最多选择15注')
+          return false;
+        }
+      }else{
+        if(this.matchSelectObj.size>=15){
+          Toast('最多选择15注')
+          return false;
+        }
+      }
+      // console.log(this.matchSelectObj.size)
       if (c.target.parentElement.className == 'selected') {
         c.target.parentElement.className = ''
         if (c.target.parentElement.children[2].innerText.indexOf('主') != -1) {
@@ -187,11 +224,21 @@ export default {
         }
         this.matchSelectObj.set(c.target.parentElement.parentElement.parentElement.parentElement.id, this.arr)
       }
-      //console.log(this.matchSelectObj)
       this.confirm_disable()
     },
     selectedTwoClick(c, s) {
       this.idConfig(c)
+      if(this.matchSelectObj.has(this.id)){
+        if(this.matchSelectObj.size>15){
+          Toast('最多选择15注')
+          return false;
+        }
+      }else{
+        if(this.matchSelectObj.size>=15){
+          Toast('最多选择15注')
+          return false;
+        }
+      }
       if (c.target.parentElement.className == 'selected') {
         c.target.parentElement.className = ''
         this.arr.delete(s)
@@ -221,6 +268,17 @@ export default {
           })
         }
       })
+      if(c.selectedList.length>0){
+        if(this.arrNum>15){
+          Toast('最多选择15注')
+          return false;
+        }
+      }else{
+        if(this.arrNum>=15){
+          Toast('最多选择15注')
+          return false;
+        }
+      }
       obj.cellCode = s.cellCode
       obj.cellName = s.cellName
       obj.cellOdds = s.cellOdds
@@ -291,9 +349,8 @@ export default {
     //清除
     clear_match() {
       //console.log(this.$store.state.chushihuaObj)
-      //console.log(this.$store.state.chushihuaObj)
       if (this.playType == '6') {
-        this.$store.state.matchObj = this.$store.state.chushihuaObj
+        this.$store.state.matchObj = JSON.parse(JSON.stringify(this.$store.state.chushihuaObj))
       } else {
         this.matchSelectObj.clear()
         this.id = ''
@@ -303,6 +360,7 @@ export default {
       this.text = `<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>`
       this.flag = true
       this.classFlag = true
+      this.arrNum = 0
       $('.selected').removeClass('selected')
     },
     confirm() {

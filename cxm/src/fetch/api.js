@@ -178,6 +178,10 @@ export default {
     addBankCard(params){
         return fetchPost('member/user/bank/addBankCard',params)
     },
+    //提现界面数据
+    queryWithDrawShow(params){
+        return fetchPost('member/user/bank/queryWithDrawShow',params)
+    },
     //账户明细列表
     getUserAccountList(params){
         return fetchPost('member/user/account/getUserAccountList',params)

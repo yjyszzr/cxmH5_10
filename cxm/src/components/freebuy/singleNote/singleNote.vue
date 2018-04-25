@@ -6,7 +6,7 @@
        <el-collapse v-model="activeName">
         <el-collapse-item name="1" v-if="$store.state.matchObj.hotPlayList&&$store.state.matchObj.hotPlayList.length>0">
             <template slot="title">
-                <span class="iconfont icon-icon-34"></span>
+                <span class="iconfont icon-icon-23"></span>
                 <span class="hotMatch">热门比赛</span>
             </template>
             <ul class="hotMatchList">
@@ -62,10 +62,10 @@
                             <span>VS</span>
                             <span>{{item.visitingTeamAbbr}}</span>
                         </div>
-                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item.matchId)">
+                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
                             点击进行比分投注
                         </div>
-                        <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item.matchId)">
+                        <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item)">
                             <span v-for="(data,index) in matchSelectObj.get(item.matchId)?Array.from(matchSelectObj.get(item.matchId)):[]" :key='index'>
                                 {{data}}&nbsp;
                             </span>
@@ -77,10 +77,10 @@
                             <span>VS</span>
                             <span>{{item.visitingTeamAbbr}}</span>
                         </div>
-                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item.matchId)">
+                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
                             点击进行半全场投注
                         </div>
-                        <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item.matchId)">
+                        <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item)">
                             <span v-for="(data,index) in matchSelectObj.get(item.matchId)?Array.from(matchSelectObj.get(item.matchId)):[]" :key='index'>
                                 {{data}}&nbsp;
                             </span>
@@ -130,11 +130,11 @@
                                     <p :class="item.matchPlays[0].visitingCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].visitingCell.cellName}} {{item.matchPlays[0].visitingCell.cellOdds}}</p>
                                 </div>
                             </div>
-                            <div class="team_right" v-if="item.selectedNum<=0" @click="bfBtn(item.matchId)">
+                            <div class="team_right" v-if="item.selectedNum<=0" @click="bfBtn(item)">
                                 <span>更多</span>
                                 <span>玩法</span>
                             </div>
-                            <div class="team_right" v-if="item.selectedNum>0" @click="bfBtn(item.matchId)">
+                            <div class="team_right" v-if="item.selectedNum>0" @click="bfBtn(item)">
                                 <span>已选</span>
                                 <span><b style="color: #ea5504;font-wight: 400;">{{item.selectedNum}}</b>项</span>
                             </div>
@@ -208,10 +208,10 @@
                             <span>VS</span>
                             <span>{{item.visitingTeamAbbr}}</span>
                         </div>
-                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item.matchId)">
+                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
                             点击进行比分投注
                         </div>
-                        <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item.matchId)">
+                        <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item)">
                             <span v-for="(data,index) in matchSelectObj.get(item.matchId)?Array.from(matchSelectObj.get(item.matchId)):[]" :key='index'>
                                 {{data}}&nbsp;
                             </span>
@@ -223,10 +223,10 @@
                             <span>VS</span>
                             <span>{{item.visitingTeamAbbr}}</span>
                         </div>
-                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item.matchId)">
+                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
                             点击进行半全场投注
                         </div>
-                        <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item.matchId)">
+                        <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item)">
                             <span v-for="(data,index) in matchSelectObj.get(item.matchId)?Array.from(matchSelectObj.get(item.matchId)):[]" :key='index'>
                                 {{data}}&nbsp;
                             </span>
@@ -276,11 +276,11 @@
                                     <p :class="item.matchPlays[0].visitingCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].visitingCell.cellName}} {{item.matchPlays[0].visitingCell.cellOdds}}</p>
                                 </div>
                             </div>
-                            <div class="team_right" v-if="item.selectedNum<=0" @click="bfBtn(item.matchId)">
+                            <div class="team_right" v-if="item.selectedNum<=0" @click="bfBtn(item)">
                                 <span>更多</span>
                                 <span>玩法</span>
                             </div>
-                            <div class="team_right" v-if="item.selectedNum>0" @click="bfBtn(item.matchId)">
+                            <div class="team_right" v-if="item.selectedNum>0" @click="bfBtn(item)">
                                 <span>已选</span>
                                 <span><b style="color: #ea5504;font-wight: 400;">{{item.selectedNum}}</b>项</span>
                             </div>

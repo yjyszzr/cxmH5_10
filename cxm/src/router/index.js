@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import { Toast } from 'mint-ui'
 
 Vue.use(Router)
 
@@ -9,9 +10,6 @@ const router = new Router({
       path: '/',
       name: 'index',
       cname:'首页',
-      meta: {
-        requireAuth: true
-      },
       component: function (resolve) {
           require(['../components/index.vue'], resolve)
       }
@@ -206,6 +204,9 @@ const router = new Router({
           path: '/freebuy/cathectic',
           name: 'cathectic',
           cname:'投注确认',
+          meta: {
+            requireAuth: true
+          },
           component: function (resolve) {
               require(['../components/freebuy/cathectic/index.vue'], resolve)
           },
@@ -264,6 +265,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
 	if(to.matched.some(record => record.meta.requireAuth)) {
 		if(!localStorage.getItem('token')) {
+            Toast('您还未登录，请先登录')
 			next({
 				path: '/user/password',
 				query: {

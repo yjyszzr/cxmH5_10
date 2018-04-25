@@ -185,7 +185,7 @@ export default {
 			}
 		},
 		playt() {
-			let arr = [],arr1 = []
+			let arr = [],arr1 = [],arr2 = []
 			this.$store.state.mark_playObj.playtList = []
 			this.$store.state.mark_playObj.playutText = []
 			this.$store.state.matchSelectedList.forEach(item => {
@@ -195,36 +195,77 @@ export default {
 				} else {
 					item.selectedList.forEach((data)=>{
 						arr1.push(data.single)
+						arr2.push(data.playType)
 					})
 				}
 			})
-			//console.log(arr)
+			//console.log(arr2)
 			if(arr.length >= 1) {
 				if(this.$route.query.playType == '6') {
 					if(arr1.indexOf('0')==-1){
 						for(let i = 1; i <= arr.length; i++) {
-							if(i <= 8) {
-								this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+							if(arr2.indexOf('5')!=-1||arr2.indexOf('3')!=-1){
+								if(i <= 4) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}else if(arr2.indexOf('4')!=-1){
+								if(i <= 6) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}else{
+								if(i <= 8) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
 							}
 						}
 					}else{
 						for(let i = 2; i <= arr.length; i++) {
-							if(i <= 8) {
-								this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+							if(arr2.indexOf('5')!=-1||arr2.indexOf('3')!=-1){
+								if(i <= 4) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}else if(arr2.indexOf('4')!=-1){
+								if(i <= 6) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}else{
+								if(i <= 8) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
 							}
 						}
 					}
 				} else {
 					if(arr.indexOf('0') == -1) {
 						for(let i = 1; i <= arr.length; i++) {
-							if(i <= 8) {
-								this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+							if(this.$route.query.playType == '4'){
+								if(i <= 6) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}else if(this.$route.query.playType == '5'||this.$route.query.playType == '3'){
+								if(i <= 4) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}else{
+								if(i <= 8) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
 							}
 						}
 					} else {
 						for(let i = 2; i <= arr.length; i++) {
-							if(i <= 8) {
-								this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+							if(this.$route.query.playType == '4'){
+								if(i <= 6) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}else if(this.$route.query.playType == '5'||this.$route.query.playType == '3'){
+								if(i <= 4) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}else{
+								if(i <= 8) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
 							}
 						}
 					}
@@ -497,19 +538,51 @@ export default {
 					this.betObjFun()
 				}
 			}else{
-				let arr1 = []
+				let arr1 = [],arr2 = []
 					this.$store.state.matchSelectedList.forEach(item => {
 						item.selectedList.forEach((data)=>{
 							arr1.push(data.single)
+							arr2.push(data.playType)
 						})
 				})
 				if(this.$store.state.matchSelectedList.length > 1) {
+					this.$store.state.mark_playObj.playtList = []
 					if(arr1.indexOf('0')==-1){
+						for(let i = 1; i <= this.$store.state.matchSelectedList.length; i++) {
+							if(arr2.indexOf('5')!=-1||arr2.indexOf('3')!=-1){
+								if(i <= 4) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}else if(arr2.indexOf('4')!=-1){
+								if(i <= 6) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}else{
+								if(i <= 8) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}
+						}
 						if(this.$store.state.mark_playObj.playtList.indexOf('1&1')==-1){
 							this.$store.state.mark_playObj.playtList.unshift('1&1')
 						}
 						this.fetchData()
 					}else{
+						for(let i = 2; i <= this.$store.state.matchSelectedList.length; i++) {
+							if(arr2.indexOf('5')!=-1||arr2.indexOf('3')!=-1){
+								if(i <= 4) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}else if(arr2.indexOf('4')!=-1){
+								if(i <= 6) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}else{
+								if(i <= 8) {
+									this.$store.state.mark_playObj.playtList.push(i + '&' + 1)
+								}
+							}
+						}
 						if(this.$store.state.mark_playObj.playtList.indexOf('1&1')!=-1){
 							 deleteArray()
 							 this.$store.state.mark_playObj.playtList.remove('1&1')

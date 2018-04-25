@@ -57,7 +57,7 @@
                             <b>{{matchDetailObj.hadTeamSupport.aSupport}}</b>
                         </span>
                         <span>
-                            <b>+1</b>
+                            <b>{{matchDetailObj.hhadTeamSupport.fixedOdds}}</b>
                             <b>{{matchDetailObj.hhadTeamSupport.hSupport}}</b>
                             <b>{{matchDetailObj.hhadTeamSupport.dSupport}}</b>
                             <b>{{matchDetailObj.hhadTeamSupport.aSupport}}</b>

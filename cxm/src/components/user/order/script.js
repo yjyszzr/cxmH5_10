@@ -9,7 +9,7 @@ export default {
     data () {
       return {
         orderId: this.$route.query.id,
-        orderObj: {}
+        orderObj: ''
       }
     },
     created(){
@@ -45,7 +45,7 @@ export default {
         api.getOrderDetail(data)
         .then(res => {
             if(res.code==0) {
-             console.log(res)
+             //console.log(res)
               this.orderObj = res.data
             }else{
               Toast(res.msg)

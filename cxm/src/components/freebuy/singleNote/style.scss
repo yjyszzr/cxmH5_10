@@ -40,7 +40,7 @@
         .matchLeft{
             position: relative;
             height: px2rem(111px);
-            line-height: px2rem(32px);
+            line-height: px2rem(30px);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -73,16 +73,16 @@
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
-                width: px2rem(110px);
+                width: px2rem(126px);
                 background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
                 background-size: 1px px2rem(74px); 
                 position: relative;
                 span:first-of-type{
-                    font-size: px2rem(24px);
+                    font-size: px2rem(26px);
                     color: #505050;
                 }
                 span:last-of-type{
-                    font-size: px2rem(20px);
+                    font-size: px2rem(24px);
                     color: #9f9f9f;
                 }
                 b{
@@ -97,7 +97,7 @@
                 }
             }
             P:first-of-type,p:last-of-type{
-                width: px2rem(218px);
+                width: px2rem(210px);
             }
             p:last-of-type{
                 background: none;
@@ -285,8 +285,9 @@
                 padding: 0 px2rem(28px);
                 display: flex;
                 align-items: center;
-                img{
-                    width: px2rem(40px);
+                .icon-icon-26{
+                    color: #9f9f9f;
+                    font-size: px2rem(40px);
                 }
             }
             .match_test_status{
@@ -315,5 +316,8 @@
     .icon-icon-34{
         font-size: px2rem(32px);
         color: #ea5504;
+    }
+    .icon-icon-22{
+        font-size: px2rem(24px);
     }
 }

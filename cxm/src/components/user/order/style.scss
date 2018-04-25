@@ -1,4 +1,6 @@
 @import '../../../assets/css/function.scss';
+.order{
+  height: auto;
 .order_center{
   .subnav{
     background: #fff;
@@ -121,6 +123,7 @@
 }
 .plan {
   padding: 0 px2rem(20px) 0 px2rem(30px);
+  margin-bottom: px2rem(100px);
   .solecd {
     font-size: px2rem(28px);
     color: #A0A0A0;
@@ -152,5 +155,9 @@
   border: none;
   color: white;
   font-size: px2rem(30px);
-  margin-top: px2rem(20px);
+}
+.Fixed{
+  position: fixed;
+  bottom: 0;
+}
 }

@@ -5,13 +5,13 @@
 <template>
     <div class="wrap">
         <section class="section">
-            <p class="presented">可提现金额：{{userInfo.userMoney}}元</p>
+            <p class="presented">可提现金额：{{withdrawObj.userMoney}}元</p>
             <ul class=" msg_list">
                 <li>
                     <a>
                         <div>
                             <label>银行卡：</label>
-                            <input type="tel" class="text1" placeholder="请添加银行卡"/>
+                            <p class="text1">{{withdrawObj.defaultBankLabel==''?'请添加银行卡':'withdrawObj.defaultBankLabel'}}</p>
                             <router-link to="/user/credit_card" class="arrow_right float_right">管理</router-link>
                         </div>
                     </a>
