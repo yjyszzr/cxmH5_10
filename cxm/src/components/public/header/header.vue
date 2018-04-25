@@ -35,6 +35,13 @@
             <li><p @click='curClick3($event)'>消息</p></li>
         </ul>
         <p class="matchHeader"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='cathectic'">已选{{$store.state.matchSelectedList.length}}场比赛&nbsp;&nbsp;&nbsp;投注截止时间：<span>{{$store.state.arrTime.length==0?'00-00 00:00':datePd($store.state.arrTime[0])}}</span></p>
+        <ul class="help_ul" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'">
+            <li><a href="#a1">账户问题</a></li>
+            <li><a href="#a2">充值问题</a></li>
+            <li><a href="#a3">提现问题</a></li>
+            <li><a href="#a4">采购问题</a></li>
+            <li><a href="#a5">中奖派奖问题</a></li>
+        </ul>
     </div>
 </template>
 
@@ -266,6 +273,28 @@ export default {
      span{
        color: #e95504;
      }
+    }
+    .help_ul{
+        background: #fff;
+        padding: 0 px2rem(32px) px2rem(36px);
+        li{
+            background: #f6921e;
+            display: inline-block;
+            font-size: px2rem(26px);
+            border-radius: px2rem(10px);
+            width: px2rem(200px);
+            height: px2rem(57px);
+            text-align: center;
+            line-height: px2rem(57px);
+            margin-top: px2rem(36px);
+            margin-right: px2rem(25px);
+            a{
+                color: #fff;
+            }
+        }
+        li:nth-child(3){
+            margin-right: 0;
+        }
     }
 }
 </style>

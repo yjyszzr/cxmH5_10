@@ -37,7 +37,7 @@
     <section class="button" @click="reg">
         <a class="determine">注册</a>
     </section>
-    <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"></i><p>我已满18周岁并同意接受<span>《注册服务协议》</span></p></div>
+    <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"></i><p>我已满18周岁并同意接受<router-link to="/user/service">《注册服务协议》</router-link></p></div>
     <div class="prompt">请您输入合法的手机号</div>
     </div>
 </template>
