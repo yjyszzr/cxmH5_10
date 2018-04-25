@@ -1,20 +1,28 @@
-// @import '../../../assets/css/function.scss';
+@import '../../../assets/css/function.scss';
 .register {
   .iconfont{
     color: #9f9f9f;
     vertical-align: middle;
   }
   .ment{
+    display: flex;
+    justify-content: center;
+    margin-top: px2rem(10px);
     p{
-      margin-left: 4px;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      margin-left: px2rem(-10px);
     }
     color: #9f9f9f;
     font-size: px2rem(26px);
     span{
       color: #787878;
     }
-    .iconfont{
+    i{
+      padding: px2rem(20px);
+      font-size: px2rem(30px);
+    }
+    .xySelected{
       color: #e95504;
       vertical-align: middle;
     }

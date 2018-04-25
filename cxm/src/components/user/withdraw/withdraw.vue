@@ -11,7 +11,7 @@
                     <a>
                         <div>
                             <label>银行卡：</label>
-                            <p class="text1">{{withdrawObj.defaultBankLabel==''?'请添加银行卡':'withdrawObj.defaultBankLabel'}}</p>
+                            <p class="text1">{{withdrawObj.defaultBankLabel==''?'请添加银行卡':withdrawObj.defaultBankLabel}}</p>
                             <router-link to="/user/credit_card" class="arrow_right float_right">管理</router-link>
                         </div>
                     </a>

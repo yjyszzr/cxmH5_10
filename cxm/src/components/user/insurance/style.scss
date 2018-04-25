@@ -2,9 +2,8 @@
 .rance{
     background: #fff;
     display: block;
-    .box1{
-        margin:0  px2rem(30px);
-        padding: px2rem(35px);
+    .box1,.box2{
+        padding: px2rem(37px) 0 px2rem(37px) px2rem(28px);
         border-bottom: 1px dashed #f1f1f1;
         i{
             font-size: px2rem(50px);
@@ -24,5 +23,8 @@
                 color: #505050;
             }
         }
+    }
+    .box2{
+        padding: px2rem(58px) 0 px2rem(58px) px2rem(28px);
     }
 }

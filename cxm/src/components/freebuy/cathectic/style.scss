@@ -1,19 +1,22 @@
  @import '../../../assets/css/function.scss';
  .cathectic{
-   .iconfont{
+   .xySelected{
      color: #e95504;
-     display: inline-block;
-     margin-right: px2rem(10px);
    }
-   .match{
-     background: #fff;
-     height: px2rem(72px);
-     line-height: px2rem(72px);
-     padding: 0 px2rem(30px);
-     font-size: px2rem(28px);
-     color: #A0A0A0;
-     span{
-       color: #e95504;
+   .section:first-of-type{
+     margin-top: px2rem(88px);
+   }
+   .ment{
+     margin: 0;
+     display: flex;
+     justify-content: center;
+     i{
+       padding: px2rem(20px);
+     }
+     p{
+      display: flex;
+      align-items: center;
+       margin-left: px2rem(-10px);
      }
    }
    .cont{

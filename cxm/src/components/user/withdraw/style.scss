@@ -14,15 +14,11 @@
   padding:0;
   /*border-bottom: 1px solid #e5e5e5;*/
 }
-.msg_list li>a:first-of-type div{
-  display: flex;
-  align-items: flex-end;
-}
 .arrow_right{
   position: relative;
   display: block;
-  height:px2rem(88px);
-  line-height: px2rem(92px);
+  height:px2rem(105px);
+  line-height: px2rem(110px);
   width: auto;
   background-size: auto 30%;
   color: #A0A0A0;
@@ -32,21 +28,26 @@
 }
 .msg_list li>a>div .text1 {
   width: 58%;
+  height:px2rem(110px);
+  line-height: px2rem(110px);
 }
 .msg_list li a>div>label {
   color: #A0A0A0;
+  height:px2rem(110px);
+  line-height: px2rem(110px);
 }
 .msg_list li>a>div .text3 {
   width: 75%;
   border: none;
   float: left;
-  height: px2rem(88px);
+  height: px2rem(110px);
+  font-size: px2rem(30px);
 }
 .msg_list li > a {
-  height: px2rem(110px);
+  height: px2rem(110px)!important;
 }
 .msg_list li > a > div {
-  height: px2rem(110px);
+  height: px2rem(110px)!important;
 }
 .msg_list li>a>div>.whole{
   font-size: px2rem(30px);
@@ -56,7 +57,7 @@
   float: left;
   line-height: px2rem(50px);
   padding-left: px2rem(20px);
-  margin-top: px2rem(20px);
+  margin-top: px2rem(30px);
 }
 .plain{
   margin-top: px2rem(88px);

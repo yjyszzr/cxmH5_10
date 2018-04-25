@@ -27,6 +27,9 @@ export default {
         if (!this.phoneVal || !this.passwordVal|| !this.telVal) {
             Toast('请填写完整')
             return
+        }else if(this.$refs.xySelected.className == 'icon-icon-29 iconfont'){
+            Toast('请勾选服务协议')
+            return
         }
         let data = {
             'mobile': this.phoneVal,
@@ -70,6 +73,13 @@ export default {
       handleCommentBlur2(c){
         if(c.target.value==''){
           this.$refs.code.style.color = '#9f9f9f'
+        }
+      },
+      xySelectedClick(){
+        if(this.$refs.xySelected.className=='icon-icon-29 iconfont xySelected'){
+          this.$refs.xySelected.className = 'icon-icon-29 iconfont'
+        }else{
+          this.$refs.xySelected.className = 'icon-icon-29 iconfont xySelected'
         }
       }
     },

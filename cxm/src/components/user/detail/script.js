@@ -74,9 +74,5 @@ export default {
     },
     mounted(){
         this.yhData()
-    },
-    beforeRouteLeave(to, from, next) {
-      next()
-      this.$store.state.recordTab = ''
     }
 }

@@ -13,9 +13,9 @@
             <p class="filter" v-show="menuDisplay==false"></p>
         </div>
         <ul class="send" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='record'">
-            <li class="cur"><p @click='curClick($event)'>全部</p></li>
-            <li><p @click='curClick($event)'>中奖</p></li>
-            <li><p @click='curClick($event)'>待开奖</p></li>
+            <li :class="$store.state.recordTab==''||$store.state.recordTab=='1'?'cur':''"><p @click='curClick($event)'>全部</p></li>
+            <li :class="$store.state.recordTab=='2'?'cur':''"><p @click='curClick($event)'>中奖</p></li>
+            <li :class="$store.state.recordTab=='3'?'cur':''"><p @click='curClick($event)'>待开奖</p></li>
         </ul>
         <ul class="sendaccount" id='searchBar' v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
             <li class="cur1"><p @click='curClick1($event)'>全部</p></li>
@@ -34,10 +34,12 @@
             <li class="cur3"><p @click='curClick3($event)'>通知</p></li>
             <li><p @click='curClick3($event)'>消息</p></li>
         </ul>
+        <p class="matchHeader"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='cathectic'">已选{{$store.state.matchSelectedList.length}}场比赛&nbsp;&nbsp;&nbsp;投注截止时间：<span>{{$store.state.arrTime.length==0?'00-00 00:00':datePd($store.state.arrTime[0])}}</span></p>
     </div>
 </template>
 
 <script>
+import datefilter from '../../../util/datefilter'
 export default {
   name: "Header",
   props: {
@@ -57,6 +59,9 @@ export default {
       }
       this.$router.go(-1);
     },
+    datePd(c) {
+			return datefilter(Number(c * 1000), 1)
+		},
     filter() {
       this.$store.dispatch("getMarkShow",true)
       this.$store.dispatch("getMarkShowType",'2')
@@ -245,6 +250,22 @@ export default {
             margin-right: px2rem(10px);
             vertical-align: middle;
         }
+    }
+    .matchHeader{
+        background: #fff;
+     height: px2rem(72px);
+     line-height: px2rem(72px);
+     padding: 0 px2rem(30px);
+     font-size: px2rem(28px);
+     color: #A0A0A0;
+     position: fixed;
+     top: px2rem(98px);
+     width: 100%;
+     z-index: 10;
+     border-bottom: 1px solid #f0f0f0;
+     span{
+       color: #e95504;
+     }
     }
 }
 </style>

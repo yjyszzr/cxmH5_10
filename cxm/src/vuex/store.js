@@ -24,6 +24,7 @@ const state = {
     mark_show: false, //控制遮罩
     mark_Reset: 0, //重制赛事数据
     resultList: [], //赛果列表
+    arrTime: [], //赛事截止时间
     mark_showObj: { //赛果遮罩
         mark_show_type: 1, //遮罩显示类型
         mark_dateVal: '', //选中日期值
@@ -195,6 +196,9 @@ const mutations = {
     },
     ZXDETAILOBJ(state, data) {
         state.zxDetailObj = data
+    },
+    ARRTIME(state, data){
+        state.arrTime = data
     }
 }
 
@@ -385,6 +389,9 @@ const actions = {
                 }
                 Indicator.close()
             })
+    },
+    getArrTime({commit},value){
+        commit("ARRTIME", value)
     }
 }
 

@@ -64,5 +64,9 @@ export default {
     },
     mounted(){
       this.fetchData()
+    },
+    beforeRouteLeave(to, from, next) {
+        next()
+        this.$store.state.recordTab = ''
     }
 }

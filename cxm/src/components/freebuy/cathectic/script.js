@@ -40,6 +40,13 @@ export default {
 			this.betObj.maxBonus = 0.00
 			this.disable = true
 		},
+		xySelectedClick(){
+		  if(this.$refs.xySelected.className=='icon-icon-29 iconfont xySelected'){
+			this.$refs.xySelected.className = 'icon-icon-29 iconfont'
+		  }else{
+			this.$refs.xySelected.className = 'icon-icon-29 iconfont xySelected'
+		  }
+		},
 		deleteList(c, s) {
 			this.$store.state.matchSelectedList.forEach(item => {
 				if(item.matchId == c) {
@@ -142,6 +149,7 @@ export default {
 			this.arrTime.sort((a, b) => {
 				return a - b;
 			})
+			this.$store.dispatch("getArrTime",this.arrTime)
 		},
 		cshCz(n) {
 			this.$store.state.matchSelectedList = []
@@ -490,6 +498,10 @@ export default {
 			this.fetchData('dan')
 		},
 		saveGo() {
+			if(this.$refs.xySelected.className == 'icon-icon-29 iconfont'){
+				Toast('请勾选服务协议')
+				return
+			}
 			this.$store.state.matchSaveInfo = this.matchSave
 			this.$router.push({
 				path: '/freebuy/payment',

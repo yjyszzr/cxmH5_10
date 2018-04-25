@@ -95,9 +95,5 @@ export default {
               Toast(res.msg)
             }
         })
-    },
-    beforeRouteLeave(to, from, next) {
-      next()
-      this.$store.state.recordTab = ''
     }
 }

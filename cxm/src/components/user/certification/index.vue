@@ -5,7 +5,8 @@
 
 <!--我的-->
 <template>
-    <div class="wrap">
+    <div class="wrap certification">
+        <p>身份信息是领奖和提款的重要依据,请您如实填写</p>
         <ul class="section msg_list">
             <li>
                 <a href="javascript:void(0);">
