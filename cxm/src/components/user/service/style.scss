@@ -1,0 +1,15 @@
+@import '../../../assets/css/function.scss';
+.service{
+  padding: px2rem(36px);
+  background: #fff;
+    p{
+      color: #505050;
+      font-size: px2rem(26px);
+      span{
+        display: block;
+      }
+    }
+  h5{
+    margin-top: px2rem(20px);
+  }
+}

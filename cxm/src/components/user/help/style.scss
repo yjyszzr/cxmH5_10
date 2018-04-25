@@ -1,0 +1,49 @@
+@import '../../../assets/css/function.scss';
+.help{
+  ul{
+    background: #fff;
+    padding: 0 px2rem(32px) px2rem(36px);
+    li{
+      background: #f6921e;
+      display: inline-block;
+      color: #fff;
+      font-size: px2rem(26px);
+      border-radius: px2rem(10px);
+      width: px2rem(200px);
+      height: px2rem(57px);
+      text-align: center;
+      line-height: px2rem(57px);
+      margin-top: px2rem(36px);
+      margin-right: px2rem(25px);
+    }
+    li:nth-child(3){
+      margin-right: 0;
+    }
+  }
+  .help_cen{
+    padding: px2rem(36px) px2rem(32px);
+    background: #fff;
+    margin-top: px2rem(20px);
+    h5{
+      color: #f6921e;
+      font-size: px2rem(30px);
+    }
+    h6{
+      margin-top: px2rem(10px);
+      color: #787878;
+      font-size: px2rem(26px);
+    }
+    P{
+      color: #505050;
+      font-size: px2rem(26px);
+      line-height: px2rem(40px);
+      margin-bottom: px2rem(36px);
+      span{
+        display: block;
+      }
+    }
+    p:last-child{
+      margin-bottom: 0;
+    }
+  }
+}
