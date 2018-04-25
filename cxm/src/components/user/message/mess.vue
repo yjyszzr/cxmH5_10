@@ -29,7 +29,11 @@
                             <p>投注时间：<span>2018年02月03日</span></p> -->
                             <p v-html="item.msgDesc"></p>
                         </div>
+                    <div class="box_title">
+                        <p>中奖金额已打入您的账户</p>
                         <a class="rout">查看详情 <b class="iconfont icon-icon-14"></b> </a>
+                    </div>
+
 
                 </section>
                 <div slot="bottom" class="mint-loadmore-bottom">
@@ -38,9 +42,16 @@
 				</div>
 		</mt-loadmore>
         <div class="nullstatus" v-if="mess.length==0">
-                <img src="../../../assets/img/juan.png" alt="">
-                <span>暂无消息</span>
+            <img src="../../../assets/img/juan.png" alt="">
+            <span>暂无消息</span>
         </div>
+        <!--消息-->
+        <div class="mess_message" >
+            <p>充值返红包活动<span>今日&nbsp;&nbsp;16:30</span></p>
+            <img src="../../../assets/img/banner.jpg">
+            <p class="rech">充值狂中800元！<a>查看详情<i class="iconfont icon-icon-14" ></i></a></p>
+        </div>
+
     </div>
 </template>
 

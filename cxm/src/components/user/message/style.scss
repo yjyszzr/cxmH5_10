@@ -44,6 +44,7 @@
     span {
       font-size: px2rem(20px);
       color: #C8C8C8;
+      float: right;
     }
   }
   .box2 {
@@ -88,21 +89,56 @@
     height: px2rem(69px);
     line-height: px2rem(69px);
     p {
-      color: #505050;
+      color: #ea5504;
       font-size: px2rem(30px);
       display: inline-block;
       margin-right: px2rem(109px);
+    }
+  }
+  .box_title{
+    p{
+      color: #787878;
+      font-size: px2rem(26px);
+      margin-top: px2rem(10px);
     }
   }
   .rout {
     position: absolute;
     right: px2rem(35px);
     bottom: px2rem(28px);
+    color: #9f9f9f;
+    font-size: px2rem(26px);
   }
 }
-.mess{
-  .icon-icon-14{
-    font-size: px2rem(26px);
-    font-weight: 400;
-}
+  .mess{
+    .icon-icon-14{
+      font-size: px2rem(26px);
+      font-weight: 400;
+  }
+  .mess_message{
+    background: #fff;
+    margin: px2rem(15px);
+    padding: 0 px2rem(31px);
+    p{
+      height: px2rem(72px);
+      line-height: px2rem(72px);
+      color: #505050;
+      font-size: px2rem(30px);
+      span{
+        float: right;
+        color: #787878;
+        font-size: px2rem(24px);
+      }
+    }
+    img{
+      width: 100%;
+    }
+    .rech{
+      color: #787878;
+      font-size: px2rem(26px);
+      a{
+        float: right;
+      }
+    }
+  }
 }

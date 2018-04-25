@@ -493,16 +493,17 @@ textarea {
 }
 
 .ment {
+  p{
+    display: inline-block;
+  }
+  span {
+    color: #787878;
+  }
   text-align: center;
   color: #A0A0A0;
   font-size: px2rem(26px);
-  margin-top: px2rem(15px);
+  margin-top: px2rem(32px);
 }
-
-.ment span {
-  color: #787878;
-}
-
 .prompt {
   width: px2rem(540px);
   height: px2rem(80px);
