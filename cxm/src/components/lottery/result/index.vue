@@ -22,8 +22,8 @@
                                 <i><img src="../../../assets/img/img1.png"></i>
                                 <div>
                                     <p><em>{{list.homeTeamAbbr}}</em><span>VS</span><em style="text-align: left">{{list.visitingTeamAbbr}}</em></p>
-                                  <b>半场{{list.firstHalf}}<span>总比分{{list.whole}}</span></b>
-                                  <b>未开始</b>
+                                  <b v-if="list.matchFinish =='1' ">半场{{list.firstHalf}}<span>总比分{{list.whole}}</span></b>
+                                  <small v-if="list.matchFinish =='0' ">未结束</small>
                                 </div>
                                 <s><img src="../../../assets/img/img1.png"></s>
                             </div>
