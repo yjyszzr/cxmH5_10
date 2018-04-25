@@ -3,13 +3,7 @@
 </style>
 <template>
     <div class="wrap help">
-        <ul>
-            <li><a href="#a1">账户问题</a></li>
-            <li><a href="#a2">充值问题</a></li>
-            <li><a href="#a3">提现问题</a></li>
-            <li><a href="#a4">采购问题</a></li>
-            <li><a href="#a5">中奖派奖问题</a></li>
-        </ul>
+
         <div class="help_center">
         <div id="a1" class="help_cen">
             <h5>账户问题</h5>

@@ -1,31 +1,8 @@
 @import '../../../assets/css/function.scss';
 .help{
-  ul{
-    background: #fff;
-    padding: 0 px2rem(32px) px2rem(36px);
-    position: fixed;
-    top: px2rem(100px);
-    li{
-      background: #f6921e;
-      display: inline-block;
-      font-size: px2rem(26px);
-      border-radius: px2rem(10px);
-      width: px2rem(200px);
-      height: px2rem(57px);
-      text-align: center;
-      line-height: px2rem(57px);
-      margin-top: px2rem(36px);
-      margin-right: px2rem(25px);
-      a{
-        color: #fff;
-      }
-    }
-    li:nth-child(3){
-      margin-right: 0;
-    }
-  }
+
   .help_center{
-    margin-top: px2rem(240px);
+    margin-top: px2rem(20px);
     .help_cen{
       padding: px2rem(36px) px2rem(32px);
       background: #fff;
