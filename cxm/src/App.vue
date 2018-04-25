@@ -104,6 +104,8 @@ export default {
                 return "我的收藏";
             case "moreInfo":
                 return "更多资讯";
+            case 'help':
+                return "帮助中心";
         }
       } else {
         if (
