@@ -18,8 +18,8 @@
                         <span>{{item.changci}}</span>
                         <span>截止{{datePd(item.matchTime)}}</span>
                         <span>
-                            <i class="iconfont icon-icon-22"></i>
-                            <!--<img src="../../../assets/img/freebuy_img/Collapse@3x.png" alt="">-->
+                            <!-- <i class="iconfont icon-icon-22"></i> -->
+                            <img src="../../../assets/img/freebuy_img/Collapse@3x.png" alt="">
                         </span>
                     </div>
                     <div class="matchRight" v-if="playType=='1'||playType=='2'">
@@ -124,7 +124,7 @@
                                     <p :class="item.matchPlays[1].visitingCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].visitingCell.cellName}} {{item.matchPlays[1].visitingCell.cellOdds}}</p>
                                 </div>
                                 <div class="team_bottom">
-                                    <p :style="{'background':item.matchPlays[0].fixedOdds.substr(0,1)=='+'?'orange':'green'}">{{item.matchPlays[0].fixedOdds}}</p>
+                                    <p :style="{'background':item.matchPlays[0].fixedOdds.substr(0,1)=='+'?'#f5ac41':'#85c368'}">{{item.matchPlays[0].fixedOdds}}</p>
                                     <p :class="item.matchPlays[0].homeCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].homeCell.cellName}} {{item.matchPlays[0].homeCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[0].flatCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].flatCell.cellName}} {{item.matchPlays[0].flatCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[0].visitingCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].visitingCell.cellName}} {{item.matchPlays[0].visitingCell.cellOdds}}</p>
@@ -157,8 +157,8 @@
                         <span>{{item.changci}}</span>
                         <span>截止{{datePd(item.matchTime)}}</span>
                         <span>
-                            <i class="iconfont icon-icon-22"></i>
-                            <!--<img src="../../../assets/img/freebuy_img/Collapse@3x.png" alt="">-->
+                            <!-- <i class="iconfont icon-icon-22"></i> -->
+                            <img src="../../../assets/img/freebuy_img/Collapse@3x.png" alt="">
                         </span>
                     </div>
                     <div class="matchRight" v-if="playType=='1'||playType=='2'">
@@ -263,14 +263,14 @@
                             			<p>0</p>
                             			<p style="flex: 9;">未开售</p>
                             		</div>
-                                <div class="team_top" v-if="item.matchPlays[1].isShow=='1'">
+                                <div class="team_top" v-if="item.matchPlays[1].isShow=='1'" :style="{'border':item.matchPlays[1]&&item.matchPlays[1].single=='1'?'1px solid #ea5504':''}">
                                     <p>0</p>
                                     <p :class="item.matchPlays[1].homeCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].homeCell.cellName}} {{item.matchPlays[1].homeCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[1].flatCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].flatCell.cellName}} {{item.matchPlays[1].flatCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[1].visitingCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].visitingCell.cellName}} {{item.matchPlays[1].visitingCell.cellOdds}}</p>
                                 </div>
                                 <div class="team_bottom">
-                                    <p :style="{'background':item.matchPlays[0].fixedOdds.substr(0,1)=='+'?'orange':'green'}">{{item.matchPlays[0].fixedOdds}}</p>
+                                    <p :style="{'background':item.matchPlays[0].fixedOdds.substr(0,1)=='+'?'#f5ac41':'#85c368'}">{{item.matchPlays[0].fixedOdds}}</p>
                                     <p :class="item.matchPlays[0].homeCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].homeCell.cellName}} {{item.matchPlays[0].homeCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[0].flatCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].flatCell.cellName}} {{item.matchPlays[0].flatCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[0].visitingCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].visitingCell.cellName}} {{item.matchPlays[0].visitingCell.cellOdds}}</p>

@@ -6,7 +6,7 @@
                 <li @click='data_time()'>{{$store.state.mark_showObj.mark_dateVal}}<i class="iconfont icon-icon-31"></i></li>
                 <li @click='more()'>更多条件<i class="iconfont icon-icon-31"></i></li>
                 <li @click='all($event)' v-if="flag==true">全部<i class="iconfont icon-icon-31"></i></li>
-                <li @click='all($event)' v-if="flag==false">未开始<i class="iconfont icon-icon-31"></i></li>
+                <li @click='all($event)' v-if="flag==false">未结束<i class="iconfont icon-icon-31"></i></li>
             </ul>
         </section>
         <section>

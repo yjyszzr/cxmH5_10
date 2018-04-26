@@ -36,11 +36,11 @@
         </ul>
         <p class="matchHeader"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='cathectic'">已选{{$store.state.matchSelectedList.length}}场比赛&nbsp;&nbsp;&nbsp;投注截止时间：<span>{{$store.state.arrTime.length==0?'00-00 00:00':datePd($store.state.arrTime[0])}}</span></p>
         <ul class="help_ul" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'">
-            <li><a href="#a1">账户问题</a></li>
-            <li><a href="#a2">充值问题</a></li>
-            <li><a href="#a3">提现问题</a></li>
-            <li><a href="#a4">采购问题</a></li>
-            <li><a href="#a5">中奖派奖问题</a></li>
+            <li><a href="" @click.prevent="custormAnchor('a1')">账户问题</a></li>
+            <li><a href="" @click.prevent="custormAnchor('a2')">充值问题</a></li>
+            <li><a href="" @click.prevent="custormAnchor('a3')">提现问题</a></li>
+            <li><a href="" @click.prevent="custormAnchor('a4')">采购问题</a></li>
+            <li><a href="" @click.prevent="custormAnchor('a5')">中奖派奖问题</a></li>
         </ul>
     </div>
 </template>
@@ -67,8 +67,14 @@ export default {
       this.$router.go(-1);
     },
     datePd(c) {
-			return datefilter(Number(c * 1000), 1)
-		},
+			return datefilter(Number(c * 1000), 3)
+    },
+    custormAnchor(anchorName){
+      // 找到锚点
+        let anchorElement = document.getElementById(anchorName);
+        // 如果对应id的锚点存在，就跳转到锚点
+        if(anchorElement) { anchorElement.scrollIntoView(); }
+    },
     filter() {
       this.$store.dispatch("getMarkShow",true)
       this.$store.dispatch("getMarkShowType",'2')

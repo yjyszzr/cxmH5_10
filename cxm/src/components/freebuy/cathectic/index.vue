@@ -5,11 +5,21 @@
 <template>
     <div class="wrap cathectic">
         <div style="padding-bottom: 3.2rem;">
-            <section class="section" v-for="(item,i) in $store.state.matchSelectedList" :key='i'>
+            <section class="section" :class="$route.query.playType=='6'?'hhTz':''" v-for="(item,i) in $store.state.matchSelectedList" :key='i'>
                 <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="item.matchPlays[0].single=='1'||(item.matchPlays[1]&&item.matchPlays[1].single=='1')">
                 <div class="cont">
                     <p class="cont_p" v-if="$route.query.playType=='1'||$route.query.playType=='2'">{{item.leagueAddr}} {{item.changci}} 截止{{datePd(item.matchTime)}}</p>
-                    <p class="cont_pt" v-if="$route.query.playType=='4'||$route.query.playType=='3'||$route.query.playType=='5'||$route.query.playType=='7'||$route.query.playType=='6'">
+                    <p class="cont_pt" v-if="$route.query.playType=='3'||$route.query.playType=='5'||$route.query.playType=='7'">
+                        <span>{{item.homeTeamAbbr}}</span>
+                        <span>VS</span>
+                        <span>{{item.visitingTeamAbbr}}</span>
+                    </p>
+                    <p class="cont_ptZjq" v-if="$route.query.playType=='4'">
+                        <span>{{item.homeTeamAbbr}}</span>
+                        <span>VS</span>
+                        <span>{{item.visitingTeamAbbr}}</span>
+                    </p>
+                    <p class="cont_pthh" v-if="$route.query.playType=='6'">
                         <span>{{item.homeTeamAbbr}}</span>
                         <span>VS</span>
                         <span>{{item.visitingTeamAbbr}}</span>
@@ -77,7 +87,7 @@
             </ul>
             <div class="clearfix">
                 <div class="left">
-                    <p>{{betObj.betNum}}注{{betObj.times}}倍&nbsp;&nbsp;共需：<span>￥{{betObj.money}}</span></p><br/>预测奖金：<span>{{betObj.minBonus}}-{{betObj.maxBonus}}</span>
+                    <p>{{betObj.betNum}}注{{betObj.times}}倍&nbsp;&nbsp;共需：<span>￥{{betObj.money}}</span></p><br/>预测奖金：<span>￥{{betObj.minBonus}}-{{betObj.maxBonus}}</span>
                 </div>
                 <a class="right" @click="saveGo()">确定</a>
             </div>

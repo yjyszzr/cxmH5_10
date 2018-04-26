@@ -57,7 +57,7 @@
                             <b>{{matchDetailObj.hadTeamSupport.aSupport}}</b>
                         </span>
                         <span>
-                            <b>{{matchDetailObj.hhadTeamSupport.fixedOdds}}</b>
+                            <b :style="{'background':matchDetailObj.hhadTeamSupport.fixedOdds.substr(0,1)=='+'?'#f5ac41':'#85c36b'}">{{matchDetailObj.hhadTeamSupport.fixedOdds}}</b>
                             <b>{{matchDetailObj.hhadTeamSupport.hSupport}}</b>
                             <b>{{matchDetailObj.hhadTeamSupport.dSupport}}</b>
                             <b>{{matchDetailObj.hhadTeamSupport.aSupport}}</b>

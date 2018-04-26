@@ -26,8 +26,8 @@
 								<div class="zx_info"><span>{{item.extendCat}}</span><span>{{item.addTime}}</span><span>阅读{{item.clickNumber}}</span></div>
 							</div>
 							<div class="zxRight">
-								<img :src="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
-                <b v-if="item.listStyle==4">播放</b>
+								<img class="img1" :src="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
+                                <img class="img2" src="../../../assets/img/bofang@2x.png" alt="" v-if="item.listStyle==4">
 							</div>
 						</div>
 					</div>

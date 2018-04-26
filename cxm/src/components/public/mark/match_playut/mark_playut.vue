@@ -1,6 +1,6 @@
 <template>
     <div class="mark_playutBox">
-        <div class="mark_playut">
+        <div class="mark_playut" @click='closeMarkCz()'>
 
         </div>
         <transition name="translate"> 

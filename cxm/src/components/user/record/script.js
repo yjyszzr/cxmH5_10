@@ -90,9 +90,5 @@ export default {
         this.orderStatus = this.$store.state.recordTab
       }
       this.recordFetch()
-    },
-    beforeRouteLeave(to, from, next) {
-      next()
-      //this.$store.state.recordTab = ''
     }
 }

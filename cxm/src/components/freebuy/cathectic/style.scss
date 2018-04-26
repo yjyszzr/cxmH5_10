@@ -26,29 +26,41 @@
        font-size: px2rem(22px);
        margin-bottom: px2rem(20px);
      }
-     .cont_pt{
+     .cont_pt,.cont_ptZjq,.cont_pthh{
        display: flex;
        span{
          flex: 2;
          text-align: center;
-         margin-bottom: px2rem(20px);
+         margin-bottom: px2rem(-10px);
          font-size: px2rem(28px);
          color: #505050;
        }
        span:nth-child(2){
          flex: 1;
+         color: #9f9f9f;
+       }
+     }
+     .cont_ptZjq{
+       span{
+        margin-bottom: px2rem(10px);
+       }
+     }
+     .cont_pthh{
+      span{
+        margin-bottom: px2rem(10px);
        }
      }
      .mat_cen{
        display: flex;
-       align-items: center;
+       align-items: flex-end;
        justify-content: space-between;
        div{
-         height: px2rem(106px);
+         height: px2rem(70px);
          width: px2rem(62px);
+         padding-top: px2rem(10px);
          img{
            width: px2rem(30px);
-           padding-top: px2rem(43px);
+           //padding-top: px2rem(43px);
          }
        }
        .spf_list{
@@ -175,7 +187,7 @@
           line-height: px2rem(56px);
           position: relative;
           span{
-            color: #666;
+            color: #9f9f9f;
             font-size: px2rem(26px);
           }
           p{
@@ -188,6 +200,7 @@
         }
        }
        .mixTz{
+        margin: 0 auto;
         li{
           border: 1px solid #f0f0f0;
          width: px2rem(486px);
@@ -202,7 +215,7 @@
           height: px2rem(106px);
           box-sizing: border-box;
           width: px2rem(62px);
-          border: 1px solid #f1f1f1;
+          border: 1px solid #c7c7c7;
           background: white;
         }
         .cont_cur{
@@ -217,11 +230,33 @@
           }
         }
         .isdan{
-          background: #fafafa;
+          color: #c7c7c7;
+          border: 1px solid #c7c7c7;
         }
      }
    }
-
+   .hhTz{
+    position: relative;
+    .cont{
+      .mat_cen{
+        button,div{
+          position: absolute;
+          right: px2rem(-630px);
+          top: 0;
+          bottom: 0;
+          left: 0;
+          margin: auto;
+        }
+        div{
+          right: px2rem(630px);
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+        }
+       }
+    }
+   }
    .fixed{
      box-shadow: 0px -2px 3px rgba(0,0,0,0.2);
      position: fixed;

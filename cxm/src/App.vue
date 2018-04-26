@@ -106,6 +106,8 @@ export default {
                 return "更多资讯";
             case 'help':
                 return "帮助中心";
+            case 'service':
+                return "服务协议";
         }
       } else {
         if (

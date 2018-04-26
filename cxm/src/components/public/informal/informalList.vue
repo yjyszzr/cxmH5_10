@@ -17,8 +17,8 @@
 								<div class="zx_info"><span>{{item.extendCat}}</span><span>{{item.addTime}}</span><span>阅读{{item.clickNumber}}</span></div>
 							</div>
 							<div class="zxRight">
-								<img :src="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
-                <b v-if="item.listStyle==4">播放</b>
+								<img class="img1" :src="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
+                <img class="img2" src="../../../assets/img/bofang@2x.png" alt="" v-if="item.listStyle==4">
 							</div>
 						</div>
 					</div>
@@ -111,22 +111,18 @@ export default {
 			}
 			.zxRight{
         position: relative;
-				img {
+				.img1 {
             width: px2rem(230px);
             height: px2rem(164px);
             display: block;
           }
-          b{
+        .img2{
+          width: px2rem(230px);
+            height: px2rem(164px);
             position: absolute;
-            left: 0;
             top: 0;
-            bottom: 0;
             right: 0;
-            margin: auto;
-            display: block;
-            width: px2rem(50px);
-            height: px2rem(28px);
-          }
+        }
 			}
 		}
       }

@@ -39,8 +39,8 @@
         }
         .matchLeft{
             position: relative;
-            height: px2rem(111px);
-            line-height: px2rem(30px);
+            height: px2rem(114px);
+            line-height: px2rem(32px);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -113,6 +113,9 @@
                     flex: 1;
                     text-align: center;
                 }
+                span:nth-child(2){
+                    color: #9f9f9f;
+                }
             }
             .matchRightbfBox{
                 overflow: hidden;
@@ -135,14 +138,14 @@
                 justify-content: space-between;
                 p{
                     border: 1px solid #f0f0f0;
-                    height: px2rem(48px);
+                    height: px2rem(56px);
                     width: px2rem(220px);
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     box-sizing: border-box;
                     font-size: px2rem(26px);
-                    color: #666;
+                    color: #9f9f9f;
                     position: relative;
                     b{
                         position: absolute;
@@ -172,7 +175,7 @@
                             justify-content: center;
                             font-size: px2rem(26px);
                             color: #999;
-                            height: px2rem(68px);
+                            height: px2rem(66px);
                             background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
                             background-size: 1px px2rem(30px); 
                         }
@@ -181,7 +184,7 @@
                         }
                         p:first-of-type{
                             flex: 1;
-                            background: #999;
+                            background: #c7c7c7;
                             color: white;
                             font-size: px2rem(24px);
                         }
@@ -195,7 +198,7 @@
                     }
                 }
                 .team_right{
-                    height: px2rem(136px);
+                    height: px2rem(132px);
                     box-sizing: border-box;
                     flex: 1;
                     display: flex;
