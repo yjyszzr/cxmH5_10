@@ -30,6 +30,14 @@ export default {
         this.$store.state.mark_playObj.mark_playBox = false
       },250)
     },
+    closeMarkCzZz(){
+      if(this.$store.state.mark_playObj.matchDetailFlag==false){
+          this.$store.dispatch("getMatchDetailFlag",true)
+      }else{
+          this.$store.dispatch("getMatchDetailFlag",false)
+      }
+      this.closeMarkCz()
+    },
     closeMark(){
         this.firstNum = 0
         this.mup = '5'  

@@ -413,16 +413,14 @@ export default {
       })
     },
     matchDetail(c,s){
-      if (this.playType == '1'||this.playType == '2'||this.playType == '6'||this.playType == '7') {
-        if(s.target.parentElement.children[4].lastChild.className==''){
-          s.target.parentElement.children[4].lastChild.className='rotate'
-        }else{
-          s.target.parentElement.children[4].lastChild.className=''
-        }
-        this.$store.state.mark_playObj.mark_playBox = true
-        this.$store.state.mark_playObj.mark_play = '7'
-        this.$store.dispatch("getBfMatchId",c)
+      if(s.target.parentElement.children[4].lastChild.className==''){
+        s.target.parentElement.children[4].lastChild.className='rotate'
+      }else{
+        s.target.parentElement.children[4].lastChild.className=''
       }
+      this.$store.state.mark_playObj.mark_playBox = true
+      this.$store.state.mark_playObj.mark_play = '7'
+      this.$store.dispatch("getBfMatchId",c)
     }
   },
   computed: {

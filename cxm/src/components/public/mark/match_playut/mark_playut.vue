@@ -1,11 +1,11 @@
 <template>
     <div class="mark_playutBox">
-        <div class="mark_playut" @click='closeMarkCz()'>
+        <div class="mark_playut" @click='closeMarkCzZz()' @touchmove.prevent>
 
         </div>
         <transition name="translate"> 
             <!-- 串关 -->
-            <div class="mark_footer" v-if="this.$store.state.mark_playObj.mark_play=='1'">
+            <div @touchmove.prevent class="mark_footer" v-if="this.$store.state.mark_playObj.mark_play=='1'">
                 <p>可选串关方式</p>
                 <ul>
                     <li @click="changeColor($event,item)" :class="$store.state.mark_playObj.playutText.indexOf(item)==-1?'':'current'" v-for="(item,i) in $store.state.mark_playObj.playtList" :key='i'>
@@ -18,9 +18,9 @@
                 </button>
             </div>
             <!-- 数字键盘 -->
-            <div class="popup" v-if="this.$store.state.mark_playObj.mark_play=='2'">
+            <div @touchmove.prevent class="popup" v-if="this.$store.state.mark_playObj.mark_play=='2'">
                 <div class="box">
-                    <img src="../../../../assets/img/Jump.png" @click="closeMark()">
+                    <img src="../../../../assets/img/freebuy_img/Collapse@3x.png" @click="closeMark()">
                     <div>
                         倍数<p>{{mup}}</p>
                     </div>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <!-- 优惠券 -->
-            <div class="yhMark" v-if="this.$store.state.mark_playObj.mark_play=='3'">
+            <div @touchmove.prevent class="yhMark" v-if="this.$store.state.mark_playObj.mark_play=='3'">
                 <div class="yh_title">
                     可用优惠券
                 </div>

@@ -269,12 +269,10 @@ export default {
      height: px2rem(72px);
      line-height: px2rem(72px);
      padding: 0 px2rem(30px);
+     box-sizing: border-box;
      font-size: px2rem(28px);
      color: #A0A0A0;
-     position: fixed;
-     top: px2rem(98px);
      width: 100%;
-     z-index: 10;
      border-bottom: 1px solid #f0f0f0;
      span{
        color: #e95504;

@@ -2,7 +2,7 @@
 
 </style>
 <template>
-    <div class="wrap score">
+    <div class="wrap score" @touchmove.prevent>
         <section>
             <table border="1" bordercolor="black" cellpadding="0" cellspacing="0"  class="table">
                 <caption>

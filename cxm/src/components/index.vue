@@ -265,6 +265,7 @@ export default {
   },
   created: function() {},
   mounted() {
+    localStorage.removeItem('tab')
     //console.log('1')
     document
       .querySelector("#content")

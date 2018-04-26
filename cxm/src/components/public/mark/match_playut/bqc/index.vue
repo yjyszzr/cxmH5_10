@@ -2,7 +2,7 @@
 
 </style>
 <template>
-    <div class="wrap bqc">
+    <div class="wrap bqc" @touchmove.prevent>
         <section>
             <table border="1" bordercolor="black" cellpadding="0" cellspacing="0"  class="table">
                 <caption>

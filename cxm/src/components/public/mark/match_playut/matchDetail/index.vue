@@ -2,7 +2,7 @@
 
 </style>
 <template>
-    <div class="wrap matchDetail">
+    <div class="wrap matchDetail" @touchmove.prevent>
         <section>
             <div class="matchDetail_box" v-if="matchDetailObj.matchInfo">
                 <div class="matchDetail_top">
