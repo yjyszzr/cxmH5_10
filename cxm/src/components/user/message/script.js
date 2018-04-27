@@ -15,6 +15,7 @@ export default {
             loading: false,
             bottomStatus: '',
             allLoaded: false,
+            loadText: '上拉加载更多...'
         }
     },
     beforeCreate() {
@@ -38,6 +39,8 @@ export default {
             } else if (a == 'm2') {
                 this.msgType = 1
             }
+            this.loadText = '上拉加载更多...'
+            this.allLoaded = false
             this.newsfetch()
         }
       },
@@ -65,6 +68,7 @@ export default {
                         console.log(res)
                         if(res.data.isLastPage == 'true') {
                             this.pageNum = -1
+                            this.loadText = '暂无更多数据'
                             this.allLoaded = true
                         }
                         this.mess = this.mess.concat(res.data.list)

@@ -34,6 +34,7 @@
                     <img src="../../../assets/img/juan.png" alt="">
                     <span>暂无优惠券</span>
                 </div>
+                <p class="loadingText" v-show="bottomStatus !== 'loading'&&yhList.length>0">{{loadText}}</p>
                 <div slot="bottom" class="mint-loadmore-bottom">
 					<span v-show="bottomStatus !== 'loading'" :class="{ 'rotate': bottomStatus === 'drop' }">↓</span>
 					<mt-spinner :type="1" v-show="bottomStatus === 'loading'" color="#e82822"></mt-spinner>

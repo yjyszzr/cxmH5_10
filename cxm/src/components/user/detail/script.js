@@ -11,6 +11,7 @@ export default {
         yhList: [],
         bottomStatus: '',
         allLoaded: false,
+        loadText: '上拉加载更多...'
       }
     },
     beforeCreate() {
@@ -41,7 +42,8 @@ export default {
         .then(res => {
             if(res.code==0) {
               if(res.data.isLastPage == 'true') {
-                		this.pageNum = -1
+                    this.pageNum = -1
+                    this.loadText = '暂无更多数据'
                 		this.allLoaded = true
               }
               this.yhList = this.yhList.concat(res.data.list)
@@ -69,6 +71,8 @@ export default {
         }else if(a=='d3'){
           this.status = 2
         }
+        this.loadText = '上拉加载更多...'
+        this.allLoaded = false
         this.yhData()
       }
     },

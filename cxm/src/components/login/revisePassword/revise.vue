@@ -25,7 +25,7 @@
             </li>
         </ul>
         <section class="button"  @click="findNext()">
-            <a class="determine">下一步</a>
+            <a class="determine">确认</a>
         </section>
         <div class="prompt"></div>
     </div>

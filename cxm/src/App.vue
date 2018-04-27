@@ -108,6 +108,8 @@ export default {
                 return "帮助中心";
             case 'service':
                 return "服务协议";
+                case 'inToplay':
+                return "更多玩法";
         }
       } else {
         if (
@@ -284,7 +286,7 @@ a:hover {
     */
 
 .mint-spinner-double-bounce {
-  margin: 0 auto;
+  margin: 0.5rem auto 0;
 }
 
 .cxLoad{
@@ -535,5 +537,12 @@ textarea {
   color: #F7931E;
   font-size: px2rem(26px);
   float: right;
+}
+.loadingText{
+    text-align: center;
+    height: px2rem(68px);
+    line-height: px2rem(68px);
+    color: #c7c7c7;
+    font-size: px2rem(22px);
 }
 </style>

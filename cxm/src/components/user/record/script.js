@@ -11,7 +11,8 @@ export default {
         recordList: [],
         bottomStatus: '',
         allLoaded: false,
-        searchBarFixed: false
+        searchBarFixed: false,
+        loadText: '上拉加载更多...'
       }
     },
     beforeCreate() {
@@ -32,6 +33,15 @@ export default {
             this.$refs.loadmore.onBottomLoaded();
         }, 700)
       },
+      color(c){
+        if(c=='5'){
+          return '#ea5504'
+        }else if(c=='2'||c=='4'){
+          return '#c7c7c7'
+        }else{
+          return '#505050'
+        }
+      },
       recordFetch(){
         let data = {
           'lotteryClassifyId': 1,
@@ -44,7 +54,8 @@ export default {
             if(res.code==0) {
               //console.log(res)
               if(res.data.isLastPage == 'true') {
-                		this.pageNum = -1
+                    this.pageNum = -1
+                    this.loadText = '暂无更多数据'
                 		this.allLoaded = true
               }
               this.recordList = this.recordList.concat(res.data.list)
@@ -82,6 +93,8 @@ export default {
         }else if(a=='3'){
           this.orderStatus = '3'
         }
+        this.loadText = '上拉加载更多...'
+        this.allLoaded = false
         this.recordFetch()
       }
     },

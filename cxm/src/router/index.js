@@ -274,6 +274,14 @@ const router = new Router({
           component: function (resolve) {
               require(['../components/user/service/index.vue'], resolve)
           },
+      },
+      {
+        path: '/freebuy/inToplay',
+        name: 'inToplay',
+        cname:'玩法介绍',
+        component: function (resolve) {
+            require(['../components/freebuy/intoplay/index.vue'], resolve)
+        },
       }
   ]
 })

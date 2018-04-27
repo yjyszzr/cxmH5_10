@@ -163,7 +163,52 @@
 							阿森纳(客场)
 						</div>
 						<div class="tbLIst">
-
+                            <ul class="tbListNav">
+								<li></li>
+								<li>场</li>
+								<li>胜</li>
+								<li>平</li>
+								<li>负</li>
+								<li>进/失</li>
+								<li>积分</li>
+								<li>名次</li>
+							</ul>
+							<div class="tbListBottom">
+								<div class="tabListLeft">
+									<span>总</span>
+									<span>主</span>
+									<span>客</span>
+								</div>
+								<div class="tabListRight">
+									<ul>
+										<li>29</li>
+										<li>13</li>
+										<li>9</li>
+										<li>7</li>
+										<li>51/36</li>
+										<li>48</li>
+										<li>4</li>
+									</ul>
+									<ul>
+										<li>29</li>
+										<li>13</li>
+										<li>9</li>
+										<li>7</li>
+										<li>51/36</li>
+										<li>48</li>
+										<li>4</li>
+									</ul>
+									<ul>
+										<li>29</li>
+										<li>13</li>
+										<li>9</li>
+										<li>7</li>
+										<li>51/36</li>
+										<li>48</li>
+										<li>4</li>
+									</ul>
+                                </div>
+							</div>
 						</div>
                     </div>
                 </div>

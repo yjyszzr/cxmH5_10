@@ -26,7 +26,7 @@
                     </p>
                     <p>
                         <span v-if="orderObj.orderStatus=='5'">中奖金额</span>
-                        <span>{{orderObj.processStatusDesc}}</span>
+                        <span :style="{'color':orderObj.orderStatus=='5'?'#ea5504':'#505050'}">{{orderObj.processStatusDesc}}</span>
                     </p>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                         <div class="item">{{item.playType}}</div>
                         <div class="item">
                             <p v-for='(data,index) in item.cathecticResults' :key='index'>
-                                <span v-for='(data1,index1) in data.cathectics' :key='index1' :style='{"color":data1.isGuess=="1"?"#de3434":"#333"}'>{{data1.cathectic}}</span>
+                                <span v-for='(data1,index1) in data.cathectics' :key='index1' :style='{"color":data1.isGuess=="1"?"#ea5504":"#505050"}'>{{data1.cathectic}}</span>
                             </p>
                         </div>
                         <div class="item">

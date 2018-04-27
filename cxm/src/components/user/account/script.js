@@ -12,6 +12,7 @@ export default {
         bottomStatus: '',
         allLoaded: false,
         totalNum: {}, //合计对象
+        loadText: '上拉加载更多...'
       }
     },
     beforeCreate() {
@@ -24,7 +25,7 @@ export default {
       mxfetch(){
         let data = {
           'amountType': this.amountType,
-          'pageSize': 10,
+          'pageSize': 20,
           'pageNum': this.pageNum
         }
         api.getUserAccountList(data)
@@ -32,7 +33,8 @@ export default {
           // console.log(res)
             if(res.code==0) {
               if(res.data.isLastPage == 'true') {
-                		this.pageNum = -1
+                    this.pageNum = -1
+                    this.loadText = '暂无更多数据'
                 		this.allLoaded = true
               }
               this.mxList = this.mxList.concat(res.data.list)
@@ -78,6 +80,8 @@ export default {
         }else if(a=='a6'){
           this.amountType = 5
         }
+        this.loadText = '上拉加载更多...'
+        this.allLoaded = false
         this.mxfetch()
       }
     },

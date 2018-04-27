@@ -9,7 +9,7 @@
                 <p>VS</p>
                 <p>{{scoreObj.visitingTeamAbbr}}</p>
             </div>
-            <div style="height: 12.58rem;overflow: auto;-webkit-overflow-scrolling: touch;">
+            <div style="height: 11.2rem;overflow: auto;-webkit-overflow-scrolling: touch;">
             <table border="1" bordercolor="black" cellpadding="0" cellspacing="0"  class="table tablespf">
                 <th rowspan="3" class="title0">胜平负</th>
                 <tr class="title">

@@ -5,7 +5,7 @@
             <p class="headerText">彩小秘·{{title}}</p>
             <p class="filter" v-show="menuDisplay==true">
                 <span @click='filter()' v-if="$route.path.split('/')[2]=='singleNote'" class="iconfont icon-icon-21"></span>
-                <span v-if="$route.path.split('/')[2]=='singleNote'">帮助</span>
+                <span v-if="$route.path.split('/')[2]=='singleNote'" @click="goInToplay()">帮助</span>
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">编辑</span>
                 <span v-if="$route.path.split('/')[2]=='consult'" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
                 <span v-if="$route.path.split('/')[2]=='consult'">分享</span>
@@ -68,6 +68,12 @@ export default {
     },
     datePd(c) {
 			return datefilter(Number(c * 1000), 3)
+    },
+    goInToplay(){
+      this.$router.push({
+				path: '/freebuy/inToplay',
+				replace: false
+			})
     },
     custormAnchor(anchorName){
       // 找到锚点
