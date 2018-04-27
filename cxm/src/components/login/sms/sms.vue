@@ -19,7 +19,7 @@
                     <div>
                         <i class="iconfont icon-huaban-2" ref="code"></i>
                         <input @focus="handleCommentFocus2" @blur="handleCommentBlur2($event)" v-model="telVal" type="text" class="text1"  placeholder="输入验证码"/>
-                        <button :disabled='$store.state.smsCode.disabled' @click="changeNum()">{{$store.state.smsCode.changeText}}</button>
+                        <button :disabled='$store.state.smsCode.disabled' @click="changeNum()" v-html="$store.state.smsCode.changeText"></button>
                     </div>
                 </a>
             </li>

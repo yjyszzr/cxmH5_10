@@ -20,8 +20,9 @@ export default {
                   path: '/user/revise',
                   replace: true
               })
+            }else{
+              Toast(res.msg)
             }
-            Toast(res.msg)
         })
       },
       handleCommentFocus(){
