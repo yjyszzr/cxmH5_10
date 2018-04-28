@@ -9,6 +9,7 @@
    box-sizing: border-box;
  }
  .count{
+   padding-bottom: px2rem(134px); 
    .zhmxlist{
     .list{
       margin:0  px2rem(30px);
@@ -42,7 +43,7 @@
            b{
              font-weight: normal;
              margin-top: px2rem(8px);
-             font-size: px2rem(20px);
+             font-size: px2rem(28px);
              color: #787878;
            }
            span{
@@ -64,6 +65,10 @@
    }
  }
  .base{
+   border-top: 1px solid #f0f0f0;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
    margin-top: 0;
    padding: px2rem(30px) 0 px2rem(30px) px2rem(30px);
    p{
@@ -78,6 +83,12 @@
      span{
        color: #e95504;
      }
+   }
+   P:last-of-type{
+     width: px2rem(700px);
+     overflow: hidden;
+     white-space: nowrap;
+    text-overflow: ellipsis;
    }
  }
  

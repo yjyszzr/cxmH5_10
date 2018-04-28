@@ -1,9 +1,10 @@
 <template>
-    <div class="mark" @touchmove.prevent>
+    <div class="mark">
         <div class="mark_box">
-            <!-- 赛事筛选 -->
-            <v-matchfilter></v-matchfilter>
+            
         </div>
+        <!-- 赛事筛选 -->
+        <v-matchfilter></v-matchfilter>
     </div>
 </template>
 

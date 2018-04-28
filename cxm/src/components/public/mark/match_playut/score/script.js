@@ -7,7 +7,8 @@ export default {
           scoreObj: {
               flag: '1'
           },
-          scoreArr: new Set()
+          scoreArr: new Set(),
+          scoreList: []
       }
     },
     methods: {
@@ -31,6 +32,7 @@ export default {
                 c.target.parentElement.className = ''
                 this.scoreArr.delete(c.target.parentElement.children[1].innerText)
             }
+            this.scoreList = Array.from(this.scoreArr)
         }
     },
     mounted(){
@@ -59,5 +61,6 @@ export default {
         }else{
             this.scoreArr = new Set()
         }
+        this.scoreList = Array.from(this.scoreArr)
     }
 }

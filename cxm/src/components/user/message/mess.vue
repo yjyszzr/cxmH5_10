@@ -30,6 +30,7 @@
                             <p class="rech">充值狂中800元！<a>查看详情<i class="iconfont icon-icon-14" ></i></a></p>
                         </div>
                 </section>
+                <p class="loadingText" v-show="bottomStatus !== 'loading'&&mess.length>0">{{loadText}}</p>
                 <div slot="bottom" class="mint-loadmore-bottom">
 					<span v-show="bottomStatus !== 'loading'" :class="{ 'rotate': bottomStatus === 'drop' }">↓</span>
 					<mt-spinner :type="1" v-show="bottomStatus === 'loading'" color="#e82822"></mt-spinner>
@@ -37,7 +38,7 @@
 		</mt-loadmore>
         <div class="nullstatus" v-if="mess.length==0">
             <img src="../../../assets/img/juan.png" alt="">
-            <span>暂无消息</span>
+            <span>暂无数据</span>
         </div>
 
     </div>

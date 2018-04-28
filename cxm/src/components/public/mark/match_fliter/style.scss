@@ -1,6 +1,7 @@
 @import "../../../../assets/css/function.scss";
 .match_f {
   width: px2rem(652px);
+  background: white;
   .look{
     border-top: 1px dashed #f0f0f0;
     padding-top: px2rem(34px);
@@ -47,8 +48,9 @@
   .matchTeam {
     width: px2rem(612px);
     margin: 0 auto;
-    margin-bottom: px2rem(28px);
-    overflow: hidden;
+    overflow: auto;
+    height: px2rem(500px);
+    -webkit-overflow-scrolling: touch!important;
     li {
       width: px2rem(192px);
       height: px2rem(60px);

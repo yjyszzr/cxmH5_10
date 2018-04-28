@@ -17,10 +17,7 @@ export default {
         Indicator.open()
     },
     created(){
-        let data = {
-            articleId: this.id,
-        }
-        this.$store.dispatch("getDetailObj",data)
+        this.fetchData()
     },
     components: {
         "v-informal": informal
@@ -29,6 +26,12 @@ export default {
  
     },
     methods:{
+        fetchData(){
+            let data = {
+                articleId: this.id,
+            }
+            this.$store.dispatch("getDetailObj",data)
+        },
         ckBtn(){
             this.$router.push({
                 path: "/index/moreInfo",
@@ -38,6 +41,12 @@ export default {
                 },
                 replace: false
             });
+        },
+        reloadzxDetail(c){
+            document.querySelector('#content').scrollTop = 0;
+            Indicator.open()
+            this.id = c
+            this.fetchData()
         },
         zxCollectionStatus(flag){
             if(flag==true){

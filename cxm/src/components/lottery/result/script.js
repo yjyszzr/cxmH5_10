@@ -52,6 +52,15 @@ export default {
             Indicator.open()
             this.fetchData()
         },
+        goDetail(c){
+            this.$router.push({
+                path: '/lottery/teamDetail',
+                query:{
+                    id: c
+                },
+                replace: true
+            })
+        },
         fetchData(){
             let data={
                 dateStr: this.$store.state.mark_showObj.mark_dateVal,

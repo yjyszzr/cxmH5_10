@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </section>
-            <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"></i><p>我已阅读并同意<router-link to="/user/service">《注册服务协议》</router-link></p></div>
+            <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"></i><p>我已阅读并同意<router-link to="/user/service">《彩小秘投注服务协议》</router-link></p></div>
         </div>
         <!--底部-->
         <section class="fixed">
@@ -85,7 +85,7 @@
                     </button>
                 </li>
             </ul>
-            <div class="clearfix">
+            <div>
                 <div class="left">
                     <p>{{betObj.betNum}}注{{betObj.times}}倍&nbsp;&nbsp;共需：<span>￥{{betObj.money}}</span></p><br/>预测奖金：<span>￥{{betObj.minBonus}}-{{betObj.maxBonus}}</span>
                 </div>

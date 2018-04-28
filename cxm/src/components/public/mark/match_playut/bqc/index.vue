@@ -12,7 +12,7 @@
                 </caption>
                 <th rowspan="3" class="title0">半全场</th>
                 <tr class="title">
-                    <th :class="Array.from(scoreArr).indexOf(item.cellName)!=-1?'bfSelected':''" @click="bfClick($event)" v-for="(item,i) in !scoreObj.flag?scoreObj.matchPlays[0].matchCells:[]" :key='i'><b></b><span>{{item.cellName}}</span> <span>{{item.cellOdds}}</span></th>
+                    <th :class="scoreList.indexOf(item.cellName)!=-1?'bfSelected':''" @click="bfClick($event)" v-for="(item,i) in !scoreObj.flag?scoreObj.matchPlays[0].matchCells:[]" :key='i'><b></b><span>{{item.cellName}}</span> <span>{{item.cellOdds}}</span></th>
                 </tr>
             </table>
             <div class="confim_btn">

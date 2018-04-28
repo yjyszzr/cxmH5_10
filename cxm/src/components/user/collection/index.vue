@@ -15,7 +15,7 @@
 						<p v-if="item.listStyle==2||item.listStyle==3">
 							<img :src="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
 						</p>
-            <p v-if="item.listStyle==0" class="summary">
+            <p v-if="item.listStyle==0" class="summary" style="-webkit-box-orient: vertical;">
               {{item.summary}}
             </p>
 						<span>{{item.extendCat}}</span><span>{{item.addTime}}</span><span>阅读{{item.clickNumber}}</span>
@@ -36,7 +36,7 @@
             </ul>
 			<div class="nullstatus" v-if="scList.length==0&&cxLoadFlag==false">
                     <img src="../../../assets/img/juan.png" alt="">
-                    <span>暂无收藏</span>
+                    <span>暂无收藏内容</span>
             </div>
             <div class="triple" v-show="trFlag">
 				<mt-spinner type="triple-bounce" color="#999"></mt-spinner>&nbsp;<span>正在加载</span>

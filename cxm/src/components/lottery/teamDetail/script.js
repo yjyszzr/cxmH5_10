@@ -29,7 +29,7 @@ export default {
         api.matchTeamInfos(data)
             .then(res => {
                 if(res.code==0) {
-                    console.log(res)
+                   // console.log(res)
                   this.ckxqObj = res.data
                 }else{
                     Toast(res.msg)
@@ -41,7 +41,7 @@ export default {
           return datefilter(c*1000,0)+' '+ datefilter(c*1000,1)
       },
       goTZ(){
-      	this.$router.go(-1)
+      	this.$router.go(-2)
       },
       fxTab(c,s){
       	$('.currer').removeClass('currer')

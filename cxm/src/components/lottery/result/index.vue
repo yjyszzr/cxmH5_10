@@ -16,7 +16,7 @@
                         <span class="spfList">共有{{$store.state.resultList.length}}场比赛 已结束<span>{{matchFilsh()}}</span>场</span>
                     </template>
                     <ul class="hotMatchList">
-                        <li v-for="(list,i) in $store.state.resultList" :key='i'>
+                        <li v-for="(list,i) in $store.state.resultList" :key='i' @click='goDetail(list.matchId)'>
                             <small><i>{{list.changci}}</i><i>{{list.leagueName}}</i><i>{{list.matchTime}}</i></small>
                             <div class="pink">
                                 <i><img src="../../../assets/img/img1.png"></i>

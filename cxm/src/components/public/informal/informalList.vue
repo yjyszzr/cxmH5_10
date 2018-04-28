@@ -6,7 +6,7 @@
 						<p v-if="item.listStyle==2||item.listStyle==3">
 							<img :src="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
 						</p>
-            <p v-if="item.listStyle==0" class="summary">
+            <p v-if="item.listStyle==0" class="summary" style="-webkit-box-orient: vertical;">
               {{item.summary}}
             </p>
 						<span>{{item.extendCat}}</span><span>{{item.addTime}}</span><span>阅读{{item.clickNumber}}</span>
@@ -67,8 +67,10 @@ export default {
 		  	overflow : hidden;
 					text-overflow: ellipsis;
 					display: -webkit-box;
-					-webkit-line-clamp: 2;
-					-webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          /* autoprefixer: off */
+          -webkit-box-orient: vertical;
+          /* autoprefixer: on */
         }
         p {
           margin: px2rem(10px) 0;

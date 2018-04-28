@@ -8,14 +8,8 @@
     }],
     "stage-2"
   ],
-  "plugins": ["transform-runtime"],
-  "env": {
-    "test": {
-      "presets": ["env", "stage-2"],
-      "plugins": ["istanbul"]
-    }
-  },
   "plugins": [
+    "transform-runtime",
     [
       "component",
       {
@@ -23,5 +17,11 @@
         "styleLibraryName": "theme-chalk"
       }
     ]
-  ]
+  ],
+  "env": {
+    "test": {
+      "presets": ["env", "stage-2"],
+      "plugins": ["istanbul"]
+    }
+  }
 }

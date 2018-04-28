@@ -9,7 +9,7 @@ export default {
             scoreObj: {
                 flag: 1
             },
-            mixObj: {}
+            //mixObj: {}
         }
     },
     methods: {
@@ -18,10 +18,25 @@ export default {
         },
         confirm() {
             this.$emit('closeMarkCz')
-            this.$store.state.matchObj = this.mixObj
+            //this.$store.state.matchObj = this.mixObj
+            this.$store.state.matchObj.playList.forEach(item => {
+                for (let i = 0; i < item.playList.length; i++) {
+                    if (item.playList[i].matchId == this.$store.state.mark_playObj.bfmatchId) {
+                        item.playList[i] = this.scoreObj
+
+                    }
+                }
+            });
+    
+            this.$store.state.matchObj.hotPlayList.forEach(item => {
+                if (item.playList[i].matchId == this.$store.state.mark_playObj.bfmatchId) {
+                    item.playList[i] = this.scoreObj
+                }
+            });
             this.$store.state.mark_playObj.bfIdSaveMapFlag++
         },
         unSelectedClickspf(c, s, status,sig) {
+            //console.log(c)
             let arr = new Set(this.scoreObj.selectedList),
                 obj2 = {}
             let obj = {},
@@ -80,18 +95,17 @@ export default {
         }
     },
     mounted() {
-        this.mixObj = JSON.parse(JSON.stringify(this.$store.state.matchObj))
-        this.mixObj.playList.forEach(item => {
+        this.$store.state.matchObj.playList.forEach(item => {
             for (let i = 0; i < item.playList.length; i++) {
                 if (item.playList[i].matchId == this.$store.state.mark_playObj.bfmatchId) {
-                    this.scoreObj = item.playList[i]
+                    this.scoreObj = JSON.parse(JSON.stringify(item.playList[i]))
                 }
             }
         });
 
-        this.mixObj.hotPlayList.forEach(item => {
+        this.$store.state.matchObj.hotPlayList.forEach(item => {
             if (item.playList[i].matchId == this.$store.state.mark_playObj.bfmatchId) {
-                this.scoreObj = item.playList[i]
+                this.scoreObj = JSON.parse(JSON.stringify(item.playList[i]))
             }
         });
     }

@@ -103,7 +103,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="ranking">
+                <div class="ranking" style="display:none;">
                     <p>积分排名</p>
                     <div class="zcScore">
 						<div class="zcTitle">
