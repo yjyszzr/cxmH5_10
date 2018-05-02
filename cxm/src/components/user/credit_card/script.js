@@ -70,7 +70,6 @@ export default {
             }else{
               Toast(res.msg)
             }
-            Indicator.close()
         })
       }
     },

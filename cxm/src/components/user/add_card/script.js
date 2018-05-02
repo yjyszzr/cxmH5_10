@@ -20,7 +20,6 @@ export default {
         api.addBankCard(data)
         .then(res => {
             Toast(res.msg)
-            Indicator.close()
             this.$router.go(-1)
         })
       }

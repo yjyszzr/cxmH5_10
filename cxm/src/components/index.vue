@@ -296,7 +296,6 @@ export default {
         } else {
           Toast(res.msg);
         }
-        Indicator.close();
       })
     this.fetchData();
   }

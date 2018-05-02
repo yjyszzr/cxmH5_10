@@ -2,6 +2,7 @@ import axios from 'axios'
 import qs from 'qs'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
+import router from '../router/index'
 
 // axios 配置
 axios.defaults.timeout = 5000;
@@ -30,9 +31,17 @@ axios.interceptors.request.use(
 //     //  _.toast("错误的传参", 'fail');
 //     return Promise.reject(error);
 // });
-
 //返回状态错误处理
 axios.interceptors.response.use((res) =>{
+    if(res.data.code>=30000&&res.data.code<=310000){
+        Toast(res.data.msg)
+    }else if(res.data.code==600){
+        localStorage.clear()
+        router.replace({
+            path: '/user/password',
+        })
+    }
+    Indicator.close()
     return res;
 }, (error) => {
     if (error && error.response) {
@@ -105,21 +114,21 @@ export function fetchPost(url, params) {
     })
 }
 
-export function fetchGet(url, params) {
-    return new Promise((resolve, reject) => {
-        axios.get(url, {
-                params : params
-            })
-            .then(response => {
-                resolve(response.data);
-            }, err => {
-                reject(err);
-            })
-            .catch((error) => {
-               reject(error)
-            })
-    })
-}
+// export function fetchGet(url, params) {
+//     return new Promise((resolve, reject) => {
+//         axios.get(url, {
+//                 params : params
+//             })
+//             .then(response => {
+//                 resolve(response.data);
+//             }, err => {
+//                 reject(err);
+//             })
+//             .catch((error) => {
+//                reject(error)
+//             })
+//     })
+// }
 
 export default {
     // 密码登录

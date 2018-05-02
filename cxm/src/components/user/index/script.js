@@ -44,14 +44,11 @@ export default {
         }
         api.userInfoExceptPass(data)
         .then(res => {
-          // console.log(res)
+           //console.log(res)
             if(res.code==0) {
               this.userInfo = res.data
               this.$store.dispatch("changeUserInfo",res.data)
-            }else{
-              Toast(res.msg)
             }
-            Indicator.close()
             this.$refs.loadmore.onTopLoaded();
         })
       },

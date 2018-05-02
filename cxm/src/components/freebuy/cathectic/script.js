@@ -481,7 +481,6 @@ export default {
 					} else {
 						Toast(res.msg);
 					}
-					Indicator.close();
 				})
 		},
 		danClick(c, s) {

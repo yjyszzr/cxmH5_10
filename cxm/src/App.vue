@@ -143,19 +143,6 @@ export default {
 <style lang='scss'>
 @import "./assets/css/public.scss";
 @import "./assets/css/function.scss";
-body,
-html {
-  background-color: #f5f5f5;
-  height: 100%;
-}
-
-.color {
-  background-color: #ffffff;
-}
-
-a:hover {
-  text-decoration: none;
-}
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;

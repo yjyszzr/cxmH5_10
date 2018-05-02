@@ -19,7 +19,7 @@ export default {
       flag: true,
       classFlag: true,
       matchSelectObj: new Map(),
-      text: '<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>',
+      text: '<p>请至少选择1场单关比赛</p><p>或者2场比赛</p>',
       id: '',
       arr: new Set(),
       mapKey: [],
@@ -96,12 +96,12 @@ export default {
           this.flag = false
           this.classFlag = false
         } else {
-          this.text = `<p>已选择1场比赛</p><p>还差1场比赛</p>`
+          this.text = `<p>已选择1场非单关比赛</p><p>还差1场比赛</p>`
           this.flag = true
           this.classFlag = true
         }
       } else if (this.matchSelectObj.size == 0) {
-        this.text = `<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>`
+        this.text = `<p>请至少选择1场单关比赛</p><p>或者2场比赛</p>`
         this.flag = true
         this.classFlag = true
       } else {
@@ -116,7 +116,7 @@ export default {
         this.flag = false
         this.classFlag = false
       } else {
-        this.text = `<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>`
+        this.text = `<p>请至少选择1场单关比赛</p><p>或者2场比赛</p>`
         this.flag = true
         this.classFlag = true
       }
@@ -145,7 +145,7 @@ export default {
       } else if (this.arrNum == 1) {
         if (obj.matchPlays[1].single == '1') {
           if (obj.matchPlays[0].homeCell.isSelected || obj.matchPlays[0].flatCell.isSelected || obj.matchPlays[0].visitingCell.isSelected) {
-            this.text = `<p>已选择1场比赛</p><p>还差1场比赛</p>`
+            this.text = `<p>已选择1场非单关比赛</p><p>还差1场比赛</p>`
             this.flag = true
             this.classFlag = true
           } else {
@@ -155,7 +155,7 @@ export default {
           }
         } else {
           if (obj.matchPlays[0].homeCell.isSelected || obj.matchPlays[0].flatCell.isSelected || obj.matchPlays[0].visitingCell.isSelected || obj.matchPlays[1].visitingCell.isSelected || obj.matchPlays[1].homeCell.isSelected || obj.matchPlays[1].flatCell.isSelected) {
-            this.text = `<p>已选择1场比赛</p><p>还差1场比赛</p>`
+            this.text = `<p>已选择1场非单关比赛</p><p>还差1场比赛</p>`
             this.flag = true
             this.classFlag = true
           } else {
@@ -165,7 +165,7 @@ export default {
           }
         }
       } else {
-        this.text = `<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>`
+        this.text = `<p>请至少选择1场单关比赛</p><p>或者2场比赛</p>`
         this.flag = true
         this.classFlag = true
       }
@@ -357,7 +357,7 @@ export default {
         this.$store.state.mark_playObj.bfIdSaveMap.clear()
         this.mapKey = []
       }
-      this.text = `<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>`
+      this.text = `<p>请至少选择1场单关比赛</p><p>或者2场比赛</p>`
       this.flag = true
       this.classFlag = true
       this.arrNum = 0
@@ -478,7 +478,7 @@ export default {
           this.matchSelectObj.set(item.matchId, new Set(item.myspf))
         })
         if (this.$store.state.matchSelectedList.length == 0) {
-          this.text = `<p>请至少选择1场单关比赛</p><p>或者两场非单关比赛</p>`
+          this.text = `<p>请至少选择1场单关比赛</p><p>或者2场比赛</p>`
           this.flag = true
           this.classFlag = true
         } else if (this.$store.state.matchSelectedList.length == 1) {
@@ -488,7 +488,7 @@ export default {
             this.flag = false
             this.classFlag = false
           } else {
-            this.text = `<p>已选择1场比赛</p><p>还差1场比赛</p>`
+            this.text = `<p>已选择1场非单关比赛</p><p>还差1场比赛</p>`
             this.flag = true
             this.classFlag = true
           }

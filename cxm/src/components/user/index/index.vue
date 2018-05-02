@@ -16,7 +16,7 @@
                 <div class="por-right">
                     <span>{{userInfo.mobile}}</span>
                     <b class="certified" v-if='userInfo.isReal==1'></b>
-                    <p v-if='userInfo.isReal!=1' @click='gorz()'>您还未实名认证，尽快实名认证</p>
+                    <p v-if='userInfo.isReal==0' @click='gorz()'>您还未实名认证，尽快实名认证</p>
                 </div>
             </div>
             <div class="money clearfix">

@@ -50,7 +50,6 @@ export default {
             }else{
               Toast(res.msg)
             }
-            Indicator.close()
         })
     },
     beforeRouteLeave(to, from, next) {

@@ -15,10 +15,6 @@ Vue.use(MintUI)
 Vue.use(Collapse)
 Vue.use(CollapseItem)
 Vue.use(Progress)
-
-router.afterEach((to,from,next) => {
-  document.querySelector('#content').scrollTop = 0;
-})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

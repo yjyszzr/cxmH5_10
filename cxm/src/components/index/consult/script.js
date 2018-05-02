@@ -59,7 +59,6 @@ export default {
                     .then(res => {
                         //console.log(res)
                         Toast(res.msg)
-                        Indicator.close()
                     })
             }else{
                 let data = {
@@ -69,7 +68,6 @@ export default {
                     .collectdelete(data)
                     .then(res => {
                         Toast(res.msg);
-                        Indicator.close()
                     })
             }
         }
