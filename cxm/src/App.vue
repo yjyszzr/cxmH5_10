@@ -107,9 +107,11 @@ export default {
             case 'help':
                 return "帮助中心";
             case 'service':
-                return "服务协议";
-                case 'inToplay':
+                return "注册服务协议";
+            case 'inToplay':
                 return "更多玩法";
+            case 'protocol':
+                return "投注服务协议";
         }
       } else {
         if (
