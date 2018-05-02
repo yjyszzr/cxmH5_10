@@ -98,23 +98,20 @@ export default {
             return "投注确认";
           case "teamDetail":
             return "查看详情";
-          case "consult":
-            return "资讯详情";
-          case "collection":
-            return "我的收藏";
-          case "moreInfo":
-            return "更多资讯";
-          case "help":
-            // if (window.location.href.split("?")[1]) {
-            //   this.isShowHeader = false;
-            //   return "";
-            // } else {
-              return "帮助中心";
-            // }
-          case "service":
-            return "服务协议";
-          case "inToplay":
-            return "更多玩法";
+            case "consult":
+                return "资讯详情";
+            case "collection":
+                return "我的收藏";
+            case "moreInfo":
+                return "更多资讯";
+            case 'help':
+                return "帮助中心";
+            case 'service':
+                return "注册服务协议";
+            case 'inToplay':
+                return "更多玩法";
+            case 'protocol':
+                return "投注服务协议";
         }
       } else {
         if (
