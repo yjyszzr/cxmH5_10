@@ -150,6 +150,12 @@ const router = new Router({
           component: resolve => require(['@/components/user/draw/index.vue'], resolve)
       },
       {
+          path: '/freebuy/protocol',
+          name: 'protocol',
+          cname:'购彩记录',
+          component: resolve => require(['@/components/freebuy/protocol/index.vue'], resolve)
+      },
+      {
           path: '/freebuy/singleNote',
           name: 'singleNote',
           cname:'单注页面',
