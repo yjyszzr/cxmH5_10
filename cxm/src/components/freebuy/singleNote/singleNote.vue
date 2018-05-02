@@ -16,7 +16,7 @@
                         <p @click="matchDetail(item.matchId,$event)"></p>
                         <span>{{item.leagueAddr}}</span>
                         <span>{{item.changci}}</span>
-                        <span>截止{{datePd(item.matchTime)}}</span>
+                        <span>截止{{datePd(item.betEndTime)}}</span>
                         <span>
                             <!-- <i class="iconfont icon-icon-22"></i> -->
                             <img src="../../../assets/img/freebuy_img/Collapse@3x.png" alt="">
@@ -155,7 +155,7 @@
                         <p @click="matchDetail(item.matchId,$event)"></p>
                         <span>{{item.leagueAddr}}</span>
                         <span>{{item.changci}}</span>
-                        <span>截止{{datePd(item.matchTime)}}</span>
+                        <span>截止{{datePd(item.betEndTime)}}</span>
                         <span>
                             <!-- <i class="iconfont icon-icon-22"></i> -->
                             <img src="../../../assets/img/freebuy_img/Collapse@3x.png" alt="">

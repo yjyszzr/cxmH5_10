@@ -8,6 +8,7 @@ import router from '../router/index'
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 axios.defaults.baseURL = 'http://39.106.18.39:8765/api/';
+//console.log(window)
 
 //拦截 token
 axios.interceptors.request.use(
@@ -100,9 +101,27 @@ axios.interceptors.response.use((res) =>{
     return Promise.reject(error);
 });
 
-export function fetchPost(url, params) {
+//设备信息
+const device = {
+    plat: 'h5',
+    apiv: 1,
+    appv: '1.0.0',
+    appid: '',
+    mac: '',
+    w: window.screen.availWidth,
+    h: window.screen.availHeight,
+    os: '',
+    mid: '',
+    brand: '',
+    build: '',
+    channel: '',
+    net: '',
+    token: ''
+}
+
+export function fetchPost(url, body) {
     return new Promise((resolve, reject) => {
-        axios.post(url, params)
+        axios.post(url, {device,body})
             .then(response => {
                 resolve(response.data);
             }, err => {

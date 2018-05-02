@@ -8,7 +8,7 @@
             <section class="section" :class="$route.query.playType=='6'?'hhTz':''" v-for="(item,i) in $store.state.matchSelectedList" :key='i'>
                 <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="item.matchPlays[0].single=='1'||(item.matchPlays[1]&&item.matchPlays[1].single=='1')">
                 <div class="cont">
-                    <p class="cont_p" v-if="$route.query.playType=='1'||$route.query.playType=='2'">{{item.leagueAddr}} {{item.changci}} 截止{{datePd(item.matchTime)}}</p>
+                    <p class="cont_p" v-if="$route.query.playType=='1'||$route.query.playType=='2'">{{item.leagueAddr}} {{item.changci}} 截止{{datePd(item.betEndTime)}}</p>
                     <p class="cont_pt" v-if="$route.query.playType=='3'||$route.query.playType=='5'||$route.query.playType=='7'">
                         <span>{{item.homeTeamAbbr}}</span>
                         <span>VS</span>

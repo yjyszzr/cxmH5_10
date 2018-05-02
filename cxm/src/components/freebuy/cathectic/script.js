@@ -144,7 +144,7 @@ export default {
 		nonTouDate() {
 			this.arrTime = []
 			this.$store.state.matchSelectedList.forEach(item => {
-				this.arrTime.push(item.matchTime)
+				this.arrTime.push(item.betEndTime)
 			})
 			this.arrTime.sort((a, b) => {
 				return a - b;
