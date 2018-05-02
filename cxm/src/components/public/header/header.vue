@@ -1,6 +1,6 @@
 <template>
     <div class="Header">
-        <div class="headerTop">
+        <div class="headerTop" v-show="showTitle">
             <a @click="return_back()" class="go_return"></a>
             <p class="headerText">彩小秘·{{title}}</p>
             <p class="filter" v-show="menuDisplay==true">
@@ -52,10 +52,13 @@ export default {
   props: {
     title: String,
       menuDisplay: Boolean,
-      menuNosult: Boolean
+      menuNosult: Boolean,
+      showTitle: Boolean
   },
   data() {
-    return {};
+    return {
+
+    };
   },
   methods: {
     return_back() {

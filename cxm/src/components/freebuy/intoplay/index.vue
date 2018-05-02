@@ -70,12 +70,14 @@
 </template>
 
 <script>
+import {isTitle} from '../../../util/common'
 export default {
     name: 'inToplay',
     data(){
         return {}
     },
     mounted(){
+        isTitle('玩法帮助')
         this.$store.state.matchObj = {};
     }
 }

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-headertop :title='title()' :menu-display="menuDisplay()" v-show='isShowHeader'></v-headertop>
+    <v-headertop :title='title()' :showTitle='showTitle()' :menu-display="menuDisplay()" v-show='isShowHeader'></v-headertop>
     <div id='content' class="content">
         <!-- <transition  mode="out-in" enter-active-class='bounce-enter' leave-active-class="bounce-leave">
             <router-view></router-view>
@@ -19,7 +19,7 @@
 import HeaderTop from "./components/public/header/Header";
 import footer from "./components/public/footer/footer";
 import mark from "./components/public/mark/mark";
-import pmark from "./components/public/mark/match_playut/mark_playut"
+import pmark from "./components/public/mark/match_playut/mark_playut";
 export default {
   name: "App",
   components: {
@@ -98,18 +98,23 @@ export default {
             return "投注确认";
           case "teamDetail":
             return "查看详情";
-            case "consult":
-                return "资讯详情";
-            case "collection":
-                return "我的收藏";
-            case "moreInfo":
-                return "更多资讯";
-            case 'help':
-                return "帮助中心";
-            case 'service':
-                return "服务协议";
-                case 'inToplay':
-                return "更多玩法";
+          case "consult":
+            return "资讯详情";
+          case "collection":
+            return "我的收藏";
+          case "moreInfo":
+            return "更多资讯";
+          case "help":
+            // if (window.location.href.split("?")[1]) {
+            //   this.isShowHeader = false;
+            //   return "";
+            // } else {
+              return "帮助中心";
+            // }
+          case "service":
+            return "服务协议";
+          case "inToplay":
+            return "更多玩法";
         }
       } else {
         if (
@@ -130,10 +135,21 @@ export default {
       }
     },
     menuDisplay() {
-      if (this.$route.path.split("/")[2] == "singleNote"||this.$route.path.split("/")[2] == "collection"||this.$route.path.split("/")[2] == "consult") {
+      if (
+        this.$route.path.split("/")[2] == "singleNote" ||
+        this.$route.path.split("/")[2] == "collection" ||
+        this.$route.path.split("/")[2] == "consult"
+      ) {
         return true;
       } else {
         return false;
+      }
+    },
+    showTitle(){
+      if (window.location.href.split("?")[1]&&window.location.href.split("?")[0]=='showtitle') {
+         return false;
+      } else {
+         return true;
       }
     }
   }
@@ -229,23 +245,23 @@ export default {
 }
 
 .mint-cell {
-  height: px2rem(85px)!important;
-  line-height: px2rem(85px)!important;
-  min-height: 0!important;
+  height: px2rem(85px) !important;
+  line-height: px2rem(85px) !important;
+  min-height: 0 !important;
   background: none;
-  margin: 0!important;
-  display: flex!important;
+  margin: 0 !important;
+  display: flex !important;
   .mint-cell-wrapper {
     padding: 0;
     font-size: px2rem(20px);
-    background-size: 120% 0!important;
-    .mintui-field-error{
-      margin-right: 0!important;
+    background-size: 120% 0 !important;
+    .mintui-field-error {
+      margin-right: 0 !important;
     }
   }
 }
-.mint-cell:last-child{
-   background-size: 120% 0!important;
+.mint-cell:last-child {
+  background-size: 120% 0 !important;
 }
 
 /*
@@ -276,7 +292,7 @@ export default {
   margin: 0.5rem auto 0;
 }
 
-.cxLoad{
+.cxLoad {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -345,7 +361,7 @@ textarea {
   background: #fff;
   margin-top: px2rem(20px);
 }
-.section:first-of-type{
+.section:first-of-type {
   margin-top: 0;
 }
 /*表单*/
@@ -355,10 +371,10 @@ textarea {
   line-height: px2rem(87px);
   min-height: px2rem(87px);
   background: #fff;
-  li{
+  li {
     width: 100%;
     display: block;
-    a{
+    a {
       display: block;
       position: relative;
       margin-left: px2rem(30px);
@@ -366,14 +382,14 @@ textarea {
       border-bottom: 1px solid #e5e5e5;
       height: px2rem(87px);
       box-sizing: border-box;
-      div{
-        img{
+      div {
+        img {
           float: left;
           width: px2rem(40px);
           padding-top: px2rem(22px);
           margin-right: px2rem(15px);
         }
-        i{
+        i {
           float: left;
           font-size: px2rem(40px);
           margin-right: px2rem(15px);
@@ -397,18 +413,18 @@ textarea {
           font-size: px2rem(30px);
           color: #505050;
         }
-        .mint-cell-value{
+        .mint-cell-value {
           font-size: px2rem(30px);
           color: #505050;
         }
-        .mintui-field-error{
+        .mintui-field-error {
           color: #9f9f9f;
         }
-        em{
+        em {
           position: absolute;
           right: px2rem(0px);
         }
-        button{
+        button {
           color: #a0a0a0;
           font-size: px2rem(30px);
           height: px2rem(60px);
@@ -423,10 +439,10 @@ textarea {
         }
       }
     }
-    a:last-of-type{
+    a:last-of-type {
       border-bottom: none;
     }
-    a:after{
+    a:after {
       content: "";
       display: block;
       clear: both;
@@ -445,7 +461,7 @@ textarea {
     font-size: px2rem(26px);
     display: flex;
     align-items: center;
-    em{
+    em {
       width: px2rem(18px);
       height: px2rem(18px);
       background: #e95504;
@@ -486,21 +502,21 @@ textarea {
 }
 
 .ment {
-  p{
+  p {
     display: inline-block;
   }
   span {
     color: #787878;
   }
   text-align: center;
-  color: #A0A0A0;
+  color: #a0a0a0;
   font-size: px2rem(26px);
   margin-top: px2rem(32px);
 }
 .prompt {
   width: px2rem(540px);
   height: px2rem(80px);
-  color: #F7931E;
+  color: #f7931e;
   font-size: px2rem(26px);
   background: #eaeaea;
   text-align: center;
@@ -521,15 +537,15 @@ textarea {
 }
 
 .forget .x_sel {
-  color: #F7931E;
+  color: #f7931e;
   font-size: px2rem(26px);
   float: right;
 }
-.loadingText{
-    text-align: center;
-    height: px2rem(68px);
-    line-height: px2rem(68px);
-    color: #c7c7c7;
-    font-size: px2rem(22px);
+.loadingText {
+  text-align: center;
+  height: px2rem(68px);
+  line-height: px2rem(68px);
+  color: #c7c7c7;
+  font-size: px2rem(22px);
 }
 </style>

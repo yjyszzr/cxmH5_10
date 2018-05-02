@@ -1,4 +1,5 @@
 import api from '../../../fetch/api'
+import {isTitle} from '../../../util/common'
 export default {
     name: 'help',
     data () {
@@ -13,6 +14,6 @@ export default {
      
     },
     mounted(){
-        
+			isTitle('帮助中心')
     }
 }

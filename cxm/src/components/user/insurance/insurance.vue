@@ -46,3 +46,17 @@
     </div>
 </template>
 
+<script>
+import {isTitle} from '../../../util/common'
+export default {
+  name: '',
+  data(){
+      return {}
+  },
+  mounted(){
+      isTitle('安全保障')
+  }
+}
+</script>
+
+

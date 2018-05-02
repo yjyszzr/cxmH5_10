@@ -90,3 +90,15 @@
         <p>“彩票宝”将不时提供其它服务，而这些其它服务可能是受不同的服务条款和条件约束的，若新服务未发布服务条款和条件时，则适用于本条款，其未尽事宜，“彩票宝”在法律规定的范围内有解释权。</p>
     </div>
 </template>
+<script>
+import {isTitle} from '../../../util/common'
+export default {
+  name: '',
+  data(){
+      return {}
+  },
+  mounted(){
+      isTitle('注册服务协议')
+  }
+}
+</script>
