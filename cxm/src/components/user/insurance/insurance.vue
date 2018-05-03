@@ -49,7 +49,7 @@
 <script>
 import {isTitle} from '../../../util/common'
 export default {
-  name: '',
+  name: 'insurance',
   data(){
       return {}
   },

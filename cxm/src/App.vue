@@ -143,7 +143,7 @@ export default {
       }
     },
     showTitle(){
-      if (window.location.href.split("?")[1]&&window.location.href.split("?")[0]=='showtitle') {
+      if (window.location.href.split("?")[1]&&window.location.href.split("?")[1].split('=')[0]=='showtitle') {
          return false;
       } else {
          return true;

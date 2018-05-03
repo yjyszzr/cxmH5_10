@@ -46,6 +46,9 @@
         color: #505050;
       }
     }
+    li:nth-child(5),li:nth-child(6),li:nth-child(7){
+        margin-top: px2rem(52px);
+    }
     .entry_icon {
       width: px2rem(93px);
       margin: 0 auto;
@@ -59,6 +62,7 @@
   line-height: px2rem(80px);
   margin-left: px2rem(30px);
   border-bottom: 1px solid #f1f1f1;
+  color: #505050;
 }
 
 .scroll-wrap {

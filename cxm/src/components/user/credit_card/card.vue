@@ -4,14 +4,14 @@
 
 <template>
     <div class="wrap cardbox">
-        <section class="give">
+        <section class="give" v-if='bankList.length>0'>
             <div class="card clearfix" v-for="(item,i) in bankList" :key='item.userBankId'>
                 <div class="china_bank clearfix">
                     <div class="bank_box">
                         <img class="img" :src="item.bankLogo">
                     </div>
                     <p>{{item.bankName}}<br/><span>{{item.cardType}}</span></p>
-                    <img class="img1" src="../../../assets/img/sut.png" @click='removeBank(i,item.userBankId)'>
+                    <span class="iconfont icon-huaban-3" @click='removeBank(i,item.userBankId)'></span>
                 </div>
                 <div class="china_bank_card">{{item.cardNo.substr(0,4)}}&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;&nbsp;{{item.cardNo.substr(-4)}}</div>
                 <div class="china_bank_default">

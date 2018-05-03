@@ -93,7 +93,7 @@
 <script>
 import {isTitle} from '../../../util/common'
 export default {
-  name: '',
+  name: 'service',
   data(){
       return {}
   },

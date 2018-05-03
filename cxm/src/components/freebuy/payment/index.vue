@@ -36,11 +36,13 @@
         <section class="section">
             <p class="mode">支付方式</p>
             <ul class="msg_list">
-                <li>
+                <li @click="wxClick()">
                     <a href="javascript:void(0);">
                         <div>
                             <img src="../../../assets/img/wei.png">
-                            <span class="arrow_kefu float_right"><img src="../../../assets/img/cur.png"></span>
+                            <span class="arrow_kefu float_right">
+                                <i ref="wxSelected" class="wxSelected iconfont icon-icon-29"></i>
+                            </span>
                             <span class="message">微信支付</span>
                         </div>
                     </a>

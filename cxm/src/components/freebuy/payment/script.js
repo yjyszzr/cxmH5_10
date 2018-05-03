@@ -34,25 +34,51 @@ export default {
             })
         },
         payBtn(){
-            Indicator.open()
-            let data = {
-                'payCode': '',
-                'payToken': this.payment.payToken
+            if(Number(this.payment.thirdPartyPaid)>0){
+                if(this.$refs.wxSelected.className=='wxSelected iconfont icon-icon-29'){
+                    Indicator.open()
+                    var data = {
+                        'payCode': 'app_rongbao',
+                        'payToken': this.payment.payToken
+                    }
+                    var newTab = window.open('about:blank'); 
+                }else{
+                    Toast('请选择支付方式')
+                    return false;
+                }
+            }else{
+                Indicator.open()
+                var data = {
+                    'payCode': '',
+                    'payToken': this.payment.payToken
+                }
             }
             api.app(data)
             .then(res => {
-               // console.log(res)
-                if(res.code==0) {
-                    this.$router.push({
-                        path: '/user/order',
-                        query: {
-                          id: res.data.orderId,
-                        },
-                        replace: false
-                    })
+                if(data.payCode==''){
+                    if(res.code==0) {
+                        this.$router.push({
+                            path: '/user/order',
+                            query: {
+                              id: res.data.orderId,
+                            },
+                            replace: false
+                        })
+                    }
+                }else{
+                    if(res.code==0) {
+                        newTab.location.href = res.data.payUrl
+                    }
                 }
                 Toast(res.msg)
             })
+        },
+        wxClick(){
+            if(this.$refs.wxSelected.className=='wxSelected iconfont icon-icon-29'){
+                this.$refs.wxSelected.className='iconfont icon-icon-29'
+            }else{
+                this.$refs.wxSelected.className='wxSelected iconfont icon-icon-29'
+            }
         }
     },
     mounted(){
