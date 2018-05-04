@@ -74,7 +74,10 @@ export default {
                         if(agent== 'ios'){
                             newTab.location.href = res.data.payUrl
                         }else{
-                            window.open(res.data.payUrl)
+                            var $tempForm = $('<form method="post" target="_blank" action="' + res.data.payUrl + '"></form>');  
+                            $("body").append($tempForm);  
+                            $tempForm.submit();  
+                            $tempForm.remove(); 
                         }
                     }
                 }
@@ -108,10 +111,6 @@ export default {
             //     this.fetchData()
             // }
         }
-    },
-    beforeRouteEnter(to, from, next){
-        console.log(from)
-        next()
     },
     beforeRouteLeave(to, from, next) {
         next()
