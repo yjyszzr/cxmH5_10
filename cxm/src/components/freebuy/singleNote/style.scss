@@ -167,11 +167,11 @@
                 }
             }
             .matchRighthhBox{
-                width: px2rem(540px);
+                width: px2rem(550px);
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                border: 1px solid #f0f0f0;
+                border: 1px solid #c7c7c7;
                 box-sizing: border-box;
                 .team_left{
                     flex: 6;
@@ -204,7 +204,7 @@
                     }
                     .team_top{
                         box-sizing: border-box;
-                        border-bottom: 1px solid #f0f0f0;
+                        border-bottom: 1px solid #c7c7c7;
                     }
                 }
                 .team_right{
@@ -215,9 +215,12 @@
                     align-items: center;
                     justify-content: center;
                     flex-direction:column;
-                    color: #505050; 
+                    color: #999;
                     font-size: px2rem(26px);
-                    border-left: 1px solid #f0f0f0;
+                    border-left: 1px solid #c7c7c7;
+                    span{
+                        line-height: px2rem(35px);
+                    }
                 }
             }
             .matchRightBox{
