@@ -44,8 +44,8 @@ export default {
             }
         });
         this.$store.state.matchObj.hotPlayList.forEach(item => {
-            if(item.playList[i].matchId == this.$store.state.mark_playObj.bfmatchId){
-                this.scoreObj =  item.playList[i]
+            if(item.matchId == this.$store.state.mark_playObj.bfmatchId){
+                this.scoreObj =  item
             }
         });
         if(this.$store.state.mark_playObj.bfIdSaveMap.has(this.scoreObj.matchId)){

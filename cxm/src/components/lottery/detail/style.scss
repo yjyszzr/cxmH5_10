@@ -35,6 +35,11 @@
         height: px2rem(72px);
       }
     }
+    .isFixed{
+      position: fixed;
+      width: 100%;
+      top: px2rem(78px);
+    }
     .cen_list1,.cen_list3,.cen_list2{
       background: #fff;
       .box_list_1{
@@ -47,6 +52,9 @@
           line-height: px2rem(72px);
           color: #9f9f9f;
           text-align: center;
+        }
+        li:nth-child(4){
+          flex: 1.5;
         }
       }
       .box_list_2{
@@ -76,6 +84,9 @@
               font-style: normal;
               font-size: px2rem(22px);
             }
+          }
+          li:nth-child(4){
+            flex: 1.5;
           }
         }
         ul:last-child{

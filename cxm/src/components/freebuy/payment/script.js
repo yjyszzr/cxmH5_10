@@ -109,6 +109,10 @@ export default {
             // }
         }
     },
+    beforeRouteEnter(to, from, next){
+        console.log(from)
+        next()
+    },
     beforeRouteLeave(to, from, next) {
         next()
         this.$store.state.mark_playObj.mark_playBox = false

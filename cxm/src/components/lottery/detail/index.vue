@@ -1,7 +1,7 @@
 <style lang='scss' src='./style.scss'></style>
 <template>
 	<div class="odds">
-		<ul class="odd_ul">
+		<ul class="odd_ul" :class="isFixed?'isFixed':''">
 			<li class="odd_cur">
 				<p @click="deTailTab($event,'1')"></p><span>欧赔</span></li>
 			<li>

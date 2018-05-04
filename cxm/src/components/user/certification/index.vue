@@ -27,8 +27,8 @@
                 </a>
             </li>
         </ul>
-        <section class="button">
-            <a class="determine" @click='rzBtn()'>认证</a>
+        <section class="button" @click='rzBtn()'>
+            <a class="determine">认证</a>
         </section>
     </div>
 </template>

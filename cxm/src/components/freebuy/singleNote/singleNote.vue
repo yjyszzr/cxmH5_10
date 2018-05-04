@@ -40,6 +40,7 @@
                                 <span>{{item.matchPlays[0].visitingCell.cellName}}{{item.matchPlays[0].visitingCell.cellOdds}}</span>
                             </p>
                         </div>
+                    </div>
                         <div class="matchRightjqs" v-if="playType=='4'">
                             <div class="jqs_title">
                                 <span>{{item.homeTeamAbbr}}</span>
@@ -117,7 +118,7 @@
                             			<p>0</p>
                             			<p style="flex: 9;">未开售</p>
                             		</div>
-                                <div class="team_top" v-if="item.matchPlays[1].isShow=='1'">
+                                <div class="team_top" v-if="item.matchPlays[1].isShow=='1'" :style="{'border':item.matchPlays[1]&&item.matchPlays[1].single=='1'?'1px solid #ea5504':''}">
                                     <p>0</p>
                                     <p :class="item.matchPlays[1].homeCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].homeCell.cellName}} {{item.matchPlays[1].homeCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[1].flatCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].flatCell.cellName}} {{item.matchPlays[1].flatCell.cellOdds}}</p>
@@ -139,7 +140,6 @@
                                 <span><b style="color: #ea5504;font-wight: 400;">{{item.selectedNum}}</b>项</span>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </li>
             </ul>

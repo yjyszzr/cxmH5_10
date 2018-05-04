@@ -344,7 +344,7 @@ textarea {
     margin-bottom: px2rem(10px);
   }
   .el-collapse-item__content {
-    padding-bottom: px2rem(22px);
+    padding-bottom: 0;
   }
   .el-collapse-item__arrow {
     margin-right: px2rem(30px);

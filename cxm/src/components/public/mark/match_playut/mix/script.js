@@ -27,12 +27,18 @@ export default {
                     }
                 }
             });
-    
-            this.$store.state.matchObj.hotPlayList.forEach(item => {
-                if (item.playList[i].matchId == this.$store.state.mark_playObj.bfmatchId) {
-                    item.playList[i] = this.scoreObj
+
+            for (let i = 0; i < this.$store.state.matchObj.hotPlayList.length; i++) {
+                if (this.$store.state.matchObj.hotPlayList[i].matchId == this.$store.state.mark_playObj.bfmatchId) {
+                    this.$store.state.matchObj.hotPlayList[i]= this.scoreObj
                 }
-            });
+            }
+    
+            // this.$store.state.matchObj.hotPlayList.forEach(item => {
+            //     if (item.matchId == this.$store.state.mark_playObj.bfmatchId) {
+            //         item = this.scoreObj
+            //     }
+            // });
             this.$store.state.mark_playObj.bfIdSaveMapFlag++
         },
         unSelectedClickspf(c, s, status,sig) {
@@ -104,8 +110,8 @@ export default {
         });
 
         this.$store.state.matchObj.hotPlayList.forEach(item => {
-            if (item.playList[i].matchId == this.$store.state.mark_playObj.bfmatchId) {
-                this.scoreObj = JSON.parse(JSON.stringify(item.playList[i]))
+            if (item.matchId == this.$store.state.mark_playObj.bfmatchId) {
+                this.scoreObj = JSON.parse(JSON.stringify(item))
             }
         });
     }
