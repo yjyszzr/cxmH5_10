@@ -22,7 +22,7 @@
                 </div>
                 <div class="nullstatus" v-if="mxList.length==0">
                     <img src="../../../assets/img/juan.png" alt="">
-                    <span>此项暂无账户明细</span>
+                    <span>暂无明细数据</span>
                 </div>
                 <p class="loadingText" v-show="bottomStatus !== 'loading'&&mxList.length>0">{{loadText}}</p>
                 <div slot="bottom" class="mint-loadmore-bottom">
