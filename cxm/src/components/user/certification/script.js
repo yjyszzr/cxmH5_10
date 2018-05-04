@@ -1,5 +1,6 @@
 import api from '../../../fetch/api'
 import { Toast } from 'mint-ui'
+import {Indicator} from 'mint-ui'
 export default {
     name: 'certification',
     data () {
@@ -13,6 +14,7 @@ export default {
     },
     methods: {
         rzBtn(){
+            Indicator.open()
             let data = {
                 'idcode': this.userToken,
                 'realName': this.userName

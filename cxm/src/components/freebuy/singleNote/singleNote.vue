@@ -146,7 +146,7 @@
         </el-collapse-item>
         <el-collapse-item :name="activeNameNum(i)" v-for="(data,i) in $store.state.matchObj.playList" :key='i' v-if="$store.state.matchObj.playList&&$store.state.matchObj.playList.length>0">
             <template slot="title">
-                <span class="spfList">{{data.matchDay}} 共有{{data.playList.length}}场比赛可投</span>
+                <span class="spfList">{{data.matchDay}}&nbsp;&nbsp;共有<b style="font-weight:400;color:#505050;">{{data.playList.length}}场</b>比赛可投</span>
             </template>
             <ul class="hotMatchList">
                 <li v-for="(item,index) in data.playList" :key='index' :id='item.matchId' :class="item.matchPlays[0].single=='1'?'single':''">

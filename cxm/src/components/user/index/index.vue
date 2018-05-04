@@ -1,4 +1,4 @@
-<style lang='scss' src='./style.scss'>
+<style lang='scss' scoped src='./style.scss'>
 
 </style>
 
@@ -21,11 +21,11 @@
             </div>
             <div class="money clearfix">
                 <div class="left">
-                    <span>{{userInfo.totalMoney}}元</span>
+                    <span><b>{{userInfo.totalMoney}}</b><i>元</i></span>
                     <p>账户余额</p>
                 </div>
                 <div class="left">
-                    <span>{{userInfo.userMoney}}元</span>
+                    <span><b>{{userInfo.userMoney}}</b><i>元</i></span>
                     <p>可提现余额</p>
                 </div>
             </div>

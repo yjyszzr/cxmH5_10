@@ -4,13 +4,13 @@
 
 <!--关于我们-->
 <template>
-    <div class="wrap" >
+    <div class="wrap add_card" >
         <ul class="section msg_list">
             <li>
                 <a href="javascript:void(0);">
-                    <div style="display:flex;align-item:center;">
+                    <div style="display:flex;align-item:center;box-sizing:border-box;">
                         <label>姓名：</label>
-                        <input disabled type="text" class="text1" :value="this.$store.state.userInfo.realName"/>
+                        <p style="font-size: 0.4rem;color:#505050;">{{this.$store.state.userInfo.realName}}</p>
                     </div>
                 </a>
                 <a href="javascript:void(0);">

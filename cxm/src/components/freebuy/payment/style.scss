@@ -4,11 +4,11 @@
     color: #505050;
     margin-left: px2rem(30px);
     margin-right: px2rem(30px);
-    height: px2rem(90px);
+    height: px2rem(110px);
     display: block;
     border-bottom: 1px solid #f1f1f1;
     font-size: 0.4rem;
-    line-height: px2rem(90px);
+    line-height: px2rem(110px);
   }
   .msg_list li > a{
     padding: 0;
@@ -37,5 +37,9 @@
    }
    .wxSelected{
      color: green;
+   }
+   .msg_list img{
+     margin-top: px2rem(0px);
+     width: px2rem(56px);
    }
  }

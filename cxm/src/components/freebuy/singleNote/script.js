@@ -92,11 +92,11 @@ export default {
       if (this.matchSelectObj.size == 1) {
         let classDom = document.getElementsByClassName('selected')
         if (classDom[0].parentElement.parentElement.parentElement.className == 'single') {
-          this.text = `<p>已选1场单关比赛</p><p>可投注</p>`
+          this.text = `<p>已选<span style='color:#ea5504;'>1场</span>单关比赛</p><p>可投注</p>`
           this.flag = false
           this.classFlag = false
         } else {
-          this.text = `<p>已选择1场非单关比赛</p><p>还差1场比赛</p>`
+          this.text = `<p>已选择<span style='color:#ea5504;'>1场</span>非单关比赛</p><p>还差<span style='color:#ea5504;'>1场</span>比赛</p>`
           this.flag = true
           this.classFlag = true
         }
@@ -105,14 +105,14 @@ export default {
         this.flag = true
         this.classFlag = true
       } else {
-        this.text = `<p>已选${this.matchSelectObj.size}场比赛</p><p>可投注</p>`
+        this.text = `<p>已选<span style='color:#ea5504;'>${this.matchSelectObj.size}场</span>比赛</p><p>可投注</p>`
         this.flag = false
         this.classFlag = false
       }
     },
     confirm_bf() {
       if (this.matchSelectObj.size >= 1) {
-        this.text = `<p>已选${this.matchSelectObj.size}场比赛</p><p>可投注</p>`
+        this.text = `<p>已选<span style='color:#ea5504;'>${this.matchSelectObj.size}场</span>比赛</p><p>可投注</p>`
         this.flag = false
         this.classFlag = false
       } else {
@@ -139,27 +139,27 @@ export default {
         }
       });
       if (this.arrNum > 1) {
-        this.text = `<p>已选${this.arrNum}场比赛</p><p>可投注</p>`
+        this.text = `<p>已选<span style='color:#ea5504;'>${this.arrNum}场</span>比赛</p><p>可投注</p>`
         this.flag = false
         this.classFlag = false
       } else if (this.arrNum == 1) {
         if (obj.matchPlays[1].single == '1') {
           if (obj.matchPlays[0].homeCell.isSelected || obj.matchPlays[0].flatCell.isSelected || obj.matchPlays[0].visitingCell.isSelected) {
-            this.text = `<p>已选择1场非单关比赛</p><p>还差1场比赛</p>`
+            this.text = `<p>已选择<span style='color:#ea5504;'>1场</span>非单关比赛</p><p>还差<span style='color:#ea5504;'>1场</span>比赛</p>`
             this.flag = true
             this.classFlag = true
           } else {
-            this.text = `<p>已选1场单关比赛</p><p>可投注</p>`
+            this.text = `<p>已选<span style='color:#ea5504;'>1场</span>单关比赛</p><p>可投注</p>`
             this.flag = false
             this.classFlag = false
           }
         } else {
           if (obj.matchPlays[0].homeCell.isSelected || obj.matchPlays[0].flatCell.isSelected || obj.matchPlays[0].visitingCell.isSelected || obj.matchPlays[1].visitingCell.isSelected || obj.matchPlays[1].homeCell.isSelected || obj.matchPlays[1].flatCell.isSelected) {
-            this.text = `<p>已选择1场非单关比赛</p><p>还差1场比赛</p>`
+            this.text = `<p>已选择<span style='color:#ea5504;'>1场</span>非单关比赛</p><p>还差<span style='color:#ea5504;'>1场</span>比赛</p>`
             this.flag = true
             this.classFlag = true
           } else {
-            this.text = `<p>已选1场单关比赛</p><p>可投注</p>`
+            this.text = `<p>已选<span style='color:#ea5504;'>1场</span>单关比赛</p><p>可投注</p>`
             this.flag = false
             this.classFlag = false
           }
@@ -484,16 +484,16 @@ export default {
         } else if (this.$store.state.matchSelectedList.length == 1) {
           let classDom = document.getElementsByClassName('selected')
           if (classDom[0].parentElement.parentElement.parentElement.className == 'single') {
-            this.text = `<p>已选1场单关比赛</p><p>可投注</p>`
+            this.text = `<p>已选<span style='color:#ea5504;'>1场</span>单关比赛</p><p>可投注</p>`
             this.flag = false
             this.classFlag = false
           } else {
-            this.text = `<p>已选择1场非单关比赛</p><p>还差1场比赛</p>`
+            this.text = `<p>已选择<span style='color:#ea5504;'>1场</span>非单关比赛</p><p>还差<span style='color:#ea5504;'>1场</span>比赛</p>`
             this.flag = true
             this.classFlag = true
           }
         } else if (this.$store.state.matchSelectedList.length > 1) {
-          this.text = `<p>已选${this.$store.state.matchSelectedList.length}场比赛</p><p>可投注</p>`
+          this.text = `<p>已选<span style='color:#ea5504;'>${this.$store.state.matchSelectedList.length}场</span>比赛</p><p>可投注</p>`
           this.flag = false
           this.classFlag = false
         }

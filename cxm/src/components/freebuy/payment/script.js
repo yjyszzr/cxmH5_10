@@ -1,4 +1,5 @@
 import api from '../../../fetch/api'
+import { detect } from '../../../util/common'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 export default {
@@ -34,6 +35,7 @@ export default {
             })
         },
         payBtn(){
+            let agent = detect();
             if(Number(this.payment.thirdPartyPaid)>0){
                 if(this.$refs.wxSelected.className=='wxSelected iconfont icon-icon-29'){
                     Indicator.open()
@@ -41,7 +43,9 @@ export default {
                         'payCode': 'app_rongbao',
                         'payToken': this.payment.payToken
                     }
-                    var newTab = window.open('about:blank'); 
+                    if(agent== 'ios'){
+                        var newTab = window.open('about:blank');
+                    }
                 }else{
                     Toast('请选择支付方式')
                     return false;
@@ -66,8 +70,12 @@ export default {
                         })
                     }
                 }else{
-                    if(res.code==0) {
-                        newTab.location.href = res.data.payUrl
+                    if(res.code==0) { 
+                        if(agent== 'ios'){
+                            newTab.location.href = res.data.payUrl
+                        }else{
+                            window.open(res.data.payUrl)
+                        }
                     }
                 }
                 Toast(res.msg)

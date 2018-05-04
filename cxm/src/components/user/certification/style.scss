@@ -23,14 +23,21 @@
     text-align: center;
     width: 100%;
   }
+  .msg_list li>a{
+    height: px2rem(110px);
+    div{
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
   .msg_list li>a>div .text2 {
     width: 65%;
     float: left;
     border: none;
-    height: px2rem(85px);
-    line-height: px2rem(100px);
+    height: px2rem(80px);
     font-size: px2rem(30px);
-    color: #c8c8c8;
+    color: #505050;
   }
    .iconfont{
      color: #9f9f9f;

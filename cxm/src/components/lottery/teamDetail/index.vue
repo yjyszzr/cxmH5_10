@@ -16,7 +16,7 @@
                     <li>
                         <img :src="ckxqObj.matchInfo.visitingTeamPic" alt="">
                         <span>{{ckxqObj.matchInfo.visitingTeamAbbr}}</span>
-                        <i>主胜{{ckxqObj.matchInfo.aOdds}}</i>
+                        <i>客胜{{ckxqObj.matchInfo.aOdds}}</i>
                     </li>
                 </ul>
             </div>

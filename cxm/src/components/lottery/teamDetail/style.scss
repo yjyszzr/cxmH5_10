@@ -21,23 +21,24 @@
           display: block;
           font-weight: normal;
           font-size: px2rem(26px);
-          margin-top: px2rem(16px);
         }
       }
       li{
         flex: 1;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
         img{
           width: px2rem(80px);
           height: px2rem(80px);
           margin: 0 auto;
-          margin-bottom: px2rem(18px);
           display: block;
         }
         span{
           color: #505050;
           font-size: px2rem(30px);
-          margin-bottom: px2rem(16px);
           display: block;
         }
         i{
@@ -144,6 +145,7 @@
             }
             span:nth-child(2){
               flex: 1;
+              color: #505050;
             }
           }
         }

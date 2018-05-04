@@ -6,9 +6,9 @@
         height: px2rem(72px);
         display: flex;
         align-items: center;
-        padding-left: px2rem(34px);
+        padding-left: px2rem(22px);
         color: #9f9f9f;
-        font-size: px2rem(28px);
+        font-size: px2rem(26px);
         margin-bottom: px2rem(10px);
     }
     .hotMatch{
@@ -16,7 +16,7 @@
     }
     .spfList{
         color: #9f9f9f;
-        font-size: px2rem(28px);
+        font-size: px2rem(26px);
     }
     .hotMatchList{
         width: px2rem(686px);
@@ -62,7 +62,7 @@
         .matchRight{
             .matchRightBox{
                 height: px2rem(106px);
-                border: 1px solid #f0f0f0;
+                border: 1px solid #c7c7c7;
                 box-sizing: border-box;
                 display: flex;
                 align-items: center;
@@ -77,8 +77,9 @@
                 background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
                 background-size: 1px px2rem(74px); 
                 position: relative;
+                line-height: px2rem(38px);
                 span:first-of-type{
-                    font-size: px2rem(26px);
+                    font-size: px2rem(28px);
                     color: #505050;
                 }
                 span:last-of-type{
@@ -94,6 +95,7 @@
                 }
                 i{
                     font-style: normal;
+                    font-weight: 600;
                 }
             }
             P:first-of-type,p:last-of-type{
@@ -102,6 +104,11 @@
             p:last-of-type{
                 background: none;
                 border-right: none;
+            }
+            p:nth-child(2){
+                span{
+                    color: #9f9f9f;
+                }
             }
         }
         .matchRightjqs,.matchRightbf{
@@ -122,12 +129,12 @@
                 text-overflow:ellipsis;
                 white-space: nowrap;
                 width: px2rem(480px);
-                border: 1px solid #f0f0f0;
-                height: px2rem(48px);
+                border: 1px solid #c7c7c7;
+                height: px2rem(56px);
                 font-size: px2rem(24px);
                 color: #9f9f9f;
                 text-align: center;
-                line-height: px2rem(48px);
+                line-height: px2rem(56px);
                 box-sizing: border-box;
                 margin-right: px2rem(30px);
             }
@@ -137,7 +144,7 @@
                 align-items: center;
                 justify-content: space-between;
                 p{
-                    border: 1px solid #f0f0f0;
+                    border: 1px solid #c7c7c7;
                     height: px2rem(56px);
                     width: px2rem(220px);
                     display: flex;
@@ -154,6 +161,9 @@
                         height: 100%;
                         z-index: 5;
                     }
+                }
+                .selected{
+                    border: none;
                 }
             }
             .matchRighthhBox{
@@ -213,27 +223,28 @@
             .matchRightBox{
                 box-sizing: border-box;
                 overflow: hidden;
-                border: 1px solid #f0f0f0;
+                border: 1px solid #c7c7c7;
                 width: px2rem(550px);
                 display: flex;
                 flex-wrap: wrap; 
                 border-bottom: 0;
                 p{
                     background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
-                    background-size: 1px px2rem(30px);
+                    background-size: 1px px2rem(40px);
                     width: 25%;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    border-bottom: 1px solid #f0f0f0;
+                    border-bottom: 1px solid #c7c7c7;
                     box-sizing: border-box;
                     position: relative;
+                    height: px2rem(72px);
                     span:first-of-type{
-                        font-size: px2rem(26px);
+                        font-size: px2rem(28px);
                         color: #505050;
                     }
                     span:last-of-type{
-                        font-size: px2rem(22px);
+                        font-size: px2rem(24px);
                         color: #9f9f9f;
                     }
                     b{
@@ -246,7 +257,9 @@
                 }
                 p:nth-child(4n){
                     background: none;
+                    border-right: none!important;
                 }
+                
             }
         }
         .selected{
@@ -265,6 +278,7 @@
             background: #e85504!important;
             color: #fff!important;
             padding: 0 px2rem(30px);
+            border: none!important;
         }
     }
     .match_footer{
@@ -301,7 +315,7 @@
                 display: flex;
                 justify-content: space-between;
                 flex-direction: column;
-                padding-left: px2rem(15px); 
+                padding-left: px2rem(30px); 
             }
         }
         .confirm{

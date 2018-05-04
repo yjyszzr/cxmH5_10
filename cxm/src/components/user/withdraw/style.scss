@@ -9,8 +9,9 @@
 .msg_list li>a {
   display: block;
   position: relative;
-  margin-right: px2rem(30px);
+  padding-right: px2rem(30px);
   margin-left: 0;
+  margin-right: 0;
   padding:0;
   /*border-bottom: 1px solid #e5e5e5;*/
 }
@@ -56,7 +57,7 @@
   height: px2rem(50px);
   float: left;
   line-height: px2rem(50px);
-  padding-left: px2rem(20px);
+  padding-left: px2rem(40px);
   margin-top: px2rem(30px);
 }
 .plain{

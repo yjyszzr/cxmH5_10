@@ -9,7 +9,7 @@
   .table{
     box-sizing: border-box;
     margin: 0 auto;
-    border: 1px solid #f1f1f1;
+    border: 1px solid #c7c7c7;
     border-right: none;
     margin-bottom:px2rem(20px);
     caption{
@@ -38,8 +38,8 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        border-bottom: 1px solid #f1f1f1;
-        border-right: 1px solid #f1f1f1;
+        border-bottom: 1px solid #c7c7c7;
+        border-right: 1px solid #c7c7c7;
         font-size: px2rem(26px);
         color: #505050;
         box-sizing: border-box;
@@ -52,6 +52,10 @@
         span{
           color: #9f9f9f;
           font-size: px2rem(22px);
+        }
+        span:first-of-type{
+          color: #505050;
+          font-size: px2rem(26px);
         }
       }
       .bfSelected{

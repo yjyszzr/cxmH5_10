@@ -200,7 +200,7 @@ export default {
         display: flex;
         align-items: center;
         font-size: px2rem(28px);
-        color: #505050;
+        color: #787878;
       }
       .iconfont{
         font-size: px2rem(30px);
@@ -221,7 +221,7 @@ export default {
       display: flex;
       align-items: center;
       //width: px2rem(500px);
-      font-size: px2rem(30px);
+      font-size: px2rem(32px);
       color: #505050;
       justify-content: center;
     }

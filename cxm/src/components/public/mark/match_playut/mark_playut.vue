@@ -57,9 +57,6 @@
                             
                         </p>
                     </li>
-                    <p class="yhNull" v-if="$store.state.mark_playObj.yhList.length==0">
-                        暂无优惠券
-                    </p>
                 </ul>
                 <div class="yhBtn" @click="yhBtn()">
                     确定

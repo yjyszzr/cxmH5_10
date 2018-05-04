@@ -41,8 +41,8 @@
         right: px2rem(0px);
       }
       p {
-        margin-top: px2rem(18px);
-        font-size: px2rem(30px);
+        margin-top: px2rem(16px);
+        font-size: px2rem(28px);
         color: #505050;
       }
     }
@@ -119,8 +119,7 @@
 					<i class="iconfont icon-icon-"></i>
 					<p v-if='show'>温馨提示:理性投注,长跟长红</p>
 					<ul class="scroll-content" :style="{top}" v-if='hide'>
-						<li v-for="(data,item) in y_Carousel" :key='item'>
-							{{data.winningMsg}}
+						<li v-for="(data,item) in y_Carousel" :key='item' v-html="carouselMoney(data)">
 						</li>
 					</ul>
 				</div>
@@ -249,6 +248,9 @@ export default {
       this.trFlag = true;
       this.cxLoadFlag = false;
       this.fetchData()
+    },
+    carouselMoney(c){
+      return c.winningMsg.replace(c.winningMoney,'<b>'+c.winningMoney+'</b>')
     },
     handleScroll(e) {
       if (

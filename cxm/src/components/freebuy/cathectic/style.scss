@@ -69,11 +69,11 @@
          width: px2rem(546px);
          box-sizing: border-box;
          height: px2rem(106px);
-         border: 1px solid #f1f1f1;
+         border: 1px solid #c7c7c7;
          li{
            width:px2rem(95px);
            display: flex;
-           height: 100%;
+           height: px2rem(106px);
            width: px2rem(218px);
            align-items: center;
            justify-content: center;
@@ -123,26 +123,26 @@
          width: px2rem(546px);
          display: flex;
          flex-wrap: wrap;
-         border: 1px solid #f0f0f0;
+         border: 1px solid #c7c7c7;
          box-sizing: border-box;
          border-bottom: none;
          li{
            width: 25%;
            background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
-           background-size: 1px px2rem(38px); 
+           background-size: 1px px2rem(40px); 
            display: flex;
            justify-content: center;
-           height: px2rem(51px);
-           border-bottom: 1px solid #f0f0f0;
+           height: px2rem(72px);
+           border-bottom: 1px solid #c7c7c7;
            box-sizing: border-box;
            align-items: center;
            position: relative;
            span:first-of-type{
-            font-size: px2rem(26px);
+            font-size: px2rem(28px);
             color: #505050;
           }
           span:last-of-type{
-              font-size: px2rem(22px);
+              font-size: px2rem(24px);
               color: #9f9f9f;
           }
           p{
@@ -155,6 +155,7 @@
          }
          li:nth-child(4n){
            background: none;
+           border-right: none!important;
          }
        }
        .bf{
@@ -162,7 +163,7 @@
           border: 1px solid #f0f0f0;
          width: px2rem(486px);
          height: px2rem(56px);
-         line-height: px2rem(56px);
+         line-height: px2rem(58px);
          text-align: center;
          padding: 0 px2rem(30px);
          background: #ea5504;
@@ -182,7 +183,7 @@
           box-sizing: border-box;
           height: 100%;
           width: px2rem(250px);
-          border: 1px solid #f0f0f0;
+          border: 1px solid #c7c7c7;
           text-align: center;
           line-height: px2rem(56px);
           position: relative;
@@ -197,6 +198,9 @@
             opacity: 0;
             z-index: 5;
            }
+        }
+        .cont_cur{
+          border: none;
         }
        }
        .mixTz{
@@ -234,6 +238,18 @@
           border: 1px solid #c7c7c7;
         }
      }
+     .short{
+       display: flex;
+       align-items: center;
+       div{
+         padding: 0;
+         display: flex;
+         align-items: center;
+       }
+       button{
+         margin: 0;
+       }
+     }
    }
    .hhTz{
     position: relative;
@@ -258,7 +274,7 @@
     }
    }
    .fixed{
-     box-shadow: 0px -2px 3px rgba(0,0,0,0.2);
+     border-top: 1px solid #f0f0f0;
      position: fixed;
      background: #fff;
      width: 100%;
@@ -267,7 +283,7 @@
      small{
        height: px2rem(64px);
        line-height: px2rem(64px);
-       font-size: px2rem(20px);
+       font-size: px2rem(24px);
        color: #9f9f9f;
        text-align: center;
        display: block;
@@ -289,7 +305,7 @@
           height: 98%;
           box-sizing: border-box;
           border: none;
-          font-size: px2rem(24px);
+          font-size: px2rem(28px);
           color: #505050;
           background: white;
           p{
@@ -317,7 +333,7 @@
      div{
        height: px2rem(88px);
        .left{
-         font-size: px2rem(22px);
+         font-size: px2rem(24px);
          color: #787878;
          padding: 0 0 0 px2rem(30px);
          width: 66%;

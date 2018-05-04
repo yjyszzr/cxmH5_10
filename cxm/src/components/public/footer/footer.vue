@@ -50,7 +50,7 @@ export default {
             flex-grow: 1;
             flex-shrink: 1;
             align-items: center;
-            justify-content: space-around;
+            justify-content: center;
             flex-direction: column;
             i{
                 font-size: px2rem(52px);

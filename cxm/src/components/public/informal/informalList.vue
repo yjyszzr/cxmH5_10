@@ -35,7 +35,9 @@ export default {
       }
   },
   props: ["zxList"],
-  mounted() {},
+  mounted() {
+    //console.log(this.zxList)
+  },
   methods: {
       goZxDetail(c){
           this.$router.push({

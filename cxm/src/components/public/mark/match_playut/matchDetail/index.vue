@@ -6,7 +6,7 @@
         <section>
             <div class="matchDetail_box" v-if="matchDetailObj.matchInfo">
                 <div class="matchDetail_top">
-                    {{matchDetailObj.matchInfo.changci.substr(-3)}} {{matchDetailObj.matchInfo.leagueAddr}} {{matchTimeDate(matchDetailObj.matchInfo.matchTime)}}
+                    {{matchDetailObj.matchInfo.changci.substr(-3)}}&nbsp;&nbsp;{{matchDetailObj.matchInfo.leagueAddr}}&nbsp;&nbsp;{{matchTimeDate(matchDetailObj.matchInfo.matchTime)}}
                 </div>
                 <div class="matchDetail_content">
                     <div class="md_left">
@@ -56,6 +56,7 @@
                             <b>{{matchDetailObj.hadTeamSupport.dSupport}}</b>
                             <b>{{matchDetailObj.hadTeamSupport.aSupport}}</b>
                         </span>
+                        <i class="d_line"></i>
                         <span>
                             <b :style="{'background':matchDetailObj.hhadTeamSupport.fixedOdds.substr(0,1)=='+'?'#f5ac41':'#85c36b'}">{{matchDetailObj.hhadTeamSupport.fixedOdds}}</b>
                             <b>{{matchDetailObj.hhadTeamSupport.hSupport}}</b>

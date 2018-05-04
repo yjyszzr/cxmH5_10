@@ -225,7 +225,7 @@ export default {
 }
 
 .button {
-  margin: px2rem(30px) auto 0;
+  margin: px2rem(60px) auto 0;
   width: 90%;
   color: #fff;
   height: px2rem(98px);
@@ -242,8 +242,8 @@ export default {
 }
 
 .mint-cell {
-  height: px2rem(85px) !important;
-  line-height: px2rem(85px) !important;
+  height: px2rem(110px) !important;
+  line-height: px2rem(110px) !important;
   min-height: 0 !important;
   background: none;
   margin: 0 !important;
@@ -304,6 +304,7 @@ export default {
 
 .mint-msgbox {
   .mint-msgbox-title {
+    color: #505050;
     font-size: px2rem(32px);
   }
   .mint-msgbox-message {
@@ -312,6 +313,15 @@ export default {
   .mint-msgbox-btn {
     font-size: px2rem(26px);
   }
+  .mint-msgbox-confirm{
+    color: #ea5504;
+  }
+  .mint-msgbox-cancel{
+    color: #505050;
+  }
+}
+.el-collapse-item__arrow{
+  transform: rotate(-90deg);
 }
 
 input,
@@ -356,7 +366,7 @@ textarea {
 }
 .section {
   background: #fff;
-  margin-top: px2rem(20px);
+  margin-top: px2rem(18px);
 }
 .section:first-of-type {
   margin-top: 0;
@@ -365,8 +375,8 @@ textarea {
 
 .msg_list {
   position: relative;
-  line-height: px2rem(87px);
-  min-height: px2rem(87px);
+  line-height: px2rem(110px);
+  min-height: px2rem(110px);
   background: #fff;
   li {
     width: 100%;
@@ -377,7 +387,7 @@ textarea {
       margin-left: px2rem(30px);
       margin-right: px2rem(30px);
       border-bottom: 1px solid #e5e5e5;
-      height: px2rem(87px);
+      height: px2rem(110px);
       box-sizing: border-box;
       div {
         img {
@@ -399,13 +409,13 @@ textarea {
           background: none;
           font-size: px2rem(30px);
           color: #505050;
-          height: px2rem(87px); //line-height: px2rem(109px);
+          height: px2rem(110px); //line-height: px2rem(109px);
         }
         .text1 {
           width: 50%;
           float: left;
           border: none;
-          height: px2rem(87px);
+          height: px2rem(110px);
           background: none;
           font-size: px2rem(30px);
           color: #505050;
@@ -431,7 +441,7 @@ textarea {
           border: none;
           border-left: 1px solid #f1f1f1;
           padding-left: px2rem(20px);
-          margin-top: px2rem(15px);
+          margin-top: px2rem(25px);
           background: none;
         }
       }
