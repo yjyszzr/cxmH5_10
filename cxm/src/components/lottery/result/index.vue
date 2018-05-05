@@ -6,7 +6,7 @@
                 <li @click='data_time()'>{{$store.state.mark_showObj.mark_dateVal}}<i class="iconfont icon-icon-31"></i></li>
                 <li @click='more()'>更多条件<i class="iconfont icon-icon-31"></i></li>
                 <li @click='all($event)' v-if="flag==true">全部<i class="iconfont icon-icon-31"></i></li>
-                <li @click='all($event)' v-if="flag==false">未结束<i class="iconfont icon-icon-31"></i></li>
+                <li @click='all($event)' v-if="flag==false">已结束<i class="iconfont icon-icon-31"></i></li>
             </ul>
         </section>
         <section>
@@ -23,7 +23,7 @@
                                 <div>
                                     <p><em>{{list.homeTeamAbbr}}</em><span>VS</span><em style="text-align: left">{{list.visitingTeamAbbr}}</em></p>
                                   <b v-if="list.matchFinish =='1' ">半场{{list.firstHalf}}<span>总比分{{list.whole}}</span></b>
-                                  <small v-if="list.matchFinish =='0' ">已结束</small>
+                                  <small v-if="list.matchFinish =='0' ">未结束</small>
                                 </div>
                                 <s><img src="../../../assets/img/img1.png"></s>
                             </div>
