@@ -29,8 +29,6 @@ export default {
                     this.payment = res.data
                     this.$store.state.mark_playObj.yhList = res.data.bonusList 
                     this.$store.state.mark_playObj.bounsId = res.data.bonusId
-                }else{
-                    Toast(res.msg)
                 }
             })
         },
@@ -81,7 +79,7 @@ export default {
                         }
                     }
                 }
-                Toast(res.msg)
+
             })
         },
         wxClick(){

@@ -45,8 +45,6 @@ export default {
                 this.scList = this.scList.concat(res.data.list);
               }, 800);
             }
-          } else {
-            Toast(res.msg);
           }
         })
         .catch(err=>{
@@ -69,8 +67,6 @@ export default {
           if (res.code == 0) {
             this.page = 1
             this.fetchData()
-          } else {
-            Toast(res.msg);
           }
         })
     },

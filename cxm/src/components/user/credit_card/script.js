@@ -25,7 +25,10 @@ export default {
         }
         api.updateUserBankDefault(data)
         .then(res => {
-            Toast(res.msg)
+            if( res.code == 0){
+                Toast(res.msg)
+            }
+
         })
       },
       removeBank(num,id){
@@ -49,8 +52,9 @@ export default {
                   }
                 }
                 this.fdelete()
+                  Toast(res.msg)
               }
-              Toast(res.msg)
+
           })
         },action => {
 
@@ -67,8 +71,6 @@ export default {
                   this.value.push(i)
                 }
               }
-            }else{
-              Toast(res.msg)
             }
         })
       }

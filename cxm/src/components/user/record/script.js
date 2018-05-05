@@ -59,8 +59,6 @@ export default {
                 		this.allLoaded = true
               }
               this.recordList = this.recordList.concat(res.data.list)
-            }else{
-              Toast(res.msg)
             }
         })
       },

@@ -25,8 +25,6 @@ export default {
             if(res.code==0) {
               this.withdrawObj = res.data
               //console.log(res)
-            }else{
-              Toast(res.msg)
             }
         })
     }

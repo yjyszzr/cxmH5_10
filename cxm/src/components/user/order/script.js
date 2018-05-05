@@ -47,8 +47,6 @@ export default {
             if(res.code==0) {
              //console.log(res)
               this.orderObj = res.data
-            }else{
-              Toast(res.msg)
             }
         })
     },

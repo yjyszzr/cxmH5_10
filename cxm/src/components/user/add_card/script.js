@@ -20,8 +20,12 @@ export default {
         }
         api.addBankCard(data)
         .then(res => {
-            Toast(res.msg)
-            this.$router.go(-1)
+            if(res.code == 0 ){
+                Toast(res.msg)
+                this.$router.go(-1)
+            }
+
+
         })
       },
         bankCard(){

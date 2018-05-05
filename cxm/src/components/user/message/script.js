@@ -72,8 +72,6 @@ export default {
                             this.allLoaded = true
                         }
                         this.mess = this.mess.concat(res.data.list)
-                    } else {
-                        Toast(res.msg)
                     }
                 })
         }

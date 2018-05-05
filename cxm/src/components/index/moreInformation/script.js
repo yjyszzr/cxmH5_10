@@ -57,8 +57,6 @@ export default {
                               this.moreInforList = this.moreInforList.concat(res.data.list);
                             }, 800);
                         }
-                    } else {
-                        Toast(res.msg)
                     }
                 })
                 .catch(err=>{

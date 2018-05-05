@@ -43,8 +43,9 @@ export default {
                     path: '/user/password',
                     replace: true
                 })
+                Toast(res.msg)
             }
-            Toast(res.msg)
+
         })
       },
       handleCommentFocus1(){

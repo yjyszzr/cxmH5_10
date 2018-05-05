@@ -478,8 +478,6 @@ export default {
 				.then(res => {
 					if(res.code == 0) {
 						this.betObj = res.data
-					} else {
-						Toast(res.msg);
 					}
 				})
 		},

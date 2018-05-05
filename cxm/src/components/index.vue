@@ -233,8 +233,6 @@ export default {
                 this.zxList = this.zxList.concat(res.data.list);
               }, 800);
             }
-          } else {
-            Toast(res.msg);
           }
         })
         .catch(err=>{
@@ -299,8 +297,6 @@ export default {
               }
             }, 3000);
           }
-        } else {
-          Toast(res.msg);
         }
       })
     this.fetchData();

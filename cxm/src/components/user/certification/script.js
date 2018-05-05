@@ -26,8 +26,9 @@ export default {
                         path: '/user',
                         replace: true
                     })
+                    Toast(res.msg)
                 }
-                Toast(res.msg)
+
             })
         },
         handleCommentFocus(){
