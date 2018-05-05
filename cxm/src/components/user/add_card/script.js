@@ -25,7 +25,7 @@ export default {
         })
       },
         bankCard(){
-            this.blankNum = this.blankNum.replace(/\s/g, '').replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ');
+            this .blankNum = this.blankNum.replace(/\s/g, '').replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ');
         }
     },
     mounted(){
