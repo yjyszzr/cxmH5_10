@@ -15,7 +15,7 @@
                 </a>
                 <a href="javascript:void(0);">
                     <div>
-                        <input type="number" v-model="blankNum" class="text" placeholder="请输入银行卡号"/>
+                        <input type="tel" @input="bankCard()"    v-model="blankNum" class="text" placeholder="请输入银行卡号"/>
                     </div>
                 </a>
             </li>

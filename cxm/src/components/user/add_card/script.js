@@ -9,7 +9,8 @@ export default {
       }
     },
     created(){
-      
+
+
     },
     methods: {
       add_card(){
@@ -22,7 +23,10 @@ export default {
             Toast(res.msg)
             this.$router.go(-1)
         })
-      }
+      },
+        bankCard(){
+            this.blankNum = this.blankNum.replace(/\s/g, '').replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ');
+        }
     },
     mounted(){
    
