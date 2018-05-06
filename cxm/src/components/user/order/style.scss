@@ -45,6 +45,7 @@
     align-items: center;
     justify-content: space-between;
     p{
+      line-height: px2rem(40px);
       font-size: px2rem(28px);
       color: #505050;
       display: flex;
