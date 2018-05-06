@@ -230,24 +230,8 @@ const router = new Router({
 NProgress.configure({ showSpinner: false });
 
 router.beforeEach(async(to, from, next) => {
-	if(to.matched.some(record => record.meta.requireAuth)) {
-		if(!localStorage.getItem('token')) {
-            localStorage.clear()
-            Toast('您还未登录，请先登录')
-			next({
-				path: '/user/password',
-				query: {
-					redirect: to.fullPath
-				}
-			})
-		} else {
-            NProgress.start(); // 开启Progress
-			next()
-		}
-	} else {
-        NProgress.start(); // 开启Progress
-		next()
-	}
+	NProgress.start(); // 开启Progress
+	next()
 })
 
 router.afterEach(() => {

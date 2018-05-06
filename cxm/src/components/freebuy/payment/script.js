@@ -12,18 +12,17 @@ import {
 export default {
     name: 'payment',
     beforeCreate() {
-        Indicator.open()
+       Indicator.open()
     },
     data() {
         return {
             payment: {},
             allPaymentList: [],
-            payCode: 'app_weixin',
-            timeDate: ''
+            payCode: 'app_weixin'
         }
     },
     created() {
-
+        
     },
     methods: {
         yhClick() {
@@ -108,7 +107,7 @@ export default {
             }
             api.app(data)
                 .then(res => {
-                    console.log(res)
+                    //console.log(res)
                     if (data.payCode == '') {
                         if (res.code == 0) {
                             this.$router.push({
@@ -137,6 +136,16 @@ export default {
                             //     $tempForm.remove();
                             // }
                             localStorage.setItem('payLogId',res.data.payLogId)
+                            MessageBox.confirm('',{
+                                message: '请完成在线支付',
+                                title: '确认支付',
+                                confirmButtonText: '支付成功',
+                                cancelButtonText: '更换支付方式'
+                            }).then(action => {
+                                this.saveStatus(res.data.payLogId)
+                            },action => {
+                                Indicator.close()
+                            })
                             location.href = res.data.payUrl
                         }
                     }
@@ -149,25 +158,17 @@ export default {
             this.$refs.wxSelected[index].className = 'wxSelected iconfont icon-icon-29'
         },
         saveStatus(c){
-            let i = 0;
-            this.timeDate = setInterval(()=>{
-                i++;
-                api.query({'payLogId': c})
+            api.query({'payLogId': c})
                 .then(res => {
                     //console.log(res)
                     if (res.code == 0) {
                         MessageBox('提示', '支付成功');
-                        clearInterval(this.timeDate)
                         Indicator.close()
                     }else{
-                        if(i>6){
-                            MessageBox('提示', res.msg);
-                            clearInterval(this.timeDate)
-                            Indicator.close()
-                        }
+                        MessageBox('提示', res.msg);
+                        Indicator.close()
                     }
                 })
-            },3000)
         }
     },
     mounted() {
@@ -208,7 +209,16 @@ export default {
                     })
                     vm.$store.state.mark_playObj.bfIdSaveMap = map
                 }
-                vm.saveStatus(payLogId)  
+                MessageBox.confirm('',{
+                    message: '请完成在线支付',
+                    title: '确认支付',
+                    confirmButtonText: '支付成功',
+                    cancelButtonText: '更换支付方式'
+                }).then(action => {
+                    vm.saveStatus(payLogId)  
+                },action => {
+                    Indicator.close()
+                })
                 vm.$nextTick(()=>{
                     localStorage.removeItem('matchSaveInfo')
                     localStorage.removeItem('allPaymentList')

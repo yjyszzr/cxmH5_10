@@ -20,6 +20,7 @@ export default {
         .then(res => {
             if(res.code==0) {
               localStorage.clear()
+              localStorage.setItem('loginOut','1')
               this.$router.push({
                   path: '/user/password',
                   replace: true

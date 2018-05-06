@@ -28,10 +28,7 @@ export default {
         .then(res => {
             if(res.code==0) {
                 localStorage.setItem('token',res.data.token)
-                this.$router.push({
-                    path: '/',
-                    replace: true
-                })
+                this.$router.go(-1);
                 Toast(res.msg)
             }
 
@@ -55,5 +52,14 @@ export default {
       },
     },
     mounted(){
+    },
+    beforeRouteLeave(to, from, next) {
+      next()
+      if(to.path=='/user'){
+        this.$router.push({
+            path: '/',
+            replace: true
+        })
+      }
     }
 }

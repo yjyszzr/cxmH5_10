@@ -65,6 +65,13 @@ export default {
       if (this.$route.path.split("/")[2]) {
         if (this.$route.path.split("/")[2] == "singleNote") {
           this.$store.dispatch("getmatchSelectedList",[])
+        }else if(localStorage.getItem('loginOut')){
+          this.$router.push({
+            path: '/',
+            replace: false
+          })
+          localStorage.removeItem('loginOut')
+          return false;
         }
       }
       this.$router.go(-1);
