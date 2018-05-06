@@ -25,9 +25,11 @@
                 </section>
                 <section class="box_cen" v-for="(item,i) in mess" v-if="msgType==1" :key='i' >
                         <div class="mess_message" style="margin: 0;padding: 0">
+                            <a v-bind:href="item.msgUrl">
                             <p>{{item.title}}<span>{{item.sendTime}}</span></p>
                             <img :src=item.contentUrl>
-                            <p class="rech">{{item.content}}<a>查看详情<i class="iconfont icon-icon-14" ></i></a></p>
+                            <p class="rech">{{item.content}}<a v-bind:href="item.msgUrl">查看详情<i class="iconfont icon-icon-14" ></i></a></p>
+                            </a>
                         </div>
                 </section>
                 <p class="loadingText" v-show="bottomStatus !== 'loading'&&mess.length>0">{{loadText}}</p>

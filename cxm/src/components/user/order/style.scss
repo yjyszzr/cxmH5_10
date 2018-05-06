@@ -4,11 +4,12 @@
 .order_center{
   .subnav{
     background: #fff;
-    padding: px2rem(20px) px2rem(30px);
+    padding: 0 px2rem(30px);
   }
   .box1{
     display: flex;
     align-items: center;
+    height: px2rem(130px);
     img{
       height: px2rem(86px);
       margin-right: px2rem(16px);
@@ -37,16 +38,15 @@
     }
   }
   .box2{
-    margin-top: px2rem(20px);
     border-top: 1px solid #f1f1f1;
-    padding:px2rem(20px) 0;
+    height: px2rem(115px);
+    //padding:px2rem(20px) 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     p{
       font-size: px2rem(28px);
       color: #505050;
-      margin-top: px2rem(10px);
       display: flex;
       align-items: center;
       justify-content: space-around;
