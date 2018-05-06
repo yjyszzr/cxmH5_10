@@ -18,7 +18,8 @@ export default {
         return {
             payment: {},
             allPaymentList: [],
-            payCode: 'app_weixin'
+            payCode: 'app_weixin',
+            payText: '请完成在线支付'
         }
     },
     created() {
@@ -137,16 +138,18 @@ export default {
                             // }
                             localStorage.setItem('payLogId',res.data.payLogId)
                             MessageBox.confirm('',{
-                                message: '请完成在线支付',
+                                message: this.payText,
                                 title: '确认支付',
-                                confirmButtonText: '支付成功',
+                                confirmButtonText: '完成支付',
                                 cancelButtonText: '更换支付方式'
                             }).then(action => {
+                                Indicator.open()
                                 this.saveStatus(res.data.payLogId)
                             },action => {
                                 Indicator.close()
                             })
-                            location.href = res.data.payUrl
+                            let url = 'http://m.caixiaomi.net/#/'
+                            location.href = res.data.payUrl+ '&h5ck=' + encodeURIComponent(url)
                         }
                     }
                     //Toast(res.msg)
@@ -162,17 +165,52 @@ export default {
                 .then(res => {
                     //console.log(res)
                     if (res.code == 0) {
-                        MessageBox('提示', '支付成功');
-                        Indicator.close()
-                    }else{
                         MessageBox('提示', res.msg);
-                        Indicator.close()
+                        //Indicator.close()
+                    }else{
+                        this.payText = res.msg
+                       // Indicator.close()
                     }
                 })
         }
     },
     mounted() {
-        
+        if(location.href.split('?')[1]&&location.href.split('?')[1].split('=')[1]==1){
+            console.log(location.href)
+            this.payment = JSON.parse(localStorage.getItem('matchSaveInfo'))
+            this.allPaymentList = JSON.parse(localStorage.getItem('allPaymentList'))
+            this.$store.state.mark_playObj.yhList = this.payment.bonusList
+            this.$store.state.mark_playObj.bounsId = this.payment.bonusId
+            this.$store.state.matchObj = JSON.parse(localStorage.getItem('matchObj'))
+            this.$store.state.matchSelectedList = JSON.parse(localStorage.getItem('matchSelectedList'))
+                let payLogId = localStorage.getItem('payLogId')
+                if(this.$store.state.matchSaveInfo.lotteryPlayClassifyId=='5'||this.$store.state.matchSaveInfo.lotteryPlayClassifyId=='3'){
+                    let map = new Map()
+                    JSON.parse(localStorage.getItem('bfIdSaveMap')).forEach(item=>{
+                        map.set(item[0],new Set(item[1]))
+                    })
+                    this.$store.state.mark_playObj.bfIdSaveMap = map
+                }
+                MessageBox.confirm('',{
+                    message: this.payText,
+                    title: '确认支付',
+                    confirmButtonText: '完成支付',
+                    cancelButtonText: '更换支付方式'
+                }).then(action => {
+                    Indicator.open()
+                    this.saveStatus(payLogId)  
+                },action => {
+                    Indicator.close()
+                })
+                this.$nextTick(()=>{
+                    localStorage.removeItem('matchSaveInfo')
+                    localStorage.removeItem('allPaymentList')
+                    localStorage.removeItem('matchObj')
+                    localStorage.removeItem('matchSelectedList')
+                    localStorage.removeItem('bfIdSaveMap')
+                    localStorage.removeItem('payLogId')
+                })  
+        }
     },
     computed: {
         cc() {
@@ -210,9 +248,9 @@ export default {
                     vm.$store.state.mark_playObj.bfIdSaveMap = map
                 }
                 MessageBox.confirm('',{
-                    message: '请完成在线支付',
+                    message: vm.payText,
                     title: '确认支付',
-                    confirmButtonText: '支付成功',
+                    confirmButtonText: '完成支付',
                     cancelButtonText: '更换支付方式'
                 }).then(action => {
                     vm.saveStatus(payLogId)  
