@@ -250,7 +250,7 @@ export default {
       this.fetchData()
     },
     carouselMoney(c){
-      return c.winningMsg.replace(c.winningMoney,'<b>'+c.winningMoney+'</b>')
+      return c.winningMsg.replace(c.winningMoney,'<b style="color:#ea5504;font-weight:400;">'+c.winningMoney+'</b>')
     },
     handleScroll(e) {
       if (

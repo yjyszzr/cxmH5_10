@@ -65,7 +65,6 @@ export default {
       api
         .collectdelete(data)
         .then(res => {
-          //console.log(res)
           if (res.code == 0) {
             this.page = 1
             this.fetchData()

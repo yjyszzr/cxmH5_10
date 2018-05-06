@@ -10,7 +10,7 @@ export default {
   name: 'singleNote',
   data() {
     return {
-      activeName: '1',
+      activeName: ['1','2'],
       playType: this.$route.query.id,
       lottoyId: this.$route.query.ltId,
       classlootoyId: this.$route.query.cltId,
@@ -330,20 +330,20 @@ export default {
     },
     unSelectedClickspf(c, s) {
       if (c.target.innerText.split(' ')[0] == s.matchPlays[1].homeCell.cellName) {
-        this.isSelectedTy(s.matchPlays[1].homeCell, s, '1')
+        this.isSelectedTy(s.matchPlays[1].homeCell, s, '2')
       } else if (c.target.innerText.split(' ')[0] == s.matchPlays[1].flatCell.cellName) {
-        this.isSelectedTy(s.matchPlays[1].flatCell, s, '1')
+        this.isSelectedTy(s.matchPlays[1].flatCell, s, '2')
       } else if (c.target.innerText.split(' ')[0] == s.matchPlays[1].visitingCell.cellName) {
-        this.isSelectedTy(s.matchPlays[1].visitingCell, s, '1')
+        this.isSelectedTy(s.matchPlays[1].visitingCell, s, '2')
       }
     },
     unSelectedClickrq(c, s) {
       if (c.target.innerText.split(' ')[0] == s.matchPlays[0].homeCell.cellName) {
-        this.isSelectedTy(s.matchPlays[0].homeCell, s, '0')
+        this.isSelectedTy(s.matchPlays[0].homeCell, s, '1')
       } else if (c.target.innerText.split(' ')[0] == s.matchPlays[0].flatCell.cellName) {
-        this.isSelectedTy(s.matchPlays[0].flatCell, s, '0')
+        this.isSelectedTy(s.matchPlays[0].flatCell, s, '1')
       } else if (c.target.innerText.split(' ')[0] == s.matchPlays[0].visitingCell.cellName) {
-        this.isSelectedTy(s.matchPlays[0].visitingCell, s, '0')
+        this.isSelectedTy(s.matchPlays[0].visitingCell, s, '1')
       }
     },
     //清除

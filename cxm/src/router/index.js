@@ -165,15 +165,15 @@ const router = new Router({
           path: '/freebuy/cathectic',
           name: 'cathectic',
           cname:'投注确认',
-          meta: {
-            requireAuth: true
-          },
           component: resolve => require(['@/components/freebuy/cathectic/index.vue'], resolve)
       },
       {
           path: '/freebuy/payment',
           name: 'payment',
           cname:'支付订单',
+          meta: {
+            requireAuth: true
+          },
           component: resolve => require(['@/components/freebuy/payment/index.vue'], resolve)
       },
       {
@@ -232,6 +232,7 @@ NProgress.configure({ showSpinner: false });
 router.beforeEach(async(to, from, next) => {
 	if(to.matched.some(record => record.meta.requireAuth)) {
 		if(!localStorage.getItem('token')) {
+            localStorage.clear()
             Toast('您还未登录，请先登录')
 			next({
 				path: '/user/password',

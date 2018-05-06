@@ -7,7 +7,7 @@
                 <div class="liBox" v-for="(item,i) in scList" :key='i'>
                 <li>
                     <div class="scDelete" v-if="deleteFlag" @click="deleteItem(item.articleId)">
-                        <i class="iconfont icon-icon-50"></i>
+                        <i class="iconfont icon-icon-37"></i>
                     </div>
                     <div class="choice" @click="goZxDetail(item.articleId)">
 						<div v-if="item.listStyle==2||item.listStyle==3||item.listStyle==0">

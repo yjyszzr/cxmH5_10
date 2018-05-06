@@ -14,17 +14,17 @@
                 <th rowspan="3" class="title0">胜平负</th>
                 <tr class="title">
                     <th :class="!scoreObj.flag&&scoreObj.matchPlays[1].homeCell.isSelected?'bfSelected':''">
-                        <b @click="unSelectedClickspf($event,scoreObj.matchPlays[1].homeCell,'1',scoreObj.matchPlays[1].single)"></b>
+                        <b @click="unSelectedClickspf($event,scoreObj.matchPlays[1].homeCell,'2',scoreObj.matchPlays[1].single)"></b>
                         <span>{{!scoreObj.flag?scoreObj.matchPlays[1].homeCell.cellName:''}}</span>
                         <span>{{!scoreObj.flag?scoreObj.matchPlays[1].homeCell.cellOdds:''}}</span>
                     </th>
                     <th :class="!scoreObj.flag&&scoreObj.matchPlays[1].flatCell.isSelected?'bfSelected':''">
-                        <b @click="unSelectedClickspf($event,scoreObj.matchPlays[1].flatCell,'1',scoreObj.matchPlays[1].single)"></b>
+                        <b @click="unSelectedClickspf($event,scoreObj.matchPlays[1].flatCell,'2',scoreObj.matchPlays[1].single)"></b>
                         <span>{{!scoreObj.flag?scoreObj.matchPlays[1].flatCell.cellName:''}}</span>
                         <span>{{!scoreObj.flag?scoreObj.matchPlays[1].flatCell.cellOdds:''}}</span>
                     </th>
                     <th :class="!scoreObj.flag&&scoreObj.matchPlays[1].visitingCell.isSelected?'bfSelected':''">
-                        <b @click="unSelectedClickspf($event,scoreObj.matchPlays[1].visitingCell,'1',scoreObj.matchPlays[1].single)"></b>
+                        <b @click="unSelectedClickspf($event,scoreObj.matchPlays[1].visitingCell,'2',scoreObj.matchPlays[1].single)"></b>
                         <span>{{!scoreObj.flag?scoreObj.matchPlays[1].visitingCell.cellName:''}}</span>
                         <span>{{!scoreObj.flag?scoreObj.matchPlays[1].visitingCell.cellOdds:''}}</span>
                     </th>
@@ -34,17 +34,17 @@
                 <th rowspan="3" class="title0">让球<br/>{{!scoreObj.flag?scoreObj.matchPlays[0].fixedOdds:''}}</th>
                 <tr class="title">
                     <th :class="!scoreObj.flag&&scoreObj.matchPlays[0].homeCell.isSelected?'bfSelected':''">
-                        <b @click="unSelectedClickspf($event,scoreObj.matchPlays[0].homeCell,'0',scoreObj.matchPlays[0].single)"></b>
+                        <b @click="unSelectedClickspf($event,scoreObj.matchPlays[0].homeCell,'1',scoreObj.matchPlays[0].single)"></b>
                         <span>{{!scoreObj.flag?scoreObj.matchPlays[0].homeCell.cellName:''}}</span>
                         <span>{{!scoreObj.flag?scoreObj.matchPlays[0].homeCell.cellOdds:''}}</span>
                     </th>
                     <th :class="!scoreObj.flag&&scoreObj.matchPlays[0].flatCell.isSelected?'bfSelected':''">
-                        <b @click="unSelectedClickspf($event,scoreObj.matchPlays[0].flatCell,'0',scoreObj.matchPlays[0].single)"></b>
+                        <b @click="unSelectedClickspf($event,scoreObj.matchPlays[0].flatCell,'1',scoreObj.matchPlays[0].single)"></b>
                         <span>{{!scoreObj.flag?scoreObj.matchPlays[0].flatCell.cellName:''}}</span>
                         <span>{{!scoreObj.flag?scoreObj.matchPlays[0].flatCell.cellOdds:''}}</span>
                     </th>
                     <th :class="!scoreObj.flag&&scoreObj.matchPlays[0].visitingCell.isSelected?'bfSelected':''">
-                        <b @click="unSelectedClickspf($event,scoreObj.matchPlays[0].visitingCell,'0',scoreObj.matchPlays[0].single)"></b>
+                        <b @click="unSelectedClickspf($event,scoreObj.matchPlays[0].visitingCell,'1',scoreObj.matchPlays[0].single)"></b>
                         <span>{{!scoreObj.flag?scoreObj.matchPlays[0].visitingCell.cellName:''}}</span>
                         <span>{{!scoreObj.flag?scoreObj.matchPlays[0].visitingCell.cellOdds:''}}</span>
                     </th>

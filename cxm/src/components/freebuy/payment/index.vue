@@ -37,14 +37,14 @@
         <section class="section">
             <p class="mode">支付方式</p>
             <ul class="msg_list">
-                <li @click="wxClick()">
+                <li @click="wxClick($event,i,item)" v-for="(item,i) in allPaymentList" :key='i'>
                     <a href="javascript:void(0);">
                         <div>
                             <img src="../../../assets/img/wei.png">
                             <span class="arrow_kefu float_right">
-                                <i ref="wxSelected" class="wxSelected iconfont icon-icon-29"></i>
+                                <i ref="wxSelected" class="iconfont icon-icon-29" :class="i==0?'wxSelected':''"></i>
                             </span>
-                            <span class="message">微信支付</span>
+                            <span class="message">{{item.payName}}</span>
                         </div>
                     </a>
                 </li>

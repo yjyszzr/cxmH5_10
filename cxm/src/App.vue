@@ -389,6 +389,7 @@ textarea {
       border-bottom: 1px solid #e5e5e5;
       height: px2rem(110px);
       box-sizing: border-box;
+      overflow: hidden;
       div {
         img {
           float: left;

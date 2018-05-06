@@ -9,7 +9,8 @@
         <div class="order_center">
             <div class="subnav">
                 <div class="box1">
-                    <img :src="orderObj.lotteryClassifyImg">
+                    <img src="../../../assets/img/img1.png" alt="">
+                    <!-- <img :src="orderObj.lotteryClassifyImg"> -->
                     <div>
                         <p>{{orderObj.lotteryClassifyName}}<span :style="{'color':orderObj.orderStatus=='5'?'#e95504':'#505050'}">{{orderObj.processResult}}</span></p>
                         <p>
@@ -43,7 +44,11 @@
                     <li v-for='(item,i) in orderObj.matchInfos' :key='i'>
                         <div class="item">{{item.changci}}</div>
                         <div class="item"><span>{{item.match.split('VS')[0]}}</span><span>VS</span><span>{{item.match.split('VS')[1]}}</span></div>
-                        <div class="item">{{item.playType}}</div>
+                        <div class="item">
+                            <p v-for='(data,index) in item.cathecticResults' :key='index'>
+                                {{data.playType}}
+                            </p>
+                        </div>
                         <div class="item">
                             <p v-for='(data,index) in item.cathecticResults' :key='index'>
                                 <span v-for='(data1,index1) in data.cathectics' :key='index1' :style='{"color":data1.isGuess=="1"?"#ea5504":"#505050"}'>{{data1.cathectic}}</span>

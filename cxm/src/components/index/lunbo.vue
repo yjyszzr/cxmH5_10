@@ -35,9 +35,10 @@
 		bottom: 0;
 	}
 	.mint-swipe{
-		height: px2rem(306px);
+		height: px2rem(306px)!important;
+		overflow: hidden;
 		.mint-swipe-item{
-			position: relative;
+			//position: relative;
 			height: px2rem(306px);
 			img{
 				display: block;

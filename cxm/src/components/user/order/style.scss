@@ -99,8 +99,13 @@
           }
         }
       }
-      .item:nth-child(2),.item:nth-child(4),.item:nth-child(5){
+      .item:nth-child(2),.item:nth-child(4),.item:nth-child(5),.item:nth-child(3){
         flex-direction: column;
+      }
+      .item:nth-child(3){
+        p{
+          font-size: px2rem(22px);
+        }
       }
     }
     li:last-child{

@@ -34,15 +34,17 @@ axios.interceptors.request.use(
 // });
 //返回状态错误处理
 axios.interceptors.response.use((res) =>{
-    if(res.data.code>=30000&&res.data.code<=310000){
-        Toast(res.data.msg)
-    }else if(res.data.code==600){
-        localStorage.clear()
-        router.replace({
-            path: '/user/password',
-        })
+    if(res.request.responseURL.indexOf('payment/query')==-1){
+        if(res.data.code>=30000&&res.data.code<=310000){
+            Toast(res.data.msg)
+        }else if(res.data.code==600){
+            localStorage.clear()
+            router.replace({
+                path: '/user/password',
+            })
+        }
+        Indicator.close()
     }
-    Indicator.close()
     return res;
 }, (error) => {
     if (error && error.response) {
@@ -293,5 +295,17 @@ export default {
     //资讯列表,查看更多
     relatedArticles(params){
         return fetchPost('lottery/dl/article/relatedArticles',params)
+    },
+    //系统可用第三方支付
+    allPayment(params){
+        return fetchPost('payment/payment/allPayment',params)
+    },
+    //轮回查询
+    query(params){
+        return fetchPost('payment/payment/query',params)
+    },
+    //投诉建议
+    complainAdd(params){
+        return fetchPost('member/dl/complain/add',params)
     },
 }
