@@ -1,6 +1,13 @@
 @import '../../../assets/css/function.scss';
 .singleNote{
-    padding-bottom: px2rem(72px); 
+    padding-bottom: px2rem(100px);
+    .el-collapse{
+        position: absolute;
+        overflow: scroll;
+        width: 100%;
+        top: 0;
+        bottom:px2rem(88px);
+    }
     .matchTitle{
         background: white;
         height: px2rem(72px);
@@ -287,10 +294,11 @@
             border: none!important;
         }
     }
+
     .match_footer{
         height: px2rem(88px);
         background: white;
-        position: fixed;
+        position: absolute;
         bottom: 0;
         width: 100%;
         border-top: 1px solid #f0f0f0;
@@ -343,4 +351,5 @@
     .icon-icon-22{
         font-size: px2rem(24px);
     }
+
 }

@@ -37,14 +37,22 @@
         position: relative;
         width: px2rem(720px);
         margin: px2rem(15px) auto 0;
+        i{
+            border-top: 1px dashed #e5e5e5;
+            height: px2rem(1px);
+            width: 98%;
+            display: block;
+            margin: 0 auto;
+        }
         .yh_ItemTop{
-            background: white;
-            padding: px2rem(27px) 0 px2rem(27px) px2rem(38px);
-            border-bottom: 1px dashed #ccc;
+            background: #fff;
+            background: url(../../../assets/img/halfcoupondown.png) no-repeat;
+            background-size: 100% 100%;
+            padding: px2rem(19px) px2rem(20px) px2rem(19px) px2rem(38px);
             display: flex;
             align-items: center;
             p:first-of-type{
-                width: px2rem(300px);
+                width: px2rem(265px);
                 color: #e95504;
                 span:first-of-type{
                     font-size: px2rem(36px);
@@ -54,7 +62,7 @@
                 }
             }
             p:last-of-type{
-                display: flex;
+                //display: flex;
                 justify-content: space-around;
                 flex-direction: column;
                 font-weight: 600;
@@ -63,8 +71,10 @@
             }
         }
         .yh_ItemBottom{
-            background: white;
-            padding: px2rem(35px) 0 px2rem(35px) px2rem(38px);
+            background: url(../../../assets/img/halfcouponup.png) no-repeat;
+            background-size: 100%;
+            margin-top: px2rem(-1px);
+            padding: px2rem(27px) 0 px2rem(35px) px2rem(38px);
             p{
                 font-size: px2rem(20px);
                 span:first-of-type{

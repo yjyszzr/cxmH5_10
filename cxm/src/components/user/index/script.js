@@ -6,7 +6,6 @@ export default {
     data () {
       return {
         userInfo: {
-            mobile:'13100131000',
             totalMoney:'0.00',
             userMoney:'0.00',
             headimg:''

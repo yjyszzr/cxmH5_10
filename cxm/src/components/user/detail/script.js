@@ -11,7 +11,9 @@ export default {
         yhList: [],
         bottomStatus: '',
         allLoaded: false,
-        loadText: '上拉加载更多...'
+        loadText: '上拉加载更多...',
+          activeColor:'#666',
+          curColor:'#999'
       }
     },
     beforeCreate() {

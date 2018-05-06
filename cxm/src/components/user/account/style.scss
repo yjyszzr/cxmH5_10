@@ -9,7 +9,14 @@
    box-sizing: border-box;
  }
  .count{
-   padding-bottom: px2rem(134px); 
+   padding-bottom: px2rem(134px);
+   .ov_account{
+     position: absolute;
+     overflow: scroll;
+     width: 100%;
+     top: 0;
+     bottom:px2rem(140px);
+   }
    .zhmxlist{
     .list{
       margin:0  px2rem(30px);
@@ -66,7 +73,7 @@
  }
  .base{
    border-top: 1px solid #f0f0f0;
-   position: fixed;
+   position: absolute;
    bottom: 0;
    width: 100%;
    margin-top: 0;

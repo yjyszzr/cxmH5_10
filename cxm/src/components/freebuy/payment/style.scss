@@ -1,5 +1,12 @@
  @import '../../../assets/css/function.scss';
  .payment{
+   .j_sent{
+     position: absolute;
+     overflow: scroll;
+     width: 100%;
+     top: 0;
+     bottom:px2rem(88px);
+   }
   .mode{
     color: #505050;
     margin-left: px2rem(30px);
@@ -22,7 +29,7 @@
     }
   }
   .paymentBtn{
-    position: fixed;
+    position: absolute;
     bottom: 0;
     height: px2rem(108px);
     background: #ea5504;

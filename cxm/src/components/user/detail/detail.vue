@@ -11,14 +11,21 @@
                         <img src="../../../assets/img/yiguoqi.png" alt="" v-if="item.bonusStatus==2">
                         <img src="../../../assets/img/shiyong.png" alt="" v-if="item.bonusStatus==1">
                         <div class="yh_ItemTop">
-                            <p>
+                            <p v-if="item.bonusStatus==0" >
+                                <span>¥</span><span>{{item.bonusPrice}}</span>
+                            </p>
+                            <p v-if="item.bonusStatus==2" v-bind:style="{ color: curColor}" >
+                                <span>¥</span><span>{{item.bonusPrice}}</span>
+                            </p>
+                            <p v-if="item.bonusStatus==1" v-bind:style="{ color: activeColor}">
                                 <span>¥</span><span>{{item.bonusPrice}}</span>
                             </p>
                             <p>
-                                <span>{{item.minGoodsAmount}}</span>
+                                <span>{{item.minGoodsAmount}}</span><br/>
                                 <span>{{item.useRange}}</span>
                             </p>
                         </div>
+                        <i></i>
                         <div class="yh_ItemBottom">
                             <p>
                                 <span>有效期:</span>
