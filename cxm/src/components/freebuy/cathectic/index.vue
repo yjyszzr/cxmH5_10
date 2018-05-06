@@ -4,7 +4,7 @@
 
 <template>
     <div class="wrap cathectic">
-        <div style="padding-bottom: 3.2rem;">
+        <div class="hcontent" style="padding-bottom: 3.2rem;">
             <section class="section" :class="$route.query.playType=='6'?'hhTz':''" v-for="(item,i) in $store.state.matchSelectedList" :key='i'>
                 <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="item.matchPlays[0].single=='1'||(item.matchPlays[1]&&item.matchPlays[1].single=='1')">
                 <div class="cont">

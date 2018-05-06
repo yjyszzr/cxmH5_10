@@ -1,6 +1,13 @@
 @import '../../../assets/css/function.scss';
 .order{
   height: auto;
+  .j_onshed{
+    position: absolute;
+    overflow: scroll;
+    width: 100%;
+    top: 0;
+    bottom:px2rem(88px);
+  }
 .order_center{
   .subnav{
     background: #fff;
@@ -162,7 +169,7 @@
   font-size: px2rem(30px);
 }
 .Fixed{
-  position: fixed;
+  position: absolute;
   bottom: 0;
 }
 }
