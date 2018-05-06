@@ -46,8 +46,6 @@ export default {
                     path: '/user/password',
                     replace: true
                 })
-            }else{
-              Toast(res.msg)
             }
         })
       },

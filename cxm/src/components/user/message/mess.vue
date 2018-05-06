@@ -23,11 +23,11 @@
                         <a class="rout">查看详情 <b class="iconfont icon-icon-14"></b> </a>
                     </div>
                 </section>
-                <section class="box_cen" v-for="(item,i) in mess" v-if="msgType==1" :key='i'>
-                        <div class="mess_message" >
-                            <p>充值返红包活动<span>今日&nbsp;&nbsp;16:30</span></p>
-                            <img src="../../../assets/img/banner.jpg">
-                            <p class="rech">充值狂中800元！<a>查看详情<i class="iconfont icon-icon-14" ></i></a></p>
+                <section class="box_cen" v-for="(item,i) in mess" v-if="msgType==1" :key='i' >
+                        <div class="mess_message" style="margin: 0;padding: 0">
+                            <p>{{item.title}}<span>{{item.sendTime}}</span></p>
+                            <img :src=item.contentUrl>
+                            <p class="rech">{{item.content}}<a>查看详情<i class="iconfont icon-icon-14" ></i></a></p>
                         </div>
                 </section>
                 <p class="loadingText" v-show="bottomStatus !== 'loading'&&mess.length>0">{{loadText}}</p>

@@ -215,7 +215,6 @@
             </div>
             <!--赔率-->
             <v-detail v-if="flag==true" :leagueMatchAsias='ckxqObj.leagueMatchAsias' :leagueMatchEuropes='ckxqObj.leagueMatchEuropes'></v-detail>
-            <div class="bottom" @click="goTZ()">去投注</div>
         </section>
     </div>
 </template>

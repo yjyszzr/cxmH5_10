@@ -9,7 +9,8 @@ export default {
       }
     },
     created(){
-      
+
+
     },
     methods: {
       add_card(){
@@ -19,10 +20,17 @@ export default {
         }
         api.addBankCard(data)
         .then(res => {
-            Toast(res.msg)
-            this.$router.go(-1)
+            if(res.code == 0 ){
+                Toast(res.msg)
+                this.$router.go(-1)
+            }
+
+
         })
-      }
+      },
+        bankCard(){
+            this .blankNum = this.blankNum.replace(/\s/g, '').replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, '$1 ');
+        }
     },
     mounted(){
    

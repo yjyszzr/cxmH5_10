@@ -21,8 +21,6 @@ const actions = {
                 if (res.code == 0) {
                     	//console.log(res)
                     commit("MATCHLIST", res.data);
-                } else {
-                    Toast(res.msg)
                 }
             })
     },
@@ -34,8 +32,6 @@ const actions = {
                 if (res.code == 0) {
                     //console.log(res)
                     commit("RESULT", res.data);
-                } else {
-                    Toast(res.msg)
                 }
             })
     },
@@ -182,8 +178,6 @@ const actions = {
                 //console.log(res)
                 if (res.code == 0) {
                     commit("ZXDETAILOBJ", res.data)
-                } else {
-                    Toast(res.msg)
                 }
             })
     },

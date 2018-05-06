@@ -47,8 +47,6 @@ export default {
                 		this.allLoaded = true
               }
               this.yhList = this.yhList.concat(res.data.list)
-            }else{
-              Toast(res.msg)
             }
         })
       },

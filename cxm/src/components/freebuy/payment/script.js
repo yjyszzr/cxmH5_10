@@ -140,7 +140,7 @@ export default {
                             location.href = res.data.payUrl
                         }
                     }
-                    Toast(res.msg)
+                    //Toast(res.msg)
                 })
         },
         wxClick(c, index, s) {
@@ -230,6 +230,5 @@ export default {
         this.$store.state.mark_playObj.mark_playBox = false
         this.$store.state.mark_playObj.mark_play = ''
         this.$store.state.mark_playObj.bonusId = ''
-        clearInterval(this.timeDate)
     }
 }

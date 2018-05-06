@@ -21,8 +21,9 @@ const mutations = {
                             state.smsCode.changeText = '<b style="color: #ea5504;font-weight:400;">'+state.smsCode.changeNumber + 's</b>后重新获取'
                         }
                     }, 1000)
+                    Toast(res.msg)
                 }
-                Toast(res.msg)
+
             })
     },
     RESET(state) {

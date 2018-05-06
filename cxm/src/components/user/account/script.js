@@ -38,8 +38,6 @@ export default {
                 		this.allLoaded = true
               }
               this.mxList = this.mxList.concat(res.data.list)
-            }else{
-              Toast(res.msg)
             }
         })
       },
@@ -94,8 +92,6 @@ export default {
           // console.log(res)
             if(res.code==0) {
               this.totalNum = res.data
-            }else{
-              Toast(res.msg)
             }
         })
     }

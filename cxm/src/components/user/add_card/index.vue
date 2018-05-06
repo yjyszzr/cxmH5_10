@@ -15,7 +15,7 @@
                 </a>
                 <a href="javascript:void(0);">
                     <div>
-                        <input type="tel" maxlength='26' onKeyPress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" v-model="blankNum" class="text" placeholder="请输入银行卡号"/>
+                        <input type="tel" @input="bankCard()" maxlength='26' onKeyPress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" v-model="blankNum" class="text" placeholder="请输入银行卡号"/>
                     </div>
                 </a>
             </li>

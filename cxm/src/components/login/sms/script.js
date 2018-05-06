@@ -40,8 +40,9 @@ export default {
                     path: '/',
                     replace: true
                 })
+                Toast(res.msg)
             }
-            Toast(res.msg)
+
         })
       },
       handleCommentFocus(){

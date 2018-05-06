@@ -31,8 +31,6 @@ export default {
                 if(res.code==0) {
                    // console.log(res)
                   this.ckxqObj = res.data
-                }else{
-                    Toast(res.msg)
                 }
             })
       },

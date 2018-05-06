@@ -58,7 +58,6 @@ export default {
                 api.collectAdd(data)
                     .then(res => {
                         //console.log(res)
-                        Toast(res.msg)
                     })
             }else{
                 let data = {
@@ -67,7 +66,10 @@ export default {
                   api
                     .collectdelete(data)
                     .then(res => {
-                        Toast(res.msg);
+                        if(res.code == 0){
+                            Toast(res.msg);
+                        }
+
                     })
             }
         }
