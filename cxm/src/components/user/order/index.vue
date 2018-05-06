@@ -27,7 +27,8 @@
                     </p>
                     <p>
                         <span v-if="orderObj.orderStatus=='5'">中奖金额</span>
-                        <span :style="{'color':orderObj.orderStatus=='5'?'#ea5504':'#505050'}">{{orderObj.processStatusDesc}}</span>
+                        <span :style="{'color':orderObj.orderStatus=='5'?'#ea5504':'#505050'}" v-if="orderObj.orderStatus=='5'">￥{{orderObj.processStatusDesc}}</span>
+
                     </p>
                 </div>
             </div>
