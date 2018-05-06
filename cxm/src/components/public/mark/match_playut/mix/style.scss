@@ -26,13 +26,14 @@
   .table{
     box-sizing: border-box;
     margin: 0 auto;
-    border: 1px solid #f1f1f1;
+    border: 1px solid #c7c7c7;
     border-right: none;
     margin-bottom:px2rem(20px);
     tr{
       width: px2rem(640px);
       display: flex;
       flex-wrap: wrap;
+      line-height: px2rem(26px);
       th{
         border:0;
         width: 33.3%;
@@ -41,8 +42,8 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        border-bottom: 1px solid #f1f1f1;
-        border-right: 1px solid #f1f1f1;
+        border-bottom: 1px solid #c7c7c7;
+        border-right: 1px solid #c7c7c7;
         font-size: px2rem(26px);
         color: #505050;
         box-sizing: border-box;

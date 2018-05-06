@@ -29,7 +29,7 @@
         </section>
 
         <section class="guanwang">
-            <p>客服热线：<span>400-000-1234</span></p>
+            <p>客服热线：<span>010-84505099</span></p>
             <p>官网：<span>http://www.caixiaomi.com</span></p>
         </section>
     </div>

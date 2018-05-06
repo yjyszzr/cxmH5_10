@@ -5,7 +5,12 @@ export default {
     name: 'index',
     data () {
       return {
-        userInfo: {}
+        userInfo: {
+            mobile:'13100131000',
+            totalMoney:'0.00',
+            userMoney:'0.00',
+            headimg:''
+        }
       }
     },
     beforeCreate() {
@@ -19,6 +24,7 @@ export default {
         api.logout({})
         .then(res => {
             if(res.code==0) {
+                console.log(res)
               localStorage.clear()
               localStorage.setItem('loginOut','1')
               this.$router.push({
