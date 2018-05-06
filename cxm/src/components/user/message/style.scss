@@ -120,8 +120,8 @@
     margin: px2rem(15px);
     padding: 0 px2rem(31px);
     p{
-      height: px2rem(72px);
-      line-height: px2rem(72px);
+      //height: px2rem(72px);
+      //line-height: px2rem(72px);
       color: #505050;
       font-size: px2rem(30px);
       span{
@@ -132,6 +132,8 @@
     }
     img{
       width: 100%;
+      margin-top: px2rem(20px);
+      margin-bottom: px2rem(20px);
     }
     .rech{
       color: #787878;
