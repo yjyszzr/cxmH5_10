@@ -20,6 +20,8 @@ import HeaderTop from "./components/public/header/Header";
 import footer from "./components/public/footer/footer";
 import mark from "./components/public/mark/mark";
 import pmark from "./components/public/mark/match_playut/mark_playut";
+import {ScrollFix} from './util/common'
+// import LocalScrollFix from 'Localscrollfix'
 export default {
   name: "App",
   components: {
@@ -149,6 +151,11 @@ export default {
          return true;
       }
     }
+  },
+  mounted(){
+    // var scrollable = document.getElementById("content");
+    // new ScrollFix(scrollable);
+    // LocalScrollFix('.win')
   }
 };
 </script>

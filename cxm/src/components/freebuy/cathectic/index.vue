@@ -4,7 +4,7 @@
 
 <template>
     <div class="wrap cathectic">
-        <div class="hcontent" style="padding-bottom: 3.2rem;">
+        <div class="bx">
             <section class="section" :class="$route.query.playType=='6'?'hhTz':''" v-for="(item,i) in $store.state.matchSelectedList" :key='i'>
                 <img src="../../../assets/img/freebuy_img/Singlefield@2x.png" alt="" class="dan_icon" v-show="item.matchPlays[0].single=='1'||(item.matchPlays[1]&&item.matchPlays[1].single=='1')">
                 <div class="cont">
@@ -87,7 +87,7 @@
             </ul>
             <div>
                 <div class="left">
-                    <p>{{betObj.betNum}}注{{betObj.times}}倍&nbsp;&nbsp;共需：<span>￥{{betObj.money}}</span></p><br/>预测奖金：<span>￥{{betObj.minBonus}}-{{betObj.maxBonus}}</span>
+                    <p>{{betObj.betNum}}注{{betObj.times}}倍&nbsp;&nbsp;共需：<span>￥{{betObj.money}}</span></p><br/>预测奖金：<span class="ycjj">￥{{betObj.minBonus}}-{{betObj.maxBonus}}</span>
                 </div>
                 <a class="right" @click="saveGo()">确定</a>
             </div>

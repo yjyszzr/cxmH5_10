@@ -279,9 +279,17 @@
        }
     }
    }
+   .bx{
+     position: absolute;
+     top: 0;
+     bottom: px2rem(200px);
+     overflow: scroll;
+     width: 100%;
+     padding-bottom: px2rem(40px);
+   }
    .fixed{
      border-top: 1px solid #f0f0f0;
-     position: fixed;
+     position: absolute;
      background: #fff;
      width: 100%;
      bottom: 0;
@@ -344,12 +352,20 @@
          padding: 0 0 0 px2rem(30px);
          width: 66%;
          float: left;
-         line-height: px2rem(18px);
+         line-height: px2rem(20px);
          span{
             color: #e95504;
          }
+         .ycjj{
+          text-overflow:ellipsis;
+          white-space: nowrap;
+          display: inline-block;
+          overflow: hidden;
+          width: px2rem(300px);
+          margin-top: px2rem(-8px);
+         }
          p{
-           padding-top: px2rem(22px);
+           padding-top: px2rem(18px);
          }
        }
        .right{
