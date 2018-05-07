@@ -498,6 +498,12 @@ export default {
 			if(this.$refs.xySelected.className == 'icon-icon-29 iconfont'){
 				Toast('请勾选服务协议')
 				return
+			}else if(this.disable==true){
+				Toast('请至少选择2场比赛')
+				return
+			}else if(this.arrTime[0]*1000<new Date().getTime()){
+				Toast('部分比赛投注截止')
+				return
 			}
 			this.$store.state.matchSaveInfo = this.matchSave
 			this.$router.push({
@@ -671,7 +677,6 @@ export default {
 		next()
 		this.$store.state.mark_playObj.mark_playBox = false
 		this.$store.state.mark_playObj.mark_play = ''
-		this.$store.state.mark_playObj.mupNum = '5'
 		localStorage.setItem('tab', true)
 	}
 }

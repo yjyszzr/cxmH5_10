@@ -10,7 +10,7 @@ export default {
       return {
           result:{},
           activeName: '1',
-          flag: true,
+        //   flag: true,
       }
     },
     created(){
@@ -33,25 +33,17 @@ export default {
         }
       },
     methods:{
-        data_time(){
-            this.$store.dispatch("getMarkShow",true)
-            this.$store.dispatch("getMarkShowType",1)
-        },
-        more(){
-            this.$store.dispatch("getMarkShow",true)
-            this.$store.dispatch("getMarkShowType",2)
-        },
-        all(c){
-            if(c.target.innerText == '全部'){
-                this.flag=false
-                this.$store.dispatch("getMatchFinish",'1')
-            }else{
-                this.flag=true
-                this.$store.dispatch("getMatchFinish",'')
-            }
-            Indicator.open()
-            this.fetchData()
-        },
+        // all(c){
+        //     if(c.target.innerText == '全部'){
+        //         this.flag=false
+        //         this.$store.dispatch("getMatchFinish",'1')
+        //     }else{
+        //         this.flag=true
+        //         this.$store.dispatch("getMatchFinish",'')
+        //     }
+        //     Indicator.open()
+        //     this.fetchData()
+        // },
         goDetail(c){
             this.$router.push({
                 path: '/lottery/teamDetail',

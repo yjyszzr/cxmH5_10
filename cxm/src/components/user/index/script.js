@@ -23,7 +23,7 @@ export default {
         api.logout({})
         .then(res => {
             if(res.code==0) {
-                console.log(res)
+              //  console.log(res)
               localStorage.clear()
               localStorage.setItem('loginOut','1')
               this.$router.push({

@@ -1,14 +1,14 @@
 <style lang='scss' src='./style.scss'></style>
 <template>
     <div class="wrap result">
-        <section>
+        <!-- <section>
             <ul class="list">
                 <li @click='data_time()'>{{$store.state.mark_showObj.mark_dateVal}}<i class="iconfont icon-icon-31"></i></li>
                 <li @click='more()'>更多条件<i class="iconfont icon-icon-31"></i></li>
                 <li @click='all($event)' v-if="flag==true">全部<i class="iconfont icon-icon-31"></i></li>
                 <li @click='all($event)' v-if="flag==false">已结束<i class="iconfont icon-icon-31"></i></li>
             </ul>
-        </section>
+        </section> -->
         <section>
             <el-collapse v-model="activeName">
                 <el-collapse-item name='1'>

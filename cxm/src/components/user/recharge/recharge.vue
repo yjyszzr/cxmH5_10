@@ -20,20 +20,20 @@
         <section class="section wechat">
             <p>支付方式</p>
             <ul class="msg_list">
-                <li>
-                    <a href="javascript:void(0);">
-                        <div>
-                            <img style="margin-left:0.25rem;width: 0.68rem;" src="../../../assets/img/wei.png">
-                            <span class="arrow_kefu float_right">
-                                <i class="iconfont icon-icon-29"></i>
+                <li @click="wxClick($event,i,item)" v-for="(item,i) in allPaymentList" :key='i'>
+                        <a href="javascript:void(0);">
+                            <div>
+                                <img :src="item.payImg">
+                                <span class="arrow_kefu float_right">
+                                <i ref="wxSelected" class="iconfont icon-icon-29" :class="item.payCode==payCode?'wxSelected':''"></i>
                             </span>
-                            <span class="message">微信支付</span>
-                        </div>
-                    </a>
+                                <span class="message">{{item.payName}}</span>
+                            </div>
+                        </a>
                 </li>
             </ul>
         </section>
-        <section class="button">
+        <section class="button" @click="determine()">
             <a class="determine">立即支付</a>
         </section>
         <div class="prompt"></div>

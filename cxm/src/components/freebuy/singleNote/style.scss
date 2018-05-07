@@ -1,12 +1,12 @@
 @import '../../../assets/css/function.scss';
 .singleNote{
-    padding-bottom: px2rem(100px);
     .el-collapse{
         position: absolute;
         overflow: scroll;
         width: 100%;
-        top: 0;
+        top: px2rem(72px);
         bottom:px2rem(88px);
+        padding-top: px2rem(10px);
     }
     .matchTitle{
         background: white;
@@ -16,7 +16,8 @@
         padding-left: px2rem(22px);
         color: #9f9f9f;
         font-size: px2rem(26px);
-        margin-bottom: px2rem(10px);
+        border-bottom: 1px solid #f0f0f0;
+        box-sizing: border-box;
     }
     .hotMatch,.icon-icon-23{
         color: #ea5504;

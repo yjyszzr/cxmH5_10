@@ -20,7 +20,9 @@
                         </div>
                     <div class="box_title">
                         <p>中奖金额已打入您的账户</p>
-                        <a class="rout">查看详情 <b class="iconfont icon-icon-14"></b> </a>
+                        <a class="rout">
+                            <!-- 查看详情 <b class="iconfont icon-icon-14"></b>  -->
+                            </a>
                     </div>
                 </section>
                 <section class="box_cen" v-for="(item,i) in mess" v-if="msgType==1" :key='i' >

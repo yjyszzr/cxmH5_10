@@ -308,4 +308,12 @@ export default {
     complainAdd(params){
         return fetchPost('member/dl/complain/add',params)
     },
+    //提现
+    withdraw(params){
+        return fetchPost('payment/cash/withdraw',params)
+    },
+    //充值
+    recharge(params){
+        return fetchPost('payment/payment/recharge',params)
+    },
 }

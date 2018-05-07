@@ -10,10 +10,8 @@ export default {
   name: 'singleNote',
   data() {
     return {
-      activeName: ['1','2'],
+      activeName: ['1','2','3','4','5','6'],
       playType: this.$route.query.id,
-      lottoyId: this.$route.query.ltId,
-      classlootoyId: this.$route.query.cltId,
       leagueId: '',
       matchObj: {},
       flag: true,
@@ -56,24 +54,24 @@ export default {
       if(this.playType == '6'){
         if(c.selectedList.length>0){
           if(this.arrNum>15){
-            Toast('最多选择15注')
+            Toast('最多选择15场比赛')
             return false;
           }
         }else{
           if(this.arrNum>=15){
-            Toast('最多选择15注')
+            Toast('最多选择15场比赛')
             return false;
           }
         }
       }else{
         if(this.matchSelectObj.has(c.matchId)){
           if(this.matchSelectObj.size>15){
-            Toast('最多选择15注')
+            Toast('最多选择15场比赛')
             return false;
           }
         }else{
           if(this.matchSelectObj.size>=15){
-            Toast('最多选择15注')
+            Toast('最多选择15场比赛')
             return false;
           }
         }
@@ -185,12 +183,12 @@ export default {
       this.idConfig(c)
       if(this.matchSelectObj.has(this.id)){
         if(this.matchSelectObj.size>15){
-          Toast('最多选择15注')
+          Toast('最多选择15场比赛')
           return false;
         }
       }else{
         if(this.matchSelectObj.size>=15){
-          Toast('最多选择15注')
+          Toast('最多选择15场比赛')
           return false;
         }
       }
@@ -230,12 +228,12 @@ export default {
       this.idConfig(c)
       if(this.matchSelectObj.has(this.id)){
         if(this.matchSelectObj.size>15){
-          Toast('最多选择15注')
+          Toast('最多选择15场比赛')
           return false;
         }
       }else{
         if(this.matchSelectObj.size>=15){
-          Toast('最多选择15注')
+          Toast('最多选择15场比赛')
           return false;
         }
       }
@@ -270,12 +268,12 @@ export default {
       })
       if(c.selectedList.length>0){
         if(this.arrNum>15){
-          Toast('最多选择15注')
+          Toast('最多选择15场比赛')
           return false;
         }
       }else{
         if(this.arrNum>=15){
-          Toast('最多选择15注')
+          Toast('最多选择15场比赛')
           return false;
         }
       }
@@ -300,9 +298,9 @@ export default {
         obj2.betCells.push(JSON.parse(item))
       })
       obj2.playType = status
-      if(status=='1'){
+      if(status=='2'){
       	obj2.single = c.matchPlays[1].single
-      }else if(status=='0'){
+      }else if(status=='1'){
       	obj2.single = c.matchPlays[0].single
       }
       if (c.selectedList.length <= 0) {
@@ -402,12 +400,13 @@ export default {
         });
       }
       //alert(this.$store.state.matchSelectedList)
+      //console.log(this.$store.state.matchObj)
       this.$router.push({
         path: '/freebuy/cathectic',
         query: {
           playType: this.playType,
-          lottoyId: this.lottoyId,
-          classlootoyId: this.classlootoyId
+          lottoyId: this.$store.state.matchObj.lotteryClassifyId,
+          classlootoyId: this.$store.state.matchObj.lotteryPlayClassifyId
         },
         replace: false
       })
@@ -517,6 +516,7 @@ export default {
     this.$store.state.mark_show = false
     this.$store.state.mark_playObj.bfIdSaveMapFlag = 0
     this.$store.state.mark_showObj.mark_show_type = ''
+    this.$store.state.mark_playObj.mupNum = '5'
     localStorage.removeItem('tab')
   }
 }

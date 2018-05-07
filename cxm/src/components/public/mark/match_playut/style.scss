@@ -178,6 +178,8 @@
           color: #666;
         }
         .yhList{
+          height: px2rem(600px);
+          overflow: scroll;
           li{
             border-bottom: 1px solid #f0f0f0;
             height: px2rem(132px);

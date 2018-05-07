@@ -44,7 +44,7 @@
                     可用优惠券
                 </div>
                 <ul class="yhList">
-                    <li v-for="(item,i) in $store.state.mark_playObj.yhList" :key='i'>
+                    <li v-for="(item,i) in $store.state.mark_playObj.yhList" :key='i' @click="bounsSelected(item,i)">
                         <p>
                             <span>¥</span>
                             <span>{{item.bonusPrice}}</span>
@@ -53,7 +53,7 @@
                             <span>{{item.minGoodsAmount}}</span>
                             <span>{{item.useRange}}</span>
                         </p>
-                        <p :class="item.userBonusId == $store.state.mark_playObj.bounsId?'bounsId':''" @click="bounsSelected(item,$event)">
+                        <p ref="userBonusIdS" :class="item.userBonusId == $store.state.mark_playObj.bounsId?'bounsId':''">
                             
                         </p>
                     </li>

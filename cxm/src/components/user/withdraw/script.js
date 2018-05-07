@@ -6,8 +6,9 @@ export default {
     data () {
       return {
         withdrawObj: {
-
-        }
+          
+        },
+        withdrawVal: ''
       }
     },
     beforeCreate() {
@@ -17,6 +18,13 @@ export default {
       
     },
     mounted(){
+        this.fetchData()
+    },
+    methods:{
+      whole(){
+        this.withdrawVal = this.withdrawObj.userMoney
+      },
+      fetchData(){
         let data = {
           str: ''
         }
@@ -27,5 +35,21 @@ export default {
               //console.log(res)
             }
         })
+      },
+      determine(){
+        Indicator.open()
+        let data = {
+          totalAmount: this.withdrawVal,
+          userBankId: this.withdrawObj.userBankId
+        }
+        api.withdraw(data)
+        .then(res => {
+            if(res.code==0) {
+              //console.log(res)
+              Toast(res.msg)
+              this.fetchData()
+            }
+        })
+      }
     }
 }

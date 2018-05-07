@@ -42,11 +42,18 @@
             <li><a href="" @click.prevent="custormAnchor('a4')">采购问题</a></li>
             <li><a href="" @click.prevent="custormAnchor('a5')">中奖派奖问题</a></li>
         </ul>
+        <ul class="list" v-if="$route.path.split('/')[1]=='lotteryResult'">
+                <li @click='data_time()'>{{$store.state.mark_showObj.mark_dateVal}}<i class="iconfont icon-icon-31"></i></li>
+                <li @click='more()'>更多条件<i class="iconfont icon-icon-31"></i></li>
+                <li @click='all($event)' v-if="flag==true">全部<i class="iconfont icon-icon-31"></i></li>
+                <li @click='all($event)' v-if="flag==false">已结束<i class="iconfont icon-icon-31"></i></li>
+            </ul>
     </div>
 </template>
 
 <script>
 import datefilter from '../../../util/datefilter'
+import {Indicator} from 'mint-ui'
 export default {
   name: "Header",
   props: {
@@ -57,7 +64,7 @@ export default {
   },
   data() {
     return {
-
+      flag: true,
     };
   },
   methods: {
@@ -65,6 +72,12 @@ export default {
       if (this.$route.path.split("/")[2]) {
         if (this.$route.path.split("/")[2] == "singleNote") {
           this.$store.dispatch("getmatchSelectedList",[])
+        }else if(location.href.split('?')[1]&&location.href.split('?')[1].split('=')[0]=='orderStatus'){
+          this.$router.push({
+            path: '/',
+            replace: false
+          })
+          return false;
         }else if(localStorage.getItem('loginOut')){
           this.$router.push({
             path: '/',
@@ -160,7 +173,32 @@ export default {
             this.$store.dispatch("getCollectionFlag",false)
             c.target.className='iconfont icon-icon-34'
           }
-      }
+      },
+      data_time(){
+            this.$store.dispatch("getMarkShow",true)
+            this.$store.dispatch("getMarkShowType",1)
+      },
+      more(){
+            this.$store.dispatch("getMarkShow",true)
+            this.$store.dispatch("getMarkShowType",2)
+      },
+      all(c){
+            if(c.target.innerText == '全部'){
+                this.flag=false
+                this.$store.dispatch("getMatchFinish",'1')
+            }else{
+                this.flag=true
+                this.$store.dispatch("getMatchFinish",'')
+            }
+            Indicator.open()
+            let data={
+                dateStr: this.$store.state.mark_showObj.mark_dateVal,
+                isAlreadyBuyMatch: this.$store.state.mark_showObj.isAlreadyBuyMatch,
+                leagueIds: this.$store.state.mark_showObj.leagueIds,
+                matchFinish: this.$store.state.mark_showObj.matchFinish
+            }
+            this.$store.dispatch("getResultList",data)
+      },
   },
   computed: {  
     deleteFlag() {  
@@ -316,6 +354,35 @@ export default {
             margin-right: 0;
         }
     }
+    .list{
+      height: px2rem(88px);
+      //line-height: px2rem(88px);
+      display: flex;
+      background: #fff;
+     -webkit-box-flex: 1;
+     width: 100%;
+     border-bottom: 1px solid #f1f1f1;
+     box-sizing: border-box;
+      li{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+         flex: 1;
+          height: px2rem(88px);
+         text-align: center;
+         border-right: 1px solid #f1f1f1;
+         color:#9f9f9f;
+         font-size: px2rem(28px);
+         position: relative;
+        i{
+          color: #ea5504;
+          font-size: px2rem(20px);
+          right: 0;
+          position: absolute;
+          bottom: 0;
+        }
+      }
+   }
 }
 </style>
 

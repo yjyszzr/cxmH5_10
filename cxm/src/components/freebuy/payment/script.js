@@ -19,7 +19,8 @@ export default {
             payment: {},
             allPaymentList: [],
             payCode: 'app_weixin',
-            payText: '请完成在线支付'
+            payText: '为了确保支付成功,请保持网络畅通',
+            orderId: ''
         }
     },
     created() {
@@ -71,6 +72,7 @@ export default {
             let data = saveObjInfo
             api.saveBetInfo(data)
                 .then(res => {
+                    //console.log(res)
                     if (res.code == 0) {
                         this.payment = res.data
                         this.$store.state.mark_playObj.yhList = res.data.bonusList
@@ -127,6 +129,8 @@ export default {
                             localStorage.setItem('matchObj',JSON.stringify(this.$store.state.matchObj))
                             localStorage.setItem('matchSelectedList',JSON.stringify(this.$store.state.matchSelectedList))
                             localStorage.setItem('bfIdSaveMap',JSON.stringify([...this.$store.state.mark_playObj.bfIdSaveMap]))
+                            localStorage.setItem('orderId',res.data.orderId)
+                            localStorage.setItem('payCode',this.payCode)
                             //console.log(res)
                             // if (agent == 'ios') {
                             //     newTab.location.href = res.data.payUrl
@@ -137,18 +141,19 @@ export default {
                             //     $tempForm.remove();
                             // }
                             localStorage.setItem('payLogId',res.data.payLogId)
+                            this.orderId = res.data.orderId
                             MessageBox.confirm('',{
                                 message: this.payText,
-                                title: '确认支付',
-                                confirmButtonText: '完成支付',
-                                cancelButtonText: '更换支付方式'
+                                title: '订单支付',
+                                confirmButtonText: '已完成支付',
+                                cancelButtonText: '重新支付'
                             }).then(action => {
                                 Indicator.open()
                                 this.saveStatus(res.data.payLogId)
                             },action => {
                                 Indicator.close()
                             })
-                            let url = 'http://m.caixiaomi.net/#/'
+                            let url =  location.href+'?orderStatus=1'
                             location.href = res.data.payUrl+ '&h5ck=' + encodeURIComponent(url)
                         }
                     }
@@ -165,24 +170,54 @@ export default {
                 .then(res => {
                     //console.log(res)
                     if (res.code == 0) {
-                        MessageBox('提示', res.msg);
-                        //Indicator.close()
+                        this.$router.push({
+                            path: '/user/order',
+                            query: {
+                                id: this.orderId,
+                            },
+                            replace: false
+                        })
+                    }else if(res.code=='304036'){
+                        this.payText = '暂未查询到您的支付结果，如果您已经确认支付并扣款，可能存在延迟到账的情况，请到账户明细中查看或联系客服查询'
+                        MessageBox.confirm('',{
+                            message: this.payText,
+                            title: '查询失败',
+                            confirmButtonText: '继续查询',
+                            cancelButtonText: '重新支付'
+                        }).then(action => {
+                            Indicator.open()
+                            this.saveStatus(c)
+                        },action => {
+
+                        })
+                        Indicator.close()
+                    }else if(res.code=='304035'){
+                        MessageBox.alert('',{
+                            message: '如果您已经确认支付并扣款，可能存在延迟到账情况，请到账户明细中查看或联系客服查询',
+                            title: '支付失败',
+                            confirmButtonText: '重新支付'
+                        }).then(action => {
+                            Indicator.close()
+                        });
+                        Indicator.close()
                     }else{
-                        this.payText = res.msg
-                       // Indicator.close()
+                        Indicator.close()
                     }
                 })
         }
     },
     mounted() {
+        //console.log(this.$store.state.matchSaveInfo.bonusId)
         if(location.href.split('?')[1]&&location.href.split('?')[1].split('=')[1]==1){
-            console.log(location.href)
+            //console.log(location.href)
             this.payment = JSON.parse(localStorage.getItem('matchSaveInfo'))
+            this.orderId = localStorage.getItem('orderId')
             this.allPaymentList = JSON.parse(localStorage.getItem('allPaymentList'))
             this.$store.state.mark_playObj.yhList = this.payment.bonusList
             this.$store.state.mark_playObj.bounsId = this.payment.bonusId
             this.$store.state.matchObj = JSON.parse(localStorage.getItem('matchObj'))
             this.$store.state.matchSelectedList = JSON.parse(localStorage.getItem('matchSelectedList'))
+            this.payCode = localStorage.getItem('payCode')
                 let payLogId = localStorage.getItem('payLogId')
                 if(this.$store.state.matchSaveInfo.lotteryPlayClassifyId=='5'||this.$store.state.matchSaveInfo.lotteryPlayClassifyId=='3'){
                     let map = new Map()
@@ -193,9 +228,9 @@ export default {
                 }
                 MessageBox.confirm('',{
                     message: this.payText,
-                    title: '确认支付',
-                    confirmButtonText: '完成支付',
-                    cancelButtonText: '更换支付方式'
+                    title: '订单支付',
+                    confirmButtonText: '已完成支付',
+                    cancelButtonText: '重新支付'
                 }).then(action => {
                     Indicator.open()
                     this.saveStatus(payLogId)  
@@ -209,6 +244,7 @@ export default {
                     localStorage.removeItem('matchSelectedList')
                     localStorage.removeItem('bfIdSaveMap')
                     localStorage.removeItem('payLogId')
+                    localStorage.removeItem('orderId')
                 })  
         }
     },
@@ -220,7 +256,6 @@ export default {
     watch: {
         cc(a, b) {
             this.$store.state.matchSaveInfo.bonusId = a
-            //console.log(a)
             Indicator.open()
             this.fetchData(this.$store.state.matchSaveInfo)
             // if(b!==''){
@@ -234,11 +269,13 @@ export default {
             next(vm=>{
                 //vm.$store.state.matchSaveInfo = JSON.parse(localStorage.getItem('matchSaveInfo'))
                 vm.payment = JSON.parse(localStorage.getItem('matchSaveInfo'))
+                vm.orderId = localStorage.getItem('orderId')
                 vm.allPaymentList = JSON.parse(localStorage.getItem('allPaymentList'))
                 vm.$store.state.mark_playObj.yhList = vm.payment.bonusList
                 vm.$store.state.mark_playObj.bounsId = vm.payment.bonusId
                 vm.$store.state.matchObj = JSON.parse(localStorage.getItem('matchObj'))
                 vm.$store.state.matchSelectedList = JSON.parse(localStorage.getItem('matchSelectedList'))
+                vm.payCode = localStorage.getItem('payCode')
                 let payLogId = localStorage.getItem('payLogId')
                 if(vm.$store.state.matchSaveInfo.lotteryPlayClassifyId=='5'||vm.$store.state.matchSaveInfo.lotteryPlayClassifyId=='3'){
                     let map = new Map()
@@ -249,9 +286,9 @@ export default {
                 }
                 MessageBox.confirm('',{
                     message: vm.payText,
-                    title: '确认支付',
-                    confirmButtonText: '完成支付',
-                    cancelButtonText: '更换支付方式'
+                    title: '订单支付',
+                    confirmButtonText: '已完成支付',
+                    cancelButtonText: '重新支付'
                 }).then(action => {
                     vm.saveStatus(payLogId)  
                 },action => {
@@ -264,6 +301,7 @@ export default {
                     localStorage.removeItem('matchSelectedList')
                     localStorage.removeItem('bfIdSaveMap')
                     localStorage.removeItem('payLogId')
+                    localStorage.removeItem('orderId')
                 })          
             })
             //localStorage.removeItem('matchSaveInfo')
@@ -278,5 +316,6 @@ export default {
         this.$store.state.mark_playObj.mark_playBox = false
         this.$store.state.mark_playObj.mark_play = ''
         this.$store.state.mark_playObj.bonusId = ''
+        this.$store.state.mark_playObj.mybounsId = ''
     }
 }

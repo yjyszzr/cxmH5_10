@@ -5,7 +5,7 @@
     <div class="wrap payment">
         <div class="j_sent">
             <section class="section">
-                <ul class="msg_list">
+                <ul class="msg_list paymentdetail">
                     <li>
                         <a>
                             <div>
@@ -35,15 +35,15 @@
                     </li>
                 </ul>
             </section>
-            <section class="section">
+            <section class="section" v-if="Number(payment.thirdPartyPaid)>0">
                 <p class="mode">支付方式</p>
                 <ul class="msg_list">
                     <li @click="wxClick($event,i,item)" v-for="(item,i) in allPaymentList" :key='i'>
                         <a href="javascript:void(0);">
                             <div>
-                                <img src="../../../assets/img/wei.png">
+                                <img :src="item.payImg">
                                 <span class="arrow_kefu float_right">
-                                <i ref="wxSelected" class="iconfont icon-icon-29" :class="i==0?'wxSelected':''"></i>
+                                <i ref="wxSelected" class="iconfont icon-icon-29" :class="item.payCode==payCode?'wxSelected':''"></i>
                             </span>
                                 <span class="message">{{item.payName}}</span>
                             </div>

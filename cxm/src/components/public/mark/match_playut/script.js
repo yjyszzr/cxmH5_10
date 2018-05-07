@@ -62,6 +62,7 @@ export default {
         if(this.firstNum==1){
           if(c!==0){
             this.mup = c+''
+            this.firstNum++
           }
         }else if(this.firstNum>1){
           if(this.mup.length>4){
@@ -76,6 +77,7 @@ export default {
     deleteNum(s){
       // basic = basic.substr(0, basic.length - 1);
       this.mup = this.mup.substr(0, this.mup.length - 1)
+      this.firstNum = 0
       this.tapactive(s)
     },
     changeColor(c,s){
@@ -102,10 +104,19 @@ export default {
       this.$store.state.mark_playObj.mupNum = this.mup
       this.closeMark()
     },
-    bounsSelected(c,s){
-      $('.bounsId').removeClass('bounsId')
-      s.target.className = 'bounsId'
-      this.bounsId = c.userBonusId
+    bounsSelected(c,i){
+      if(this.$refs.userBonusIdS[i].className == 'bounsId'){
+        this.$refs.userBonusIdS[i].className = ''
+      }else{
+        $('.bounsId').removeClass('bounsId')
+        this.$refs.userBonusIdS[i].className = 'bounsId'
+      }
+      //console.log($('.bounsId').length)
+      if($('.bounsId').length<=0){
+        this.bounsId = -1
+      }else{
+        this.bounsId = c.userBonusId
+      }
     },
     yhBtn(){
        this.closeMarkCz()

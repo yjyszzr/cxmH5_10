@@ -17,14 +17,14 @@
                     </a>
                     <a href="javascript:void(0);">
                         <div>
-                            <input type="tel" class="text3" placeholder="请输入提现金额"/>
-                            <span class="whole">全部提现</span>
+                            <input v-model="withdrawVal" type="tel" class="text3" placeholder="请输入提现金额"/>
+                            <span class="whole" @click="whole()">全部提现</span>
                         </div>
                     </a>
                 </li>
             </ul>
         </section>
-        <section class="button">
+        <section class="button" @click="determine()">
             <a class="determine">立即提现</a>
         </section>
         <section class="plain">

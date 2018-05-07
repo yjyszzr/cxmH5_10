@@ -205,9 +205,7 @@ export default {
       this.$router.push({
         path: "/freebuy/singleNote",
         query: {
-          id: s,
-          cltId: c,
-          ltId: t
+          id: s
         },
         replace: false
       });
@@ -280,6 +278,7 @@ export default {
     api
       .getHallData(data)
       .then(res => {
+        //console.log(res)
         if (res.code == 0) {
           this.bannerList = res.data.navBanners;
           this.activity = res.data.activity;

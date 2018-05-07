@@ -8,6 +8,7 @@
 
 <script>
 	import { Toast } from 'mint-ui'
+	import {getUrlStr} from '../../util/common'
 	export default {
 		name: 'lunbo',
 		data() {
@@ -23,7 +24,33 @@
 		},
 		methods: {
 			lunbo(url) {
-				location.href=url
+				if(getUrlStr('type',url)=='3'){
+					this.$router.push({
+						path: "/freebuy/singleNote",
+						query: {
+							id: getUrlStr('subid',url)
+						},
+						replace: false
+					});
+				}else if(getUrlStr('type',url)=='4'){
+					 this.$router.push({
+						path: '/lottery/teamDetail',
+						query:{
+							id: getUrlStr('id',url)
+						},
+						replace: false
+					})
+				}else if(getUrlStr('type',url)=='8'){
+					 this.$router.push({
+							path: "/index/consult",
+							query: {
+							id: getUrlStr('id',url)
+							},
+							replace: false
+					});
+				}else{
+					location.href=url
+				}
 			}
 		}
 	}

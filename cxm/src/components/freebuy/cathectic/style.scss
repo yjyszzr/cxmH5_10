@@ -352,21 +352,23 @@
          padding: 0 0 0 px2rem(30px);
          width: 66%;
          float: left;
-         line-height: px2rem(20px);
-         span{
+         display: flex;
+         justify-content: center;
+         flex-direction: column;
+         p{
+           display: flex;
+           align-items: center;
+           span{
             color: #e95504;
          }
          .ycjj{
           text-overflow:ellipsis;
           white-space: nowrap;
-          display: inline-block;
+          display: block;
+          width: px2rem(350px);
           overflow: hidden;
-          width: px2rem(300px);
-          margin-top: px2rem(-8px);
          }
-         p{
-           padding-top: px2rem(18px);
-         }
+        }
        }
        .right{
          height: px2rem(88px);

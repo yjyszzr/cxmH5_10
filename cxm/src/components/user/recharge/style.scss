@@ -62,7 +62,6 @@
     padding-left: px2rem(20px);
     height: px2rem(110px);
     display: block;
-    border-bottom: 1px solid #f1f1f1;
     font-size: px2rem(30px);
     line-height: px2rem(110px);
     box-sizing: border-box;
@@ -74,6 +73,7 @@
   margin-left:px2rem(0px);
   height: px2rem(110px);
   margin-right: px2rem(-20px);
+  border-top: 1px solid #f0f0f0;
   img{
     padding-top: px2rem(30px);
   }
@@ -82,9 +82,11 @@
   }
 }
 .arrow_kefu{
-  margin-top: px2rem(12px);
   .icon-icon-29{
-    color: #44ae35;
+    color: #505050;
     margin-right: px2rem(38px);
+  }
+  .wxSelected{
+    color: #44ae35;
   }
 }
