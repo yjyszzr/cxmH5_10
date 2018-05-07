@@ -1,5 +1,5 @@
 <template>
-    <div class="data1" >
+    <div class="data1" @touchmove.prevent >
         <div class="dt_title">
             日期
         </div>
