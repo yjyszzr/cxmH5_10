@@ -41,6 +41,7 @@ export default {
                     //console.log(res)
                     if(res.code==0){
                         Toast(res.msg)
+                        this.$router.go(-1)
                     }
                 })
       }

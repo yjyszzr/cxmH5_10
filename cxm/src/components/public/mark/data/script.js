@@ -42,16 +42,6 @@ computed: {
       list_li(c,index){
           this.$store.dispatch("getMarkShow",false)
           this.$store.dispatch("getMarkDateVal",c)
-          this.$refs.match_name.forEach(function(data_item,data_index){
-              this.$refs.match_name[data_index].className = ''
-          }, this)
-
-          if(this.$refs.match_name[index].className == 'cur') {
-              this.$refs.match_name[index].className = ''
-          } else {
-              this.$refs.match_name[index].className = 'cur'
-          }
-          this.cur_date = this.$refs.match_name[index].innerText
       }
   }
 }

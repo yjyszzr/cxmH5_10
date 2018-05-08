@@ -97,7 +97,11 @@ export default {
     },
     mounted(){
       if(this.$store.state.recordTab!=''&&this.$store.state.recordTab!='1'){
-        this.orderStatus = this.$store.state.recordTab
+        if(this.$store.state.recordTab=='2'){
+          this.orderStatus = '5'
+        }else{
+          this.orderStatus = this.$store.state.recordTab
+        }
       }
       this.recordFetch()
     }

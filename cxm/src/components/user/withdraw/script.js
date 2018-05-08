@@ -37,19 +37,25 @@ export default {
         })
       },
       determine(){
-        Indicator.open()
-        let data = {
-          totalAmount: this.withdrawVal,
-          userBankId: this.withdrawObj.userBankId
+        if(this.withdrawObj.defaultBankLabel==''){
+          Toast('请添加银行卡')
+        }else if(this.withdrawVal == ''||Number(this.withdrawVal)<=0){
+          Toast('请输入正确提现金额')
+        }else{
+          Indicator.open()
+          let data = {
+            totalAmount: this.withdrawVal,
+            userBankId: this.withdrawObj.userBankId
+          }
+          api.withdraw(data)
+          .then(res => {
+              if(res.code==0) {
+                //console.log(res)
+                Toast(res.msg)
+                this.fetchData()
+              }
+          })
         }
-        api.withdraw(data)
-        .then(res => {
-            if(res.code==0) {
-              //console.log(res)
-              Toast(res.msg)
-              this.fetchData()
-            }
-        })
       }
     }
 }

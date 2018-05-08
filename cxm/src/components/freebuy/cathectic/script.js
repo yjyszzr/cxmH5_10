@@ -20,6 +20,8 @@ export default {
 			disable: false,
 			danNUm: 0, //统计胆数量
 			matchSave: {}, //接口数据保存
+			maxButNum: false,  //最大注数及单注最大限额
+			maxButNumMsg: '', //最大注数信息
 		}
 	},
 	beforeCreate() {
@@ -481,6 +483,13 @@ export default {
 				.getBetInfo(data)
 				.then(res => {
 					if(res.code == 0) {
+						if(res.data.maxLotteryMoney>20000||res.data.betNum>10000){
+							this.maxButNum = true
+							this.maxButNumMsg = res.msg
+							Toast(res.msg)
+						}else{
+							this.maxButNum = false
+						}
 						this.betObj = res.data
 					}
 				})
@@ -507,6 +516,9 @@ export default {
 				return
 			}else if(this.arrTime[0]*1000<new Date().getTime()){
 				Toast('部分比赛投注截止')
+				return
+			}else if(this.maxButNum == true){
+				Toast(this.maxButNumMsg)
 				return
 			}
 			this.$store.state.matchSaveInfo = this.matchSave

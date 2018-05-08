@@ -122,7 +122,9 @@
         li{
           flex: 1;
           height: px2rem(72px);
-          line-height: px2rem(72px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
           color: #9f9f9f;
           text-align: center;
         }
@@ -131,6 +133,9 @@
         }
         li:nth-child(3){
           flex: 3;
+          span{
+            text-align: center;
+          }
         }
       }
       .box_list_2{

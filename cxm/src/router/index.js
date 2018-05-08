@@ -223,6 +223,12 @@ const router = new Router({
         name: 'inToplay',
         cname:'玩法介绍',
         component: resolve => require(['@/components/freebuy/intoplay/index.vue'], resolve)
+      },
+      {
+        path: '/user/activity',
+        name: 'activity',
+        cname:'活动',
+        component: resolve => require(['@/components/activity/one/index.vue'], resolve)
       }
   ]
 })

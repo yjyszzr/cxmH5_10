@@ -8,6 +8,18 @@ export default {
          matchDetailObj: {}
       }
     },
+    created(){
+        let data = {
+            'matchId': this.$store.state.mark_playObj.bfmatchId
+        }
+        api.matchTeamInfosSum(data)
+            .then(res => {
+                if(res.code==0) {
+                    this.matchDetailObj = res.data
+                    //console.log(res)
+                }
+        })
+    },
     methods: {
         cancel(){
             if(this.$store.state.mark_playObj.matchDetailFlag==false){
@@ -31,15 +43,6 @@ export default {
         }
     },
     mounted(){
-        let data = {
-            'matchId': this.$store.state.mark_playObj.bfmatchId
-        }
-        api.matchTeamInfosSum(data)
-            .then(res => {
-                if(res.code==0) {
-                    this.matchDetailObj = res.data
-                    //console.log(res)
-                }
-            })
+        
     }
 }

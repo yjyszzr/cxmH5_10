@@ -4,6 +4,9 @@
 <template>
     <div class="wrap matchDetail" @touchmove.prevent>
         <section>
+            <div class="nullStatus" v-show="!matchDetailObj.matchInfo">
+                <mt-spinner type="snake" color="#ea5504"></mt-spinner>
+            </div>
             <div class="matchDetail_box" v-if="matchDetailObj.matchInfo">
                 <div class="matchDetail_top">
                     {{matchDetailObj.matchInfo.changci.substr(-3)}}&nbsp;&nbsp;{{matchDetailObj.matchInfo.leagueAddr}}&nbsp;&nbsp;{{matchTimeDate(matchDetailObj.matchInfo.matchTime)}}

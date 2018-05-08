@@ -64,6 +64,16 @@ export default {
           path: '/user/certification',
           replace: true
         })
+      },
+      goWithdraw(c){
+        if(c=='1'){
+          this.$router.push({
+            path: '/user/withdraw',
+            replace: true
+          })
+        }else{
+          Toast('请先实名认证后再申请提现')
+        }
       }
     },
     mounted(){

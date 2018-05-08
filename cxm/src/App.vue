@@ -114,6 +114,8 @@ export default {
                 return "更多玩法";
             case 'protocol':
                 return "投注服务协议";
+            case 'activity':
+                return "活动详情";
         }
       } else {
         if (

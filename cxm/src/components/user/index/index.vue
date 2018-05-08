@@ -15,8 +15,8 @@
                 </div>
                 <div class="por-right">
                     <span>{{userInfo.mobile}}</span>
-                    <b class="certified" v-if='userInfo.isReal==1'></b>
-                    <p v-if='userInfo.isReal==0' @click='gorz()'>您还未实名认证，尽快实名认证</p>
+                    <b class="certified" v-if='userInfo.isReal=="1"'></b>
+                    <p v-if='userInfo.isReal=="0"' @click='gorz()'>您还未实名认证，尽快实名认证</p>
                 </div>
             </div>
             <div class="money clearfix">
@@ -31,7 +31,7 @@
             </div>
             <div class="nav">
                 <router-link to='/user/recharge'>充值</router-link>
-                <router-link to="/user/withdraw">提现</router-link>
+                <a @click="goWithdraw(userInfo.isReal)">提现</a>
             </div>
         </div>
         <div class="section">
