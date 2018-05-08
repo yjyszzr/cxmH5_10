@@ -67,7 +67,7 @@
                             点击进行比分投注
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item)">
-                            <span v-for="(data,index) in matchSelectObj.get(item.matchId)?Array.from(matchSelectObj.get(item.matchId)):[]" :key='index'>
+                            <span v-for="(data,index) in matchSelectObj.get(item.matchId)?matchSelectObj.get(item.matchId):[]" :key='index'>
                                 {{data}}&nbsp;
                             </span>
                         </div>
@@ -82,7 +82,7 @@
                             点击进行半全场投注
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item)">
-                            <span v-for="(data,index) in matchSelectObj.get(item.matchId)?Array.from(matchSelectObj.get(item.matchId)):[]" :key='index'>
+                            <span v-for="(data,index) in matchSelectObj.get(item.matchId)?matchSelectObj.get(item.matchId):[]" :key='index'>
                                 {{data}}&nbsp;
                             </span>
                         </div>
@@ -212,7 +212,7 @@
                             点击进行比分投注
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item)">
-                            <span v-for="(data,index) in matchSelectObj.get(item.matchId)?Array.from(matchSelectObj.get(item.matchId)):[]" :key='index'>
+                            <span v-for="(data,index) in matchSelectObj.get(item.matchId)?matchSelectObj.get(item.matchId):[]" :key='index'>
                                 {{data}}&nbsp;
                             </span>
                         </div>
@@ -227,7 +227,7 @@
                             点击进行半全场投注
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item)">
-                            <span v-for="(data,index) in matchSelectObj.get(item.matchId)?Array.from(matchSelectObj.get(item.matchId)):[]" :key='index'>
+                            <span v-for="(data,index) in matchSelectObj.get(item.matchId)?matchSelectObj.get(item.matchId):[]" :key='index'>
                                 {{data}}&nbsp;
                             </span>
                         </div>

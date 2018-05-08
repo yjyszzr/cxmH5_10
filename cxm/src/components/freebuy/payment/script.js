@@ -178,9 +178,8 @@ export default {
                             replace: false
                         })
                     }else if(res.code=='304036'){
-                        this.payText = '暂未查询到您的支付结果，如果您已经确认支付并扣款，可能存在延迟到账的情况，请到账户明细中查看或联系客服查询'
                         MessageBox.confirm('',{
-                            message: this.payText,
+                            message: '暂未查询到您的支付结果，如果您已经确认支付并扣款，可能存在延迟到账的情况，请到账户明细中查看或联系客服查询',
                             title: '查询失败',
                             confirmButtonText: '继续查询',
                             cancelButtonText: '重新支付'

@@ -441,10 +441,11 @@ export default {
       }else{
         this.mapKey = []
         this.matchSelectObj = this.$store.state.mark_playObj.bfIdSaveMap
-        //console.log(this.matchSelectObj)
         for (let [key, value] of this.matchSelectObj) {
           this.mapKey.push(key)
+          this.matchSelectObj.set(key,Array.from(value))
         }
+        //console.log(this.matchSelectObj)
         this.confirm_bf()
       }
       //console.log(this.$store.state.mark_playObj.bfIdSaveMap)

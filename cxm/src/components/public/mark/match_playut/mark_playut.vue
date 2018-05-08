@@ -17,27 +17,6 @@
                     <a @click="closeMark()">取消</a>
                 </button>
             </div>
-            <!-- 数字键盘 -->
-            <div @touchmove.prevent class="popup" v-if="this.$store.state.mark_playObj.mark_play=='2'">
-                <div class="box">
-                    <img src="../../../../assets/img/freebuy_img/Collapse@3x.png" @click="closeMark()">
-                    <div>
-                        倍数<p>{{mup}}</p>
-                    </div>
-                </div>
-                <ul class="list clearfix">
-                   <li v-for="(item,i) in mapArr" :key='i' @click="mupNumber(item,$event)">{{item}}倍</li>
-                </ul>
-                <div class="box1 clearfix">
-                    <ul class="clearfix">
-                        <li v-for="(item,i) in numList" :key='i' @click="numClick(item,$event)">{{item}}</li>
-                    </ul>
-                    <div class="select">
-                        <p @click="deleteNum($event)">删除</p>
-                        <p class="cur" @click="confirm_num()">确定</p>
-                    </div>
-                </div>
-            </div>
             <!-- 优惠券 -->
             <div @touchmove.prevent class="yhMark" v-if="this.$store.state.mark_playObj.mark_play=='3'">
                 <div class="yh_title">
@@ -62,6 +41,7 @@
                     确定
                 </div>
             </div>
+            <v-popup @closeMarkCz="closeMarkCz()" v-if="this.$store.state.mark_playObj.mark_play=='2'"></v-popup>
             <!-- 比分，版全场，混合 -->
             <v-score @closeMarkCz="closeMarkCz()" v-if="this.$store.state.mark_playObj.mark_play=='4'"></v-score>
             <v-bqc @closeMarkCz="closeMarkCz()" v-if="this.$store.state.mark_playObj.mark_play=='5'"></v-bqc>

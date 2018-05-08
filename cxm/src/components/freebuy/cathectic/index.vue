@@ -38,7 +38,7 @@
                         </ul>
                         <ul v-if="$route.query.playType=='3'||$route.query.playType=='5'" class="bf">
                             <li @click="bfClick(item.matchId)">
-                                <span  v-for="(data,index) in matchSelectObj.get(item.matchId)?Array.from(matchSelectObj.get(item.matchId)):[]" :key='index'>{{data}}&nbsp;</span>
+                                <span  v-for="(data,index) in matchSelectObj.get(item.matchId)?matchSelectObj.get(item.matchId):[]" :key='index'>{{data}}&nbsp;</span>
                             </li>
                         </ul>
                         <ul v-if="$route.query.playType=='7'" class="two">

@@ -57,6 +57,7 @@ export default {
                 }
                 api.collectAdd(data)
                     .then(res => {
+                        Toast(res.msg);
                         //console.log(res)
                     })
             }else{

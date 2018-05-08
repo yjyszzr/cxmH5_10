@@ -199,7 +199,11 @@ export default {
 			this.$store.state.matchSelectedList.forEach(item => {
 				arr.push(item.matchPlays[0].single)
 				if(this.$route.query.playType != '6') {
-					this.matchSelectObj.set(item.matchId, new Set(item.myspf))
+					if(this.$route.query.playType == '3'||this.$route.query.playType == '5'){
+						this.matchSelectObj.set(item.matchId, item.myspf)
+					}else{
+						this.matchSelectObj.set(item.matchId, new Set(item.myspf))
+					}
 				} else {
 					item.selectedList.forEach((data)=>{
 						arr1.push(data.single)
@@ -669,6 +673,9 @@ export default {
 			} else {
 				let n = this.$store.state.matchSelectedList //初始化比赛条目
 				this.matchSelectObj = this.$store.state.mark_playObj.bfIdSaveMap
+				for (let [key, value] of this.matchSelectObj) {
+					this.matchSelectObj.set(key,Array.from(value))
+				}
 				this.cshCz(n)
 			}
 		}
