@@ -9,10 +9,13 @@ export default {
         bankList: [],
         value: []
       }
+
     },
+
     beforeCreate() {
-			Indicator.open()
-		},
+        Indicator.open()
+    },
+
     created(){
       
     },
@@ -38,7 +41,7 @@ export default {
           }else{
             status = '0'
         }
-        MessageBox.confirm(status=='1'?'这张卡为默认收款卡,您确定要删除吗?':'您确定删除这张银行卡吗?').then(action => {
+        MessageBox.confirm('',{message:status=='1'?'这张卡为默认收款卡,您确定要删除吗?':'您确定删除这张银行卡吗?',title:'提示',closeOnClickModal:false}).then(action => {
           let data = {
             'id': id,
             'status': status
