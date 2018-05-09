@@ -5,6 +5,11 @@
     .article{
         background: #fff;
         padding: px2rem(48px) px2rem(36px);
+        img{
+          max-width: 100%;
+          width: auto;
+          height: auto;
+        }
         h4{
             font-size: px2rem(42px);
             color: #505050;
