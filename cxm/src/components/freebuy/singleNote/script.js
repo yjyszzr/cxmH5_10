@@ -1,5 +1,6 @@
 import api from '../../../fetch/api'
 import datefilter from '../../../util/datefilter'
+import { MessageBox } from 'mint-ui';
 import {
   Toast
 } from 'mint-ui'
@@ -346,20 +347,23 @@ export default {
     },
     //清除
     clear_match() {
+        MessageBox.confirm('确定执行此操作?').then(action => {
+            if (this.playType == '6') {
+                this.$store.state.matchObj = JSON.parse(JSON.stringify(this.$store.state.chushihuaObj))
+            } else {
+                this.matchSelectObj.clear()
+                this.id = ''
+                this.$store.state.mark_playObj.bfIdSaveMap.clear()
+                this.mapKey = []
+            }
+            this.text = `<p>请至少选择1场单关比赛</p><p>或者2场比赛</p>`
+            this.flag = true
+            this.classFlag = true
+            this.arrNum = 0
+            $('.selected').removeClass('selected')
+        },cancel=>{});
       //console.log(this.$store.state.chushihuaObj)
-      if (this.playType == '6') {
-        this.$store.state.matchObj = JSON.parse(JSON.stringify(this.$store.state.chushihuaObj))
-      } else {
-        this.matchSelectObj.clear()
-        this.id = ''
-        this.$store.state.mark_playObj.bfIdSaveMap.clear()
-        this.mapKey = []
-      }
-      this.text = `<p>请至少选择1场单关比赛</p><p>或者2场比赛</p>`
-      this.flag = true
-      this.classFlag = true
-      this.arrNum = 0
-      $('.selected').removeClass('selected')
+
     },
     confirm() {
       if (this.playType == '6') {
