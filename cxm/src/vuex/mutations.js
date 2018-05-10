@@ -147,7 +147,10 @@ const mutations = {
     },
     ARRTIME(state, data){
         state.arrTime = data
-    }
+    },
+    changeRecruitScrollY(state,recruitScrollY) {   
+        state.recruitScrollY = recruitScrollY  
+    }  
 }
 
 export default mutations

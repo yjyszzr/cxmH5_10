@@ -12,11 +12,9 @@ export default {
         bottomStatus: '',
         allLoaded: false,
         searchBarFixed: false,
-        loadText: '上拉加载更多...'
+        loadText: '上拉加载更多...',
+        firstIn: ''
       }
-    },
-    beforeCreate() {
-			Indicator.open()
     },
     created(){
       
@@ -52,7 +50,6 @@ export default {
         api.getOrderInfoList(data)
         .then(res => {
             if(res.code==0) {
-              //console.log(res)
               if(res.data.isLastPage == 'true') {
                     this.pageNum = -1
                     this.loadText = '暂无更多数据'
@@ -63,6 +60,7 @@ export default {
         })
       },
       goDetail(c){
+        localStorage.setItem('ccc',1)
         this.$router.push({
           path: '/user/order',
           query: {
@@ -80,6 +78,9 @@ export default {
     watch: {
       tabstatus(a,b){
         //console.log(a)
+        if(a===''){
+          return false;
+        }
         Indicator.open()
         this.recordList = []
         this.pageNum = 1
@@ -96,13 +97,42 @@ export default {
       }
     },
     mounted(){
-      if(this.$store.state.recordTab!=''&&this.$store.state.recordTab!='1'){
-        if(this.$store.state.recordTab=='2'){
-          this.orderStatus = '5'
-        }else{
-          this.orderStatus = this.$store.state.recordTab
-        }
+      // if(this.$store.state.recordTab!=''&&this.$store.state.recordTab!='1'){
+      //   if(this.$store.state.recordTab=='2'){
+      //     this.orderStatus = '5'
+      //   }else{
+      //     this.orderStatus = this.$store.state.recordTab
+      //   }
+      // }
+    },
+    activated(){
+      if(sessionStorage.getItem('firstIn')==1){
+        this.firstIn = true
+      }else{
+        this.firstIn = false
       }
-      this.recordFetch()
+      if(this.firstIn){
+       // console.log(this.recordList)
+        Indicator.open();
+        //console.log(this.firstIn)
+        setTimeout(()=>{
+        sessionStorage.removeItem('firstIn')
+        this.recordList = []
+        this.orderStatus = '-1'
+        this.pageNum = 1
+        this.loadText = '上拉加载更多...'
+        this.allLoaded = false
+        this.recordFetch()
+        },50)
+      }
+    },
+    beforeRouteEnter(to, from, next) {
+      if(from.path=='/user'){
+        next(vm=>{
+          vm.recordList = []
+        }) 
+      }else{
+        next()
+      }
     }
 }

@@ -17,13 +17,13 @@ export default {
         Indicator.open()
     },
     created(){
-        this.fetchData()
+        
     },
     components: {
         "v-informal": informal
     },
     mounted() {
- 
+        this.fetchData()
     },
     methods:{
         fetchData(){

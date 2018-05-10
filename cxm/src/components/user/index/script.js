@@ -25,7 +25,6 @@ export default {
             if(res.code==0) {
               //  console.log(res)
               localStorage.clear()
-              localStorage.setItem('loginOut','1')
               this.$router.push({
                   path: '/user/password',
                   replace: true
@@ -81,6 +80,9 @@ export default {
     },
     beforeRouteLeave(to, from, next) {
         next()
+        if(to.path=='/user/record'){
+          sessionStorage.setItem('firstIn',1)
+        }
         this.$store.state.recordTab = ''
     }
 }

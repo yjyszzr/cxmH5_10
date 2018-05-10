@@ -106,3 +106,50 @@ input::-webkit-inner-spin-button {
     bottom: 34px!important;
   }
 }
+
+/* 路由动画 */
+// .slide-go-enter-active,.slide-go-leave-active,.slide-back-enter-active,.slide-back-leave-active{
+//   -webkit-transition: transform 0.4s cubic-bezier(.55,0,.1,1);
+//   transition: transform 0.4s cubic-bezier(.55,0,.1,1);
+// }
+
+// .slide-go-leave{
+//   -webkit-transform: translate3d(0,0,0);
+//   transform: translate3d(0,0,0);
+// }
+
+// .slide-go-leave-to{
+//   -webkit-transform: translate3d(-100%,0,0);
+//   transform: translate3d(-100%,0,0);
+// }
+  
+// .slide-go-enter{
+//   -webkit-transform: translate3d(100%,0,0);
+//   transform: translate3d(100%,0,0);
+// }
+  
+// .slide-go-enter-to{
+//   -webkit-transform: translate3d(0%,0,0);
+//   transform: translate3d(0%,0,0);
+// }
+  
+// .slide-back-leave{
+//   -webkit-transform: translate3d(0,0,0);
+//   transform: translate3d(0,0,0);
+// }
+  
+// .slide-back-leave-to{
+//   -webkit-transform: translate3d(100%,0,0);
+//   transform: translate3d(100%,0,0);
+// }
+  
+// .slide-back-enter{
+//   -webkit-transform: translate3d(-100%,0,0);
+//   transform: translate3d(-100%,0,0);
+// }
+  
+// .slide-back-enter-to{
+//   -webkit-transform: translate3d(0%,0,0);
+//   transform: translate3d(0%,0,0);
+// }
+  

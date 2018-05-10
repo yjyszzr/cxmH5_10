@@ -128,7 +128,7 @@
 			<div class="section center">
 				<p class="boll">竞彩足球</p>
 				<ul>
-					<li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.playType,item.playType,item.lotteryId)">
+					<li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.playType)">
 						<img :src="item.playClassifyImg" class="entry_icon">
 						<p>{{item.playClassifyName}}</p>
 						<img src="../assets/img/Awards@2x.png" class="entry_status" alt="" v-if="item.playClassifyLabelId=='3'">
@@ -197,7 +197,7 @@ export default {
     }
   },
   methods: {
-    goFreebuy(c, s, t) {
+    goFreebuy(c) {
       this.$store.state.matchObj = {};
       this.$store.state.freebuyId = c;
       this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
@@ -205,7 +205,7 @@ export default {
       this.$router.push({
         path: "/freebuy/singleNote",
         query: {
-          id: s
+          id: c
         },
         replace: false
       });

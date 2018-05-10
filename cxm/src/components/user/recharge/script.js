@@ -25,9 +25,17 @@ export default {
       },
       determine(){
         Indicator.open()
+        let innerWechat = ''
+        var ua = navigator.userAgent.toLowerCase();  
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+            innerWechat = 1
+        } else {  
+            innerWechat = 0
+        } 
         let data = {
           'totalAmount': this.recharge_val,
-          'payCode': this.payCode
+          'payCode': this.payCode,
+          'innerWechat': innerWechat
         }
         api.recharge(data)
         .then(res => {
@@ -67,10 +75,10 @@ export default {
                         title: '提示',
                         confirmButtonText: '确定'
                     }).then(action => {
-                      Indicator.open()
-                        this.fetchData()
+                        //Indicator.open()
+                        //this.fetchData()
                     });
-                    Indicator.close()
+                    //Indicator.close()
                   }else if(res.code=='304036'){
                       MessageBox.confirm('',{
                           message: '暂未查询到您的支付结果，如果您已经确认支付并扣款，可能存在延迟到账的情况，请到账户明细中查看或联系客服查询',
@@ -83,21 +91,21 @@ export default {
                       },action => {
 
                       })
-                      Indicator.close()
+                      //Indicator.close()
                   }else if(res.code=='304035'){
                       MessageBox.alert('',{
                           message: '如果您已经确认支付并扣款，可能存在延迟到账情况，请到账户明细中查看或联系客服查询',
                           title: '支付失败',
                           confirmButtonText: '重新支付'
                       }).then(action => {
-                          Indicator.close()
+                          //Indicator.close()
                       });
-                      Indicator.close()
+                      //Indicator.close()
                   }else{
-                      Indicator.close()
+                     // Indicator.close()
                   }
+                  this.fetchData()
               })
-              this.fetchData()
       },
       fetchData(){
         let data = {

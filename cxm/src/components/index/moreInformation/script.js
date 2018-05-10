@@ -34,6 +34,9 @@ export default {
       .addEventListener("scroll", this.handleScroll);
         this.fetchData()
     },
+    deactivated() {
+        this.$destroy()
+    },
     methods:{
         fetchData(){
             let data = {

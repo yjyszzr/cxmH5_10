@@ -16,7 +16,7 @@ export default {
       add_card(){
         Indicator.open()
         let data = {
-          'bankCardNo': this.blankNum
+          'bankCardNo': this.blankNum.replace(/\s/g,'')
         }
         api.addBankCard(data)
         .then(res => {

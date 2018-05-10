@@ -6,7 +6,8 @@ export default {
       return {
         phoneVal: '',
         passwordVal: '',
-        eyehide: false   //控制眼睛
+        eyehide: false,   //控制眼睛
+        returnGo: false
       }
     },
     created(){
@@ -28,7 +29,15 @@ export default {
         .then(res => {
             if(res.code==0) {
                 localStorage.setItem('token',res.data.token)
-                this.$router.go(-1);
+                if(this.returnGo){
+                  this.$router.go(-1)
+                }else{
+                  this.$router.push({
+                    path: '/',
+                    replace: true
+                  })
+                }
+                //this.$router.go(-1);
                 Toast(res.msg)
             }
 
@@ -52,6 +61,20 @@ export default {
       },
     },
     mounted(){
+    },
+    beforeRouteEnter(to, from, next){
+      //console.log(from)
+      if(from.path=='/freebuy/payment'){
+          next(vm=>{
+               vm.returnGo =  true 
+               //console.log(vm.returnGo)
+          })
+          //localStorage.removeItem('matchSaveInfo')
+      }else{
+          next(vm=>{
+            vm.returnGo =  false 
+          })
+      }
     },
     beforeRouteLeave(to, from, next) {
       next()

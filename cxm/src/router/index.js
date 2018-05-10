@@ -6,11 +6,22 @@ import 'nprogress/nprogress.css'; // Progress 进度条 样式
 Vue.use(Router)
 
 const router = new Router({
+  //mode: 'history',
+//   scrollBehavior (to, from, savedPosition) {
+//     if (savedPosition) {
+//       return savedPosition
+//     } else {
+//       return { x: 0, y: 0 }
+//     }
+//   },
   routes: [
     {
       path: '/',
       name: 'index',
       cname:'首页',
+      meta:{
+        keepAlive: true
+      },
       component: resolve => require(['@/components/Index'], resolve)
     },
     {
@@ -123,6 +134,9 @@ const router = new Router({
           path: '/user/record',
           name: 'record',
           cname:'购彩记录',
+          meta:{
+            keepAlive: true
+          },
           component: resolve => require(['@/components/user/record/index.vue'], resolve)
       },
       {
@@ -236,19 +250,46 @@ const router = new Router({
 NProgress.configure({ showSpinner: false });
 
 router.beforeEach(async(to, from, next) => {
-	NProgress.start(); // 开启Progress
+    let toPath = to.path
+    NProgress.start(); // 开启Progress
+    // 进入详情页时需要记录滚动条距离头部距离
+    if (toPath === '/user/order'&&from.path==='/user/record') {
+        //console.log(from)
+        sessionStorage.setItem('orderScrolltop',$('#content').scrollTop())
+        // router.app.orderScrolltop = $('#content').scrollTop()
+    }else if(toPath === '/index/consult'&&from.path==='/'){
+        from.meta.keepAlive = true
+        sessionStorage.setItem('consultScrolltop',$('#content').scrollTop())
+        // router.app.consultScrolltop = $('#content').scrollTop()
+    }else{
+        if(from.path!='/index/consult'&&from.path != '/user/record'){
+            from.meta.keepAlive = false
+        }
+    }
 	next()
 })
 
-router.afterEach(() => {
+router.afterEach(async(to, from, next) => {
     NProgress.done(); // 结束Progress
-    // 页面跳转时滚动到页面顶部
+    let fromPath = from.path
+    let toPath = to.path
+    // // 页面跳转时滚动到页面顶部
     setTimeout(() => {
         const topElement = document.getElementById('content');
         if (topElement) {
-            topElement.scrollTop = 0;
+            if(fromPath==='/user/order'&&toPath === '/user/record'){
+                topElement.scrollTop = sessionStorage.getItem('orderScrolltop')
+                sessionStorage.removeItem('orderScrolltop')
+                //topElement.scrollTop = router.app.orderScrolltop;
+            }else if(fromPath === '/index/consult'&&toPath === '/'){
+                topElement.scrollTop = sessionStorage.getItem('consultScrolltop')
+                sessionStorage.removeItem('consultScrolltop')
+                //topElement.scrollTop = router.app.consultScrolltop;
+            }else{
+                topElement.scrollTop = 0;
+            }
         }
-    }, 100);
+    }, 0);
 });
 
 

@@ -50,7 +50,7 @@
                             <div class="matchRightBox">
                                 <p v-for='(data,index) in item.matchPlays[0].matchCells' :key='index' :class="item.myspf&&item.myspf.indexOf('jqs:'+data.cellCode)!=-1?'selected':''" >
                                     <b class="mMark" @click="selectedClick($event,data)"></b>
-                                    <span>{{data.cellCode}}</span>&nbsp;
+                                    <span>{{data.cellName}}</span>&nbsp;
                                     <span>
                                         {{data.cellOdds}}
                                     </span>
@@ -195,7 +195,7 @@
                         <div class="matchRightBox">
                             <p v-for='(data,index) in item.matchPlays[0].matchCells' :key='index' :class="item.myspf&&item.myspf.indexOf('jqs:'+data.cellCode)!=-1?'selected':''" >
                                 <b class="mMark" @click="selectedClick($event,data)"></b>
-                                <span>{{data.cellCode}}</span>&nbsp;
+                                <span>{{data.cellName}}</span>&nbsp;
                                 <span>
                                     {{data.cellOdds}}
                                 </span>

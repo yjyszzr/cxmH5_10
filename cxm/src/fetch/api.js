@@ -99,7 +99,7 @@ axios.interceptors.response.use((res) =>{
     setTimeout(()=>{
         Indicator.close()
         Toast('请求超时');
-    },10000)
+    },25000)
     return Promise.reject(error);
 });
 

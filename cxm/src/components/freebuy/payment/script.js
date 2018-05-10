@@ -113,12 +113,11 @@ export default {
                     //console.log(res)
                     if (data.payCode == '') {
                         if (res.code == 0) {
-                            this.$router.push({
+                            this.$router.replace({
                                 path: '/user/order',
                                 query: {
                                     id: res.data.orderId,
-                                },
-                                replace: false
+                                }
                             })
                         }
                     } else {
@@ -170,12 +169,11 @@ export default {
                 .then(res => {
                     //console.log(res)
                     if (res.code == 0) {
-                        this.$router.push({
+                        this.$router.replace({
                             path: '/user/order',
                             query: {
                                 id: this.orderId,
-                            },
-                            replace: false
+                            }
                         })
                     }else if(res.code=='304036'){
                         MessageBox.confirm('',{

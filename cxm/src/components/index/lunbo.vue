@@ -25,6 +25,10 @@
 		methods: {
 			lunbo(url) {
 				if(getUrlStr('type',url)=='3'){
+					this.$store.state.matchObj = {};
+					this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
+					this.$store.state.mark_playObj.bfIdSaveMap = new Map();
+					this.$store.state.freebuyId = getUrlStr('subid',url);
 					this.$router.push({
 						path: "/freebuy/singleNote",
 						query: {

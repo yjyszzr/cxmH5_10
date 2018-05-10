@@ -17,6 +17,7 @@
                 <li v-for="(item,i) in list_num" :key='i' @click='changenum(item)'>{{item}}</li>
             </ul>
         </section>
+        <!-- <a href="weixin://wxpay/bizpayurl?pr=ULAxnef" style="font-size:100px;">ccc</a> -->
         <section class="section wechat">
             <p>支付方式</p>
             <ul class="msg_list">

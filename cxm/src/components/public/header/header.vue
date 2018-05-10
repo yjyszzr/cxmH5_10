@@ -39,7 +39,7 @@
             <li><a href="" @click.prevent="custormAnchor('a1')">账户问题</a></li>
             <li><a href="" @click.prevent="custormAnchor('a2')">充值问题</a></li>
             <li><a href="" @click.prevent="custormAnchor('a3')">提现问题</a></li>
-            <li><a href="" @click.prevent="custormAnchor('a4')">采购问题</a></li>
+            <li><a href="" @click.prevent="custormAnchor('a4')">购彩问题</a></li>
             <li><a href="" @click.prevent="custormAnchor('a5')">中奖派奖问题</a></li>
         </ul>
         <ul class="list" v-if="$route.path.split('/')[1]=='lotteryResult'">
@@ -77,13 +77,6 @@ export default {
             path: '/',
             replace: false
           })
-          return false;
-        }else if(localStorage.getItem('loginOut')){
-          this.$router.push({
-            path: '/',
-            replace: false
-          })
-          localStorage.removeItem('loginOut')
           return false;
         }
       }

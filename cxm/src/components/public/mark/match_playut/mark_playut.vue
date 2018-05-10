@@ -14,7 +14,7 @@
                 </ul>
                 <button>
                     <a class="pop_cur" @click="confirm()">确定</a>
-                    <a @click="closeMark()">取消</a>
+                    <a @click="closeMarkCz()">取消</a>
                 </button>
             </div>
             <!-- 优惠券 -->

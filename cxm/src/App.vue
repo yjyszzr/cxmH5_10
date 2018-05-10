@@ -5,7 +5,14 @@
         <!-- <transition  mode="out-in" enter-active-class='bounce-enter' leave-active-class="bounce-leave">
             <router-view></router-view>
         </transition>   -->
-        <router-view></router-view>
+        <keep-alive>
+          <router-view v-if="$route.meta.keepAlive"></router-view>
+        </keep-alive>
+        <router-view v-if="!$route.meta.keepAlive"></router-view>
+        <!-- <keep-alive>
+           <router-view></router-view>
+        </keep-alive> -->
+       
     </div>
     <v-footer></v-footer>
     <transition name="fade"> 
@@ -154,6 +161,22 @@ export default {
       }
     }
   },
+  // watch: {
+  //     '$route' (to, from) {
+
+  //       if (from.query.time) {
+  //         if (to.query.time > from.query.time) {
+  //           this.transitionName = 'slide-go'
+  //         } else {
+  //           this.transitionName = 'slide-back'
+  //         }
+  //       } else {
+  //         this.transitionName = 'slide-go'
+  //       }
+
+  //       this.nowUrl = to.fullPath
+  //     }
+  // },
   mounted(){
     // var scrollable = document.getElementById("content");
     // new ScrollFix(scrollable);
@@ -178,7 +201,7 @@ export default {
   align-items: center;
   .content {
     width: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
     padding-bottom: 0.2rem;
     -webkit-overflow-scrolling: touch !important;
     position: relative;

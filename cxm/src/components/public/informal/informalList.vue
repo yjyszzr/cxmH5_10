@@ -44,8 +44,7 @@ export default {
                 path: "/index/consult",
                 query: {
                 id: c
-                },
-                replace: false
+                }
         });
     }
   }
