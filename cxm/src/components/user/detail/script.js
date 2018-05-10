@@ -43,6 +43,7 @@ export default {
         api.queryBonusListByStatus(data)
         .then(res => {
             if(res.code==0) {
+                //console.log(res)
               if(res.data.isLastPage == 'true') {
                     this.pageNum = -1
                     this.loadText = '暂无更多数据'
