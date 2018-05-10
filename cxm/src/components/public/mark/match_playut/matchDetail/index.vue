@@ -9,7 +9,7 @@
             </div>
             <div class="matchDetail_box" v-if="matchDetailObj.matchInfo">
                 <div class="matchDetail_top">
-                    {{matchDetailObj.matchInfo.changci.substr(-3)}}&nbsp;&nbsp;{{matchDetailObj.matchInfo.leagueAddr}}&nbsp;&nbsp;{{matchTimeDate(matchDetailObj.matchInfo.matchTime)}}
+                    {{matchDetailObj.matchInfo.changci}}&nbsp;&nbsp;{{matchDetailObj.matchInfo.leagueAddr}}&nbsp;&nbsp;{{matchTimeDate(matchDetailObj.matchInfo.matchTime)}}
                 </div>
                 <div class="matchDetail_content">
                     <div class="md_left">

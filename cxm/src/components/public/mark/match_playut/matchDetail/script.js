@@ -16,7 +16,7 @@ export default {
             .then(res => {
                 if(res.code==0) {
                     this.matchDetailObj = res.data
-                    //console.log(res)
+                    console.log(res)
                 }
         })
     },
@@ -39,7 +39,7 @@ export default {
             })
         },
         matchTimeDate(c){
-            return datefilter(c*1000,0)+' '+ datefilter(c*1000,1)
+            return datefilter(c*1000,1)
         }
     },
     mounted(){
