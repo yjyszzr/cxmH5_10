@@ -36,7 +36,14 @@ export default {
             }
         })
       },
+        //全部提现
       determine(){
+          let regex = new RegExp("^(([1-9][0-9]*)|([0]\.[0-9]]{1,2})|([1-9][0-9]*\.[0-9]{1,2}))$");
+
+          if(!regex.test(this.withdrawVal) ){
+              Toast('请输入正确的金额')
+              return false
+          }
         if(this.withdrawObj.defaultBankLabel==''){
           Toast('请添加银行卡')
         }else if(this.withdrawVal == ''||Number(this.withdrawVal)<=0){

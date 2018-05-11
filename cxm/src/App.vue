@@ -123,6 +123,8 @@ export default {
                 return "投注服务协议";
             case 'activity':
                 return "活动详情";
+            case 'give_details':
+                return "提现详情";
         }
       } else {
         if (
