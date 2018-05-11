@@ -70,29 +70,29 @@
        .pink{
          margin-top: px2rem(27px);
          i{
-           width: px2rem(80px);
            height: px2rem(80px);
-           border: 1px solid #f0f0f0;
-           display: inline-block;
+           width: px2rem(80px);
+           display: flex;
+           align-items: center;
+           justify-content: center;
            left: px2rem(24px);
-           border-radius: 50%;
            position: absolute;
            top: px2rem(71px);
            img{
-             width: 100%;
+             height: 100%;
            }
          }
          s{
-           width: px2rem(80px);
+          width: px2rem(80px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
            height: px2rem(80px);
-           border: 1px solid #f0f0f0;
-           display: inline-block;
-           border-radius: 50%;
            position: absolute;
            right: px2rem(24px);
            top: px2rem(71px);
            img{
-             width: 100%;
+             height: 100%;
            }
          }
          div{

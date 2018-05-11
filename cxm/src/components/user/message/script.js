@@ -60,7 +60,7 @@ export default {
             let data = {
                 msgType: this.msgType,
                 pageNum: this.pageNum,
-                pageSize: 1,
+                pageSize: 10,
             }
             api.newlist(data)
                 .then(res => {

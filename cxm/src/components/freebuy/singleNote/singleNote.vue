@@ -293,7 +293,7 @@
         <div class="match_footer">
             <i style="display:none;">{{$store.state.mark_playObj.bfIdSaveMapFlag}}</i>
             <div class="match_footer_left">
-                <div class="match_delete" @click="clear_match()">
+                <div class="match_delete" @click="clear_matchClick()">
                     <i class="iconfont icon-icon-26"></i>
                     <!--<img src="../../../assets/img/freebuy_img/trashbin@2x.png" alt="">-->
                 </div>

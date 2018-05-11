@@ -41,7 +41,7 @@ export default {
             // });
             this.$store.state.mark_playObj.bfIdSaveMapFlag++
         },
-        unSelectedClickspf(c, s, status,sig) {
+        unSelectedClickspf(c, s, status,sig,fixodds) {
             //console.log(c)
             let arr = new Set(this.scoreObj.selectedList),
                 obj2 = {}
@@ -75,6 +75,7 @@ export default {
             })
             obj2.playType = status
             obj2.single = sig
+            obj2.fixedodds = fixodds
             if (this.scoreObj.selectedList.length <= 0) {
                 arr.add(obj2)
             } else {
