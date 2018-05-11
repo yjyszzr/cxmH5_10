@@ -201,7 +201,7 @@ export default {
   align-items: center;
   .content {
     width: 100%;
-    overflow-y: scroll;
+    overflow: scroll;
     padding-bottom: 0.2rem;
     -webkit-overflow-scrolling: touch !important;
     position: relative;

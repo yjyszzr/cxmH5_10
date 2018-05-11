@@ -1,6 +1,8 @@
 import api from '../../../fetch/api'
 import datefilter from '../../../util/datefilter'
-import { MessageBox } from 'mint-ui';
+import {
+  MessageBox
+} from 'mint-ui';
 import {
   Toast
 } from 'mint-ui'
@@ -11,7 +13,7 @@ export default {
   name: 'singleNote',
   data() {
     return {
-      activeName: ['1','2','3','4','5','6'],
+      activeName: ['1', '2', '3', '4', '5', '6'],
       playType: this.$route.query.id,
       leagueId: '',
       matchObj: {},
@@ -52,26 +54,26 @@ export default {
       }
     },
     bfBtn(c) {
-      if(this.playType == '6'){
-        if(c.selectedList.length>0){
-          if(this.arrNum>15){
+      if (this.playType == '6') {
+        if (c.selectedList.length > 0) {
+          if (this.arrNum > 15) {
             Toast('最多选择15场比赛')
             return false;
           }
-        }else{
-          if(this.arrNum>=15){
+        } else {
+          if (this.arrNum >= 15) {
             Toast('最多选择15场比赛')
             return false;
           }
         }
-      }else{
-        if(this.matchSelectObj.has(c.matchId)){
-          if(this.matchSelectObj.size>15){
+      } else {
+        if (this.matchSelectObj.has(c.matchId)) {
+          if (this.matchSelectObj.size > 15) {
             Toast('最多选择15场比赛')
             return false;
           }
-        }else{
-          if(this.matchSelectObj.size>=15){
+        } else {
+          if (this.matchSelectObj.size >= 15) {
             Toast('最多选择15场比赛')
             return false;
           }
@@ -126,14 +128,14 @@ export default {
       this.$store.state.matchObj.hotPlayList.forEach(item => {
         if (item.selectedNum && item.selectedNum > 0) {
           this.arrNum++
-          obj = item
+            obj = item
         }
       });
       this.$store.state.matchObj.playList.forEach(item => {
         for (let i = 0; i < item.playList.length; i++) {
           if (item.playList[i].selectedNum && item.playList[i].selectedNum > 0) {
             this.arrNum++
-            obj = item.playList[i]
+              obj = item.playList[i]
           }
         }
       });
@@ -182,13 +184,13 @@ export default {
     },
     selectedClick(c, s) {
       this.idConfig(c)
-      if(this.matchSelectObj.has(this.id)){
-        if(this.matchSelectObj.size>15){
+      if (this.matchSelectObj.has(this.id)) {
+        if (this.matchSelectObj.size > 15) {
           Toast('最多选择15场比赛')
           return false;
         }
-      }else{
-        if(this.matchSelectObj.size>=15){
+      } else {
+        if (this.matchSelectObj.size >= 15) {
           Toast('最多选择15场比赛')
           return false;
         }
@@ -227,13 +229,13 @@ export default {
     },
     selectedTwoClick(c, s) {
       this.idConfig(c)
-      if(this.matchSelectObj.has(this.id)){
-        if(this.matchSelectObj.size>15){
+      if (this.matchSelectObj.has(this.id)) {
+        if (this.matchSelectObj.size > 15) {
           Toast('最多选择15场比赛')
           return false;
         }
-      }else{
-        if(this.matchSelectObj.size>=15){
+      } else {
+        if (this.matchSelectObj.size >= 15) {
           Toast('最多选择15场比赛')
           return false;
         }
@@ -255,7 +257,7 @@ export default {
       this.confirm_disable()
     },
     //混合过关逻辑
-    isSelectedTy(s, c, status) {
+    isSelectedTy(s, c, status,sig,fixodds) {
       let arr = new Set(c.selectedList),
         obj2 = {}
       let obj = {},
@@ -267,13 +269,13 @@ export default {
           })
         }
       })
-      if(c.selectedList.length>0){
-        if(this.arrNum>15){
+      if (c.selectedList.length > 0) {
+        if (this.arrNum > 15) {
           Toast('最多选择15场比赛')
           return false;
         }
-      }else{
-        if(this.arrNum>=15){
+      } else {
+        if (this.arrNum >= 15) {
           Toast('最多选择15场比赛')
           return false;
         }
@@ -282,7 +284,7 @@ export default {
       obj.cellName = s.cellName
       obj.cellOdds = s.cellOdds
       obj.cellSons = s.cellSons
-     // console.log(c)
+      // console.log(c)
       this.$store.state.mark_playObj.bfIdSaveMapFlag++
         if (s.isSelected == 'sld') {
           s.isSelected = false
@@ -299,10 +301,12 @@ export default {
         obj2.betCells.push(JSON.parse(item))
       })
       obj2.playType = status
-      if(status=='2'){
-      	obj2.single = c.matchPlays[1].single
-      }else if(status=='1'){
-      	obj2.single = c.matchPlays[0].single
+      obj2.single = sig
+      obj2.fixedodds = fixodds
+      if (status == '2') {
+        obj2.single = c.matchPlays[1].single
+      } else if (status == '1') {
+        obj2.single = c.matchPlays[0].single
       }
       if (c.selectedList.length <= 0) {
         arr.add(obj2)
@@ -316,9 +320,9 @@ export default {
             arr.add(obj2)
           } else {
             if (item.playType == obj2.playType) {
-              if(obj2.betCells.length>0){
+              if (obj2.betCells.length > 0) {
                 item.betCells = obj2.betCells
-              }else{
+              } else {
                 arr.delete(item)
               }
             }
@@ -329,39 +333,44 @@ export default {
     },
     unSelectedClickspf(c, s) {
       if (c.target.innerText.split(' ')[0] == s.matchPlays[1].homeCell.cellName) {
-        this.isSelectedTy(s.matchPlays[1].homeCell, s, '2')
+        this.isSelectedTy(s.matchPlays[1].homeCell, s, '2',s.matchPlays[1].single,s.matchPlays[1].fixedOdds)
       } else if (c.target.innerText.split(' ')[0] == s.matchPlays[1].flatCell.cellName) {
-        this.isSelectedTy(s.matchPlays[1].flatCell, s, '2')
+        this.isSelectedTy(s.matchPlays[1].flatCell, s, '2',s.matchPlays[1].single,s.matchPlays[1].fixedOdds)
       } else if (c.target.innerText.split(' ')[0] == s.matchPlays[1].visitingCell.cellName) {
-        this.isSelectedTy(s.matchPlays[1].visitingCell, s, '2')
+        this.isSelectedTy(s.matchPlays[1].visitingCell, s, '2',s.matchPlays[1].single,s.matchPlays[1].fixedOdds)
       }
     },
     unSelectedClickrq(c, s) {
       if (c.target.innerText.split(' ')[0] == s.matchPlays[0].homeCell.cellName) {
-        this.isSelectedTy(s.matchPlays[0].homeCell, s, '1')
+        this.isSelectedTy(s.matchPlays[0].homeCell, s, '1',s.matchPlays[0].single,s.matchPlays[0].fixedOdds)
       } else if (c.target.innerText.split(' ')[0] == s.matchPlays[0].flatCell.cellName) {
-        this.isSelectedTy(s.matchPlays[0].flatCell, s, '1')
+        this.isSelectedTy(s.matchPlays[0].flatCell, s, '1',s.matchPlays[0].single,s.matchPlays[0].fixedOdds)
       } else if (c.target.innerText.split(' ')[0] == s.matchPlays[0].visitingCell.cellName) {
-        this.isSelectedTy(s.matchPlays[0].visitingCell, s, '1')
+        this.isSelectedTy(s.matchPlays[0].visitingCell, s, '1',s.matchPlays[0].single,s.matchPlays[0].fixedOdds)
       }
+    },
+    clear_matchClick() {
+      MessageBox.confirm('确定执行此操作?').then(action => {
+        this.clear_match()
+      }, cancel => {});
     },
     //清除
     clear_match() {
-        MessageBox.confirm('确定执行此操作?').then(action => {
-            if (this.playType == '6') {
-                this.$store.state.matchObj = JSON.parse(JSON.stringify(this.$store.state.chushihuaObj))
-            } else {
-                this.matchSelectObj.clear()
-                this.id = ''
-                this.$store.state.mark_playObj.bfIdSaveMap.clear()
-                this.mapKey = []
-            }
-            this.text = `<p>请至少选择1场单关比赛</p><p>或者2场比赛</p>`
-            this.flag = true
-            this.classFlag = true
-            this.arrNum = 0
-            $('.selected').removeClass('selected')
-        },cancel=>{});
+
+      if (this.playType == '6') {
+        this.$store.state.matchObj = JSON.parse(JSON.stringify(this.$store.state.chushihuaObj))
+      } else {
+        this.matchSelectObj.clear()
+        this.id = ''
+        this.$store.state.mark_playObj.bfIdSaveMap.clear()
+        this.mapKey = []
+      }
+      this.text = `<p>请至少选择1场单关比赛</p><p>或者2场比赛</p>`
+      this.flag = true
+      this.classFlag = true
+      this.arrNum = 0
+      $('.selected').removeClass('selected')
+
       //console.log(this.$store.state.chushihuaObj)
 
     },
@@ -415,39 +424,39 @@ export default {
         replace: false
       })
     },
-    matchDetail(c,s){
-      if(s.target.parentElement.children[4].lastChild.className==''){
-        s.target.parentElement.children[4].lastChild.className='rotate'
-      }else{
-        s.target.parentElement.children[4].lastChild.className=''
+    matchDetail(c, s) {
+      if (s.target.parentElement.children[4].lastChild.className == '') {
+        s.target.parentElement.children[4].lastChild.className = 'rotate'
+      } else {
+        s.target.parentElement.children[4].lastChild.className = ''
       }
       this.$store.state.mark_playObj.mark_playBox = true
       this.$store.state.mark_playObj.mark_play = '7'
-      this.$store.dispatch("getBfMatchId",c)
+      this.$store.dispatch("getBfMatchId", c)
     }
   },
   computed: {
     status() {
       return this.$store.state.mark_playObj.bfIdSaveMapFlag;
     },
-    mark_obj(){
+    mark_obj() {
       return this.$store.state.mark_Reset;
     },
-    matchDetailMark(){
+    matchDetailMark() {
       return this.$store.state.mark_playObj.matchDetailFlag;
     }
   },
   watch: {
     status(a, b) {
       //console.log(this.$store.state.mark_playObj.bfIdSaveMap)
-      if(this.playType=='6'){
+      if (this.playType == '6') {
         this.confirm_mix()
-      }else{
+      } else {
         this.mapKey = []
         this.matchSelectObj = this.$store.state.mark_playObj.bfIdSaveMap
         for (let [key, value] of this.matchSelectObj) {
           this.mapKey.push(key)
-          this.matchSelectObj.set(key,Array.from(value))
+          this.matchSelectObj.set(key, Array.from(value))
         }
         //console.log(this.matchSelectObj)
         this.confirm_bf()
@@ -455,12 +464,12 @@ export default {
       //console.log(this.$store.state.mark_playObj.bfIdSaveMap)
       // this.confirm_disable()
     },
-    mark_obj(a,b){
-      if(a>0){
+    mark_obj(a, b) {
+      if (a > 0) {
         this.clear_match()
       }
     },
-    matchDetailMark(a,b){
+    matchDetailMark(a, b) {
       $('.rotate').removeClass('rotate')
     }
   },
@@ -505,11 +514,11 @@ export default {
     }
   },
   beforeRouteEnter(to, from, next) {
-    if(from.path=='/user/order'){
-      next(vm=>{
+    if (from.path == '/user/order') {
+      next(vm => {
         vm.$store.state.mark_Reset++
       })
-    }else{
+    } else {
       next()
     }
   },

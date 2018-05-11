@@ -52,6 +52,15 @@ export default {
         			this.$refs.loadmore.onBottomLoaded();
         	}, 700)
       },
+      bg_Color(c){
+        if(c==3||c==4){
+          return '#86c46b'
+        }else if(c==6){
+          return '#f15a24'
+        }else{
+          return '#f6ad41'
+        }
+      }
     },
     computed: {  
       tabstatus() {  

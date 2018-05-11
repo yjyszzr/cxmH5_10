@@ -12,7 +12,7 @@
                         <p class="data" style='background: #f4f4f4;' v-if="i==0||(i>0&&item.addTime!=mxList[i-1].addTime)">{{item.addTime}}</p>
                         <ul class="list">
                             <li>
-                               <p class="gczt" :style="{'background':item.processType==3||item.processType==4?'#86c46b':'#f6ad41'}">{{item.processTypeChar}}</p>
+                               <p class="gczt" :style="{'background':bg_Color(item.processType)}">{{item.processTypeChar}}</p>
                                 <div>
                                     <p>{{item.processTypeName}}<i>{{item.changeAmount}}</i></p>
                                     <b v-html='item.note'></b>

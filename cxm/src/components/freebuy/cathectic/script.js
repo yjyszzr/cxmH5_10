@@ -391,6 +391,9 @@ export default {
 				obj.matchTeam = item.homeTeamName + 'VS' + item.visitingTeamName
 				obj.lotteryClassifyId = this.$route.query.lottoyId
 				obj.lotteryPlayClassifyId = this.$route.query.classlootoyId
+				if(item.playType == '6'){
+					obj.changciId = item.changciId
+				}
 				let matchBetCells = [],
 					matchBetCellsObj = {}
 				if(item.myspf) {
@@ -479,6 +482,7 @@ export default {
 				'matchBetPlays': this.matchBetPlays
 			};
 			this.matchSave = data
+			//console.log(JSON.stringify(data))
 			api
 				.getBetInfo(data)
 				.then(res => {
@@ -509,7 +513,7 @@ export default {
 		},
 		saveGo() {
 			if(this.$refs.xySelected.className == 'icon-icon-29 iconfont'){
-				Toast('请勾选服务协议')
+				Toast('尊敬的用户,购彩需同意并接受《彩小秘投注服务协议》')
 				return
 			}else if(this.disable==true){
 				Toast('请至少选择2场比赛')

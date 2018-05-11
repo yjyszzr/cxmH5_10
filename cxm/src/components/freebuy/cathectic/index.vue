@@ -54,7 +54,7 @@
                         <ul v-if="$route.query.playType=='6'" class="mixTz">
                             <li @click="bfClick(item.matchId)">
                                 <span v-for="(data,index) in item.selectedList" :key='index'>
-                                    <b v-for="(a,index1) in data.betCells" :key='index1'>{{data.playType=='0'?'让球'+a.cellName:a.cellName}}&nbsp;</b>
+                                    <b v-for="(a,index1) in data.betCells" :key='index1'>{{data.playType=='1'?'让球'+a.cellName:a.cellName}}&nbsp;</b>
                                 </span>
                             </li>
                         </ul>

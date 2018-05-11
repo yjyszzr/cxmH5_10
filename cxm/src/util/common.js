@@ -53,4 +53,12 @@ export let getUrlStr = function(name,url){
     }
     return undefined
 }
-
+//判断浏览器是否位wx
+export let wxPd = function(){
+    var ua = navigator.userAgent.toLowerCase();  
+    if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+        return true;
+    } else {  
+        return false;
+    } 
+}
