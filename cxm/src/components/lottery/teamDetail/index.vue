@@ -4,7 +4,7 @@
         <section v-if="ckxqObj.matchInfo">
             <div class="team">
                 <p class="p1">
-                    {{ckxqObj.matchInfo.changci.substr(-3)}} {{ckxqObj.matchInfo.leagueAddr}} {{matchTimeDate(ckxqObj.matchInfo.matchTime)}}
+                    {{ckxqObj.matchInfo.changci}} {{ckxqObj.matchInfo.leagueAddr}} {{matchTimeDate(ckxqObj.matchInfo.matchTime)}}
                 </p>
                 <ul>
                     <li>
