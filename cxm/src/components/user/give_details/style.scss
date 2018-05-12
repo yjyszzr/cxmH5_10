@@ -22,7 +22,7 @@
         padding: px2rem(125px);
         b{
             border: 1px solid #A0A0A0;
-            height: px2rem(180px);
+            height: px2rem(157px);
             margin-top: px2rem(70px);
             position: relative;
             float: left;
@@ -44,17 +44,20 @@
                 span{
                     color:#A0A0A0;
                     font-size: px2rem(20px);
+                    display: block;
+                    height: px2rem(30px);
+                    box-sizing: border-box;
                 }
                 .giveProgress{
                     color: #ea5504;
                 }
             }
         }
-        .sent:first-of-type{
-            span{
-                margin-right: px2rem(-60px);
-            }
-        }
+        // .sent:first-of-type{
+        //     span{
+        //         margin-right: px2rem(-60px);
+        //     }
+        // }
     }
     .msg_list{
         li{

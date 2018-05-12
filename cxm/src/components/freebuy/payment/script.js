@@ -1,8 +1,8 @@
 import api from '../../../fetch/api'
 import { MessageBox } from 'mint-ui';
-// import {
-//     detect
-// } from '../../../util/common'
+import {
+    wxPd
+} from '../../../util/common'
 import {
     Toast
 } from 'mint-ui'
@@ -12,7 +12,7 @@ import {
 export default {
     name: 'payment',
     beforeCreate() {
-       Indicator.open()
+       
     },
     data() {
         return {
@@ -32,74 +32,46 @@ export default {
             this.$store.state.mark_playObj.mark_play = '3'
         },
         fetchData(c) {
-            let saveObjInfo = c
-            if(saveObjInfo.lotteryPlayClassifyId=='7'){
-                if(saveObjInfo.playType != '6'){
-                saveObjInfo.playType = '6'
-                saveObjInfo.matchBetPlays.map(item=>{
-                    //console.log(item)
-                    let arr = []
-                    item.matchBetCells.forEach(kk=>{
-                        kk.betCells.forEach(gg=>{
-                            let obj = {}
-                            if(gg.cellCode=='30'){
-                                obj.playType = '2'
-                                gg.cellCode = '0'
-                                gg.cellName = '客胜'
-                            }else if(gg.cellCode=='31'){
-                                obj.playType = '2'
-                                gg.cellCode = '3'
-                                gg.cellName = '主胜'
-                            }else if(gg.cellCode=='32'){
-                                obj.playType = '1'
-                                gg.cellCode = '3'
-                                gg.cellName = '让球主胜'
-                            }else if(gg.cellCode=='33'){
-                                obj.playType = '1'
-                                gg.cellCode = '0'
-                                gg.cellName = '让球客胜'
-                            }
-                            obj.single = '0'
-                            obj.betCells = gg
-                            arr.push(obj)
-                        })
-                    })
-                    item.matchBetCells = arr
-                    return item;
-                })
-            }
-            }
-            let data = saveObjInfo
-            api.saveBetInfo(data)
+            api.saveBetInfo(c)
                 .then(res => {
                     //console.log(res)
                     if (res.code == 0) {
                         this.payment = res.data
                         this.$store.state.mark_playObj.yhList = res.data.bonusList
                         this.$store.state.mark_playObj.bounsId = res.data.bonusId
-                    } else {
-                        Toast(res.msg)
                     }
                 })
             api.allPayment({})
                 .then(res => {
                     if (res.code == 0) {
                         this.allPaymentList = res.data
-                    } else {
-                        Toast(res.msg)
                     }
                 })
         },
         payBtn() {
-            //let agent = detect();
             if (Number(this.payment.thirdPartyPaid) > 0) {
                 Indicator.open()
-                var data = {
-                    'payCode': this.payCode,
-                    'payToken': this.payment.payToken
+                let innerWechat = '',payTypePd=''
+                if(this.payCode == 'app_weixin'){  //wx支付逻辑
+                    if (wxPd()) {
+                        innerWechat = '1'
+                    } else {
+                        innerWechat = '0'
+                    }
+                    payTypePd = 'wx'
+                }else if(this.payCode == 'app_rongbao'){  //rongbao支付逻辑
+                    innerWechat = '0'
+                    payTypePd = 'rb'
                 }
-                // if (agent == 'ios') {
-                //     var newTab = window.open('about:blank');
+                let data = {
+                    'payCode': this.payCode,
+                    'payToken': this.payment.payToken,
+                    'innerWechat': innerWechat
+                }
+                this.payFlag(data,payTypePd)
+                // var data = {
+                //     'payCode': this.payCode,
+                //     'payToken': this.payment.payToken
                 // }
             } else {
                 Indicator.open()
@@ -107,11 +79,14 @@ export default {
                     'payCode': '',
                     'payToken': this.payment.payToken
                 }
+                this.payFlag(data,'ye')
             }
-            api.app(data)
+        },
+        payFlag(c,s){
+            api.app(c)
                 .then(res => {
                     //console.log(res)
-                    if (data.payCode == '') {
+                    if (s == 'ye') {
                         if (res.code == 0) {
                             this.$router.replace({
                                 path: '/user/order',
@@ -124,39 +99,33 @@ export default {
                         if (res.code == 0) {
                             localStorage.setItem('matchSaveInfo',JSON.stringify(this.payment))
                             localStorage.setItem('allPaymentList',JSON.stringify(this.allPaymentList))
-                            //localStorage.setItem('matchSaveInfo',JSON.stringify(this.$store.state.matchSaveInfo))
                             localStorage.setItem('matchObj',JSON.stringify(this.$store.state.matchObj))
                             localStorage.setItem('matchSelectedList',JSON.stringify(this.$store.state.matchSelectedList))
                             localStorage.setItem('bfIdSaveMap',JSON.stringify([...this.$store.state.mark_playObj.bfIdSaveMap]))
                             localStorage.setItem('orderId',res.data.orderId)
-                            localStorage.setItem('payCode',this.payCode)
-                            //console.log(res)
-                            // if (agent == 'ios') {
-                            //     newTab.location.href = res.data.payUrl
-                            // } else {
-                            //     var $tempForm = $('<form method="post" target="_blank" action="' + res.data.payUrl + '"></form>');
-                            //     $("body").append($tempForm);
-                            //     $tempForm.submit();
-                            //     $tempForm.remove();
-                            // }
-                            localStorage.setItem('payLogId',res.data.payLogId)
-                            this.orderId = res.data.orderId
-                            MessageBox.confirm('',{
-                                message: this.payText,
-                                title: '订单支付',
-                                confirmButtonText: '已完成支付',
-                                cancelButtonText: '重新支付'
-                            }).then(action => {
-                                Indicator.open()
-                                this.saveStatus(res.data.payLogId)
-                            },action => {
-                                Indicator.close()
-                            })
-                            let url =  location.href+'?orderStatus=1'
-                            location.href = res.data.payUrl+ '&h5ck=' + encodeURIComponent(url)
+                            if(s=='rb'){
+                                localStorage.setItem('payCode',this.payCode)
+                                localStorage.setItem('payLogId',res.data.payLogId)
+                                this.orderId = res.data.orderId
+                                MessageBox.confirm('',{
+                                    message: this.payText,
+                                    title: '订单支付',
+                                    confirmButtonText: '已完成支付',
+                                    cancelButtonText: '重新支付',
+                                    closeOnClickModal: false
+                                }).then(action => {
+                                    Indicator.open()
+                                    this.saveStatus(res.data.payLogId)
+                                },action => {
+                                    Indicator.close()
+                                })
+                                let url =  location.href+'?orderStatus=1'
+                                location.href = res.data.payUrl+ '&h5ck=' + encodeURIComponent(url)
+                            }else if(s=='wx'){
+                                location.href = res.data.payUrl
+                            }
                         }
                     }
-                    //Toast(res.msg)
                 })
         },
         wxClick(c, index, s) {
@@ -180,10 +149,13 @@ export default {
                             message: '暂未查询到您的支付结果，如果您已经确认支付并扣款，可能存在延迟到账的情况，请到账户明细中查看或联系客服查询',
                             title: '查询失败',
                             confirmButtonText: '继续查询',
-                            cancelButtonText: '重新支付'
+                            cancelButtonText: '重新支付',
+                            closeOnClickModal: false
                         }).then(action => {
                             Indicator.open()
-                            this.saveStatus(c)
+                            setTimeout(()=>{
+                                this.saveStatus(c)
+                            },3000)
                         },action => {
 
                         })
@@ -192,7 +164,8 @@ export default {
                         MessageBox.alert('',{
                             message: '如果您已经确认支付并扣款，可能存在延迟到账情况，请到账户明细中查看或联系客服查询',
                             title: '支付失败',
-                            confirmButtonText: '重新支付'
+                            confirmButtonText: '重新支付',
+                            closeOnClickModal: false
                         }).then(action => {
                             Indicator.close()
                         });
@@ -205,7 +178,7 @@ export default {
     },
     mounted() {
         //console.log(this.$store.state.matchSaveInfo.bonusId)
-        if(location.href.split('?')[1]&&location.href.split('?')[1].split('=')[1]==1){
+        if(location.href.split('?')[1]&&location.href.split('?')[1].split('=')[1]==1&&localStorage.getItem('payCode')){
             //console.log(location.href)
             this.payment = JSON.parse(localStorage.getItem('matchSaveInfo'))
             this.orderId = localStorage.getItem('orderId')
@@ -227,7 +200,8 @@ export default {
                     message: this.payText,
                     title: '订单支付',
                     confirmButtonText: '已完成支付',
-                    cancelButtonText: '重新支付'
+                    cancelButtonText: '重新支付',
+                    closeOnClickModal: false
                 }).then(action => {
                     Indicator.open()
                     this.saveStatus(payLogId)  
@@ -242,7 +216,29 @@ export default {
                     localStorage.removeItem('bfIdSaveMap')
                     localStorage.removeItem('payLogId')
                     localStorage.removeItem('orderId')
+                    localStorage.removeItem('payCode')
                 })  
+        }else if(!localStorage.getItem('payCode')&&localStorage.getItem('allPaymentList')){
+            this.payment = JSON.parse(localStorage.getItem('matchSaveInfo'))
+            this.orderId = localStorage.getItem('orderId')
+            this.allPaymentList = JSON.parse(localStorage.getItem('allPaymentList'))
+            this.$store.state.matchObj = JSON.parse(localStorage.getItem('matchObj'))
+            this.$store.state.matchSelectedList = JSON.parse(localStorage.getItem('matchSelectedList'))
+            if(this.$store.state.matchSaveInfo.lotteryPlayClassifyId=='5'||this.$store.state.matchSaveInfo.lotteryPlayClassifyId=='3'){
+                let map = new Map()
+                JSON.parse(localStorage.getItem('bfIdSaveMap')).forEach(item=>{
+                    map.set(item[0],new Set(item[1]))
+                })
+                this.$store.state.mark_playObj.bfIdSaveMap = map
+            }
+            this.$nextTick(() => {
+                localStorage.removeItem('matchSaveInfo')
+                    localStorage.removeItem('allPaymentList')
+                    localStorage.removeItem('matchObj')
+                    localStorage.removeItem('matchSelectedList')
+                    localStorage.removeItem('bfIdSaveMap')
+                    localStorage.removeItem('orderId')
+            })
         }
     },
     computed: {
@@ -262,47 +258,75 @@ export default {
         }
     },
     beforeRouteEnter(to, from, next){
-        if(from.path=='/'){
+        if(from.path=='/'&&localStorage.getItem('orderId')){
             next(vm=>{
                 //vm.$store.state.matchSaveInfo = JSON.parse(localStorage.getItem('matchSaveInfo'))
-                vm.payment = JSON.parse(localStorage.getItem('matchSaveInfo'))
-                vm.orderId = localStorage.getItem('orderId')
-                vm.allPaymentList = JSON.parse(localStorage.getItem('allPaymentList'))
-                vm.$store.state.mark_playObj.yhList = vm.payment.bonusList
-                vm.$store.state.mark_playObj.bounsId = vm.payment.bonusId
-                vm.$store.state.matchObj = JSON.parse(localStorage.getItem('matchObj'))
-                vm.$store.state.matchSelectedList = JSON.parse(localStorage.getItem('matchSelectedList'))
-                vm.payCode = localStorage.getItem('payCode')
-                let payLogId = localStorage.getItem('payLogId')
-                if(vm.$store.state.matchSaveInfo.lotteryPlayClassifyId=='5'||vm.$store.state.matchSaveInfo.lotteryPlayClassifyId=='3'){
-                    let map = new Map()
-                    JSON.parse(localStorage.getItem('bfIdSaveMap')).forEach(item=>{
-                        map.set(item[0],new Set(item[1]))
+                if(localStorage.getItem('payCode')){
+                    vm.payment = JSON.parse(localStorage.getItem('matchSaveInfo'))
+                    vm.orderId = localStorage.getItem('orderId')
+                    vm.allPaymentList = JSON.parse(localStorage.getItem('allPaymentList'))
+                    vm.$store.state.mark_playObj.yhList = vm.payment.bonusList
+                    vm.$store.state.mark_playObj.bounsId = vm.payment.bonusId
+                    vm.$store.state.matchObj = JSON.parse(localStorage.getItem('matchObj'))
+                    vm.$store.state.matchSelectedList = JSON.parse(localStorage.getItem('matchSelectedList'))
+                    vm.payCode = localStorage.getItem('payCode')
+                    let payLogId = localStorage.getItem('payLogId')
+                    if(vm.$store.state.matchSaveInfo.lotteryPlayClassifyId=='5'||vm.$store.state.matchSaveInfo.lotteryPlayClassifyId=='3'){
+                        let map = new Map()
+                        JSON.parse(localStorage.getItem('bfIdSaveMap')).forEach(item=>{
+                            map.set(item[0],new Set(item[1]))
+                        })
+                        vm.$store.state.mark_playObj.bfIdSaveMap = map
+                    }
+                    MessageBox.confirm('',{
+                        message: vm.payText,
+                        title: '订单支付',
+                        confirmButtonText: '已完成支付',
+                        cancelButtonText: '重新支付',
+                        closeOnClickModal: false
+                    }).then(action => {
+                        Indicator.open()
+                        vm.saveStatus(payLogId)  
+                    },action => {
+                        Indicator.close()
                     })
-                    vm.$store.state.mark_playObj.bfIdSaveMap = map
-                }
-                MessageBox.confirm('',{
-                    message: vm.payText,
-                    title: '订单支付',
-                    confirmButtonText: '已完成支付',
-                    cancelButtonText: '重新支付'
-                }).then(action => {
-                    vm.saveStatus(payLogId)  
-                },action => {
-                    Indicator.close()
-                })
-                vm.$nextTick(()=>{
-                    localStorage.removeItem('matchSaveInfo')
-                    localStorage.removeItem('allPaymentList')
-                    localStorage.removeItem('matchObj')
-                    localStorage.removeItem('matchSelectedList')
-                    localStorage.removeItem('bfIdSaveMap')
-                    localStorage.removeItem('payLogId')
-                    localStorage.removeItem('orderId')
-                })          
+                    vm.$nextTick(()=>{
+                        localStorage.removeItem('matchSaveInfo')
+                        localStorage.removeItem('allPaymentList')
+                        localStorage.removeItem('matchObj')
+                        localStorage.removeItem('matchSelectedList')
+                        localStorage.removeItem('bfIdSaveMap')
+                        localStorage.removeItem('payLogId')
+                        localStorage.removeItem('orderId')
+                        localStorage.removeItem('payCode')
+                    })
+                }else{
+                    vm.payment = JSON.parse(localStorage.getItem('matchSaveInfo'))
+                    vm.orderId = localStorage.getItem('orderId')
+                    vm.allPaymentList = JSON.parse(localStorage.getItem('allPaymentList'))
+                    vm.$store.state.matchObj = JSON.parse(localStorage.getItem('matchObj'))
+                    vm.$store.state.matchSelectedList = JSON.parse(localStorage.getItem('matchSelectedList'))
+                    if(vm.$store.state.matchSaveInfo.lotteryPlayClassifyId=='5'||vm.$store.state.matchSaveInfo.lotteryPlayClassifyId=='3'){
+                        let map = new Map()
+                        JSON.parse(localStorage.getItem('bfIdSaveMap')).forEach(item=>{
+                            map.set(item[0],new Set(item[1]))
+                        })
+                        vm.$store.state.mark_playObj.bfIdSaveMap = map
+                    }
+                    vm.$nextTick(()=>{
+                        localStorage.removeItem('matchSaveInfo')
+                        localStorage.removeItem('allPaymentList')
+                        localStorage.removeItem('matchObj')
+                        localStorage.removeItem('matchSelectedList')
+                        localStorage.removeItem('bfIdSaveMap')
+                        localStorage.removeItem('payLogId')
+                        localStorage.removeItem('orderId')
+                    })
+                }          
             })
             //localStorage.removeItem('matchSaveInfo')
         }else{
+            Indicator.open()
             next(vm=>{
                 vm.fetchData(vm.$store.state.matchSaveInfo)
             })

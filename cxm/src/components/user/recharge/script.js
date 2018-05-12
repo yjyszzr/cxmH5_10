@@ -1,5 +1,4 @@
 import api from '../../../fetch/api'
-import { Toast} from 'mint-ui'
 import {
     Indicator
 } from 'mint-ui'
@@ -31,15 +30,7 @@ export default {
         changenum(c) {
             this.recharge_val = c
         },
-        //提交按钮
         determine() {
-            let regex = new RegExp("[^0-9]");
-
-            if(regex.test(this.recharge_val)){
-                Toast('请输入正确的金额')
-                return false
-            }
-
             Indicator.open()
             let innerWechat = '',payTypePd=''
             if(this.payCode == 'app_weixin'){  //wx支付逻辑
@@ -65,15 +56,16 @@ export default {
                 .then(res => {
                     if (res.code == 0) {
                         //console.log(res)
+                        localStorage.setItem('rval', this.recharge_val)
                         if(s=='rb'){
-                            localStorage.setItem('rval', this.recharge_val)
                             localStorage.setItem('payLogId', res.data.payLogId)
                             localStorage.setItem('payCode', this.payCode)
                             MessageBox.confirm('', {
                                 message: this.payText,
                                 title: '订单支付',
                                 confirmButtonText: '已完成支付',
-                                cancelButtonText: '重新支付'
+                                cancelButtonText: '重新支付',
+                                closeOnClickModal: false
                             }).then(action => {
                                 Indicator.open()
                                 this.saveStatus(res.data.payLogId)
@@ -83,7 +75,7 @@ export default {
                             let url = location.href + '?rechargeStatus=1'
                             location.href = res.data.payUrl + '&h5ck=' + encodeURIComponent(url)
                         }else if(s=='wx'){
-                            //location.href = '../../../../static/payCallBack/payCallBack.html?logid='+res.data.payLogId
+                            //location.href = './static/payCallBack/payCallBack.html?logid='+res.data.payLogId
                             location.href = res.data.payUrl
                         }
                     }
@@ -104,7 +96,8 @@ export default {
                         MessageBox.alert('', {
                             message: '充值成功',
                             title: '提示',
-                            confirmButtonText: '确定'
+                            confirmButtonText: '确定',
+                            closeOnClickModal: false
                         }).then(action => {
                             //Indicator.open()
                             //this.fetchData()
@@ -115,10 +108,13 @@ export default {
                             message: '暂未查询到您的支付结果，如果您已经确认支付并扣款，可能存在延迟到账的情况，请到账户明细中查看或联系客服查询',
                             title: '查询失败',
                             confirmButtonText: '继续查询',
-                            cancelButtonText: '重新支付'
+                            cancelButtonText: '重新支付',
+                            closeOnClickModal: false
                         }).then(action => {
                             Indicator.open()
-                            this.saveStatus(c)
+                            setTimeout(()=>{
+                                this.saveStatus(c)
+                            },3000)
                         }, action => {
 
                         })
@@ -127,7 +123,8 @@ export default {
                         MessageBox.alert('', {
                             message: '如果您已经确认支付并扣款，可能存在延迟到账情况，请到账户明细中查看或联系客服查询',
                             title: '支付失败',
-                            confirmButtonText: '重新支付'
+                            confirmButtonText: '重新支付',
+                            closeOnClickModal: false
                         }).then(action => {
                             //Indicator.close()
                         });
@@ -160,7 +157,8 @@ export default {
                     message: this.payText,
                     title: '订单支付',
                     confirmButtonText: '已完成支付',
-                    cancelButtonText: '重新支付'
+                    cancelButtonText: '重新支付',
+                    closeOnClickModal: false
                 }).then(action => {
                     Indicator.open()
                     this.saveStatus(payLogId)
@@ -168,9 +166,14 @@ export default {
                     // Indicator.close()
                 })
                 this.$nextTick(() => {
-                    localStorage.removeItem('userInfo')
+                    localStorage.removeItem('rval')
                     localStorage.removeItem('payLogId')
                     localStorage.removeItem('payCode')
+                })
+            }else{
+                this.recharge_val = localStorage.getItem('rval')
+                this.$nextTick(() => {
+                    localStorage.removeItem('rval')
                 })
             }
         }
@@ -199,21 +202,32 @@ export default {
                     message: vm.payText,
                     title: '订单支付',
                     confirmButtonText: '已完成支付',
-                    cancelButtonText: '重新支付'
+                    cancelButtonText: '重新支付',
+                    closeOnClickModal: false
                 }).then(action => {
+                    Indicator.open()
                     vm.saveStatus(payLogId)
                 }, action => {
                     Indicator.close()
                 })
                 vm.$nextTick(() => {
-                    localStorage.removeItem('userInfo')
+                    localStorage.removeItem('rval')
                     localStorage.removeItem('payLogId')
                     localStorage.removeItem('payCode')
                 })
             })
             //localStorage.removeItem('matchSaveInfo')
         } else {
-            next()
+            next(vm=>{
+                vm.recharge_val = localStorage.getItem('rval')
+                vm.$nextTick(() => {
+                    localStorage.removeItem('rval')
+                })
+            })
         }
     },
+    beforeRouteLeave(to, from, next) {
+        localStorage.removeItem('rval')
+		next()
+	}
 }

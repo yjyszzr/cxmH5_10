@@ -16,13 +16,20 @@ export default {
     created(){
       
     },
+    methods:{
+      dateFter(c){
+        if(c!==''){
+          return datefilter(c*1000,1)
+        }
+      }
+    },
     mounted(){
       let data = {
         'withdraw_sn': this.id
       }
       api.withdrawList(data)
       .then(res => {
-         console.log(res)
+         //console.log(res)
           if(res.code==0) {
             this.giveObj = res.data
           }

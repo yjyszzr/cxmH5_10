@@ -12,7 +12,10 @@
             <div style="height: 11.2rem;overflow: auto;-webkit-overflow-scrolling: touch;">
             <table border="1" bordercolor="black" cellpadding="0" cellspacing="0"  class="table tablespf">
                 <th rowspan="3" class="title0">胜平负</th>
-                <tr class="title">
+                <tr class="titleNull" v-if="!scoreObj.flag&&scoreObj.matchPlays[1].isShow=='0'">
+                    暂未开售
+                </tr>
+                <tr class="title" v-if="!scoreObj.flag&&scoreObj.matchPlays[1].isShow!='0'">
                     <th :class="!scoreObj.flag&&scoreObj.matchPlays[1].homeCell.isSelected?'bfSelected':''">
                         <b @click="unSelectedClickspf($event,scoreObj.matchPlays[1].homeCell,'2',scoreObj.matchPlays[1].single,scoreObj.matchPlays[1].fixedOdds)"></b>
                         <span>{{!scoreObj.flag?scoreObj.matchPlays[1].homeCell.cellName:''}}</span>
