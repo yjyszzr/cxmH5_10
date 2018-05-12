@@ -219,7 +219,7 @@ export default {
         .dllist(data)
         .then(res => {
           if (res.code == 0) {
-           // console.log(res);
+           console.log(res);
             this.zxObj = res.data;
             if (this.page == 1) {
               this.zxList = this.zxList.concat(res.data.list);
@@ -248,7 +248,8 @@ export default {
       this.fetchData()
     },
     carouselMoney(c){
-      return c.winningMsg.replace(c.winningMoney,'<b style="color:#ea5504;font-weight:400;">'+c.winningMoney+'</b>')
+        return c.winningMsg+'<b style="color:#ea5504;font-weight:400;">'+c.winningMoney+'</b>元'
+      // return c.winningMsg.replace(c.winningMoney,'<b style="color:#ea5504;font-weight:400;">'+c.winningMoney+'</b>')
     },
     handleScroll(e) {
       if (
