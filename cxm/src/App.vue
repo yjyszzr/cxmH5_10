@@ -28,6 +28,7 @@ import footer from "./components/public/footer/footer";
 import mark from "./components/public/mark/mark";
 import pmark from "./components/public/mark/match_playut/mark_playut";
 import {ScrollFix} from './util/common'
+import {wxPd} from './util/common'
 // import LocalScrollFix from 'Localscrollfix'
 export default {
   name: "App",
@@ -41,6 +42,9 @@ export default {
     return {
       isShowHeader: false
     };
+  },
+  created(){
+    
   },
   methods: {
     title() {
@@ -123,6 +127,8 @@ export default {
                 return "投注服务协议";
             case 'activity':
                 return "活动详情";
+            case 'give_details':
+                return "提现详情";
         }
       } else {
         if (

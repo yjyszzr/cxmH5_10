@@ -1,5 +1,5 @@
 <template>
-    <div class="Header">
+    <div class="Header" @touchmove.prevent>
         <div class="headerTop" v-show="showTitle">
             <a @click="return_back()" class="go_return"></a>
             <p class="headerText">彩小秘·{{title}}</p>
@@ -18,12 +18,12 @@
             <li :class="$store.state.recordTab=='3'?'cur':''"><p @click='curClick($event)'>待开奖</p></li>
         </ul>
         <ul class="sendaccount" id='searchBar' v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
-            <li class="cur1"><p @click='curClick1($event)'>全部</p></li>
-            <li><p @click='curClick1($event)'>奖金</p></li>
-            <li><p @click='curClick1($event)'>充值</p></li>
-            <li><p @click='curClick1($event)'>购彩</p></li>
-            <li><p @click='curClick1($event)'>提现</p></li>
-            <li><p @click='curClick1($event)'>红包</p></li>
+            <li :class="$store.state.recordTab==''||$store.state.recordTab=='a1'?'cur1':''"><p @click='curClick1($event)'>全部</p></li>
+            <li :class="$store.state.recordTab=='a2'?'cur1':''"><p @click='curClick1($event)'>奖金</p></li>
+            <li :class="$store.state.recordTab=='a3'?'cur1':''"><p @click='curClick1($event)'>充值</p></li>
+            <li :class="$store.state.recordTab=='a4'?'cur1':''"><p @click='curClick1($event)'>购彩</p></li>
+            <li :class="$store.state.recordTab=='a5'?'cur1':''"><p @click='curClick1($event)'>提现</p></li>
+            <li :class="$store.state.recordTab=='a6'?'cur1':''"><p @click='curClick1($event)'>红包</p></li>
         </ul>
         <ul class="senddetail" id='searchBar' v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='detail'">
             <li class="cur2"><p @click='curClick2($event)'>未使用</p></li>

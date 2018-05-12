@@ -1,5 +1,5 @@
 <template>
-    <div class="foot" @touchmove.prevent v-show="isShowTabbar()">
+    <div class="foot fixBottom" @touchmove.prevent v-show="isShowTabbar()">
             <router-link to='/' :style="{'color': $route.path.split('/')[1] == ''?'#ea5504':'#505050'}">
                 <i class="iconfont icon-dibucaidan_svg_huaban"></i>
                 <span>大厅</span>

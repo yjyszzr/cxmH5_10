@@ -134,9 +134,9 @@ const router = new Router({
           path: '/user/record',
           name: 'record',
           cname:'购彩记录',
-          meta:{
-            keepAlive: true
-          },
+        //   meta:{
+        //     keepAlive: true
+        //   },
           component: resolve => require(['@/components/user/record/index.vue'], resolve)
       },
       {
@@ -253,43 +253,30 @@ router.beforeEach(async(to, from, next) => {
     let toPath = to.path
     NProgress.start(); // 开启Progress
     // 进入详情页时需要记录滚动条距离头部距离
-    if (toPath === '/user/order'&&from.path==='/user/record') {
-        //console.log(from)
-        sessionStorage.setItem('orderScrolltop',$('#content').scrollTop())
-        // router.app.orderScrolltop = $('#content').scrollTop()
-    }else if(toPath === '/index/consult'&&from.path==='/'){
+    // if (toPath === '/user/order'&&from.path==='/user/record') {
+    //     router.app.orderScrolltop = $('#content').scrollTop()
+    // }else 
+    if(toPath === '/index/consult'&&from.path==='/'){
+        router.app.consultScrolltop = $('#content').scrollTop()
         from.meta.keepAlive = true
-        sessionStorage.setItem('consultScrolltop',$('#content').scrollTop())
-        // router.app.consultScrolltop = $('#content').scrollTop()
     }else{
-        if(from.path!='/index/consult'&&from.path != '/user/record'){
+        if(from.path=='/'&&toPath!='/index/consult'){
             from.meta.keepAlive = false
         }
     }
 	next()
 })
 
-router.afterEach(async(to, from, next) => {
-    NProgress.done(); // 结束Progress
-    let fromPath = from.path
+router.afterEach(async(to, from) => {
     let toPath = to.path
+    NProgress.done(); // 结束Progress
     // // 页面跳转时滚动到页面顶部
-    setTimeout(() => {
-        const topElement = document.getElementById('content');
-        if (topElement) {
-            if(fromPath==='/user/order'&&toPath === '/user/record'){
-                topElement.scrollTop = sessionStorage.getItem('orderScrolltop')
-                sessionStorage.removeItem('orderScrolltop')
-                //topElement.scrollTop = router.app.orderScrolltop;
-            }else if(fromPath === '/index/consult'&&toPath === '/'){
-                topElement.scrollTop = sessionStorage.getItem('consultScrolltop')
-                sessionStorage.removeItem('consultScrolltop')
-                //topElement.scrollTop = router.app.consultScrolltop;
-            }else{
-                topElement.scrollTop = 0;
-            }
-        }
-    }, 0);
+    // if(toPath!='/'&&toPath!='/user/record'){
+    //     document.getElementById('content').scrollTop = 0
+    // }
+    if(toPath!='/'){
+        document.getElementById('content').scrollTop = 0
+    }
 });
 
 

@@ -69,7 +69,7 @@
                     </p>
                 </li>
             </ul>
-            <div class="confim_btn">
+            <div class="confim_btn fixBottom">
                 <p @click="confirm()">查看详情</p>
                 <p @click="cancel()">取消</p>
             </div>

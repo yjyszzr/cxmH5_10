@@ -303,6 +303,9 @@ export default {
         }
       })
     this.fetchData();
+  },
+  activated(){
+      document.getElementById('content').scrollTop = this.$root.consultScrolltop
   }
 };
 </script>

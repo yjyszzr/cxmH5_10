@@ -258,7 +258,7 @@
                             <span>{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div class="matchRighthhBox">
-                            <div class="team_left">
+                            <div class="team_left" :class="item.matchPlays[1]&&item.matchPlays[1].single=='1'?'signleSected':''">
                             		<div class="team_top" v-if="item.matchPlays[1].isShow=='0'">
                             			<p>0</p>
                             			<p style="flex: 9;">未开售</p>
@@ -290,7 +290,7 @@
             </ul>
         </el-collapse-item>
         </el-collapse>
-        <div class="match_footer">
+        <div class="match_footer fixBottom">
             <i style="display:none;">{{$store.state.mark_playObj.bfIdSaveMapFlag}}</i>
             <div class="match_footer_left">
                 <div class="match_delete" @click="clear_matchClick()">

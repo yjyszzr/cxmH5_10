@@ -391,9 +391,7 @@ export default {
 				obj.matchTeam = item.homeTeamName + 'VS' + item.visitingTeamName
 				obj.lotteryClassifyId = this.$route.query.lottoyId
 				obj.lotteryPlayClassifyId = this.$route.query.classlootoyId
-				if(item.playType == '6'){
-					obj.changciId = item.changciId
-				}
+				obj.changciId = item.changciId
 				let matchBetCells = [],
 					matchBetCellsObj = {}
 				if(item.myspf) {
@@ -464,6 +462,7 @@ export default {
 					matchBetCellsObj.betCells = arr1
 					matchBetCellsObj.playType = item.matchPlays[0].playType
 					matchBetCellsObj.single = item.matchPlays[0].single
+					matchBetCellsObj.fixedOdds = item.matchPlays[0].fixedOdds
 					matchBetCells.push(matchBetCellsObj)
 				} else {
 					//console.log(item.selectedList)

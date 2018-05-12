@@ -61,14 +61,14 @@ export default {
       gorz(){
         this.$router.push({
           path: '/user/certification',
-          replace: true
+          replace: false
         })
       },
       goWithdraw(c){
         if(c=='1'){
           this.$router.push({
             path: '/user/withdraw',
-            replace: true
+            replace: false
           })
         }else{
           Toast('请先实名认证后再申请提现')
@@ -80,9 +80,9 @@ export default {
     },
     beforeRouteLeave(to, from, next) {
         next()
-        if(to.path=='/user/record'){
-          sessionStorage.setItem('firstIn',1)
-        }
+        // if(to.path=='/user/record'){
+        //   sessionStorage.setItem('firstIn',1)
+        // }
         this.$store.state.recordTab = ''
     }
 }

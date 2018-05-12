@@ -75,7 +75,7 @@
                 </tr>
             </table>
             </div>
-            <div class="confim_btn">
+            <div class="confim_btn fixBottom">
                 <p @click="confirm()">确定</p>
                 <p @click="cancel()">取消</p>
             </div>

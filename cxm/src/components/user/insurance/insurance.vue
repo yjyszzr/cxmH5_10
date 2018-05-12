@@ -34,7 +34,7 @@
                     <p>采用软,硬件防护,有效防止病毒和恶意入侵</p>
                 </div>
             </div>
-            <div class="box1">
+            <div class="box1" style="border:none;">
                 <i class="iconfont icon-icon-20"></i>
                 <span>购彩保障</span>
                 <div>

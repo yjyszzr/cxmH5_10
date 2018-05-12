@@ -18,7 +18,7 @@
                     <ul class="clearfix">
                         <li v-for="(item,i) in numList" :key='i' @click="numClick(item,$event)">{{item}}</li>
                     </ul>
-                    <div class="select">
+                    <div class="select fixBottom">
                         <p @click="deleteNum($event)">删除</p>
                         <p class="cur" @click="confirm_num()">确定</p>
                     </div>

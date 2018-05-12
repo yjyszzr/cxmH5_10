@@ -3,7 +3,7 @@
 <div class="choice" v-for="(item,i) in zxList" :key='i' @click="goZxDetail(item.articleId)">
 						<div v-if="item.listStyle==2||item.listStyle==3||item.listStyle==0">
 							<h4>{{item.title}}</h4>
-						<p v-if="item.listStyle==2||item.listStyle==3">
+						<p class="picSummary" v-if="item.listStyle==2||item.listStyle==3">
 							<img :src="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
 						</p>
             <p v-if="item.listStyle==0" class="summary" style="-webkit-box-orient: vertical;">
@@ -64,16 +64,7 @@ export default {
 		  text-overflow:ellipsis;
 		  white-space: nowrap;
         }
-        .summary{
-		  	overflow : hidden;
-					text-overflow: ellipsis;
-					display: -webkit-box;
-          -webkit-line-clamp: 2;
-          /* autoprefixer: off */
-          -webkit-box-orient: vertical;
-          /* autoprefixer: on */
-        }
-        p {
+        .picSummary {
           margin: px2rem(10px) 0;
           display: flex;
           align-items: center;
@@ -84,9 +75,20 @@ export default {
             display: block;
           }
         }
+        .summary{
+           margin: px2rem(10px) 0;
+		  	  overflow : hidden;
+					text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient:horizontal;
+          -webkit-line-clamp: 2;
+          /* autoprefixer: off */
+          -webkit-box-orient: vertical;
+          /* autoprefixer: on */
+        }
         span {
           color: #9f9f9f;
-          margin-right: px2rem(30px);
+          margin-right: px2rem(16px);
           font-size: px2rem(22px);
 		}
 		span:last-of-type{

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>微信安全支付</title>
+    <meta id="viewport" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1; user-scalable=no;" />
+    <meta name="format-detection" content="telephone=no" />
+    <link href="./loading.css" rel="stylesheet">
+    <link href="./pop.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+    <script type="text/javascript">
+        var num = 0
+        var time = setInterval(function () {
+            num++
+            var obj = {}
+            obj.body = {
+                'payLogId': location.href.split('?')[1].split('=')[1].replace('#', '')
+            }
+            obj.device = {
+                plat: 'h5',
+                apiv: 1,
+                appv: '1.0.0',
+                appid: '',
+                mac: '',
+                w: window.screen.availWidth,
+                h: window.screen.availHeight,
+                os: '',
+                mid: '',
+                brand: '',
+                build: '',
+                channel: '',
+                net: '',
+                token: ''
+            }
+            $.ajax({
+                type: 'post',
+                url: 'http://39.106.18.39:8765/api/payment/payment/query',
+                contentType:'application/json;charset=UTF-8',
+                data: JSON.stringify(obj),
+                beforeSend: function (request) {
+                    request.setRequestHeader("token",
+                        "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI0OTgwY2UxYWMtZTNmMS00ZmQ4LTliOTMtNzM3Njk4YTI0M2MwIiwidXNlcklkIjoiNDAwMDc3In0.4vzkSvFDG5eKZa0d2yBZyTEP7-1OSVDnKHb2XhCiTrn-IW8WsF0iDgdz7OGoXDqyxQZiNTkOll7hEUJ5reQ9ruNnu2R0rMafI87zLCVZ5tkBdDk2VsJxnn-EtHGx6zKwS73V2G4lpkB7lzaSDDNHV8NmUMMnMq9cZ-VlOhrxEOk"
+                    );
+                },
+                dataType: "json",
+                success: function (data) {
+                    //console.log(data)
+                    if (data.code == '0') {
+                        alert('充值成功')
+                        clearInterval(time)
+                        $('.loading_wrap').css('display', 'none')
+                    } else {
+                        if (num > 7) {
+                            alert(data.msg)
+                            clearInterval(time)
+                            $('.loading_wrap').css('display', 'none')
+                        }
+                    }
+                    //console.log(data)
+                }
+            })
+        }, 3000)
+
+        function doCallback() {
+            window.history.go(-2)
+        }
+        pushHistory();
+        window.addEventListener("popstate", function (e) {
+            window.history.go(-2)
+            //alert("我监听到了浏览器的返回按钮事件啦"); //根据自己的需求实现自己的功能 
+        }, false);
+
+        function pushHistory() {
+            var state = {
+                title: "title",
+                url: "#"
+            };
+            window.history.pushState(state, "title", "#");
+        }
+    </script>
+</head>
+
+<body>
+    <div class="loading_wrap">
+        <span class="loading animate"></span>
+    </div>
+    <!-- <div class="pop_wraper" id="alert_box1">
+<div class="pop_outer pop_midder">
+<div class="pop_tip">
+<p class="pop_tip_p4">支付确认</p>
+<p class="pop_tip_p5">1、请在微信内完成支付，支付成功页面自动跳转</p>
+<p class="pop_tip_p5">2、如果您未支付，请点击“去支付”完成支付</p>
+<p class="pop_tip_p5">3、如果您未安装微信6.0.2版本及以上版本客户端，请先安装并登陆微信完成支付</p>
+<p class="pop_tip_p3 border b_top">
+<span class="border b_rgt"><button class="p_btn" onclick="doCallback()">关闭</button></span>
+<span><a id="cli" class="p_btn cols" style="text-decoration: none">去支付</a></span>
+</p>
+</div>
+</div>
+</div> -->
+</body>
+
+</html>

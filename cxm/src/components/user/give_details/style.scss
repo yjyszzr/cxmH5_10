@@ -22,22 +22,22 @@
         padding: px2rem(125px);
         b{
             border: 1px solid #A0A0A0;
-            display: inline-block;
-            height: px2rem(220px);
+            height: px2rem(180px);
+            margin-top: px2rem(70px);
+            position: relative;
             float: left;
-            margin-top: px2rem(30px);
         }
         .sent{
             margin-top: px2rem(25px);
             p{
                 display: inline-block;
-                img{
-                    width: px2rem(49px);
-                    height: px2rem(49px);
+                i{
+                    font-size: px2rem(49px);
                     float: left;
                     margin-right: px2rem(30px);
                     margin-left: px2rem(-25px);
                     z-index: 999;
+                    position: relative;
                 }
                 color: #505050;
                 font-size: px2rem(30px);
@@ -45,6 +45,14 @@
                     color:#A0A0A0;
                     font-size: px2rem(20px);
                 }
+                .giveProgress{
+                    color: #ea5504;
+                }
+            }
+        }
+        .sent:first-of-type{
+            span{
+                margin-right: px2rem(-60px);
             }
         }
     }

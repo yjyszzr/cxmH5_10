@@ -74,6 +74,7 @@ export default {
                             let url = location.href + '?rechargeStatus=1'
                             location.href = res.data.payUrl + '&h5ck=' + encodeURIComponent(url)
                         }else if(s=='wx'){
+                            //location.href = '../../../../static/payCallBack/payCallBack.html?logid='+res.data.payLogId
                             location.href = res.data.payUrl
                         }
                     }

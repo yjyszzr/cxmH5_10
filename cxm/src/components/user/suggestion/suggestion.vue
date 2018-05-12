@@ -7,7 +7,7 @@
     <div class="wrap" >
         <section class="small">
             <h5>尊敬的上帝您好：</h5>
-            <p>请将您对我们产品的反馈内容输入下面输入框中，我们 会认真对待您的每一条建议，谢谢您的反馈。</p>
+            <p>请将您对我们产品的反馈内容输入下面输入框中，我们会认真对待您的每一条建议，谢谢您的反馈。</p>
         </section>
         <section class="area content">
             <textarea v-model="sugText" :maxlength="totalcount" placeholder="投诉建议" ></textarea>

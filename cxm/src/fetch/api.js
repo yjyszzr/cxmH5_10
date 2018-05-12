@@ -316,4 +316,8 @@ export default {
     recharge(params){
         return fetchPost('payment/payment/recharge',params)
     },
+    //提现进程
+    withdrawList(params){
+        return fetchPost('/payment/payment/withdraw/list',params)
+    }
 }

@@ -65,14 +65,14 @@
             <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"></i><p>我已阅读并同意<router-link to="/freebuy/protocol">《彩小秘投注服务协议》</router-link></p></div>
         </div>
         <!--底部-->
-        <section class="fixed">
+        <section class="fixed fixBottom">
             <small>页面盘口，赔率仅供参考，请以出票盘口赔率为准</small>
             <ul>
                 <li>
                     <button @click="cgClick()" v-if="disable==false">
-                        <p v-show='!$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.mark_playObj.playutText.length!=1||$store.state.mark_playObj.playutText.indexOf("1&1")=="-1")'>串关&nbsp;&nbsp;<span v-for="(item,i) in $store.state.mark_playObj.playutText" :key='i'>{{item.split('&')[0]==item.split('&')[1]?'单关 ':item.split('&')[0]+'串'+item.split('&')[1]}}<b v-show="i<$store.state.mark_playObj.playutText.length-1">,</b></span><i></i></p>
+                        <p v-show='!$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.mark_playObj.playutText.length!=1||$store.state.mark_playObj.playutText.indexOf("1&1")=="-1")'>串关&nbsp;&nbsp;<span v-for="(item,i) in $store.state.mark_playObj.playutText" :key='i'>{{item.split('&')[0]==item.split('&')[1]?'单关 ':item.split('&')[0]+'串'+item.split('&')[1]}}<b style="font-weight:400;" v-show="i<$store.state.mark_playObj.playutText.length-1">,</b></span><i></i></p>
                         <p v-show='!$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.mark_playObj.playutText.length==1&&$store.state.mark_playObj.playutText.indexOf("1&1")!="-1")'>单关<i></i></p>
-                        <p v-show='$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.mark_playObj.playutText.length!=1||$store.state.mark_playObj.playutText.indexOf("1&1")=="-1")'>串关&nbsp;&nbsp;<span v-for="(item,i) in $store.state.mark_playObj.playutText" :key='i'>{{item.split('&')[0]==item.split('&')[1]?'单关 ':item.split('&')[0]+'串'+item.split('&')[1]}}<b v-show="i<$store.state.mark_playObj.playutText.length-1">,</b></span><i></i></p>
+                        <p v-show='$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.mark_playObj.playutText.length!=1||$store.state.mark_playObj.playutText.indexOf("1&1")=="-1")'>串关&nbsp;&nbsp;<span v-for="(item,i) in $store.state.mark_playObj.playutText" :key='i'>{{item.split('&')[0]==item.split('&')[1]?'单关 ':item.split('&')[0]+'串'+item.split('&')[1]}}<b style="font-weight:400;" v-show="i<$store.state.mark_playObj.playutText.length-1">,</b></span><i></i></p>
                         <p v-show='$store.state.matchSelectedList[0].matchPlays[1]&&($store.state.mark_playObj.playutText.length==1&&$store.state.mark_playObj.playutText.indexOf("1&1")!="-1")'>单关<i></i></p>
                     </button>
                     <button disabled='true' v-if="disable==true">

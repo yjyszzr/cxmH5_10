@@ -15,7 +15,7 @@
                     <th :class="scoreList.indexOf(item.cellName)!=-1?'bfSelected':''" @click="bfClick($event)" v-for="(item,i) in !scoreObj.flag?scoreObj.matchPlays[0].matchCells:[]" :key='i'><b></b><span>{{item.cellName}}</span> <span>{{item.cellOdds}}</span></th>
                 </tr>
             </table>
-            <div class="confim_btn">
+            <div class="confim_btn fixBottom">
                 <p @click="confirm()">确定</p>
                 <p @click="cancel()">取消</p>
             </div>

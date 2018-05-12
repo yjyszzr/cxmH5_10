@@ -296,6 +296,15 @@
             border: none!important;
         }
     }
+    .signleSected{
+        .team_bottom{
+            .selected{
+                margin-top: -2px;
+                border-top: 1px solid #f0f0f0; 
+                height: 0.93rem!important;
+            }
+        }
+    }
 
     .match_footer{
         height: px2rem(88px);
@@ -306,7 +315,6 @@
         border-top: 1px solid #f0f0f0;
         display: flex;
         align-items: center;
-        box-sizing: border-box;
         z-index: 20;
         .match_footer_left{
             flex: 6.8;
