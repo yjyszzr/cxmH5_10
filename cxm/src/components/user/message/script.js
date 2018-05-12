@@ -21,12 +21,10 @@ export default {
     beforeCreate() {
         Indicator.open()
     },
-    created() {
-
-    },
     computed: {  
         tabstatus() {  
-            return this.$store.state.recordTab; 
+            return this.$store.state.recordTab;
+
         }
       },  
       watch: {
@@ -42,9 +40,22 @@ export default {
             this.loadText = '上拉加载更多...'
             this.allLoaded = false
             this.newsfetch()
-        }
+        },
+          '$route':function ()
+          {
+            this.getRouter()
+          }
       },
     methods: {
+        // getRouter(){
+        //     let current = localStorage.getItem('itemStatus') || 1;
+        //     //没有取到默认给1 ，取到了就是取到的，如果是1 。就是第一个， 如果是2 就是第二个
+        //     if(current == 1){
+        //
+        //     }else{
+        //
+        //     }
+        // },
         handleTopChange(status) {
             this.bottomStatus = status;
         },
@@ -76,7 +87,24 @@ export default {
                 })
         }
     },
+    created(){
+       // this.getRouter()
+    },
     mounted() {
         this.newsfetch()
+    },
+    beforeRouteEnter(to,from, next){
+        console.log(from)
+        if(from.path == '/'){
+            next(vm=>{
+                    vm.$store.dispatch('recordTab','m'+localStorage.getItem('itemStatus'))
+                vm.msgType = 1
+                }
+            )
+        }else{
+            next()
+        }
+
     }
+
 }

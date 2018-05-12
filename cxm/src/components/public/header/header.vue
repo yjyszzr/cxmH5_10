@@ -31,8 +31,8 @@
             <li><p @click='curClick2($event)'>已过期</p></li>
         </ul>
         <ul class="send" id='searchBar' v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='message'">
-            <li class="cur3"><p @click='curClick3($event)'>通知</p></li>
-            <li><p @click='curClick3($event)'>消息</p></li>
+            <li :class="$store.state.recordTab==''||$store.state.recordTab=='m1'?'cur3':''"><p @click='curClick3($event)'>通知</p></li>
+            <li :class="$store.state.recordTab=='m2'?'cur3':''"><p @click='curClick3($event)'>消息</p></li>
         </ul>
         <p class="matchHeader"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='cathectic'">已选{{$store.state.matchSelectedList.length}}场比赛&nbsp;&nbsp;&nbsp;投注截止时间：<span>{{$store.state.arrTime.length==0?'00-00 00:00':datePd($store.state.arrTime[0])}}</span></p>
         <ul class="help_ul" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'">
@@ -150,11 +150,14 @@ export default {
         }
       },
       curClick3(c) {
+
             $('.cur3').removeClass('cur3')
             c.target.parentElement.className = 'cur3'
             if (c.target.innerText == '通知') {
+                localStorage.setItem('itemStatus',1)
                 this.$store.dispatch("changeRecordTab",'m1')
             } else if (c.target.innerText == '消息') {
+                localStorage.setItem('itemStatus',2)
                 this.$store.dispatch("changeRecordTab",'m2')
             }
       },

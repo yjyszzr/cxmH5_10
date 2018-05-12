@@ -35,7 +35,7 @@ export default {
             })
       },
       matchTimeDate(c){
-          return datefilter(c*1000,0)+' '+ datefilter(c*1000,1)
+          return datefilter(c*1000,1)
       },
       goTZ(){
       	this.$router.go(-2)
