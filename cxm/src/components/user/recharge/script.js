@@ -31,6 +31,13 @@ export default {
             this.recharge_val = c
         },
         determine() {
+            let regex = new RegExp("^(([1-9][0-9]*)$");
+
+            if(regex.test(this.recharge_val)){
+                Toast('请输入正确的金额')
+                return false
+            }
+
             Indicator.open()
             let innerWechat = '',payTypePd=''
             if(this.payCode == 'app_weixin'){  //wx支付逻辑
