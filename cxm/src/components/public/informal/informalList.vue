@@ -9,12 +9,12 @@
             <p v-if="item.listStyle==0" class="summary" style="-webkit-box-orient: vertical;">
               {{item.summary}}
             </p>
-						<span>{{item.extendCat}}</span><span>{{item.addTime}}</span><span>阅读{{item.clickNumber}}</span>
+						<span>{{item.extendCat}}</span><span>{{addTime(item.addTime)}}</span><span>阅读{{item.clickNumber}}</span>
 						</div>
 						<div class="zxBox" v-if="item.listStyle==1||item.listStyle==4">
 							<div class="zxLeft">
 								<h5>{{item.title}}</h5>
-								<div class="zx_info"><span>{{item.extendCat}}</span><span>{{item.addTime}}</span><span>阅读{{item.clickNumber}}</span></div>
+								<div class="zx_info"><span>{{item.extendCat}}</span><span>{{addTime(item.addTime)}}</span><span>阅读{{item.clickNumber}}</span></div>
 							</div>
 							<div class="zxRight">
 								<img class="img1" :src="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import dateFilter from '../../../util/datefilter'
 export default {
   name: "informalList",
   data() {
@@ -46,6 +47,9 @@ export default {
                 id: c
                 }
         });
+    },
+    addTime(c){
+      return dateFilter(c*1000,0)+' '+dateFilter(c*1000,1)
     }
   }
 };

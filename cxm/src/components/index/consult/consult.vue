@@ -6,7 +6,7 @@
         <div class="article" v-if="$store.state.zxDetailObj!=''">
             <h4>{{$store.state.zxDetailObj.title}}</h4>
             <div class="zxDetailTitle">
-                <span>{{$store.state.zxDetailObj.extendCat}}</span>
+                <span>{{$store.state.zxDetailObj.author}}</span>
                 <span>{{$store.state.zxDetailObj.addTime}}</span>
             </div>
             <div v-html="$store.state.zxDetailObj.content"></div>

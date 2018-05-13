@@ -19,7 +19,7 @@
                             <p v-html="item.msgDesc"></p>
                         </div>
                     <div class="box_title">
-                        <p>中奖金额已打入您的账户</p>
+                        <p>{{item.contentDesc}}</p>
                         <a class="rout">
                             <!-- 查看详情 <b class="iconfont icon-icon-14"></b>  -->
                             </a>
@@ -30,7 +30,7 @@
                         <a v-bind:href="item.msgUrl">
                         <p>{{item.title}}<span>{{item.sendTime}}</span></p>
                         <img :src=item.contentUrl>
-                        <p class="rech">{{item.content}}<a>查看详情<i class="iconfont icon-icon-14" ></i></a></p>
+                        <p class="rech"><a>查看详情<i class="iconfont icon-icon-14" ></i></a></p>
                         </a>
                     </div>
                 </section>

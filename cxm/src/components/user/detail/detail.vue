@@ -7,7 +7,7 @@
     <div class="wrap bonus">
         <mt-loadmore :bottom-method="loadBottom" :bottom-distance='-20' :auto-fill="false" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleTopChange" @scroll='handleScroll($event)'>
                 <div class="yh_Item" v-for="(item,i) in yhList" :key='i'>
-                        <img src="../../../assets/img/guoqi.png" alt="" v-if="item.bonusStatus==0">
+                        <img src="../../../assets/img/guoqi.png" alt="" v-if="item.bonusStatus==0&&item.soonExprireBz==1">
                         <img src="../../../assets/img/yiguoqi.png" alt="" v-if="item.bonusStatus==2">
                         <img src="../../../assets/img/shiyong.png" alt="" v-if="item.bonusStatus==1">
                         <div class="yh_ItemTop">
@@ -22,7 +22,7 @@
                             </p>
                             <p>
                                 <span>{{item.minGoodsAmount}}</span><br/>
-                                <span>{{item.useRange}}</span>
+                                <!-- <span>{{item.useRange}}</span> -->
                             </p>
                         </div>
                         <i></i>

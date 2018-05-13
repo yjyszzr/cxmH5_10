@@ -101,14 +101,26 @@ export default {
             this.$store.dispatch("getMarkReset",1)
         }
         this.$store.dispatch("getMarkShow",false)
-    }
-  },
-  mounted(){
-    api.filterConditions({})
+    },
+    lotteryResultFilter(c){
+        api.getFilterConditionsSomeDay({'dateStr':c})
         .then(res => {
             if(res.code==0) {
                 this.matchFilterList = res.data
             }
         })
+    }
+  },
+  mounted(){
+      if(this.$route.path.split('/')[1]=='lotteryResult'){
+        this.lotteryResultFilter(this.$store.state.mark_showObj.mark_dateVal)
+      }else{
+        api.filterConditions({})
+        .then(res => {
+            if(res.code==0) {
+                this.matchFilterList = res.data
+            }
+        })
+      }
   }
 };

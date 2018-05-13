@@ -319,5 +319,9 @@ export default {
     //提现进程
     withdrawList(params){
         return fetchPost('/payment/payment/withdraw/list',params)
-    }
+    },
+    //赛事结果筛选
+    getFilterConditionsSomeDay(params){
+        return fetchPost('/lottery/lottery/match/getFilterConditionsSomeDay',params)
+    },
 }

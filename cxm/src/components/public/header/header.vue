@@ -6,9 +6,9 @@
             <p class="filter" v-show="menuDisplay==true">
                 <span @click='filter()' v-if="$route.path.split('/')[2]=='singleNote'" class="iconfont icon-icon-21"></span>
                 <span v-if="$route.path.split('/')[2]=='singleNote'" @click="goInToplay()">帮助</span>
-                <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
                 <span v-if="$route.path.split('/')[2]=='consult'" style="opacity:0;">分享</span>
                 <span v-if="$route.path.split('/')[2]=='consult'" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
+                <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
             </p>
             <p class="filter" v-show="menuDisplay==false"></p>
         </div>
@@ -104,10 +104,8 @@ export default {
     colMenu(c){
       if(this.deleteFlag==false){
         this.$store.dispatch("deleteMyFlag",true)
-        c.target.innerText = '取消'
       }else{
         this.$store.dispatch("deleteMyFlag",false)
-        c.target.innerText = '编辑'
       }
     },
     curClick(c){
