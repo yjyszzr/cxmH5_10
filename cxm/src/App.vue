@@ -122,7 +122,7 @@ export default {
             case 'service':
                 return "注册服务协议";
             case 'inToplay':
-                return "更多玩法";
+                return "玩法帮助";
             case 'protocol':
                 return "投注服务协议";
             case 'activity':
