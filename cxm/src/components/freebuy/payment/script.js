@@ -177,7 +177,6 @@ export default {
         }
     },
     mounted() {
-        //console.log(this.$store.state.matchSaveInfo.bonusId)
         if(location.href.split('?')[1]&&location.href.split('?')[1].split('=')[1]==1&&localStorage.getItem('payCode')){
             //console.log(location.href)
             this.payment = JSON.parse(localStorage.getItem('matchSaveInfo'))
@@ -189,7 +188,7 @@ export default {
             this.$store.state.matchSelectedList = JSON.parse(localStorage.getItem('matchSelectedList'))
             this.payCode = localStorage.getItem('payCode')
                 let payLogId = localStorage.getItem('payLogId')
-                if(this.$store.state.matchSaveInfo.lotteryPlayClassifyId=='5'||this.$store.state.matchSaveInfo.lotteryPlayClassifyId=='3'){
+                if(this.$store.state.matchObj.lotteryPlayClassifyId=='5'||this.$store.state.matchObj.lotteryPlayClassifyId=='3'){
                     let map = new Map()
                     JSON.parse(localStorage.getItem('bfIdSaveMap')).forEach(item=>{
                         map.set(item[0],new Set(item[1]))
@@ -224,7 +223,7 @@ export default {
             this.allPaymentList = JSON.parse(localStorage.getItem('allPaymentList'))
             this.$store.state.matchObj = JSON.parse(localStorage.getItem('matchObj'))
             this.$store.state.matchSelectedList = JSON.parse(localStorage.getItem('matchSelectedList'))
-            if(this.$store.state.matchSaveInfo.lotteryPlayClassifyId=='5'||this.$store.state.matchSaveInfo.lotteryPlayClassifyId=='3'){
+            if(this.$store.state.matchObj.lotteryPlayClassifyId=='5'||this.$store.state.matchObj.lotteryPlayClassifyId=='3'){
                 let map = new Map()
                 JSON.parse(localStorage.getItem('bfIdSaveMap')).forEach(item=>{
                     map.set(item[0],new Set(item[1]))
@@ -271,7 +270,7 @@ export default {
                     vm.$store.state.matchSelectedList = JSON.parse(localStorage.getItem('matchSelectedList'))
                     vm.payCode = localStorage.getItem('payCode')
                     let payLogId = localStorage.getItem('payLogId')
-                    if(vm.$store.state.matchSaveInfo.lotteryPlayClassifyId=='5'||vm.$store.state.matchSaveInfo.lotteryPlayClassifyId=='3'){
+                    if(vm.$store.state.matchObj.lotteryPlayClassifyId=='5'||vm.$store.state.matchObj.lotteryPlayClassifyId=='3'){
                         let map = new Map()
                         JSON.parse(localStorage.getItem('bfIdSaveMap')).forEach(item=>{
                             map.set(item[0],new Set(item[1]))
@@ -306,7 +305,7 @@ export default {
                     vm.allPaymentList = JSON.parse(localStorage.getItem('allPaymentList'))
                     vm.$store.state.matchObj = JSON.parse(localStorage.getItem('matchObj'))
                     vm.$store.state.matchSelectedList = JSON.parse(localStorage.getItem('matchSelectedList'))
-                    if(vm.$store.state.matchSaveInfo.lotteryPlayClassifyId=='5'||vm.$store.state.matchSaveInfo.lotteryPlayClassifyId=='3'){
+                    if(vm.$store.state.matchObj.lotteryPlayClassifyId=='5'||vm.$store.state.matchObj.lotteryPlayClassifyId=='3'){
                         let map = new Map()
                         JSON.parse(localStorage.getItem('bfIdSaveMap')).forEach(item=>{
                             map.set(item[0],new Set(item[1]))

@@ -70,7 +70,7 @@
             <div class="section plan">
                 <div class="solecd" >方案内容<span @click='goDraw(orderObj.programmeSn)'>查看出票方案<i class="iconfont icon-icon-14"></i></span></div>
                 <div>
-                    <p>方案编号： <span>{{orderObj.programmeSn}}</span></p>
+                    <p>方案编号：<span>{{orderObj.programmeSn}}</span></p>
                     <p>创建时间：<span>{{orderObj.createTime}}</span></p>
                     <p>店主接单：<span>{{orderObj.acceptTime}}</span></p>
                     <p>店主出票：<span>{{orderObj.ticketTime}}</span></p>

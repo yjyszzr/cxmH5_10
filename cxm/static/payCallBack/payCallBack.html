@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
     <title>微信安全支付</title>
     <meta id="viewport" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1; user-scalable=no;" />
     <meta name="format-detection" content="telephone=no" />
@@ -82,17 +83,21 @@
                     $.alert('充值成功',function(){
                         window.history.go(-3)
                     });
+                    $('.loading_wrap').hide()
                     clearInterval(time)
                 } else if(data.code >=30000&&data.code <310000) {
                     if(data.code == '304035'){
                         $.alert('如果您已经确认支付并扣款，可能存在延迟到账情况，请到账户明细中查看或联系客服查询','支付失败',function(){
                             window.history.go(-3)
                         });
+                        $('.loading_wrap').hide()
+                        clearInterval(time)
                     }else if(data.code== '304036'){
                         if (num > 7) {
                             $.alert('暂未查询到您的支付结果，如果您已经确认支付并扣款，可能存在延迟到账的情况，请到账户明细中查看或联系客服查询','查询失败',function(){
                                 window.history.go(-3)
                             });
+                            $('.loading_wrap').hide()
                             clearInterval(time)
                         }
                     }

@@ -213,7 +213,7 @@ export default {
     fetchData() {
       let data = {
         page: this.page,
-        size: 10
+        size: 20
       };
       api
         .dllist(data)
