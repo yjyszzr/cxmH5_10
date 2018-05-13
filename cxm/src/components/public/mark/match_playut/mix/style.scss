@@ -29,6 +29,16 @@
     border: 1px solid #c7c7c7;
     border-right: none;
     margin-bottom:px2rem(20px);
+    .titleNull{
+      box-sizing: border-box;
+      border-right: 1px solid #c7c7c7;
+      height: px2rem(72px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: px2rem(26px);
+        color: #9f9f9f;
+    }
     tr{
       width: px2rem(640px);
       display: flex;

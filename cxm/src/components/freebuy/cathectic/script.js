@@ -395,9 +395,9 @@ export default {
 				let matchBetCells = [],
 					matchBetCellsObj = {}
 				if(item.myspf) {
-					let arr1 = []
+					let arr1 = [],arrTwo = []
 					for(let i = 0; i < item.myspf.length; i++) {
-						let obj1 = {}
+						let obj1 = {},objtwo={}
 						if(item.myspf[i] == 3) {
 							obj1.cellName = item.matchPlays[0].homeCell.cellName
 							obj1.cellCode = item.matchPlays[0].homeCell.cellCode
@@ -445,25 +445,72 @@ export default {
 								}
 							} else if(item.playType == '7') {
 								if(item.myspf[i] == item.matchPlays[0].homeCell.cellName) {
-									obj1.cellName = item.matchPlays[0].homeCell.cellName
-									obj1.cellCode = item.matchPlays[0].homeCell.cellCode
+									if(item.matchPlays[0].homeCell.cellCode=='30'){
+										objtwo.playType = '2'
+										obj1.cellCode = '0'
+										obj1.cellName = '客胜'
+									}
+									else if(item.matchPlays[0].homeCell.cellCode=='31'){
+										objtwo.playType = '2'
+										obj1.cellCode = '3'
+										obj1.cellName = '主胜'
+									}
+									else if(item.matchPlays[0].homeCell.cellCode=='32'){
+										objtwo.playType = '1'
+										obj1.cellCode = '3'
+										obj1.cellName = '让球主胜'
+									}
+									else if(item.matchPlays[0].homeCell.cellCode=='33'){
+										objtwo.playType = '1'
+										obj1.cellCode = '0'
+										obj1.cellName = '让球客胜'
+									}
+									// obj1.cellName = item.matchPlays[0].homeCell.cellName
+									// obj1.cellCode = item.matchPlays[0].homeCell.cellCode
 									obj1.cellOdds = item.matchPlays[0].homeCell.cellOdds
 									obj1.cellSons = item.matchPlays[0].homeCell.cellSons
+									// obj1.single = '0'
+									// obj1.betCells = obj2
 								} else if(item.myspf[i] == item.matchPlays[0].visitingCell.cellName) {
-									obj1.cellName = item.matchPlays[0].visitingCell.cellName
-									obj1.cellCode = item.matchPlays[0].visitingCell.cellCode
+									if(item.matchPlays[0].visitingCell.cellCode=='30'){
+										objtwo.playType = '2'
+										obj1.cellCode = '0'
+										obj1.cellName = '客胜'
+									}else if(item.matchPlays[0].visitingCell.cellCode=='31'){
+										objtwo.playType = '2'
+										obj1.cellCode = '3'
+										obj1.cellName = '主胜'
+									}else if(item.matchPlays[0].visitingCell.cellCode=='32'){
+										objtwo.playType = '1'
+										obj1.cellCode = '3'
+										obj1.cellName = '让球主胜'
+									}else if(item.matchPlays[0].visitingCell.cellCode=='33'){
+										objtwo.playType = '1'
+										obj1.cellCode = '0'
+										obj1.cellName = '让球客胜'
+									}
 									obj1.cellOdds = item.matchPlays[0].visitingCell.cellOdds
 									obj1.cellSons = item.matchPlays[0].visitingCell.cellSons
+									// obj1.single = '0'
+									// obj1.betCells = obj2
 								}
+								objtwo.betCells = obj1
+								objtwo.single = '0'
+								objtwo.fixedOdds = item.matchPlays[0].fixedOdds
 							}
 						}
 						arr1.push(obj1)
+						arrTwo.push(objtwo)
 					}
-					matchBetCellsObj.betCells = arr1
-					matchBetCellsObj.playType = item.matchPlays[0].playType
-					matchBetCellsObj.single = item.matchPlays[0].single
-					matchBetCellsObj.fixedOdds = item.matchPlays[0].fixedOdds
-					matchBetCells.push(matchBetCellsObj)
+					if(this.$route.query.playType=='7'){
+						matchBetCells = arrTwo
+					}else{
+						matchBetCellsObj.betCells = arr1
+						matchBetCellsObj.playType = item.matchPlays[0].playType
+						matchBetCellsObj.single = item.matchPlays[0].single
+						matchBetCellsObj.fixedOdds = item.matchPlays[0].fixedOdds
+						matchBetCells.push(matchBetCellsObj)
+					}
 				} else {
 					//console.log(item.selectedList)
 					matchBetCells = item.selectedList
@@ -477,7 +524,7 @@ export default {
 				'lotteryClassifyId': this.$route.query.lottoyId,
 				'lotteryPlayClassifyId': this.$route.query.classlootoyId,
 				'times': this.$store.state.mark_playObj.mupNum,
-				'playType': this.$route.query.playType,
+				'playType': this.$route.query.playType=='7'?'6':this.$route.query.playType,
 				'matchBetPlays': this.matchBetPlays
 			};
 			this.matchSave = data

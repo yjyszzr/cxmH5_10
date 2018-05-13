@@ -12,14 +12,8 @@
         </div>
         <div class="give_cen">
             <b></b>
-            <div class="sent">
-                <p><i class="iconfont icon-icon-29"></i>申请<br/><span></span></p>
-            </div>
-            <div class="sent">
-                <p><i class="iconfont icon-icon-29"></i>提现审核中<br/><span>14:00:00</span></p>
-            </div>
-            <div class="sent">
-                <p><i class="iconfont icon-icon-29"></i>提现成功<br/><span>14:00:00</span></p>
+            <div class="sent" v-for="(item,i) in giveObj.userWithdrawLogs" :key='i'>
+                <p><i class="iconfont icon-icon-29" :style="{'color':item.logTime!==''?'#ea5504':'#9f9f9f'}"></i>{{item.logName}}<br/><span>{{dateFter(item.logTime)}}</span></p>
             </div>
         </div>
         <section class=" wechat">

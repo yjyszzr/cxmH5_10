@@ -30,7 +30,7 @@
                         <a v-bind:href="item.msgUrl">
                         <p>{{item.title}}<span>{{item.sendTime}}</span></p>
                         <img :src=item.contentUrl>
-                        <p class="rech">{{item.content}}<a v-bind:href="item.msgUrl">查看详情<i class="iconfont icon-icon-14" ></i></a></p>
+                        <p class="rech">{{item.content}}<a>查看详情<i class="iconfont icon-icon-14" ></i></a></p>
                         </a>
                     </div>
                 </section>
