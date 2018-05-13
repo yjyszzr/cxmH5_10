@@ -219,7 +219,7 @@ export default {
         .dllist(data)
         .then(res => {
           if (res.code == 0) {
-           console.log(res);
+           //console.log(res);
             this.zxObj = res.data;
             if (this.page == 1) {
               this.zxList = this.zxList.concat(res.data.list);
