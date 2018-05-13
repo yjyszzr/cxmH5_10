@@ -37,7 +37,7 @@ export default {
       yhData(){
         let data = {
           'status': this.status,
-          'pageSize': 10,
+          'pageSize': 20,
           'pageNum': this.pageNum
         }
         api.queryBonusListByStatus(data)

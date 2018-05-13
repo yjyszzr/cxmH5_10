@@ -27,7 +27,7 @@ export default {
     fetchData() {
       let data = {
         pageNum: this.page,
-        pageSize: 10
+        pageSize: 20
       };
       api
         .collectList(data)

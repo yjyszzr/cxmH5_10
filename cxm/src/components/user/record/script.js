@@ -47,7 +47,7 @@ export default {
         let data = {
           'lotteryClassifyId': 1,
           'orderStatus': this.orderStatus,
-          'pageSize': 10,
+          'pageSize': 20,
           'pageNum': this.pageNum
         }
         api.getOrderInfoList(data)
