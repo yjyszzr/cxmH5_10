@@ -28,6 +28,7 @@
                 <section class="box_cen" v-for="(item,i) in mess" v-if="msgType==1" :key='i' >
                     <div class="mess_message" style="margin: 0;padding: 0">
                         <a v-bind:href="item.msgUrl">
+                        <!--<a v-bind:href="item.msgUrl" @click="ac(message.msgUrl)">-->
                         <p>{{item.title}}<span>{{item.sendTime}}</span></p>
                         <img :src=item.contentUrl>
                         <p class="rech"><a>查看详情<i class="iconfont icon-icon-14" ></i></a></p>
