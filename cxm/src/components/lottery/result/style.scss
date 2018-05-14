@@ -1,52 +1,20 @@
  @import '../../../assets/css/function.scss';
  .result{
-  //  .list{
-  //     height: px2rem(88px);
-  //     //line-height: px2rem(88px);
-  //     display: flex;
-  //     background: #fff;
-  //     margin-bottom: px2rem(20px);
-  //     position: fixed;
-  //    -webkit-box-flex: 1;
-  //    width: 100%;
-  //    z-index: 9;
-  //    border-bottom: 1px solid #f1f1f1;
-  //    box-sizing: border-box;
-  //    top: px2rem(98px);
-  //     li{
-  //       display: flex;
-  //       justify-content: center;
-  //       align-items: center;
-  //        flex: 1;
-  //         height: px2rem(88px);
-  //        text-align: center;
-  //        border-right: 1px solid #f1f1f1;
-  //        color:#9f9f9f;
-  //        font-size: px2rem(28px);
-  //        position: relative;
-  //       i{
-  //         color: #ea5504;
-  //         font-size: px2rem(20px);
-  //         right: 0;
-  //         position: absolute;
-  //         bottom: 0;
-  //       }
-  //     }
-  //  }
-   .el-collapse{
-    margin-top: px2rem(20px);
-   }
-   .el-collapse-item__content{
-     -webkit-box-flex: 1;
-     padding-bottom: 0;
+   .title{
+    height: px2rem(60px);
+    line-height: px2rem(60px);
    }
    .spfList{
      color: #9f9f9f;
      font-size: px2rem(28px);
-     padding-left:px2rem(10px);
+     padding-left:px2rem(30px);
      span{
        color: #ea5504;
      }
+   }
+   section{
+     margin-top: px2rem(20px);
+     background: white;
    }
    .hotMatchList {
      width: px2rem(686px);

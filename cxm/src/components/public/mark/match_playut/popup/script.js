@@ -48,7 +48,9 @@ export default {
       deleteNum(s){
         // basic = basic.substr(0, basic.length - 1);
         this.mup = this.mup.substr(0, this.mup.length - 1)
-        this.firstNum = 0
+        if(this.mup===''){
+        	this.firstNum = 0
+        }
         this.tapactive(s)
       },
       confirm_num(){

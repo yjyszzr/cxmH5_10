@@ -51,6 +51,11 @@
     overflow: auto;
     height: px2rem(500px);
     -webkit-overflow-scrolling: touch!important;
+    .nullStatus{
+      display: flex;
+      justify-content: center;
+      margin-top: px2rem(180px);
+    }
     li {
       width: px2rem(192px);
       height: px2rem(60px);

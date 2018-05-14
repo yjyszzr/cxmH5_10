@@ -5,6 +5,7 @@ import {
 import {
   Indicator
 } from 'mint-ui'
+import dateFailter from '../../../util/datefilter'
 export default {
   name: 'collection',
   data() {
@@ -89,6 +90,9 @@ export default {
       this.trFlag = true;
       this.cxLoadFlag = false;
       this.fetchData()
+    },
+    addTime(c){
+      return dateFailter(c*1000,0)+ ' ' + dateFailter(c*1000,1)
     },
     goZxDetail(c){
       this.$router.push({

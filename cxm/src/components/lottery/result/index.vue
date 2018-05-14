@@ -10,11 +10,9 @@
             </ul>
         </section> -->
         <section>
-            <el-collapse v-model="activeName">
-                <el-collapse-item name='1'>
-                    <template slot="title" class="title">
+                    <p class="title">
                         <span class="spfList">共有{{$store.state.resultList.length}}场比赛 已结束<span>{{matchFilsh()}}</span>场</span>
-                    </template>
+                    </p>
                     <ul class="hotMatchList">
                         <li v-for="(list,i) in $store.state.resultList" :key='i' @click='goDetail(list.matchId)'>
                             <small><i>{{list.changci}}</i><i>{{list.leagueName}}</i><i>{{list.matchTime}}</i></small>
@@ -29,12 +27,9 @@
                             </div>
                         </li>
                     </ul>
-                </el-collapse-item>
-            </el-collapse>
         </section>
     </div>
 </template>
 <script src='./script.js'>
-    // import http from '../api/http'
-
+// import http from '../api/http'
 </script>

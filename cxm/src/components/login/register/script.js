@@ -44,7 +44,7 @@ export default {
                 Toast('注册成功')
                 this.$router.push({
                     path: '/user/password',
-                    replace: true
+                    replace: false
                 })
             }
         })

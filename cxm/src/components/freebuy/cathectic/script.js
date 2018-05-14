@@ -359,6 +359,10 @@ export default {
 		},
 		fetchData(c) {
 			this.matchBetPlays = []
+			if(this.$store.state.mark_playObj.playtList.length<=0){
+				this.betObjFun()
+				return false;
+			}
 			this.$store.state.matchSelectedList.forEach(item => {
 				let obj = {}
 				obj.isDan = 0
@@ -533,7 +537,7 @@ export default {
 				.getBetInfo(data)
 				.then(res => {
 					if(res.code == 0) {
-						if(res.data.maxLotteryMoney>20000||res.data.betNum>10000){
+						if(res.data.maxLotteryMoney>20000||res.data.betNum>10000||res.data.betNum<0){
 							this.maxButNum = true
 							this.maxButNumMsg = res.msg
 							Toast(res.msg)
@@ -647,7 +651,7 @@ export default {
 						if(this.$store.state.mark_playObj.playtList.indexOf('1&1')==-1){
 							this.$store.state.mark_playObj.playtList.unshift('1&1')
 						}
-						this.fetchData()
+						this.playt()
 					}else{
 						for(let i = 2; i <= this.$store.state.matchSelectedList.length; i++) {
 							if(arr2.indexOf('5')!=-1||arr2.indexOf('3')!=-1){
@@ -669,18 +673,23 @@ export default {
 							 this.$store.state.mark_playObj.playtList.remove('1&1')
 						}
 						if(this.$store.state.mark_playObj.playutText.indexOf('1&1')==-1){
-							this.fetchData()
+							if(arr2.indexOf('4')!=-1||arr2.indexOf('3')!=-1||arr2.indexOf('5')!=-1){
+								this.playt()
+							}else{
+								this.fetchData()
+							}
 						}else{
 							this.playt()
 						}
 					}
 				} else if(this.$store.state.matchSelectedList.length == 1) {
+					//console.log(this.$store.state.mark_playObj.playtList)
 					if(arr1.indexOf('0')==-1){
 						this.disable = false
 						if(this.$store.state.mark_playObj.playtList.indexOf('1&1')==-1){
-							this.$store.state.mark_playObj.playtList.unshift('1&1')
+							this.$store.state.mark_playObj.playtList.push('1&1')
 						}
-						this.fetchData()
+						this.playt()
 					}else{
 						this.betObjFun()
 					}

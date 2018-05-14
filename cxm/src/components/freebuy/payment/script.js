@@ -88,6 +88,7 @@ export default {
                     //console.log(res)
                     if (s == 'ye') {
                         if (res.code == 0) {
+                            Toast(res.msg)
                             this.$router.replace({
                                 path: '/user/order',
                                 query: {
@@ -325,8 +326,8 @@ export default {
             })
             //localStorage.removeItem('matchSaveInfo')
         }else{
-            Indicator.open()
             next(vm=>{
+            	Indicator.open()
                 vm.fetchData(vm.$store.state.matchSaveInfo)
             })
         }

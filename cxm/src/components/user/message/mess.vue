@@ -16,7 +16,7 @@
                             <p>{{item.content}}</p>
                         </div>
                         <div class="box3">
-                            <p v-html="item.msgDesc"></p>
+                            <p v-html="item.msgDesc.replace(/#/g,'<br />')"></p>
                         </div>
                     <div class="box_title">
                         <p>{{item.contentDesc}}</p>

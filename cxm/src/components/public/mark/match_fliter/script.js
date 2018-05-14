@@ -97,6 +97,7 @@ export default {
                 'leagueId': arrTeam.join(','),
                 'playType': this.playType
             }
+            this.$store.dispatch("getLeagueIds",arrTeam.join(','))
             this.$store.dispatch("getMatchList",data)
             this.$store.dispatch("getMarkReset",1)
         }
@@ -107,6 +108,12 @@ export default {
         .then(res => {
             if(res.code==0) {
                 this.matchFilterList = res.data
+                if(this.$store.state.mark_showObj.leagueIds==''){
+                    let arr = res.data.map((item)=>{
+                        return item.leagueId
+                    })
+                    this.$store.dispatch("getLeagueIds",arr.join(','))
+                }
             }
         })
     }
@@ -119,6 +126,12 @@ export default {
         .then(res => {
             if(res.code==0) {
                 this.matchFilterList = res.data
+                if(this.$store.state.mark_showObj.leagueIds==''){
+                    let arr = res.data.map((item)=>{
+                        return item.leagueId
+                    })
+                    this.$store.dispatch("getLeagueIds",arr.join(','))
+                }
             }
         })
       }

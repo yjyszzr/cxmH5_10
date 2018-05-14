@@ -28,6 +28,7 @@ export default {
       watch: {
         status(a, b) {
             this.$store.dispatch("getMarkDateVal",a)
+            this.$store.dispatch("getLeagueIds",'')
             Indicator.open()
             this.fetchData()
         }

@@ -49,7 +49,7 @@ export default {
         })
     },
     beforeRouteLeave(to, from, next) {
-      if(to.path!='/freebuy/payment'){
+      if(to.path!='/freebuy/cathectic'){
         next()
       }else{
         this.$store.state.matchSelectedList = []

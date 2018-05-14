@@ -98,7 +98,7 @@ axios.interceptors.response.use((res) =>{
 }
     setTimeout(()=>{
         Indicator.close()
-        Toast('请求超时');
+        Toast('网络异常，请稍后重试');
     },25000)
     return Promise.reject(error);
 });

@@ -32,12 +32,13 @@
           white-space: nowrap;
         }
         .summary {
+            margin: px2rem(10px) 0;
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
           -webkit-line-clamp: 2;
         }
-        p {
+        .picSummary {
           margin: px2rem(10px) 0;
           display: flex;
           align-items: center;
@@ -50,7 +51,7 @@
         }
         span {
           color: #9f9f9f;
-          margin-right: px2rem(30px);
+          margin-right: px2rem(18px);
           font-size: px2rem(22px);
         }
         span:last-of-type {

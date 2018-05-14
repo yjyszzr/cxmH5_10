@@ -6,6 +6,7 @@ import {
 import {
     Indicator
 } from "mint-ui";
+import dateFailter from '../../../util/datefilter'
 export default {
     name: "consult",
     data() {
@@ -73,6 +74,12 @@ export default {
 
                     })
             }
+        },
+        zxDetailTime(c){
+            return dateFailter(c*1000,3)
+        },
+        addTime(c){
+            return dateFailter(c*1000,0)+' '+dateFailter(c*1000,1)
         }
     },
     computed: {  

@@ -14,7 +14,7 @@
                             <li>
                                <p class="gczt" :style="{'background':bg_Color(item.processType)}">{{item.processTypeChar}}</p>
                                 <div>
-                                    <p>{{item.processTypeName}}<i>{{item.changeAmount}}</i></p>
+                                    <p>{{item.processTypeName}}<i :style="{'color':item.processType=='1'?'#ea5504':'#505050'}">{{item.changeAmount}}</i></p>
                                     <b v-html='item.note'></b>
                                     <span>{{item.shotTime}}<i v-if="item.processType==4" @click="goTxxq(item.payId)">{{item.status}}<em class="iconfont icon-icon-14"></em></i></span>
                                 </div>

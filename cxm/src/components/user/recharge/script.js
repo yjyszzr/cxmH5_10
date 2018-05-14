@@ -3,6 +3,9 @@ import {
     Indicator
 } from 'mint-ui'
 import {
+    Toast
+  } from 'mint-ui'
+import {
     MessageBox
 } from 'mint-ui';
 import {
@@ -31,13 +34,11 @@ export default {
             this.recharge_val = c
         },
         determine() {
-            let regex = new RegExp("^(([1-9][0-9]*)$");
-
-            if(regex.test(this.recharge_val)){
+            let regex = /^[1-9]\d*$/;
+            if(!regex.test(this.recharge_val)){
                 Toast('请输入正确的金额')
                 return false
             }
-
             Indicator.open()
             let innerWechat = '',payTypePd=''
             if(this.payCode == 'app_weixin'){  //wx支付逻辑
@@ -82,8 +83,9 @@ export default {
                             let url = location.href + '?rechargeStatus=1'
                             location.href = res.data.payUrl + '&h5ck=' + encodeURIComponent(url)
                         }else if(s=='wx'){
-                            location.href = './static/payCallBack/payCallBack.html?logid='+res.data.payLogId
-                            //location.href = res.data.payUrl
+                            //location.href = './static/payCallBack/payCallBack.html?logid='+res.data.payLogId
+                            alert(res.data.payUrl)
+                            location.href = res.data.payUrl
                         }
                     }
             })
