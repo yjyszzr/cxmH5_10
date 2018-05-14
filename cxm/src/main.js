@@ -9,6 +9,16 @@ import store from './vuex/store'
 import $ from './util/zepto'
 import { Collapse,CollapseItem } from 'element-ui';
 import { Progress } from 'element-ui';
+import _ from 'lodash'
+// import VueLazyload from 'vue-lazyload'
+
+// // or with options
+// Vue.use(VueLazyload, {
+//   preLoad: 1,
+//   error: './static/payCallBack/cxzLoad.gif',
+//   loading: './static/payCallBack/cxzLoad.gif',
+//   attempt: 1
+// })
 
 Vue.config.productionTip = false
 Vue.use(MintUI)

@@ -5,7 +5,7 @@ import {
 } from 'mint-ui'
 import mutations from './mutations'
 import actions from './action'
-
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
@@ -43,7 +43,7 @@ const state = {
         yhList: [], //优惠券列表
         mybounsId: '', //默认优惠券id
         bfmatchId: '', //选中比分的id
-        bfIdSaveMap: new Map(), //选取比分id，结果保存
+        bfIdSaveMap: {}, //选取比分id，结果保存
         bfIdSaveMapFlag: 0,
         matchDetailFlag: true
     },
@@ -58,5 +58,6 @@ export default new Vuex.Store({
     state,
     actions,
     mutations,
+    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','mark_playObj'],storage: window.sessionStorage})]
     //strict: true
 })

@@ -362,7 +362,7 @@ export default {
       } else {
         this.matchSelectObj.clear()
         this.id = ''
-        this.$store.state.mark_playObj.bfIdSaveMap.clear()
+        this.$store.state.mark_playObj.bfIdSaveMap = {}
         this.mapKey = []
       }
       this.text = `<p>请至少选择1场单关比赛</p><p>或者2场比赛</p>`
@@ -453,11 +453,15 @@ export default {
         this.confirm_mix()
       } else {
         this.mapKey = []
-        this.matchSelectObj = this.$store.state.mark_playObj.bfIdSaveMap
-        for (let [key, value] of this.matchSelectObj) {
+        this.matchSelectObj = new Map()
+        _.forIn(this.$store.state.mark_playObj.bfIdSaveMap, (value, key) => {
           this.mapKey.push(key)
-          this.matchSelectObj.set(key, Array.from(value))
-        }
+          this.matchSelectObj.set(key, value)
+        });
+        // for (let [key, value] of this.matchSelectObj) {
+        //   this.mapKey.push(key)
+        //   this.matchSelectObj.set(key, Array.from(value))
+        // }
         //console.log(this.matchSelectObj)
         this.confirm_bf()
       }
@@ -478,10 +482,14 @@ export default {
       this.fetchData()
     } else {
       if (this.playType == '3' || this.playType == '5') {
-        this.matchSelectObj = this.$store.state.mark_playObj.bfIdSaveMap
-        for (let [key, value] of this.matchSelectObj) {
+        this.matchSelectObj = new Map()
+        _.forIn(this.$store.state.mark_playObj.bfIdSaveMap, (value, key) => {
           this.mapKey.push(key)
-        }
+          this.matchSelectObj.set(key,value)
+        });
+        // for (let [key, value] of this.matchSelectObj) {
+        //   this.mapKey.push(key)
+        // }
         this.confirm_bf()
       } else if (this.playType == '6') {
         this.$store.state.mark_playObj.bfIdSaveMapFlag++
@@ -531,6 +539,9 @@ export default {
     this.$store.state.mark_playObj.bfIdSaveMapFlag = 0
     this.$store.state.mark_showObj.mark_show_type = ''
     this.$store.state.mark_playObj.mupNum = '5'
+    if(to.path!='/freebuy/cathectic'){
+      this.$store.dispatch("getLeagueIds",'')
+    }
     localStorage.removeItem('tab')
   }
 }

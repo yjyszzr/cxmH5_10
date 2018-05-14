@@ -114,7 +114,7 @@
 		<v-slider :bannerList='bannerList'></v-slider>
 		<!--首页-->
 		<div class="index_center">
-			<div class="carousel">
+			<div class="carousel" style="margin-top: 0.24rem;">
 				<div class="scroll-wrap">
 					<i class="iconfont icon-icon-"></i>
 					<p v-if='show'>温馨提示:理性投注,长跟长红</p>
@@ -201,7 +201,7 @@ export default {
       this.$store.state.matchObj = {};
       this.$store.state.freebuyId = c;
       this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
-      this.$store.state.mark_playObj.bfIdSaveMap = new Map();
+      this.$store.state.mark_playObj.bfIdSaveMap = {};
       this.$router.push({
         path: "/freebuy/singleNote",
         query: {

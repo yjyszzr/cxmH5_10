@@ -18,9 +18,9 @@ export default {
         confirm(){
             this.$emit('closeMarkCz')
             if(this.scoreArr.size==0){
-                this.$store.state.mark_playObj.bfIdSaveMap.delete(this.scoreObj.matchId)
+                _.unset(this.$store.state.mark_playObj.bfIdSaveMap,this.scoreObj.matchId)
             }else{
-                this.$store.state.mark_playObj.bfIdSaveMap.set(this.scoreObj.matchId,this.scoreArr)
+                _.set(this.$store.state.mark_playObj.bfIdSaveMap,this.scoreObj.matchId,this.scoreList)
             }
             this.$store.state.mark_playObj.bfIdSaveMapFlag+=1
         },
@@ -48,16 +48,16 @@ export default {
                 this.scoreObj =  item
             }
         });
-        if(this.$store.state.mark_playObj.bfIdSaveMap.has(this.scoreObj.matchId)){
+        if(_.has(this.$store.state.mark_playObj.bfIdSaveMap,this.scoreObj.matchId)){
             this.scoreArr = new Set()
-            for (let [key, value] of this.$store.state.mark_playObj.bfIdSaveMap) {
+            _.forIn(this.$store.state.mark_playObj.bfIdSaveMap, (value, key) => {
                 if ( this.scoreObj.matchId == key) {
                     //this.scoreArr = value
                     value.forEach(item=>{
                         this.scoreArr.add(item)
                     })
                 }
-            }
+            });
         }else{
             this.scoreArr = new Set()
         }

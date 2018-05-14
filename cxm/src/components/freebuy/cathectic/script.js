@@ -121,11 +121,16 @@ export default {
 						this.matchSelectObj.delete(key)
 					}
 				}
-				for(let [key, value] of this.$store.state.mark_playObj.bfIdSaveMap) {
+				_.forIn(this.$store.state.mark_playObj.bfIdSaveMap, (value, key) => {
 					if(key == c) {
-						this.$store.state.mark_playObj.bfIdSaveMap.delete(key)
+						_.unset(this.$store.state.mark_playObj.bfIdSaveMap,key)
 					}
-				}
+				});
+				// for(let [key, value] of this.$store.state.mark_playObj.bfIdSaveMap) {
+				// 	if(key == c) {
+				// 		this.$store.state.mark_playObj.bfIdSaveMap.delete(key)
+				// 	}
+				// }
 				this.nonTouDate()
 				if(this.$store.state.matchSelectedList.length > 1) {
 					this.playt()
@@ -545,6 +550,9 @@ export default {
 							this.maxButNum = false
 						}
 						this.betObj = res.data
+					}else{
+						this.maxButNum = true
+						this.maxButNumMsg = res.msg
 					}
 				})
 		},
@@ -743,10 +751,14 @@ export default {
 				this.heSingle(n)
 			} else {
 				let n = this.$store.state.matchSelectedList //初始化比赛条目
-				this.matchSelectObj = this.$store.state.mark_playObj.bfIdSaveMap
-				for (let [key, value] of this.matchSelectObj) {
-					this.matchSelectObj.set(key,Array.from(value))
-				}
+				this.matchSelectObj = new Map()
+				_.forIn(this.$store.state.mark_playObj.bfIdSaveMap, (value, key) => {
+					this.matchSelectObj.set(key,value)
+				});
+				// this.matchSelectObj = this.$store.state.mark_playObj.bfIdSaveMap
+				// for (let [key, value] of this.matchSelectObj) {
+				// 	this.matchSelectObj.set(key,Array.from(value))
+				// }
 				this.cshCz(n)
 			}
 		}

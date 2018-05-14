@@ -112,7 +112,9 @@ export default {
                     let arr = res.data.map((item)=>{
                         return item.leagueId
                     })
-                    this.$store.dispatch("getLeagueIds",arr.join(','))
+                    if(this.$store.state.mark_showObj.isAlreadyBuyMatch!='1'){
+                        this.$store.dispatch("getLeagueIds",arr.join(','))
+                    }
                 }
             }
         })
