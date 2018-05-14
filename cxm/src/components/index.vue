@@ -249,7 +249,6 @@ export default {
     },
     carouselMoney(c){
         return c.winningMsg+'<b style="color:#ea5504;font-weight:400;">'+c.winningMoney+'</b>元'
-      // return c.winningMsg.replace(c.winningMoney,'<b style="color:#ea5504;font-weight:400;">'+c.winningMoney+'</b>')
     },
     handleScroll(e) {
       if (

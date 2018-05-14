@@ -1,10 +1,6 @@
-import api, {
-    fetchPost
-} from '../../../fetch/api'
-import {
-    Indicator,
-    Toast
-} from 'mint-ui'
+import api, {fetchPost} from '../../../fetch/api'
+import {Indicator, Toast} from 'mint-ui'
+import {getUrlStr} from '../../../util/common'
 export default {
     name: 'message',
     data() {
@@ -18,6 +14,9 @@ export default {
             loadText: '上拉加载更多...'
         }
     },
+    props:[
+        'message'
+    ],
     beforeCreate() {
         Indicator.open()
     },
@@ -42,6 +41,9 @@ export default {
         }
       },
     methods: {
+        ac(url) {
+            location.href=url
+        },
         handleTopChange(status) {
             this.bottomStatus = status;
         },
