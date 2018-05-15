@@ -88,7 +88,7 @@
                     <a href="tel:010-84505099">
                         <div>
                             <i class="iconfont icon-icon-4"></i>
-                            <span class="arrow_kefu float_right">010-84505099</span>
+                            <span class="arrow_kefu float_right">400126600</span>
                             <span class="message">联系客服</span>
                         </div>
                     </a>
