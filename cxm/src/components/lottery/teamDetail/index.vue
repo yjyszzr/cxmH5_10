@@ -54,9 +54,11 @@
                         <ul v-for="(item,i) in ckxqObj.hvMatchTeamInfo.matchInfos" :key='i'>
                             <li class="list_cur">{{item.leagueAddr}}</li>
                             <li>{{item.matchDay}}</li>
-                            <li><span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.homeTeamAbbr?'#505050':'#9f9f9f'}">{{item.homeTeamAbbr}}</span>
-                            <span>{{item.whole}}</span>
-                            <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.visitingTeamAbbr?'#505050':'#9f9f9f'}">{{item.visitingTeamAbbr}}</span></li>
+                            <li>
+                                <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.homeTeamAbbr?'#505050':'#505050'}">{{item.homeTeamAbbr}}</span>
+                                <span>{{item.whole}}</span>
+                                <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.visitingTeamAbbr?'#505050':'#505050'}">{{item.visitingTeamAbbr}}</span>
+                            </li>
                             <li :style="{'color':colorMatchRs(item.matchRs)}">{{item.matchRs}}</li>
                         </ul>
                     </div>
@@ -75,9 +77,11 @@
                         <ul v-for="(item,i) in ckxqObj.hMatchTeamInfo.matchInfos" :key='i'>
                             <li class="list_cur">{{item.leagueAddr}}</li>
                             <li>{{item.matchDay}}</li>
-                            <li><span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.homeTeamAbbr?'#505050':'#9f9f9f'}">{{item.homeTeamAbbr}}</span>
-                            <span>{{item.whole}}</span>
-                            <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.visitingTeamAbbr?'#505050':'#9f9f9f'}">{{item.visitingTeamAbbr}}</span></li>
+                            <li>
+                                <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.homeTeamAbbr?'#505050':'#9f9f9f'}">{{item.homeTeamAbbr}}</span>
+                                <span>{{item.whole}}</span>
+                                <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.visitingTeamAbbr?'#505050':'#9f9f9f'}">{{item.visitingTeamAbbr}}</span>
+                            </li>
                             <li :style="{'color':colorMatchRs(item.matchRs)}">{{item.matchRs}}</li>
                         </ul>
                     </div>
