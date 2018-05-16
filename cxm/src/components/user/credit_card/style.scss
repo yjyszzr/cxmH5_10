@@ -18,27 +18,11 @@
     .card:last-of-type{
         margin-bottom: 0;
     }
-    .china_bank{
-        .bank_box{
-            width: px2rem(62px);
-            height: px2rem(62px);
-            float: left;
-            margin-right: px2rem(12px);
-            border-radius: 100%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            img{
-                width: 100%;
-            }
-        }
-    }
     .china_bank p{
         font-size: px2rem(28px);
         float: left;
         line-height: px2rem(30px);
+        margin-left: px2rem(15px);
         span{
             font-size: px2rem(20px);
         }

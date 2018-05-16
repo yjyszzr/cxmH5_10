@@ -11,7 +11,7 @@
                 <a href="javascript:void(0);">
                     <div>
                         <i class="iconfont icon-huaban-1" ref="mima"></i>
-                        <input @focus="handleCommentFocus1" @blur="handleCommentBlur1($event)" v-model="passwordVal" type="password" class="text" placeholder="请输入您的新密码6-20个字符"/>
+                        <input @focus="handleCommentFocus1" @blur="handleCommentBlur1($event)" v-model="passwordVal" type="password" class="text" placeholder="请输入6-20位的密码"/>
                     </div>
 
                 </a>

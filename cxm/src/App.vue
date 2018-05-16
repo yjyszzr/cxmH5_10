@@ -29,6 +29,7 @@ import mark from "./components/public/mark/mark";
 import pmark from "./components/public/mark/match_playut/mark_playut";
 import {ScrollFix} from './util/common'
 import {wxPd} from './util/common'
+import {getUrlStr} from './util/common'
 // import LocalScrollFix from 'Localscrollfix'
 export default {
   name: "App",
@@ -160,7 +161,7 @@ export default {
       }
     },
     showTitle(){
-      if (window.location.href.split("?")[1]&&window.location.href.split("?")[1].split('=')[0]=='showtitle') {
+      if (window.location.href.split("?")[1]&&getUrlStr('showtitle',location.href)=='1') {
          return false;
       } else {
          return true;

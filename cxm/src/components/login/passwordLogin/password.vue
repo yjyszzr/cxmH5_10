@@ -18,8 +18,8 @@
         <a href="javascript:void(0);">
           <div>
             <i class="iconfont icon-huaban-1" ref="mima"></i>
-            <input @focus="handleCommentFocus1" @blur="handleCommentBlur1($event)" v-model="passwordVal" placeholder="请输入密码" type="password" class="text" v-show="eyehide==false"/>
-            <input @focus="handleCommentFocus1" @blur="handleCommentBlur1($event)" v-model="passwordVal" placeholder="请输入密码" type="text" class="text" v-show="eyehide==true"/>
+            <input @focus="handleCommentFocus1" @blur="handleCommentBlur1($event)" v-model="passwordVal" placeholder="请输入6-20位的密码" type="password" class="text" v-show="eyehide==false"/>
+            <input @focus="handleCommentFocus1" @blur="handleCommentBlur1($event)" v-model="passwordVal" placeholder="请输入6-20位的密码" type="text" class="text" v-show="eyehide==true"/>
             <em @click="eyehide==false?eyehide = true:eyehide = false"><i class="iconfont icon-huaban-6" v-show="eyehide==false"></i><i class="iconfont icon-huaban-5" v-show="eyehide==true"></i></em>
           </div>
         </a>

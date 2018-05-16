@@ -72,11 +72,11 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  position: relative;
   i {
     color: #ea5504;
     vertical-align: middle;
     font-size: px2rem(30px);
-    margin-right: px2rem(15px);
     display: inline-block;
   }
   p {
@@ -84,8 +84,9 @@
     color: #a0a0a0;
   }
   .scroll-content {
-    position: relative;
+    position: absolute;
     transition: top 0.5s;
+    left: px2rem(72px);
   }
   .scroll-content li {
     text-align: left;
@@ -94,6 +95,7 @@
     height: px2rem(61px);
     display: flex;
     align-items: center;
+    overflow: hidden;
   }
 }
 
@@ -117,7 +119,7 @@
 			<div class="carousel" style="margin-top: 0.24rem;">
 				<div class="scroll-wrap">
 					<i class="iconfont icon-icon-"></i>
-					<p v-if='show'>温馨提示:理性投注,长跟长红</p>
+					<!-- <p v-if='show'>温馨提示:理性投注,长跟长红</p> -->
 					<ul class="scroll-content" :style="{top}" v-if='hide'>
 						<li v-for="(data,item) in y_Carousel" :key='item' v-html="carouselMoney(data)">
 						</li>
@@ -172,7 +174,7 @@ export default {
       activity: {}, //活动
       y_Carousel: [], //中奖信息
       dlPlay: [],
-      activeIndex: -1,
+      activeIndex: 0,
       show: true,
       hide: false,
       page: 1,
@@ -291,10 +293,10 @@ export default {
             this.show = false;
             this.hide = true;
             setInterval(_ => {
-              if (this.activeIndex < this.y_Carousel.length - 2) {
+              if (this.activeIndex < this.y_Carousel.length - 1) {
                 this.activeIndex += 1;
               } else {
-                this.activeIndex = -1;
+                this.activeIndex = 0;
               }
             }, 3000);
           }

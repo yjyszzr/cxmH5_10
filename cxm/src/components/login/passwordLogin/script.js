@@ -15,9 +15,12 @@ export default {
     },
     methods:{
       _login(){
-        if (!this.phoneVal || !this.passwordVal) {
-            Toast('请填写完整')
+        if (!this.phoneVal) {
+            Toast('请输入正确的手机号')
             return
+        }else if(!this.passwordVal){
+          Toast('请输入6-20位的密码')
+          return
         }
         let data = {
             'mobile': this.phoneVal,

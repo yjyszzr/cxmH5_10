@@ -1,6 +1,7 @@
 import api from '../../../fetch/api'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
+import { MessageBox } from 'mint-ui'
 export default {
     name: 'index',
     data () {
@@ -20,17 +21,21 @@ export default {
     },
     methods:{
       loginout(){
-        api.logout({})
-        .then(res => {
-            if(res.code==0) {
-              //  console.log(res)
-              localStorage.clear()
-              this.$router.push({
-                  path: '/user/password',
-                  replace: true
-              })
-                Toast(res.msg)
-            }
+        MessageBox.confirm('是否退出登录?').then(action => {
+          api.logout({})
+          .then(res => {
+              if(res.code==0) {
+                //  console.log(res)
+                localStorage.clear()
+                this.$router.push({
+                    path: '/user/password',
+                    replace: true
+                })
+                  Toast(res.msg)
+              }
+
+          })
+        },action => {
 
         })
       },

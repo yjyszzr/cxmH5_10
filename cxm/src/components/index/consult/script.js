@@ -76,7 +76,9 @@ export default {
             }
         },
         zxDetailTime(c){
-            return dateFailter(c*1000,3)
+            if(c!=undefined){
+                return dateFailter(c*1000,3)
+            }
         },
         addTime(c){
             return dateFailter(c*1000,0)+' '+dateFailter(c*1000,1)

@@ -22,7 +22,7 @@
 						</div>
 						<div class="zxBox" v-if="item.listStyle==1||item.listStyle==4">
 							<div class="zxLeft">
-								<h5>{{item.title}}</h5>
+								<h5 style="-webkit-box-orient: vertical;">{{item.title}}</h5>
 								<div class="zx_info"><span>{{item.author}}</span><span>{{addTime(item.addTime)}}</span><span>阅读{{item.clickNumber}}</span></div>
 							</div>
 							<div class="zxRight">

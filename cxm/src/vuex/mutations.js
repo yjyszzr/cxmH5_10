@@ -2,6 +2,7 @@ import api from '../fetch/api'
 import {
     Toast
 } from 'mint-ui'
+import router from '../router/index'
 const mutations = {
     GETSMSCODE(state, data) {
         //获取验证码  
@@ -22,8 +23,11 @@ const mutations = {
                         }
                     }, 1000)
                     Toast(res.msg)
+                }else if(res.code=='301010'){
+                    router.push({
+                        path: '/user/password'
+                    })
                 }
-
             })
     },
     RESET(state) {
