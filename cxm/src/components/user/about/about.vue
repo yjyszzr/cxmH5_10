@@ -15,7 +15,7 @@
                     <li>
                         <router-link to="/user/suggestion">
                             <div>
-                                <span class="message">投诉建议</span>
+                                <span class="message">投诉建议</span> 
                             </div>
                         </router-link>
                         <router-link to="/user/insurance">
@@ -29,7 +29,7 @@
         </section>
 
         <section class="guanwang">
-            <p>客服热线：<span>400126600</span></p>
+            <p>客服热线：<span>400-012-6600</span></p>
             <p>官网：<span>http://www.caixiaomi.com</span></p>
         </section>
     </div>

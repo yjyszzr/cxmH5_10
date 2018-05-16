@@ -85,10 +85,10 @@
                             <span class="message">帮助中心</span>
                         </div>
                     </router-link>
-                    <a href="tel:010-84505099">
+                    <a href="tel:400-012-6600">
                         <div>
                             <i class="iconfont icon-icon-4"></i>
-                            <span class="arrow_kefu float_right">400126600</span>
+                            <span class="arrow_kefu float_right">400-012-6600 </span>
                             <span class="message">联系客服</span>
                         </div>
                     </a>
