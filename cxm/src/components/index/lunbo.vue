@@ -70,7 +70,7 @@
 		overflow: hidden;
 		.mint-swipe-item{
 			//position: relative;
-			height: px2rem(306px);
+			height: px2rem(305px);
 			img{
 				display: block;
 				width: 100%;
