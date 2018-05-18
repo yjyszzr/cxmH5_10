@@ -4,7 +4,7 @@
 						<div v-if="item.listStyle==2||item.listStyle==3||item.listStyle==0">
 							<h4>{{item.title}}</h4>
 						<p class="picSummary" v-if="item.listStyle==2||item.listStyle==3">
-							<img v-lazy="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
+							<img :src="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
 						</p>
             <p v-if="item.listStyle==0" class="summary" style="-webkit-box-orient: vertical;">
               {{item.summary}}
@@ -17,7 +17,7 @@
 								<div class="zx_info"><span>{{item.author}}</span><span>{{addTime(item.addTime)}}</span><span>阅读{{item.clickNumber}}</span></div>
 							</div>
 							<div class="zxRight">
-								<img class="img1" v-lazy="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
+								<img class="img1" :src="data" alt="" v-for="(data,index) in item.articleThumb" :key='index'>
                 <img class="img2" src="../../../assets/img/bofang@2x.png" alt="" v-if="item.listStyle==4">
 							</div>
 						</div>
@@ -28,6 +28,7 @@
 
 <script>
 import dateFilter from '../../../util/datefilter'
+import {getUrlStr} from '../../../util/common'
 export default {
   name: "informalList",
   data() {
@@ -44,7 +45,8 @@ export default {
           this.$router.push({
                 path: "/index/consult",
                 query: {
-                id: c
+                id: c,
+                frz: getUrlStr('frz',location.href)==undefined?'1':getUrlStr('frz',location.href)
                 }
         });
     },

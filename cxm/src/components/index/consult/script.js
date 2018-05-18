@@ -7,6 +7,7 @@ import {
     Indicator
 } from "mint-ui";
 import dateFailter from '../../../util/datefilter'
+import {getUrlStr} from '../../../util/common'
 export default {
     name: "consult",
     data() {
@@ -38,7 +39,8 @@ export default {
                 path: "/index/moreInfo",
                 query: {
                     currentArticleId: this.$store.state.zxDetailObj.articleId,
-                    extendCat: this.$store.state.zxDetailObj.extendCat
+                    extendCat: this.$store.state.zxDetailObj.extendCat,
+                    frz: getUrlStr('frz',location.href)==undefined?'1':getUrlStr('frz',location.href)
                 },
                 replace: false
             });
