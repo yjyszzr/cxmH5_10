@@ -37,7 +37,6 @@
         <section class="button" @click="determine()">
             <a class="determine">立即支付</a>
         </section>
-        <!-- <iframe id="ifr1" name="ifr1" scrolling="yes"></iframe> -->
         <div class="prompt"></div>
     </div>
 </template>

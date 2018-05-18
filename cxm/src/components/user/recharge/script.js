@@ -85,7 +85,6 @@ export default {
                             location.href = res.data.payUrl + '&h5ck=' + encodeURIComponent(url)
                         }else if(s=='wx'){
                             //location.href = './static/payCallBack/payCallBack.html?logid='+res.data.payLogId
-                            // $('#ifr1').attr('src',res.data.payUrl)
                             location.href = res.data.payUrl
                         }
                     }
