@@ -7,7 +7,7 @@ export default {
         phoneVal: '',
         passwordVal: '',
         eyehide: false,   //控制眼睛
-        returnGo: false
+        returnGo: this.$route.query.returnGo
       }
     },
     created(){
@@ -33,7 +33,7 @@ export default {
             if(res.code==0) {
                 localStorage.setItem('token',res.data.token)
                 if(this.returnGo){
-                  this.$router.go(-1)
+                  this.$router.go(-2)
                 }else{
                   this.$router.push({
                     path: '/',
@@ -64,20 +64,6 @@ export default {
       },
     },
     mounted(){
-    },
-    beforeRouteEnter(to, from, next){
-      //console.log(from)
-      if(from.path=='/freebuy/payment'){
-          next(vm=>{
-               vm.returnGo =  true 
-               //console.log(vm.returnGo)
-          })
-          //localStorage.removeItem('matchSaveInfo')
-      }else{
-          next(vm=>{
-            vm.returnGo =  false 
-          })
-      }
     },
     beforeRouteLeave(to, from, next) {
       next()

@@ -45,7 +45,7 @@ axios.interceptors.response.use((res) => {
         } else if (res.data.code == 600) {
             localStorage.clear()
             router.replace({
-                path: '/user/password',
+                path: '/user/sms',
             })
         }
         Indicator.close()

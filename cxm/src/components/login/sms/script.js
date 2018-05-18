@@ -5,7 +5,8 @@ export default {
     data () {
       return {
         phoneVal: '',
-        telVal: ''
+        telVal: '',
+        returnGo: false
       }
     },
     created(){
@@ -36,10 +37,14 @@ export default {
         .then(res => {
             if(res.code==0) {
                 localStorage.setItem('token',res.data.token)
-                this.$router.push({
+                if(this.returnGo){
+                  this.$router.go(-1)
+                }else{
+                  this.$router.push({
                     path: '/',
                     replace: true
-                })
+                  })
+                }
                 Toast(res.msg)
             }
 
@@ -65,8 +70,28 @@ export default {
     mounted(){
         
     },
+    beforeRouteEnter(to, from, next){
+      //console.log(from)
+      if(from.path=='/freebuy/payment'){
+          next(vm=>{
+               vm.returnGo =  true 
+               //console.log(vm.returnGo)
+          })
+          //localStorage.removeItem('matchSaveInfo')
+      }else{
+          next(vm=>{
+            vm.returnGo =  false 
+          })
+      }
+    },
     beforeRouteLeave (to, from, next) {
         next()
         this.$store.dispatch("reset")
+        if(to.path=='/user'){
+          this.$router.push({
+              path: '/',
+              replace: true
+          })
+        }
     }
 }
