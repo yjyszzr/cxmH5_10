@@ -64,6 +64,7 @@
             <div class="section">
                 <ul class="msg_list">
                     <li>
+
                         <router-link to='/user/message'>
                             <div>
                                 <i class="iconfont icon-icon-36"></i>
