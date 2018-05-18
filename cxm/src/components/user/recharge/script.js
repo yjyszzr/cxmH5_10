@@ -21,6 +21,8 @@ export default {
             payText: '为了确保支付成功,请保持网络畅通',
             allPaymentList: [],
             payCode: 'app_weixin',
+            // testUrl: 'http://www.baidu.com/',
+            // testUrlDisplay: 'none',
         }
     },
     beforeCreate() {
@@ -30,6 +32,10 @@ export default {
 
     },
     methods: {
+        // ifUrl(url){
+        //     this.testUrl = 'http://zf.caixiaomi.net/reapal-h5-api/wechat/pay.jsp?data=https%3A%2F%2Fwx.tenpay.com%2Fcgi-bin%2Fmmpayweb-bin%2Fcheckmweb%3Fprepay_id%3Dwx18151308124459a1334495fe2664237088%26package%3D3891242758&redirect_uri=http%3A%2F%2Fm.caixiaomi.net%2Fstatic%2FpayCallBack%2FpayCallBack.html%3FpayLogId%3D69358'
+        //     this.testUrlDisplay = 'block';
+        // },
         changenum(c) {
             this.recharge_val = c
         },
@@ -85,7 +91,8 @@ export default {
                             location.href = res.data.payUrl + '&h5ck=' + encodeURIComponent(url)
                         }else if(s=='wx'){
                             //location.href = './static/payCallBack/payCallBack.html?logid='+res.data.payLogId
-                            location.href = res.data.payUrl
+                            // location.href = res.data.payUrl
+                            console.log(res.data.payUrl)
                         }
                     }
             })
