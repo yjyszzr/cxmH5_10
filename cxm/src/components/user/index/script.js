@@ -28,7 +28,7 @@ export default {
                 //  console.log(res)
                 localStorage.clear()
                 this.$router.push({
-                    path: '/user/password',
+                    path: '/user/sms',
                     replace: true
                 })
                   Toast(res.msg)
