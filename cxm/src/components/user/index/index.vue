@@ -61,6 +61,19 @@
                 </li>
             </ul>
         </div>
+            <div class="section">
+                <ul class="msg_list">
+                    <li>
+                        <router-link to='/user/message'>
+                            <div>
+                                <i class="iconfont icon-icon-36"></i>
+                                <span class="arrow_right float_right"></span>
+                                <span class="message">我的推广</span>
+                            </div>
+                        </router-link>
+                    </li>
+                </ul>
+            </div>
         <div class="section">
             <ul class="msg_list">
                 <li>
