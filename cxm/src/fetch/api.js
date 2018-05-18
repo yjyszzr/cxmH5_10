@@ -11,8 +11,8 @@ import router from '../router/index'
 // axios 配置
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.baseURL = 'http://api.caixiaomi.net/api';
-// axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
+// axios.defaults.baseURL = 'http://api.caixiaomi.net/api';
+ axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 //console.log(window)
 
 //拦截 token
@@ -104,7 +104,7 @@ axios.interceptors.response.use((res) => {
         setTimeout(() => {
             Indicator.close()
             Toast('出问题了程序猿小哥哥正在修复');
-        }, 25000)
+        }, 3000)
     } else {
         Toast('网络错误,请重试');
         Indicator.close()

@@ -6,7 +6,7 @@ import 'nprogress/nprogress.css'; // Progress 进度条 样式
 Vue.use(Router)
 
 const router = new Router({
-  //mode: 'history',
+//   mode: 'history',
 //   scrollBehavior (to, from, savedPosition) {
 //     if (savedPosition) {
 //       return savedPosition

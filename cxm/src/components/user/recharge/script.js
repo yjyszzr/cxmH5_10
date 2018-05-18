@@ -58,7 +58,8 @@ export default {
             let data = {
                 'totalAmount': this.recharge_val,
                 'payCode': this.payCode,
-                'innerWechat': c
+                'innerWechat': c,
+                'isH5': '1'
             }
             api.recharge(data)
                 .then(res => {

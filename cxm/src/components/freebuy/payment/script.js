@@ -66,7 +66,8 @@ export default {
                 let data = {
                     'payCode': this.payCode,
                     'payToken': this.payment.payToken,
-                    'innerWechat': innerWechat
+                    'innerWechat': innerWechat,
+                    'isH5': '1'
                 }
                 this.payFlag(data,payTypePd)
                 // var data = {
