@@ -62,9 +62,8 @@
             </ul>
         </div>
             <div class="section">
-                <ul class="msg_list">
+                <ul class="msg_list" style="min-height: 0">
                     <li>
-
                         <router-link to='/user/message'>
                             <div>
                                 <i class="iconfont icon-icon-36"></i>
