@@ -27,6 +27,9 @@
         <section class="button">
             <a class="determine" @click="_login()">登录</a>
         </section>
+        <section class="buttonZc">
+            <router-link to='/user/register' class="mine">新用户注册</router-link>
+        </section>
         <section class="forgetM">
             <router-link to='/user/password' class="x_in">密码登录</router-link>
 
