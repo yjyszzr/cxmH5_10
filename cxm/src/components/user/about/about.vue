@@ -6,7 +6,7 @@
 <template>
     <div class="wrap" >
         <div class="logo">
-            <img src="../../../assets/img/accont_img/Versionofthelogo@2x.png" height="92" width="324"/>
+            <img src="../../../assets/img/banbenhao@2x.png" height="92" width="324"/>
         </div>
         <section style="background: #fff">
 

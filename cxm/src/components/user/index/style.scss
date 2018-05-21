@@ -106,4 +106,32 @@
             }
         }
     }
+    .tug{
+        li{
+            a{
+                border-bottom: 1px solid #f0f0f0; 
+                div{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    p{
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        .message{
+                            width: auto;
+                        }
+                    }
+                    img{
+                        padding: 0;
+                    }
+                }
+            }
+        }
+        li:last-of-type{
+            a{
+                border: none!important;
+            }
+        }
+    }
 }

@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="nav">
-                <router-link to='/user/recharge'>充值</router-link>
+                <a @click="goRecharge()">充值</a>
                 <a @click="goWithdraw(userInfo.isReal)">提现</a>
             </div>
         </div>
@@ -62,15 +62,17 @@
             </ul>
         </div>
             <div class="section">
-                <ul class="msg_list" style="min-height: 0">
-                    <li>
-                        <router-link to='/user/message'>
+                <ul class="msg_list tug" style="min-height: 0">
+                    <li v-for='(item,i) in userInfo.activityDTOList' :key="i">
+                        <a :href='item.actUrl'>
                             <div>
-                                <i class="iconfont icon-icon-36"></i>
-                                <span class="arrow_right float_right"></span>
-                                <span class="message">我的推广</span>
+                                <p>
+                                    <img :src="item.icon" alt="">
+                                    <span class="message">{{item.title}}</span>
+                                </p>
+                                <span class="arrow_right"></span>
                             </div>
-                        </router-link>
+                        </a>
                     </li>
                 </ul>
             </div>

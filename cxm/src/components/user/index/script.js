@@ -78,6 +78,13 @@ export default {
         }else{
           Toast('请先实名认证后再申请提现')
         }
+      },
+      goRecharge(){
+        localStorage.removeItem('rval')
+        this.$router.push({
+          path: '/user/recharge',
+          replace: false
+        })
       }
     },
     mounted(){
