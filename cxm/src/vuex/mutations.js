@@ -25,7 +25,7 @@ const mutations = {
                     Toast(res.msg)
                 }else if(res.code=='301010'){
                     router.push({
-                        path: '/user/password'
+                        path: '/user/pwd'
                     })
                 }
             })

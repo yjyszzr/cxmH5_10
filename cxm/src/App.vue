@@ -50,11 +50,15 @@ export default {
   methods: {
     title() {
       if (this.$route.path.split("/")[2]) {
-        this.isShowHeader = true;
+        if(this.$route.path.split("/")[3]){
+          this.isShowHeader = false;
+        }else{
+          this.isShowHeader = true;
+        }
         switch (this.$route.path.split("/")[2]) {
           case "register":
             return "注册";
-          case "password":
+          case "pwd":
             return "密码登录";
           case "sms":
             return "短信登录";

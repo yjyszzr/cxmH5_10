@@ -271,6 +271,7 @@ export default {
   },
   created: function() {},
   mounted() {
+    location.href = 'caixm://caixiaomi.net'
     localStorage.removeItem('tab')
     //console.log('1')
     document

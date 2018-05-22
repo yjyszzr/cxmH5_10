@@ -44,7 +44,7 @@
                             <p>赛果</p>
                         </div>
                         <li v-for='(item,i) in orderObj.matchInfos' :key='i'>
-                            <div class="item">{{item.changci}}</div>
+                            <div class="item" v-html='item.changci.slice(0,2)+"<br />"+item.changci.slice(2)'></div>
                             <div class="item"><span>{{item.match.split('VS')[0]}}</span><span>VS</span><span>{{item.match.split('VS')[1]}}</span></div>
                             <div class="item">
                                 <p v-for='(data,index) in item.cathecticResults' :key='index'>

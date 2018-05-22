@@ -40,7 +40,7 @@ export default {
         .then(res => {
             if(res.code==0) {
                 this.$router.push({
-                    path: '/user/password',
+                    path: '/user/pwd',
                     replace: true
                 })
                 Toast(res.msg)

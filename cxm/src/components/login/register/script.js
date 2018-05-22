@@ -43,7 +43,7 @@ export default {
             if(res.code==0) {
                 Toast('注册成功')
                 this.$router.push({
-                    path: '/user/password',
+                    path: '/user/pwd',
                     replace: false
                 })
             }

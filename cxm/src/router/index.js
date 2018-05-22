@@ -25,8 +25,8 @@ const router = new Router({
       component: resolve => require(['@/components/Index'], resolve)
     },
     {
-      path: '/user/password',
-      name: 'password',
+      path: '/user/pwd',
+      name: 'pwd',
       cname:'密码登录',
       meta: {
         requireAuth: false
@@ -239,7 +239,7 @@ const router = new Router({
         component: resolve => require(['@/components/freebuy/intoplay/index.vue'], resolve)
       },
       {
-        path: '/user/activity',
+        path: '/user/activity/one',
         name: 'activity',
         cname:'活动',
         component: resolve => require(['@/components/activity/one/index.vue'], resolve)
