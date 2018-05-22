@@ -243,6 +243,12 @@ const router = new Router({
         name: 'activity',
         cname:'活动',
         component: resolve => require(['@/components/activity/one/index.vue'], resolve)
+      },
+      {
+          path: '/activity/two',
+          name: 'two',
+          cname:'推广',
+          component: resolve => require(['@/components/activity/two/index.vue'], resolve)
       }
   ]
 })
