@@ -134,7 +134,7 @@ export default {
                 return "活动详情";
             case 'give_details':
                 return "提现详情";
-            case 'two':
+            case 'tuiguang':
                 return "推广中心";
         }
       } else {
