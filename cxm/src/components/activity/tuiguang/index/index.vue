@@ -27,7 +27,7 @@
             <ul class="box_ul1">
                 <li>名次</li>
                 <li>推广员</li>
-                <li>额外奖励<i>?</i></li>
+                <li>额外奖励<i @click="go_tost()">?</i></li>
                 <li>总收入（元）</li>
             </ul>
             <ul class="box_ul2">
