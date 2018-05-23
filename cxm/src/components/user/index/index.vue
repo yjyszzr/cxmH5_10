@@ -61,21 +61,21 @@
                 </li>
             </ul>
         </div>
-            <div class="section">
-                <ul class="msg_list tug" style="min-height: 0">
-                    <li v-for='(item,i) in userInfo.activityDTOList' :key="i">
-                        <a :href='item.actUrl'>
-                            <div>
-                                <p>
-                                    <img :src="item.icon" alt="">
-                                    <span class="message">{{item.title}}</span>
-                                </p>
-                                <span class="arrow_right"></span>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <div class="section">
+            <ul class="msg_list tug" style="min-height: 0">
+                <li v-for='(item,i) in userInfo.activityDTOList' :key="i">
+                    <a :href='item.actUrl'>
+                        <div>
+                            <p>
+                                <img :src="item.icon" alt="">
+                                <span class="message">{{item.title}}</span>
+                            </p>
+                            <span class="arrow_right"></span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
         <div class="section">
             <ul class="msg_list">
                 <li>

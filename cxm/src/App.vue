@@ -136,6 +136,16 @@ export default {
                 return "提现详情";
             case 'tuiguang':
                 return "推广中心";
+            case 'rule':
+                return "活动规则";
+            case 'mycode':
+                return "我的二维码";
+            case 'income':
+                return "我的推广收入";
+            case 'incomedetail':
+                return "收入明细";
+            case 'include':
+                return "如何计算收益";
         }
       } else {
         if (
@@ -159,7 +169,9 @@ export default {
       if (
         this.$route.path.split("/")[2] == "singleNote" ||
         this.$route.path.split("/")[2] == "collection" ||
-        this.$route.path.split("/")[2] == "consult"
+        this.$route.path.split("/")[2] == "consult" ||
+        this.$route.path.split("/")[2] == "tuiguang" ||
+        this.$route.path.split("/")[2] == "incomedetail"
       ) {
         return true;
       } else {

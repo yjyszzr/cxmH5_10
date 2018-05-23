@@ -248,8 +248,38 @@ const router = new Router({
           path: '/activity/tuiguang',
           name: 'tuiguang',
           cname:'推广',
-          component: resolve => require(['@/components/activity/tuiguang/index.vue'], resolve)
-      }
+          component: resolve => require(['@/components/activity/tuiguang/index/index.vue'], resolve)
+      },
+      {
+          path: '/activity/rule',
+          name: 'rule',
+          cname:'活动规则',
+          component: resolve => require(['@/components/activity/tuiguang/rule/index.vue'], resolve)
+      },
+      {
+          path: '/activity/mycode',
+          name: 'mycode',
+          cname:'我的二维码',
+          component: resolve => require(['@/components/activity/tuiguang/mycode/index.vue'], resolve)
+      },
+      {
+          path: '/activity/income',
+          name: 'income',
+          cname:'我的推广收入',
+          component: resolve => require(['@/components/activity/tuiguang/income/index.vue'], resolve)
+      },
+      {
+          path: '/activity/incomedetail',
+          name: 'incomedetail',
+          cname:'收入明细',
+          component: resolve => require(['@/components/activity/tuiguang/incomedetail/index.vue'], resolve)
+      },
+      {
+          path: '/activity/include',
+          name: 'include',
+          cname:'如何计算收益',
+          component: resolve => require(['@/components/activity/tuiguang/include/index.vue'], resolve)
+      },
   ]
 })
 
