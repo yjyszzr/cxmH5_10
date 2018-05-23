@@ -11,8 +11,8 @@
             <p>今日+256.00</p>
         </div>
         <ul class="list">
-            <router-link to="/activity/income"><img src="../../../../assets/img/tuiguang/img.png">收入明细</router-link>
-            <router-link to="/activity/mycode"><img src="../../../../assets/img/tuiguang/img2.png">我的二维码</router-link>
+            <router-link to="/activity/income"><img src="../tuiguang/img.png">收入明细</router-link>
+            <router-link to="/activity/mycode"><img src="../tuiguang/img2.png">我的二维码</router-link>
         </ul>
         <div class="statistics">
             <p><i></i>推广数据统计</p>
@@ -23,7 +23,7 @@
             </ul>
         </div>
         <div class="ranking">
-            <p><img src="../../../../assets/img/tuiguang/img1.png">收入排行榜</p>
+            <p><img src="../tuiguang/img1.png">收入排行榜</p>
             <ul class="box_ul1">
                 <li>名次</li>
                 <li>推广员</li>
