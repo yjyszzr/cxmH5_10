@@ -9,6 +9,8 @@
                 <span v-if="$route.path.split('/')[2]=='consult'" style="opacity:0;">分享</span>
                 <span v-if="$route.path.split('/')[2]=='consult'&&getUrl()" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
+                <span v-if="$route.path.split('/')[2]=='tuiguang'" class="actine_sm" @click="goExplain()">活动说明</span>
+                <span v-if="$route.path.split('/')[2]=='incomedetail'" class="actine_sm" @click="goInclude()">如何计算收入</span>
             </p>
             <p class="filter" v-show="menuDisplay==false"></p>
         </div>
@@ -43,11 +45,11 @@
             <li><a href="" @click.prevent="custormAnchor('a5')">中奖派奖问题</a></li>
         </ul>
         <ul class="list" v-if="$route.path.split('/')[1]=='lotteryResult'">
-                <li @click='data_time()'>{{$store.state.mark_showObj.mark_dateVal}}<i class="iconfont icon-icon-31"></i></li>
-                <li @click='more()'>更多条件<i class="iconfont icon-icon-31"></i></li>
-                <li @click='all($event)' v-if="flag==true">全部<i class="iconfont icon-icon-31"></i></li>
-                <li @click='all($event)' v-if="flag==false">已结束<i class="iconfont icon-icon-31"></i></li>
-            </ul>
+            <li @click='data_time()'>{{$store.state.mark_showObj.mark_dateVal}}<i class="iconfont icon-icon-31"></i></li>
+            <li @click='more()'>更多条件<i class="iconfont icon-icon-31"></i></li>
+            <li @click='all($event)' v-if="flag==true">全部<i class="iconfont icon-icon-31"></i></li>
+            <li @click='all($event)' v-if="flag==false">已结束<i class="iconfont icon-icon-31"></i></li>
+        </ul>
     </div>
 </template>
 
@@ -88,10 +90,22 @@ export default {
     },
     goInToplay(){
       this.$router.push({
-				path: '/freebuy/inToplay',
-				replace: false
-			})
+            path: '/freebuy/inToplay',
+            replace: false
+        })
     },
+      goExplain(){
+          this.$router.push({
+              path: '/activity/rule',
+              replace: false
+          })
+      },
+      goInclude(){
+          this.$router.push({
+              path: '/activity/include',
+              replace: false
+          })
+      },
     custormAnchor(anchorName){
       // 找到锚点
         let anchorElement = document.getElementById(anchorName);
@@ -262,6 +276,13 @@ export default {
        padding-right: px2rem(30px);
        box-sizing: border-box;
       }
+        .active_sm{
+            width: 100%;
+            justify-content: flex-end;
+            padding-right: px2rem(30px);
+            box-sizing: border-box;
+            display: block;
+        }
       .icon-icon-44{
         color: #787878;
       }

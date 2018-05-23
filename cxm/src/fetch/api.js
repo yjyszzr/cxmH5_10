@@ -11,7 +11,7 @@ import router from '../router/index'
 // axios 配置
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-//axios.defaults.baseURL = 'http://api.caixiaomi.net/api';
+// axios.defaults.baseURL = 'http://api.caixiaomi.net/api';
 axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 //console.log(window)
 
@@ -336,5 +336,9 @@ export default {
     //赛事结果筛选
     getFilterConditionsSomeDay(params) {
         return fetchPost('/lottery/lottery/match/getFilterConditionsSomeDay', params)
-    }
+    },
+    //我的推广收入
+    extension(params) {
+        return fetchPost('/member/dl/channelConsumer/myPromotionIncome', params)
+    },
 }
