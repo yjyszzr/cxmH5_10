@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>注册送好礼</title>
+		<meta id="viewport" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1; user-scalable=no;" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<style type="text/css">
+			.page {
+				background: url(./img/bg.png) no-repeat -1px -1px;
+				background-size: 101%;
+				font-family: "微软雅黑";
+			}
+			
+			.activity_sm {
+				position: absolute;
+				top: 1.5rem;
+				right: 0;
+				width: 4rem;
+				height: 1.5rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 0.7rem;
+				color: white;
+				background: rgb(228, 123, 30);
+				border-radius: 0.6rem 0 0 0.6rem;
+			}
+			
+			.modal {
+				font-size: 0.72rem;
+			}
+			
+			.modal-title {
+				font-size: 0.8rem;
+			}
+			
+			.aTitle {
+				margin: 3.5rem auto 1rem;
+				width: 80%;
+				display: block;
+			}
+			
+			.telVal {
+				display: block;
+				border: none;
+				background: rgba(255, 255, 255, 0.9);
+				margin: 0 auto;
+				width: 70%;
+				height: 2rem;
+				font-size: 0.7rem;
+				text-align: center;
+				border-radius: 0;
+			}
+			
+			.btn {
+				margin: 0.6rem auto 1.5rem;
+				background: #ea5504;
+				width: 70%;
+				height: 2rem;
+				border: none;
+				display: block;
+				font-size: 0.7rem;
+				color: white;
+			}
+			
+			.page,
+			.page-group {
+				height: 110%;
+			}
+			
+			.xb {
+				width: 70%;
+				background: rgba(0, 0, 0, 0.4);
+				margin: 0 auto;
+				padding-bottom: 0.5rem;
+			}
+			
+			h3 {
+				font-size: 0.75rem;
+				color: rgb(249, 236, 89);
+				font-weight: 400;
+				text-align: center;
+				padding-top: 0.5rem;
+			}
+			
+			.xb p {
+				margin: 0;
+				font-size: 0.6rem;
+				text-align: center;
+				margin-top: 0.2rem;
+				color: white;
+			}
+			
+			.xb p span {
+				color: rgb(249, 236, 89);
+			}
+			
+			.left {
+				text-align: left;
+			}
+			
+			.code {
+				width: 70%;
+				margin: 0.6rem auto;
+				overflow: hidden;
+				display: none;
+			}
+			
+			.codeVal {
+				width: 55%;
+				height: 2rem;
+				float: left;
+				background: rgba(255, 255, 255, 0.9);
+				font-size: 0.7rem;
+				border: none;
+				text-align: center;
+				color: #666;
+			}
+			
+			.codebtn {
+				width: 42%;
+				float: right;
+				background: rgba(255, 255, 255, 0.9);
+				font-size: 0.7rem;
+				border: none;
+				height: 2rem;
+				color: #666;
+			}
+			
+			#router2 {
+				background: white;
+				height: 100%!important;
+			}
+			
+			.winner {
+				width: 12rem;
+				margin: 3.5rem auto 0;
+				display: block;
+			}
+			
+			.gx {
+				color: rgb(228, 123, 27);
+				margin: 0;
+				font-size: 1rem;
+				text-align: center;
+			}
+			
+			.downLoadBtn {
+				color: #fff;
+				background: #ea5504;
+				display: block;
+				margin: 7rem auto 0;
+				border: 0;
+				font-size: 0.6rem;
+				width: 60%;
+				padding: 0.3rem 0;
+				border-radius: 0.2rem;
+			}
+			.lqbtn{
+				margin: 0.6rem auto 1.5rem;
+				background: #ea5504;
+				width: 70%;
+				height: 2rem;
+				border: none;
+				display: block;
+				font-size: 0.7rem;
+				color: white;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="page-group">
+			<div class="page page-current" id='router'>
+				<div class="activity_sm" onClick="activity_smClick()">
+					活动说明
+				</div>
+				<img src="./img/title.png" class="aTitle" />
+				<input class="telVal" type="tel" value="" placeholder="请输入手机号" />
+				<div class="code">
+					<input class="codeVal" type="tel" value="" placeholder="请输入验证码" />
+					<button class="codebtn" onclick="getCode()">获取验证码</button>
+				</div>
+				<button class="btn" onclick="register()">领取110元彩金</button>
+				<button class="lqbtn" onclick="lqbtn()">立即领取</button>
+				<div class="xb">
+					<h3>大奖细喜报</h3>
+					<p>133888888用户竞彩足球喜中<span>188888.88</span>元</p>
+					<p>133888888用户竞彩足球喜中<span>188888.88</span>元</p>
+					<p>133888888用户竞彩足球喜中<span>188888.88</span>元</p>
+					<p>133888888用户竞彩足球喜中<span>188888.88</span>元</p>
+					<p>133888888用户竞彩足球喜中<span>188888.88</span>元</p>
+				</div>
+			</div>
+			<div class="page" id='router2'>
+				<img src="./img/jbe.png" class="winner" />
+				<p class="gx">恭喜您获得110元彩金</p>
+				<button class="downLoadBtn">下载APP立即使用</button>
+			</div>
+		</div>
+	</body>
+	<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+	<script>
+		$.init()
+	</script>
+	<script type="text/javascript">
+		$.showIndicator();
+		var baseUrl = 'http://39.106.18.39:8765/api/'
+		function activity_smClick() {
+			$.modal({
+				title: '扫码规则说明',
+				text: '<p class="left">1、用户凭购物单据，均可获得一次扫码机会。扫码后即享110元彩金，彩金仅可用于购彩，不可提现，中奖奖金可以提现。每个用户限享1次（相同手机号码、设备视为同一用户，不重复派发)。<br />2、注册成功后请点击“我的－我的卡券”查收，彩金逾期未使用自动过期，请及时使用。<br />3、本活动不可与其他同类型新用户注册活动同享。<br /> 4、本活动最终解释权归彩小秘所有</p>',
+				buttons: [{
+					text: '知道了',
+					onClick: function() {
+						$.closeModal()
+					}
+				}, ]
+			})
+		}
+
+		function register() {
+			var re = /^1\d{10}$/
+			if($('.telVal').val() === '') {
+				$.toast('请输入手机号码');
+			} else if(!re.test($('.telVal').val())) {
+				$.toast('请输入正确的手机号码');
+			} else {
+				$.showIndicator();
+				var obj = {}
+				obj.body = {
+					'mobile': $('.telVal').val(),
+					'smsType': '1',
+					'userId': 123
+				}
+				obj.device = {
+					plat: 'h5',
+					apiv: 1,
+					appv: '1.0.2',
+					appid: '',
+					mac: '',
+					w: window.screen.availWidth,
+					h: window.screen.availHeight,
+					os: '',
+					mid: '',
+					brand: '',
+					build: '',
+					channel: '',
+					net: '',
+					token: ''
+				}
+				$.ajax({
+					type: 'post',
+					url: baseUrl+'member/dl/sms/sendSmsCode',
+					contentType: 'application/json;charset=UTF-8',
+					data: JSON.stringify(obj),
+					dataType: "json",
+					success: function(data) {
+						console.log(data)
+						$.hideIndicator();
+						if(data.code == '301010') {
+							$.modal({
+								title: '提示',
+								text: '当前手机号码已注册',
+								buttons: [{
+									text: '我知道了',
+									onClick: function() {
+										//$.router.load("#router2")
+										$.closeModal()
+									}
+								}, ]
+							})
+						}
+					},
+					error: function(err) {
+						$.hideIndicator();
+					}
+				})
+			}
+		}
+		var validCode = true;
+
+		function getCode() {
+			var time = 60;
+			if(validCode) {
+				validCode = false;
+				var t = setInterval(function() {
+					time--;
+					$('.codebtn').html("<span style='color: #ea5504;'>" + time + "s</span>后重新获取");
+					if(time == 0) {
+						clearInterval(t);
+						$('.codebtn').html("重新获取");
+						validCode = true;
+					}
+				}, 1000)
+			}
+		}
+		window.onload = function() {
+				var obj1 = {}
+				obj1.body = {
+					
+				}
+				obj1.device = {
+					plat: 'h5',
+					apiv: 1,
+					appv: '1.0.2',
+					appid: '',
+					mac: '',
+					w: window.screen.availWidth,
+					h: window.screen.availHeight,
+					os: '',
+					mid: '',
+					brand: '',
+					build: '',
+					channel: '',
+					net: '',
+					token: ''
+				}
+				$.ajax({
+					type: 'post',
+					url: baseUrl+'member/dl/channelConsumer/getWinningList',
+					contentType: 'application/json;charset=UTF-8',
+					data: JSON.stringify(obj1),
+					dataType: "json",
+					success: function(data) {
+						console.log(data)
+						setTimeout(function() {
+							$.hideIndicator();
+						}, 300)
+					},
+					error: function(err) {
+						//$.router.load("#router2")
+						console.log(err.response)
+						$.hideIndicator();
+					}
+				})
+		}
+	</script>
+
+</html>
