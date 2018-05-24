@@ -337,8 +337,20 @@ export default {
     getFilterConditionsSomeDay(params) {
         return fetchPost('/lottery/lottery/match/getFilterConditionsSomeDay', params)
     },
-    //我的推广收入
+    //我的推广
     extension(params) {
+        return fetchPost('/member/dl/channelConsumer/myRecommendation', params)
+    },
+    //我的推广收入
+    income(params) {
         return fetchPost('/member/dl/channelConsumer/myPromotionIncome', params)
+    },
+    //我的二维码
+    mycode(params) {
+        return fetchPost('/member/dl/channelConsumer/myQRCode', params)
+    },
+    //收入明细
+    incomedetail(params) {
+        return fetchPost('/member/dl/channelConsumer/incomeDetails', params)
     },
 }

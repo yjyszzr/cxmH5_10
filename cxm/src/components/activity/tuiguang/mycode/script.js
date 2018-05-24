@@ -1,15 +1,32 @@
 import {isTitle} from '../../../../util/common'
 import api from '../../../../fetch/api'
-import { Toast } from 'mint-ui'
+import {Indicator, Toast} from 'mint-ui'
+import qrcode from 'vue-qrcode';
+// import
 export default {
     name: 'one',
     data(){
         return {
-            token: ''
+            token: '',
+            qrcodeUrl:''
         }
     },
+    beforeCreate() {
+        Indicator.open()
+    },
     mounted(){
-            // isTitle('活动详情')
+        let data = {
+            // 'userId': this.orderId
+            'userId': 400052
+        }
+        api.mycode(data)
+            .then(res => {
+                console.log(res)
+                if(res.code==0) {
+                    this.mycode = res.data
+                }
+            })
+         // isTitle('活动详情')
             // let that = this
             // window.actionMessage = function (arg){
 				// //var uPhone = arg.uPhone;

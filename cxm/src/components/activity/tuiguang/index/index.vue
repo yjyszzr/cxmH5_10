@@ -7,7 +7,7 @@
     <div class="twoActive">
         <div class="box1">
             <p>推广总收入（元）</p>
-            <p>9880.00<i>元</i></p>
+            <p v-if="explain.channelDistributor">{{explain.channelDistributor.totalAmount}}<i>元</i></p>
             <p>今日+256.00</p>
         </div>
         <ul class="list">
@@ -17,9 +17,9 @@
         <div class="statistics">
             <p><i></i>推广数据统计</p>
             <ul>
-                <li><span>19,873名</span>邀请用户数量</li>
-                <li><span>2,76,778,50元</span>邀请用户的投注金额</li>
-                <li><span>第9名</span>我的收入排名</li>
+                <li><span>{{explain.inviteNum}}</span>邀请用户数量</li>
+                <li><span>{{explain.bettingTotalAmount}}</span>邀请用户的投注金额</li>
+                <li v-if="explain.channelDistributor"><span>{{explain.channelDistributor.ranking}}</span>我的收入排名</li>
             </ul>
         </div>
         <div class="ranking">
@@ -30,11 +30,11 @@
                 <li>额外奖励<i @click="go_tost()">?</i></li>
                 <li>总收入（元）</li>
             </ul>
-            <ul class="box_ul2">
-                <li class="listed">1</li>
-                <li class="listed">138****9999</li>
-                <li class="listed">100元</li>
-                <li class="listed">333.00</li>
+            <ul v-bind:class="{'listed':item.ranking == 1 || item.ranking == 2 || item.ranking == 3}" class="box_ul2" v-for='(item,i) in explain.channelDistributorList' :key='i'>
+                <li v-bind:class="{'list_img': item.ranking == 1, 'list_img1':item.ranking == 2,'list_img2':item.ranking == 3,}">{{item.ranking}}</li>
+                <li>{{item.distributorMobile}}</li>
+                <li>{{item.extraReward}}元</li>
+                <li>{{item.totalAmount}}</li>
             </ul>
         </div>
     </div>
