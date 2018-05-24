@@ -10,7 +10,7 @@
                 <span v-if="$route.path.split('/')[2]=='consult'&&getUrl()" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
                 <span v-if="$route.path.split('/')[2]=='tuiguang'" class="actine_sm" @click="goExplain()">活动说明</span>
-                <span v-if="$route.path.split('/')[2]=='incomedetail'" class="actine_sm" @click="goInclude()">如何计算收入</span>
+                <span v-if="$route.path.split('/')[2]=='incomedetail'" class="actine_sms" @click="goInclude()">如何计算收入</span>
                 <span v-if="$route.path.split('/')[2]=='discount'" style="font-size: 0.26rem;padding: 0;">已兑换代金券</span>
             </p>
             <p class="filter" v-show="menuDisplay==false"></p>
@@ -268,6 +268,9 @@ export default {
         font-size: px2rem(28px);
         color: #787878;
       }
+        .actine_sms{
+            font-size: px2rem(18px);
+        }
       .iconfont{
         font-size: px2rem(30px);
       }

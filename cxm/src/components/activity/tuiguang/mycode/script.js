@@ -4,7 +4,7 @@ import {Indicator, Toast} from 'mint-ui'
 import qrcode from 'vue-qrcode';
 // import
 export default {
-    name: 'one',
+    name: 'mycode',
     data(){
         return {
             token: '',
@@ -16,8 +16,9 @@ export default {
     },
     mounted(){
         let data = {
-            // 'userId': this.orderId
-            'userId': 400052
+            // 'userId': this.userId
+            'userId': 400052,
+            'url': '192.168.31.205:8080/static/activity_Back/tuiguang/index.html?',
         }
         api.mycode(data)
             .then(res => {
@@ -26,7 +27,7 @@ export default {
                     this.mycode = res.data
                 }
             })
-         // isTitle('活动详情')
+         isTitle('我的二维码')
             // let that = this
             // window.actionMessage = function (arg){
 				// //var uPhone = arg.uPhone;

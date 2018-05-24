@@ -3,7 +3,7 @@ import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import { MessageBox } from 'mint-ui';
 export default {
-    name: 'one',
+    name: 'index',
     data(){
         return {
             token: '',
@@ -15,7 +15,7 @@ export default {
     },
     mounted(){
         let data = {
-            // 'userId': this.orderId
+            // 'userId': this.userId
             'userId': 400052
         }
         api.extension(data)
@@ -26,14 +26,14 @@ export default {
             }
         })
             isTitle('推广中心')
-            // let that = this
-            // window.actionMessage = function (arg){
-				// //var uPhone = arg.uPhone;
-             //    //console.log(arg)
-             //    Toast(JSON.parse(arg).token)
-				// //that.phone = uPhone
-				// //that.token = arg.token
-		    // }
+            let that = this
+            window.actionMessage = function (arg){
+				//var uPhone = arg.uPhone;
+                //console.log(arg)
+                Toast(JSON.parse(arg).token)
+				//that.phone = uPhone
+				//that.token = arg.token
+		    }
     },
     methods:{
         goExplain() {

@@ -64,7 +64,7 @@
         <div class="section">
             <ul class="msg_list tug" style="min-height: 0">
                 <li v-for='(item,i) in userInfo.activityDTOList' :key="i">
-                    <a :href='item.actUrl'>
+                    <a href='http://192.168.31.232:8080/activity/tuiguang'>
                         <div>
                             <p>
                                 <img :src="item.icon" alt="">

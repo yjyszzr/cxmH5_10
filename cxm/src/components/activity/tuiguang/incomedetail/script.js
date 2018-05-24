@@ -8,18 +8,17 @@ export default {
     data(){
         return {
             token: '',
-            time:dateFilter(this.$route.params.itemdate,2),
-            incomedetail:{}
+            addTime:dateFilter(Number(this.$route.query.addTime),2),
+            incomedetail:{},
         }
     },
     beforeCreate() {
         Indicator.open()
     },
     mounted(){
-        alert(1)
-        console.log(this.time);
+        console.log(this.addTime);
         let data = {
-            // 'userId': this.orderId
+            // 'userId': this.userId
             'userId': 400052
         }
         api.incomedetail(data)
@@ -29,7 +28,7 @@ export default {
                     this.incomedetail = res.data
                 }
             })
-            isTitle("推广中心")
+            isTitle("收入明细")
             // let that = this
             // window.actionMessage = function (arg){
 				// //var uPhone = arg.uPhone;

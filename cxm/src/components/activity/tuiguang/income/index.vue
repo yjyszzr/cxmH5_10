@@ -10,7 +10,7 @@
             <li>收入元)</li>
             <li></li>
         </ul>
-        <ul @click="goDetail(item.time)" class="box_list_2" v-for='(item,i) in income' :key='i'>
+        <ul @click="golist(item.time)" class="box_list_2" v-for='(item,i) in income' :key='i'>
             <li>{{item.time}}</li>
             <li>{{item.registerNum }}</li>
             <li>{{item.lotteryAmount }}</li>
