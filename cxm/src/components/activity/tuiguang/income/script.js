@@ -1,15 +1,31 @@
 import {isTitle} from '../../../../util/common'
 import api from '../../../../fetch/api'
-import { Toast } from 'mint-ui'
+import {Indicator, Toast} from 'mint-ui'
+import datefilter from "../../../../util/datefilter";
 export default {
     name: 'tuiguang',
     data(){
         return {
-            token: ''
+            token: '',
+            income:{}
         }
     },
+    beforeCreate() {
+        Indicator.open()
+    },
     mounted(){
-            // isTitle('活动详情')
+        let data = {
+            // 'userId': this.orderId
+            'userId': 400052
+        }
+        api.income(data)
+            .then(res => {
+                console.log(res)
+                if(res.code==0) {
+                    this.income = res.data
+                }
+            })
+            isTitle('推广中心')
             // let that = this
             // window.actionMessage = function (arg){
 				// //var uPhone = arg.uPhone;
@@ -20,8 +36,18 @@ export default {
 		    // }
     },
     methods:{
-        go_to() {
-            this.$router.push({path: '/activity/incomedetail'})
-        }
+        goDetail(itemdate){
+            this.$router.push({
+                path: '/active/incomedetail',
+                query:{
+                    'time':new Date(itemdate.replace(/-/g,'/')).getTime()
+                },
+                replace: false
+            })
+        },
+        // go_to() {
+        //     this.$router.push({path: '/activity/incomedetail'})
+        // },
+
     }
 }

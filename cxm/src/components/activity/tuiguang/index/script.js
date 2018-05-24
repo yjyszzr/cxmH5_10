@@ -1,14 +1,17 @@
 import {isTitle} from '../../../../util/common'
 import api from '../../../../fetch/api'
-import { Toast } from 'mint-ui'
+import {Indicator, Toast} from 'mint-ui'
+import { MessageBox } from 'mint-ui';
 export default {
     name: 'one',
     data(){
         return {
             token: '',
-            explain:{},
-            "userId": 400052
+            explain:{}
         }
+    },
+    beforeCreate() {
+        Indicator.open()
     },
     mounted(){
         let data = {
@@ -33,12 +36,16 @@ export default {
 		    // }
     },
     methods:{
-
         goExplain() {
             this.$router.push({path: '/activity/rule'})
         },
+        //额外奖励弹窗
         go_tost(){
-            Toast('每周总收入排名前8的店员可以获得最高100元（如果总收入为0，则不能获得额外奖励）')
+            MessageBox.alert('', {
+                message: '每周总收入排名前8的店员可以获得最高100元（如果总收入为0，则不能获得额外奖励）',
+                title: '额外奖励',
+            }).then(action => {
+            });
         }
     }
 }
