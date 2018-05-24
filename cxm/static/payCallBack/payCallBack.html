@@ -95,9 +95,15 @@
 					//console.log(data)
 					if(data.code == '0') {
 						$.hidePreloader();
-						$.alert('充值成功', function() {
-							location.href = toUrl
-						});
+						if(data.payType=='1'){
+							$.alert('充值成功', function() {
+								location.href = toUrl
+							});
+						}else{
+							$.alert('支付成功', function() {
+								location.href = toUrl
+							});
+						}
 						clearInterval(time)
 					} else if(data.code >= 30000 && data.code < 310000) {
 						if(data.code == '304035') {

@@ -11,6 +11,7 @@
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
                 <span v-if="$route.path.split('/')[2]=='tuiguang'" class="actine_sm" @click="goExplain()">活动说明</span>
                 <span v-if="$route.path.split('/')[2]=='incomedetail'" class="actine_sm" @click="goInclude()">如何计算收入</span>
+                <span v-if="$route.path.split('/')[2]=='discount'" style="font-size: 0.26rem;padding: 0;">已兑换代金券</span>
             </p>
             <p class="filter" v-show="menuDisplay==false"></p>
         </div>

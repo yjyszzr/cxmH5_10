@@ -1,0 +1,69 @@
+@import '../../../../assets/css/function.scss';
+.discountList{
+    ul{
+        padding: px2rem(0px) px2rem(14px);
+        li{
+            position: relative;
+            margin-bottom: px2rem(14px);
+            overflow: hidden;
+            p{
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background: white;
+                border-radius: 100%;
+            }
+            p:first-of-type{
+                top: px2rem(140px);
+                left: -5px;
+            }
+            p:last-of-type{
+                right: -5px;
+                top: px2rem(140px);
+            }
+            .discountTop{
+                background: #fbb03b;
+                color: white;
+                box-sizing: border-box;
+                padding: px2rem(10px) px2rem(30px) px2rem(30px);
+                display: flex;
+                height: px2rem(150px);
+                border-bottom: 1px dashed #fff;
+                span{
+                    font-size: px2rem(42px);
+                    display: flex;
+                    height: 100%;
+                    align-items: flex-end;
+                }
+                b{
+                   font-size: px2rem(80px); 
+                   display: flex;
+                   height: 100%;
+                   justify-content: flex-end;
+                   line-height: px2rem(140px);
+                }
+            }
+            
+            .discountBottom{
+                background: #fbb03b;
+                height: px2rem(92px);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 px2rem(20px) 0 px2rem(30px);
+                font-size: px2rem(30px);
+                color: #fff;
+                b{
+                    font-size: px2rem(30px);
+                    font-weight: 400;
+                }
+                span:last-of-type{
+                    font-size: px2rem(30px);
+                }
+            }
+        }
+        li:last-of-type{
+            margin: 0;
+        }
+    }
+}

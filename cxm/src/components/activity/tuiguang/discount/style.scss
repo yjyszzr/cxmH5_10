@@ -1,0 +1,91 @@
+@import '../../../../assets/css/function.scss';
+.discount{
+    .discountBanner{
+//      height: px2rem(280px);
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .discountList{
+        padding: px2rem(32px) px2rem(14px);
+        li{
+            position: relative;
+            margin-bottom: px2rem(14px);
+            overflow: hidden;
+            p{
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background: white;
+                border-radius: 100%;
+            }
+            p:first-of-type{
+                top: px2rem(140px);
+                left: -5px;
+            }
+            p:last-of-type{
+                right: -5px;
+                top: px2rem(140px);
+            }
+            .discountTop{
+                background: #fbb03b;
+                color: white;
+                box-sizing: border-box;
+                padding: px2rem(10px) px2rem(30px) px2rem(30px);
+                display: flex;
+                height: px2rem(150px);
+                border-bottom: 1px dashed #fff;
+                span{
+                    font-size: px2rem(42px);
+                    display: flex;
+                    height: 100%;
+                    align-items: flex-end;
+                }
+                b{
+                   font-size: px2rem(80px); 
+                   display: flex;
+                   height: 100%;
+                   justify-content: flex-end;
+                   line-height: px2rem(140px);
+                }
+            }
+            
+            .discountBottom{
+                background: #fbb03b;
+                height: px2rem(92px);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 px2rem(20px) 0 px2rem(30px);
+                font-size: px2rem(32px);
+                color: #fff;
+                b{
+                    font-size: px2rem(36px);
+                    font-weight: 400;
+                }
+                span:last-of-type{
+                    font-size: px2rem(32px);
+                }
+            }
+        }
+        li:last-of-type{
+            margin: 0;
+        }
+    }
+    .discountjs{
+        background: white;
+        padding: px2rem(50px) px2rem(52px) px2rem(52px);
+        color: #505050;
+        h3{
+            text-align: center;
+            font-size: px2rem(32px);
+            margin-bottom: px2rem(26px);
+            font-weight: 400;
+        }
+        p{
+            font-size: px2rem(26px);
+            line-height: px2rem(46px);
+        }
+    }
+}

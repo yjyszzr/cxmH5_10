@@ -134,6 +134,7 @@ export default {
                 return "活动详情";
             case 'give_details':
                 return "提现详情";
+//          一期活动
             case 'tuiguang':
                 return "推广中心";
             case 'rule':
@@ -146,6 +147,12 @@ export default {
                 return "收入明细";
             case 'include':
                 return "如何计算收益";
+            case 'discount':
+                return "优惠兑换";
+            case 'payConfirm':
+            		return "支付订单";
+            	case 'discountList':
+            		return "活动卡券";
         }
       } else {
         if (
@@ -171,7 +178,8 @@ export default {
         this.$route.path.split("/")[2] == "collection" ||
         this.$route.path.split("/")[2] == "consult" ||
         this.$route.path.split("/")[2] == "tuiguang" ||
-        this.$route.path.split("/")[2] == "incomedetail"
+        this.$route.path.split("/")[2] == "incomedetail"||
+        this.$route.path.split("/")[2] == "discount"
       ) {
         return true;
       } else {

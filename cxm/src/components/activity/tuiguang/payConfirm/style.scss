@@ -1,0 +1,37 @@
+@import '../../../../assets/css/function.scss';
+.payConfirm{
+    .payList{
+        background: white;
+        li{
+            height: px2rem(88px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 px2rem(30px);
+            p:first-of-type{
+                font-size: px2rem(28px);
+                color: #666;
+            }
+            p:last-of-type{
+                font-size: px2rem(26px);
+                color: #505050;
+            }
+        }
+        li:first-of-type{
+            border-bottom: 1px solid #f0f0f0;
+            p:last-of-type{
+                color: #ea5504;
+            }
+        }
+    }
+    .payBtn{
+        width: 100%;
+        height: px2rem(88px);
+        background: #ea5504;
+        border: none;
+        color: #fff;
+        font-size: px2rem(28px);
+        position: fixed;
+        bottom: 0;
+    }
+}

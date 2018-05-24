@@ -238,6 +238,7 @@ const router = new Router({
         cname:'玩法介绍',
         component: resolve => require(['@/components/freebuy/intoplay/index.vue'], resolve)
       },
+//    一期活动相关路由
       {
         path: '/user/activity/one',
         name: 'activity',
@@ -279,6 +280,24 @@ const router = new Router({
           name: 'include',
           cname:'如何计算收益',
           component: resolve => require(['@/components/activity/tuiguang/include/index.vue'], resolve)
+      },
+      {
+          path: '/activity/discount',
+          name: 'discount',
+          cname:'优惠兑换',
+          component: resolve => require(['@/components/activity/tuiguang/discount/discount.vue'], resolve)
+      },
+      {
+          path: '/activity/payConfirm',
+          name: 'payConfirm',
+          cname: '支付订单',
+          component: resolve => require(['@/components/activity/tuiguang/payConfirm/index.vue'], resolve)
+      },
+      {
+          path: '/activity/discountList',
+          name: 'discountList',
+          cname: '活动卡券列表',
+          component: resolve => require(['@/components/activity/tuiguang/discountList/index.vue'], resolve)
       },
   ]
 })

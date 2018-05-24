@@ -21,7 +21,8 @@
 		},
 		methods: {
 			ac(url) {
-				location.href=url
+				this.$router.push({'path':'/activity/discount'})
+//				location.href=url
 			}
 		}
 	}
