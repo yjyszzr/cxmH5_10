@@ -1,4 +1,4 @@
-import {isTitle} from '../../../../util/common'
+import {isTitle,isShare} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import QRCode from 'qrcode';
@@ -9,34 +9,37 @@ export default {
             token: '',
             qrcodeUrl:'',
             userId:this.$route.query.userId,
-            willShow:true
+            url:''
         }
     },
     beforeCreate() {
         Indicator.open()
     },
-
     mounted(){
-        let data = {
-            'userId': this.userId,
-            'url': 'url',
-        }
-        api.mycode(data)
-            .then(res => {
-                console.log(res)
-                if(res.code==0) {
-
-                    this.mycode = res.data
-                }
-            })
-        let canvas = document.getElementById('qrcode');
-        QRCode.toCanvas(canvas, data.url, function (error) {
-            if (error) console.error(error)
-            console.log('success!');
-        })
-         isTitle('我的二维码')
+        this.fetchData()
+        isShare('刚刚地方地方第三方的','地方地方地方上的','http://192.168.31.232:8080:/activity/mycode?cxmxc=scm&cmshare=1')
+        isTitle('我的二维码')
     },
     methods:{
+        fetchData(){
+            let data = {
+                'userId': this.userId,
+                'url': 'url',
+            }
+            api.mycode(data)
+                .then(res => {
+                    console.log(res)
+                    if(res.code==0) {
+                        this.mycode = res.data
+                        let canvas = document.getElementById('qrcode');
+                        QRCode.toCanvas(canvas, res.data.url, function (error) {
+                            if (error) console.error(error)
+                            console.log('success!');
+                        })
+                    }
+                })
+
+        },
         Download(){
             //cavas 保存图片到本地  js 实现
             //------------------------------------------------------------------------
@@ -65,5 +68,5 @@ export default {
             //我想用当前秒是可以解决重名的问题了 不行你就换成毫秒
             savaFile(imgdata,filename);
         },
-    }
+    },
 }

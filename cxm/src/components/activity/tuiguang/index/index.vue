@@ -8,12 +8,12 @@
         <div class="box1">
             <p>推广总收入（元）</p>
             <p v-if="explain.channelDistributor">{{explain.channelDistributor.totalAmount}}<i>元</i></p>
-            <p>今日+{{explain.channelDistributor.todayAmount}}</p>
+            <p v-if="explain.channelDistributor">今日+{{explain.channelDistributor.todayAmount}}</p>
             <b @click="goExplain()">活动说明</b>
         </div>
         <ul class="list">
             <a @click="detail(explain.channelDistributor.userId)"><img src="../tuiguang/img.png">收入明细</a>
-            <router-link to="/activity/mycode"><img src="../tuiguang/img2.png">我的二维码</router-link>
+            <a href="/activity/mycode?cxmxc=scm&cmshare=1"><img src="../tuiguang/img2.png">我的二维码</a>
         </ul>
         <div class="statistics">
             <p><i></i>推广数据统计</p>

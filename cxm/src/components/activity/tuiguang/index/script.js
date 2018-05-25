@@ -14,14 +14,14 @@ export default {
         Indicator.open()
     },
     created(){
-        let that = this
         window.actionMessage = function (arg){
             localStorage.setItem('token',JSON.parse(arg).token)
-            that.fetchData()
         }
     },
     mounted(){
-        this.fetchData()
+        setTimeout(()=>{
+            this.fetchData()
+        },1000)
             isTitle('推广中心')
     },
     methods:{
