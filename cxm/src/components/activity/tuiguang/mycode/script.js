@@ -65,14 +65,5 @@ export default {
             //我想用当前秒是可以解决重名的问题了 不行你就换成毫秒
             savaFile(imgdata,filename);
         },
-        detail(){
-            this.$router.push({
-                path: '/',
-                query:{
-                    'userId':this.userId
-                },
-                replace: false
-            })
-        },
     }
 }
