@@ -17,7 +17,6 @@
         </ul>
     </div>
 </template>
-<script>
-alert(1)
+<script src="./script.js">
 
 </script>

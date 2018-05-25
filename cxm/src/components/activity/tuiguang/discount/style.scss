@@ -88,4 +88,100 @@
             line-height: px2rem(46px);
         }
     }
+    .mint-tab-item-label{
+        font-size: px2rem(28px);
+        height: px2rem(88px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: px2rem(200px);
+        margin: 0 auto;
+        color: #505050;
+    }
+    .mint-navbar .mint-tab-item{
+        padding: 0;
+    }
+    .mint-navbar{
+        margin-top: px2rem(32px);
+    }
+    .mint-tab-item:first-of-type{
+        box-sizing: border-box;
+        border-right: 1px solid #f0f0f0;
+    }
+    .mint-navbar .mint-tab-item.is-selected{
+        border: none;
+        .mint-tab-item-label{
+            border-bottom: 3px solid #EA5504;
+            color: #EA5504;
+        }
+    }
+    .ysyList{
+        padding: px2rem(32px) px2rem(14px);
+        li{
+            position: relative;
+            margin-bottom: px2rem(14px);
+            overflow: hidden;
+            p{
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background: white;
+                border-radius: 100%;
+            }
+            p:first-of-type{
+                top: px2rem(140px);
+                left: -5px;
+            }
+            p:last-of-type{
+                right: -5px;
+                top: px2rem(140px);
+            }
+            .discountTop{
+                background: #fbb03b;
+                color: white;
+                box-sizing: border-box;
+                padding: px2rem(10px) px2rem(30px) px2rem(30px);
+                display: flex;
+                height: px2rem(150px);
+                border-bottom: 1px dashed #fff;
+                span{
+                    font-size: px2rem(42px);
+                    display: flex;
+                    height: 100%;
+                    align-items: flex-end;
+                }
+                b{
+                   font-size: px2rem(80px); 
+                   display: flex;
+                   height: 100%;
+                   justify-content: flex-end;
+                   line-height: px2rem(140px);
+                }
+            }
+            
+            .discountBottom{
+                background: #fbb03b;
+                height: px2rem(92px);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 px2rem(20px) 0 px2rem(30px);
+                font-size: px2rem(30px);
+                color: #fff;
+                b{
+                    font-size: px2rem(30px);
+                    font-weight: 400;
+                }
+                span:last-of-type{
+                    font-size: px2rem(30px);
+                }
+            }
+        }
+        li:last-of-type{
+            margin: 0;
+        }
+    }
+    .nullstatus{
+        padding: px2rem(120px) 0;
+    }
 }

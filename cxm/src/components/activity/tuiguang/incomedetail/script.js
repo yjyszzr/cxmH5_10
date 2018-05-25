@@ -16,7 +16,6 @@ export default {
         Indicator.open()
     },
     mounted(){
-        alert(1)
         console.log(this.time);
         let data = {
             // 'userId': this.orderId

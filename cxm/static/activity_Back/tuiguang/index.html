@@ -199,7 +199,7 @@
 			<div class="page" id='router2'>
 				<img src="./img/jbe.png" class="winner" />
 				<p class="gx">恭喜您获得110元彩金</p>
-				<button class="downLoadBtn">下载APP立即使用</button>
+				<button class="downLoadBtn" onClick="downLoadBtn()">下载APP立即使用</button>
 			</div>
 		</div>
 	</body>
@@ -256,7 +256,7 @@
 				data: JSON.stringify(obj),
 				dataType: "json",
 				success: function(data) {
-					console.log(data)
+//					console.log(data)
 					$.hideIndicator();
 					if(data.code == '301010') {
 						$.modal({
@@ -325,7 +325,8 @@
 			obj2.body = {
 				'mobile': $('.telVal').val(),
 				'smsCode': $('.codeVal').val(),
-				'loginSource': '4'
+				'loginSource': '4',
+				'assetsPublicPath': '1234'
 			}
 			obj2.device = device
 			$.ajax({
@@ -348,6 +349,30 @@
 					$.hideIndicator();
 				}
 			})
+		}
+		
+		function downLoadBtn(){
+			//判断苹果系统和安卓系统
+			function detect(){
+			    var equipmentType = "";
+			    var agent = navigator.userAgent.toLowerCase();
+			    var android = agent.indexOf("android");
+			    var iphone = agent.indexOf("iphone");
+			    var ipad = agent.indexOf("ipad");
+			    if(android != -1){
+			        equipmentType = "android";
+			    }
+			    if(iphone != -1 || ipad != -1){
+			        equipmentType = "ios";
+			    }
+			    return equipmentType;
+			}
+			var detect = detect()
+			if(detect==='ios'){
+				location.href = 'https://itunes.apple.com/us/app/彩小秘-提供你想要的体育资讯/id1387369982?l=zh&ls=1&mt=8'
+			}else if(detect==='android'){
+				location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+			}
 		}
 
 		window.onload = function() {
