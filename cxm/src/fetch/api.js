@@ -337,6 +337,7 @@ export default {
     getFilterConditionsSomeDay(params) {
         return fetchPost('/lottery/lottery/match/getFilterConditionsSomeDay', params)
     },
+    //一期活动 api
     //我的推广
     extension(params) {
         return fetchPost('/member/dl/channelConsumer/myRecommendation', params)
@@ -352,5 +353,17 @@ export default {
     //收入明细
     incomedetail(params) {
         return fetchPost('/member/dl/channelConsumer/incomeDetails', params)
+    },
+    //代金券列表
+    cashCouponList(params) {
+        return fetchPost('/member/dl/cashCoupon/cashCouponList', params)
+    },
+    //已兑换代金券列表
+    userCashCouponUserList(params) {
+        return fetchPost('/member/dl/cashCoupon/userCashCouponUserList', params)
+    },
+    //活动 订单
+    toCreateOrder(params) {
+        return fetchPost('/member/dl/cashCoupon/toCreateOrder', params)
     },
 }

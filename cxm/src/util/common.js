@@ -4,6 +4,16 @@ export let isTitle = (arg) =>{
         return '彩小秘·'+arg
     }
 }
+//app h5页面分享
+export let isShare = (arg,text,url) =>{
+	let obj = {}
+    window.getCxmShare = function (){
+    		obj.title = arg
+    		obj.describe = text
+    		obj.url = url
+        return obj
+    } 
+}
 //判断苹果系统和安卓系统
 export let detect = () => {
     var equipmentType = "";

@@ -292,13 +292,7 @@ const router = new Router({
           name: 'payConfirm',
           cname: '支付订单',
           component: resolve => require(['@/components/activity/tuiguang/payConfirm/index.vue'], resolve)
-      },
-      {
-          path: '/activity/discountList',
-          name: 'discountList',
-          cname: '活动卡券列表',
-          component: resolve => require(['@/components/activity/tuiguang/discountList/index.vue'], resolve)
-      },
+      }
   ]
 })
 

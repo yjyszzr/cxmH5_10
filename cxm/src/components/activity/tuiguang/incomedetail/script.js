@@ -17,8 +17,6 @@ export default {
         Indicator.open()
     },
     mounted(){
-        console.log(this.addTime);
-        console.log(this.userId);
         let data = {
             'userId': this.userId,
             'addTime':this.addTime
