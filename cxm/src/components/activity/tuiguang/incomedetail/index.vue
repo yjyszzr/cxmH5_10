@@ -15,6 +15,7 @@
             <li>{{item.lotteryAmount }}</li>
             <li>{{item.income }}</li>
         </ul>
+        <div class="box_div fixBottom" @click="goInclude()">如何计算收益</div>
     </div>
 </template>
 <script src='./script.js'>

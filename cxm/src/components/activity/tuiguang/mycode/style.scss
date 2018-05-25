@@ -20,7 +20,7 @@
     margin: px2rem(60px) auto;
   }
   .btn{
-    margin-top: px2rem(190px);
+    margin-top: px2rem(150px);
     button{
       border: none;
       width: px2rem(500px);
@@ -30,6 +30,10 @@
       margin-top: px2rem(40px);
 
     }
+  }
+  canvas{
+    width: px2rem(300px)!important;
+    height: px2rem(300px)!important;
   }
 
 }

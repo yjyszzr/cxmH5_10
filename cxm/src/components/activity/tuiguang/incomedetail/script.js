@@ -10,6 +10,7 @@ export default {
             token: '',
             addTime:dateFilter(Number(this.$route.query.addTime),2),
             incomedetail:{},
+            userId:this.$route.query.userId
         }
     },
     beforeCreate() {
@@ -17,9 +18,10 @@ export default {
     },
     mounted(){
         console.log(this.addTime);
+        console.log(this.userId);
         let data = {
-            // 'userId': this.userId
-            'userId': 400052
+            'userId': this.userId,
+            'addTime':this.addTime
         }
         api.incomedetail(data)
             .then(res => {

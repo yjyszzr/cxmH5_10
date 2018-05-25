@@ -7,7 +7,8 @@ export default {
     data(){
         return {
             token: '',
-            income:{}
+            income:{},
+            userId:this.$route.query.userId
         }
     },
     beforeCreate() {
@@ -15,12 +16,11 @@ export default {
     },
     mounted(){
         let data = {
-            // 'userId': this.userId
-            'userId': 400052
+            'userId': this.userId
         }
         api.income(data)
             .then(res => {
-                console.log(res)
+                console.log(this.userId)
                 if(res.code==0) {
                     this.income = res.data
                 }
@@ -40,14 +40,12 @@ export default {
             this.$router.push({
                 path: '/activity/incomedetail',
                 query:{
-                    'addTime':new Date(itemdate.replace(/-/g,'/')).getTime()
+                    'addTime':new Date(itemdate.replace(/-/g,'/')).getTime(),
+                    'userId':this.userId
                 },
                 replace: false
             })
-        },
-        // go_to() {
-        //     this.$router.push({path: '/activity/incomedetail'})
-        // },
+        }
 
     }
 }

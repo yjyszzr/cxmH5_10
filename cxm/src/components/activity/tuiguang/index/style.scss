@@ -7,7 +7,19 @@
         background: #e95504;
         text-align: center;
         color: #fff;
+        position: relative;
+        b{
+            position: absolute;
+            color: #fff;
+            font-size: px2rem(16px);
+            float: right;
+            font-style: normal;
+            margin-right: px2rem(10px);
+            top: px2rem(10px);
+            right: px2rem(10px);
+        }
         p{
+            //padding: px2rem(50px) 0;
             font-size: px2rem(25px);
             opacity: 0.9;
         }
