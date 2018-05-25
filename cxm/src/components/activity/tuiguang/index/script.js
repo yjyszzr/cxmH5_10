@@ -3,21 +3,27 @@ import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import { MessageBox } from 'mint-ui';
 export default {
-    name: 'one',
+    name: 'index',
     data(){
         return {
-            token: '',
-            explain:{}
+            explain:{},
+            userId:''
         }
     },
     beforeCreate() {
         Indicator.open()
     },
+    created(){
+        window.actionMessage = function (arg){
+            localStorage.setItem('token',JSON.parse(arg).token)
+        }
+    },
     mounted(){
         let data = {
-            // 'userId': this.orderId
-            'userId': 400052
+            'userId': this.userId
+            // 'userId': 400052
         }
+        console.log(this.userId)
         api.extension(data)
         .then(res => {
             console.log(res)
@@ -26,14 +32,6 @@ export default {
             }
         })
             isTitle('推广中心')
-            // let that = this
-            // window.actionMessage = function (arg){
-				// //var uPhone = arg.uPhone;
-             //    //console.log(arg)
-             //    Toast(JSON.parse(arg).token)
-				// //that.phone = uPhone
-				// //that.token = arg.token
-		    // }
     },
     methods:{
         goExplain() {
@@ -46,6 +44,15 @@ export default {
                 title: '额外奖励',
             }).then(action => {
             });
-        }
+        },
+        detail(userId){
+            this.$router.push({
+                path: '/activity/income',
+                query:{
+                    'userId':userId
+                },
+                replace: false
+            })
+        },
     }
 }

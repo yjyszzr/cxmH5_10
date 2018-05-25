@@ -3,11 +3,12 @@ import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import datefilter from "../../../../util/datefilter";
 export default {
-    name: 'tuiguang',
+    name: 'income',
     data(){
         return {
             token: '',
-            income:{}
+            income:{},
+            userId:this.$route.query.userId
         }
     },
     beforeCreate() {
@@ -15,17 +16,16 @@ export default {
     },
     mounted(){
         let data = {
-            // 'userId': this.orderId
-            'userId': 400052
+            'userId': this.userId
         }
         api.income(data)
             .then(res => {
-                console.log(res)
+                console.log(this.userId)
                 if(res.code==0) {
                     this.income = res.data
                 }
             })
-            isTitle('推广中心')
+            isTitle('我的推广收入')
             // let that = this
             // window.actionMessage = function (arg){
 				// //var uPhone = arg.uPhone;
@@ -36,18 +36,16 @@ export default {
 		    // }
     },
     methods:{
-        goDetail(itemdate){
+        golist(itemdate){
             this.$router.push({
-                path: '/active/incomedetail',
+                path: '/activity/incomedetail',
                 query:{
-                    'time':new Date(itemdate.replace(/-/g,'/')).getTime()
+                    'addTime':new Date(itemdate.replace(/-/g,'/')).getTime(),
+                    'userId':this.userId
                 },
                 replace: false
             })
-        },
-        // go_to() {
-        //     this.$router.push({path: '/activity/incomedetail'})
-        // },
+        }
 
     }
 }

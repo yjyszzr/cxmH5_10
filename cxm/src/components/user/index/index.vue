@@ -64,7 +64,7 @@
         <div class="section">
             <ul class="msg_list tug" style="min-height: 0">
                 <li v-for='(item,i) in userInfo.activityDTOList' :key="i">
-                    <a :href='item.actUrl'>
+                    <router-link to="/activity/tuiguang">
                         <div>
                             <p>
                                 <img :src="item.icon" alt="">
@@ -72,7 +72,7 @@
                             </p>
                             <span class="arrow_right"></span>
                         </div>
-                    </a>
+                    </router-link>
                 </li>
             </ul>
         </div>
