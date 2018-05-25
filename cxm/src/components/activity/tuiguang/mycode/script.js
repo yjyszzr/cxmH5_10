@@ -9,7 +9,6 @@ export default {
             token: '',
             qrcodeUrl:'',
             userId:this.$route.query.userId,
-            url:''
         }
     },
     beforeCreate() {
@@ -32,7 +31,7 @@ export default {
                     if(res.code==0) {
                         this.mycode = res.data
                         let canvas = document.getElementById('qrcode');
-                        QRCode.toCanvas(canvas, res.data.url, function (error) {
+                        QRCode.toCanvas(canvas, res.data.url+"id="+res.data.userId, function (error) {
                             if (error) console.error(error)
                             console.log('success!');
                         })
