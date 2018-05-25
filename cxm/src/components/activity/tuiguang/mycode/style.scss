@@ -5,6 +5,7 @@
   text-align: center;
   font-family: '微软雅黑';
   background: #fff;
+  position: relative;
   p{
     font-size: px2rem(39px);
     color: #e95504;
@@ -14,10 +15,11 @@
     line-height: px2rem(60px);
   }
   .img{
-    width: px2rem(400px);
-    height: px2rem(400px);
-    border: 1px solid #f1f1f1;
-    margin: px2rem(60px) auto;
+    width: px2rem(640px);
+    height: px2rem(500px);
+    margin-top: px2rem(50px);
+    position: absolute;
+    top: 0;
   }
   .btn{
     margin-top: px2rem(150px);
@@ -32,6 +34,7 @@
     }
   }
   canvas{
+    margin-top: px2rem(100px);
     width: px2rem(300px)!important;
     height: px2rem(300px)!important;
   }

@@ -2,14 +2,14 @@ import {isTitle} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import QRCode from 'qrcode';
-// import
 export default {
     name: 'mycode',
     data(){
         return {
             token: '',
             qrcodeUrl:'',
-            userId:this.$route.query.userId
+            userId:this.$route.query.userId,
+            willShow:true
         }
     },
     beforeCreate() {
@@ -35,21 +35,9 @@ export default {
             console.log('success!');
         })
          isTitle('我的二维码')
-
-
-            // let that = this
-            // window.actionMessage = function (arg){
-				// //var uPhone = arg.uPhone;
-             //    //console.log(arg)
-             //    Toast(JSON.parse(arg).token)
-				// //that.phone = uPhone
-				// //that.token = arg.token
-		    // }
     },
     methods:{
-
         Download(){
-            alert(55)
             //cavas 保存图片到本地  js 实现
             //------------------------------------------------------------------------
             //1.确定图片的类型  获取到的图片格式 data:image/Png;base64,......
