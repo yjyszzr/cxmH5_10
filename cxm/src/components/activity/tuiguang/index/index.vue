@@ -13,7 +13,7 @@
         </div>
         <ul class="list">
             <a @click="detail(explain.channelDistributor.userId)"><img src="../tuiguang/img.png">收入明细</a>
-            <a href="/activity/mycode?cxmxc=scm&cmshare=1"><img src="../tuiguang/img2.png">我的二维码</a>
+            <a href="/activity/mycode?cxmxc=scm&cmshare=1&showtitle=1"><img src="../tuiguang/img2.png">我的二维码</a>
         </ul>
         <div class="statistics">
             <p><i></i>推广数据统计</p>
