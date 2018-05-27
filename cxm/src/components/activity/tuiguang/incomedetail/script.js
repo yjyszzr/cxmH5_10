@@ -5,37 +5,29 @@ import dateFilter from '../../../../util/datefilter.js'
 
 export default {
     name: 'incomedetail',
-    data(){
+    data() {
         return {
             token: '',
-            addTime:dateFilter(Number(this.$route.query.addTime),2),
-            incomedetail:{},
-            userId:this.$route.query.userId
+            addTime: dateFilter(Number(this.$route.query.addTime), 2),
+            incomedetail: {},
+            userId: this.$route.query.userId
         }
     },
     beforeCreate() {
         Indicator.open()
     },
-    mounted(){
+    mounted() {
         let data = {
             'userId': this.userId,
-            'addTime':this.addTime
+            'addTime': this.addTime
         }
         api.incomedetail(data)
             .then(res => {
                 console.log(res)
-                if(res.code==0) {
+                if (res.code == 0) {
                     this.incomedetail = res.data
                 }
             })
-            isTitle("收入明细")
-            // let that = this
-            // window.actionMessage = function (arg){
-				// //var uPhone = arg.uPhone;
-             //    //console.log(arg)
-             //    Toast(JSON.parse(arg).token)
-				// //that.phone = uPhone
-				// //that.token = arg.token
-		    // }
+        isTitle("收入明细")
     }
 }

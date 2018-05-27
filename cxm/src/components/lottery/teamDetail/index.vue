@@ -78,9 +78,9 @@
                             <li class="list_cur">{{item.leagueAddr}}</li>
                             <li>{{item.matchDay}}</li>
                             <li>
-                                <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.homeTeamAbbr?'#505050':'#9f9f9f'}">{{item.homeTeamAbbr}}</span>
+                                <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.homeTeamAbbr?'#ea5504':'#9f9f9f'}">{{item.homeTeamAbbr}}</span>
                                 <span>{{item.whole}}</span>
-                                <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.visitingTeamAbbr?'#505050':'#9f9f9f'}">{{item.visitingTeamAbbr}}</span>
+                                <span :style="{'color':ckxqObj.matchInfo.homeTeamAbbr==item.visitingTeamAbbr?'#44ae35':'#9f9f9f'}">{{item.visitingTeamAbbr}}</span>
                             </li>
                             <li :style="{'color':colorMatchRs(item.matchRs)}">{{item.matchRs}}</li>
                         </ul>
@@ -100,9 +100,9 @@
                         <ul v-for="(item,i) in ckxqObj.vMatchTeamInfo.matchInfos" :key='i'>
                             <li class="list_cur">{{item.leagueAddr}}</li>
                             <li>{{item.matchDay}}</li>
-                            <li><span :style="{'color':ckxqObj.matchInfo.visitingTeamAbbr==item.homeTeamAbbr?'#505050':'#9f9f9f'}">{{item.homeTeamAbbr}}</span>
+                            <li><span :style="{'color':ckxqObj.matchInfo.visitingTeamAbbr==item.homeTeamAbbr?'#44ae35':'#9f9f9f'}">{{item.homeTeamAbbr}}</span>
                             <span>{{item.whole}}</span>
-                            <span :style="{'color':ckxqObj.matchInfo.visitingTeamAbbr==item.visitingTeamAbbr?'#505050':'#9f9f9f'}">{{item.visitingTeamAbbr}}</span></li>
+                            <span :style="{'color':ckxqObj.matchInfo.visitingTeamAbbr==item.visitingTeamAbbr?'#ea5504':'#9f9f9f'}">{{item.visitingTeamAbbr}}</span></li>
                             <li :style="{'color':colorMatchRs(item.matchRs)}">{{item.matchRs}}</li>
                         </ul>
                     </div>
