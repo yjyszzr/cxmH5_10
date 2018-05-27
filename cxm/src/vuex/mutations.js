@@ -154,7 +154,13 @@ const mutations = {
     },
     changeRecruitScrollY(state,recruitScrollY) {   
         state.recruitScrollY = recruitScrollY  
-    }  
+    },
+    FINDTAB(state, data){
+        state.findObj.findTab = data
+    },
+    FINACTIVE(state, data){
+        state.findObj.findActive = data
+    }
 }
 
 export default mutations

@@ -7,6 +7,7 @@ import {
     Indicator
 } from 'mint-ui'
 import router from '../router/index'
+import {getUrlStr} from '../util/common'
 
 // axios 配置
 axios.defaults.timeout = 5000;
@@ -43,10 +44,14 @@ axios.interceptors.response.use((res) => {
         if (res.data.code >= 30000 && res.data.code <= 310000) {
             Toast(res.data.msg)
         } else if (res.data.code == 600) {
-            localStorage.clear()
-            router.replace({
-                path: '/user/sms',
-            })
+            if(getUrlStr('from',location.href)=='app'){
+                location.href = 'm.caixiaomi.net?cxmxc=scm&type=5'
+            }else{
+                localStorage.clear()
+                router.replace({
+                    path: '/user/sms',
+                })
+            }
         }
         Indicator.close()
     }
@@ -293,6 +298,10 @@ export default {
     articleDetail(params) {
         return fetchPost('lottery/dl/article/detail', params)
     },
+    //发现
+    findList(params) {
+        return fetchPost('lottery/dl/article/findList', params)
+    },
     //收藏列表
     collectList(params) {
         return fetchPost('member/user/collect/list', params)
@@ -365,5 +374,9 @@ export default {
     //活动 订单
     toCreateOrder(params) {
         return fetchPost('/member/dl/cashCoupon/toCreateOrder', params)
+    },
+    //支付页面
+    toPaymentPage(params) {
+        return fetchPost('/member/dl/cashCoupon/toPaymentPage', params)
     },
 }

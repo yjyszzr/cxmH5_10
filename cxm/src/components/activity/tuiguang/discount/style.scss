@@ -106,7 +106,7 @@
     }
     .mint-tab-item:first-of-type{
         box-sizing: border-box;
-        border-right: 1px solid #f0f0f0;
+        border-right: 1px solid #f0f0f0!important;
     }
     .mint-navbar .mint-tab-item.is-selected{
         border: none;

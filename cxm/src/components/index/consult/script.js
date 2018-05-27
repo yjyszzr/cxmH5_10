@@ -8,6 +8,7 @@ import {
 } from "mint-ui";
 import dateFailter from '../../../util/datefilter'
 import {getUrlStr} from '../../../util/common'
+import {isTitle } from '../../../util/common'
 export default {
     name: "consult",
     data() {
@@ -25,6 +26,7 @@ export default {
         "v-informal": informal
     },
     mounted() {
+        isTitle('资讯详情')
         this.fetchData()
     },
     methods:{

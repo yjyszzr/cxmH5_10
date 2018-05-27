@@ -183,6 +183,12 @@ const actions = {
     },
     getArrTime({commit},value){
         commit("ARRTIME", value)
+    },
+    changeFinTab({commit},value){
+        commit("FINDTAB", value)
+    },
+    changeFinActive({commit},value){
+        commit("FINACTIVE", value)
     }
 }
 

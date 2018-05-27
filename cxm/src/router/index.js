@@ -70,6 +70,16 @@ const router = new Router({
           component: resolve => require(['@/components/user/index/index.vue'], resolve)
       },
       {
+          path: '/find',
+          name: 'find',
+          cname:'发现',
+          meta: {
+            requireAuth: true,
+            keepAlive: true
+          },
+          component: resolve => require(['@/components/find/index/index.vue'], resolve)
+      },
+      {
           path: '/user/recharge',
           name: 'recharge',
           cname:'充值',
@@ -299,17 +309,24 @@ const router = new Router({
 NProgress.configure({ showSpinner: false });
 
 router.beforeEach(async(to, from, next) => {
+	if(to.fullPath.indexOf('#')!=-1){
+		next(
+			{
+				path: to.fullPath.replace('/#','')
+			}
+		)
+	}
     let toPath = to.path
     NProgress.start(); // 开启Progress
     // 进入详情页时需要记录滚动条距离头部距离
     // if (toPath === '/user/order'&&from.path==='/user/record') {
     //     router.app.orderScrolltop = $('#content').scrollTop()
     // }else 
-    if(toPath === '/index/consult'&&from.path==='/'){
+    if(toPath === '/index/consult'&&(from.path==='/'||from.path==='/find')){
         router.app.consultScrolltop = $('#content').scrollTop()
         from.meta.keepAlive = true
     }else{
-        if(from.path=='/'&&toPath!='/index/consult'){
+        if((from.path=='/'||from.path==='/find')&&toPath!='/index/consult'){
             from.meta.keepAlive = false
         }
     }
@@ -323,7 +340,7 @@ router.afterEach(async(to, from) => {
     // if(toPath!='/'&&toPath!='/user/record'){
     //     document.getElementById('content').scrollTop = 0
     // }
-    if(toPath!='/'){
+    if(toPath!='/'||toPath!='/find'){
         document.getElementById('content').scrollTop = 0
     }
 });

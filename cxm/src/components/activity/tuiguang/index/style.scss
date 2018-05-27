@@ -41,11 +41,12 @@
         display: flex;
         background: #fff;
         a{
-            line-height: px2rem(80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex: 1;
             color: #e95504;
             font-size: px2rem(25px);
-            text-align: center;
             border-right: 1px solid #f1f1f1;
             img{
                 width: px2rem(36px);

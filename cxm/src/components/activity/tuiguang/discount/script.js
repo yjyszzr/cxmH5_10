@@ -1,13 +1,13 @@
 import { isShare,isTitle } from '../../../../util/common'
 import api from '../../../../fetch/api'
-import { Indicator} from 'mint-ui'
+import { Indicator,Toast} from 'mint-ui'
 import dateFilter from '../../../../util/datefilter'
 export default {
 	name: 'discount',
 	data() {
 		return {
 			discountList: [],
-			selected: '1',
+			selected: sessionStorage.getItem('discountTap')!='2'?'1':'2',
 			list: []
 		}
 	},
@@ -15,6 +15,7 @@ export default {
 		Indicator.open()
 	},
 	created(){
+		let that = this
 		window.actionMessage = function(arg) {
 			localStorage.setItem('token', JSON.parse(arg).token)
 		}
@@ -22,7 +23,9 @@ export default {
 	mounted() {
 		isShare('彩小秘体育', '含笑哈哈哈','http://192.168.31.205:8080/activity/discount?cxmxc=scm&usinfo=1&cmshare=1')
 		isTitle('代金券')
-		this.fetchData()
+		setTimeout(()=>{
+			this.fetchData()
+		},1000)
 	},
 	methods: {
 		goPayconfirm(c) {
@@ -34,7 +37,7 @@ export default {
 			})
 		},
 		date(c){
-			dateFilter(c,2)
+			return dateFilter(c*1000,2)
 		},
 		fetchData(){
 			let data = {
@@ -63,5 +66,9 @@ export default {
 			Indicator.open()
 			this.fetchData()
 		}
-	}
+	},
+	  beforeRouteLeave(to, from, next) {
+	    next()
+	    sessionStorage.removeItem('discountTap')
+	  }
 }

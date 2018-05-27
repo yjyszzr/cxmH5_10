@@ -52,6 +52,10 @@ const state = {
     deleteFlag: false, //收藏删除开关
     zxCollectionFlag: '', //收藏按钮是否选中
     zxDetailObj: '', //资讯详情数据
+    findObj:{
+        findTab: [],   //发现顶部列表
+        findActive: '1' //发现选中参数
+    }
 }
 
 export default new Vuex.Store({

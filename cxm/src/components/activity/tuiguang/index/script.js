@@ -23,10 +23,10 @@ export default {
             'userId': this.userId
             // 'userId': 400052
         }
-        console.log(this.userId)
+        // console.log(this.userId)
         api.extension(data)
         .then(res => {
-            console.log(res)
+            // console.log(res)
             if(res.code==0) {
                 this.explain = res.data
             }

@@ -14,7 +14,7 @@
         </keep-alive> -->
        
     </div>
-    <v-footer></v-footer>
+    <v-footer v-show='showBar()'></v-footer>
     <transition name="fade"> 
       <v-mark v-if="this.$store.state.mark_show"></v-mark>
     </transition>
@@ -157,7 +157,8 @@ export default {
       } else {
         if (
           this.$route.path.split("/")[1] == "user" ||
-          this.$route.path.split("/")[1] == "lotteryResult"
+          this.$route.path.split("/")[1] == "lotteryResult"||
+          this.$route.path.split("/")[1] == "find"
         ) {
           this.isShowHeader = true;
         } else {
@@ -169,6 +170,8 @@ export default {
             return "我的";
           case "lotteryResult":
             return "比赛结果";
+          case "find":
+            return "发现";
         }
       }
     },
@@ -192,6 +195,13 @@ export default {
       } else {
          return true;
       }
+    },
+    showBar(){
+    		if (getUrlStr('showBar',location.href)=='1') {
+         	return false;
+	     } else {
+	         return true;
+	     }
     }
   },
   // watch: {

@@ -227,6 +227,14 @@
 			net: '',
 			token: ''
 		}
+		
+		function getUrlStr(name,url){
+		    var reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
+		    if(reg.test(url)){
+		        return unescape(RegExp.$2.replace(/\+/g," "))
+		    }
+		    return undefined
+		}
 
 		function activity_smClick() {
 			$.modal({
@@ -246,7 +254,7 @@
 			obj.body = {
 				'mobile': $('.telVal').val(),
 				'smsType': '1',
-				'userId': 123
+				'userId': getUrlStr('id',location.href)
 			}
 			obj.device = device
 			$.ajax({
@@ -326,7 +334,7 @@
 				'mobile': $('.telVal').val(),
 				'smsCode': $('.codeVal').val(),
 				'loginSource': '4',
-				'assetsPublicPath': '1234'
+				'channelDistributorId': getUrlStr('id',location.href)
 			}
 			obj2.device = device
 			$.ajax({

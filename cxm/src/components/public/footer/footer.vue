@@ -8,6 +8,10 @@
                 <i class="iconfont icon-dibucaidan_svg_huabanfuben"></i>
                 <span>开奖</span>
             </router-link>
+            <router-link :to='{path:"/find",query:{"from":"h5_find"}}' :style="{'color': $route.path.split('/')[1] == 'find'?'#ea5504':'#505050'}">
+                <i class="iconfont icon-dibucaidan_svg_huabanfuben"></i>
+                <span>发现</span>
+            </router-link>
             <router-link to='/user' :style="{'color': $route.path.split('/')[1] == 'user'?'#ea5504':'#505050'}">
                 <i class="iconfont icon-dibucaidan_svg_huabanfuben1"></i>
                 <span>我的</span>

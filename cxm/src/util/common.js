@@ -9,7 +9,7 @@ export let isShare = (arg,text,url) =>{
 	let obj = {}
     window.getCxmShare = function (){
     		obj.title = arg
-    		obj.describe = text
+    		obj.description = text
     		obj.url = url
         return obj
     } 

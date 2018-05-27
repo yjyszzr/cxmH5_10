@@ -36,19 +36,33 @@ export default {
 
       }
   },
-  props: ["zxList"],
+  props: ["zxList","from"],
   mounted() {
     //console.log(this.zxList)
   },
   methods: {
       goZxDetail(c){
+        if(this.from&&this.from.split('_')[1]=='find'){
+          if(this.from.split('_')[0]=='h5'){
+            this.$router.push({
+                  path: "/index/consult",
+                  query: {
+                  id: c,
+                  frz: getUrlStr('frz',location.href)==undefined?'1':getUrlStr('frz',location.href)
+                  }
+            });
+          }else{
+            location.href = '/index/consult?id='+c+'&frz=0&type=1&showtitle=1&cxmxc=scm'
+          }
+        }else{
           this.$router.push({
                 path: "/index/consult",
                 query: {
                 id: c,
                 frz: getUrlStr('frz',location.href)==undefined?'1':getUrlStr('frz',location.href)
                 }
-        });
+          });
+        }
     },
     addTime(c){
       return dateFilter(c*1000,0)+' '+dateFilter(c*1000,1)
