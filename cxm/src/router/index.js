@@ -302,6 +302,12 @@ const router = new Router({
           name: 'payConfirm',
           cname: '支付订单',
           component: resolve => require(['@/components/activity/tuiguang/payConfirm/index.vue'], resolve)
+      },
+      {
+          path: '/activity/world_cup',
+          name: 'world_cup',
+          cname: '世界杯',
+          component: resolve => require(['@/components/activity/world_cup/index.vue'], resolve)
       }
   ]
 })

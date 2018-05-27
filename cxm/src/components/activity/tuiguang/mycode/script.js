@@ -1,55 +1,41 @@
-import {isTitle} from '../../../../util/common'
+import {isTitle,isShare} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import QRCode from 'qrcode';
-// import
 export default {
     name: 'mycode',
     data(){
         return {
             token: '',
             qrcodeUrl:'',
-            userId:this.$route.query.userId
+            userId:this.$route.query.userId,
         }
     },
     beforeCreate() {
         Indicator.open()
     },
-
     mounted(){
-        let data = {
-            'userId': this.userId,
-            'url': 'url',
-        }
-        api.mycode(data)
-            .then(res => {
-                if(res.code==0) {
-                    this.mycode = res.data
-                }
-            })
-        let canvas = document.getElementById('qrcode');
-        QRCode.toCanvas(canvas, data.url, function (error) {
-            
-        })
-         isTitle('我的二维码')
+        this.fetchData()
+        isShare('刚刚地方地方第三方的','地方地方地方上的','http://192.168.31.232:8080:/activity/mycode?cxmxc=scm&cmshare=1')
+        isTitle('我的二维码')
     },
     methods:{
+        fetchData(){
+            let data = {
+                'userId': this.userId,
+                'url': 'url',
+            }
+            api.mycode(data)
+                .then(res => {
+                    if(res.code==0) {
+                        this.mycode = res.data
+                        let canvas = document.getElementById('qrcode');
+                        QRCode.toCanvas(canvas, res.data.url+"id="+res.data.userId, function (error) {
+                            
+                        })
+                    }
+                })
 
-        Download(){
-            		var mycanvas = document.getElementById("qrcode");  
-                // here is the most important part because if you dont replace you will get a DOM 18 exception.  
-                // var image = myCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream;Content-Disposition: attachment;filename=foobar.png");  
-                var image = mycanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");   
-                window.location.href=image; // it will save locally  
-        },
-        detail(){
-            this.$router.push({
-                path: '/',
-                query:{
-                    'userId':this.userId
-                },
-                replace: false
-            })
-        },
-    }
+        }
+    },
 }

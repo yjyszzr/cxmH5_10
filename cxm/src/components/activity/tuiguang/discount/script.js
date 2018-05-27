@@ -11,6 +11,7 @@ export default {
 			list: []
 		}
 	},
+
 	beforeCreate() {
 		Indicator.open()
 	},

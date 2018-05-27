@@ -29,18 +29,21 @@
       color: #e95504;
     }
   }
+  .box_list{
+    margin-bottom: px2rem(90px);
+  }
   .box_div{
     height: px2rem(88px);
     line-height: px2rem(88px);
     text-align: center;
     background: #e95504;
     font-style: px2rem(16px);
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
-    margin-top: 0;
     color: #fff;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    margin-top: px2rem(110px);
   }
 }

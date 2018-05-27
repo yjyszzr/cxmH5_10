@@ -7,7 +7,7 @@ export default {
     data(){
         return {
             explain:{},
-            userId:''
+            userId:this.$route.query.userId
         }
     },
     beforeCreate() {
@@ -21,19 +21,31 @@ export default {
     mounted(){
         let data = {
             'userId': this.userId
-            // 'userId': 400052
         }
-        // console.log(this.userId)
         api.extension(data)
         .then(res => {
-            // console.log(res)
             if(res.code==0) {
                 this.explain = res.data
             }
         })
+        setTimeout(()=>{
+            this.fetchData()
+        },1000)
+
             isTitle('推广中心')
     },
     methods:{
+        fetchData(){
+            let data = {
+                'userId': this.userId
+            }
+            api.extension(data)
+                .then(res => {
+                    if(res.code==0) {
+                        this.explain = res.data
+                    }
+                })
+        },
         goExplain() {
             this.$router.push({path: '/activity/rule'})
         },
