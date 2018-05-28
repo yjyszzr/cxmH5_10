@@ -9,9 +9,6 @@ export default {
         return {
             explain: {},
             userId: this.$route.query.userId,
-            channelDistributor:0,
-            inviteNum:0,
-            bettingTotalAmount:0,
         }
     },
     beforeCreate() {
@@ -26,6 +23,7 @@ export default {
         setTimeout(() => {
             this.fetchData()
         }, 1000)
+
         isTitle('推广中心')
     },
     methods: {
