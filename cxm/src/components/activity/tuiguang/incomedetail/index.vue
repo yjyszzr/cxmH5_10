@@ -13,7 +13,7 @@
             <ul class="box_list_2" v-for='(item,i) in incomedetail' :key='i'>
                 <li>{{item.addTime}}</li>
                 <li>{{item.channelDistributorId }}</li>
-                <li>{{item.lotteryAmount }}</li>
+                <li>{{item.lotteryAmount}}</li>
                 <li style="color: #e95504;">{{item.income }}</li>
             </ul>
         </div>

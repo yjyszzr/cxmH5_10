@@ -41,7 +41,11 @@ export default {
                 })
         },
         goExplain() {
-            this.$router.push({path: '/activity/rule'})
+            if(this.$route.query.showtitle&&this.$route.query.showtitle=='1'){
+                this.$router.push({path: '/activity/rule',query:{'showtitle':'1'}})
+            }else{
+                this.$router.push({path: '/activity/rule'})
+            }
         },
         //额外奖励弹窗
         go_tost() {
@@ -51,14 +55,32 @@ export default {
             }).then(action => {
             });
         },
+        goCode(){
+            if(this.$route.query.showtitle&&this.$route.query.showtitle=='1'){
+                location.href="/activity/mycode?cxmxc=scm&cmshare=1&showtitle=1"
+            }else{
+                this.$router.push({path: '/activity/mycode'})
+            }
+        },
         detail(userId) {
-            this.$router.push({
-                path: '/activity/income',
-                query: {
-                    'userId': userId
-                },
-                replace: false
-            })
+            if(this.$route.query.showtitle&&this.$route.query.showtitle=='1'){
+                this.$router.push({
+                    path: '/activity/income',
+                    query: {
+                        'userId': userId,
+                        'showtitle': '1'
+                    },
+                    replace: false
+                })
+            }else{
+                this.$router.push({
+                    path: '/activity/income',
+                    query: {
+                        'userId': userId
+                    },
+                    replace: false
+                })
+            }
         },
     }
 }
