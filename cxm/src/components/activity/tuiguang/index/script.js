@@ -7,8 +7,12 @@ export default {
     name: 'index',
     data() {
         return {
-            explain: {},
+            explain: {
+                inviteNum:0,
+                bettingTotalAmount:0
+            },
             userId: this.$route.query.userId,
+
         }
     },
     beforeCreate() {
