@@ -7,8 +7,11 @@ export default {
     name: 'index',
     data() {
         return {
-            explain: {},
-            userId: this.$route.query.userId,
+            explain: {
+                inviteNum:0,
+                bettingTotalAmount:0
+            },
+            // userId: this.$route.query.userId,
         }
     },
     beforeCreate() {
@@ -29,7 +32,7 @@ export default {
     methods: {
         fetchData() {
             let data = {
-                'userId': this.userId
+                'userId': ''
             }
             api.extension(data)
                 .then(res => {
