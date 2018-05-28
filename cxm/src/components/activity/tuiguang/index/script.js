@@ -8,7 +8,10 @@ export default {
     data() {
         return {
             explain: {},
-            userId: this.$route.query.userId
+            userId: this.$route.query.userId,
+            channelDistributor:0,
+            inviteNum:0,
+            bettingTotalAmount:0,
         }
     },
     beforeCreate() {
