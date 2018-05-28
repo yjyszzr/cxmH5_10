@@ -5,12 +5,16 @@ export let isTitle = (arg) =>{
     }
 }
 //app h5页面分享
+const expUrl = 'http://39.106.18.39:9805'
+export let getCsUrl = () =>{
+    return expUrl;
+}
 export let isShare = (arg,text,url) =>{
 	let obj = {}
     window.getCxmShare = function (){
     		obj.title = arg
     		obj.description = text
-    		obj.url = url
+            obj.url = expUrl+url
         return obj
     } 
 }

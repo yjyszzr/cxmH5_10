@@ -1,4 +1,4 @@
-import {isShare, isTitle} from '../../../../util/common'
+import {isTitle} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import dateFilter from '../../../../util/datefilter'
@@ -23,8 +23,7 @@ export default {
         }
     },
     mounted() {
-        isShare('彩小秘体育', '含笑哈哈哈', 'http://192.168.31.205:8080/activity/discount?cxmxc=scm&usinfo=1&cmshare=1')
-        isTitle('代金券')
+        isTitle('优惠兑换')
         setTimeout(() => {
             this.fetchData()
         }, 1000)
@@ -34,7 +33,8 @@ export default {
             this.$router.push({
                 path: '/activity/payConfirm',
                 query: {
-                    id: c
+                    id: c,
+                    showtitle: this.$route.query.showtitle=='1'?'1':'0'
                 }
             })
         },

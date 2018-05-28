@@ -42,7 +42,8 @@ export default {
                 query: {
                     currentArticleId: this.$store.state.zxDetailObj.articleId,
                     extendCat: this.$store.state.zxDetailObj.extendCat,
-                    frz: getUrlStr('frz',location.href)==undefined?'1':getUrlStr('frz',location.href)
+                    frz: getUrlStr('frz',location.href)==undefined?'1':getUrlStr('frz',location.href),
+                    showtitle: this.$route.query.showtitle&&this.$route.query.showtitle=='1'?'1':'0'
                 },
                 replace: false
             });

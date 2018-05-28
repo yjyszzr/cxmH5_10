@@ -1,5 +1,6 @@
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
+import {isTitle} from '../../../../util/common'
 
 export default {
     name: 'payConfirm',
@@ -12,6 +13,7 @@ export default {
         Indicator.open()
     },
     mounted() {
+        isTitle('支付订单')
         let data = {
             'cashCouponId': this.$route.query.id
         }

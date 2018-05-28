@@ -55,13 +55,27 @@ export default {
             location.href = '/index/consult?id='+c+'&frz=0&type=1&showtitle=1&cxmxc=scm'
           }
         }else{
-          this.$router.push({
-                path: "/index/consult",
-                query: {
-                id: c,
-                frz: getUrlStr('frz',location.href)==undefined?'1':getUrlStr('frz',location.href)
-                }
-          });
+          if(this.$route.query.showtitle=='1'){
+              this.$router.push({
+                    path: "/index/consult",
+                    query: {
+                    id: c,
+                    frz: getUrlStr('frz',location.href)==undefined?'1':getUrlStr('frz',location.href),
+                    showtitle: '1'
+                    }
+              });
+              return false;
+          }else{
+              this.$router.push({
+                    path: "/index/consult",
+                    query: {
+                    id: c,
+                    frz: getUrlStr('frz',location.href)==undefined?'1':getUrlStr('frz',location.href),
+                    showtitle: '0'
+                    }
+              });
+              return false;
+          }
         }
     },
     addTime(c){

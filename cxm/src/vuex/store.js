@@ -62,6 +62,6 @@ export default new Vuex.Store({
     state,
     actions,
     mutations,
-    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','mark_playObj'],storage: window.sessionStorage})]
+    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','mark_playObj','findObj'],storage: window.sessionStorage})]
     //strict: true
 })

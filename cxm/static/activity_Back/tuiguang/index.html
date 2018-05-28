@@ -13,7 +13,7 @@
 		<style type="text/css">
 			.page {
 				background: url(./img/bg.png) no-repeat -1px -1px;
-				background-size: 101%;
+				background-size: 105%;
 				font-family: "微软雅黑";
 			}
 			
@@ -71,7 +71,18 @@
 			
 			.page,
 			.page-group {
-				height: 110%;
+				height: 100%;
+			}
+			
+			@media screen and (min-width: 413px) {
+			    .page,
+				.page-group {
+					height: 110%;
+				}
+				.page{
+					background: url(./img/bg.png) no-repeat -1px -1px;
+					background-size: 101%;
+				}
 			}
 			
 			.xb {
