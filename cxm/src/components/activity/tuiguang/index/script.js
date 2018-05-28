@@ -11,8 +11,7 @@ export default {
                 inviteNum:0,
                 bettingTotalAmount:0
             },
-            userId: this.$route.query.userId,
-
+            // userId: this.$route.query.userId,
         }
     },
     beforeCreate() {
@@ -33,7 +32,7 @@ export default {
     methods: {
         fetchData() {
             let data = {
-                'userId': this.userId
+                'userId': ''
             }
             api.extension(data)
                 .then(res => {
