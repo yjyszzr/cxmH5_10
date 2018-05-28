@@ -8,7 +8,10 @@ export default {
     data() {
         return {
             explain: {},
-            userId: this.$route.query.userId
+            userId: this.$route.query.userId,
+            channelDistributor:0,
+            inviteNum:0,
+            bettingTotalAmount:0,
         }
     },
     beforeCreate() {
@@ -20,15 +23,6 @@ export default {
         }
     },
     mounted() {
-        let data = {
-            'userId': this.userId
-        }
-        api.extension(data)
-            .then(res => {
-                if (res.code == 0) {
-                    this.explain = res.data
-                }
-            })
         setTimeout(() => {
             this.fetchData()
         }, 1000)

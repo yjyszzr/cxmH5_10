@@ -102,18 +102,6 @@ export default {
         replace: false
       });
     },
-    goExplain() {
-      this.$router.push({
-        path: "/activity/rule",
-        replace: false
-      });
-    },
-    goInclude() {
-      this.$router.push({
-        path: "/activity/include",
-        replace: false
-      });
-    },
     custormAnchor(anchorName) {
       // 找到锚点
       let anchorElement = document.getElementById(anchorName);

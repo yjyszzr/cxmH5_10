@@ -21,7 +21,6 @@ export default {
         }
         api.income(data)
             .then(res => {
-                console.log(this.userId)
                 if (res.code == 0) {
                     this.income = res.data
                 }

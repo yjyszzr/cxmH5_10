@@ -17,7 +17,7 @@ export default {
     },
     mounted() {
         this.fetchData()
-        isShare('刚刚地方地方第三方的', '地方地方地方上的', 'http://192.168.31.232:8080:/activity/mycode?cxmxc=scm&cmshare=1')
+        isShare('注册送好礼', '天”助力2018世界杯，110元彩金等您来领', 'http://39.106.18.39:9805:/activity/mycode?cxmxc=scm&cmshare=1')
         isTitle('我的二维码')
     },
     methods: {

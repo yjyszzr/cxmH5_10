@@ -23,11 +23,18 @@ export default {
         }
         api.incomedetail(data)
             .then(res => {
-                console.log(res)
                 if (res.code == 0) {
                     this.incomedetail = res.data
                 }
             })
         isTitle("收入明细")
+    },
+    methods:{
+        goInclude() {
+            this.$router.push({
+                path: "/activity/include",
+                replace: false
+            });
+        },
     }
 }
