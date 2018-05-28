@@ -9,11 +9,12 @@ const expUrl = 'http://39.106.18.39:9805'
 export let getCsUrl = () =>{
     return expUrl;
 }
-export let isShare = (arg,text,url) =>{
+export let isShare = (arg,text,url,thumbUrl) =>{
 	let obj = {}
     window.getCxmShare = function (){
     		obj.title = arg
-    		obj.description = text
+            obj.description = text
+            obj.img = thumbUrl
             obj.url = expUrl+url
         return obj
     } 

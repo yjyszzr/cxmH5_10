@@ -31,10 +31,20 @@ export default {
     },
     methods:{
         goInclude() {
-            this.$router.push({
-                path: "/activity/include",
-                replace: false
-            });
+            if(this.$route.query.showtitle&&this.$route.query.showtitle=='1'){
+                this.$router.push({
+                    path: "/activity/include",
+                    query:{
+                        'showtitle': '1'
+                    },
+                    replace: false
+                });
+            }else{
+                this.$router.push({
+                    path: "/activity/include",
+                    replace: false
+                });
+            }
         },
     }
 }

@@ -24,36 +24,40 @@
 		},
 		methods: {
 			lunbo(url) {
-				if(getUrlStr('type',url)=='3'){
-					this.$store.state.matchObj = {};
-					this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
-					this.$store.state.mark_playObj.bfIdSaveMap = new Map();
-					this.$store.state.freebuyId = getUrlStr('subid',url);
-					this.$router.push({
-						path: "/freebuy/singleNote",
-						query: {
-							id: getUrlStr('subid',url)
-						},
-						replace: false
-					});
-				}else if(getUrlStr('type',url)=='4'){
-					 this.$router.push({
-						path: '/lottery/teamDetail',
-						query:{
-							id: getUrlStr('id',url)
-						},
-						replace: false
-					})
-				}else if(getUrlStr('type',url)=='8'){
-					 this.$router.push({
-							path: "/index/consult",
+				if(this.$route.path.split("/")[1] == "find"&&getUrlStr('from',url)=='app_find'){
+					location.href=url
+				}else{
+					if(getUrlStr('type',url)=='3'){
+						this.$store.state.matchObj = {};
+						this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
+						this.$store.state.mark_playObj.bfIdSaveMap = new Map();
+						this.$store.state.freebuyId = getUrlStr('subid',url);
+						this.$router.push({
+							path: "/freebuy/singleNote",
 							query: {
-							id: getUrlStr('id',url)
+								id: getUrlStr('subid',url)
 							},
 							replace: false
-					});
-				}else{
-					location.href=url
+						});
+					}else if(getUrlStr('type',url)=='4'){
+						this.$router.push({
+							path: '/lottery/teamDetail',
+							query:{
+								id: getUrlStr('id',url)
+							},
+							replace: false
+						})
+					}else if(getUrlStr('type',url)=='8'){
+						this.$router.push({
+								path: "/index/consult",
+								query: {
+								id: getUrlStr('id',url)
+								},
+								replace: false
+						});
+					}else{
+						location.href=url
+					}
 				}
 			}
 		}

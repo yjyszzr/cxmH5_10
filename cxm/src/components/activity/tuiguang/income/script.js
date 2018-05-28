@@ -29,14 +29,26 @@ export default {
     },
     methods: {
         golist(itemdate) {
-            this.$router.push({
-                path: '/activity/incomedetail',
-                query: {
-                    'addTime': new Date(itemdate.replace(/-/g, '/')).getTime(),
-                    'userId': this.userId
-                },
-                replace: false
-            })
+            if(this.$route.query.showtitle&&this.$route.query.showtitle=='1'){
+                this.$router.push({
+                    path: '/activity/incomedetail',
+                    query: {
+                        'addTime': new Date(itemdate.replace(/-/g, '/')).getTime(),
+                        'userId': this.userId,
+                        'showtitle': '1'
+                    },
+                    replace: false
+                })
+            }else{
+                this.$router.push({
+                    path: '/activity/incomedetail',
+                    query: {
+                        'addTime': new Date(itemdate.replace(/-/g, '/')).getTime(),
+                        'userId': this.userId
+                    },
+                    replace: false
+                })
+            }
         }
 
     }
