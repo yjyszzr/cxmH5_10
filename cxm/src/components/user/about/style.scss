@@ -10,6 +10,15 @@
         display: inline-block;
         vertical-align: middle;
     }
+    i{
+        font-style: normal;
+        color: #e95504;
+        padding-top: px2rem(20px);
+        margin-left: px2rem(10px);
+        font-size: px2rem(30px);
+        margin-bottom: px2rem(-30px);
+
+    }
 }
 .wechat{
     border-top: 1px solid #e5e5e5;
