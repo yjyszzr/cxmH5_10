@@ -6,10 +6,9 @@
 <template>
     <div class="wrap" >
         <div class="logo">
-            <img src="../../../assets/img/banbenhao@2x.png" height="92" width="324"/>
+            <img src="../../../assets/img/logo.png" alt="彩小秘" height="92" width="248"/><i>v1.0.3</i>
         </div>
         <section style="background: #fff">
-
             <section class=" wechat">
                 <ul class="msg_list">
                     <li>
