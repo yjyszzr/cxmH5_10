@@ -14,6 +14,9 @@
                 <p v-for="(item,i) in $store.state.zxDetailObj.labelsArr" :key='i'>{{item}}</p>
             </div>
         </div>
+        <div class="placeHolder" v-if="$store.state.zxDetailObj==''">
+            
+        </div>
         <div class="xgNews" v-show="$store.state.zxDetailObj.articles&&$store.state.zxDetailObj.articles.length>0">
             <h3>相关文章</h3>
             <ul>

@@ -24,7 +24,7 @@
 		},
 		methods: {
 			lunbo(url) {
-				if(this.$route.path.split("/")[1] == "find"&&getUrlStr('from',url)=='app_find'){
+				if(getUrlStr('from',location.href)=='app_find'){
 					location.href=url
 				}else{
 					if(getUrlStr('type',url)=='3'){
