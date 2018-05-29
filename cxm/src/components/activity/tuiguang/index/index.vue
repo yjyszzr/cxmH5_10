@@ -7,7 +7,7 @@
     <div class="twoActive">
         <div class="box1">
             <p>推广总收入（元）</p>
-            <p v-if="explain.channelDistributor == 0">{{explain.channelDistributor.totalAmount}}<i>元</i></p>
+            <p v-if="explain.channelDistributor">{{explain.channelDistributor.totalAmount}}<i>元</i></p>
             <p v-if="explain.channelDistributor">今日+{{explain.channelDistributor.todayAmount}}</p>
             <b @click="goExplain()">活动说明</b>
         </div>
