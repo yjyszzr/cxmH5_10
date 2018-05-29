@@ -52,7 +52,8 @@ export default {
                   }
             });
           }else{
-            location.href = '/index/consult?id='+c+'&frz=0&type=1&showtitle=1&cxmxc=scm'
+            // location.href = '/index/consult?id='+c+'&frz=0&type=1&showtitle=1&cxmxc=scm'
+            location.href = '/index/consult?id='+c+'&frz=0&type=8&showtitle=1&cxmxc=scm'
           }
         }else{
           if(this.$route.query.showtitle=='1'){

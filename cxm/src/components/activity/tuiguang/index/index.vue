@@ -34,7 +34,7 @@
             <ul v-bind:class="{'listed':item.ranking == 1 || item.ranking == 2 || item.ranking == 3}" class="box_ul2" v-for='(item,i) in explain.channelDistributorList' :key='i'>
                 <li v-bind:class="{'list_img': item.ranking == 1, 'list_img1':item.ranking == 2,'list_img2':item.ranking == 3,}">{{item.ranking}}</li>
                 <li>{{item.distributorMobile}}</li>
-                <li>{{item.extraReward}}元</li>
+                <li>{{item.totalAmount*1>0?item.extraReward:0.0}}元</li>
                 <li>{{item.totalAmount}}</li>
             </ul>
         </div>

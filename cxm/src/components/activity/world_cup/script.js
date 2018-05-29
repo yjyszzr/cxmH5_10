@@ -34,7 +34,7 @@ export default {
             let data = {
                 extendCat: '4',
                 page: this.page,
-                size: 3
+                size: 20
             }
             api.findList(data)
                 .then(res => {

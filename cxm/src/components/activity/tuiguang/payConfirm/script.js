@@ -39,7 +39,7 @@ export default {
                 })
         },
         payBtnDisable() {
-            Toast('可提现余额不足')
+            Toast('余额不足')
         }
     }
 }
