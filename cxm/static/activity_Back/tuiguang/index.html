@@ -225,7 +225,7 @@
 		var device = {
 			plat: 'h5',
 			apiv: 1,
-			appv: '1.0.2',
+			appv: '1.0.4',
 			appid: '',
 			mac: '',
 			w: window.screen.availWidth,
@@ -238,6 +238,7 @@
 			net: '',
 			token: ''
 		}
+		var userData = ''
 		
 		function getUrlStr(name,url){
 		    var reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
@@ -259,6 +260,7 @@
 				}, ]
 			})
 		}
+
 
 		function getSmsCode() {
 			var obj = {}
@@ -294,6 +296,7 @@
 						$('.code').show()
 						$('.lqbtn').css('display', 'block')
 						$('.btn').hide()
+						userData = data.data
 						getCode()
 					} else if(data.code >= 30000 && data.code <= 310000) {
 						$.toast(data.msg);
@@ -345,7 +348,7 @@
 				'mobile': $('.telVal').val(),
 				'smsCode': $('.codeVal').val(),
 				'loginSource': '4',
-				'channelDistributorId': getUrlStr('id',location.href)
+				'channelDistributorId': userData
 			}
 			obj2.device = device
 			$.ajax({

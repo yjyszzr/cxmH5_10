@@ -5,7 +5,7 @@ export let isTitle = (arg) =>{
     }
 }
 //app h5页面分享
-const expUrl = 'http://m.caixiaomi.net'
+const expUrl = 'http://39.106.18.39:9805'
 export let getCsUrl = () =>{
     return expUrl;
 }
