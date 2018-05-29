@@ -1,5 +1,5 @@
 <template>
-	<div class="activity section">
+	<div v-if="activity != null" class="activity section">
         <img :src="activity.actImg" alt="" @click="ac(activity.actUrl)">
     </div>
 </template>
@@ -17,7 +17,7 @@
 			'activity'
 		],
 		mounted() {
-			
+
 		},
 		methods: {
 			ac(url) {
