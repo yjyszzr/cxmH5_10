@@ -6,57 +6,14 @@
             width: 100%;
         }
     }
-    .cup_list{
-        margin-top: 0.26667rem;
-        background: #edf8e8;
-        padding: 0 0.26667rem;
-        .choice{
-            border-bottom: 1px solid #f0f0f0;
-            padding: 0.26667rem 0;
-            span {
-                color: #9f9f9f;
-                margin-right: px2rem(18px);
-                font-size: px2rem(24px);
-            }
-            span:last-of-type{
-                margin: 0;
-            }
-            .zxBox{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                .zxleft{
-                    width: px2rem(430px);
-                    height: px2rem(164px);
-                    display: flex;
-                    justify-content: space-between;
-                    flex-direction: column;
-                    h5{
-                        color: #505050;
-                        font-size: px2rem(30px);
-                        overflow : hidden;
-                        text-overflow: ellipsis;
-                        display: -webkit-box;
-                        -webkit-line-clamp: 2;
-                    }
-                }
-                .zxright{
-                    position: relative;
-                    .img1 {
-                        width: px2rem(230px);
-                        height: px2rem(164px);
-                        display: block;
-                    }
-                    .img2{
-                        width: px2rem(230px);
-                        height: px2rem(164px);
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                    }
-                }
+    .information {
+        margin-top: px2rem(20px);
+        background: #fff;
+        padding: 0 px2rem(20px);
+        ul {
+            li {
+                width: 100%;
             }
         }
-
     }
 }
