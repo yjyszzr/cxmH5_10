@@ -60,12 +60,15 @@ export default {
                 font-size: px2rem(52px);
             }
             span{
-                font-size: px2rem(20px);
+                font-size: px2rem(20px); 
             }
         }
         a:nth-child(3){
-        		i{
-                font-size: px2rem(50px);
+        	i{
+                font-size: px2rem(49px);
+            }
+            span{
+                margin-bottom: px2rem(-4px);
             }
         }
     }
