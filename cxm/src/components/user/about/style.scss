@@ -1,11 +1,12 @@
 @import '../../../assets/css/function.scss';
 .logo{
     height: px2rem(385px);
-    line-height: px2rem(385px);
     text-align: center;
     background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     img{
-        width: px2rem(324px);
         height: px2rem(92px);
         display: inline-block;
         vertical-align: middle;
@@ -13,11 +14,12 @@
     i{
         font-style: normal;
         color: #e95504;
-        padding-top: px2rem(20px);
         margin-left: px2rem(10px);
-        font-size: px2rem(30px);
-        margin-bottom: px2rem(-30px);
-
+        font-size: px2rem(32px);
+        display: flex;
+        height: px2rem(92px);
+        align-items: flex-end;
+        justify-content: flex-start;
     }
 }
 .wechat{
