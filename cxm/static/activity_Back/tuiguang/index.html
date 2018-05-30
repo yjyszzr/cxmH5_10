@@ -103,9 +103,9 @@
 			.xb p {
 				margin: 0;
 				font-size: 0.6rem;
-				text-align: center;
 				margin-top: 0.2rem;
 				color: white;
+				margin-left: 0.15rem;
 			}
 			
 			.xb p span {
@@ -204,7 +204,7 @@
 				<button class="btn" onclick="register()">领取110元彩金</button>
 				<button class="lqbtn" onclick="lqbtn()">立即领取</button>
 				<div class="xb">
-					<h3>大奖细喜报</h3>
+					<h3>大奖喜报</h3>
 				</div>
 			</div>
 			<div class="page" id='router2'>
@@ -221,7 +221,7 @@
 	</script>
 	<script type="text/javascript">
 		$.showIndicator();
-		var baseUrl = 'http://39.106.18.39:8765/api/'
+		var baseUrl = 'http://api.caixiaomi.net/api/'
 		var device = {
 			plat: 'h5',
 			apiv: 1,
@@ -391,7 +391,7 @@
 			}
 			var detect = detect()
 			if(detect==='ios'){
-				location.href = 'https://itunes.apple.com/us/app/彩小秘-提供你想要的体育资讯/id1387369982?l=zh&ls=1&mt=8'
+				location.href = 'https://itunes.apple.com/us/app/彩小秘-你想要的体育资讯/id1390432855?l=zh&ls=1&mt=8'
 			}else if(detect==='android'){
 				location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
 			}
