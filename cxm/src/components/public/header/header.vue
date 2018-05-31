@@ -55,6 +55,11 @@
                 </div>		        
           </div>
         </div>
+        <!-- //世界杯头部 -->
+        <ul class="world_top" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='world_matchList'">
+            <li><p class="worldActive">冠军竞猜</p></li>
+            <li><p>冠亚军竞猜</p></li>
+        </ul>
     </div>
 </template>
 
@@ -456,6 +461,31 @@ export default {
   }
   .swiper-slide:last-of-type {
     background: none;
+  }
+  .world_top{
+    display: flex;
+    background: white;
+    height: px2rem(88px);
+    li{
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p{
+        height: 100%;
+        font-size: px2rem(28px);
+        color: #505050;
+        line-height: px2rem(88px);
+      }
+      .worldActive{
+        color: #ea5504;
+        border-bottom: 2px solid #ea5504;
+      }
+    }
+    li:first-of-type{
+      background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
+      background-size: 1px px2rem(50px);
+    }
   }
 }
 </style>

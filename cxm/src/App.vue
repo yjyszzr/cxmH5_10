@@ -159,6 +159,10 @@ export default {
             case 'red_packet':
               return "充值送壕礼";
 
+            case 'world_cup':
+                  return "世界杯";
+            case 'world_matchList':
+                return "世界杯";
         }
       } else {
         if (
