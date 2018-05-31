@@ -9,8 +9,7 @@ html {
 .page {
 	font-family: "微软雅黑";
 }
-
-.bg{
+.regDetail{
 	width: 100%;
 	position: absolute;
 	top: 0;
@@ -40,39 +39,35 @@ html {
 	font-size: 0.8rem;
 }
 
-.aTitle {
-	margin: 3.5rem auto 1rem;
-	width: 80%;
-	display: block;
-	position: relative;
-	z-index: 10;
+.valBox{
+	width: 90%;
+	margin: 14rem auto 0;
+	background: #ea5504;
+	padding: 1.5rem 0;
+	opacity: 0.8;
 }
 
 .telVal {
 	display: block;
 	border: none;
 	background: rgba(255, 255, 255, 0.9);
-	margin: 0 auto;
 	width: 70%;
 	height: 2rem;
+	margin: 0 auto;
 	font-size: 0.7rem;
 	text-align: center;
 	border-radius: 0;
-	position: relative;
-	z-index: 10;
 }
 
 .btn {
-	margin: 0.6rem auto 1.5rem;
-	background: #ea5504;
+	margin: 0.4rem auto 0rem;
+	background: #fff;
 	width: 70%;
 	height: 2rem;
 	border: none;
 	display: block;
 	font-size: 0.7rem;
-	color: white;
-	position: relative;
-	z-index: 10;
+	color: #ea5504;
 }
 
 .page,
@@ -84,7 +79,6 @@ html {
 
 .xb {
 	width: 70%;
-	background: rgba(0, 0, 0, 0.4);
 	margin: 0 auto;
 	padding-bottom: 0.5rem;
 	position: relative;
@@ -93,7 +87,7 @@ html {
 
 h3 {
 	font-size: 0.75rem;
-	color: rgb(249, 236, 89);
+	color: #EA5504;
 	font-weight: 400;
 	text-align: center;
 	padding-top: 0.5rem;
@@ -103,12 +97,12 @@ h3 {
 	margin: 0;
 	font-size: 0.6rem;
 	margin-top: 0.2rem;
-	color: white;
+	color: #505050;
 	margin-left: 0.15rem;
 }
 
 .xb p span {
-	color: rgb(249, 236, 89);
+	color: #EA5504;
 }
 
 .left {
@@ -120,8 +114,6 @@ h3 {
 	margin: 0.6rem auto;
 	overflow: hidden;
 	display: none;
-	position: relative;
-	z-index: 10;
 }
 
 .codeVal {
@@ -177,15 +169,17 @@ h3 {
 }
 
 .lqbtn {
-	margin: 0.6rem auto 1.5rem;
-	background: #ea5504;
+	margin: 0.4rem auto 0rem;
+	background: #fff;
 	width: 70%;
 	height: 2rem;
 	border: none;
 	display: block;
 	font-size: 0.7rem;
-	color: white;
+	color: #EA5504;
 	display: none;
-	position: relative;
-	z-index: 10;
+}
+.codeBox{
+	margin: 13rem auto 0;
+	padding: 0.7rem 0;
 }

@@ -42,8 +42,9 @@ export default {
         .then(res => {
             if(res.code==0) {
                 Toast('注册成功')
+                localStorage.setItem('token',res.data.token)
                 this.$router.push({
-                    path: '/user/pwd',
+                    path: '/',
                     replace: false
                 })
             }
