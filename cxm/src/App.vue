@@ -154,6 +154,12 @@ export default {
             case 'discountList':
               return "活动卡券";
             case 'world_cup':
+              return "世界杯";
+          //二期活动
+            case 'red_packet':
+              return "充值送壕礼";
+
+            case 'world_cup':
                   return "世界杯";
             case 'world_matchList':
                 return "世界杯";

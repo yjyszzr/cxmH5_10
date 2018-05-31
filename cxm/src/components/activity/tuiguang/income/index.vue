@@ -13,7 +13,7 @@
         <ul @click="golist(item.time)" class="box_list_2" v-for='(item,i) in income' :key='i'>
             <li>{{item.time}}</li>
             <li>{{item.registerNum }}</li>
-            <li>{{item.lotteryAmount }}</li>
+            <li>{{item.lotteryAmount}}</li>
             <li style="color: #e95504;">{{item.income }}</li>
             <li class="arrow_right float_right"></li>
         </ul>

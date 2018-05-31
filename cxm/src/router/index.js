@@ -309,6 +309,13 @@ const router = new Router({
           cname: '世界杯资讯',
           component: resolve => require(['@/components/activity/world_cup/index.vue'], resolve)
       },
+      //二期活动
+      {
+          path: '/activity/red_packet',
+          name: 'red_packet',
+          cname: '充值首页',
+          component: resolve => require(['@/components/activity/red_packet/index/index.vue'], resolve)
+      },
       {
           path: '/activity/world_matchList',
           name: 'world_matchList',
@@ -329,7 +336,7 @@ const router = new Router({
               path: 'fsplace',
               name: 'fsplace',
               component: resolve => require(['@/components/activity/world_cup_guessing/world_matchList/fsplace/fsplace.vue'], resolve)
-            } 
+            }
           ]
       }
   ]
