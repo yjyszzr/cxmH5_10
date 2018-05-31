@@ -380,4 +380,12 @@ export default {
     toPaymentPage(params) {
         return fetchPost('/member/dl/cashCoupon/toPaymentPage', params)
     },
+    //冠军竞猜列表
+    gjs(params) {
+        return fetchPost('/lottery/dl/wc/gjs', params)
+    },
+    //冠亚军竞猜列表
+    gyjs(params) {
+        return fetchPost('/lottery/dl/wc/gyjs', params)
+    },
 }
