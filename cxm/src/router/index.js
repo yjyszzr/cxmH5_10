@@ -316,7 +316,6 @@ const router = new Router({
           cname: '充值首页',
           component: resolve => require(['@/components/activity/red_packet/index/index.vue'], resolve)
       },
-      },
       {
           path: '/activity/world_matchList',
           name: 'world_matchList',
