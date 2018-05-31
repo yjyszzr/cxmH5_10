@@ -141,6 +141,7 @@
 				</ul>
 			</div>
 		</div>
+    <!-- <router-link to='/activity/world_matchList'>世界杯</router-link> -->
 		<!--资讯-->
 		<div class="information">
 			<ul>

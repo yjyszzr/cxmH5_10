@@ -306,8 +306,26 @@ const router = new Router({
       {
           path: '/activity/world_cup',
           name: 'world_cup',
-          cname: '世界杯',
+          cname: '世界杯资讯',
           component: resolve => require(['@/components/activity/world_cup/index.vue'], resolve)
+      },
+      {
+          path: '/activity/world_matchList',
+          name: 'world_matchList',
+          cname: '世界杯赛事',
+          component: resolve => require(['@/components/activity/world_cup_guessing/world_matchList/matchListBox/matchList.vue'], resolve),
+          children: [
+            {
+              path: 'worldwinner',
+              name: 'worldwinner',
+              component: resolve => require(['@/components/activity/world_cup_guessing/world_matchList/matchwinner/matchwinner.vue'], resolve)
+            },
+            {
+              path: 'fsplace',
+              name: 'fsplace',
+              component: resolve => require(['@/components/activity/world_cup_guessing/world_matchList/fsplace/fsplace.vue'], resolve)
+            } 
+          ]
       }
   ]
 })

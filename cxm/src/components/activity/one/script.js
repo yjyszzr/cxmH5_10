@@ -10,9 +10,9 @@ export default {
 		}
 	},
 	created() {
-		let that = this
-        window.actionMessage = function (arg) {
-        	    that.token = JSON.parse(arg).token
+			let that = this
+        	window.actionMessage = function (arg) {
+        	that.token = JSON.parse(arg).token
             localStorage.setItem('token', JSON.parse(arg).token)
         }
     },

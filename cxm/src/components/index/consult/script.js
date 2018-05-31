@@ -50,7 +50,7 @@ export default {
         },
         reloadzxDetail(c){
             document.querySelector('#content').scrollTop = 0;
-            Indicator.open()
+            // Indicator.open()
             this.id = c
             this.fetchData()
         },
@@ -96,7 +96,6 @@ export default {
     },
     watch:{
         zxCollectionFlag(a,b){
-            //console.log(a)
             Indicator.open()
             this.zxCollectionStatus(a)
         }
