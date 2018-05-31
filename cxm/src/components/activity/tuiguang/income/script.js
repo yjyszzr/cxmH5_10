@@ -9,7 +9,8 @@ export default {
         return {
             token: '',
             income: {},
-            userId: this.$route.query.userId
+            userId: this.$route.query.userId,
+
         }
     },
     beforeCreate() {
@@ -30,15 +31,7 @@ export default {
     methods: {
         golist(itemdate) {
             if(this.$route.query.showtitle&&this.$route.query.showtitle=='1'){
-                this.$router.push({
-                    path: '/activity/incomedetail',
-                    query: {
-                        'addTime': new Date(itemdate.replace(/-/g, '/')).getTime(),
-                        'userId': this.userId,
-                        'showtitle': '1'
-                    },
-                    replace: false
-                })
+                location.href="/activity/incomedetail?cxmxc=scm&userId="+this.userId+"&addTime="+new Date(itemdate.replace(/-/g, '/')).getTime()+"&showtitle=1"
             }else{
                 this.$router.push({
                     path: '/activity/incomedetail',

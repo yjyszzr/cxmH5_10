@@ -64,15 +64,8 @@ export default {
             }
         },
         detail(userId) {
-            if(this.$route.query.showtitle&&this.$route.query.showtitle=='1'){
-                this.$router.push({
-                    path: '/activity/income',
-                    query: {
-                        'userId': userId,
-                        'showtitle': '1'
-                    },
-                    replace: false
-                })
+            if(this.$route.query.showtitle&this.$route.query.showtitle=='1'){
+                location.href="/activity/income?cxmxc=scm&userId="+userId+"&showtitle=1"
             }else{
                 this.$router.push({
                     path: '/activity/income',

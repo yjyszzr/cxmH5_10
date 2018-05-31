@@ -2,6 +2,7 @@ import {isTitle} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import dateFilter from '../../../../util/datefilter.js'
+import datefilter from "../../../../util/datefilter";
 
 export default {
     name: 'incomedetail',
@@ -31,7 +32,7 @@ export default {
     },
     methods:{
         goInclude() {
-            if(this.$route.query.showtitle&&this.$route.query.showtitle=='1'){
+            if(this.$route.query.showtitle&this.$route.query.showtitle=='1'){
                 this.$router.push({
                     path: "/activity/include",
                     query:{
@@ -45,6 +46,6 @@ export default {
                     replace: false
                 });
             }
-        },
+        }
     }
 }

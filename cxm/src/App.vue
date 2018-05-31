@@ -151,10 +151,14 @@ export default {
                 return "优惠兑换";
             case 'payConfirm':
             		return "支付订单";
-          case 'discountList':
+            case 'discountList':
               return "活动卡券";
-              case 'world_cup':
-                  return "世界杯";
+            case 'world_cup':
+              return "世界杯";
+          //二期活动
+            case 'red_packet':
+              return "充值送壕礼";
+
         }
       } else {
         if (

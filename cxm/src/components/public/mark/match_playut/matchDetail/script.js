@@ -39,7 +39,7 @@ export default {
             })
         },
         matchTimeDate(c){
-            return datefilter(c*1000,1)
+            return datefilter(Number(c * 1000), 3)
         }
     },
     mounted(){
