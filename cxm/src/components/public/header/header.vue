@@ -57,8 +57,8 @@
         </div>
         <!-- //世界杯头部 -->
         <ul class="world_top" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='world_matchList'">
-            <li><p class="worldActive">冠军竞猜</p></li>
-            <li><p>冠亚军竞猜</p></li>
+            <li><p @click="tabSilde(1,$event)" class="worldActive">冠军竞猜</p></li>
+            <li><p @click="tabSilde(2,$event)">冠亚军竞猜</p></li>
         </ul>
     </div>
 </template>
@@ -222,12 +222,24 @@ export default {
       }
     },
     findTabClick(c,s){
-
       if(c.target.localName=='p'&&c.target.parentElement.className.indexOf('findactive')==-1){
         Indicator.open()
         $('.findactive').removeClass('findactive')
         c.target.parentElement.className = "swiper-slide findactive";
         this.$store.dispatch("changeFinActive",s)
+      }
+    },
+    tabSilde(c,s){
+      $('.worldActive').removeClass('worldActive')
+      s.target.className= 'worldActive'
+      if(c==1){
+        this.$router.replace({
+          path: '/activity/world_matchList/worldwinner'
+        })
+      }else{
+        this.$router.replace({
+          path: '/activity/world_matchList/fsplace'
+        })
       }
     }
   },
@@ -476,6 +488,7 @@ export default {
         font-size: px2rem(28px);
         color: #505050;
         line-height: px2rem(88px);
+        box-sizing: border-box;
       }
       .worldActive{
         color: #ea5504;

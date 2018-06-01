@@ -141,7 +141,6 @@
 				</ul>
 			</div>
 		</div>
-    <!-- <router-link to='/activity/world_matchList'>世界杯</router-link> -->
 		<!--资讯-->
 		<div class="information">
 			<ul>
@@ -205,13 +204,23 @@ export default {
       this.$store.state.freebuyId = c;
       this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
       this.$store.state.mark_playObj.bfIdSaveMap = {};
-      this.$router.push({
-        path: "/freebuy/singleNote",
-        query: {
-          id: c
-        },
-        replace: false
-      });
+      if(c=='0'){
+        this.$router.push({
+          path: "/activity/world_matchList",
+          query: {
+            id: c
+          },
+          replace: false
+        });
+      }else{
+        this.$router.push({
+          path: "/freebuy/singleNote",
+          query: {
+            id: c
+          },
+          replace: false
+        });
+      }
     },
     fetchData() {
       let data = {

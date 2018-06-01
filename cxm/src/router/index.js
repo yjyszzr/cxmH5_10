@@ -323,6 +323,11 @@ const router = new Router({
           component: resolve => require(['@/components/activity/world_cup_guessing/world_matchList/matchListBox/matchList.vue'], resolve),
           children: [
             {
+                path: '/',
+                name: 'worldwinner',
+                component: resolve => require(['@/components/activity/world_cup_guessing/world_matchList/matchwinner/matchwinner.vue'], resolve)
+            },
+            {
               path: 'worldwinner',
               name: 'worldwinner',
               component: resolve => require(['@/components/activity/world_cup_guessing/world_matchList/matchwinner/matchwinner.vue'], resolve)

@@ -99,6 +99,10 @@ export default {
             Indicator.open()
             this.zxCollectionStatus(a)
         }
+        // ,
+        // '$route':(to, from)=>{
+        //     console.log(to)
+        // }
     },
     beforeRouteLeave(to, from, next) {
       next()
