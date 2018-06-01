@@ -388,4 +388,8 @@ export default {
     gyjs(params) {
         return fetchPost('/lottery/dl/wc/gyjs', params)
     },
+    //充值送红包
+    toRechange(params) {
+        return fetchPost('/member/donation/rechargeCard/list', params)
+    },
 }

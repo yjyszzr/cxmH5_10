@@ -314,7 +314,23 @@ const router = new Router({
           path: '/activity/red_packet',
           name: 'red_packet',
           cname: '充值首页',
-          component: resolve => require(['@/components/activity/red_packet/index/index.vue'], resolve)
+          component: resolve => require(['@/components/activity/red_packet/index/index.vue'], resolve),
+          // children:[
+          //     {
+          //
+          //     }
+          // ]
+      },
+      {
+          path: '/activity/popup',
+          name: 'popup',
+          cname: '充值首页',
+          component: resolve => require(['@/components/activity/red_packet/popup/index.vue'], resolve),
+          // children:[
+          //     {
+          //
+          //     }
+          // ]
       },
       {
           path: '/activity/world_matchList',

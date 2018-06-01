@@ -6,54 +6,17 @@
     <div class="packetindex">
         <div class="pack_center">
             <img src="../image/img1.png">
-            <div class="time">距离活动结束还有<span>18</span>时<span>18</span>分<span>18</span>秒</div>
+            <!--<div class="time">距离活动结束还有<span>18</span>时<span>18</span>分<span>18</span>秒</div>-->
+            <div class="time">
+                <v-countDown :endTime="packet.endTime" :callback="callback" endText="已经结束了"></v-countDown>
+            </div>
             <div class="box">
                 <ul>
-                    <li>
+                    <li v-for='(item,i) in packet.rechargeCardList' :key='i'>
                         <div>
-                            <i></i>
-                            <p><b>￥</b><span>10</span>元以上</p>
-                            <p>充多少返多少&nbsp;最高返<span>10</span>元</p>
-                        </div>
-                        <div class="btn">火速充值</div>
-                    </li>
-                    <li>
-                        <div>
-                            <i></i>
-                            <p><b>￥</b><span>10</span>元以上</p>
-                            <p>充多少返多少&nbsp;最高返<span>10</span>元</p>
-                        </div>
-                        <div class="btn">火速充值</div>
-                    </li>
-                    <li>
-                        <div>
-                            <i></i>
-                            <p><b>￥</b><span>10</span>元以上</p>
-                            <p>充多少返多少&nbsp;最高返<span>10</span>元</p>
-                        </div>
-                        <div class="btn">火速充值</div>
-                    </li>
-                    <li>
-                        <div>
-                            <i></i>
-                            <p><b>￥</b><span>10</span>元以上</p>
-                            <p>充多少返多少&nbsp;最高返<span>10</span>元</p>
-                        </div>
-                        <div class="btn">火速充值</div>
-                    </li>
-                    <li>
-                        <div>
-                            <i></i>
-                            <p><b>￥</b><span>10</span>元以上</p>
-                            <p>充多少返多少&nbsp;最高返<span>10</span>元</p>
-                        </div>
-                        <div class="btn">火速充值</div>
-                    </li>
-                    <li>
-                        <div>
-                            <i></i>
-                            <p><b>￥</b><span>10</span>元以上</p>
-                            <p>充多少返多少&nbsp;最高返<span>10</span>元</p>
+                            <i v-bind:class="{'img3':item.type == 0,'img5':item.type == 1}"></i>
+                            <p><b>￥</b><span>{{item.realValue}}</span><span v-if="item.type == 0">元以上</span></p>
+                            <p>{{item.typeLabel}}</p>
                         </div>
                         <div class="btn">火速充值</div>
                     </li>
@@ -62,13 +25,17 @@
                     <h5>活动规则</h5>
                     <div>
                         <span>1、</span>
-                        <p>距离活动结束还有距离活动结束还有距离活动结束还有距离活动结束还有距离活动结束还有距离活动结束还有</p>
+                        <p>本次活动时间为4月28日全天，活动时间截止则默认本次活动自动结束。具体使用范围以红包券显示为准。请在个人中心“我的卡券”中查看。</p>
                         <span>2、</span>
-                        <p>距离活动结束还有距离活动结束还有距离活动结束还有距离活动结束还有距离活动结束还有距离活动结束还有</p>
+                        <p>用户参加本次活动充值的金额，仅限用户支付购彩使用，不可提现。</p>
                         <span>3、</span>
-                        <p>距离活动结束还有距离活动结束还有距离活动结束还有距离活动结束还有距离活动结束还有距离活动结束还有</p>
+                        <p>活动期间，如有玩家通过恶意、重复注册等方式参与本次活动，网站有权冻结其账户并保留追责权利，对已赠送的卡券，网站有权要求用户返还。</p>
                         <span>4、</span>
-                        <p>距离活动结束还有距离活动结束还有距离活动结束还有距离活动结束还有距离活动结束还有距离活动结束还有</p>
+                        <p>如遇不可抗力因素，网站有权在活动期间更改活动规则，用户应随时关注网站公告。</p>
+                        <span>5、</span>
+                        <p>如有问题，请拨打客服电话咨询：400-28838880－210。</p>
+                        <span>6、</span>
+                        <p>本活动最终解释权归彩小秘彩票所有。</p>
                     </div>
                 </div>
                 <div class="heit"></div>
