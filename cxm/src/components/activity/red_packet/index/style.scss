@@ -15,7 +15,6 @@
     span{
       padding: px2rem(2px);
       color: #da2d1c;
-      background: #fff3c1;
       text-align: center;
       margin: 0 px2rem(5px);
       border-radius: px2rem(10px);
@@ -59,11 +58,12 @@
               background-size: 100% 100%;
             }
             .img5{
+              width: px2rem(186px);
               background: url(../image/img5.png) no-repeat;
               background-size: 100% 100%;
             }
             p{
-              margin-left: px2rem(30px);
+              margin-left: px2rem(40px);
             }
             p:nth-of-type(1){
               padding-top: px2rem(80px);

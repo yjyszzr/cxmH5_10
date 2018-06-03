@@ -392,4 +392,8 @@ export default {
     toRechange(params) {
         return fetchPost('/member/donation/rechargeCard/list', params)
     },
+    //pa
+    countUser(params) {
+        return fetchPost('/payment/payment/recharge/countUserRecharge', params)
+    },
 }

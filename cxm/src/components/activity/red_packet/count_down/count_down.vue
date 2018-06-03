@@ -20,19 +20,18 @@
             },
             endText:{
                 type : String,
-                default:'已结束'
+                default:'活动已结束，敬请期待下次活动'
             },
             callback : {
                 type : Function,
                 default :''
             },
-            endTime:{
-                type:String
-            },
         },
         mounted () {
             this.$nextTick(()=>{
-                this.countdowm(this.endTime)
+
+                this.countdowm(this.endTime);
+
             })
         },
         methods: {
@@ -52,7 +51,7 @@
                         sec = sec < 10 ? "0" + sec : sec;
                         let format = '';
                         if(day > 0){
-                            format =  `${day}天${hour}小时${min}分${sec}秒`;
+                            format =  `距离活动结束还有${day}天${hour}小时${min}分${sec}秒`;
                         }
                         if(day <= 0 && hour > 0 ){
                             format = `${hour}小时${min}分${sec}秒`;
