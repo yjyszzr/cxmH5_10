@@ -1,0 +1,60 @@
+@import "../../../../assets/css/function.scss";
+.match_w {
+  width: px2rem(652px);
+  background: white;
+  .ft_title {
+    text-align: center;
+    font-size: px2rem(30px);
+    height: px2rem(100px);
+    line-height: px2rem(100px);
+  }
+  .matchTeam {
+    width: px2rem(612px);
+    margin: 0 auto;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch!important;
+    .nullStatus{
+      display: flex;
+      justify-content: center;
+      margin-top: px2rem(180px);
+    }
+    li {
+      width: px2rem(192px);
+      height: px2rem(72px);
+      border: 1px solid #f0f0f0;
+      box-sizing: border-box;
+      text-align: center;
+      line-height: px2rem(72px);
+      margin-bottom: px2rem(48px);
+      float: left;
+      margin-right: px2rem(18px);
+      color: #505050;
+      font-size: px2rem(26px);
+    }
+    li:nth-child(3n) {
+      margin-right: 0;
+    }
+    .filterActive{
+        color: white!important;
+        background: #e85504;
+    }
+  }
+  .confim_btn {
+    display: flex;
+    border-top: 1px solid #f0f0f0;
+    p {
+      flex: 1;
+      height: px2rem(72px);
+      border-right: 1px solid #f0f0f0;
+      box-sizing: border-box;
+      text-align: center;
+      line-height: px2rem(72px);
+      font-size: px2rem(26px);
+      color: #e85504;
+    }
+    p:last-of-type {
+      border: none;
+      color: #505050;
+    }
+  }
+}
