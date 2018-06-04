@@ -1,9 +1,3 @@
-//app h5页面title
-// export let isTitle = (arg) =>{
-//     window.getCxmTitle = function (){
-//         return '彩小秘·'+arg
-//     }
-// }
 //app h5页面分享
 export let isShare = (arg,text,url,thumbUrl) =>{
 	let obj = {}

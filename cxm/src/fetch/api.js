@@ -391,5 +391,14 @@ export default {
     //下单
     saveBetInfoWd(params) {
         return fetchPost('/lottery/dl/wc/saveBetInfo', params)
-    }
+    },
+    //充值送红包
+    toRechange(params) {
+        return fetchPost('/member/donation/rechargeCard/list', params)
+    },
+    //pa
+    countUser(params) {
+        return fetchPost('/payment/payment/recharge/countUserRecharge', params)
+    },
+
 }
