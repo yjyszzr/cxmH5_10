@@ -19,7 +19,7 @@
       <v-mark v-if="this.$store.state.mark_show"></v-mark>
     </transition>
     <v-pmark v-show="this.$store.state.mark_playObj.mark_playBox"></v-pmark>
-      <v-popup></v-popup>
+      <!--<v-popup></v-popup>-->
   </div>
 </template>
 
