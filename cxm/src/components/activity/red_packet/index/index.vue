@@ -15,7 +15,9 @@
                     <li v-for='(item,i) in packet.rechargeCardList' :key='i'>
                         <div>
                             <i v-bind:class="{'img3':item.type == 0,'img5':item.type == 1}"></i>
-                            <p><b>￥</b><span>{{item.realValue}}</span><span v-if="item.type == 0">元以上</span></p>
+                            <p><b>￥</b><span>{{item.realValue}}</span>
+                                <span>元</span>
+                            </p>
                             <p>{{item.typeLabel}}</p>
                         </div>
                         <div @click="btn(item.realValue, item.type)" class="btn">火速充值</div>

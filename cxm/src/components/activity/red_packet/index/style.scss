@@ -31,14 +31,13 @@
       width: 100%;
       height: 100%;
       ul{
-        display: flex;
-        flex-wrap: wrap;
         width: 100%;
-        justify-content:center;
         margin:0 auto;
         margin-bottom: px2rem(100px);
         li{
           margin: px2rem(10px) 0;
+          width: 50%;
+          display: inline-block;
           div{
             background: url(../image/img2.png) no-repeat;
             background-size: 100% 100%;
