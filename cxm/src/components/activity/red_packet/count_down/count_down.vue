@@ -13,6 +13,11 @@
                 content: '',
             }
         },
+        watch:{
+            endTime(times){
+                this.countdowm(times);
+            }
+        },
         props:{
             endTime:{
                 type: String,
@@ -29,9 +34,6 @@
         },
         mounted () {
             this.$nextTick(()=>{
-
-                this.countdowm(this.endTime);
-
             })
         },
         methods: {
