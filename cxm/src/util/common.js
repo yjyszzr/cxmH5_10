@@ -16,6 +16,7 @@ export let means = (arg) =>{
         paydata: window.paydata = function(){
             return arg
         },
+        //app title
         isTitle: window.getCxmTitle = function(){
             return '彩小秘·'+arg
         }
