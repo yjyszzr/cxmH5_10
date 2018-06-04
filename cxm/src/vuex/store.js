@@ -63,6 +63,7 @@ const state = {
         fsNum: 0,   //选中值计数
         worldfliter: [],   //筛选选中值
         fsplaceObj: {},  //初始化信息
+        world_tab: false
     },
     timertz: '',
 }

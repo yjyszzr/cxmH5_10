@@ -233,7 +233,7 @@ export default {
     tabSilde(c,s){
       $('.worldActive').removeClass('worldActive')
       s.target.className= 'worldActive'
-      localStorage.removeItem('world_tab')
+      this.$store.state.world_cupObj.world_tab = false
       if(c==1){
         this.$store.dispatch("changefsNum", '2');
         if(getUrlStr('showtitle',location.href)=='1'){

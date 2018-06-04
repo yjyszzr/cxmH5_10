@@ -31,24 +31,14 @@ export default {
 					path: '/user/register'
 				})
 			} else {
-				Indicator.open()
-				let data = {
-					str: ''
-				}
-				api.userInfoExceptPass(data)
-					.then(res => {
-						//console.log(res)
-						if(res.code == 0) {
-							MessageBox.alert('', {
-								message: '您已参加过该活动',
-								title: '提示',
-								confirmButtonText: '我知道了',
-								closeOnClickModal: false
-							}).then(action => {
+				MessageBox.alert('', {
+					message: '您已领取新人大礼包,前往查看',
+					title: '提示',
+					confirmButtonText: '我知道了',
+					closeOnClickModal: false
+				}).then(action => {
 
-							});
-						}
-					})
+				});
 			}
 		}
 	}

@@ -176,7 +176,7 @@ const mutations = {
     },
     FSLIST(state, data){
         state.world_cupObj.fsList = data
-    }
+    },
 }
 
 export default mutations

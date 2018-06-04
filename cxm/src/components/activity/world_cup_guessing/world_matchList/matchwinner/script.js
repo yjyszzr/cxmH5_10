@@ -6,7 +6,7 @@ import {means} from '../../../../../util/common'
 export default {
     name: 'matchwinner',
     beforeCreate() {
-        if(!localStorage.getItem('world_tab')){
+        if(!this.$store.state.world_cupObj.world_tab){
             Indicator.open()
         }
     },
@@ -17,7 +17,7 @@ export default {
     },
     mounted(){
         means('世界杯').isTitle
-        if(!localStorage.getItem('world_tab')){
+        if(!this.$store.state.world_cupObj.world_tab){
             this.fetchData()
         }
     },

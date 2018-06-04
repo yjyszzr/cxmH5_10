@@ -88,7 +88,7 @@ export default {
             }
             this.$store.state.matchSaveInfo = data
             if(this.$route.query.showtitle=='1'){
-                means(JSON.stringify(data)).paydata
+                means(data).paydata
                 location.href = '/freebuy/payment?cxmxc=scm&type=10&extparam=paydata'
             }else{
                 this.$router.push({
@@ -115,7 +115,7 @@ export default {
 	beforeRouteLeave(to, from, next) {
         next()
         if(to.path.indexOf('world_matchList')!=-1){
-            localStorage.setItem('world_tab', true)
+            this.$store.state.world_cupObj.world_tab = true
         }
 	}
 }
