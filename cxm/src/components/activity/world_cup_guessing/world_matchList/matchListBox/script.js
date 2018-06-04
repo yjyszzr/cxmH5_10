@@ -12,7 +12,7 @@ export default {
     },
     mounted() {
         let num = 0
-        if(localStorage.getItem('world_tab')){
+        if(this.$store.state.world_cupObj.world_tab){
             if(this.$route.path.split("/")[3]&&this.$route.path.split("/")[3]=='fsplace'){
                 _.forEach(this.fsList, function(value, key) {
                     if(value.selected=='sld'){
@@ -119,6 +119,6 @@ export default {
     beforeRouteLeave(to, from, next) {
       next()
       this.$store.state.mark_playObj.mupNum = '5'
-      localStorage.removeItem('world_tab')
+      this.$store.state.world_cupObj.world_tab = false
     }
 }
