@@ -16,7 +16,7 @@
                             <p>{{orderObj.lotteryClassifyName}}<span :style="{'color':orderObj.orderStatus=='5'?'#e95504':'#505050'}">{{orderObj.processResult}}</span></p>
                             <p>
                                 <span>￥{{orderObj.moneyPaid}}</span>
-                                <span>{{orderObj.forecastMoney}}</span>
+                                <span style="color:#ea5504;">{{orderObj.forecastMoney}}</span>
                             </p>
 
                         </div>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="section table">
                     <h5>方案内容</h5>
-                    <ul class="list">
+                    <ul class="list" v-if="orderObj.lotteryPlayClassifyId!='8'">
                         <div class="title">
                             <p>场次</p>
                             <p>赛事</p>
@@ -61,9 +61,27 @@
                             </div>
                         </li>
                     </ul>
+                    <ul class="list" v-if="orderObj.lotteryPlayClassifyId=='8'">
+                        <div class="w_title">
+                            <p>猜冠军球队</p>
+                            <p>赔率</p>
+                            <p>赛果</p>
+                        </div>
+                        <li v-for='(item,i) in orderObj.matchInfos' :key='i'>
+                            <div class="item1"><span>{{item.match}}</span></div>
+                            <div class="item1">
+                                <p v-for='(data,index) in item.cathecticResults' :key='index'>
+                                    <span v-for='(data1,index1) in data.cathectics' :key='index1' :style='{"color":data1.isGuess=="1"?"#ea5504":"#505050"}'>{{data1.cathectic.split('[')[1].split(']')[0]}}</span>
+                                </p>
+                            </div>
+                            <div class="item1">
+                                <span v-for='(data,index) in item.cathecticResults' :key='index'>{{data.matchResult}}</span>
+                            </div>
+                        </li>
+                    </ul>
                     <div class="menu">
-                        <p>过关方式：<span>{{orderObj.passType}}</span></p>
-                        <p>投注倍数：<span>{{orderObj.cathectic}}</span></p>
+                        <p v-if="orderObj.passType!=='null'">过关方式：<span>{{orderObj.passType}}</span></p>
+                        <p>投注倍数：<span>{{orderObj.cathectic}}倍</span></p>
                     </div>
                 </div>
             </div>

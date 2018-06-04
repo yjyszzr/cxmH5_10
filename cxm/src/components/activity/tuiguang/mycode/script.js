@@ -1,4 +1,4 @@
-import {isTitle, isShare,getCsUrl} from '../../../../util/common'
+import {means, isShare,getCsUrl} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import QRCode from 'qrcode';
@@ -18,7 +18,7 @@ export default {
     mounted() {
         this.fetchData()
         isShare('注册送好礼', '天”助力2018世界杯，110元彩金等您来领', '/static/activity_Back/tuiguang/index.html?id='+this.userId,'/static/activity_Back/tuiguang/img/logo.jpg')
-        isTitle('我的二维码')
+        means('我的二维码').isTitle
     },
     methods: {
         fetchData() {

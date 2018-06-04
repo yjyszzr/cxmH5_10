@@ -1,4 +1,4 @@
-import {isTitle} from '../../../../util/common'
+import {means} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import countDown from '../count_down/count_down'
@@ -43,7 +43,7 @@ export default {
                     this.packet = res.data
                 }
             })
-        isTitle('活动详情')
+        means('活动详情').isTitle
     },
     methods: {
         callback(){

@@ -1,4 +1,4 @@
-import {isTitle} from '../../../../util/common'
+import {means} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import datefilter from "../../../../util/datefilter";
@@ -26,7 +26,7 @@ export default {
                     this.income = res.data
                 }
             })
-        isTitle('我的推广收入')
+        means('我的推广收入').isTitle
     },
     methods: {
         golist(itemdate) {

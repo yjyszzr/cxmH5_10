@@ -1,4 +1,4 @@
-import {isTitle} from '../../../../util/common'
+import {means} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import {MessageBox} from 'mint-ui';
@@ -26,8 +26,7 @@ export default {
         setTimeout(() => {
             this.fetchData()
         }, 1000)
-
-        isTitle('推广中心')
+        means('推广中心').isTitle
     },
     methods: {
         fetchData() {

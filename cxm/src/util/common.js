@@ -1,17 +1,4 @@
-//app h5页面title
-export let isTitle = (arg) =>{
-    window.getCxmTitle = function (){
-        return '彩小秘·'+arg
-    }
-}
-
 //app h5页面分享
-// const expUrl = 'http://192.168.31.205:8080'
-const expUrl = 'http://39.106.18.39:9805'
-// const expUrl = 'http://m.caixiaomi.net'
-export let getCsUrl = () =>{
-    return expUrl;
-}
 export let isShare = (arg,text,url,thumbUrl) =>{
 	let obj = {}
     window.getCxmShare = function (){
@@ -22,6 +9,27 @@ export let isShare = (arg,text,url,thumbUrl) =>{
         return obj
     } 
 }
+//app h5方法
+export let means = (arg) =>{
+    const appMeans = {
+        //支付
+        paydata: window.paydata = function(){
+            return arg
+        },
+        //app title
+        isTitle: window.getCxmTitle = function(){
+            return '彩小秘·'+arg
+        }
+    }
+    return appMeans
+}
+// const expUrl = 'http://192.168.31.205:8080'
+// const expUrl = 'http://39.106.18.39:9805'
+const expUrl = 'http://m.caixiaomi.net'
+export let getCsUrl = () =>{
+    return expUrl;
+}
+
 //判断苹果系统和安卓系统
 export let detect = () => {
     var equipmentType = "";

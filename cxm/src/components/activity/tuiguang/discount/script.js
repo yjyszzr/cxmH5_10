@@ -1,4 +1,4 @@
-import {isTitle} from '../../../../util/common'
+import {means} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import dateFilter from '../../../../util/datefilter'
@@ -23,7 +23,7 @@ export default {
         }
     },
     mounted() {
-        isTitle('优惠兑换')
+        means('优惠兑换').isTitle
         setTimeout(() => {
             this.fetchData()
         }, 1000)

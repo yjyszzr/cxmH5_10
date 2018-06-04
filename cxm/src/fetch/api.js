@@ -122,7 +122,7 @@ axios.interceptors.response.use((res) => {
 const device = {
     plat: 'h5',
     apiv: 1,
-    appv: '1.0.4',
+    appv: '1.0.5',
     appid: '',
     mac: '',
     w: window.screen.availWidth,
@@ -388,6 +388,10 @@ export default {
     gyjs(params) {
         return fetchPost('/lottery/dl/wc/gyjs', params)
     },
+    //下单
+    saveBetInfoWd(params) {
+        return fetchPost('/lottery/dl/wc/saveBetInfo', params)
+    },
     //充值送红包
     toRechange(params) {
         return fetchPost('/member/donation/rechargeCard/list', params)
@@ -396,4 +400,5 @@ export default {
     countUser(params) {
         return fetchPost('/payment/payment/recharge/countUserRecharge', params)
     },
+
 }

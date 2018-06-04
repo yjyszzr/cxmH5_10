@@ -46,14 +46,14 @@
 </template>
 
 <script>
-import {isTitle} from '../../../util/common'
+import {means} from '../../../util/common'
 export default {
   name: 'insurance',
   data(){
       return {}
   },
   mounted(){
-      isTitle('安全保障')
+      means('安全保障').isTitle
   }
 }
 </script>

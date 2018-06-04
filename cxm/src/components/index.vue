@@ -46,7 +46,7 @@
         color: #505050;
       }
     }
-    li:nth-child(5),li:nth-child(6),li:nth-child(7){
+    li:nth-child(5),li:nth-child(6),li:nth-child(7),li:nth-child(8){
         margin-top: px2rem(52px);
     }
     .entry_icon {
@@ -187,6 +187,41 @@ export default {
   },
   beforeCreate() {
     Indicator.open();
+    // if(localStorage.getItem('activefrom')=='1'&&localStorage.getItem('payLogId')!=''){
+    //           api.query({
+    //                 'payLogId': localStorage.getItem('payLogId')
+    //           })
+    //           .then(res => {
+    //                 if(res.code==0){
+    //                   Toast('成功')
+    //                   localStorage.removeItem('payLogId')
+    //                   localStorage.removeItem('activefrom')
+    //                 }else{
+    //                   let num = 0;
+    //                   this.$store.state.timertz = setInterval(()=>{
+    //                       num++
+    //                       api.query({
+    //                             'payLogId': localStorage.getItem('payLogId')
+    //                       })
+    //                         .then(res => {
+    //                             if(res.code==0){
+    //                               Toast('成功')
+    //                               localStorage.removeItem('payLogId')
+    //                               localStorage.removeItem('activefrom')
+    //                               clearInterval(this.$store.state.timertz)
+    //                             }else{
+    //                               if(num>=3){
+    //                                 Toast('失败')
+    //                                 localStorage.removeItem('payLogId')
+    //                                 localStorage.removeItem('activefrom')
+    //                                 clearInterval(this.$store.state.timertz)
+    //                               }
+    //                             }
+    //                       })
+    //                   },3000)
+    //                 }
+    //           })
+    //   }
   },
   components: {
     "v-slider": silder,
@@ -204,6 +239,10 @@ export default {
       this.$store.state.freebuyId = c;
       this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
       this.$store.state.mark_playObj.bfIdSaveMap = {};
+      this.$store.dispatch("changefsList", []);
+      this.$store.dispatch("changefsNum", '2');
+      this.$store.dispatch("changefirstList", []);
+      this.$store.state.world_cupObj.worldfliter = []
       if(c=='0'){
         this.$router.push({
           path: "/activity/world_matchList",

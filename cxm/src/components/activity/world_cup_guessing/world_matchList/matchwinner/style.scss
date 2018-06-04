@@ -23,7 +23,6 @@
         }
         .teamDetail{
             width: 100%;
-            background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -41,7 +40,7 @@
             }
         }
         .tActive{
-            background: #ea5504;
+            background: #ea5504!important;
             p{
                 color: #fff!important;
             }

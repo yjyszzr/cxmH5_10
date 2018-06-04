@@ -354,7 +354,13 @@ const router = new Router({
               component: resolve => require(['@/components/activity/world_cup_guessing/world_matchList/fsplace/fsplace.vue'], resolve)
             }
           ]
-      }
+      },
+      {
+          path: '/activity/world_detail',
+          name: 'world_detail',
+          cname: '世界杯赛事详情',
+          component: resolve => require(['@/components/activity/world_cup_guessing/world_detail/index.vue'], resolve)
+      },
   ]
 })
 
