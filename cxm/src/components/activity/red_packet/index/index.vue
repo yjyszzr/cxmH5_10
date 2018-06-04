@@ -6,7 +6,6 @@
     <div class="packetindex">
         <div class="pack_center">
             <img src="../image/img1.png">
-            <!--<div class="time">距离活动结束还有<span>18</span>时<span>18</span>分<span>18</span>秒</div>-->
             <div class="time">
                 <v-countDown :endTime="packet.endTime" :callback="callback"></v-countDown>
             </div>

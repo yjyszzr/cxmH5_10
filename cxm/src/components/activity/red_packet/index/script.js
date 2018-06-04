@@ -28,10 +28,7 @@ export default {
         //     this.fetchData()
         // }, 1000)
 
-        //app充值钱
-        window.getCxmMoney = function (){
-            return realValue
-        };
+
         let data = {
             pageNum:1,
             pageSize:10
@@ -46,10 +43,15 @@ export default {
         means('活动详情').isTitle
     },
     methods: {
+
         callback(){
-            console.log(3338)
+
         },
         btn(realValue, type){
+            //app充值钱
+            let price = {"price":realValue}
+            means(price).paydata
+
             let data = {
                 str:''
             }
@@ -67,13 +69,13 @@ export default {
                             return false;
                         }
                         //跳轉，跟app交互从url传参
-                        if(this.$route.query.showtitle&this.$route.query.showtitle=='1'){
-                            location.href="/user/recharge?cxmxc=scm&type=11&extparam=getCxmMoney"
+                        if(this.$route.query.cfrom == 'app'){
+                            location.href="/user/recharge?cxmxc=scm&type=11&extparam=paydata"
                         }else{
                             this.$router.push({
-                                path: '/user/rec harge',
+                                path: '/user/recharge',
                                 query: {
-                                    'realValue': realValue
+                                    'price': price
                                 },
                                 replace: false
                             })
