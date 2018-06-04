@@ -55,13 +55,22 @@ const state = {
     findObj:{
         findTab: [],   //发现顶部列表
         findActive: '1' //发现选中参数
-    }
+    },
+    //世界杯活动
+    world_cupObj: {
+        firstList: [],   //冠军竞猜
+        fsList: [],  //冠亚军竞猜
+        fsNum: 0,   //选中值计数
+        worldfliter: [],   //筛选选中值
+        fsplaceObj: {},  //初始化信息
+    },
+    timertz: '',
 }
 
 export default new Vuex.Store({
     state,
     actions,
     mutations,
-    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','mark_playObj','findObj'],storage: window.sessionStorage})]
+    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','mark_playObj','findObj','world_cupObj'],storage: window.sessionStorage})]
     //strict: true
 })

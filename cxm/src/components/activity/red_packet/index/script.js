@@ -1,4 +1,4 @@
-import {isTitle} from '../../../../util/common'
+import {means} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import { Toast } from 'mint-ui'
 export default {
@@ -9,6 +9,6 @@ export default {
         }
     },
     mounted(){
-        isTitle('活动详情')
+        means('活动详情').isTitle
     }
 }

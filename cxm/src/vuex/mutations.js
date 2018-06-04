@@ -160,6 +160,22 @@ const mutations = {
     },
     FINACTIVE(state, data){
         state.findObj.findActive = data
+    },
+    //世界杯
+    FSNUM(state, data){
+        if(data=='1'){
+            state.world_cupObj.fsNum ++
+        }else if(data=='0'){
+            state.world_cupObj.fsNum --
+        }else if(data=='2'){
+            state.world_cupObj.fsNum = 0
+        }
+    },
+    FIRSTLIST(state, data){
+        state.world_cupObj.firstList = data
+    },
+    FSLIST(state, data){
+        state.world_cupObj.fsList = data
     }
 }
 

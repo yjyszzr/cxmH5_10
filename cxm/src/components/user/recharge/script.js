@@ -91,6 +91,8 @@ export default {
                             location.href = res.data.payUrl + '&h5ck=' + encodeURIComponent(url)
                         }else if(s=='wx'){
                             //location.href = './static/payCallBack/payCallBack.html?logid='+res.data.payLogId
+                            // localStorage.setItem('payLogId', res.data.payLogId)
+                            // localStorage.setItem('activefrom','1')
                             location.href = res.data.payUrl
                             // console.log(res.data.payUrl)
                         }

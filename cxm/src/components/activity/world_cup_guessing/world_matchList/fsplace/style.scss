@@ -17,7 +17,6 @@
             top: 0;
         }
         .teamDetail{
-            background: white;
             height: px2rem(140px);
             border-radius: px2rem(20px);
             display: flex;
@@ -44,10 +43,10 @@
             }
         }
     }
-    .teamBox:last-of-type{
+    .other{
         margin-top: px2rem(100px);
         p:first-of-type{
-            margin: 0;
+            margin: 0!important;
         }
     }
     .tActive{

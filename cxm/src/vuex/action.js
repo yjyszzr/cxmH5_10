@@ -188,7 +188,17 @@ const actions = {
     },
     changeFinActive({commit},value){
         commit("FINACTIVE", value)
-    }
+    },
+    //世界杯
+    changefsNum({commit},value){
+        commit("FSNUM", value)
+    },
+    changefirstList({commit},value){
+        commit("FIRSTLIST", value)
+    },
+    changefsList({commit},value){
+        commit("FSLIST", value)
+    },
 }
 
 export default actions

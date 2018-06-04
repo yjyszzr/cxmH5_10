@@ -1,11 +1,12 @@
 <template>
     <div class="matchwinner">
-       <div class="teamBox" v-for="(item,i) in list" :key='i'>
-           <div class="markClick" @click='markClick(i)'></div>
+        <p style="display:none;">{{fsNum}}</p>
+       <div class="teamBox" v-for="(item,i) in firstList" :key='i'>
+           <div class="markClick" @click='markClick(item)'></div>
            <img :src="item.contryPic" alt="">
-           <div class="teamDetail" ref='teamDetail'>
+           <div class="teamDetail" :class="item.selected&&item.selected=='sld'?'tActive':''" :style="{'background':item.isSell=='1'||item.betStatus=='1'?'#c7c7c7':'#fff'}">
                <p class="teamName">{{item.contryName}}</p>
-               <p class="teamOdds">{{item.betOdds}}</p>
+               <p class="teamOdds">{{item.isSell=='1'||item.betStatus=='1'?'停售':item.betOdds}}</p>
            </div>
        </div>
     </div>

@@ -1,4 +1,4 @@
-import {isTitle} from '../../../util/common'
+import {means} from '../../../util/common'
 import api from '../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import informal from '../../public/informal/informalList'
@@ -27,7 +27,7 @@ export default {
             .querySelector("#content")
             .addEventListener("scroll", this.handleScroll);
         this.fetchData()
-        isTitle("世界杯")
+        means('世界杯').isTitle
     },
     methods:{
         fetchData(){

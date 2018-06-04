@@ -163,6 +163,8 @@ export default {
                   return "世界杯";
             case 'world_matchList':
                 return "世界杯";
+            case 'world_detail':
+                return "世界杯";
         }
       } else {
         if (
@@ -192,7 +194,8 @@ export default {
         this.$route.path.split("/")[2] == "consult" ||
         this.$route.path.split("/")[2] == "tuiguang" ||
         this.$route.path.split("/")[2] == "incomedetail"||
-        this.$route.path.split("/")[2] == "discount"
+        this.$route.path.split("/")[2] == "discount"||
+        this.$route.path.split("/")[2] == "world_matchList"
       ) {
         return true;
       } else {

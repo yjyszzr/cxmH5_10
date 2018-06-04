@@ -1,4 +1,4 @@
-import { isTitle,isShare,getUrlStr } from '../../../util/common'
+import { means,isShare,getUrlStr } from '../../../util/common'
 import api from '../../../fetch/api'
 import { Toast, Indicator } from 'mint-ui'
 import { MessageBox } from 'mint-ui';
@@ -17,7 +17,7 @@ export default {
         }
     },
 	mounted() {
-		isTitle('注册送红包')
+		means('注册送红包').isTitle
 		isShare('注册送好礼', '注册就送100元新人大礼包', '/static/activity_Back/newComerReg/newComerReg.html?id=1','/static/activity_Back/tuiguang/img/logo.jpg')
 	},
 	methods: {

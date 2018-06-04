@@ -64,7 +64,6 @@ export default {
         })
       },
       goDetail(c){
-        localStorage.setItem('ccc',1)
         this.$router.push({
           path: '/user/order',
           query: {

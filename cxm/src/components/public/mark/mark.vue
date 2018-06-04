@@ -4,16 +4,19 @@
             
         </div>
         <!-- 赛事筛选 -->
-        <v-matchfilter></v-matchfilter>
+        <v-matchfilter v-if="this.$route.path.split('/')[2]!='world_matchList'"></v-matchfilter>
+        <v-worldFilter v-else></v-worldFilter>
     </div>
 </template>
 
 <script>
     import matchFilter from './match_fliter/match_filter.vue'
+    import worldFilter from "@/components/activity/world_cup_guessing/world_fliter/index.vue"
 	export default {
         name: 'mark',
         components: {
             'v-matchfilter': matchFilter,
+            'v-worldFilter': worldFilter
         },
 		data() {
 			return {

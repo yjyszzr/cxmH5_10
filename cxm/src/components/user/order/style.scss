@@ -77,7 +77,7 @@
   }
   .list{
     padding: px2rem(20px) 0;
-    .title{
+    .title,.w_title{
       color: #A0A0A0;
       font-size: px2rem(24px);
       display: flex;
@@ -91,11 +91,16 @@
         flex: 3;
       }
     }
+    .w_title{
+      p{
+        flex: 1!important;
+      }
+    }
     li{
       display: flex;
       border-bottom: 1px dashed #f1f1f1;
       padding: px2rem(10px) 0;
-      .item{
+      .item,.item1{
         flex: 1;
         display: flex;
         align-items: center;

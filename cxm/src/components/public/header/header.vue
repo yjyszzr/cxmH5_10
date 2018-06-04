@@ -51,15 +51,16 @@
         <div class="swiper-container findTab" v-if="$route.path.split('/')[1]=='find'">
           <div class="swiper-wrapper">
                 <div class="swiper-slide" @click="findTabClick($event,item.cat)" v-for="item in findTab" :key='item.cat' :class="item.cat==findStatus?'findactive':''">
-                  <p>{{item.catName}}</p>	
+                  <p>{{item.catName=='世界杯'?'其他':(item.catName=='竞彩预测'?'重心推荐':item.catName)}}</p>	
                 </div>		        
           </div>
         </div>
         <!-- //世界杯头部 -->
         <ul class="world_top" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='world_matchList'">
-            <li><p @click="tabSilde(1,$event)" class="worldActive">冠军竞猜</p></li>
-            <li><p @click="tabSilde(2,$event)">冠亚军竞猜</p></li>
+            <li><p @click="tabSilde(1,$event)" :class="!$route.path.split('/')[3]||$route.path.split('/')[3]=='worldwinner'?'worldActive':''">冠军竞猜</p></li>
+            <li><p @click="tabSilde(2,$event)" :class="$route.path.split('/')[3]&&$route.path.split('/')[3]=='fsplace'?'worldActive':''">冠亚军竞猜</p></li>
         </ul>
+        <p class="wd_nav" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='world_detail'">已选{{$store.state.world_cupObj.fsNum}}场比赛</p>
     </div>
 </template>
 
@@ -232,14 +233,35 @@ export default {
     tabSilde(c,s){
       $('.worldActive').removeClass('worldActive')
       s.target.className= 'worldActive'
+      localStorage.removeItem('world_tab')
       if(c==1){
-        this.$router.replace({
-          path: '/activity/world_matchList/worldwinner'
-        })
+        this.$store.dispatch("changefsNum", '2');
+        if(getUrlStr('showtitle',location.href)=='1'){
+          this.$router.replace({
+            path: '/activity/world_matchList/worldwinner',
+            query:{
+              'showtitle': '1'
+            }
+          })
+        }else{
+          this.$router.replace({
+            path: '/activity/world_matchList/worldwinner'
+          })
+        }
       }else{
-        this.$router.replace({
-          path: '/activity/world_matchList/fsplace'
-        })
+        this.$store.dispatch("changefsNum", '2');
+        if(getUrlStr('showtitle',location.href)=='1'){
+          this.$router.replace({
+            path: '/activity/world_matchList/fsplace',
+            query:{
+              'showtitle': '1'
+            }
+          })
+        }else{
+          this.$router.replace({
+            path: '/activity/world_matchList/fsplace'
+          })
+        }
       }
     }
   },
@@ -382,7 +404,7 @@ export default {
       vertical-align: middle;
     }
   }
-  .matchHeader {
+  .matchHeader,.wd_nav {
     background: #fff;
     height: px2rem(72px);
     line-height: px2rem(72px);

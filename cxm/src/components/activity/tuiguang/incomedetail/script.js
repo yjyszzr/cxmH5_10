@@ -1,4 +1,4 @@
-import {isTitle} from '../../../../util/common'
+import {means} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import dateFilter from '../../../../util/datefilter.js'
@@ -28,7 +28,7 @@ export default {
                     this.incomedetail = res.data
                 }
             })
-        isTitle("收入明细")
+        means('收入明细').isTitle
     },
     methods:{
         goInclude() {

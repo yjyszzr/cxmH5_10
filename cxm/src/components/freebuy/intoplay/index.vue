@@ -69,14 +69,14 @@
 </template>
 
 <script>
-import {isTitle} from '../../../util/common'
+import {means} from '../../../util/common'
 export default {
     name: 'inToplay',
     data(){
         return {}
     },
     mounted(){
-        isTitle('玩法帮助')
+        means('玩法帮助').isTitle
         this.$store.state.matchObj = {};
     }
 }
