@@ -3,7 +3,6 @@
 </style>
 <template>
     <div class="wrap help">
-
         <div class="help_center">
         <div id="a1" class="help_cen">
             <h5>账户问题</h5>
