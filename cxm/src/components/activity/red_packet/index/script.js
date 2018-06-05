@@ -2,6 +2,7 @@ import {means} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import countDown from '../count_down/count_down'
+import { MessageBox } from 'mint-ui';
 
 export default {
     name: 'red_packet',
@@ -24,11 +25,6 @@ export default {
         }
     },
     mounted(){
-        // setTimeout(() => {
-        //     this.fetchData()
-        // }, 1000)
-
-
         let data = {
             pageNum:1,
             pageSize:10
@@ -36,7 +32,6 @@ export default {
         api.toRechange(data)
             .then(res => {
                 if (res.code == 0) {
-                    // console.log(res)
                     this.packet = res.data
                 }
             })
@@ -61,7 +56,26 @@ export default {
                         this.countUserInfo = res.data;
                         //0未充值 1充值
                         if(this.countUserInfo.yesOrNo == 0 && type == 1){
-                            Toast('有新用户专享');
+                            MessageBox.confirm('',{
+                                message: '有新用户专享活动，仍然继续？',
+                                title: '提示',
+                                confirmButtonText: '确定',
+                                cancelButtonText: '取消',
+                            }).then(action => {
+                                if(this.$route.query.cfrom == 'app'){
+                                    location.href="/user/recharge?cxmxc=scm&type=11&extparam=paydata"
+                                }else{
+                                    this.$router.push({
+                                        path: '/user/recharge',
+                                        query: {
+                                            'price': price.price
+                                        },
+                                        replace: false
+                                    })
+                                }
+                            },action =>{
+
+                            })
                             return false;
                         }else if(this.countUserInfo.yesOrNo == 1 && type == 0){
                             Toast('只限新用户');
