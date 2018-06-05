@@ -403,4 +403,8 @@ export default {
     allPaymentWithRecharge(params) {
         return fetchPost('/payment/payment/allPaymentWithRecharge', params)
     },
+    //领取随机红包 
+    rechargeSucReiceiveBonus(params) {
+        return fetchPost('/member/user/bonus/rechargeSucReiceiveBonus', params)
+    },
 }

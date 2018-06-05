@@ -13,7 +13,7 @@
         </div>
         <section class="section amount">
             <p>充值金额</p>
-            <div class="rote" v-if="recharge_val>=10&&czobj.isHaveRechargeAct=='1'">送{{cznum}}元</div>
+            <div class="rote" v-if="recharge_val>=10&&czobj.isHaveRechargeAct=='1'">最高送{{cznum}}元</div>
             <input v-model="recharge_val"  onKeyPress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" onKeyUp="this.value=this.value.replace(/\D/g,'')" type="tel" class="money" placeholder="请输入整数的充值金额"/>
             <ul>
                 <li v-for="(item,i) in list_num" :key='i' @click='changenum(item)'>{{item}}</li>

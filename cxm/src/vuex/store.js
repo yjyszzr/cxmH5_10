@@ -65,7 +65,9 @@ const state = {
         fsplaceObj: {},  //初始化信息
         world_tab: false
     },
-    timertz: '',
+    timertz: '', //充值送弹窗定时器 
+    mark_showAc: false, //充值送弹窗
+
 }
 
 export default new Vuex.Store({

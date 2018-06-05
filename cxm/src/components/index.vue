@@ -193,8 +193,7 @@ export default {
               })
               .then(res => {
                     if(res.code==0){
-                      Toast('成功')
-                      localStorage.removeItem('payLogId')
+                      this.$store.state.mark_showAc = true
                       localStorage.removeItem('activefrom')
                     }else{
                       let num = 0;
@@ -205,13 +204,13 @@ export default {
                           })
                             .then(res => {
                                 if(res.code==0){
-                                  Toast('成功')
-                                  localStorage.removeItem('payLogId')
+                                  this.$store.state.mark_showAc = true
+                                  //Toast('成功')
                                   localStorage.removeItem('activefrom')
                                   clearInterval(this.$store.state.timertz)
                                 }else{
                                   if(num>=3){
-                                    Toast('失败')
+                                    this.$store.state.mark_showAc = true
                                     localStorage.removeItem('payLogId')
                                     localStorage.removeItem('activefrom')
                                     clearInterval(this.$store.state.timertz)
