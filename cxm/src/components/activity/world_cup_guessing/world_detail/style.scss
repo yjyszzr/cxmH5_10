@@ -41,7 +41,8 @@
                 color: #505050;
                 flex: 16;
                 border: none;
-                background: white;
+                background: url('../../../../assets/img/free/Clickable@2x.png') no-repeat right top;
+                background-size: px2rem(28px);
             }
         }
     }
@@ -105,7 +106,7 @@
             }
             .teamDetail{
                 background: white;
-                height: px2rem(140px);
+                height: px2rem(152px);
                 border-radius: px2rem(20px);
                 display: flex;
                 align-items: center;
@@ -114,20 +115,20 @@
                 p:first-of-type{
                     margin-top: px2rem(48px);
                     color: #505050;
-                    font-size: px2rem(26px);
+                    font-size: px2rem(28px);
                 }
                 p:last-of-type{
                     color: #9f9f9f;
-                    font-size: px2rem(24px);
+                    font-size: px2rem(28px);
                 }
             }
             .imgBox{
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
-                margin-bottom: px2rem(-32px);
+                margin-bottom: px2rem(-52px);
                 img{
-                    width: px2rem(70px);
+                    width: px2rem(82px);
                 }
             }
         .tActive{
@@ -156,15 +157,15 @@
       }
   }
   .teamBox{
-    width: px2rem(140px);
+    width: px2rem(152px);
     position: relative;
     float: left;
-    margin-left: px2rem(38px);
+    margin-left: px2rem(26px);
     margin-top: px2rem(30px);
     img{
         display: block;
-        width: px2rem(60px);
-        margin: 0 auto px2rem(-32px);
+        width: px2rem(82px);
+        margin: 0 auto px2rem(-48px);
     }
     .markClick{
         position: absolute;
@@ -179,15 +180,15 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        height: px2rem(140px);
+        height: px2rem(152px);
         border-radius: px2rem(22px);
         p:first-of-type{
             margin-top: px2rem(40px);
-            font-size: px2rem(26px);
+            font-size: px2rem(28px);
             color: #505050;
         }
         p:last-of-type{
-            font-size: px2rem(24px);
+            font-size: px2rem(28px);
             color: #9f9f9f;
         }
     }

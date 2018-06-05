@@ -71,7 +71,7 @@
                             <div class="item1"><span>{{item.match}}</span></div>
                             <div class="item1">
                                 <p v-for='(data,index) in item.cathecticResults' :key='index'>
-                                    <span v-for='(data1,index1) in data.cathectics' :key='index1' :style='{"color":data1.isGuess=="1"?"#ea5504":"#505050"}'>{{data1.cathectic.split('[')[1].split(']')[0]}}</span>
+                                    <span v-for='(data1,index1) in data.cathectics' :key='index1' :style='{"color":data1.isGuess=="1"?"#ea5504":"#505050"}'>{{data1.cathectic}}</span>
                                 </p>
                             </div>
                             <div class="item1">

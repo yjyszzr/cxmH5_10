@@ -24,11 +24,6 @@ export default {
         }
     },
     mounted(){
-        // setTimeout(() => {
-        //     this.fetchData()
-        // }, 1000)
-
-
         let data = {
             pageNum:1,
             pageSize:10
@@ -61,7 +56,7 @@ export default {
                         this.countUserInfo = res.data;
                         //0未充值 1充值
                         if(this.countUserInfo.yesOrNo == 0 && type == 1){
-                            Toast('有新用户专享');
+                            Toast('只限老用户');
                             return false;
                         }else if(this.countUserInfo.yesOrNo == 1 && type == 0){
                             Toast('只限新用户');

@@ -4,7 +4,7 @@ $.showIndicator();
 		var device = {
 			plat: 'h5',
 			apiv: 1,
-			appv: '1.0.4',
+			appv: '1.0.5',
 			appid: '',
 			mac: '',
 			w: window.screen.availWidth,

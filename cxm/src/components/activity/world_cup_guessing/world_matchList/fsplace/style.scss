@@ -17,7 +17,7 @@
             top: 0;
         }
         .teamDetail{
-            height: px2rem(140px);
+            height: px2rem(152px);
             border-radius: px2rem(20px);
             display: flex;
             align-items: center;
@@ -26,20 +26,20 @@
             p:first-of-type{
                 margin-top: px2rem(48px);
                 color: #505050;
-                font-size: px2rem(26px);
+                font-size: px2rem(28px);
             }
             p:last-of-type{
                 color: #9f9f9f;
-                font-size: px2rem(24px);
+                font-size: px2rem(28px);
             }
         }
         .imgBox{
             display: flex;
             align-items: center;
             justify-content: space-around;
-            margin-bottom: px2rem(-32px);
+            margin-bottom: px2rem(-52px);
             img{
-                width: px2rem(70px);
+                width: px2rem(82px);
             }
         }
     }

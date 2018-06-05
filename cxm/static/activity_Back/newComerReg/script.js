@@ -1,9 +1,9 @@
 $.showIndicator();
-		var baseUrl = 'http://api.caixiaomi.net/api/'
+		var baseUrl = 'http://39.106.18.39:8765/api/'
 		var device = {
 			plat: 'h5',
 			apiv: 1,
-			appv: '1.0.4',
+			appv: '1.0.5',
 			appid: '',
 			mac: '',
 			w: window.screen.availWidth,
@@ -127,7 +127,7 @@ $.showIndicator();
 				'mobile': $('.telVal').val(),
 				'smsCode': $('.codeVal').val(),
 				'loginSource': '4',
-				'passWord': '123456a'
+				'passWord': -1
 //				'channelDistributorId': userData
 			}
 			obj2.device = device
