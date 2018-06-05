@@ -19,7 +19,7 @@
       <v-mark v-if="this.$store.state.mark_show"></v-mark>
     </transition>
     <v-pmark v-show="this.$store.state.mark_playObj.mark_playBox"></v-pmark>
-      <!--<v-popup></v-popup>-->
+      <v-popup></v-popup>
   </div>
 </template>
 
@@ -28,6 +28,7 @@ import HeaderTop from "./components/public/header/Header";
 import footer from "./components/public/footer/footer";
 import mark from "./components/public/mark/mark";
 import pmark from "./components/public/mark/match_playut/mark_playut";
+import popup from "./components/activity/red_packet/popup/index"
 import {ScrollFix} from './util/common'
 import {wxPd} from './util/common'
 import {getUrlStr} from './util/common'
@@ -38,7 +39,8 @@ export default {
     "v-headertop": HeaderTop,
     "v-footer": footer,
     "v-mark": mark,
-    "v-pmark": pmark
+    "v-pmark": pmark,
+    "v-popup":popup
   },
   data() {
     return {
