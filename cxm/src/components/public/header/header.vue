@@ -9,6 +9,7 @@
                 <span v-if="$route.path.split('/')[2]=='consult'" style="opacity:0;">分享</span>
                 <span v-if="$route.path.split('/')[2]=='consult'&&getUrl()" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
+                <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()">胆</span>
             </p>
             <p class="filter" v-show="menuDisplay==false"></p>
         </div>
@@ -108,6 +109,12 @@ export default {
         replace: false
       });
     },
+  onGal(){
+      this.$router.push({
+          path: "/freebuy/explain",
+          replace: false
+      });
+  },
     custormAnchor(anchorName) {
       // 找到锚点
       let anchorElement = document.getElementById(anchorName);

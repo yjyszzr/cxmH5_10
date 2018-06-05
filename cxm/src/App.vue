@@ -170,6 +170,8 @@ export default {
                 return "世界杯";
             case 'world_detail':
                 return "世界杯";
+              case 'explain':
+                  return "胆说明";
         }
       } else {
         if (
@@ -200,7 +202,8 @@ export default {
         this.$route.path.split("/")[2] == "tuiguang" ||
         this.$route.path.split("/")[2] == "incomedetail"||
         this.$route.path.split("/")[2] == "discount"||
-        this.$route.path.split("/")[2] == "world_matchList"
+        this.$route.path.split("/")[2] == "world_matchList"||
+        this.$route.path.split("/")[2] == "cathectic"
       ) {
         return true;
       } else {

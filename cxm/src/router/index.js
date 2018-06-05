@@ -248,6 +248,12 @@ const router = new Router({
         cname:'玩法介绍',
         component: resolve => require(['@/components/freebuy/intoplay/index.vue'], resolve)
       },
+      {
+          path: '/freebuy/explain',
+          name: 'explain',
+          cname: '胆说明',
+          component: resolve => require(['@/components/freebuy/explain/explain.vue'], resolve)
+      },
 //    一期活动相关路由
       {
         path: '/user/activity/one',
@@ -361,6 +367,7 @@ const router = new Router({
           cname: '世界杯赛事详情',
           component: resolve => require(['@/components/activity/world_cup_guessing/world_detail/index.vue'], resolve)
       },
+
   ]
 })
 
