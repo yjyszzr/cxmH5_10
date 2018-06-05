@@ -190,7 +190,7 @@ $.showIndicator();
 				dataType: "json",
 				success: function(item) {
 					var str = ''
-					for(var i = 0; i < item.data.length; i++) {
+					for(var i = 0; i < 5; i++) {
 						str += '<p>' + item.data[i].winningMsg + '<span>' + item.data[i].winningMoney + '</span>元</p>'
 					}
 					//						console.log(str)
