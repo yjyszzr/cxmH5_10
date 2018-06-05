@@ -3,7 +3,7 @@
         <p style="display:none;">{{fsNum}}{{status}}</p>
        <div class="teamBox" v-for="(item,i) in fsList" :key='i' :class="item.homeContryName=='其他'?'other':''">
            <div class="markClick" @click='markClick(item)'></div>
-           <div class="imgBox">
+           <div class="imgBox"  v-show="item.homeContryName!='其他'">
                 <img :src="item.homeContryPic" alt="">
                 <img :src="item.visitorContryPic" alt="">
            </div>

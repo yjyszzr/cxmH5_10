@@ -16,11 +16,13 @@ export default {
     data() {
         return {
             userInfo: '',
-            recharge_val: '',
+            recharge_val: this.$route.query.price?this.$route.query.price:'',
             list_num: ['20', '50', '100', '200'],
             payText: '为了确保支付成功,请保持网络畅通',
             allPaymentList: [],
             payCode: 'app_weixin',
+            cznum: 10,
+            czobj: {}
             // testUrl: 'http://www.baidu.com/',
             // testUrlDisplay: 'none',
         }
@@ -91,8 +93,8 @@ export default {
                             location.href = res.data.payUrl + '&h5ck=' + encodeURIComponent(url)
                         }else if(s=='wx'){
                             //location.href = './static/payCallBack/payCallBack.html?logid='+res.data.payLogId
-                            // localStorage.setItem('payLogId', res.data.payLogId)
-                            // localStorage.setItem('activefrom','1')
+                            localStorage.setItem('payLogId', res.data.payLogId)
+                            localStorage.setItem('activefrom','1')
                             location.href = res.data.payUrl
                             // console.log(res.data.payUrl)
                         }
@@ -168,7 +170,7 @@ export default {
         rbCallback(){
             if (location.href.split('?')[1] && location.href.split('?')[1].split('=')[1] == 1&&localStorage.getItem('payCode')) {
                 //console.log(location.href)
-                this.recharge_val = localStorage.getItem('rval')
+                // this.recharge_val = localStorage.getItem('rval')
                 this.payCode = localStorage.getItem('payCode')
                 let payLogId = localStorage.getItem('payLogId')
                 MessageBox.confirm('', {
@@ -189,10 +191,24 @@ export default {
                     localStorage.removeItem('payCode')
                 })
             }else{
-                this.recharge_val = localStorage.getItem('rval')
+                // this.recharge_val = localStorage.getItem('rval')
                 this.$nextTick(() => {
                     localStorage.removeItem('rval')
                 })
+            }
+        },
+        bouns(a){
+            let list = this.czobj.rechargeUserDTO.donationPriceList
+            for(let i=0;i<list.length;i++){
+                if(Number(a)>=Number(list[i].minRechargeAmount)){
+                    if(list[i+1]){
+                        if(Number(a)<Number(list[i+1].minRechargeAmount)){
+                            this.cznum = list[i].donationAmount
+                        }else{
+                            this.cznum = list[i+1].donationAmount
+                        }
+                    }
+                }
             }
         }
     },
@@ -202,18 +218,30 @@ export default {
             .then(res => {
                 if (res.code == 0) {
                     this.allPaymentList = res.data
-                } else {
-                    Toast(res.msg)
+                }
+            })
+        api.allPaymentWithRecharge({})
+            .then(res => {
+                if (res.code == 0) {
+                    this.czobj = res.data
+                    if(this.$route.query.price){
+                        this.bouns(this.recharge_val)
+                    }
                 }
             })
         this.rbCallback()
         
     },
+    watch:{
+        recharge_val(a,b){
+            this.bouns(a)
+        }
+    },
     beforeRouteEnter(to, from, next) {
         if (from.path == '/'&&localStorage.getItem('payCode')) {
             next(vm => {
                 //vm.$store.state.matchSaveInfo = JSON.parse(localStorage.getItem('matchSaveInfo'))
-                vm.recharge_val = localStorage.getItem('rval')
+                // vm.recharge_val = localStorage.getItem('rval')
                 let payLogId = localStorage.getItem('payLogId')
                 vm.payCode = localStorage.getItem('payCode')
                 MessageBox.confirm('', {
@@ -237,7 +265,7 @@ export default {
             //localStorage.removeItem('matchSaveInfo')
         } else {
             next(vm=>{
-                vm.recharge_val = localStorage.getItem('rval')
+                // vm.recharge_val = localStorage.getItem('rval')
                 vm.$nextTick(() => {
                     localStorage.removeItem('rval')
                 })

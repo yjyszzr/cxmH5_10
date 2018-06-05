@@ -400,5 +400,7 @@ export default {
     countUser(params) {
         return fetchPost('/payment/payment/recharge/countUserRecharge', params)
     },
-
+    allPaymentWithRecharge(params) {
+        return fetchPost('/payment/payment/allPaymentWithRecharge', params)
+    },
 }

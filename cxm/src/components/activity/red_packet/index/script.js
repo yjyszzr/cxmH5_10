@@ -58,7 +58,6 @@ export default {
             api.countUser(data)
                 .then(res => {
                     if (res.code == 0) {
-                        console.log(res)
                         this.countUserInfo = res.data;
                         //0未充值 1充值
                         if(this.countUserInfo.yesOrNo == 0 && type == 1){
@@ -75,7 +74,7 @@ export default {
                             this.$router.push({
                                 path: '/user/recharge',
                                 query: {
-                                    'price': price
+                                    'price': price.price
                                 },
                                 replace: false
                             })

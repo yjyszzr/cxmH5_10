@@ -187,41 +187,41 @@ export default {
   },
   beforeCreate() {
     Indicator.open();
-    // if(localStorage.getItem('activefrom')=='1'&&localStorage.getItem('payLogId')!=''){
-    //           api.query({
-    //                 'payLogId': localStorage.getItem('payLogId')
-    //           })
-    //           .then(res => {
-    //                 if(res.code==0){
-    //                   Toast('成功')
-    //                   localStorage.removeItem('payLogId')
-    //                   localStorage.removeItem('activefrom')
-    //                 }else{
-    //                   let num = 0;
-    //                   this.$store.state.timertz = setInterval(()=>{
-    //                       num++
-    //                       api.query({
-    //                             'payLogId': localStorage.getItem('payLogId')
-    //                       })
-    //                         .then(res => {
-    //                             if(res.code==0){
-    //                               Toast('成功')
-    //                               localStorage.removeItem('payLogId')
-    //                               localStorage.removeItem('activefrom')
-    //                               clearInterval(this.$store.state.timertz)
-    //                             }else{
-    //                               if(num>=3){
-    //                                 Toast('失败')
-    //                                 localStorage.removeItem('payLogId')
-    //                                 localStorage.removeItem('activefrom')
-    //                                 clearInterval(this.$store.state.timertz)
-    //                               }
-    //                             }
-    //                       })
-    //                   },3000)
-    //                 }
-    //           })
-    //   }
+    if(localStorage.getItem('activefrom')=='1'&&localStorage.getItem('payLogId')!=''){
+              api.query({
+                    'payLogId': localStorage.getItem('payLogId')
+              })
+              .then(res => {
+                    if(res.code==0){
+                      Toast('成功')
+                      localStorage.removeItem('payLogId')
+                      localStorage.removeItem('activefrom')
+                    }else{
+                      let num = 0;
+                      this.$store.state.timertz = setInterval(()=>{
+                          num++
+                          api.query({
+                                'payLogId': localStorage.getItem('payLogId')
+                          })
+                            .then(res => {
+                                if(res.code==0){
+                                  Toast('成功')
+                                  localStorage.removeItem('payLogId')
+                                  localStorage.removeItem('activefrom')
+                                  clearInterval(this.$store.state.timertz)
+                                }else{
+                                  if(num>=3){
+                                    Toast('失败')
+                                    localStorage.removeItem('payLogId')
+                                    localStorage.removeItem('activefrom')
+                                    clearInterval(this.$store.state.timertz)
+                                  }
+                                }
+                          })
+                      },3000)
+                    }
+              })
+      }
   },
   components: {
     "v-slider": silder,
