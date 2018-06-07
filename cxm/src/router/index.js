@@ -286,6 +286,12 @@ const router = new Router({
           component: resolve => require(['@/components/activity/tuiguang/income/index.vue'], resolve)
       },
       {
+        path: '/activity/tuiguang/popupleft',
+        name: 'popupLeft',
+        cname:'地址搜索',
+        component: resolve => require(['@/components/activity/tuiguang/popupLeft/popupLeft.vue'], resolve)
+        },
+      {
           path: '/activity/incomedetail',
           name: 'incomedetail',
           cname:'收入明细',

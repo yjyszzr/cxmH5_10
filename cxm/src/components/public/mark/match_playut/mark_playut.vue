@@ -18,7 +18,7 @@
                 </button>
             </div>
             <!-- 优惠券 -->
-            <div @touchmove.prevent class="yhMark" v-if="this.$store.state.mark_playObj.mark_play=='3'">
+            <div class="yhMark" v-if="this.$store.state.mark_playObj.mark_play=='3'">
                 <div class="yh_title">
                     可用优惠券
                 </div>
