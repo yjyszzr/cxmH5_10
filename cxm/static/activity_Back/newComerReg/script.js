@@ -1,5 +1,5 @@
 $.showIndicator();
-		var baseUrl = 'http://api.caixiaomi.net/api/'
+		var baseUrl = 'http://39.106.18.39:8765/api/'
 		var device = {
 			plat: 'h5',
 			apiv: 1,
