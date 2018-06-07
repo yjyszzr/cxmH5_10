@@ -37,6 +37,7 @@ export default {
             api.registration(data)  //这个
                 .then(res => {
                     if (res.code == 0) {
+
                         console.log(res)
                     }
                 })
