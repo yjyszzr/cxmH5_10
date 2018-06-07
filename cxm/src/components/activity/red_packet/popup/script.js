@@ -1,4 +1,3 @@
-import {means} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import { Toast } from 'mint-ui'
 export default {
@@ -10,7 +9,9 @@ export default {
         }
     },
     mounted(){
-        means('活动详情').isTitle
+        if(localStorage.getItem('activefrom')=='0'){
+            this.open = true
+        }
         let data = {
             payLogId: localStorage.getItem('payLogId')
         }
@@ -20,7 +21,8 @@ export default {
                     this.donationPrice = res.data.donationPrice
                 }
                 localStorage.removeItem('payLogId')
-            })
+                localStorage.removeItem('activefrom')
+        })
     },
     methods: {
         close(){

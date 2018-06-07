@@ -32,7 +32,7 @@ export default {
 				})
 			} else {
 				MessageBox.alert('', {
-					message: '您已领取新人大礼包,前往查看',
+					message: '您已领取新人大礼包,请前往我的卡券查看',
 					title: '提示',
 					confirmButtonText: '我知道了',
 					closeOnClickModal: false

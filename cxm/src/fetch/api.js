@@ -48,9 +48,15 @@ axios.interceptors.response.use((res) => {
                 location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5'
             }else{
                 localStorage.clear()
-                router.replace({
-                    path: '/user/sms',
-                })
+                if(res.request.responseURL.indexOf('recharge/countUserRecharge') != -1||res.request.responseURL.indexOf('collect/add') != -1){
+                    router.push({
+                        path: '/user/sms',
+                    })
+                }else{
+                    router.replace({
+                        path: '/user/sms',
+                    })
+                }
             }
         }
         Indicator.close()
@@ -122,7 +128,7 @@ axios.interceptors.response.use((res) => {
 const device = {
     plat: 'h5',
     apiv: 1,
-    appv: '1.0.5',
+    appv: '1.0.6',
     appid: '',
     mac: '',
     w: window.screen.availWidth,
@@ -135,7 +141,6 @@ const device = {
     net: '',
     token: ''
 }
-
 export function fetchPost(url, body) {
     return new Promise((resolve, reject) => {
         axios.post(url, {
@@ -407,4 +412,8 @@ export default {
     rechargeSucReiceiveBonus(params) {
         return fetchPost('/member/user/bonus/rechargeSucReiceiveBonus', params)
     },
+    //喜报列表
+    getWinningList(params){
+        return fetchPost('/member/dl/channelConsumer/getWinningList', params)
+    }
 }

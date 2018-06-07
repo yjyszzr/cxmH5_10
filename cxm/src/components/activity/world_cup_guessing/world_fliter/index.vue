@@ -1,6 +1,6 @@
 <template>
             <!-- 赛事筛选 -->
-            <div class="worldFilter">
+            <div class="worldFilter" @touchmove.prevent>
                 <div class="match_w" v-if='$store.state.mark_showObj.mark_show_type == "world"'>
                     <div class="ft_title">
                         赛事筛选

@@ -5,11 +5,11 @@
 <template>
     <div class="popup" @touchmove.prevent>
         <div class="mark"></div>
-        <div class="popup_cen" v-show="open==false">
+        <div class="popup_cen" v-if="open==false">
             <img src="../image/img6.png" @click='sjhbClick()'>
         </div>
         <transition name="fade">
-            <div class="popup_cen" v-show="open==true">
+            <div class="popup_cen" v-if="open==true">
                 <img src="../image/img7.png">
                 <p>恭喜!</p>
                 <p>彩小秘恭喜您通过充值活动</p>

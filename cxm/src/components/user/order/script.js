@@ -27,13 +27,27 @@ export default {
         })
       },
       jxtz(){
-        this.$router.push({
-          path: '/freebuy/singleNote',
-          query:{
-            id: this.orderObj.lotteryPlayClassifyId
-          },
-          replace: false
-      })
+        if(this.orderObj.lotteryPlayClassifyId=='8'){
+          this.$store.dispatch("changefsList", []);
+          this.$store.dispatch("changefsNum", '2');
+          this.$store.dispatch("changefirstList", []);
+          this.$store.state.world_cupObj.worldfliter = []
+          this.$router.push({
+              path: '/activity/world_matchList',
+              query:{
+                id: 0
+              },
+              replace: false
+          })
+        }else{
+          this.$router.push({
+            path: '/freebuy/singleNote',
+              query:{
+                id: this.orderObj.lotteryPlayClassifyId
+              },
+              replace: false
+          })
+        }
       }
     },
     mounted(){
@@ -49,11 +63,12 @@ export default {
         })
     },
     beforeRouteLeave(to, from, next) {
-      if(to.path!='/freebuy/cathectic'){
+      if(to.path!='/freebuy/cathectic'&&to.path!='/activity/world_detail'){
         next()
       }else{
         this.$store.state.matchSelectedList = []
         localStorage.removeItem('tab')
+        this.$store.state.world_cupObj.world_tab = false
         this.$router.push({path: '/'})
       }
     }

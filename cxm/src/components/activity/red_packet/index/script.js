@@ -1,4 +1,4 @@
-import {means} from '../../../../util/common'
+import {means,isShare} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import countDown from '../count_down/count_down'
@@ -11,6 +11,8 @@ export default {
             token: '',
             packet:{},
             countUserInfo:{},
+            y_Carousel: [], //中奖信息
+            activeIndex: 0
         }
     },
     beforeCreate() {
@@ -25,6 +27,7 @@ export default {
         }
     },
     mounted(){
+        isShare('充值送壕礼', '充值狂欢日,随机送800元', '/activity/red_packet?cxmxc=scm&cmshare=1&showtitle=1&type=1&usinfo=1','/static/activity_Back/newComerReg/img/logo.jpg')
         let data = {
             pageNum:1,
             pageSize:10
@@ -35,7 +38,25 @@ export default {
                     this.packet = res.data
                 }
             })
+        api.getWinningList(data)
+            .then(res => {
+                if (res.code == 0) {
+                    this.y_Carousel = res.data
+                    setInterval(_ => {
+                        if (this.activeIndex < this.y_Carousel.length - 1) {
+                          this.activeIndex += 1;
+                        } else {
+                          this.activeIndex = 0;
+                        }
+                      }, 3000);
+                }
+            })
         means('活动详情').isTitle
+    },
+    computed: {
+        top() {
+          return -this.activeIndex * 0.66667 + "rem";
+        }
     },
     methods: {
 
@@ -43,7 +64,8 @@ export default {
 
         },
         btn(realValue, type){
-            //app充值钱
+            Indicator.open()
+             //app充值钱
             let price = {"price":realValue}
             means(price).paydata
 
@@ -78,19 +100,19 @@ export default {
                             })
                             return false;
                         }else if(this.countUserInfo.yesOrNo == 1 && type == 0){
-                            Toast('只限新用户');
+                            Toast('本活动仅限新用户参与');
                             return false;
-                        }
-                        //跳轉，跟app交互从url传参
-                        if(this.$route.query.cfrom == 'app'){
-                            location.href="/user/recharge?cxmxc=scm&type=11&extparam=paydata"
                         }else{
+                            if(this.$route.query.cfrom == 'app'){
+                                location.href="/user/recharge?cxmxc=scm&type=11&extparam=paydata&cmshare=1"
+                                return false;
+                            }
                             this.$router.push({
-                                path: '/user/recharge',
-                                query: {
-                                    'price': price.price
-                                },
-                                replace: false
+                                    path: '/user/recharge',
+                                    query: {
+                                        'price': price.price
+                                    },
+                                    replace: false
                             })
                         }
                     }

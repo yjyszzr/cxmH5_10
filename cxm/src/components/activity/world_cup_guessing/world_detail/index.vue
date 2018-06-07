@@ -41,7 +41,7 @@
             </ul>
             <div>
                 <div class="left">
-                    <p>已选择{{fsNum}}场比赛&nbsp;&nbsp;共需：<span>￥{{(fsNum*2*mupNum).toFixed(2)}}元</span></p><p>预测奖金：<span class="ycjj">￥{{(ycMoney[0]*fsNum*2*mupNum).toFixed(2)}}-{{(ycMoney[ycMoney.length-1]*fsNum*2*mupNum).toFixed(2)}}</span></p>
+                    <p>已选择{{fsNum}}场比赛&nbsp;&nbsp;共需：<span>￥{{(fsNum*2*mupNum).toFixed(2)}}元</span></p><p>预测奖金：<span class="ycjj" v-if="ycMoney.length<=0">0.00-0.00</span><span class="ycjj" v-else>￥{{(ycMoney[0]*2*mupNum).toFixed(2)}}-{{(ycMoney[ycMoney.length-1]*2*mupNum).toFixed(2)}}</span></p>
                 </div>
                 <a class="right" @click="saveGo()">确定</a>
             </div>

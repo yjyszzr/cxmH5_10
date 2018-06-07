@@ -187,14 +187,13 @@ export default {
   },
   beforeCreate() {
     Indicator.open();
-    if(localStorage.getItem('activefrom')=='1'&&localStorage.getItem('payLogId')!=''){
+    if(localStorage.getItem('activefrom')&&localStorage.getItem('payLogId')!=''){
               api.query({
                     'payLogId': localStorage.getItem('payLogId')
               })
               .then(res => {
                     if(res.code==0){
                       this.$store.state.mark_showAc = true
-                      localStorage.removeItem('activefrom')
                     }else{
                       let num = 0;
                       this.$store.state.timertz = setInterval(()=>{
@@ -206,11 +205,9 @@ export default {
                                 if(res.code==0){
                                   this.$store.state.mark_showAc = true
                                   //Toast('成功')
-                                  localStorage.removeItem('activefrom')
                                   clearInterval(this.$store.state.timertz)
                                 }else{
                                   if(num>=3){
-                                    this.$store.state.mark_showAc = true
                                     localStorage.removeItem('payLogId')
                                     localStorage.removeItem('activefrom')
                                     clearInterval(this.$store.state.timertz)

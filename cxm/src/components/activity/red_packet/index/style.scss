@@ -1,25 +1,60 @@
 @import '../../../../assets/css/function.scss';
 .packetindex{
   margin-bottom: px2rem(-15px);
+  .imgTop{
+    margin-bottom: px2rem(-120px);
+  }
   .time{
     width: 100%;
     height: px2rem(70px);
     color: #e14d24;
     line-height: px2rem(70px);
     text-align: center;
-    background: #e14d24;
     font-size: px2rem(30px);
     letter-spacing: px2rem(2px);
-    margin-top: px2rem(-70px);
-    font-weight: bold;
+    // margin-top: px2rem(-120px);
     //margin-bottom: px2rem(20px);
     span{
-      background: #fff076;
+      // background: #fff076;
       padding: px2rem(20px);
       color: #da2d1c;
       text-align: center;
       margin: 0 px2rem(5px);
       border-radius: px2rem(10px);
+    }
+  }
+  .carousel{
+    background: rgba(255, 255,255, 0.6);
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    width: px2rem(600px);
+    margin: 0 auto;
+    border-radius: px2rem(20px);
+    .scroll-wrap {
+      height: px2rem(50px);
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      p {
+        font-size: px2rem(24px);
+        color: #ea5504;
+      }
+      .scroll-content {
+        position: absolute;
+        transition: top 0.5s;
+        width: 100%;
+        // left: px2rem(72px);
+      }
+      .scroll-content li {
+        font-size: px2rem(24px);
+        color: #ea5504;
+        height: px2rem(50px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
     }
   }
   .select{
@@ -78,7 +113,7 @@
               color: #e14d24;
               font-size: px2rem(40px);
               span{
-                font-size: px2rem(60px);
+                font-size: px2rem(68px);
                 font-weight: 600;
               }
               span:nth-of-type(2){

@@ -81,7 +81,7 @@
                     </ul>
                     <div class="menu">
                         <p v-if="orderObj.passType!=='null'">过关方式：<span>{{orderObj.passType}}</span></p>
-                        <p>投注倍数：<span>{{orderObj.cathectic}}倍</span></p>
+                        <p>投注倍数：<span v-if="orderObj.passType==='null'">{{orderObj.betNum}}注{{orderObj.cathectic}}倍</span><span v-else>{{orderObj.cathectic}}倍</span></p>
                     </div>
                 </div>
             </div>

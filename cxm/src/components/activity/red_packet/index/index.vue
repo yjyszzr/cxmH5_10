@@ -5,10 +5,20 @@
 <template>
     <div class="packetindex">
         <div class="pack_center">
-            <img src="../image/img1.png">
+            <img src="../image/img1.png" class="imgTop">
             <div class="time">
                 <v-countDown :endTime="packet.endTime" :callback="callback"></v-countDown>
             </div>
+            <!--首页-->
+			<div class="carousel">
+				<div class="scroll-wrap">
+					<!-- <p v-if='show'>温馨提示:理性投注,长跟长红</p> -->
+					<ul class="scroll-content" :style="{top}">
+						<li v-for="(data,item) in y_Carousel" :key='item' v-html="data.winningMsg+''+data.winningMoney+'元'">
+						</li>
+					</ul>
+				</div>
+			</div>
             <div class="box">
                 <ul>
                     <li v-for='(item,i) in packet.rechargeCardList' :key='i'>
@@ -17,13 +27,13 @@
                             <p><b>￥</b><span>{{item.realValue}}</span>
                                 <span>元</span>
                             </p>
-                            <p>{{item.typeLabel}}</p>
+                            <p>{{item.description}}</p>
                         </div>
                         <div @click="btn(item.realValue, item.type)" class="btn">火速充值</div>
                     </li>
                 </ul>
                 <div class="rule">
-                    <h5>活动规则</h5>
+                    <h5>注意事项</h5>
                     <div>
                         <span>1、</span>
                         <p>本次活动时间为4月28日全天，活动时间截止则默认本次活动自动结束。具体使用范围以红包券显示为准。请在个人中心“我的卡券”中查看。</p>
@@ -34,7 +44,7 @@
                         <span>4、</span>
                         <p>如遇不可抗力因素，网站有权在活动期间更改活动规则，用户应随时关注网站公告。</p>
                         <span>5、</span>
-                        <p>如有问题，请拨打客服电话咨询：400-28838880－210。</p>
+                        <p>如有问题，请拨打客服电话咨询：400-012-6600。</p>
                         <span>6、</span>
                         <p>本活动最终解释权归彩小秘彩票所有。</p>
                     </div>

@@ -22,7 +22,8 @@ export default {
             allPaymentList: [],
             payCode: 'app_weixin',
             cznum: 10,
-            czobj: {}
+            czobj: {},
+            activefrom: '0'
             // testUrl: 'http://www.baidu.com/',
             // testUrlDisplay: 'none',
         }
@@ -94,7 +95,7 @@ export default {
                         }else if(s=='wx'){
                             //location.href = './static/payCallBack/payCallBack.html?logid='+res.data.payLogId
                             localStorage.setItem('payLogId', res.data.payLogId)
-                            localStorage.setItem('activefrom','1')
+                            localStorage.setItem('activefrom',this.activefrom)
                             location.href = res.data.payUrl
                             // console.log(res.data.payUrl)
                         }
@@ -227,6 +228,7 @@ export default {
                     if(this.$route.query.price){
                         this.bouns(this.recharge_val)
                     }
+                    this.activefrom = res.data.rechargeUserDTO.oldUserBz
                 }
             })
         this.rbCallback()

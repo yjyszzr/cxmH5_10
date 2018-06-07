@@ -1,10 +1,13 @@
+// const expUrl = 'http://192.168.31.205:8080'
+// const expUrl = 'http://39.106.18.39:9805'
+const expUrl = 'http://m.caixiaomi.net'
 //app h5页面分享
 export let isShare = (arg,text,url,thumbUrl) =>{
 	let obj = {}
     window.getCxmShare = function (){
     		obj.title = arg
             obj.description = text
-            obj.img = thumbUrl
+            obj.thumbUrl = expUrl+thumbUrl
             obj.url = expUrl+url
         return obj
     } 
@@ -23,9 +26,7 @@ export let means = (arg) =>{
     }
     return appMeans
 }
-// const expUrl = 'http://192.168.31.205:8080'
-const expUrl = 'http://39.106.18.39:9805'
-//const expUrl = 'http://m.caixiaomi.net'
+
 export let getCsUrl = () =>{
     return expUrl;
 }

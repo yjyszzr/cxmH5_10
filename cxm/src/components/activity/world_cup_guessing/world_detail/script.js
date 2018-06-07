@@ -16,28 +16,14 @@ export default {
     },
     mounted(){
         means('世界杯').isTitle
-        if(this.id=='0'){
-            this.$store.state.world_cupObj.firstList.forEach(item => {
-                if(item.selected=='sld'){
-                    this.ycMoney.push(item.betOdds)
-                    this.betIds.push(item.gjId)
-                }
-            });
-        }else{
-            this.$store.state.world_cupObj.fsList.forEach(item => {
-                if(item.selected=='sld'){
-                    this.ycMoney.push(item.betOdds)
-                    this.betIds.push(item.gyjId)
-                }
-            });
-        }
-        this.ycMoney.sort((a,b)=>{
-            return a-b;
-        })
+        this.fetchData()
     },
     methods:{
         markClick(c){
             _.unset(c,'selected');
+            this.betIds = []
+            this.ycMoney  = []
+            this.fetchData()
             this.$store.dispatch("changefsNum", '0');
         },
         mupClick() {
@@ -63,6 +49,9 @@ export default {
                     });
                 }
                 this.$store.dispatch("changefsNum", '2');
+                this.betIds = []
+                this.ycMoney  = []
+                this.fetchData()
             },action => {
       
             })
@@ -96,7 +85,27 @@ export default {
                     replace: false
                 })
             }
-		},
+        },
+        fetchData(){
+            if(this.id=='0'){
+                this.$store.state.world_cupObj.firstList.forEach(item => {
+                    if(item.selected=='sld'){
+                        this.ycMoney.push(item.betOdds)
+                        this.betIds.push(item.gjId)
+                    }
+                });
+            }else{
+                this.$store.state.world_cupObj.fsList.forEach(item => {
+                    if(item.selected=='sld'){
+                        this.ycMoney.push(item.betOdds)
+                        this.betIds.push(item.gyjId)
+                    }
+                });
+            }
+            this.ycMoney.sort((a,b)=>{
+                return a-b;
+            })
+        }
     },
     computed: {
         firstList() {
