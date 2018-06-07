@@ -18,7 +18,7 @@ export default {
     },
 	mounted() {
 		means('注册送红包').isTitle
-		isShare('注册送好礼', '注册就送100元新人大礼包', '/static/activity_Back/newComerReg/newComerReg.html?id=1','/static/activity_Back/tuiguang/img/logo.jpg')
+		isShare('注册送好礼', '注册就送100元新人大礼包', '/static/activity_Back/newComerReg/newComerReg.html?id=1','/static/activity_Back/newComerReg/img/logozc.jpg')
 	},
 	methods: {
 		lqBtn() {
