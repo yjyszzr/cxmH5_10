@@ -27,6 +27,7 @@ export default {
         }
     },
     mounted(){
+        //分享
         isShare('充值送壕礼', '充值狂欢日,随机送800元', '/activity/red_packet?cxmxc=scm&cmshare=1&showtitle=1&type=1&usinfo=1','/static/activity_Back/newComerReg/img/logo.jpg')
         let data = {
             pageNum:1,
@@ -38,6 +39,7 @@ export default {
                     this.packet = res.data
                 }
             })
+        //跑马灯效果
         api.getWinningList(data)
             .then(res => {
                 if (res.code == 0) {
@@ -54,18 +56,18 @@ export default {
         means('活动详情').isTitle
     },
     computed: {
+        //跑马灯
         top() {
           return -this.activeIndex * 0.66667 + "rem";
         }
     },
     methods: {
-
-        callback(){
-
-        },
+    //倒计时结束操作
+        callback(){},
+        //火速充值按钮操作
         btn(realValue, type){
             Indicator.open()
-             //app充值钱
+             //app充值传钱转对象
             let price = {"price":realValue}
             means(price).paydata
 
@@ -76,7 +78,7 @@ export default {
                 .then(res => {
                     if (res.code == 0) {
                         this.countUserInfo = res.data;
-                        //0未充值 1充值
+                        //yesOrNo0未充值 1充值         type 0 新用户，1老用户
                         if(this.countUserInfo.yesOrNo == 0 && type == 1){
                             MessageBox.confirm('',{
                                 message: '有新用户专享活动，仍然继续？',

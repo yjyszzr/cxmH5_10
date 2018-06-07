@@ -36,8 +36,8 @@
             <li :class="$store.state.recordTab=='m2'?'cur3':''"><p @click='curClick3($event)'>消息</p></li>
         </ul>
         <p class="matchHeader"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='cathectic'">已选{{$store.state.matchSelectedList.length}}场比赛&nbsp;&nbsp;&nbsp;投注截止时间：<span>{{$store.state.arrTime.length==0?'00-00 00:00':datePd($store.state.arrTime[0])}}</span></p>
-        <div>
-            <ul class="help_ul" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'">
+        <div class="help_ul" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'">
+            <ul >
                 <li><a href="" @click.prevent="custormAnchor('a1')">账户问题</a></li>
                 <li><a href="" @click.prevent="custormAnchor('a2')">充值问题</a></li>
                 <li><a href="" @click.prevent="custormAnchor('a3')">提现问题</a></li>
