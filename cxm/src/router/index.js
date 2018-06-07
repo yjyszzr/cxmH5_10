@@ -367,6 +367,12 @@ const router = new Router({
           cname: '世界杯赛事详情',
           component: resolve => require(['@/components/activity/world_cup_guessing/world_detail/index.vue'], resolve)
       },
+      {
+          path: '/activity/registration',
+          name: 'registration',
+          cname: '推广注册',
+          component: resolve => require(['@/components/activity/tuiguang/registration/registration.vue'], resolve)
+      },
 
   ]
 })
