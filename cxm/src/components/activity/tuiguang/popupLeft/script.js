@@ -5,8 +5,7 @@ export default {
     data(){
         return {
             value: '',
-            list: [],
-            fixed: false
+            list: []
         }
     },
     beforeCreate() {
@@ -35,13 +34,20 @@ export default {
         }
     },
     mounted(){
-        this.fixed = true
+        document.title='选择所在店铺'
         this.fetchData()
     },  
     watch:{
         value(a,b){
-            this.list = []
-            this.fetchData(a)
+            if(a!==''){
+                this.list = []
+                this.fetchData()
+            }else{
+                if(b.split('').length==1){
+                    this.list = []
+                    this.fetchData()
+                }
+            }
         }
     }
     // computed: {  

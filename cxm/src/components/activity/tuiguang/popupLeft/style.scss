@@ -22,6 +22,14 @@
         border-bottom: 1px solid #f0f0f0;
         z-index: 10;
     }
+    .mintui-search{
+        display: none;
+    }
+    .mint-searchbar-core{
+        background: url('../tuiguang/img9.png') no-repeat left center;
+        background-size: px2rem(40px) px2rem(40px);
+        padding-left: px2rem(60px);
+    }
     .mint-searchbar-core{
         font-size: px2rem(28px);
     }

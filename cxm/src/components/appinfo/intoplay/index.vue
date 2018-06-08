@@ -69,14 +69,15 @@
 </template>
 
 <script>
-import {means} from '../../../util/common'
 export default {
     name: 'inToplay',
     data(){
         return {}
     },
     mounted(){
-        means('玩法帮助').isTitle
+        window.getCxmTitle = function(){
+          return '天天买·玩法帮助' 
+        }
         this.$store.state.matchObj = {};
     }
 }
