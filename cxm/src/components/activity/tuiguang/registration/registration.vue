@@ -47,4 +47,4 @@
 </template>
 <script src='./script.js'>
 
-</script>必选
+</script>
