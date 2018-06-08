@@ -2,8 +2,7 @@
     <div class="Header" @touchmove.prevent>
         <div class="headerTop" v-show="showTitle">
             <a @click="return_back()" class="go_return"></a>
-            <p class="headerText" v-if="title!='世界杯'">彩小秘·{{title}}</p>
-            <p class="headerText" v-else>{{title}}</p>
+            <p class="headerText">彩小秘·{{title}}</p>
             <p class="filter" v-show="menuDisplay==true">
                 <span @click='filter()' v-if="$route.path.split('/')[2]=='singleNote'" class="iconfont icon-icon-21"></span>
                 <span v-if="$route.path.split('/')[2]=='singleNote'" @click="goInToplay()">帮助</span>

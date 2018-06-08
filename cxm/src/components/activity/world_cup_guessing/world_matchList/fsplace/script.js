@@ -16,7 +16,9 @@ export default {
         }
     },
     mounted(){
-        means('世界杯').isTitle
+        window.getCxmTitle = function(){
+            return '世界杯'
+        }
         if(!this.$store.state.world_cupObj.world_tab){
             this.fetchData()
         }
