@@ -374,10 +374,16 @@ const router = new Router({
           component: resolve => require(['@/components/activity/world_cup_guessing/world_detail/index.vue'], resolve)
       },
       {
-          path: '/activity/registration',
+          path: '/activity/tuiguang/registration',
           name: 'registration',
           cname: '推广注册',
           component: resolve => require(['@/components/activity/tuiguang/registration/registration.vue'], resolve)
+      },
+      {
+          path: '/activity/success',
+          name: 'success',
+          cname: '推广注册成功',
+          component: resolve => require(['@/components/activity/tuiguang/success/success.vue'], resolve)
       },
 
   ]

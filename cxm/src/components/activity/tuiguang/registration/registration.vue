@@ -42,7 +42,7 @@
         <section class="button" @click="reg_btn">
             <a class="determine">注册成为推广员</a>
         </section>
-        <div class="kefu">客服电话：<a tel="400-012-6600">400-012-6600</a></div>
+        <div class="kefu">客服电话：<a href="tel:400-012-6600">400-012-6600</a></div>
     </div>
 </template>
 <script src='./script.js'>
