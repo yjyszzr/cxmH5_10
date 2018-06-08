@@ -10,7 +10,7 @@ export default {
             mobileVal: '',
             passwordVal: '',
             telVal: '',
-            eyehide:'' ,
+            eyehide:false ,
             stop:false,
             changeText:'获取验证码',
             remainTime: 60,
@@ -28,7 +28,7 @@ export default {
                 'smsType': 1
             }
 
-            api.registration(data);
+            api.registSms(data);
             //发短信成功了，再调下面这两句
             this.stop = true;
             this.Interval = setInterval(this.update, 1000)

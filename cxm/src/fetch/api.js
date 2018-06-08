@@ -424,4 +424,8 @@ export default {
     registration(params){
         return fetchPost('/member/dl/channelConsumer/smsCodeForDistributor', params)
     },
+    //注册推广员短信
+    registSms(params){
+        return fetchPost('/member/dl/channelConsumer/smsCodeForDistributor', params)
+    }
 }

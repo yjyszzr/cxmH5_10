@@ -33,7 +33,7 @@
                         <div>
                             <i class="iconfont icon-huaban-1" ref="mima"></i>
                             <input  v-model="passwordVal" placeholder="请输入6-20位的密码" type="password" class="text" />
-                            <em @click="eyehide==false?eyehide = true:eyehide = false"></em>
+                            <em @click="eyehide==false?eyehide = true:eyehide = false"><i></i></em>
                         </div>
                     </a>
                 </li>
@@ -42,7 +42,7 @@
         <section class="button" @click="reg_btn">
             <a class="determine">注册成为推广员</a>
         </section>
-        <div class="kefu">客服电话：<span>400-021-6600</span></div>
+        <div class="kefu">客服电话：<a tel="400-012-6600">400-012-6600</a></div>
     </div>
 </template>
 <script src='./script.js'>

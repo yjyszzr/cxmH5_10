@@ -13,9 +13,13 @@
     height: 1.16rem;
     div {
       height: 1.17333rem;
+      i{
+        color: #505050;
+      }
       .iconfont{
         height: 100% !important;
         line-height: 1.17333rem;
+
       }
       .message{
         height: 100% !important;
@@ -34,6 +38,15 @@
         font-size: px2rem(26px)!important;
         margin-top: px2rem(12px);
       }
+      em{
+        i{
+          background: url(../../../../assets/img/hid.png) no-repeat;
+          background-size:100% 100%;
+          width: px2rem(48px);
+          height: px2rem(48px);
+          margin-top: px2rem(20px);
+        }
+      }
     }
   }
   .kefu{
@@ -41,7 +54,7 @@
     text-align: center;
     color: #505050;
     font-size: px2rem(28px);
-    span{
+    a{
       color: #E95504;
     }
   }
