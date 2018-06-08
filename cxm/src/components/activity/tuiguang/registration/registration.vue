@@ -9,11 +9,11 @@
         <div class="section">
             <ul class="msg_list">
                 <li>
-                    <router-link to="/user/record">
+                    <router-link to="/activity/tuiguang/popupleft">
                         <div>
                             <i class="iconfont icon-icon-1"></i>
                             <span class="arrow_right float_right"></span>
-                            <span class="message">请选择您所在的店铺（必选）</span>
+                            <span class="message">{{address}}</span>
                         </div>
                     </router-link>
                     <a href="javascript:void(0);">
