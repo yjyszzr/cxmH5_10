@@ -380,7 +380,7 @@ const router = new Router({
           component: resolve => require(['@/components/activity/tuiguang/registration/registration.vue'], resolve)
       },
       {
-          path: '/activity/success',
+          path: '/activity/tuiguang/success',
           name: 'success',
           cname: '推广注册成功',
           component: resolve => require(['@/components/activity/tuiguang/success/success.vue'], resolve)

@@ -1,4 +1,4 @@
-import {detect} from '../../../../util/common'
+import {detect} from "../../../../util/common";
 
 export default {
     name: 'success',
@@ -16,5 +16,6 @@ export default {
                 location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
             }
         }
+
     },
 }
