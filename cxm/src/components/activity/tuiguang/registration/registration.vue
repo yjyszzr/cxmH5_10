@@ -44,9 +44,9 @@
             <a class="determine" @click="reg_btn">注册成为推广员</a>
             <p v-if="passwordVal===''||telVal===''||mobileVal===''"></p>
         </section>
-        <div class="kefu">客服电话：<a tel="400-012-6600">400-012-6600</a></div>
+        <div class="kefu">客服电话：<a href="tel:400-012-6600">400-012-6600</a></div>
     </div>
 </template>
 <script src='./script.js'>
 
-</script>必选
+</script>

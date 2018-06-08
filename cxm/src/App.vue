@@ -172,6 +172,8 @@ export default {
                 return "世界杯";
               case 'explain':
                   return "胆说明";
+              case 'success':
+                  return "注册推广员";
         }
       } else {
         if (
