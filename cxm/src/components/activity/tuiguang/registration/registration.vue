@@ -9,11 +9,11 @@
         <div class="section">
             <ul class="msg_list">
                 <li>
-                    <router-link to="/user/record">
+                    <router-link to="/activity/tuiguang/popupleft">
                         <div>
                             <i class="iconfont icon-icon-1"></i>
                             <span class="arrow_right float_right"></span>
-                            <span class="message">请选择您所在的店铺（必选）</span>
+                            <span class="message">{{address}}</span>
                         </div>
                     </router-link>
                     <a href="javascript:void(0);">
@@ -33,7 +33,7 @@
                         <div>
                             <i class="iconfont icon-huaban-1" ref="mima"></i>
                             <input  v-model="passwordVal" placeholder="请输入6-20位的密码" type="password" class="text" />
-                            <em @click="eyehide==false?eyehide = true:eyehide = false"></em>
+                            <em @click="eyehide==false?eyehide = true:eyehide = false"><i></i></em>
                         </div>
                     </a>
                 </li>
@@ -42,7 +42,7 @@
         <section class="button" @click="reg_btn">
             <a class="determine">注册成为推广员</a>
         </section>
-        <div class="kefu">客服电话：<span>400-021-6600</span></div>
+        <div class="kefu">客服电话：<a tel="400-012-6600">400-012-6600</a></div>
     </div>
 </template>
 <script src='./script.js'>
