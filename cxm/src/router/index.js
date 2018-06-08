@@ -389,9 +389,12 @@ const router = new Router({
           component: resolve => require(['@/components/activity/tuiguang/success/success.vue'], resolve)
       },
       //app
-      //帮助中心：app_mjb/help
-      //购彩记录：app_mjb/protocol
-      //服务协议：app_mjb/service
+      //帮助中心：appinfo/help
+      //购彩协议：appinfo/protocol
+      //服务协议：appinfo/service
+      //玩法介绍：/appinfo/inToplay
+      //胆说明：/appinfo/explain
+      //安全保障：/appinfo/insurance
       {
           path: '/appinfo/help',
           name: 'help',
@@ -406,6 +409,24 @@ const router = new Router({
           path: '/appinfo/service',
           name: 'service',
           component: resolve => require(['@/components/appinfo/service/index.vue'], resolve)
+      },
+      {
+          path: '/appinfo/inToplay',
+          name: 'inToplay',
+          cname:'玩法介绍',
+          component: resolve => require(['@/components/freebuy/intoplay/index.vue'], resolve)
+      },
+      {
+          path: '/appinfo/explain',
+          name: 'explain',
+          cname: '胆说明',
+          component: resolve => require(['@/components/freebuy/explain/explain.vue'], resolve)
+      },
+      {
+          path: '/appinfo/insurance',
+          name: 'insurance',
+          cname:'安全保障',
+          component: resolve => require(['@/components/user/insurance/insurance.vue'], resolve)
       },
 
   ]
