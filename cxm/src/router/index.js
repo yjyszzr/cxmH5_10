@@ -414,19 +414,19 @@ const router = new Router({
           path: '/appinfo/inToplay',
           name: 'inToplay',
           cname:'玩法介绍',
-          component: resolve => require(['@/components/freebuy/intoplay/index.vue'], resolve)
+          component: resolve => require(['@/components/appinfo/intoplay/index.vue'], resolve)
       },
       {
           path: '/appinfo/explain',
           name: 'explain',
           cname: '胆说明',
-          component: resolve => require(['@/components/freebuy/explain/explain.vue'], resolve)
+          component: resolve => require(['@/components/appinfo/explain/explain.vue'], resolve)
       },
       {
           path: '/appinfo/insurance',
           name: 'insurance',
           cname:'安全保障',
-          component: resolve => require(['@/components/user/insurance/insurance.vue'], resolve)
+          component: resolve => require(['@/components/appinfo/insurance/insurance.vue'], resolve)
       },
 
   ]
