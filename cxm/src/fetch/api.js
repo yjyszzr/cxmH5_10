@@ -12,8 +12,8 @@ import {getUrlStr} from '../util/common'
 // axios 配置
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-// axios.defaults.baseURL = 'http://api.caixiaomi.net/api';
-axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
+axios.defaults.baseURL = 'http://api.caixiaomi.net/api';
+// axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 //console.log(window)
 
 //拦截 token
@@ -416,8 +416,12 @@ export default {
     getWinningList(params){
         return fetchPost('/member/dl/channelConsumer/getWinningList', params)
     },
-    //店铺列表 
+    //店铺列表
     getChannelList(params){
         return fetchPost('/member/dl/channelConsumer/getChannelList', params)
+    },
+    //注册推广员
+    registration(params){
+        return fetchPost('/member/dl/channelConsumer/smsCodeForDistributor', params)
     },
 }

@@ -20,6 +20,7 @@ export default {
           'mobile': this.phoneVal,
           'smsType': 1
         }
+        //判断手机号是否存在，是否正确
         this.$store.dispatch("getSmsCode",data)
         // getSmsCode(data)
       },

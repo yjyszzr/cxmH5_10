@@ -1,0 +1,48 @@
+@import '../../../../assets/css/function.scss';
+.registration{
+  .banner{
+    width: 100%;
+    img{
+      width: 100%;
+    }
+  }
+  .msg_list .message{
+    width: 50%;
+  }
+  .msg_list li a {
+    height: 1.16rem;
+    div {
+      height: 1.17333rem;
+      .iconfont{
+        height: 100% !important;
+        line-height: 1.17333rem;
+      }
+      .message{
+        height: 100% !important;
+      }
+      .text{
+        font-size: px2rem(26px);
+        height: 100% !important;
+        line-height: 1.17333rem;
+      }
+      .text1{
+        font-size: px2rem(26px);
+        height: 100% !important;
+        line-height: 1.17333rem;
+      }
+      button{
+        font-size: px2rem(26px)!important;
+        margin-top: px2rem(12px);
+      }
+    }
+  }
+  .kefu{
+    margin-top: px2rem(20px);
+    text-align: center;
+    color: #505050;
+    font-size: px2rem(28px);
+    span{
+      color: #E95504;
+    }
+  }
+}
