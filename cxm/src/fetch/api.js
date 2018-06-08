@@ -137,7 +137,7 @@ const device = {
     mid: '',
     brand: '',
     build: '',
-    channel: '',
+    channel: 'h5',
     net: '',
     token: ''
 }

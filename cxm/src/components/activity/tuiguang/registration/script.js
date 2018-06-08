@@ -1,6 +1,5 @@
-import {means} from '../../../../util/common'
 import api from '../../../../fetch/api'
-import {Indicator, Toast} from 'mint-ui'
+import {Indicator,Toast} from 'mint-ui'
 
 export default {
     name: 'mycode',
@@ -15,14 +14,18 @@ export default {
             changeText:'获取验证码',
             remainTime: 60,
             Interval:null,
-            address:sessionStorage.getItem('pop')?JSON.parse(sessionStorage.getItem('pop')).name:'请选择您所在的店铺（必选）'
+            address:this.$store.state.pop.name?this.$store.state.pop.name:'请选择您所在的店铺（必选）'
         }
     },
     mounted() {
-        means('彩小秘').isTitle
+        
     },
     methods: {
         changeNum() {
+            if(this.$store.state.pop===''){
+                Toast('请先选择店铺')
+                return false;
+            }
             //验证码信息
             let data = {
                 'mobile': this.mobileVal,
@@ -54,8 +57,17 @@ export default {
                 }
         },
         reg_btn(){
+            let reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/
+            if(!reg.test(this.passwordVal)){
+                Toast('请输入正确密码格式')
+                return false;
+            }else  if(this.$store.state.pop===''){
+                Toast('请先选择店铺')
+                return false;
+            }
+            Indicator.open()
             let data = {
-                channelId :JSON.parse(sessionStorage.getItem('pop')).id,  //渠道Id
+                channelId :this.$store.state.pop.id,  //渠道Id
                 mobile :this.mobileVal,
                 password :this.passwordVal,
                 smsCode : this.telVal ,  //短信验证码
@@ -73,13 +85,12 @@ export default {
     }
     ,
     activated(){
-        this.address = sessionStorage.getItem('pop')?JSON.parse(sessionStorage.getItem('pop')).name:'请选择您所在的店铺（必选）'
+        this.address = this.$store.state.pop.name?this.$store.state.pop.name:'请选择您所在的店铺（必选）'
         this.changeText = '获取验证码'
         this.remainTime =  60
         this.stop = false
     },
     beforeRouteLeave(from,to,next){
-        sessionStorage.removeItem('pop')
         clearInterval(this.Interval)
         next()
     },

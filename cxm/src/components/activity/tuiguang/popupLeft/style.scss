@@ -16,7 +16,7 @@
     }
     .mint-search{
         height: auto;
-        position: fixed;
+        position: absolute;
         top: 0;
         width: 100%;
         border-bottom: 1px solid #f0f0f0;
@@ -28,6 +28,9 @@
     .dzList{
         position: absolute;
         top: px2rem(94px);
+        bottom: 0;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch !important;
         width: 100%;
     }
     .item{

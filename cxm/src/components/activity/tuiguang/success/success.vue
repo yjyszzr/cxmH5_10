@@ -8,7 +8,7 @@
             <p>恭喜您已成为彩小秘推广员</p>
         </div>
         <section class="button" @click="go_btn()">
-            <a class="determine">注册成为推广员</a>
+            <a class="determine">立即下载APP使用</a>
         </section>
     </div>
 </template>

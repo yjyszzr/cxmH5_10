@@ -67,6 +67,7 @@ const state = {
     },
     timertz: '', //充值送弹窗定时器 
     mark_showAc: false, //充值送弹窗
+    pop: ''
 
 }
 

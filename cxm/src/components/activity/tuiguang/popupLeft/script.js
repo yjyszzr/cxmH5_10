@@ -6,6 +6,7 @@ export default {
         return {
             value: '',
             list: [],
+            fixed: false
         }
     },
     beforeCreate() {
@@ -14,7 +15,8 @@ export default {
     methods:{
         popClick(c){
             this.$router.go(-1)
-            sessionStorage.setItem('pop',JSON.stringify(c))
+            this.$store.state.pop = c
+            // sessionStorage.setItem('pop',JSON.stringify(c))
         },
         fetchData(){
             api.getChannelList({
@@ -33,6 +35,7 @@ export default {
         }
     },
     mounted(){
+        this.fixed = true
         this.fetchData()
     },  
     watch:{
