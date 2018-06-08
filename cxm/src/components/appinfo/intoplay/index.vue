@@ -76,7 +76,7 @@ export default {
     },
     mounted(){
         window.getCxmTitle = function(){
-          return '天天买·玩法帮助' 
+            return '彩小秘彩票·玩法帮助'
         }
         this.$store.state.matchObj = {};
     }

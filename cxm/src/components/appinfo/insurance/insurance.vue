@@ -46,14 +46,15 @@
 </template>
 
 <script>
-import {means} from '../../../util/common'
 export default {
   name: 'insurance',
   data(){
       return {}
   },
   mounted(){
-      means('安全保障').isTitle
+      window.getCxmTitle = function(){
+          return '彩小秘彩票·安全保障'
+      }
   }
 }
 </script>

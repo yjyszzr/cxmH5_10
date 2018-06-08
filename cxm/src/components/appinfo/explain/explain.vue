@@ -8,14 +8,15 @@
     </div>
 </template>
 <script>
-    import {means} from '../../../util/common'
     export default {
         name: 'explain',
         data(){
             return {}
         },
         mounted(){
-            means('胆说明').isTitle
+            window.getCxmTitle = function(){
+                return '彩小秘彩票·胆说明'
+            }
         }
     }
 </script>

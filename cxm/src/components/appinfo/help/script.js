@@ -13,7 +13,7 @@ export default {
     },
     mounted(){
       window.getCxmTitle = function(){
-          return '天天买·帮助中心' 
+          return '彩小秘彩票·帮助中心'
       }
     }
 }
