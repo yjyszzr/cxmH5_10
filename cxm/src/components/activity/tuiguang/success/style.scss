@@ -1,18 +1,24 @@
 @import '../../../../assets/css/function.scss';
-.success{
-  text-align: center;
-  margin-top: 40%;
-  img{
-    width: px2rem(200px);
-    height: px2rem(200px);
-    margin: 0 auto;
-  }
-  p{
-    color: #E95504;
-    font-size: px2rem(30px);
-    font-weight: bold;
-    width: 24%;
-    margin: 0 auto;
-
+.hdCg{
+  height: 101%;
+  background: white;
+  padding-top: px2rem(300px);
+  box-sizing: border-box;
+  margin-bottom: px2rem(-20px)!important;
+  .success{
+    text-align: center;
+    img{
+      width: px2rem(200px);
+      height: px2rem(200px);
+      margin: 0 auto;
+    }
+    p{
+      color: #E95504;
+      font-size: px2rem(30px);
+      font-weight: bold;
+      width: 24%;
+      margin: 0 auto;
+  
+    }
   }
 }

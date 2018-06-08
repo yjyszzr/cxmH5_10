@@ -10,14 +10,13 @@ export default {
         go_btn(){
             let detectpd = detect()
             if (detectpd === 'ios') {
-                return false;
-                location.href = 'https://itunes.apple.com/us/app/彩小秘-你想要的体育资讯/id1390432855?l=zh&ls=1&mt=8'
+                location.href = 'http://m.caixiaomi.net'
             } else if (detectpd === 'android') {
                 location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
             }
         }
     },
     mounted(){
-
+        document.title='注册推广员'
     }
 }

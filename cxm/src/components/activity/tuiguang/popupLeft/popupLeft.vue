@@ -1,6 +1,8 @@
 <template>
     <div class="popupLeft">
-        <mt-search v-model="value" placeholder="保利拉菲公馆店/北二环店/安东街店"></mt-search>
+        <mt-search v-model="value" placeholder="保利拉菲公馆店/北二环店/安东街店">
+            
+        </mt-search>
         <!-- <ul v-for="(item,i) in list" :key='i'> 
                 <li>{{item}}</li>
         </ul> -->
