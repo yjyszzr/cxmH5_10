@@ -19,14 +19,14 @@
                     <a href="javascript:void(0);">
                         <div>
                             <i class="iconfont icon-huaban-" ref="sjh"></i>
-                             <input  type="tel" placeholder="请输入手机号" class="text"/>
+                             <input  type="tel" v-model="mobileVal" placeholder="请输入手机号" class="text"/>
                         </div>
                     </a>
                     <a href="javascript:void(0);">
                         <div>
                             <i class="iconfont icon-huaban-2" ref="code"></i>
                             <input v-model="telVal" type="tel" placeholder="请输入验证码" class="text1"/>
-                            <button :disabled='$store.state.smsCode.disabled' @click="changeNum()" v-html="$store.state.smsCode.changeText"></button>
+                            <button :disabled='stop' @click="changeNum()" v-html="stop?remainTime+'秒后重新获取':'获取验证码'"></button>
                         </div>
                     </a>
                     <a href="javascript:void(0);">

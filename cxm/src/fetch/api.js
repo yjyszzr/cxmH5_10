@@ -420,9 +420,8 @@ export default {
     getChannelList(params){
         return fetchPost('/member/dl/channelConsumer/getChannelList', params)
     },
-    },
     //注册推广员
     registration(params){
-        return fetchPost('/member/dl/channelConsumer/registToDistributor', params)
-    }
+        return fetchPost('/member/dl/channelConsumer/smsCodeForDistributor', params)
+    },
 }

@@ -11,6 +11,10 @@ export default {
             passwordVal: '',
             telVal: '',
             eyehide:'' ,
+            stop:false,
+            changeText:'获取验证码',
+            remainTime: 60,
+            Interval:null
         }
     },
     mounted() {
@@ -20,11 +24,27 @@ export default {
         changeNum(){
             //验证码信息
             let data = {
-                'mobile': this.phoneVal,
+                'mobile': this.mobileVal,
                 'smsType': 1
             }
-            this.$store.dispatch("getSmsCode",data)
-            // getSmsCode(data)
+
+            api.registration(data);
+            //发短信成功了，再调下面这两句
+            this.stop = true;
+            this.Interval = setInterval(this.update, 1000)
+        },
+        update(){
+            if (this.remainTime <= 1) {
+                // 重置计数
+                this.remainTime = 60
+                // 清除计时器
+                clearInterval(this.Interval)
+
+                this.stop = false
+            } else {
+                // 倒计时
+                this.remainTime--;
+            }
         },
         reg_btn(){
             let data = {
@@ -34,7 +54,7 @@ export default {
                 smsCode : '' ,  //短信验证码
                 smsType :1, //短信类型:0-短信登录验证码 1-注册验证码 2-忘记密码验证码
             }
-            api.registration(data)  //这个
+            api.registration(data)
                 .then(res => {
                     if (res.code == 0) {
 
