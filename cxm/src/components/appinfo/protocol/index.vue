@@ -140,14 +140,15 @@
     </div>
 </template>
 <script>
-import {means} from '../../../util/common'
 export default {
     name: 'protocol',
     data(){
         return {}
     },
     mounted(){
-        means('投注服务协议').isTitle
+        window.getCxmTitle = function(){
+          return '天天买·投注服务协议' 
+        }
     }
 }
 </script>

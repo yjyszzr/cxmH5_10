@@ -393,19 +393,19 @@ const router = new Router({
       //购彩记录：app_mjb/protocol
       //服务协议：app_mjb/service
       {
-          path: '/app_mjb/help',
+          path: '/appinfo/help',
           name: 'help',
-          component: resolve => require(['@/components/app_mjb/help/index.vue'], resolve)
+          component: resolve => require(['@/components/appinfo/help/index.vue'], resolve)
       },
       {
-          path: '/app_mjb/protocol',
+          path: '/appinfo/protocol',
           name: 'protocol',
-          component: resolve => require(['@/components/app_mjb/protocol/index.vue'], resolve)
+          component: resolve => require(['@/components/appinfo/protocol/index.vue'], resolve)
       },
       {
-          path: '/app_mjb/service',
+          path: '/appinfo/service',
           name: 'service',
-          component: resolve => require(['@/components/app_mjb/service/index.vue'], resolve)
+          component: resolve => require(['@/components/appinfo/service/index.vue'], resolve)
       },
 
   ]

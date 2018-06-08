@@ -1,5 +1,3 @@
-import api from '../../../fetch/api'
-import {means} from '../../../util/common'
 export default {
     name: 'help',
     data () {
@@ -14,6 +12,8 @@ export default {
      
     },
     mounted(){
-      means('帮助中心').isTitle
+      window.getCxmTitle = function(){
+          return '天天买·帮助中心' 
+      }
     }
 }
