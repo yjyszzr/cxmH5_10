@@ -12,7 +12,7 @@
     .mint-searchbar-cancel{
         color: #505050;
         font-size: px2rem(28px);
-        display: none;
+        // display: none;
     }
     .mint-search{
         height: auto;
@@ -21,6 +21,9 @@
         width: 100%;
         border-bottom: 1px solid #f0f0f0;
         z-index: 10;
+    }
+    .mint-searchbar-core{
+        font-size: px2rem(28px);
     }
     .dzList{
         position: absolute;

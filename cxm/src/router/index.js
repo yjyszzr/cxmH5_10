@@ -377,6 +377,9 @@ const router = new Router({
           path: '/activity/tuiguang/registration',
           name: 'registration',
           cname: '推广注册',
+          meta:{
+            keepAlive: true
+          },
           component: resolve => require(['@/components/activity/tuiguang/registration/registration.vue'], resolve)
       },
 

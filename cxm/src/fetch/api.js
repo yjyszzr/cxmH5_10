@@ -422,7 +422,7 @@ export default {
     },
     //注册推广员
     registration(params){
-        return fetchPost('/member/dl/channelConsumer/smsCodeForDistributor', params)
+        return fetchPost('/member/dl/channelConsumer/registToDistributor', params)
     },
     //注册推广员短信
 

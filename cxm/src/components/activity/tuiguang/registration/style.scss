@@ -26,13 +26,13 @@
       }
       .text{
         font-size: px2rem(26px);
-        height: 100% !important;
-        line-height: 1.17333rem;
+        height: auto!important;
+        margin-top: px2rem(26px)!important;
       }
       .text1{
         font-size: px2rem(26px);
-        height: 100% !important;
-        line-height: 1.17333rem;
+        height: auto!important;
+        margin-top: px2rem(26px)!important;
       }
       button{
         font-size: px2rem(26px)!important;
@@ -40,13 +40,25 @@
       }
       em{
         i{
-          background: url(../../../../assets/img/hid.png) no-repeat;
-          background-size:100% 100%;
           width: px2rem(48px);
           height: px2rem(48px);
-          margin-top: px2rem(20px);
         }
       }
+    }
+  }
+  .button{
+    position: relative;
+    p{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      z-index: 10;
+    }
+    a{
+      width: 100%;
+      height: 100%;
+      display: block;
     }
   }
   .kefu{

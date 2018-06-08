@@ -4,7 +4,7 @@
 <template>
     <div class="registration">
         <div class="banner">
-            <img src="" alt="注册彩小秘推广员佣金奖励赚不停">
+            <img src="../tuiguang/u_banner.jpg" alt="注册彩小秘推广员佣金奖励赚不停">
         </div>
         <div class="section">
             <ul class="msg_list">
@@ -32,15 +32,17 @@
                     <a href="javascript:void(0);">
                         <div>
                             <i class="iconfont icon-huaban-1" ref="mima"></i>
-                            <input  v-model="passwordVal" placeholder="请输入6-20位的密码" type="password" class="text" />
-                            <em @click="eyehide==false?eyehide = true:eyehide = false"><i></i></em>
+                            <input v-model="passwordVal" placeholder="请输入6-20位的密码" type="password" class="text" v-show="eyehide==false"/>
+                            <input v-model="passwordVal" placeholder="请输入6-20位的密码" type="text" class="text" v-show="eyehide==true"/>
+                            <em @click="eyehide==false?eyehide = true:eyehide = false"><i class="iconfont icon-huaban-6" v-show="eyehide==false"></i><i class="iconfont icon-huaban-5" v-show="eyehide==true"></i></em>
                         </div>
                     </a>
                 </li>
             </ul>
         </div>
-        <section class="button" @click="reg_btn">
-            <a class="determine">注册成为推广员</a>
+        <section class="button" :style="{'background':passwordVal===''||telVal===''||mobileVal===''?'#9f9f9f':'#ea5504'}">
+            <a class="determine" @click="reg_btn">注册成为推广员</a>
+            <p v-if="passwordVal===''||telVal===''||mobileVal===''"></p>
         </section>
         <div class="kefu">客服电话：<a tel="400-012-6600">400-012-6600</a></div>
     </div>

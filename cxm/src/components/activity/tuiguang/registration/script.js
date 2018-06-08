@@ -31,7 +31,7 @@ export default {
 
             api.registSms(data)
                 .then(res => {
-                    console.log(res)
+                   // console.log(res)
                     if (res.code == 0) {
                         //发短信成功了，再调下面这两句
                         this.stop = true;
@@ -46,7 +46,7 @@ export default {
                     this.remainTime = 60
                     // 清除计时器
                     clearInterval(this.Interval)
-                    // this.changeText = '重新获取'
+                    this.changeText = '重新获取'
                     this.stop = false
                 } else {
                     // 倒计时
@@ -55,23 +55,32 @@ export default {
         },
         reg_btn(){
             let data = {
-                channelId :this.$route.query.channelId,  //渠道Id
+                channelId :JSON.parse(sessionStorage.getItem('pop')).id,  //渠道Id
                 mobile :this.mobileVal,
                 password :this.passwordVal,
-                smsCode : '' ,  //短信验证码
+                smsCode : this.telVal ,  //短信验证码
                 smsType :1, //短信类型:0-短信登录验证码 1-注册验证码 2-忘记密码验证码
             }
             api.registration(data)
                 .then(res => {
                     if (res.code == 0) {
-
-                        console.log(res)
+                        this.$router.push({
+                            path: '/activity/tuiguang/success'
+                        })
                     }
                 })
         }
+    }
+    ,
+    activated(){
+        this.address = sessionStorage.getItem('pop')?JSON.parse(sessionStorage.getItem('pop')).name:'请选择您所在的店铺（必选）'
+        this.changeText = '获取验证码'
+        this.remainTime =  60
+        this.stop = false
     },
     beforeRouteLeave(from,to,next){
         sessionStorage.removeItem('pop')
+        clearInterval(this.Interval)
         next()
     },
 }
