@@ -15,7 +15,7 @@
         },
         mounted(){
             window.getCxmTitle = function(){
-                return '天天买·胆说明'
+                return '彩小秘彩票·胆说明'
             }
         }
     }

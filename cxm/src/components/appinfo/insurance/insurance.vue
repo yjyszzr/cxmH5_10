@@ -53,7 +53,7 @@ export default {
   },
   mounted(){
       window.getCxmTitle = function(){
-          return '天天买·安全保障'
+          return '彩小秘彩票·安全保障'
       }
   }
 }
