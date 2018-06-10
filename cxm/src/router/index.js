@@ -327,22 +327,12 @@ const router = new Router({
           name: 'red_packet',
           cname: '充值首页',
           component: resolve => require(['@/components/activity/red_packet/index/index.vue'], resolve),
-          // children:[
-          //     {
-          //
-          //     }
-          // ]
       },
       {
           path: '/activity/popup',
           name: 'popup',
           cname: '充值首页',
           component: resolve => require(['@/components/activity/red_packet/popup/index.vue'], resolve),
-          // children:[
-          //     {
-          //
-          //     }
-          // ]
       },
       {
           path: '/activity/world_matchList',
