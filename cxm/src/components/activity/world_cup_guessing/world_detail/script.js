@@ -15,7 +15,9 @@ export default {
         }
     },
     mounted(){
-        means('世界杯').isTitle
+        window.getCxmTitle = function(){
+            return '世界杯'
+        }
         this.fetchData()
     },
     methods:{
