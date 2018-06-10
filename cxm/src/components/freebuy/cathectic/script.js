@@ -366,6 +366,9 @@ export default {
 			this.matchBetPlays = []
 			if(this.$store.state.mark_playObj.playtList.length<=0){
 				this.betObjFun()
+				setTimeout(()=>{
+					Indicator.close()
+				},100)
 				return false;
 			}
 			this.$store.state.matchSelectedList.forEach(item => {
@@ -527,6 +530,7 @@ export default {
 				obj.matchBetCells = matchBetCells
 				this.matchBetPlays.push(obj)
 			})
+			
 			let data = {
 				'betType': this.$store.state.mark_playObj.playutText.join(',').replace(/&/g, ''),
 				'bonusId': '',
@@ -537,7 +541,7 @@ export default {
 				'matchBetPlays': this.matchBetPlays
 			};
 			this.matchSave = data
-			//console.log(JSON.stringify(data))
+			// console.log(JSON.stringify(data))
 			api
 				.getBetInfo(data)
 				.then(res => {

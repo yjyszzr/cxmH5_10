@@ -428,7 +428,11 @@ const router = new Router({
           cname:'安全保障',
           component: resolve => require(['@/components/appinfo/insurance/insurance.vue'], resolve)
       },
-
+      {
+            path: '/activity/world/sixty',
+            name: 'sixty',
+            component: resolve => require(['@/components/activity/worldjeep/sixty/sixty.vue'], resolve)
+       },
   ]
 })
 

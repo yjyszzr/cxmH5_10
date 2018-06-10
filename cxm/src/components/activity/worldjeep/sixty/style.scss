@@ -1,0 +1,661 @@
+.sixty{
+    height: 100%;
+}
+#part2[data-v-5521cdf9] {
+    min-height: 100%;
+    background: url(https://static1.dongqiudi.com/topic/static/img/part2-bg.f838286.jpg) 50%;
+    background-size: 100%;
+    color: #fff;
+    position: relative;
+    padding-top: .1px
+}
+
+.team-people-num[data-v-5521cdf9] {
+    height: .90666667*0.5rem;
+    line-height: .90666667*0.5rem;
+    text-align: center;
+    font-size: .64*0.5rem;
+    -webkit-transform: scale(.8);
+    transform: scale(.8);
+    color: #e9e9be;
+    white-space: nowrap
+}
+
+.hint-flap[data-v-5521cdf9] {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5)
+}
+
+.hint-flap span[data-v-5521cdf9] {
+    position: absolute;
+    right: .93333333*0.5rem;
+    bottom: 2.66666667*0.5rem;
+    display: block;
+    width: 13.12*0.5rem;
+    height: 5.22666667*0.5rem
+}
+
+.hint-flap span img[data-v-5521cdf9] {
+    width: 100%
+}
+
+.back[data-v-5521cdf9] {
+    position: absolute;
+    top: .74666667*0.5rem;
+    left: .85333333*0.5rem
+}
+
+.back>[data-v-5521cdf9] {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.back .back-icon[data-v-5521cdf9] {
+    height: .96*0.5rem;
+    margin-right: .10666667*0.5rem
+}
+
+.title[data-v-5521cdf9] {
+    width: 100%
+}
+
+.logo[data-v-5521cdf9] {
+    display: block;
+    width: 6.37333333*0.5rem;
+    margin: .66666667*0.5rem auto
+}
+
+.contentBox[data-v-5521cdf9] {
+    height: 21.6*0.5rem;
+    color: #fff;
+    padding: 0 .42666667*0.5rem;
+    margin-top: -.53333333*0.5rem
+}
+
+.contentBox .team-icon>span[data-v-5521cdf9] {
+    font-size: .64*0.5rem;
+    display: block;
+    width: 3.94666667*0.5rem;
+    margin-left: -.85333333*0.5rem;
+    -webkit-transform: scale(.8);
+    transform: scale(.8);
+    line-height: 1.06666667*0.5rem
+}
+
+@media screen and (min-height:667px) {
+    .contentBox[data-v-5521cdf9] {
+        margin-top: .26666667*0.5rem
+    }
+}
+
+@media screen and (min-height:800px) {
+    .contentBox[data-v-5521cdf9] {
+        margin-top: 1.86666667*0.5rem
+    }
+}
+
+.contentBox .grounp-8-left[data-v-5521cdf9] {
+    float: left
+}
+
+.contentBox .grounp-8-left .team-number[data-v-5521cdf9] {
+    position: absolute;
+    font-size: 1.06666667*0.5rem;
+    left: -.26666667*0.5rem;
+    -webkit-transform: scale(.5) translate(-.42666667*0.5rem, -1.17333333*0.5rem);
+    transform: scale(.5) translate(-.42666667*0.5rem, -1.17333333*0.5rem)
+}
+
+.contentBox .grounp-8-left .link-down[data-v-5521cdf9] {
+    position: absolute;
+    top: .13333333*0.5rem;
+    right: .42666667*0.5rem;
+    width: .58666667*0.5rem;
+    height: 1.49333333*0.5rem;
+    border: 2px solid #333d46;
+    border-left: transparent;
+    border-bottom: transparent
+}
+
+.contentBox .grounp-8-left .link-up[data-v-5521cdf9] {
+    position: absolute;
+    top: 1.49333333*0.5rem;
+    right: .42666667*0.5rem;
+    width: .58666667*0.5rem;
+    height: 1.49333333*0.5rem;
+    border: 2px solid #333d46;
+    border-left: transparent;
+    border-top: transparent
+}
+
+.contentBox .grounp-8-left .link-row[data-v-5521cdf9] {
+    width: .37333333*0.5rem;
+    border: 1px solid #333d46;
+    position: absolute;
+    top: 1.49333333*0.5rem;
+    right: 0
+}
+
+.contentBox .grounp-8[data-v-5521cdf9] {
+    position: relative;
+    width: 3.52*0.5rem;
+    height: 3.89333333*0.5rem;
+    margin-bottom: 1.49333333*0.5rem
+}
+
+.contentBox .grounp-8 .tips[data-v-5521cdf9] {
+    position: absolute;
+    z-index: 999;
+    top: 3.46666667*0.5rem;
+    background-color: #ec6f3d;
+    padding: .53333333*0.5rem;
+    min-width: 8*0.5rem;
+    font-size: .8*0.5rem;
+    border-radius: .26666667*0.5rem;
+    font-weight: 300
+}
+
+.contentBox .grounp-8 .tips .triangle[data-v-5521cdf9] {
+    position: absolute;
+    top: -.85333333*0.5rem;
+    left: .53333333*0.5rem;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #ec6f3d
+}
+
+.contentBox .grounp-8 .tips .angle[data-v-5521cdf9] {
+    position: absolute;
+    text-align: center;
+    border-radius: 0 .26666667*0.5rem .26666667*0.5rem 0;
+    border-left: 1px solid #bd4515;
+    line-height: 2.16*0.5rem;
+    height: 2.16*0.5rem;
+    width: 1.6*0.5rem;
+    top: .02666667*0.5rem;
+    right: 0
+}
+
+.contentBox .grounp-8 .team-16[data-v-5521cdf9] {
+    float: left;
+    margin-left: 1px
+}
+
+.contentBox .grounp-8 .line[data-v-5521cdf9] {
+    float: right;
+    width: .48*0.5rem;
+    height: 2.34666667*0.5rem;
+    border: 2px solid #333d46;
+    margin-top: .64*0.5rem;
+    border-left-color: transparent
+}
+
+.contentBox .grounp-8 .line-h[data-v-5521cdf9] {
+    float: right;
+    height: .10666667*0.5rem;
+    width: .42666667*0.5rem;
+    background: #333d46;
+    margin-top: 1.73333333*0.5rem
+}
+
+.contentBox .team-16:last-of-type .team[data-v-5521cdf9] {
+    margin-top: .42666667*0.5rem
+}
+
+.contentBox .team-16 .team[data-v-5521cdf9]:after {
+    contentBox: "";
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    display: block
+}
+
+.contentBox .team-16 .team .screen[data-v-5521cdf9] {
+    position: absolute;
+    height: .74666667*0.5rem;
+    width: 1.17333333*0.5rem;
+    margin-top: -.21333333*0.5rem;
+    margin-left: .56*0.5rem;
+    background-color: rgba(0, 0, 0, .5)
+}
+
+.contentBox .team-16 .team .team-icon[data-v-5521cdf9] {
+    float: left;
+    width: 2.29333333*0.5rem;
+    text-align: center;
+    margin-top: -.21333333*0.5rem;
+    margin-bottom: .85333333*0.5rem
+}
+
+.contentBox .team-16 .team .team-icon img[data-v-5521cdf9] {
+    height: .74666667*0.5rem;
+    display: block;
+    margin: 0 auto
+}
+
+.contentBox .grounp-8-right .team-16[data-v-5521cdf9],
+.contentBox .grounp-8-right[data-v-5521cdf9] {
+    float: right
+}
+
+.contentBox .grounp-8-right .team-16 .team-icon span[data-v-5521cdf9] {
+    margin-left: -.85333333*0.5rem
+}
+
+.contentBox .grounp-8-right .link-down[data-v-5521cdf9] {
+    position: absolute;
+    top: .13333333*0.5rem;
+    left: .42666667*0.5rem;
+    width: .58666667*0.5rem;
+    height: 1.49333333*0.5rem;
+    border: 2px solid #333d46;
+    border-right: transparent;
+    border-bottom: transparent
+}
+
+.contentBox .grounp-8-right .link-up[data-v-5521cdf9] {
+    position: absolute;
+    top: 1.49333333*0.5rem;
+    left: .42666667*0.5rem;
+    width: .58666667*0.5rem;
+    height: 1.49333333*0.5rem;
+    border: 2px solid #333d46;
+    border-right: transparent;
+    border-top: transparent
+}
+
+.contentBox .grounp-8-right .link-row[data-v-5521cdf9] {
+    width: .37333333*0.5rem;
+    border: 1px solid #333d46;
+    position: absolute;
+    top: 1.49333333*0.5rem;
+    left: 0
+}
+
+.contentBox .grounp-8-right .team-number[data-v-5521cdf9] {
+    position: absolute;
+    font-size: 1.06666667*0.5rem;
+    right: -.26666667*0.5rem;
+    -webkit-transform: scale(.5) translate(.53333333*0.5rem, -1.17333333*0.5rem);
+    transform: scale(.5) translate(.53333333*0.5rem, -1.17333333*0.5rem)
+}
+
+.contentBox .grounp-4-left[data-v-5521cdf9],
+.contentBox .grounp-4-right[data-v-5521cdf9] {
+    width: 2.61333333*0.5rem;
+    height: 100%
+}
+
+.contentBox .grounp-4-left .grounp-4[data-v-5521cdf9],
+.contentBox .grounp-4-right .grounp-4[data-v-5521cdf9] {
+    position: relative;
+    height: 50%;
+    padding-top: 1px;
+    box-sizing: border-box
+}
+
+.contentBox .grounp-4-left .grounp-4 .link-row[data-v-5521cdf9],
+.contentBox .grounp-4-right .grounp-4 .link-row[data-v-5521cdf9] {
+    width: .37333333*0.5rem;
+    border: 1px solid #333d46;
+    position: absolute;
+    top: 4.16*0.5rem;
+    right: 0
+}
+
+.contentBox .grounp-4-left[data-v-5521cdf9] {
+    float: left;
+    margin-left: .16*0.5rem
+}
+
+.contentBox .grounp-4-left .team-8[data-v-5521cdf9] {
+    position: relative
+}
+
+.contentBox .grounp-4-left .team-8[data-v-5521cdf9]:first-of-type {
+    margin-bottom: 4.53333333*0.5rem;
+    margin-top: 1.12*0.5rem
+}
+
+.contentBox .grounp-4-left .team-8 .screen[data-v-5521cdf9] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: .85333333*0.5rem;
+    width: 1.28*0.5rem;
+    background-color: rgba(0, 0, 0, .5)
+}
+
+.contentBox .grounp-4-left .team-8 .team-icon[data-v-5521cdf9] {
+    width: 1.28*0.5rem;
+    height: .85333333*0.5rem;
+    background-color: #333d46
+}
+
+.contentBox .grounp-4-left .team-8 .team-icon>img[data-v-5521cdf9] {
+    height: .85333333*0.5rem
+}
+
+.contentBox .grounp-4-left .team-8 .link-down[data-v-5521cdf9] {
+    position: absolute;
+    top: .26666667*0.5rem;
+    right: .37333333*0.5rem;
+    width: .58666667*0.5rem;
+    height: 2.77333333*0.5rem;
+    border: 2px solid #333d46;
+    border-left: transparent;
+    border-bottom: transparent
+}
+
+.contentBox .grounp-4-left .team-8 .link-up[data-v-5521cdf9] {
+    position: absolute;
+    bottom: .37333333*0.5rem;
+    right: .37333333*0.5rem;
+    width: .58666667*0.5rem;
+    height: 2.72*0.5rem;
+    border: 2px solid #333d46;
+    border-left: transparent;
+    border-top: transparent
+}
+
+.contentBox .grounp-4-right[data-v-5521cdf9] {
+    float: right
+}
+
+.contentBox .grounp-4-right .grounp-4[data-v-5521cdf9] {
+    position: relative;
+    height: 50%;
+    padding-top: 1px;
+    box-sizing: border-box
+}
+
+.contentBox .grounp-4-right .grounp-4 .link-row[data-v-5521cdf9] {
+    width: .34666667*0.5rem;
+    border: 1px solid #333d46;
+    position: absolute;
+    top: 4.16*0.5rem;
+    left: 0
+}
+
+.contentBox .grounp-4-right .team-8[data-v-5521cdf9] {
+    position: relative
+}
+
+.contentBox .grounp-4-right .team-8[data-v-5521cdf9]:first-of-type {
+    margin-bottom: 4.53333333*0.5rem;
+    margin-top: 1.12*0.5rem
+}
+
+.contentBox .grounp-4-right .team-8 .screen[data-v-5521cdf9] {
+    position: absolute;
+    top: 0;
+    right: .10666667*0.5rem;
+    height: .85333333*0.5rem;
+    width: 1.28*0.5rem;
+    background-color: rgba(0, 0, 0, .5)
+}
+
+.contentBox .grounp-4-right .team-8 .team-icon[data-v-5521cdf9] {
+    width: 1.28*0.5rem;
+    height: .85333333*0.5rem;
+    background-color: #333d46;
+    margin-left: 1.22666667*0.5rem
+}
+
+.contentBox .grounp-4-right .team-8 .team-icon>img[data-v-5521cdf9] {
+    height: .85333333*0.5rem
+}
+
+.contentBox .grounp-4-right .team-8 .link-down[data-v-5521cdf9] {
+    position: absolute;
+    top: .37333333*0.5rem;
+    left: .37333333*0.5rem;
+    width: .58666667*0.5rem;
+    height: 2.61333333*0.5rem;
+    border: 2px solid #333d46;
+    border-right: transparent;
+    border-bottom: transparent
+}
+
+.contentBox .grounp-4-right .team-8 .link-up[data-v-5521cdf9] {
+    position: absolute;
+    bottom: .37333333*0.5rem;
+    left: .37333333*0.5rem;
+    width: .58666667*0.5rem;
+    height: 2.72*0.5rem;
+    border: 2px solid #333d46;
+    border-right: transparent;
+    border-top: transparent
+}
+
+.contentBox .grounp-2-left[data-v-5521cdf9],
+.contentBox .grounp-2-right[data-v-5521cdf9] {
+    width: 1.33333333*0.5rem;
+    height: 100%
+}
+
+.contentBox .grounp-2-left>div[data-v-5521cdf9],
+.contentBox .grounp-2-right>div[data-v-5521cdf9] {
+    height: 100%;
+    position: relative
+}
+
+.contentBox .grounp-2-left .grounp-2[data-v-5521cdf9],
+.contentBox .grounp-2-right .grounp-2[data-v-5521cdf9] {
+    height: 50%;
+    padding-top: 1px;
+    position: relative
+}
+
+.contentBox .grounp-2-left .team-icon[data-v-5521cdf9],
+.contentBox .grounp-2-right .team-icon[data-v-5521cdf9] {
+    margin-bottom: .16*0.5rem;
+    width: 1.28*0.5rem;
+    height: .85333333*0.5rem;
+    margin-top: 3.73333333*0.5rem;
+    background-color: #333d46
+}
+
+.contentBox .grounp-2-left .team-icon>div[data-v-5521cdf9],
+.contentBox .grounp-2-right .team-icon>div[data-v-5521cdf9] {
+    position: relative
+}
+
+.contentBox .grounp-2-left .team-icon>div .screen[data-v-5521cdf9],
+.contentBox .grounp-2-right .team-icon>div .screen[data-v-5521cdf9] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.28*0.5rem;
+    height: .85333333*0.5rem;
+    background-color: rgba(0, 0, 0, .5)
+}
+
+.contentBox .grounp-2-left .team-icon>div img[data-v-5521cdf9],
+.contentBox .grounp-2-right .team-icon>div img[data-v-5521cdf9] {
+    height: .85333333*0.5rem
+}
+
+.contentBox .grounp-2-left .link-down[data-v-5521cdf9],
+.contentBox .grounp-2-left .link-up[data-v-5521cdf9],
+.contentBox .grounp-2-right .link-down[data-v-5521cdf9],
+.contentBox .grounp-2-right .link-up[data-v-5521cdf9] {
+    position: absolute;
+    border: 1px solid #333d46;
+    height: 4.8*0.5rem;
+    width: 0
+}
+
+.contentBox .grounp-2-left .link-row[data-v-5521cdf9],
+.contentBox .grounp-2-right .link-row[data-v-5521cdf9] {
+    width: .48*0.5rem;
+    border: 1px solid #333d46;
+    position: absolute;
+    top: 9.49333333*0.5rem
+}
+
+.contentBox .grounp-2-left[data-v-5521cdf9] {
+    float: left
+}
+
+.contentBox .grounp-2-left .link-down[data-v-5521cdf9] {
+    left: .61333333*0.5rem
+}
+
+.contentBox .grounp-2-left .link-up[data-v-5521cdf9] {
+    left: .61333333*0.5rem;
+    top: -1.33333333*0.5rem
+}
+
+.contentBox .grounp-2-left .link-row[data-v-5521cdf9] {
+    right: .10666667*0.5rem
+}
+
+.contentBox .grounp-2-right[data-v-5521cdf9] {
+    float: right
+}
+
+.contentBox .grounp-2-right .team-icon[data-v-5521cdf9] {
+    margin-left: .10666667*0.5rem
+}
+
+.contentBox .grounp-2-right .link-down[data-v-5521cdf9] {
+    left: .8*0.5rem
+}
+
+.contentBox .grounp-2-right .link-up[data-v-5521cdf9] {
+    left: .8*0.5rem;
+    top: -1.28*0.5rem
+}
+
+.contentBox .grounp-2-right .link-row[data-v-5521cdf9] {
+    left: .26666667*0.5rem
+}
+
+.contentBox .grounp-1-center[data-v-5521cdf9] {
+    float: left;
+    position: relative;
+    width: 4.05333333*0.5rem;
+    height: 100%;
+    left: .16*0.5rem
+}
+
+.contentBox .grounp-1-center .cup[data-v-5521cdf9] {
+    position: absolute;
+    top: 10.13333333*0.5rem;
+    left: .66666667*0.5rem;
+    width: 2.66666667*0.5rem
+}
+
+.contentBox .grounp-1-center .link-row[data-v-5521cdf9] {
+    position: absolute;
+    top: 8.74666667*0.5rem;
+    left: 2*0.5rem;
+    width: 0;
+    height: .69333333*0.5rem;
+    border: 1px solid #333d46
+}
+
+.contentBox .grounp-1-center .champion[data-v-5521cdf9] {
+    margin: 0 auto;
+    position: absolute;
+    top: 5.06666667*0.5rem
+}
+
+.contentBox .grounp-1-center .champion .screen[data-v-5521cdf9] {
+    width: 2.18666667*0.5rem;
+    height: 1.49333333*0.5rem;
+    background-color: #333d46;
+    display: block;
+    margin: 0 auto
+}
+
+.contentBox .grounp-1-center .champion .champion-icon[data-v-5521cdf9] {
+    width: 2.18666667*0.5rem;
+    display: block;
+    margin: 0 auto
+}
+
+.contentBox .grounp-1-center .champion .champion-name[data-v-5521cdf9] {
+    text-align: center;
+    font-size: .58666667*0.5rem;
+    margin: .16*0.5rem 0
+}
+
+.contentBox .grounp-1-center .champion .champion-logo[data-v-5521cdf9] {
+    width: 4.05333333*0.5rem;
+    margin-top: .16*0.5rem;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2)
+}
+
+.contentBox .grounp-1-center .grounp-1[data-v-5521cdf9] {
+    float: left;
+    margin-top: 9.06666667*0.5rem;
+    margin-bottom: .58666667*0.5rem
+}
+
+.contentBox .grounp-1-center .grounp-1[data-v-5521cdf9]:last-of-type {
+    float: right
+}
+
+.contentBox .grounp-1-center .team-icon[data-v-5521cdf9] {
+    width: 1.28*0.5rem;
+    height: .85333333*0.5rem;
+    float: left;
+    position: relative;
+    background-color: #333d46
+}
+
+.contentBox .grounp-1-center .team-icon>img[data-v-5521cdf9] {
+    height: .85333333*0.5rem
+}
+
+.contentBox .grounp-1-center .team-icon .screen[data-v-5521cdf9] {
+    position: absolute;
+    width: 1.28*0.5rem;
+    height: .85333333*0.5rem;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5)
+}
+
+.contentBox .grounp-1-center .line-right[data-v-5521cdf9] {
+    float: left;
+    border: 1px solid #333d46;
+    width: .42666667*0.5rem;
+    height: 0;
+    margin-left: .21333333*0.5rem;
+    margin-top: .37333333*0.5rem
+}
+
+.contentBox .grounp-1-center .line-left[data-v-5521cdf9] {
+    float: left;
+    border: 1px solid #333d46;
+    width: .42666667*0.5rem;
+    margin-right: .16*0.5rem;
+    height: 0;
+    margin-top: .37333333*0.5rem
+}
+
+.confirm[data-v-5521cdf9] {
+    position: absolute;
+    bottom: 2.4*0.5rem;
+    font-size: .90666667*0.5rem;
+    width: 9.38666667*0.5rem;
+    height: 2.45333333*0.5rem;
+    left: 50%;
+    margin-left: -4.69333333*0.5rem;
+    line-height: 2.45333333*0.5rem;
+    background-color: #ec6f3d;
+    text-align: center
+}
+
+.gray[data-v-5521cdf9] {
+    background-color: #888
+}

@@ -4,6 +4,9 @@ import {
 } from 'mint-ui'
 import router from '../router/index'
 const mutations = {
+    COSULTINIT(state, data){
+        state.skeletion.consultInit = data
+    },
     GETSMSCODE(state, data) {
         //获取验证码  
         api.SendSmsCode(data)
@@ -148,6 +151,7 @@ const mutations = {
     },
     ZXDETAILOBJ(state, data) {
         state.zxDetailObj = data
+        state.skeletion.consultInit = true
     },
     ARRTIME(state, data){
         state.arrTime = data

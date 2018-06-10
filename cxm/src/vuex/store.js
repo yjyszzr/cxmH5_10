@@ -10,6 +10,9 @@ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
 const state = {
+    skeletion: {
+        consultInit: true,  //初始化骨架屏
+    },
     //验证码初始化
     smsCode: {
         changeNumber: 60,
@@ -67,14 +70,13 @@ const state = {
     },
     timertz: '', //充值送弹窗定时器 
     mark_showAc: false, //充值送弹窗
-    pop: ''
-
+    pop: '',
 }
 
 export default new Vuex.Store({
     state,
     actions,
     mutations,
-    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','mark_playObj','findObj','world_cupObj'],storage: window.sessionStorage})]
+    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','findObj','world_cupObj'],storage: window.sessionStorage})]
     //strict: true
 })

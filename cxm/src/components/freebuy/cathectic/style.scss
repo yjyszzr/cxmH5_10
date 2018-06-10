@@ -28,6 +28,9 @@
      }
      .cont_pt,.cont_ptZjq,.cont_pthh{
        display: flex;
+       width: px2rem(530px);
+       margin: 0 auto;
+       justify-content: space-between;
        span{
          flex: 2;
          text-align: center;

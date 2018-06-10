@@ -127,6 +127,7 @@
 				</div>
 			</div>
 			<v-activity :activity='activity'></v-activity>
+      <!-- <router-link to='/activity/world/sixty'>啦啦啦啦啦</router-link> -->
 			<div class="section center">
 				<p class="boll">竞彩足球</p>
 				<ul>

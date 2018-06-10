@@ -154,7 +154,17 @@ export default {
             this.flag = false
             this.classFlag = false
           }
-        } else {
+        }else if (obj.matchPlays[1].single == '0') {
+          if (obj.matchPlays[1].homeCell.isSelected || obj.matchPlays[1].flatCell.isSelected || obj.matchPlays[1].visitingCell.isSelected) {
+            this.text = `<p>已选择<span style='color:#ea5504;'>1场</span>非单关比赛</p><p>还差<span style='color:#ea5504;'>1场</span>比赛</p>`
+            this.flag = true
+            this.classFlag = true
+          } else {
+            this.text = `<p>已选<span style='color:#ea5504;'>1场</span>单关比赛</p><p>可投注</p>`
+            this.flag = false
+            this.classFlag = false
+          }
+        }else {
           if (obj.matchPlays[0].homeCell.isSelected || obj.matchPlays[0].flatCell.isSelected || obj.matchPlays[0].visitingCell.isSelected || obj.matchPlays[1].visitingCell.isSelected || obj.matchPlays[1].homeCell.isSelected || obj.matchPlays[1].flatCell.isSelected) {
             this.text = `<p>已选择<span style='color:#ea5504;'>1场</span>非单关比赛</p><p>还差<span style='color:#ea5504;'>1场</span>比赛</p>`
             this.flag = true

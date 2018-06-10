@@ -17,7 +17,7 @@ export default {
         }
     },
     beforeCreate() {
-        Indicator.open()
+        // Indicator.open()
     },
     created(){
         
@@ -51,6 +51,7 @@ export default {
         reloadzxDetail(c){
             document.querySelector('#content').scrollTop = 0;
             // Indicator.open()
+            this.$store.commit('COSULTINIT',false)
             this.id = c
             this.fetchData()
         },
@@ -92,6 +93,9 @@ export default {
     computed: {  
         zxCollectionFlag(){
             return this.$store.state.zxCollectionFlag;
+        },
+        consultinit() {  
+            return this.$store.state.skeletion.consultInit; 
         }
     },
     watch:{
@@ -104,8 +108,14 @@ export default {
         //     console.log(to)
         // }
     },
+    beforeRouteEnter(to, from, next) {
+      next(vm=>{
+        vm.$store.commit('COSULTINIT',false)
+      })
+    },
     beforeRouteLeave(to, from, next) {
       next()
+      this.$store.commit('COSULTINIT',true)
       this.$store.dispatch("getCollectionFlag", '')
       this.$store.state.zxDetailObj = {}
     }

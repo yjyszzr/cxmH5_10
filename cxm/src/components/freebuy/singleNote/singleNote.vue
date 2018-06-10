@@ -43,9 +43,9 @@
                     </div>
                         <div class="matchRightjqs" v-if="playType=='4'">
                             <div class="jqs_title">
-                                <span>{{item.homeTeamAbbr}}</span>
-                                <span>VS</span>
-                                <span>{{item.visitingTeamAbbr}}</span>
+                                <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                            <span>VS</span>
+                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
                             </div>
                             <div class="matchRightBox">
                                 <p v-for='(data,index) in item.matchPlays[0].matchCells' :key='index' :class="item.myspf&&item.myspf.indexOf('jqs:'+data.cellCode)!=-1?'selected':''" >
@@ -59,9 +59,9 @@
                         </div>
                         <div class="matchRightbf" v-if="playType=='3'">
                         <div class="bf_title">
-                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>{{item.visitingTeamAbbr}}</span>
+                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
                             点击进行比分投注
@@ -74,9 +74,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='5'">
                         <div class="bf_title">
-                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>{{item.visitingTeamAbbr}}</span>
+                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
                             点击进行半全场投注
@@ -89,9 +89,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='7'">
                         <div class="bf_title">
-                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>{{item.visitingTeamAbbr}}</span>
+                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div class="matchRightstoneBox">
                             <p :class="item.myspf&&item.myspf.indexOf(item.matchPlays[0].homeCell.cellName)!=-1?'selected':''">
@@ -108,9 +108,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='6'">
                         <div class="bf_title">
-                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>{{item.visitingTeamAbbr}}</span>
+                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div class="matchRighthhBox">
                             <div class="team_left">
@@ -124,7 +124,7 @@
                                     <p :class="item.matchPlays[1].flatCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].flatCell.cellName}} {{item.matchPlays[1].flatCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[1].visitingCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].visitingCell.cellName}} {{item.matchPlays[1].visitingCell.cellOdds}}</p>
                                 </div>
-                                <div class="team_bottom">
+                                <div class="team_bottom" :style="{'border':item.matchPlays[0]&&item.matchPlays[0].single=='1'?'1px solid #ea5504':'','margin':item.matchPlays[0]&&item.matchPlays[0].single=='1'?'0 0 -1px -1px':''}">
                                     <p :style="{'background':item.matchPlays[0].fixedOdds.substr(0,1)=='+'?'#f5ac41':'#85c368'}">{{item.matchPlays[0].fixedOdds}}</p>
                                     <p :class="item.matchPlays[0].homeCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].homeCell.cellName}} {{item.matchPlays[0].homeCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[0].flatCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].flatCell.cellName}} {{item.matchPlays[0].flatCell.cellOdds}}</p>
@@ -188,9 +188,9 @@
                     </div>
                     <div class="matchRightjqs" v-if="playType=='4'">
                         <div class="jqs_title">
-                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>{{item.visitingTeamAbbr}}</span>
+                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div class="matchRightBox">
                             <p v-for='(data,index) in item.matchPlays[0].matchCells' :key='index' :class="item.myspf&&item.myspf.indexOf('jqs:'+data.cellCode)!=-1?'selected':''" >
@@ -204,9 +204,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='3'">
                         <div class="bf_title">
-                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>{{item.visitingTeamAbbr}}</span>
+                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
                             点击进行比分投注
@@ -219,9 +219,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='5'">
                         <div class="bf_title">
-                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>{{item.visitingTeamAbbr}}</span>
+                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
                             点击进行半全场投注
@@ -234,9 +234,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='7'">
                         <div class="bf_title">
-                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>{{item.visitingTeamAbbr}}</span>
+                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div class="matchRightstoneBox">
                             <p :class="item.myspf&&item.myspf.indexOf(item.matchPlays[0].homeCell.cellName)!=-1?'selected':''">
@@ -253,9 +253,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='6'">
                         <div class="bf_title">
-                            <span>{{item.homeTeamAbbr}}</span>
+                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>{{item.visitingTeamAbbr}}</span>
+                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div class="matchRighthhBox">
                             <div class="team_left" :class="item.matchPlays[1]&&item.matchPlays[1].single=='1'?'signleSected':''">
@@ -269,7 +269,7 @@
                                     <p :class="item.matchPlays[1].flatCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].flatCell.cellName}} {{item.matchPlays[1].flatCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[1].visitingCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].visitingCell.cellName}} {{item.matchPlays[1].visitingCell.cellOdds}}</p>
                                 </div>
-                                <div class="team_bottom">
+                                <div class="team_bottom" :style="{'border':item.matchPlays[0]&&item.matchPlays[0].single=='1'?'1px solid #ea5504':'','margin':item.matchPlays[0]&&item.matchPlays[0].single=='1'?'0 0 -1px -1px':''}">
                                     <p :style="{'background':item.matchPlays[0].fixedOdds.substr(0,1)=='+'?'#f5ac41':'#85c368'}">{{item.matchPlays[0].fixedOdds}}</p>
                                     <p :class="item.matchPlays[0].homeCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].homeCell.cellName}} {{item.matchPlays[0].homeCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[0].flatCell.isSelected?'selected':''" @click="unSelectedClickrq($event,item)">{{item.matchPlays[0].flatCell.cellName}} {{item.matchPlays[0].flatCell.cellOdds}}</p>

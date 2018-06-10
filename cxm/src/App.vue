@@ -1,19 +1,21 @@
 <template>
   <div id="app">
     <v-headertop :title='title()' :showTitle='showTitle()' :menu-display="menuDisplay()" v-show='isShowHeader'></v-headertop>
-    <div id='content' class="content">
-        <!-- <transition  mode="out-in" enter-active-class='bounce-enter' leave-active-class="bounce-leave">
-            <router-view></router-view>
-        </transition>   -->
-        <keep-alive>
-          <router-view v-if="$route.meta.keepAlive"></router-view>
-        </keep-alive>
-        <router-view v-if="!$route.meta.keepAlive"></router-view>
-        <!-- <keep-alive>
-           <router-view></router-view>
-        </keep-alive> -->
-       
-    </div>
+    <mainSkeleton v-show="!consultinit"></mainSkeleton>
+    <transition name="fade"> 
+        <div id='content' class="content" v-show='consultinit'>
+            <!-- <transition  mode="out-in" enter-active-class='bounce-enter' leave-active-class="bounce-leave">
+                <router-view></router-view>
+            </transition>   -->
+            <keep-alive>
+              <router-view v-if="$route.meta.keepAlive"></router-view>
+            </keep-alive>
+            <router-view v-if="!$route.meta.keepAlive"></router-view>
+            <!-- <keep-alive>
+              <router-view></router-view>
+            </keep-alive> -->
+        </div>
+    </transition>
     <v-footer v-show='showBar()'></v-footer>
     <transition name="fade"> 
       <v-mark v-if="this.$store.state.mark_show"></v-mark>
@@ -34,6 +36,7 @@ import popup from "./components/activity/red_packet/popup/index"
 import {ScrollFix} from './util/common'
 import {wxPd} from './util/common'
 import {getUrlStr} from './util/common'
+import mainSkeleton from './components/public/mainSkeleton/main.skeleton.vue'
 // import LocalScrollFix from 'Localscrollfix'
 export default {
   name: "App",
@@ -42,11 +45,12 @@ export default {
     "v-footer": footer,
     "v-mark": mark,
     "v-pmark": pmark,
-    "v-popup":popup
+    "v-popup":popup,
+    mainSkeleton
   },
   data() {
     return {
-      isShowHeader: false
+      isShowHeader: false,
     };
   },
   created(){
@@ -227,34 +231,20 @@ export default {
 	     }
     }
   },
-  // watch: {
-  //     '$route' (to, from) {
-
-  //       if (from.query.time) {
-  //         if (to.query.time > from.query.time) {
-  //           this.transitionName = 'slide-go'
-  //         } else {
-  //           this.transitionName = 'slide-back'
-  //         }
-  //       } else {
-  //         this.transitionName = 'slide-go'
-  //       }
-
-  //       this.nowUrl = to.fullPath
-  //     }
-  // },
   mounted(){
-    // var scrollable = document.getElementById("content");
-    // new ScrollFix(scrollable);
-    // LocalScrollFix('.win')
-  }
+    
+  },
+  computed: {  
+      consultinit() {  
+          return this.$store.state.skeletion.consultInit; 
+      }
+  }, 
 };
 </script>
 
 <style lang='scss'>
 @import "./assets/css/public.scss";
 @import "./assets/css/function.scss";
-
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
