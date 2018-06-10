@@ -4,6 +4,7 @@
 <template>
     <div class="sixty">
 			<div data-v-5521cdf9="" id="part2">
+				<div class="med">彩小秘 </div>
 				<div data-v-5521cdf9="" class="contentBox">
 					<div data-v-5521cdf9="" class="grounp-8-left">
 						<div data-v-5521cdf9="" class="grounp-8">
