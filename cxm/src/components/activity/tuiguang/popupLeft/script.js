@@ -25,8 +25,8 @@ export default {
                 if (res.code == 0) {
                     res.data.forEach(item => {
                         let obj = {}
-                        obj.name = item.channel_name
-                        obj.id = item.channel_id
+                        obj.name = item.channelName
+                        obj.id = item.channelId
                         this.list.push(obj)
                     });
                 }
