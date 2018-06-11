@@ -457,6 +457,12 @@ const router = new Router({
           name: 'insurance',
           component: resolve => require(['@/components/appmust/insurance/insurance.vue'], resolve)
       },
+      },
+      {
+            path: '/activity/world/thirtytwo',
+            name: 'thirtytwo',
+            component: resolve => require(['@/components/activity/worldjeep/thirtytwo/thirtytwo.vue'], resolve)
+      },
   ]
 })
 
