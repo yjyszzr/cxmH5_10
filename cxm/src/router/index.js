@@ -457,6 +457,43 @@ const router = new Router({
           name: 'insurance',
           component: resolve => require(['@/components/appmust/insurance/insurance.vue'], resolve)
       },
+      //app天天买
+      //帮助中心：/apptt/help
+      //购彩协议：/apptt/protocol
+      //服务协议：/apptt/service
+      //玩法介绍：/apptt/inToplay
+      //胆说明：  /apptt/explain
+      //安全保障：/apptt/insurance
+      {
+          path: '/apptt/help',
+          name: 'help',
+          component: resolve => require(['@/components/apptt/help/index.vue'], resolve)
+      },
+      {
+          path: '/apptt/protocol',
+          name: 'protocol',
+          component: resolve => require(['@/components/apptt/protocol/index.vue'], resolve)
+      },
+      {
+          path: '/apptt/service',
+          name: 'service',
+          component: resolve => require(['@/components/apptt/service/index.vue'], resolve)
+      },
+      {
+          path: '/apptt/inToplay',
+          name: 'inToplay',
+          component: resolve => require(['@/components/apptt/intoplay/index.vue'], resolve)
+      },
+      {
+          path: '/apptt/explain',
+          name: 'explain',
+          component: resolve => require(['@/components/apptt/explain/explain.vue'], resolve)
+      },
+      {
+          path: '/apptt/insurance',
+          name: 'insurance',
+          component: resolve => require(['@/components/apptt/insurance/insurance.vue'], resolve)
+      },
       {
             path: '/activity/world/thirtytwo',
             name: 'thirtytwo',
