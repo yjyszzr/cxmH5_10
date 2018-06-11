@@ -1,10 +1,14 @@
 @import '../../../../assets/css/function.scss';
 .thirtytwo{
     background: black;
-    min-height: 100%;
+    height: auto;
+    overflow: hidden;
+    padding-bottom: px2rem(30px);
+    margin-bottom: px2rem(-20px);
+    overflow: hidden;
     h4{
         text-align: center;
-        font-size: px2em(26px);
+        font-size: 0.4rem;
         color: #fff;
         padding: px2rem(20px) 0;
     }
@@ -15,8 +19,10 @@
             background: #404c57;
             margin-left: 6.5%;
             margin-top: px2rem(30px);
+            padding: px2rem(20px) 0;
             p{
                 text-align: center;
+                color: white;
             }
             li{
                 height: px2rem(50px);
@@ -24,7 +30,9 @@
                 align-items: center;
                 color: white;
                 position: relative;
-                span:last-of-type{
+                justify-content: space-between;
+                padding: 0 px2rem(20px);
+                i{
                     display: block;
                     width: px2rem(28px);
                     height: px2rem(28px);
@@ -36,9 +44,15 @@
                     width: 100%;
                     height: 100%;
                     top: 0;
+                    left: 0;
+                }
+                .team{
+                    display: flex;
+                    align-items: center;
                 }
                 img{
                     width: px2rem(50px);
+                    margin-right: px2rem(5px);
                 }
             }
         }

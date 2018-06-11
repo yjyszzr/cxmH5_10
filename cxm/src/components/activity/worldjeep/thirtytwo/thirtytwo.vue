@@ -9,9 +9,11 @@
                 <p>{{item.name}}组</p>
                 <li v-for="(data,index) in item.list" :key='index'>
                     <b></b>
-                    <img :src="data.icon" alt="">
-                    <span>俄罗斯</span>
-                    <span></span>
+                    <div class="team">
+                        <img :src="data.icon" alt="">
+                        <span>{{data.name}}</span>
+                    </div>
+                    <i></i>
                 </li>
             </ul>
         </div>
