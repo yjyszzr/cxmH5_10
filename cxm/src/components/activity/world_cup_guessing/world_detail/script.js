@@ -68,6 +68,12 @@ export default {
             }else if(this.mupNum<=0){
                 Toast('投注倍数不能为0')
 				return
+            }else if(this.fsNum>=10000){
+                Toast('总注数不得超过10000注')
+				return
+            }else if(this.fsNum*2*this.mupNum>=20000){
+                Toast('单注彩票金额不得超过20000元')
+				return
             }
             let data = {
                 'betIds': this.betIds.join(','),

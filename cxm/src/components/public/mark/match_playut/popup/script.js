@@ -1,3 +1,4 @@
+import {Toast} from 'mint-ui'
 export default {
     name: 'popup',
     data(){

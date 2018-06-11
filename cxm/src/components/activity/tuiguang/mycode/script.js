@@ -9,27 +9,29 @@ export default {
         return {
             token: '',
             qrcodeUrl: '',
-            userId: this.$route.query.userId,
+            userId: '',
         }
     },
     beforeCreate() {
         Indicator.open()
     },
-    mounted() {
+    created(){
         this.fetchData()
-        isShare('注册送好礼', '天”助力2018世界杯，110元彩金等您来领', '/static/activity_Back/tuiguang/index.html?id='+this.userId,'/static/activity_Back/tuiguang/img/logo.jpg')
+    },
+    mounted() {
+        isShare('注册送好礼', '"每一天"助力2018世界杯，110元彩金等您来领', '/static/activity_Back/tuiguang/index.html?id='+this.userId,'/static/activity_Back/tuiguang/img/logo.jpg')
         means('我的二维码').isTitle
     },
     methods: {
         fetchData() {
             let data = {
-                'userId': this.userId,
                 'url': '',
             }
             api.mycode(data)
                 .then(res => {
                     if (res.code == 0) {
                         this.mycode = res.data
+                        this.userId = res.data.userId
                         let canvas = document.getElementById('qrcode');
                         QRCode.toCanvas(canvas, getCsUrl() + "/static/activity_Back/tuiguang/index.html?id=" + res.data.userId, function (error) {
 
