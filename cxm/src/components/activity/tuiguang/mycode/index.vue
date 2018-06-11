@@ -3,7 +3,7 @@
 
 <template>
     <div class="mycode">
-        <p>“每一天”助力2018世界杯110元彩金等您来领</p>
+        <p>“每一天”助力2018世界杯<br />110元彩金等您来领</p>
         <canvas id="qrcode"></canvas>
         <div></div>
         <!--<div class="btn">-->

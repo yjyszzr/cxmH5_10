@@ -32,6 +32,7 @@
                 position: relative;
                 justify-content: space-between;
                 padding: 0 px2rem(20px);
+                border-bottom: 1px solid #000;
                 i{
                     display: block;
                     width: px2rem(28px);
@@ -54,6 +55,12 @@
                     width: px2rem(50px);
                     margin-right: px2rem(5px);
                 }
+            }
+            li:last-of-type{
+                border: none;
+            }
+            .seld{
+                background: #16b13a;
             }
         }
     }

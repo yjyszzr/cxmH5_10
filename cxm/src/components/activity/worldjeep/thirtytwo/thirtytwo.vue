@@ -8,7 +8,7 @@
             <ul v-for="(item,i) in wLidt" :key='i'>
                 <p>{{item.name}}组</p>
                 <li v-for="(data,index) in item.list" :key='index'>
-                    <b></b>
+                    <b @click='teamClick($event)'></b>
                     <div class="team">
                         <img :src="data.icon" alt="">
                         <span>{{data.name}}</span>

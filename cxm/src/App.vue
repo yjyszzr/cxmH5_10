@@ -521,7 +521,7 @@ textarea {
           right: px2rem(0px);
         }
         button {
-          color: #a0a0a0;
+          color: #787878;
           font-size: px2rem(30px);
           height: px2rem(60px);
           line-height: px2rem(60px);
