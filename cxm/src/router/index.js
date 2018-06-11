@@ -378,7 +378,7 @@ const router = new Router({
           cname: '推广注册成功',
           component: resolve => require(['@/components/activity/tuiguang/success/success.vue'], resolve)
       },
-      //app
+      //app彩小秘彩票
       //帮助中心：appinfo/help
       //购彩协议：appinfo/protocol
       //服务协议：appinfo/service
@@ -403,19 +403,16 @@ const router = new Router({
       {
           path: '/appinfo/inToplay',
           name: 'inToplay',
-          cname:'玩法介绍',
           component: resolve => require(['@/components/appinfo/intoplay/index.vue'], resolve)
       },
       {
           path: '/appinfo/explain',
           name: 'explain',
-          cname: '胆说明',
           component: resolve => require(['@/components/appinfo/explain/explain.vue'], resolve)
       },
       {
           path: '/appinfo/insurance',
           name: 'insurance',
-          cname:'安全保障',
           component: resolve => require(['@/components/appinfo/insurance/insurance.vue'], resolve)
       },
       {
@@ -423,6 +420,43 @@ const router = new Router({
             name: 'sixty',
             component: resolve => require(['@/components/activity/worldjeep/sixty/sixty.vue'], resolve)
        },
+      //app必中彩
+      //帮助中心：/appmust/help
+      //购彩协议：/appmust/protocol
+      //服务协议：/appmust/service
+      //玩法介绍：/appmust/inToplay
+      //胆说明：  /appmust/explain
+      //安全保障：/appmust/insurance
+      {
+          path: '/appmust/help',
+          name: 'help',
+          component: resolve => require(['@/components/appmust/help/index.vue'], resolve)
+      },
+      {
+          path: '/appmust/protocol',
+          name: 'protocol',
+          component: resolve => require(['@/components/appmust/protocol/index.vue'], resolve)
+      },
+      {
+          path: '/appmust/service',
+          name: 'service',
+          component: resolve => require(['@/components/appmust/service/index.vue'], resolve)
+      },
+      {
+          path: '/appmust/inToplay',
+          name: 'inToplay',
+          component: resolve => require(['@/components/appmust/intoplay/index.vue'], resolve)
+      },
+      {
+          path: '/appmust/explain',
+          name: 'explain',
+          component: resolve => require(['@/components/appmust/explain/explain.vue'], resolve)
+      },
+      {
+          path: '/appmust/insurance',
+          name: 'insurance',
+          component: resolve => require(['@/components/appmust/insurance/insurance.vue'], resolve)
+      },
   ]
 })
 
