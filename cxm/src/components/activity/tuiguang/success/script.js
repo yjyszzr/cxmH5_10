@@ -10,9 +10,10 @@ export default {
 
     },
     mounted() {
-        if(detect==='ios'){
-            $('.go_btn').css('display','none')
+        if(detect()==='ios'){
+            $('.buton').css('display','none')
         }
+        document.title='注册推广员'
     },
     methods:{
 
@@ -30,7 +31,4 @@ export default {
             location.href = 'http://m.caixiaomi.net'
         }
     },
-    mounted(){
-        document.title='注册推广员'
-    }
 }
