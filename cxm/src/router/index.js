@@ -422,7 +422,12 @@ const router = new Router({
             path: '/activity/world/sixty',
             name: 'sixty',
             component: resolve => require(['@/components/activity/worldjeep/sixty/sixty.vue'], resolve)
-       },
+      },
+      {
+            path: '/activity/world/thirtytwo',
+            name: 'thirtytwo',
+            component: resolve => require(['@/components/activity/worldjeep/thirtytwo/thirtytwo.vue'], resolve)
+      },
   ]
 })
 
