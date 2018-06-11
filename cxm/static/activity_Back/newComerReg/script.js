@@ -62,9 +62,7 @@ $.showIndicator();
 			})
 		}
 		function downLoadGoto() {
-            if(detect==='ios'){
-                location.href = 'http://m.caixiaomi.net'
-            }
+			location.href = 'http://m.caixiaomi.net'
         }
 
 		function getSmsCode() {
