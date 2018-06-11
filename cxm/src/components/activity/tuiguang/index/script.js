@@ -9,7 +9,8 @@ export default {
         return {
             explain: {
                 inviteNum:0,
-                bettingTotalAmount:0
+                bettingTotalAmount:0,
+                userId: ''
             },
             // userId: this.$route.query.userId,
         }
@@ -39,6 +40,15 @@ export default {
                         this.explain = res.data
                     }
                 })
+            let data1 = {
+                    'url': '',
+                }
+                api.mycode(data1)
+                    .then(res => {
+                        if (res.code == 0) {
+                            this.userId = res.data.userId
+                        }
+                })
         },
         goExplain() {
             if(this.$route.query.showtitle&&this.$route.query.showtitle=='1'){
@@ -57,7 +67,7 @@ export default {
         },
         goCode(){
             if(this.$route.query.showtitle&&this.$route.query.showtitle=='1'){
-                location.href="/activity/mycode?cxmxc=scm&cmshare=1&showtitle=1"
+                location.href="/activity/mycode?cxmxc=scm&cmshare=1&showtitle=1&id="+this.userId
             }else{
                 this.$router.push({path: '/activity/mycode'})
             }
