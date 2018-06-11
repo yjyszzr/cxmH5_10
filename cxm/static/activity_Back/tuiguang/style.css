@@ -19,7 +19,7 @@ html {
 	color: #fff;
 	background: #ea5504;
 	display: block;
-	margin: 7rem auto 0;
+	margin: 6rem auto 0;
 	border: 0;
 	font-size: 0.6rem;
 	width: 60%;
@@ -51,7 +51,7 @@ html {
 }
 
 .aTitle {
-	margin: 3.5rem auto 1rem;
+	margin: 15rem auto 1rem;
 	width: 80%;
 	display: block;
 	position: relative;
