@@ -27,6 +27,28 @@ $.showIndicator();
 //		    return undefined
 //		}
 
+        //判断苹果系统和安卓系统
+        function detect(){
+            var equipmentType = "";
+            var agent = navigator.userAgent.toLowerCase();
+            var android = agent.indexOf("android");
+            var iphone = agent.indexOf("iphone");
+            var ipad = agent.indexOf("ipad");
+            if(android != -1){
+                equipmentType = "android";
+            }
+            if(iphone != -1 || ipad != -1){
+                equipmentType = "ios";
+            }
+            return equipmentType;
+        }
+        var detect = detect()
+
+        if(detect==='ios'){
+            $('.downLoadBtn').css('display','none')
+        }
+
+
 		function activity_smClick() {
 			$.modal({
 				title: '活动说明',
@@ -39,7 +61,11 @@ $.showIndicator();
 				}, ]
 			})
 		}
-
+		function downLoadGoto() {
+            if(detect==='ios'){
+                location.href = 'http://m.caixiaomi.net'
+            }
+        }
 
 		function getSmsCode() {
 			var obj = {}
@@ -155,22 +181,7 @@ $.showIndicator();
 		}
 		
 		function downLoadBtn(){
-			//判断苹果系统和安卓系统
-			function detect(){
-			    var equipmentType = "";
-			    var agent = navigator.userAgent.toLowerCase();
-			    var android = agent.indexOf("android");
-			    var iphone = agent.indexOf("iphone");
-			    var ipad = agent.indexOf("ipad");
-			    if(android != -1){
-			        equipmentType = "android";
-			    }
-			    if(iphone != -1 || ipad != -1){
-			        equipmentType = "ios";
-			    }
-			    return equipmentType;
-			}
-			var detect = detect()
+
             if(detect==='ios'){
                 location.href = 'http://m.caixiaomi.net'
             }else if(detect==='android'){
