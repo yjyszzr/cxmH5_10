@@ -9,6 +9,7 @@ html {
 body{
 	background: #fff;
 }
+img{ pointer-events: none; }
 .page {
 	font-family: "微软雅黑";
 }
@@ -21,12 +22,18 @@ body{
 
 .activity_sm {
 	position: absolute;
-	top: 1.2rem;
-	right: 0;
-	width: 3.5rem;
-	height: 1.3rem;
-	z-index: 10;
-	color: #df5000;
+    top: 1.5rem;
+    right: 0;
+    width: 4rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: white;
+    background: rgb(228, 123, 30);
+    border-radius: 0.6rem 0 0 0.6rem;
+    z-index: 10;
 }
 .page-current{
 	background: white;
@@ -40,7 +47,7 @@ body{
 }
 
 .telVal {
-	margin: 20rem auto 1rem;
+	margin: 22rem auto 1rem;
 	display: block;
 	border: none;
 	background: #faddcd;

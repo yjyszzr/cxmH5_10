@@ -5,7 +5,7 @@
 <template>
     <div class="packetindex">
         <div class="pack_center">
-            <img src="../image/img1.png" class="imgTop">
+            <img src="../image/img1.png" class="imgTop" @click.prevent>
             <div class="time">
                 <v-countDown :endTime="packet.endTime" :callback="callback"></v-countDown>
             </div>
@@ -36,7 +36,7 @@
                     <h5>注意事项</h5>
                     <div>
                         <span>1、</span>
-                        <p>本次活动时间为6月14日全天，活动时间截止则默认本次活动自动结束。具体使用范围以红包券显示为准。请在个人中心“我的卡券”中查看。</p>
+                        <p>本次活动时间为6月13日00:00:00至6月20日23:59:59，活动时间截止则默认本次活动自动结束。具体使用范围以红包券显示为准。请在个人中心“我的卡券”中查看。</p>
                         <span>2、</span>
                         <p>用户参加本次活动充值的金额，仅限用户支付购彩使用，不可提现。</p>
                         <span>3、</span>

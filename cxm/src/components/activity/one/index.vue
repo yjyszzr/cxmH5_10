@@ -6,8 +6,8 @@
 
 <div class="activityOne">
 	<!-- <h2>活动首页</h2> -->
-	<img src="../../../assets/img/WechatIMG1.jpg" alt="" class="oneActive">
-	<img src="./img/lqBtn.png" class="lqBtn" @click="lqBtn()"/>
+	<img src="../../../assets/img/WechatIMG1.jpg" alt="" class="oneActive" @click.prevent>
+	<img src="./img/lqBtn.png" class="lqBtn" @click.prevent="lqBtn()"/>
 </div>
   
 </template>
