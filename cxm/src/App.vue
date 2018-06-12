@@ -178,6 +178,8 @@ export default {
                   return "胆说明";
               case 'success':
                   return "注册推广员";
+              case 'world_explain':
+                  return "投注服务协议";
         }
       } else {
         if (
