@@ -9,7 +9,7 @@
                     <p class="teamOdds">{{item.betOdds}}</p>
                 </div>
             </div>
-            <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"></i><p>我已阅读并同意<router-link to="/freebuy/protocol" v-if="showtitle!='1'">《彩小秘投注服务协议》</router-link><a href="/freebuy/protocol?showtitle=1" v-else>《彩小秘投注服务协议》</a></p></div>
+            <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"></i><p>我已阅读并同意<router-link to="/freebuy/protocol" v-if="showtitle!='1'">《投注服务协议》</router-link><a @click="goProtocol()" v-else>《投注服务协议》</a></p></div>
         </div>
         <div class="dContent" v-if="this.id=='1'">
             <div class="hkteamBox" v-for="(item,i) in fsList" :key='i' v-if="item.selected&&item.selected=='sld'" :class="item.homeContryName=='其他'?'other':''">
@@ -24,7 +24,7 @@
                     <p class="teamOdds">{{item.betOdds}}</p>
                 </div>
             </div>
-            <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"></i><p>我已阅读并同意<router-link to="/freebuy/protocol" v-if="showtitle!='1'">《投注服务协议》</router-link><a href="/freebuy/protocol?showtitle=1" v-else>《彩小秘投注服务协议》</a></p></div>
+            <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"></i><p>我已阅读并同意<router-link to="/freebuy/protocol" v-if="showtitle!='1'">《投注服务协议》</router-link><a @click="goProtocol()" v-else>《投注服务协议》</a></p></div>
         </div>
         <!--底部-->
         <section class="fixed fixBottom">
