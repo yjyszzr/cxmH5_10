@@ -56,7 +56,8 @@ export default {
                 path: '/activity/world_detail',
                 query:{
                     id: this.$route.path.split("/")[3]&&this.$route.path.split("/")[3]=='fsplace'?'1':'0',
-                    showtitle: showtitle
+                    showtitle: showtitle,
+                    channel: getUrlStr('channel',location.href)?getUrlStr('channel',location.href):'h5'
                 }
             })
         },

@@ -4,6 +4,7 @@ import {
   Indicator
 } from 'mint-ui'
 import {means} from '../../../../util/common'
+import { getUrlStr } from "../../../../util/common";
 export default {
     name: 'worldDetail',
     data(){
@@ -12,12 +13,14 @@ export default {
             ycMoney: [],
             betIds: [],
             showtitle: this.$route.query.showtitle,
+            channel: ''
         }
     },
     mounted(){
         window.getCxmTitle = function(){
             return '世界杯'
         }
+        this.channel = getUrlStr('channel',location.href)
         this.fetchData()
     },
     methods:{
@@ -60,7 +63,7 @@ export default {
         },
         saveGo() {
 			if(this.$refs.xySelected.className == 'icon-icon-29 iconfont'){
-				Toast('尊敬的用户,购彩需同意并接受《彩小秘投注服务协议》')
+				Toast('尊敬的用户,购彩需同意并接受《投注服务协议》')
 				return
             }else if(this.fsNum<=0){
                 Toast('投注选项不能为空')
@@ -113,6 +116,13 @@ export default {
             this.ycMoney.sort((a,b)=>{
                 return a-b;
             })
+        },
+        goProtocol(){
+            if(this.channel.substr(0,3)=='c26'||this.channel.substr(0,3)=='c20'){
+                location.href = '/appsjb/world_explain?showtitle=1'
+            }else{
+                location.href = '/freebuy/protocol?showtitle=1'
+            }
         }
     },
     computed: {
