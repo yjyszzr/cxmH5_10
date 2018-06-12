@@ -1,38 +1,51 @@
 @import '../../../../assets/css/function.scss';
 .thirtytwo{
-    background: black;
     height: auto;
     overflow: hidden;
-    padding-bottom: px2rem(30px);
     margin-bottom: px2rem(-20px);
     overflow: hidden;
+    .tbox{
+        position: absolute;
+        top: 0;
+        bottom: px2rem(88px);
+        width: 100%;
+        overflow: auto;
+        background: rgb(232, 22, 53);
+        padding-bottom: px2rem(30px);
+    }
     h4{
         text-align: center;
         font-size: 0.4rem;
-        color: #fff;
-        padding: px2rem(20px) 0;
+        color: rgb(249, 228, 189);
+        padding: px2rem(40px) 0;
     }
     .thirtytwoBox{
         ul{
             float: left;
-            width: 40%;
-            background: #404c57;
-            margin-left: 6.5%;
-            margin-top: px2rem(30px);
-            padding: px2rem(20px) 0;
+            width: 45%;
+            background: rgb(247,178,189);
+            margin-bottom: px2rem(30px);
+            margin-left: 3.35%;
             p{
                 text-align: center;
-                color: white;
-            }
-            li{
-                height: px2rem(50px);
+                color: #505050;
+                height: px2rem(70px);
                 display: flex;
                 align-items: center;
-                color: white;
+                justify-content: center;
+                background: rgb(251,206,213);
+                font-size: px2rem(28px);
+            }
+            li{
+                height: px2rem(70px);
+                display: flex;
+                align-items: center;
+                color: #505050;
+                font-size: px2rem(28px);
                 position: relative;
                 justify-content: space-between;
                 padding: 0 px2rem(20px);
-                border-bottom: 1px solid #000;
+                border-bottom: 1px solid #fff;
                 i{
                     display: block;
                     width: px2rem(28px);
@@ -52,16 +65,52 @@
                     align-items: center;
                 }
                 img{
-                    width: px2rem(50px);
-                    margin-right: px2rem(5px);
+                    width: px2rem(60px);
+                    margin-right: px2rem(15px);
                 }
             }
             li:last-of-type{
                 border: none;
             }
             .seld{
-                background: #16b13a;
+                background: #00a89c;
+                color: white;
             }
         }
+    }
+    .jcTable{
+        width: 92%;
+        margin: 0 auto px2rem(20px);
+        td{
+            border: 1px solid #fff;
+            text-align: center;
+            height: px2rem(60px);
+            font-size: px2rem(28px);
+            color: #505050;
+            background: rgb(247, 190, 164)
+        }
+    }
+    .zidj,.jdfj{
+        color: white;
+        width: 92%;
+        margin: 0 auto px2rem(20px);
+        font-size: px2rem(28px);
+    }
+    .jdfj{
+        margin-bottom: 0;
+    }
+    .btn_jc{
+        width: 100%;
+        background: rgb(251,229,232);
+        border: none;
+        position: absolute;
+        bottom: 0;
+        height: px2rem(88px);
+        font-size: px2rem(30px);
+        color: #ea5504;
+    }
+    .disable{
+        background: rgb(159, 159, 159);
+        color: #fff;
     }
 }

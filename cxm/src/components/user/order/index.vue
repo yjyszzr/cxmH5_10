@@ -15,7 +15,7 @@
                         <div>
                             <p>{{orderObj.lotteryClassifyName}}<span :style="{'color':orderObj.orderStatus=='5'?'#e95504':'#505050'}">{{orderObj.processResult}}</span></p>
                             <p>
-                                <span>￥{{orderObj.moneyPaid}}</span>
+                                <span>￥{{orderObj.ticketAmount}}</span>
                                 <span style="color:#ea5504;">{{orderObj.forecastMoney}}</span>
                             </p>
 

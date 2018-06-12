@@ -503,6 +503,9 @@ const router = new Router({
       {
             path: '/activity/world/thirtytwo',
             name: 'thirtytwo',
+            meta:{
+                keepAlive: true
+            },
             component: resolve => require(['@/components/activity/worldjeep/thirtytwo/thirtytwo.vue'], resolve)
       },
       {
