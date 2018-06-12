@@ -54,10 +54,10 @@
                             format =  `距离活动结束还有<b style='background:#fff076;padding:0 0.05rem;'>${day}</b>天<b style='background:#fff076;padding:0 0.05rem;'>${hour}</b>小时<b style='background:#fff076;padding:0 0.05rem;'>${min}</b>分<b style='background:#fff076;padding:0 0.05rem;'>${sec}</b>秒`;
                         }
                         if(day <= 0 && hour > 0 ){
-                            format = `${hour}小时${min}分${sec}秒`;
+                            format = `距离活动结束还有<b style='background:#fff076;padding:0 0.05rem;'>${day}</b>天<b style='background:#fff076;padding:0 0.05rem;'>${hour}</b>小时<b style='background:#fff076;padding:0 0.05rem;'>${min}</b>分<b style='background:#fff076;padding:0 0.05rem;'>${sec}</b>秒`;
                         }
                         if(day <= 0 && hour <= 0){
-                            format =`${min}分${sec}秒`;
+                            format =`距离活动结束还有<b style='background:#fff076;padding:0 0.05rem;'>${day}</b>天<b style='background:#fff076;padding:0 0.05rem;'>0</b>小时<b style='background:#fff076;padding:0 0.05rem;'>${min}</b>分<b style='background:#fff076;padding:0 0.05rem;'>${sec}</b>秒`;
                         }
                         self.content = format;
                     }else{
