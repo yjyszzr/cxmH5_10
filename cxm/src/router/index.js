@@ -494,6 +494,12 @@ const router = new Router({
           name: 'insurance',
           component: resolve => require(['@/components/apptt/insurance/insurance.vue'], resolve)
       },
+      //世界杯协议
+      {
+          path: '/appsjb/world_explain',
+          name: 'world_explain',
+          component: resolve => require(['@/components/appsjb/world_explain/world_explain.vue'], resolve)
+      },
       {
             path: '/activity/world/thirtytwo',
             name: 'thirtytwo',
@@ -501,6 +507,21 @@ const router = new Router({
                 keepAlive: true
             },
             component: resolve => require(['@/components/activity/worldjeep/thirtytwo/thirtytwo.vue'], resolve)
+      },
+      {
+          path: '/activity/world/illustrate',
+          name: 'illustrate',
+          component: resolve => require(['@/components/activity/worldjeep/illustrate/illustrate.vue'], resolve)
+      },
+      {
+          path: '/activity/world/record',
+          name: 'record',
+          component: resolve => require(['@/components/activity/worldjeep/record/record.vue'], resolve)
+      },
+      {
+          path: '/activity/world/world',
+          name: 'world',
+          component: resolve => require(['@/components/activity/worldjeep/world/world.vue'], resolve)
       },
   ]
 })
