@@ -4,7 +4,7 @@
 <template>
     <div class="thirtytwo">
         <div class="tbox">
-            <h4>请每组选择两支球队晋级淘汰赛</h4>
+            <h4>请在每组选择两支球队晋级淘汰赛</h4>
             <p style="display:none;">{{num}}</p>
             <div class="thirtytwoBox">
                 <ul v-for="(item,i) in wLidt" :key='i'>
