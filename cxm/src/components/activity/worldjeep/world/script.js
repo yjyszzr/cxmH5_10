@@ -5,7 +5,8 @@ export default {
     name: 'world',
     data () {
       return {
-        token: ''
+        token: '',
+        status: 1
       }
     },
     created(){
@@ -22,7 +23,7 @@ export default {
             })
         },
         ksjcBtn(){
-            if(getUrlStr('cfrom',location.href)=='app'&&this.token===''){
+            if(getUrlStr('cfrom',location.href)=='app'&&this.token===''&&this.status==1){
 				location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
 				return false;
             }
@@ -39,16 +40,26 @@ export default {
                     .then(res => {
                         if (res.code == 0) {
                             if(res.data.bettingNum<=0){
-                                MessageBox.alert('', {
-                                    message: '您目前暂无竞猜次数,请前往投注页进行投注,累计消费每200元即可获得1次竞猜资格 ',
-                                    title: '提示',
-                                    confirmButtonText: '我知道了',
-                                    closeOnClickModal: false
-                                }).then(action => {
-                                    // this.$router.go(-1);
-                                },action => {
-                
-                                });
+                                if(getUrlStr('cfrom',location.href)=='app'){
+                                    MessageBox.alert('', {
+                                        message: '您目前暂无竞猜次数,请前往投注页进行投注,累计消费每200元即可获得1次竞猜资格 ',
+                                        title: '提示',
+                                        confirmButtonText: '我知道了',
+                                        closeOnClickModal: false
+                                    }).then(action => {
+                                        
+                                    });
+                                }else{
+                                    MessageBox.confirm('', {
+                                        message: '您目前暂无竞猜次数,请前往投注页进行投注,累计消费每200元即可获得1次竞猜资格 ',
+                                        title: '提示',
+                                        confirmButtonText: '立即购彩'
+                                    }).then(action => {
+                                        this.$router.go(-1);
+                                    },action => {
+                    
+                                    });
+                                }
                             }else{
                                 if(res.data.jumpStatus<=0){
                                     MessageBox.alert('', {
@@ -109,5 +120,12 @@ export default {
     beforeRouteLeave(to, from, next) {
       to.meta.keepAlive = false
       next()
+    },
+    beforeRouteEnter(to, from, next) {
+        next(vm=>{
+            if(from.path=='/activity/world/thirtytwo'){
+                vm.status = 2
+            }
+        })
     }
 }
