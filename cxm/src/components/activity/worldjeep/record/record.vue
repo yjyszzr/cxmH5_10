@@ -7,6 +7,7 @@
             <div class="boxone">
                 <h5>竞猜时间：6-20&nbsp;&nbsp;22:00:11</h5>
                 <table>
+
                     <tr>
                         <td>竞猜轮次</td>
                         <td>精彩方案</td>
