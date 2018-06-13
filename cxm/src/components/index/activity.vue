@@ -21,8 +21,7 @@
 		},
 		methods: {
 			ac(url) {
-				this.$router.push({'path':'/user/activity/one'})
-				// location.href=url
+				location.href = url.split('?')[0]
 			}
 		}
 	}

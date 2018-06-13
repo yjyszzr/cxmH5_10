@@ -84,11 +84,15 @@ export default {
             sessionStorage.setItem('arrLeft',JSON.stringify(arrLeft))
             sessionStorage.setItem('arrRight',JSON.stringify(arrRight))
             this.$router.push({
-                path: '/activity/world/sixty'
+                path: '/activity/world/sixty',
+                query:{
+                  from: 'three'  
+                }
             })
         }
     },
     mounted(){
+        document.title='世界杯冠军之路'
         $.ajax({
             url: '../../../../../static/jsonData/world_team.json',
             data:{
