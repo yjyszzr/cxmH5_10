@@ -21,8 +21,8 @@
 		},
 		methods: {
 			ac(url) {
-				this.$router.push({'path':'/activity/discount'})
-//				location.href=url
+				this.$router.push({'path':'/activity/one?cxmxc=scm&usinfo=2&showtitle=1&cmshare=1&type=1'})
+				// location.href=url
 			}
 		}
 	}
