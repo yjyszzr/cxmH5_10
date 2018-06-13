@@ -1,0 +1,33 @@
+@import '../../../../assets/css/function.scss';
+.illustrate{
+  background: #fff;
+  padding: 0 px2rem(30px);
+  height: 100%;
+  h5{
+    padding: px2rem(50px) 0 px2rem(20px) ;
+    font-size: px2rem(30px);
+    color: #E95504;
+  }
+  p{
+    font-size: px2rem(30px);
+  }
+  table{
+    width: 100%;
+    border: 1px solid #f0f0f0;
+    margin: px2rem(16px) 0;
+    tr{
+      td{
+        background: #faaf3a;
+        border: 1px solid #f0f0f0;
+        color: #fff;
+        text-align: center;
+        height: px2rem(48px);
+        padding: px2rem(10px);
+        font-size: px2rem(24px);
+      }
+      td:last-of-type{
+        font-weight: 600;
+      }
+    }
+  }
+}
