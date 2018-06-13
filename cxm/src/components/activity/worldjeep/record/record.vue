@@ -7,6 +7,7 @@
             <div class="boxone" v-for="(item,i) in recordList" :key='i'>
                 <h5>竞猜时间：{{item.addTime}}</h5>
                 <table>
+
                     <tr>
                         <td>竞猜轮次</td>
                         <td>精彩方案</td>
