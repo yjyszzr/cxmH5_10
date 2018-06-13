@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { Toast } from 'mint-ui'
+import { Toast,MessageBox } from 'mint-ui'
 import NProgress from 'nprogress'; // Progress 进度条
 import 'nprogress/nprogress.css'; // Progress 进度条 样式
 Vue.use(Router)
@@ -556,6 +556,7 @@ router.beforeEach(async(to, from, next) => {
 router.afterEach(async(to, from) => {
     let toPath = to.path
     NProgress.done(); // 结束Progress
+    MessageBox.close(false);
     // // 页面跳转时滚动到页面顶部
     // if(toPath!='/'&&toPath!='/user/record'){
     //     document.getElementById('content').scrollTop = 0

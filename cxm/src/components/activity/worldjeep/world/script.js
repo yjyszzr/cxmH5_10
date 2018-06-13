@@ -55,7 +55,9 @@ export default {
                                         title: '提示',
                                         confirmButtonText: '立即购彩'
                                     }).then(action => {
-                                        this.$router.go(-1);
+                                        this.$router.replace({
+                                            path: '/'
+                                        })
                                     },action => {
                     
                                     });
@@ -81,16 +83,24 @@ export default {
                                     });
                                 }else if(res.data.jumpStatus=='3'){
                                     sessionStorage.setItem('teamObj',JSON.stringify(res.data.sixteenGroupSixteen.sixteenGroupFourList))
-                                    this.$router.push({
-                                        path: '/activity/world/sixty',
-                                        query:{
-                                            from: 'worldenter'
-                                        }
-                                    })
+                                    if(getUrlStr('cfrom',location.href)=='app'){
+                                        location.href = '/activity/world/sixty?from=worldenter'
+                                    }else{
+                                        this.$router.push({
+                                            path: '/activity/world/sixty',
+                                            query:{
+                                                from: 'worldenter'
+                                            }
+                                        })
+                                    }
                                 }else if(res.data.jumpStatus=='1'){
-                                    this.$router.push({
-                                        path: '/activity/world/thirtytwo'
-                                    })
+                                    if(getUrlStr('cfrom',location.href)=='app'){
+                                        location.href = '/activity/world/thirtytwo'
+                                    }else{
+                                        this.$router.push({
+                                            path: '/activity/world/thirtytwo'
+                                        })
+                                    }
                                 }
                             }
                         }
@@ -98,7 +108,7 @@ export default {
 			}
         },
         activity_smClick(){
-            if(getUrlStr('cfrom',location.href)=='app'&&this.token===''){
+            if(getUrlStr('cfrom',location.href)=='app'&&this.token===''&&this.status==1){
 				location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
 				return false;
 			}
@@ -123,7 +133,7 @@ export default {
     },
     beforeRouteEnter(to, from, next) {
         next(vm=>{
-            if(from.path=='/activity/world/thirtytwo'){
+            if(from.path=='/activity/world/thirtytwo'||from.path=='/activity/world/sixty'||from.path=='/activity/world/illustrate'||from.path=='/activity/world/record'){
                 vm.status = 2
             }
         })
