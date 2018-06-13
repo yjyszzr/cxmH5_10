@@ -55,7 +55,9 @@
         }
         li:nth-child(4){
           flex: 1.5;
-        }
+        }li:nth-child(1){
+           flex: 1.5;
+         }
       }
       .box_list_2{
         margin: 0 px2rem(15px);
@@ -86,6 +88,9 @@
             }
           }
           li:nth-child(4){
+            flex: 1.5;
+          }
+          li:nth-child(1){
             flex: 1.5;
           }
         }
