@@ -1,12 +1,11 @@
 @import '../../../../assets/css/function.scss';
 .record{
   background: #fff;
-  overflow: scroll;
   .r_center {
     padding: px2rem(30px);
     position: absolute;
     overflow: scroll;
-    bottom: px2rem(100px);
+    bottom: px2rem(87px);
     z-index: 1;
     top: 0;
     background: #fff;
