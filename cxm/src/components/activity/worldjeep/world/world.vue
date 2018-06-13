@@ -1,4 +1,4 @@
-<style lang='scss' scoped src='./style.scss'>
+<style lang='scss' src='./style.scss'>
 
 </style>
 <template>

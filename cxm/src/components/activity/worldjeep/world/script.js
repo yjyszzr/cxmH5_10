@@ -39,12 +39,13 @@ export default {
                     .then(res => {
                         if (res.code == 0) {
                             if(res.data.bettingNum<=0){
-                                MessageBox.confirm('', {
+                                MessageBox.alert('', {
                                     message: '您目前暂无竞猜次数,请前往投注页进行投注,累计消费每200元即可获得1次竞猜资格 ',
                                     title: '提示',
-                                    confirmButtonText: '立即购彩'
+                                    confirmButtonText: '我知道了',
+                                    closeOnClickModal: false
                                 }).then(action => {
-                                    this.$router.go(-1);
+                                    // this.$router.go(-1);
                                 },action => {
                 
                                 });

@@ -7,6 +7,12 @@
 				<p style="display:none;">{{num}}</p>
 				<div class="med"></div>
 				<div data-v-5521cdf9="" class="contentBox">
+					<transition name="fade"> 
+						<div class="fixedTop" v-show="show">
+						<p class="fixtd">请点击国旗进行操作</p>
+							<p @click="close()">X</p>
+						</div>
+					</transition>
 					<div data-v-5521cdf9="" class="grounp-8-left">
 						<div data-v-5521cdf9="" class="grounp-8" v-for="(item,i) in arrLeft" :key='i'>
 							<div data-v-5521cdf9="" class="team-16" v-for="(data,index) in item" :key='index'>

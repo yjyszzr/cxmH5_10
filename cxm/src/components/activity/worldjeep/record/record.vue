@@ -59,7 +59,7 @@
             </div>
             <div class="nullstatus" v-if="recordList.length==0"  style="marginBottom:2.5rem;">
                     <img src="../../../../assets/img/juan.png" alt="">
-                    <span>暂无数据</span>
+                    <span>尚未提交竞猜方案</span>
             </div>
             <table v-if="recordList.length>0">
                 <tr class="table_list">
@@ -86,7 +86,7 @@
                 <span>阶段分奖：</span>（每阶段猜对赛果，均可平分巨额奖金）
             </div>
         </div>
-        <button class="paymentBtn" @click="paymentBtn()">
+        <button class="paymentBtn" @click="paymentBtn()" v-if="recordList.length>0">
             竞猜赛果
         </button>
     </div>

@@ -21,11 +21,12 @@ export default {
       team2Left: '',
       winner: '',
       teamObj: sessionStorage.getItem('teamObj')?JSON.parse(sessionStorage.getItem('teamObj')):'',
-      from: this.$route.query.from
+      from: this.$route.query.from,
+      show: false,
     }
   },
   created() {
-
+    this.show = true
   },
   methods: {
     teamclick(c) {
@@ -189,6 +190,9 @@ export default {
         this.winner = c
       }
     },
+    close(){
+      this.show = false
+    },
     submitPlan() {
       Indicator.open()
       let sixtyList = _.flatten(_.concat(this.arrLeft,this.arrRight));
@@ -233,6 +237,9 @@ export default {
     }
   },
   mounted() {
+    setTimeout(()=>{
+      this.show = false
+    },3000)
     document.title='世界杯冠军之路'
     if(this.from=='worldenter'){
       let arr1 = [],arr2 = []
