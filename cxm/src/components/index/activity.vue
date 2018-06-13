@@ -21,7 +21,7 @@
 		},
 		methods: {
 			ac(url) {
-				this.$router.push({'path':'/activity/one?cxmxc=scm&usinfo=2&showtitle=1&cmshare=1&type=1'})
+				this.$router.push({'path':'/user/activity/one'})
 				// location.href=url
 			}
 		}
