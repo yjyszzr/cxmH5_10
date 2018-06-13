@@ -18,7 +18,7 @@ export default {
     methods:{
         xqsmBtn(){
             this.$router.push({
-                path: '/activity/world/record'
+                path: '/activity/world/illustrate'
             })
         },
         ksjcBtn(){
@@ -48,15 +48,35 @@ export default {
                                 },action => {
                 
                                 });
-                            }else if(res.data.jumpStatus){
-                                MessageBox.alert('', {
-                                    message: '本期竞猜活动已结束,敬请期待下次活动',
-                                    title: '提示',
-                                    confirmButtonText: '我知道了',
-                                    closeOnClickModal: false
-                                }).then(action => {
-                
-                                });
+                            }else{
+                                if(res.data.jumpStatus<=0){
+                                    MessageBox.alert('', {
+                                        message: '本期竞猜活动已结束,敬请期待下次活动',
+                                        title: '提示',
+                                        confirmButtonText: '我知道了',
+                                        closeOnClickModal: false
+                                    }).then(action => {
+                    
+                                    });
+                                }else if(res.data.jumpStatus=='2'){
+                                    MessageBox.alert('', {
+                                        message: res.data.describetion,
+                                        title: '提示',
+                                        confirmButtonText: '我知道了',
+                                        closeOnClickModal: false
+                                    }).then(action => {
+                    
+                                    });
+                                }else if(res.data.jumpStatus=='3'){
+                                    sessionStorage.setItem('teamObj',JSON.stringify(res.data.sixteenGroupSixteen.sixteenGroupFourList))
+                                    this.$router.push({
+                                        path: '/activity/world/sixty'
+                                    })
+                                }else if(res.data.jumpStatus=='1'){
+                                    this.$router.push({
+                                        path: '/activity/world/thirtytwo'
+                                    })
+                                }
                             }
                         }
                     })
@@ -73,7 +93,7 @@ export default {
 				})
 			} else {
                 this.$router.push({
-					path: '/activity/world/illustrate'
+					path: '/activity/world/record'
 				})
             }
         }
