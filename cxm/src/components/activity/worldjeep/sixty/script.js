@@ -5,8 +5,8 @@ export default {
   data() {
     return {
       num: 0,
-      arrLeft: sessionStorage.getItem('arrLeft') ? JSON.parse(sessionStorage.getItem('arrLeft')) : [],
-      arrRight: sessionStorage.getItem('arrRight') ? JSON.parse(sessionStorage.getItem('arrRight')) : [],
+      arrLeft: [],
+      arrRight: [],
       team8Left: [
         [{}, {}],
         [{}, {}]
@@ -19,7 +19,9 @@ export default {
       team4Left: [{}, {}],
       team2Right: '',
       team2Left: '',
-      winner: ''
+      winner: '',
+      teamObj: sessionStorage.getItem('teamObj')?JSON.parse(sessionStorage.getItem('teamObj')):'',
+      from: ''
     }
   },
   created() {
@@ -192,6 +194,31 @@ export default {
     }
   },
   mounted() {
-    
+    this.$nextTick(()=>{
+      if(this.from=='worldenter'){
+        let arr1 = [],arr2 = []
+        arr1 = this.teamObj[0].sixteenGroupTwoList
+        arr2 = this.teamObj[1].sixteenGroupTwoList
+        arr1.forEach(item=>{
+          this.arrLeft.push(item.wcContryList)
+        })
+        arr2.forEach(item=>{
+          this.arrRight.push(item.wcContryList)
+        })
+      }else{
+        this.arrLeft = JSON.parse(sessionStorage.getItem('arrLeft'))
+        this.arrRight = JSON.parse(sessionStorage.getItem('arrRight'))
+      }
+    })
+  },
+  beforeRouteEnter(to, from, next) {
+      if(from.path=='/activity/world/worldenter'){
+        next(vm=>{
+          vm.from = 'worldenter'
+          console.log(vm.from)
+        }) 
+      }else{
+        next()
+      }
   }
 }
