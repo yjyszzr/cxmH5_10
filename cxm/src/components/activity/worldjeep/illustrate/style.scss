@@ -1,12 +1,13 @@
 @import '../../../../assets/css/function.scss';
 .illustrate{
   background: #fff;
-  padding: 0 px2rem(30px);
+  padding: 0 px2rem(30px) px2rem(60px);
   height: 100%;
   h5{
     padding: px2rem(50px) 0 px2rem(20px) ;
     font-size: px2rem(30px);
     color: #E95504;
+    text-align: center;
   }
   p{
     font-size: px2rem(30px);

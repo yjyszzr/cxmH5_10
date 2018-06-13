@@ -10,7 +10,7 @@
 
                     <tr>
                         <td>竞猜轮次</td>
-                        <td>精彩方案</td>
+                        <td>竞猜方案</td>
                         <td>赛果</td>
                     </tr>
                     <tr v-if="item.plan16.length>0">
@@ -80,7 +80,7 @@
                 </tr>
             </table>
             <div class="prize" v-if="recordList.length>0">
-                <span>终极大奖：</span>猜对16强、8强、4强、冠亚军和冠军所有赛果，可评分20万巨额奖金
+                <span>终极大奖：</span>猜对16强、8强、4强、冠亚军和冠军所有赛果，可平分20万巨额奖金
             </div>
             <div class="prize" v-if="recordList.length>0">
                 <span>阶段分奖：</span>（每阶段猜对赛果，均可平分巨额奖金）
