@@ -34,3 +34,16 @@
         <p>5、本活动最终解释权归彩小秘所有。</p>
     </div>
 </template>
+<script>
+export default {
+    name: 'illustrate',
+    data(){
+        return{
+
+        }
+    },
+    mounted(){
+        document.title='活动说明'
+    }
+}
+</script>

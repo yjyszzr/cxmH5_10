@@ -21,8 +21,7 @@
 		},
 		methods: {
 			ac(url) {
-				this.$router.push({'path':'/activity/one?cxmxc=scm&usinfo=2&showtitle=1&cmshare=1&type=1'})
-				// location.href=url
+				location.href = url.split('?')[0]
 			}
 		}
 	}

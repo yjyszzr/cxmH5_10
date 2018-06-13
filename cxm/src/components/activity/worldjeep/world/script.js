@@ -1,6 +1,6 @@
 import { isShare,getUrlStr } from '../../../../util/common'
 import api from '../../../../fetch/api'
-import { MessageBox,Indicator } from 'mint-ui';
+import { MessageBox,Indicator,Toast } from 'mint-ui';
 export default {
     name: 'world',
     data () {
@@ -25,7 +25,7 @@ export default {
             if(getUrlStr('cfrom',location.href)=='app'&&this.token===''){
 				location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
 				return false;
-			}
+            }
 			if(!localStorage.getItem('token')) {
 				this.$router.push({
 					path: '/user/sms'
@@ -70,7 +70,10 @@ export default {
                                 }else if(res.data.jumpStatus=='3'){
                                     sessionStorage.setItem('teamObj',JSON.stringify(res.data.sixteenGroupSixteen.sixteenGroupFourList))
                                     this.$router.push({
-                                        path: '/activity/world/sixty'
+                                        path: '/activity/world/sixty',
+                                        query:{
+                                            from: 'worldenter'
+                                        }
                                     })
                                 }else if(res.data.jumpStatus=='1'){
                                     this.$router.push({
@@ -99,6 +102,11 @@ export default {
         }
     },
     mounted(){
-        isShare('注册送好礼', '注册就送100元新人大礼包', location.href,'/static/activity_Back/newComerReg/img/logozc.jpg')
+        document.title='世界杯冠军之路'
+        isShare('竞猜世界杯冠军之路，50万奖金等你瓜分', '点击这里，参与世界杯竞猜，跟我一起瓜分大奖!', '/activity/world/worldenter?cxmxc=scm&usinfo=2&cmshare=1&type=1','/static/activity_Back/newComerReg/img/logowd.jpg')
+    },
+    beforeRouteLeave(to, from, next) {
+      to.meta.keepAlive = false
+      next()
     }
 }

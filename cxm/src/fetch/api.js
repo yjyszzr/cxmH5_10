@@ -436,4 +436,8 @@ export default {
     worldCupPlanadd(params){
         return fetchPost('/activity/worldCupPlan/add', params)
     },
+    //推演订单 
+    worldCupPlanlist(params){
+        return fetchPost('/activity/worldCupPlan/list', params)
+    },
 }
