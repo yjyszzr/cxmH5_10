@@ -508,21 +508,21 @@ const router = new Router({
             },
             component: resolve => require(['@/components/activity/worldjeep/thirtytwo/thirtytwo.vue'], resolve)
       },
-    //   {
-    //       path: '/activity/world/illustrate',
-    //       name: 'illustrate',
-    //       component: resolve => require(['@/components/activity/worldjeep/illustrate/illustrate.vue'], resolve)
-    //   },
-    //   {
-    //       path: '/activity/world/record',
-    //       name: 'record',
-    //       component: resolve => require(['@/components/activity/worldjeep/record/record.vue'], resolve)
-    //   },
-    //   {
-    //       path: '/activity/world/world',
-    //       name: 'world',
-    //       component: resolve => require(['@/components/activity/worldjeep/world/world.vue'], resolve)
-    //   },
+      {
+          path: '/activity/world/illustrate',
+          name: 'illustrate',
+          component: resolve => require(['@/components/activity/worldjeep/illustrate/illustrate.vue'], resolve)
+      },
+      {
+          path: '/activity/world/record',
+          name: 'record',
+          component: resolve => require(['@/components/activity/worldjeep/record/record.vue'], resolve)
+      },
+      {
+          path: '/activity/world/worldenter',
+          name: 'world',
+          component: resolve => require(['@/components/activity/worldjeep/world/world.vue'], resolve)
+      },
   ]
 })
 

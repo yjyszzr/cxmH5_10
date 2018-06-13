@@ -427,5 +427,13 @@ export default {
     //注册推广员短信
     registSms(params){
         return fetchPost('/member/dl/channelConsumer/smsCodeForDistributor', params)
-    }
+    },
+    //世界杯推演 竞猜
+    guessingCompetition(params){
+        return fetchPost('/activity/worldCupPlan/guessingCompetition', params)
+    },
+    //提交推演方案
+    worldCupPlanadd(params){
+        return fetchPost('/activity/worldCupPlan/add', params)
+    },
 }

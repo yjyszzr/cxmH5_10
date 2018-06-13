@@ -71,7 +71,7 @@ export default {
         
     },
     beforeRouteEnter(to, from, next){
-      if(from.path=='/freebuy/payment'||from.path=='/activity/red_packet'){
+      if(from.path=='/freebuy/payment'||from.path=='/activity/red_packet'||from.path=='/activity/world/worldenter'){
           next(vm=>{
                vm.returnGo =  true 
                //console.log(vm.returnGo)

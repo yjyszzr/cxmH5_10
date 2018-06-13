@@ -14,7 +14,7 @@
 		<mt-tab-container v-model="selected">
 			<mt-tab-container-item id="1">
 				<div class="discountList">
-					<li @click="goPayconfirm(item.cashCouponId)" v-for="(item,i) in discountList" :key='item.cashCouponId'>
+					<li @click="goPayconfirm(item.cashCouponId)" v-for="(item,i) in discountList" :key='i'>
 						<div class="discountTop">
 							<span>¥</span><b>{{parseInt(item.cashCouponDenomination)}}</b><span>代金券</span>
 						</div>

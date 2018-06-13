@@ -1,19 +1,44 @@
+@import '../../../../assets/css/function.scss';
 .sixty{
     height: 100%;
+    background: rgb(233, 100, 120);
     .med{
-        height: 1.5rem;
+        height: 0.8rem;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 }
+.jcTable{
+    width: 92%;
+    margin: 0 auto px2rem(20px);
+    td{
+        border: 1px solid #fff;
+        text-align: center;
+        height: px2rem(60px);
+        font-size: px2rem(28px);
+        color: #505050;
+        background: rgb(247, 190, 164)
+    }
+}
+.zidj,.jdfj{
+    color: white;
+    width: 92%;
+    margin: 0 auto px2rem(20px);
+    font-size: px2rem(28px);
+}
+.jdfj{
+    margin-bottom: 0;
+}
 #part2[data-v-5521cdf9] {
-    min-height: 100%;
-    background: url(https://static1.dongqiudi.com/topic/static/img/part2-bg.f838286.jpg) 50%;
-    background-size: 100%;
     color: #fff;
-    position: relative;
-    padding-top: .1px
+    position: absolute;
+    top: 0;
+    bottom: 1rem;
+    padding-top: .1px;
+    overflow: auto;
+    width: 100%;
+    padding-bottom: 1rem;
 }
 
 .team-people-num[data-v-5521cdf9] {
@@ -123,7 +148,7 @@
     right: .42666667*0.5rem;
     width: .58666667*0.5rem;
     height: 1.49333333*0.5rem;
-    border: 2px solid #333d46;
+    border: 2px solid #fff;
     border-left: transparent;
     border-bottom: transparent
 }
@@ -134,14 +159,14 @@
     right: .42666667*0.5rem;
     width: .58666667*0.5rem;
     height: 1.49333333*0.5rem;
-    border: 2px solid #333d46;
+    border: 2px solid #fff;
     border-left: transparent;
     border-top: transparent
 }
 
 .contentBox .grounp-8-left .link-row[data-v-5521cdf9] {
     width: .37333333*0.5rem;
-    border: 1px solid #333d46;
+    border: 1px solid #fff;
     position: absolute;
     top: 1.49333333*0.5rem;
     right: 0
@@ -196,7 +221,7 @@
     float: right;
     width: .48*0.5rem;
     height: 2.34666667*0.5rem;
-    border: 2px solid #333d46;
+    border: 2px solid #fff;
     margin-top: .64*0.5rem;
     border-left-color: transparent
 }
@@ -205,7 +230,7 @@
     float: right;
     height: .10666667*0.5rem;
     width: .42666667*0.5rem;
-    background: #333d46;
+    background: #fff;
     margin-top: 1.73333333*0.5rem
 }
 
@@ -259,7 +284,7 @@
     left: .42666667*0.5rem;
     width: .58666667*0.5rem;
     height: 1.49333333*0.5rem;
-    border: 2px solid #333d46;
+    border: 2px solid #fff;
     border-right: transparent;
     border-bottom: transparent
 }
@@ -270,14 +295,14 @@
     left: .42666667*0.5rem;
     width: .58666667*0.5rem;
     height: 1.49333333*0.5rem;
-    border: 2px solid #333d46;
+    border: 2px solid #fff;
     border-right: transparent;
     border-top: transparent
 }
 
 .contentBox .grounp-8-right .link-row[data-v-5521cdf9] {
     width: .37333333*0.5rem;
-    border: 1px solid #333d46;
+    border: 1px solid #fff;
     position: absolute;
     top: 1.49333333*0.5rem;
     left: 0
@@ -308,7 +333,7 @@
 .contentBox .grounp-4-left .grounp-4 .link-row[data-v-5521cdf9],
 .contentBox .grounp-4-right .grounp-4 .link-row[data-v-5521cdf9] {
     width: .37333333*0.5rem;
-    border: 1px solid #333d46;
+    border: 1px solid #fff;
     position: absolute;
     top: 4.16*0.5rem;
     right: 0
@@ -340,7 +365,7 @@
 .contentBox .grounp-4-left .team-8 .team-icon[data-v-5521cdf9] {
     width: 1.28*0.5rem;
     height: .85333333*0.5rem;
-    background-color: #333d46
+    background-color: #fff
 }
 
 .contentBox .grounp-4-left .team-8 .team-icon>img[data-v-5521cdf9] {
@@ -353,7 +378,7 @@
     right: .37333333*0.5rem;
     width: .58666667*0.5rem;
     height: 2.77333333*0.5rem;
-    border: 2px solid #333d46;
+    border: 2px solid #fff;
     border-left: transparent;
     border-bottom: transparent
 }
@@ -364,7 +389,7 @@
     right: .37333333*0.5rem;
     width: .58666667*0.5rem;
     height: 2.72*0.5rem;
-    border: 2px solid #333d46;
+    border: 2px solid #fff;
     border-left: transparent;
     border-top: transparent
 }
@@ -382,7 +407,7 @@
 
 .contentBox .grounp-4-right .grounp-4 .link-row[data-v-5521cdf9] {
     width: .34666667*0.5rem;
-    border: 1px solid #333d46;
+    border: 1px solid #fff;
     position: absolute;
     top: 4.16*0.5rem;
     left: 0
@@ -409,7 +434,7 @@
 .contentBox .grounp-4-right .team-8 .team-icon[data-v-5521cdf9] {
     width: 1.28*0.5rem;
     height: .85333333*0.5rem;
-    background-color: #333d46;
+    background-color: #fff;
     margin-left: 1.22666667*0.5rem
 }
 
@@ -423,7 +448,7 @@
     left: .37333333*0.5rem;
     width: .58666667*0.5rem;
     height: 2.61333333*0.5rem;
-    border: 2px solid #333d46;
+    border: 2px solid #fff;
     border-right: transparent;
     border-bottom: transparent
 }
@@ -434,7 +459,7 @@
     left: .37333333*0.5rem;
     width: .58666667*0.5rem;
     height: 2.72*0.5rem;
-    border: 2px solid #333d46;
+    border: 2px solid #fff;
     border-right: transparent;
     border-top: transparent
 }
@@ -464,7 +489,7 @@
     width: 1.28*0.5rem;
     height: .85333333*0.5rem;
     margin-top: 3.73333333*0.5rem;
-    background-color: #333d46
+    background-color: #fff
 }
 
 .contentBox .grounp-2-left .team-icon>div[data-v-5521cdf9],
@@ -492,7 +517,7 @@
 .contentBox .grounp-2-right .link-down[data-v-5521cdf9],
 .contentBox .grounp-2-right .link-up[data-v-5521cdf9] {
     position: absolute;
-    border: 1px solid #333d46;
+    border: 1px solid #fff;
     height: 4.8*0.5rem;
     width: 0
 }
@@ -500,7 +525,7 @@
 .contentBox .grounp-2-left .link-row[data-v-5521cdf9],
 .contentBox .grounp-2-right .link-row[data-v-5521cdf9] {
     width: .48*0.5rem;
-    border: 1px solid #333d46;
+    border: 1px solid #fff;
     position: absolute;
     top: 9.49333333*0.5rem
 }
@@ -564,19 +589,20 @@
     left: 2*0.5rem;
     width: 0;
     height: .69333333*0.5rem;
-    border: 1px solid #333d46
+    border: 1px solid #fff
 }
 
 .contentBox .grounp-1-center .champion[data-v-5521cdf9] {
-    margin: 0 auto;
+    margin-left: 0.5rem; 
     position: absolute;
-    top: 5.06666667*0.5rem
+    top: 5.06666667*0.5rem;
+    text-align: center;
 }
 
 .contentBox .grounp-1-center .champion .screen[data-v-5521cdf9] {
     width: 2.18666667*0.5rem;
     height: 1.49333333*0.5rem;
-    background-color: #333d46;
+    background-color: #fff;
     display: block;
     margin: 0 auto
 }
@@ -615,7 +641,7 @@
     height: .85333333*0.5rem;
     float: left;
     position: relative;
-    background-color: #333d46
+    background-color: #fff
 }
 
 .contentBox .grounp-1-center .team-icon>img[data-v-5521cdf9] {
@@ -633,7 +659,7 @@
 
 .contentBox .grounp-1-center .line-right[data-v-5521cdf9] {
     float: left;
-    border: 1px solid #333d46;
+    border: 1px solid #fff;
     width: .42666667*0.5rem;
     height: 0;
     margin-left: .21333333*0.5rem;
@@ -642,7 +668,7 @@
 
 .contentBox .grounp-1-center .line-left[data-v-5521cdf9] {
     float: left;
-    border: 1px solid #333d46;
+    border: 1px solid #fff;
     width: .42666667*0.5rem;
     margin-right: .16*0.5rem;
     height: 0;
@@ -651,20 +677,20 @@
 
 .confirm[data-v-5521cdf9] {
     position: absolute;
-    bottom: 2.4*0.5rem;
-    font-size: .90666667*0.5rem;
-    width: 9.38666667*0.5rem;
-    height: 2.45333333*0.5rem;
-    left: 50%;
-    margin-left: -4.69333333*0.5rem;
-    line-height: 2.45333333*0.5rem;
-    background-color: #ec6f3d;
+    bottom: 0;
+    font-size: .70666667*0.5rem;
+    width: 100%;
+    height: 2.3*0.5rem;
+    color: #ea5504;
+    line-height: 2.3*0.5rem;
+    background-color: rgb(251,229,232);
     text-align: center
 }
 
 .gray[data-v-5521cdf9] {
-    background-color: #888
+    background-color: #888;
+    color: #fff!important;
 }
 .winner{
-    width: 1.1rem;
+    width: 1.15rem;
 }
