@@ -6,7 +6,6 @@
 <!--我的-->
 <template>
     <div class="user">
-        <mt-loadmore :top-method="loadTop" ref="loadmore" @top-status-change="handleTopChange">
         <div class="center">
             <div class="portrait clearfix">
                 <div class="people">
@@ -120,7 +119,6 @@
         <div class="button" @click="loginout()">
             退出登录
         </div>
-        </mt-loadmore>
     </div>
 </template>
 

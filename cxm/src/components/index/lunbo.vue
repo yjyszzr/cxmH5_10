@@ -56,7 +56,17 @@
 								replace: false
 						});
 					}else{
-						location.href=url
+						if(url.indexOf('activity/red_packet')!=-1){
+							this.$router.push({
+								path: '/activity/red_packet'
+							})
+						}else if(url.indexOf('activity/world/worldenter')!=-1){
+							this.$router.push({
+								path: '/activity/world/worldenter'
+							})
+						}else{
+							location.href=url
+						}
 					}
 				}
 			}
