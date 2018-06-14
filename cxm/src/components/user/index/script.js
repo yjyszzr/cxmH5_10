@@ -9,7 +9,7 @@ export default {
         userInfo: {
             totalMoney:'0.00',
             userMoney:'0.00',
-            headimg:''
+            headimg:'',
         }
       }
     },
@@ -39,16 +39,6 @@ export default {
 
         })
       },
-      handleTopChange(status) {
-				this.topStatus = status;
-			},
-			loadTop() {
-        let that = this
-        Indicator.open()
-				setTimeout(() => {
-					that.fetchData()
-				}, 700);
-      },
       fetchData(){
         let data = {
           str: ''
@@ -60,7 +50,6 @@ export default {
               this.userInfo = res.data
               this.$store.dispatch("changeUserInfo",res.data)
             }
-            this.$refs.loadmore.onTopLoaded();
         })
       },
       gorz(){

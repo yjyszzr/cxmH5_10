@@ -13,7 +13,7 @@ $.showIndicator();
 			mid: '',
 			brand: '',
 			build: '',
-			channel: 'h5',
+			channel: 'csdn',
 			net: '',
 			token: ''
 		}
