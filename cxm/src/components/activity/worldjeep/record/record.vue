@@ -83,7 +83,7 @@
                 <span>终极大奖：</span>猜对16强、8强、4强、冠亚军和冠军所有赛果，可平分20万巨额奖金
             </div>
             <div class="prize" v-if="recordList.length>0">
-                <span>阶段分奖：</span>（每阶段猜对赛果，均可平分巨额奖金）
+                <span>阶段分奖：</span>每阶段猜对赛果，均可平分巨额奖金
             </div>
         </div>
         <button class="paymentBtn" @click="paymentBtn()" v-if="recordList.length>0">
