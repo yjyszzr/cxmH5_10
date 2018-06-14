@@ -20,7 +20,7 @@
 			<div class="box_list_2">
 				<ul v-for="(data,i) in leagueMatchEuropes" :key='i'>
 					<li>{{data.comName}}</li>
-					<li><span>初赔</span><span>即赔</span></li>
+					<li><span>初始</span><span>即时</span></li>
 					<li><i>{{data.initWin}}</i>
 						<i v-if="data.winChange=='0'">{{data.realWin}}</i>
 						<i v-if="data.winChange=='1'" style="color: #ea5504;">{{data.realWin}}↑</i>

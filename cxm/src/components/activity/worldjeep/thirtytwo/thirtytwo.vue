@@ -44,7 +44,7 @@
             </div>
             <div class="jdfj">
                 <b>阶段分奖:</b>
-                <span>(每阶段猜对赛果，均可平分巨额奖金)</span>
+                <span>每阶段猜对赛果，均可平分巨额奖金</span>
             </div>
         </div>
         <button class="btn_jc" @click="btnClick()" :disabled='disable' :class="disable?'disable':''">
