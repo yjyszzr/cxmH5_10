@@ -29,7 +29,7 @@ export default {
     mounted(){
         document.title = '充值送壕礼';
         //分享
-        isShare('充值送壕礼，最高800元红包随机送', '充值狂欢日,随机送800元', '/activity/red_packet?cxmxc=scm&cmshare=1&showtitle=1&type=1&usinfo=1','/static/activity_Back/newComerReg/img/logo.jpg')
+        isShare('充值送壕礼，最高800元红包随机送', '充值狂欢日,随机送800元', '/activity/red_packet?cxmxc=scm&cmshare=1&showtitle=1&type=1&usinfo=1','/static/activity_Back/newComerReg/img/logozc.jpg')
         let data = {
             pageNum:1,
             pageSize:10

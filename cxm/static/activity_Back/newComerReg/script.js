@@ -1,6 +1,23 @@
 $.showIndicator();
 		//var baseUrl = 'http://39.106.18.39:8765/api/'
 		var baseUrl = 'http://api.caixiaomi.net/api/'
+		function getUrlStr(name,url){
+		    var reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
+		    if(reg.test(url)){
+		        return unescape(RegExp.$2.replace(/\+/g," "))
+		    }
+		    return undefined
+		}
+		var channels = ''
+		if(getUrlStr('type',location.href)=='101'){
+			channels = 'csdn'
+		}else if(getUrlStr('type',location.href)=='151'){
+			channels = 'dongde'
+		}else if(getUrlStr('type',location.href)=='131'){
+			channels = 'baiyun'
+		}else if(getUrlStr('type',location.href)=='171'){
+			channels = '58cyjm'
+		}
 		var device = {
 			plat: 'h5',
 			apiv: 1,
@@ -13,7 +30,7 @@ $.showIndicator();
 			mid: '',
 			brand: '',
 			build: '',
-			channel: 'csdn',
+			channel: channels,
 			net: '',
 			token: ''
 		}
@@ -26,6 +43,14 @@ $.showIndicator();
 //		    }
 //		    return undefined
 //		}
+
+		var _hmt = _hmt || [];
+		(function() {
+		var hm = document.createElement("script");
+		hm.src = "https://hm.baidu.com/hm.js?add59b43ed799751ac06c40214d0b5b7";
+		var s = document.getElementsByTagName("script")[0]; 
+		s.parentNode.insertBefore(hm, s);
+		})();
 
         //判断苹果系统和安卓系统
         function detect(){
