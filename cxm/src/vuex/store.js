@@ -77,6 +77,6 @@ export default new Vuex.Store({
     state,
     actions,
     mutations,
-    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','findObj','world_cupObj'],storage: window.sessionStorage})]
+    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','freebuyId','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','findObj','world_cupObj'],storage: window.sessionStorage})]
     //strict: true
 })
