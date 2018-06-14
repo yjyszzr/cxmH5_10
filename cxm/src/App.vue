@@ -219,7 +219,7 @@ export default {
       }
     },
     showTitle(){
-      if (window.location.href.split("?")[1]&&getUrlStr('showtitle',location.href)=='1') {
+      if ((window.location.href.split("?")[1]&&getUrlStr('showtitle',location.href)=='1')||wxPd()) {
          return false;
       } else {
          return true;

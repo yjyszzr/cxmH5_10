@@ -1,7 +1,7 @@
 @import '../../../../assets/css/function.scss';
 .sixty{
-    height: 100%;
-    background: rgb(233, 100, 120);
+    height: 100%!important;
+    background: rgb(233, 100, 120)!important;
     .med{
         height: 1.2rem;
         display: flex;
@@ -56,11 +56,11 @@
     color: #fff;
     position: absolute;
     top: 0;
-    bottom: 1rem;
+    bottom: 1.5rem;
     padding-top: .1px;
     overflow: auto;
     width: 100%;
-    padding-bottom: 1rem;
+    background: rgb(233, 100, 120)!important;
 }
 
 .team-people-num[data-v-5521cdf9] {

@@ -60,7 +60,7 @@ export default {
         //额外奖励弹窗
         go_tost() {
             MessageBox.alert('', {
-                message: '每周总收入排名前8的店员可以获得最高100元（如果总收入为0，则不能获得额外奖励）',
+                message: '总收入排名1前8的店员可以获得最高1000元的额外奖励',
                 title: '额外奖励',
             }).then(action => {
             });
