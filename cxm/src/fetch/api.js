@@ -13,7 +13,7 @@ import {getUrlStr} from '../util/common'
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 axios.defaults.baseURL = 'http://api.caixiaomi.net/api';
-// axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
+//axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 //console.log(window)
 
 //拦截 token
@@ -176,6 +176,10 @@ export function fetchPost(url, body) {
 // }
 
 export default {
+    //统计点击次数
+    clickNum(params) {
+        return fetchPost('member/xqdActivity/clickNum', params)
+    },
     // 密码登录
     LoginByPass(params) {
         return fetchPost('member/login/loginByPass', params)

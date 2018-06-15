@@ -8,15 +8,9 @@ $.showIndicator();
 		    }
 		    return undefined
 		}
-		var channels = ''
-		if(getUrlStr('type',location.href)=='101'){
-			channels = 'csdn'
-		}else if(getUrlStr('type',location.href)=='151'){
-			channels = 'dongde'
-		}else if(getUrlStr('type',location.href)=='131'){
-			channels = 'baiyun'
-		}else if(getUrlStr('type',location.href)=='171'){
-			channels = '58cyjm'
+		var channels = 'csdn'
+		if(getUrlStr('fr',location.href)){
+			channels = getUrlStr('fr',location.href)
 		}
 		var device = {
 			plat: 'h5',
@@ -203,13 +197,26 @@ $.showIndicator();
 			})
 		}
 		
-		function downLoadBtn(){
+		function wxpd(){
+			var ua = navigator.userAgent.toLowerCase();  
+			if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+				return true;
+			} else {  
+				return false;
+			} 
+		}
 
-            if(detect==='ios'){
-                location.href = 'http://m.caixiaomi.net'
-            }else if(detect==='android'){
-                location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
-            }
+		function downLoadBtn(){
+			if(wxpd()){
+				location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+			}else{
+				location.href = 'http://m.caixiaomi.net/activity/down/cxm?ct=2&fr=cxm_h5home'
+			}
+            // if(detect==='ios'){
+            //     location.href = 'http://m.caixiaomi.net'
+            // }else if(detect==='android'){
+            //     location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+            // }
 		}
 
 		window.onload = function() {

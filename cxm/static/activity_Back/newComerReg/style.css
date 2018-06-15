@@ -204,3 +204,12 @@ h3 {
 	margin: 13rem auto 0;
 	padding: 0.7rem 0;
 }
+.copyRight{
+	z-index: 100;
+	text-align: center;
+	margin-top: 3.4rem;
+	font-size: 0.6rem;
+	color: #505050;
+	position: relative;
+	width: 100%;
+}

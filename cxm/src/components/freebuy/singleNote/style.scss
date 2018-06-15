@@ -279,8 +279,9 @@
         }
         .selected{
             background: #e85504!important;
-            border-right: 1px solid #fff;
             box-sizing: border-box;
+            margin-top: -2px;
+            border-right: 1px solid #fff;
             color: #fff!important;
             span{
                 color: #fff!important;

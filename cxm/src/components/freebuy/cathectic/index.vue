@@ -10,19 +10,19 @@
                 <div class="cont">
                     <p class="cont_p" v-if="$route.query.playType=='1'||$route.query.playType=='2'">{{item.leagueAddr}} {{item.changci}} 截止{{datePd(item.betEndTime)}}</p>
                     <p class="cont_pt" v-if="$route.query.playType=='3'||$route.query.playType=='5'||$route.query.playType=='7'">
-                        <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                        <span><span v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</span>{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
+                            <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                     </p>
                     <p class="cont_ptZjq" v-if="$route.query.playType=='4'">
-                        <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                        <span><span v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</span>{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
+                            <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                     </p>
                     <p class="cont_pthh" v-if="$route.query.playType=='6'">
-                        <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                        <span><span v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</span>{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
+                            <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                     </p>
                     <div class="mat_cen" :id='item.matchId' :class="$route.query.playType=='3'||$route.query.playType=='5'||$route.query.playType=='7'?'lang':'short'">
                         <div @click="deleteList(item.matchId,i)">

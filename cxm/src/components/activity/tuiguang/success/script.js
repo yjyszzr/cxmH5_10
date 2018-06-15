@@ -1,4 +1,4 @@
-import {detect} from "../../../../util/common.js";
+import {detect,wxPd} from "../../../../util/common.js";
 
 export default {
     name: 'success',
@@ -20,11 +20,16 @@ export default {
         //下载
         go_btn(){
             let detectpd = detect()
-            if (detectpd === 'ios') {
-                location.href = 'http://m.caixiaomi.net'
-            } else if (detectpd === 'android') {
+            if(wxPd()){
                 location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+            }else{
+                location.href = 'http://m.caixiaomi.net/activity/down/cxm?ct=2&fr=cxm_h5home'
             }
+            // if (detectpd === 'ios') {
+            //     location.href = 'http://m.caixiaomi.net'
+            // } else if (detectpd === 'android') {
+            //     location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+            // }
         },
         //使用
         downLoadGoto(){

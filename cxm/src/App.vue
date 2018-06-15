@@ -266,6 +266,7 @@ export default {
     position: relative;
     -webkit-box-flex: 1;
     -webkit-flex: 1;
+    height: 100%;
   }
   .bounce-enter {
     animation: bounce-in 0.3s;

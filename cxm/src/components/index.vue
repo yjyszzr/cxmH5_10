@@ -353,7 +353,7 @@ export default {
     },
     goDownLoad(){
       this.$router.push({
-        path: '/activity/down'
+        path: '/activity/down/cxm?ct=2&fr=cxm_h5home'
       })
     }
   },

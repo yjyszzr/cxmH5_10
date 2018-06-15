@@ -183,14 +183,21 @@ $.showIndicator();
                 data: JSON.stringify(obj3),
                 dataType: "json",
                 success: function(data) {
-                    console.log(data)
+                    // console.log(data)
                     if(data.code == '0') {
                     }
                 },
             })
             location.href = 'http://m.caixiaomi.net'
         }
-
+		function wxpd(){
+			var ua = navigator.userAgent.toLowerCase();  
+			if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+				return true;
+			} else {  
+				return false;
+			} 
+		}
 		function downLoadBtn(){
             var obj4 = {}
             obj4.body = {
@@ -204,16 +211,21 @@ $.showIndicator();
                 data: JSON.stringify(obj4),
                 dataType: "json",
                 success: function(data) {
-                    console.log(data)
+                    // console.log(data)
                     if(data.code == '0') {
                     }
                 },
-            })
-			if(detect==='ios'){
-				location.href = 'http://m.caixiaomi.net'
-			}else if(detect==='android'){
+			})
+			if(wxpd()){
 				location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+			}else{
+				location.href = 'http://m.caixiaomi.net/activity/down/cxm?ct=2&fr=cxm_h5home'
 			}
+			// if(detect==='ios'){
+			// 	location.href = 'http://m.caixiaomi.net'
+			// }else if(detect==='android'){
+			// 	location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+			// }
 		}
 
 		window.onload = function() {

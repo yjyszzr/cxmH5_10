@@ -43,9 +43,9 @@
                     </div>
                         <div class="matchRightjqs" v-if="playType=='4'">
                             <div class="jqs_title">
-                                <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                                <span><span v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</span>{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
+                            <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                             </div>
                             <div class="matchRightBox">
                                 <p v-for='(data,index) in item.matchPlays[0].matchCells' :key='index' :class="item.myspf&&item.myspf.indexOf('jqs:'+data.cellCode)!=-1?'selected':''" >
@@ -59,9 +59,9 @@
                         </div>
                         <div class="matchRightbf" v-if="playType=='3'">
                         <div class="bf_title">
-                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                            <span><span v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</span>{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
+                            <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
                             点击进行比分投注
@@ -74,9 +74,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='5'">
                         <div class="bf_title">
-                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                            <span><span v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</span>{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
+                            <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
                             点击进行半全场投注
@@ -89,9 +89,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='7'">
                         <div class="bf_title">
-                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                            <span><span v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</span>{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
+                            <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div class="matchRightstoneBox">
                             <p :class="item.myspf&&item.myspf.indexOf(item.matchPlays[0].homeCell.cellName)!=-1?'selected':''">
@@ -108,9 +108,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='6'">
                         <div class="bf_title">
-                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                            <span><span v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</span>{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
+                            <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div class="matchRighthhBox">
                             <div class="team_left">
@@ -188,9 +188,9 @@
                     </div>
                     <div class="matchRightjqs" v-if="playType=='4'">
                         <div class="jqs_title">
-                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                            <span><span v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</span>{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
+                            <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div class="matchRightBox">
                             <p v-for='(data,index) in item.matchPlays[0].matchCells' :key='index' :class="item.myspf&&item.myspf.indexOf('jqs:'+data.cellCode)!=-1?'selected':''" >
@@ -204,9 +204,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='3'">
                         <div class="bf_title">
-                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                            <span><span v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</span>{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
+                            <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
                             点击进行比分投注
@@ -219,9 +219,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='5'">
                         <div class="bf_title">
-                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                            <span><span v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</span>{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
+                            <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
                             点击进行半全场投注
@@ -234,9 +234,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='7'">
                         <div class="bf_title">
-                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                            <span><span v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</span>{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
+                            <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div class="matchRightstoneBox">
                             <p :class="item.myspf&&item.myspf.indexOf(item.matchPlays[0].homeCell.cellName)!=-1?'selected':''">
@@ -253,9 +253,9 @@
                     </div>
                     <div class="matchRightbf" v-if="playType=='6'">
                         <div class="bf_title">
-                            <span>[{{item.homeTeamRank}}]{{item.homeTeamAbbr}}</span>
+                            <span><span v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</span>{{item.homeTeamAbbr}}</span>
                             <span>VS</span>
-                            <span>[{{item.visitingTeamRank}}]{{item.visitingTeamAbbr}}</span>
+                            <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
                         <div class="matchRighthhBox">
                             <div class="team_left" :class="item.matchPlays[1]&&item.matchPlays[1].single=='1'?'signleSected':''">

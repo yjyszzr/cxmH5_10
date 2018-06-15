@@ -176,13 +176,26 @@ $.showIndicator();
 			})
 		}
 		
-		function downLoadBtn(){
+		function wxpd(){
+			var ua = navigator.userAgent.toLowerCase();  
+			if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+				return true;
+			} else {  
+				return false;
+			} 
+		}
 
-			if(detect==='ios'){
-				location.href = 'http://m.caixiaomi.net'
-			}else if(detect==='android'){
+		function downLoadBtn(){
+			if(wxpd()){
 				location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+			}else{
+				location.href = 'http://m.caixiaomi.net/activity/down/cxm?ct=2&fr=cxm_h5home'
 			}
+			// if(detect==='ios'){
+			// 	location.href = 'http://m.caixiaomi.net'
+			// }else if(detect==='android'){
+			// 	location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+			// }
 		}
 
 		window.onload = function() {
