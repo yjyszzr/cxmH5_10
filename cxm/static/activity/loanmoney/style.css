@@ -2,7 +2,9 @@
 	margin: 0;
 	padding: 0;
 }
-
+html,body{
+	height: 100%;
+}
 html {
 	font-size: 20px;
 }
@@ -47,7 +49,7 @@ img{ pointer-events: none; }
 }
 
 .telVal {
-	margin: 20rem auto 1rem;
+	margin: 0 auto 1rem;
 	display: block;
 	border: none;
 	background: #faddcd;
@@ -73,8 +75,7 @@ img{ pointer-events: none; }
 	z-index: 10;
 }
 
-.page,
-.page-group {
+.page {
 	height: 100%;
 	overflow: scroll!important;
 	-webkit-overflow-scrolling: touch !important;

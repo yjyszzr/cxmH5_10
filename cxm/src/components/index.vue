@@ -109,10 +109,49 @@
     }
   }
 }
+.downDrop{
+  background: rgb(59, 60, 61);
+  height: px2rem(88px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 px2rem(30px);
+  .downLeft{
+    display: flex;
+    align-items: center;
+    img{
+      width: px2rem(48px);
+      margin-right: px2rem(20px);
+    }
+    span{
+      color: white;
+      font-size: px2rem(28px);
+    }
+  }
+  .downRight{
+    padding: px2rem(5px) px2rem(15px);
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    border-radius: px2rem(5px);
+    span{
+      color: #fff;
+      font-size: px2rem(26px);
+    }
+  }
+}
 </style>
 <!--首页-->
 <template>
 	<div class="wrap">
+    <div class="downDrop" @click="goDownLoad()">
+      <div class="downLeft">
+        <img src="../assets/img/downIocn.png" alt="">
+        <span>下载彩小秘APP 购彩更轻松</span>
+      </div>
+      <div class="downRight">
+        <span>立即打开</span>
+      </div>
+    </div>
 		<v-slider :bannerList='bannerList'></v-slider>
 		<!--首页-->
 		<div class="index_center">
@@ -312,6 +351,11 @@ export default {
         }
       }
     },
+    goDownLoad(){
+      this.$router.push({
+        path: '/activity/down'
+      })
+    }
   },
   created: function() {},
   mounted() {

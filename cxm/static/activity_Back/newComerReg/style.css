@@ -23,7 +23,7 @@ img{
 	color: #fff;
 	background: #ea5504;
 	display: block;
-	margin: 6rem auto 0;
+	margin: 3rem auto 0;
 	border: 0;
 	font-size: 0.6rem;
 	width: 60%;
@@ -57,10 +57,11 @@ img{
 
 .valBox{
 	width: 90%;
-	margin: 12rem auto 0;
+	margin: 43vh auto 0;
 	background: #ea5504;
-	padding: 1.5rem 0;
+	padding: 0.7rem 0;
 	opacity: 0.8;
+	height: 7.5rem;
 }
 
 .telVal {
@@ -68,7 +69,7 @@ img{
 	border: none;
 	background: rgba(255, 255, 255, 0.9);
 	width: 70%;
-	height: 2rem;
+	height: 1.8rem;
 	margin: 0 auto;
 	font-size: 0.7rem;
 	text-align: center;
@@ -79,7 +80,7 @@ img{
 	margin: 0.4rem auto 0rem;
 	background: #fff;
 	width: 70%;
-	height: 2rem;
+	height: 1.8rem;
 	border: none;
 	display: block;
 	font-size: 0.7rem;
@@ -131,14 +132,14 @@ h3 {
 
 .code {
 	width: 70%;
-	margin: 0.6rem auto;
+	margin: 0.3rem auto;
 	overflow: hidden;
 	display: none;
 }
 
 .codeVal {
 	width: 55%;
-	height: 2rem;
+	height: 1.8rem;
 	float: left;
 	background: rgba(255, 255, 255, 0.9);
 	font-size: 0.7rem;
@@ -154,7 +155,7 @@ h3 {
 	background: rgba(255, 255, 255, 0.9);
 	font-size: 0.7rem;
 	border: none;
-	height: 2rem;
+	height: 1.8rem;
 	color: #666;
 }
 
@@ -192,7 +193,7 @@ h3 {
 	margin: 0.4rem auto 0rem;
 	background: #fff;
 	width: 70%;
-	height: 2rem;
+	height: 1.8rem;
 	border: none;
 	display: block;
 	font-size: 0.7rem;

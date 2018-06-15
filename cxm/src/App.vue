@@ -73,6 +73,8 @@ export default {
             return "短信登录";
           case "find":
             return "找回密码";
+          case "down":
+            return "APP下载";
           case "revise":
             return "修改密码";
           case "about":
@@ -260,7 +262,6 @@ export default {
   .content {
     width: 100%;
     overflow: scroll;
-    padding-bottom: 0.2rem;
     -webkit-overflow-scrolling: touch !important;
     position: relative;
     -webkit-box-flex: 1;

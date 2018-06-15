@@ -1,6 +1,17 @@
 $.showIndicator();
 		//var baseUrl = 'http://39.106.18.39:8765/api/'
 		var baseUrl = 'http://api.caixiaomi.net/api/'
+		function getUrlStr(name,url){
+		    var reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
+		    if(reg.test(url)){
+		        return unescape(RegExp.$2.replace(/\+/g," "))
+		    }
+		    return undefined
+		}
+		var channels = 'xqd'
+		if(getUrlStr('fr',location.href)){
+			channels = getUrlStr('fr',location.href)
+		}
 		var device = {
 			plat: 'h5',
 			apiv: 1,
@@ -13,7 +24,7 @@ $.showIndicator();
 			mid: '',
 			brand: '',
 			build: '',
-			channel: 'xqd',
+			channel: channels,
 			net: '',
 			token: ''
 		}
@@ -37,14 +48,6 @@ $.showIndicator();
 
 		if(detect==='ios'){
 			$('.downLoadBtn').css('display','none')
-		}
-
-		function getUrlStr(name,url){
-		    var reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
-		    if(reg.test(url)){
-		        return unescape(RegExp.$2.replace(/\+/g," "))
-		    }
-		    return undefined
 		}
 
 		function activity_smClick() {
