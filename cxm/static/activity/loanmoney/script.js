@@ -1,6 +1,6 @@
 $.showIndicator();
-		//var baseUrl = 'http://39.106.18.39:8765/api/'
-		var baseUrl = 'http://api.caixiaomi.net/api/'
+		var baseUrl = 'http://39.106.18.39:8765/api/'
+		// var baseUrl = 'http://api.caixiaomi.net/api/'
 		function getUrlStr(name,url){
 		    var reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
 		    if(reg.test(url)){

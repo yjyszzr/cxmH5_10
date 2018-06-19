@@ -54,10 +54,25 @@ img{
 .modal-title {
 	font-size: 0.8rem;
 }
-
+@media only screen and (device-width: 375px) and (device-height: 812px) and
+(-webkit-device-pixel-ratio: 3) {
+	.valBox{
+		margin: 40vh auto 0!important;
+	}
+}
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){
+	.valBox {
+		margin: 61% auto 0!important;
+	}
+}
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
+	.valBox {
+		margin: 61% auto 0!important;
+	}
+}
 .valBox{
 	width: 90%;
-	margin: 43vh auto 0;
+	margin: 72% auto 0;
 	background: #ea5504;
 	padding: 0.7rem 0;
 	opacity: 0.8;
@@ -207,9 +222,10 @@ h3 {
 .copyRight{
 	z-index: 100;
 	text-align: center;
-	margin-top: 3.4rem;
+	margin-top: 3.8rem;
 	font-size: 0.6rem;
 	color: #505050;
 	position: relative;
+	bottom: 1%;
 	width: 100%;
 }
