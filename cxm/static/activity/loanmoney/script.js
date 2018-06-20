@@ -29,6 +29,9 @@ $.showIndicator();
 			token: ''
 		}
 		var userData = ''
+
+ 
+
 		//判断苹果系统和安卓系统
 		function detect(){
 			var equipmentType = "";
@@ -62,7 +65,6 @@ $.showIndicator();
 				}, ]
 			})
 		}
-
 
 		function getSmsCode() {
 			var obj = {}

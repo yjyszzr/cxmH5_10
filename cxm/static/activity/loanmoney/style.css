@@ -8,6 +8,7 @@ html {
 }
 body{
 	background: #fff;
+	height: 100%;
 }
 img{ pointer-events: none; }
 .page {
