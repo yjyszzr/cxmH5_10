@@ -7,20 +7,18 @@ html {
 	font-size: 20px;
 }
 
-img {
-	pointer-events: none !important;
+img{
+	pointer-events: none!important;
 }
 
 .page {
 	font-family: "微软雅黑";
 }
-
-.regDetail {
+.regDetail{
 	width: 100%;
 	position: absolute;
 	top: 0;
 }
-
 .downLoadGoto {
 	color: #fff;
 	background: #ea5504;
@@ -56,10 +54,10 @@ img {
 .modal-title {
 	font-size: 0.8rem;
 }
-
-@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
-	.valBox {
-		margin: 40vh auto 0 !important;
+@media only screen and (device-width: 375px) and (device-height: 812px) and
+(-webkit-device-pixel-ratio: 3) {
+	.valBox{
+		margin: 38vh auto 0!important;
 	}
 }
 
@@ -215,7 +213,6 @@ h3 {
 	width: 70%;
 	height: 1.8rem;
 	border: none;
-	display: block;
 	font-size: 0.7rem;
 	color: #EA5504;
 	display: none;
