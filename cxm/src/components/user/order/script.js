@@ -13,9 +13,10 @@ export default {
       }
     },
     created(){
-      
+
     },
     methods: {
+
       goDraw(c){
         this.$router.push({
           path: '/user/draw',
@@ -26,6 +27,7 @@ export default {
           replace: false
         })
       },
+
       jxtz(){
         if(this.orderObj.lotteryPlayClassifyId=='8'){
           this.$store.dispatch("changefsList", []);
@@ -59,9 +61,15 @@ export default {
             if(res.code==0) {
              //console.log(res)
               this.orderObj = res.data
+                // if(orderObj.isDan == 0){
+                //
+                // }else if(orderObj.isDan == 1){
+                //
+                // }
             }
         })
     },
+
     beforeRouteLeave(to, from, next) {
       if(to.path!='/freebuy/cathectic'&&to.path!='/activity/world_detail'){
         next()

@@ -71,10 +71,17 @@
             }
         }
         .yh_ItemBottom{
+            position: relative;
             background: url(../../../assets/img/halfcouponup.png) no-repeat;
             background-size: 100%;
             margin-top: px2rem(-1px);
             padding: px2rem(27px) 0 px2rem(35px) px2rem(38px);
+            a{
+                position: absolute;
+                right: 5%;
+                color: #e95504;
+                top: 40%;
+            }
             p{
                 font-size: px2rem(20px);
                 span:first-of-type{

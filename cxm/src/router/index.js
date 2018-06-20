@@ -617,6 +617,21 @@ const router = new Router({
           name: 'world',
           component: resolve => require(['@/components/activity/worldjeep/world/world.vue'], resolve)
       },
+      {
+          path: '/user/setup',
+          name: 'setup',
+          component: resolve => require(['@/components/user/setup/setup.vue'], resolve)
+      },
+      {
+          path: '/user/setlogin',
+          name: 'setlogin',
+          component: resolve => require(['@/components/user/setlogin/setup.vue'], resolve)
+      },
+      {
+          path: '/user/setchange',
+          name: 'setchange',
+          component: resolve => require(['@/components/user/setchange/setup.vue'], resolve)
+      },
   ]
 })
 

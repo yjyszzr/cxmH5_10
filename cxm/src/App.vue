@@ -182,6 +182,12 @@ export default {
                   return "注册推广员";
               case 'world_explain':
                   return "投注服务协议";
+              case 'setup':
+                  return "个人信息";
+              case 'setlogin':
+                  return "设置登录密码";
+              case 'setchange':
+                  return "修改登录密码";
         }
       } else {
         if (

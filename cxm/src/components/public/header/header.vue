@@ -10,6 +10,7 @@
                 <span v-if="$route.path.split('/')[2]=='consult'&&getUrl()" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
                 <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="djs">胆</span>
+                <span v-if="$route.path.split('/')[1]=='user'" @click="setUp()" class="djs">设置</span>
             </p>
             <p class="filter" v-show="menuDisplay==false"></p>
         </div>
@@ -115,6 +116,12 @@ export default {
   onGal(){
       this.$router.push({
           path: "/freebuy/explain",
+          replace: false
+      });
+  },
+  setUp(){
+      this.$router.push({
+          path: "/user/setup",
           replace: false
       });
   },
