@@ -1,5 +1,4 @@
 <style lang='scss' scoped src='./style.scss'>
-
 </style>
 
 <template>
@@ -12,5 +11,4 @@
   
 </template>
 <script src='./script.js'>
-
 </script>

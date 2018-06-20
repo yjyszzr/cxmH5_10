@@ -7,18 +7,20 @@ html {
 	font-size: 20px;
 }
 
-img{
-	pointer-events: none!important; 
+img {
+	pointer-events: none !important;
 }
 
 .page {
 	font-family: "微软雅黑";
 }
-.regDetail{
+
+.regDetail {
 	width: 100%;
 	position: absolute;
 	top: 0;
 }
+
 .downLoadGoto {
 	color: #fff;
 	background: #ea5504;
@@ -54,23 +56,26 @@ img{
 .modal-title {
 	font-size: 0.8rem;
 }
-@media only screen and (device-width: 375px) and (device-height: 812px) and
-(-webkit-device-pixel-ratio: 3) {
-	.valBox{
-		margin: 40vh auto 0!important;
-	}
-}
-@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){
+
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
 	.valBox {
-		margin: 61% auto 0!important;
+		margin: 40vh auto 0 !important;
 	}
 }
-@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
+
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2) {
 	.valBox {
-		margin: 61% auto 0!important;
+		margin: 61% auto 0 !important;
 	}
 }
-.valBox{
+
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2) {
+	.valBox {
+		margin: 61% auto 0 !important;
+	}
+}
+
+.valBox {
 	width: 90%;
 	margin: 72% auto 0;
 	background: #ea5504;
@@ -105,7 +110,7 @@ img{
 .page,
 .page-group {
 	height: 100%;
-	overflow: scroll!important;
+	overflow: scroll !important;
 	-webkit-overflow-scrolling: touch !important;
 }
 
@@ -132,7 +137,7 @@ h3 {
 	color: #505050;
 	margin-left: 0.15rem;
 	overflow: hidden;
-    white-space: nowrap;
+	white-space: nowrap;
 	text-overflow: ellipsis;
 	width: 100%;
 }
@@ -176,7 +181,7 @@ h3 {
 
 #router2 {
 	background: white;
-	height: 100%!important;
+	height: 100% !important;
 }
 
 .winner {
@@ -215,11 +220,13 @@ h3 {
 	color: #EA5504;
 	display: none;
 }
-.codeBox{
+
+.codeBox {
 	margin: 13rem auto 0;
 	padding: 0.7rem 0;
 }
-.copyRight{
+
+.copyRight {
 	z-index: 100;
 	text-align: center;
 	margin-top: 3.8rem;
