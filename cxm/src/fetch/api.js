@@ -12,8 +12,8 @@ import {getUrlStr} from '../util/common'
 // axios 配置
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.baseURL = 'http://api.caixiaomi.net/api';
-//axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
+//axios.defaults.baseURL = 'http://api.caixiaomi.net/api';
+axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 //console.log(window)
 
 //拦截 token
@@ -158,22 +158,6 @@ export function fetchPost(url, body) {
             })
     })
 }
-
-// export function fetchGet(url, params) {
-//     return new Promise((resolve, reject) => {
-//         axios.get(url, {
-//                 params : params
-//             })
-//             .then(response => {
-//                 resolve(response.data);
-//             }, err => {
-//                 reject(err);
-//             })
-//             .catch((error) => {
-//                reject(error)
-//             })
-//     })
-// }
 
 export default {
     //统计点击次数

@@ -8,13 +8,6 @@ Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
-//   scrollBehavior (to, from, savedPosition) {
-//     if (savedPosition) {
-//       return savedPosition
-//     } else {
-//       return { x: 0, y: 0 }
-//     }
-//   },
   routes: [
     {
       path: '/',
@@ -658,9 +651,6 @@ router.beforeEach(async(to, from, next) => {
     }
     NProgress.start(); // 开启Progress
     // 进入详情页时需要记录滚动条距离头部距离
-    // if (toPath === '/user/order'&&from.path==='/user/record') {
-    //     router.app.orderScrolltop = $('#content').scrollTop()
-    // }else 
     if(toPath === '/index/consult'&&(from.path==='/'||from.path==='/find')){
         router.app.consultScrolltop = $('#content').scrollTop()
         from.meta.keepAlive = true
@@ -677,9 +667,6 @@ router.afterEach(async(to, from) => {
     NProgress.done(); // 结束Progress
     MessageBox.close(false);
     // // 页面跳转时滚动到页面顶部
-    // if(toPath!='/'&&toPath!='/user/record'){
-    //     document.getElementById('content').scrollTop = 0
-    // }
     if(toPath!='/'||toPath!='/find'){
         document.getElementById('content').scrollTop = 0
     }

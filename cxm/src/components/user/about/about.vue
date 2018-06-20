@@ -4,7 +4,7 @@
 
 <!--关于我们-->
 <template>
-    <div class="wrap" >
+    <div class="wrap about" >
         <div class="logo">
             <img src="../../../assets/img/logo.png" alt="彩小秘"/><i>v1.0.6</i>
         </div>
