@@ -34,7 +34,15 @@ export default {
                     if(res.code==0) {
                         console.log(res)
                         this.setingobj = res.data
-
+                        if(this.returnGo){
+                            this.$router.go(-1)
+                        }else{
+                            this.$router.push({
+                                path: '/',
+                                replace: true
+                            })
+                        }
+                        Toast(res.msg)
                     }
                 })
         },
