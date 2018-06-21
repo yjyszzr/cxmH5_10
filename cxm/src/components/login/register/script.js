@@ -1,5 +1,5 @@
 import api from '../../../fetch/api'
-import { Toast } from 'mint-ui'
+import { Toast,Indicator } from 'mint-ui'
 export default {
     name: 'register',
     data () {
@@ -15,6 +15,7 @@ export default {
     },
     methods: {
       changeNum(){
+        Indicator.open()
         //验证码信息
         let data = {
           'mobile': this.phoneVal,

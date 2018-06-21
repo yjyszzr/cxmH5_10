@@ -106,6 +106,13 @@
                             <span class="message">联系客服</span>
                         </div>
                     </a>
+                    <a href="https://www.sobot.com/chat/h5/index.html?sysNum=1a549fa1ac1b4c0f9eeda9953f62b9b2&titleFlag=3">
+                        <div>
+                            <i class="iconfont icon-icon-4"></i>
+                            <span class="arrow_right float_right"></span>
+                            <span class="message">在线客服</span>
+                        </div>
+                    </a>
                     <router-link to='/user/about'>
                         <div>
                             <i class="iconfont icon-icon-5"></i>

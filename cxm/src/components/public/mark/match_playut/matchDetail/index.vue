@@ -14,7 +14,7 @@
                 <div class="matchDetail_content">
                     <div class="md_left">
                         <img :src="matchDetailObj.matchInfo.homeTeamPic" alt="">
-                        <p>{{matchDetailObj.matchInfo.homeTeamAbbr}}</p>
+                        <p><span v-show="matchDetailObj.matchInfo.homeTeamRank!==''">[{{matchDetailObj.matchInfo.homeTeamRank}}]</span>{{matchDetailObj.matchInfo.homeTeamAbbr}}</p>
                         <p>主胜{{matchDetailObj.matchInfo.hOdds}}</p>
                     </div>
                     <div class="md_middle">
@@ -23,7 +23,7 @@
                     </div>
                     <div class="md_right">
                         <img :src="matchDetailObj.matchInfo.visitingTeamPic" alt="">
-                        <p>{{matchDetailObj.matchInfo.visitingTeamAbbr}}</p>
+                        <p><span v-show="matchDetailObj.matchInfo.visitingTeamRank!==''">[{{matchDetailObj.matchInfo.visitingTeamRank}}]</span>{{matchDetailObj.matchInfo.visitingTeamAbbr}}</p>
                         <p>客胜{{matchDetailObj.matchInfo.aOdds}}</p>
                     </div>
                 </div>
