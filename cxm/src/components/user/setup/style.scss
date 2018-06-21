@@ -1,0 +1,22 @@
+@import '../../../assets/css/function.scss';
+.setup{
+  p{
+    border-top: 1px solid #f1f1f1;
+    font-size: px2rem(28px);
+    color: #787878;
+    padding: px2rem(15px);
+  }
+  .msg_list {
+    li{
+      a{
+        height: 1.17333rem;
+        div{
+          height: 1.17333rem;
+          .message{
+            height: 100% !important;
+          }
+        }
+      }
+    }
+  }
+}

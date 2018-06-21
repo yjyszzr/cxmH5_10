@@ -27,6 +27,7 @@
                         </div>
                         <i></i>
                         <div class="yh_ItemBottom">
+                            <a href="/freebuy/singleNote?id=6">立即使用</a>
                             <p>
                                 <span>有效期:</span>
                                 <span>{{item.limitTime}}</span>

@@ -429,4 +429,8 @@ export default {
     worldCupPlanlist(params){
         return fetchPost('/activity/worldCupPlan/list', params)
     },
+    //设置用户登录密码
+    setinglogin(params){
+        return fetchPost('/member/user/setLoginPass', params)
+    },
 }

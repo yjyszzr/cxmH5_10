@@ -44,6 +44,7 @@
                             <p>赛果</p>
                         </div>
                         <li v-for='(item,i) in orderObj.matchInfos' :key='i'>
+
                             <div class="item" v-html='item.changci.slice(0,2)+"<br />"+item.changci.slice(2)'></div>
                             <div class="item"><span>{{item.match.split('VS')[0]}}</span><span>VS</span><span>{{item.match.split('VS')[1]}}</span></div>
                             <div class="item">
@@ -59,6 +60,7 @@
                             <div class="item">
                                 <span v-for='(data,index) in item.cathecticResults' :key='index'>{{data.matchResult}}</span>
                             </div>
+                            <div v-bind:class="{'dan':item.isDan == 1,'kong':item.isDan == 0}">胆</div>
                         </li>
                     </ul>
                     <ul class="list" v-if="orderObj.lotteryPlayClassifyId=='8'">
@@ -82,6 +84,9 @@
                     <div class="menu">
                         <p v-if="orderObj.passType!=='null'">过关方式：<span>{{orderObj.passType}}</span></p>
                         <p>投注倍数：<span v-if="orderObj.passType==='null'">{{orderObj.betNum}}注{{orderObj.cathectic}}倍</span><span v-else>{{orderObj.cathectic}}倍</span></p>
+                    </div>
+                    <div class="yue">
+                        支付方式：余额支付<span>{{orderObj.surplus}}元</span>
                     </div>
                 </div>
             </div>
