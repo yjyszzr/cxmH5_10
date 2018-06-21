@@ -2,34 +2,32 @@ import api from '../../../fetch/api'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 export default {
-    name: 'record',
+    name: 'setlogin',
     data () {
       return {
-          setingobj:{}
+          setingobj:{},
+          newpassval: '', //新密码
+          confirmpassval:'', //确认密码
+          xeyehide: false,
+          qeyehide: false,
       }
     },
-    /*
-设置用户登录密码接口
-/member/user/setLoginPass
-
-dic["oldLoginPass"] = oldPass
-            dic["userLoginPass"] = newPass
-            dic["type"] = type
-
-
-设置密码 type = 0    修改密码  type = 1
-
-
-    */
     created(){
       
     },
     methods:{
-        fetchData(){
+        setlogin(){
+            if(!this.newpassval){
+                Toast('请输入新密码')
+                return
+            }else if(!this.confirmpassval){
+                Toast('请输入确认密码')
+                return
+            }
             let data = {
                 "oldLoginPass": '',
-                "userLoginPass" : '',
-                "type" : ''
+                "userLoginPass" : this.newpassval,
+                "type" :0
             }
             api.setinglogin(data)
                 .then(res => {
@@ -47,6 +45,5 @@ dic["oldLoginPass"] = oldPass
     watch: {
     },
     mounted(){
-        this.fetchData()
     },
 }

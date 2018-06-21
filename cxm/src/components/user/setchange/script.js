@@ -5,24 +5,44 @@ export default {
     name: 'record',
     data () {
       return {
-
+          setingobj:{},
+          yeyehide: false,
+          xeyehide: false,
+          qeyehide: false,
+          cipherpassval:'', //原密码
+          newpassval:'',    //新密码
+          confirmpassval:'' //确认密码
       }
     },
-    /*
-
-/member/user/setLoginPass
-
-dic["oldLoginPass"] = oldPass
-            dic["userLoginPass"] = newPass
-            dic["type"] = type
-设置密码 type = 0    修改密码  type = 1
-
-
-    */
     created(){
       
     },
     methods:{
+        setchange(){
+            if (!this.cipherpassval) {
+                Toast('请输入原密码')
+                return
+            }else if(!this.newpassval){
+                Toast('请输入新密码')
+                return
+            }else if(!this.confirmpassval){
+                Toast('请输入确认密码')
+                return
+            }
+
+            let data = {
+                "oldLoginPass": this.cipherpassval,
+                "userLoginPass" : '',
+                "type" :1
+            }
+            api.setinglogin(data)
+                .then(res => {
+                    if(res.code==0) {
+                        console.log(res)
+                        this.setingobj = res.data
+                    }
+                })
+        },
     },
     computed: {  
 
