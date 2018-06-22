@@ -54,7 +54,7 @@ export default {
                         })
 
 
-                        // Toast(res.msg)
+                        Toast(res.msg)
                     }
                 })
         },

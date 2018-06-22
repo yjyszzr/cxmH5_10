@@ -28,6 +28,7 @@ export default {
                 Toast('两次密码不一致')
                 return
             }
+
             let data = {
                 "oldLoginPass": '',
                 "userLoginPass" : this.newpassval,
