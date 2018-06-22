@@ -677,6 +677,37 @@ const router = new Router({
           name: 'insurance',
           component: resolve => require(['@/components/appball/insurance/insurance.vue'], resolve)
       },
+      //天天体育
+      {
+          path: 'appty/help',
+          name: 'help',
+          component: resolve => require(['@/components/appty/help/index.vue'], resolve)
+      },
+      {
+          path: '/appty/protocol',
+          name: 'protocol',
+          component: resolve => require(['@/components/appty/protocol/index.vue'], resolve)
+      },
+      {
+          path: '/appty/service',
+          name: 'service',
+          component: resolve => require(['@/components/appty/service/index.vue'], resolve)
+      },
+      {
+          path: '/appty/inToplay',
+          name: 'inToplay',
+          component: resolve => require(['@/components/appty/intoplay/index.vue'], resolve)
+      },
+      {
+          path: '/appty/explain',
+          name: 'explain',
+          component: resolve => require(['@/components/appty/explain/explain.vue'], resolve)
+      },
+      {
+          path: '/appty/insurance',
+          name: 'insurance',
+          component: resolve => require(['@/components/appty/insurance/insurance.vue'], resolve)
+      },
   ]
 })
 
