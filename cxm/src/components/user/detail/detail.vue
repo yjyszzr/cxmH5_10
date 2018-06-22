@@ -23,6 +23,7 @@
                             </p>
                             <p>
                                 <span>{{item.minGoodsAmount}}</span><br/>
+
                                 <!-- <span>{{item.useRange}}</span> -->
                             </p>
                         </div>
