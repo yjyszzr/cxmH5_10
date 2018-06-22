@@ -165,9 +165,22 @@
     padding: px2rem(20px) 0;
     border-top: 1px solid #f1f1f1;
     color: #A0A0A0;
+    div{
+      margin-left: px2rem(110px);
+    }
+    em{
+      float: left;
+      font-style: normal;
+    }
+    p{
+      display: inline-block;
+
+    }
     span{
+      margin-left: px2rem(10px);
       color:#505050;
     }
+
   }
 }
 .plan {
