@@ -490,32 +490,32 @@ const router = new Router({
       {
           path: '/appinfo/help',
           name: 'help',
-          component: resolve => require(['@/components/appinfo/help/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appinfo/help/index.vue'], resolve)
       },
       {
           path: '/appinfo/protocol',
           name: 'protocol',
-          component: resolve => require(['@/components/appinfo/protocol/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appinfo/protocol/index.vue'], resolve)
       },
       {
           path: '/appinfo/service',
           name: 'service',
-          component: resolve => require(['@/components/appinfo/service/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appinfo/service/index.vue'], resolve)
       },
       {
           path: '/appinfo/inToplay',
           name: 'inToplay',
-          component: resolve => require(['@/components/appinfo/intoplay/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appinfo/intoplay/index.vue'], resolve)
       },
       {
           path: '/appinfo/explain',
           name: 'explain',
-          component: resolve => require(['@/components/appinfo/explain/explain.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appinfo/explain/explain.vue'], resolve)
       },
       {
           path: '/appinfo/insurance',
           name: 'insurance',
-          component: resolve => require(['@/components/appinfo/insurance/insurance.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appinfo/insurance/insurance.vue'], resolve)
       },
       {
             path: '/activity/world/sixty',
@@ -532,32 +532,32 @@ const router = new Router({
       {
           path: '/appmust/help',
           name: 'help',
-          component: resolve => require(['@/components/appmust/help/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appmust/help/index.vue'], resolve)
       },
       {
           path: '/appmust/protocol',
           name: 'protocol',
-          component: resolve => require(['@/components/appmust/protocol/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appmust/protocol/index.vue'], resolve)
       },
       {
           path: '/appmust/service',
           name: 'service',
-          component: resolve => require(['@/components/appmust/service/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appmust/service/index.vue'], resolve)
       },
       {
           path: '/appmust/inToplay',
           name: 'inToplay',
-          component: resolve => require(['@/components/appmust/intoplay/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appmust/intoplay/index.vue'], resolve)
       },
       {
           path: '/appmust/explain',
           name: 'explain',
-          component: resolve => require(['@/components/appmust/explain/explain.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appmust/explain/explain.vue'], resolve)
       },
       {
           path: '/appmust/insurance',
           name: 'insurance',
-          component: resolve => require(['@/components/appmust/insurance/insurance.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appmust/insurance/insurance.vue'], resolve)
       },
       //app天天买
       //帮助中心：/apptt/help
@@ -569,38 +569,38 @@ const router = new Router({
       {
           path: '/apptt/help',
           name: 'help',
-          component: resolve => require(['@/components/apptt/help/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/apptt/help/index.vue'], resolve)
       },
       {
           path: '/apptt/protocol',
           name: 'protocol',
-          component: resolve => require(['@/components/apptt/protocol/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/apptt/protocol/index.vue'], resolve)
       },
       {
           path: '/apptt/service',
           name: 'service',
-          component: resolve => require(['@/components/apptt/service/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/apptt/service/index.vue'], resolve)
       },
       {
           path: '/apptt/inToplay',
           name: 'inToplay',
-          component: resolve => require(['@/components/apptt/intoplay/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/apptt/intoplay/index.vue'], resolve)
       },
       {
           path: '/apptt/explain',
           name: 'explain',
-          component: resolve => require(['@/components/apptt/explain/explain.vue'], resolve)
+          component: resolve => require(['@/components/mjb/apptt/explain/explain.vue'], resolve)
       },
       {
           path: '/apptt/insurance',
           name: 'insurance',
-          component: resolve => require(['@/components/apptt/insurance/insurance.vue'], resolve)
+          component: resolve => require(['@/components/mjb/apptt/insurance/insurance.vue'], resolve)
       },
       //世界杯协议
       {
           path: '/appsjb/world_explain',
           name: 'world_explain',
-          component: resolve => require(['@/components/appsjb/world_explain/world_explain.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appsjb/world_explain/world_explain.vue'], resolve)
       },
       {
             path: '/activity/world/thirtytwo',
@@ -650,63 +650,63 @@ const router = new Router({
       {
           path: '/appball/help',
           name: 'help',
-          component: resolve => require(['@/components/appball/help/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appball/help/index.vue'], resolve)
       },
       {
           path: '/appball/protocol',
           name: 'protocol',
-          component: resolve => require(['@/components/appball/protocol/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appball/protocol/index.vue'], resolve)
       },
       {
           path: '/appball/service',
           name: 'service',
-          component: resolve => require(['@/components/appball/service/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appball/service/index.vue'], resolve)
       },
       {
           path: '/appball/inToplay',
           name: 'inToplay',
-          component: resolve => require(['@/components/appball/intoplay/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appball/intoplay/index.vue'], resolve)
       },
       {
           path: '/appball/explain',
           name: 'explain',
-          component: resolve => require(['@/components/appball/explain/explain.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appball/explain/explain.vue'], resolve)
       },
       {
           path: '/appball/insurance',
           name: 'insurance',
-          component: resolve => require(['@/components/appball/insurance/insurance.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appball/insurance/insurance.vue'], resolve)
       },
       //天天体育
       {
           path: 'appty/help',
           name: 'help',
-          component: resolve => require(['@/components/appty/help/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appty/help/index.vue'], resolve)
       },
       {
           path: '/appty/protocol',
           name: 'protocol',
-          component: resolve => require(['@/components/appty/protocol/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appty/protocol/index.vue'], resolve)
       },
       {
           path: '/appty/service',
           name: 'service',
-          component: resolve => require(['@/components/appty/service/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appty/service/index.vue'], resolve)
       },
       {
           path: '/appty/inToplay',
           name: 'inToplay',
-          component: resolve => require(['@/components/appty/intoplay/index.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appty/intoplay/index.vue'], resolve)
       },
       {
           path: '/appty/explain',
           name: 'explain',
-          component: resolve => require(['@/components/appty/explain/explain.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appty/explain/explain.vue'], resolve)
       },
       {
           path: '/appty/insurance',
           name: 'insurance',
-          component: resolve => require(['@/components/appty/insurance/insurance.vue'], resolve)
+          component: resolve => require(['@/components/mjb/appty/insurance/insurance.vue'], resolve)
       },
   ]
 })
