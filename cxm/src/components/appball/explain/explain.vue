@@ -15,7 +15,7 @@
         },
         mounted(){
             window.getCxmTitle = function(){
-                return '必中彩·胆说明'
+                return '足球资讯·胆说明'
             }
         }
     }

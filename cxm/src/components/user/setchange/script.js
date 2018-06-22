@@ -34,7 +34,7 @@ export default {
                 Toast('原密码和新密码不能相同')
                 return
             }else if(this.newpassval != this.confirmpassval){
-                Toast('两次密码不一致')
+                Toast('两次输入密码不一致')
                 return
             }
 
@@ -48,10 +48,7 @@ export default {
                     if(res.code==0) {
                         console.log(res)
                         this.setingobj = res.data
-                        this.$router.push({
-                            path: '/user/setup',
-                            replace: false
-                        })
+                        this.$router.go(-1)
 
 
                         Toast(res.msg)

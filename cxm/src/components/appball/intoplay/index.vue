@@ -76,7 +76,7 @@ export default {
     },
     mounted(){
         window.getCxmTitle = function(){
-            return '必中彩·玩法帮助'
+            return '足球资讯·玩法帮助'
         }
         this.$store.state.matchObj = {};
     }

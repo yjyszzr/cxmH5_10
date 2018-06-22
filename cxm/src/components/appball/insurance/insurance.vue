@@ -53,7 +53,7 @@ export default {
   },
   mounted(){
       window.getCxmTitle = function(){
-          return '必中彩·安全保障'
+          return '足球资讯·安全保障'
       }
   }
 }
