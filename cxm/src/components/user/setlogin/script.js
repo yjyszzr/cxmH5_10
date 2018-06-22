@@ -24,6 +24,10 @@ export default {
                 Toast('请输入确认密码')
                 return
             }
+            if(this.newpassval != this.confirmpassval){
+                Toast('两次密码不一致')
+                return
+            }
             let data = {
                 "oldLoginPass": '',
                 "userLoginPass" : this.newpassval,
@@ -34,14 +38,10 @@ export default {
                     if(res.code==0) {
                         console.log(res)
                         this.setingobj = res.data
-                        if(this.returnGo){
-                            this.$router.go(-1)
-                        }else{
-                            this.$router.push({
-                                path: '/',
-                                replace: true
-                            })
-                        }
+                        this.$router.push({
+                            path: '/user/setup',
+                            replace: false
+                        })
                         Toast(res.msg)
                     }
                 })

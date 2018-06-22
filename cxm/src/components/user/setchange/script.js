@@ -30,9 +30,17 @@ export default {
                 return
             }
 
+            if(this.cipherpassval == this.newpassval){
+                Toast('原密码和新密码不能相同')
+                return
+            }else if(this.newpassval != this.confirmpassval){
+                Toast('两次密码不一致')
+                return
+            }
+
             let data = {
                 "oldLoginPass": this.cipherpassval,
-                "userLoginPass" : '',
+                "userLoginPass" : this.newpassval,
                 "type" :1
             }
             api.setinglogin(data)
@@ -40,15 +48,13 @@ export default {
                     if(res.code==0) {
                         console.log(res)
                         this.setingobj = res.data
-                        if(this.returnGo){
-                            this.$router.go(-1)
-                        }else{
-                            this.$router.push({
-                                path: '/',
-                                replace: true
-                            })
-                        }
-                        Toast(res.msg)
+                        this.$router.push({
+                            path: '/user/setup',
+                            replace: false
+                        })
+
+
+                        // Toast(res.msg)
                     }
                 })
         },
