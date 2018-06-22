@@ -30,7 +30,7 @@
                                 <span class="arrow_kefu float_right">
                                 <i ref="wxSelected" class="iconfont icon-icon-29" :class="item.payCode==payCode?'wxSelected':''"></i>
                             </span>
-                                <span class="message">{{item.payName}}</span>
+                                <span class="message"><b>{{item.payName}}</b><b>充值前请确认竞彩足球是否销售</b></span>
                             </div>
                         </a>
                 </li>

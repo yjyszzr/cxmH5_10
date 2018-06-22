@@ -145,6 +145,8 @@ export default {
                 return "活动详情";
             case 'give_details':
                 return "提现详情";
+            case 'quickinfo':
+                return "快捷支付";
 //          一期活动
             case 'tuiguang':
                 return "推广中心";

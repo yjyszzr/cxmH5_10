@@ -92,7 +92,20 @@
     padding-top: px2rem(30px);
   }
   .message{
+    width: 75%;
     height: px2rem(110px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    b{
+      line-height: 1.5;
+      font-weight: 400;
+    }
+    b:last-of-type{
+      font-size: px2rem(24px);
+      color: #ea5504;
+    }
   }
 }
 .arrow_kefu{

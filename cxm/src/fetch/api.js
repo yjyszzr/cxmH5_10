@@ -8,13 +8,14 @@ import {
 } from 'mint-ui'
 import router from '../router/index'
 import {getUrlStr} from '../util/common'
-
+// import {baseUrl}from '../../static/publicJS/api'
+// console.log(baseUrl)
 // axios 配置
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 //axios.defaults.baseURL = 'http://api.caixiaomi.net/api';
-
-axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
+axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
+//axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 //console.log(window)
 
 //拦截 token

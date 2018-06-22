@@ -320,6 +320,14 @@ const router = new Router({
           },
           component: resolve => require(['@/components/freebuy/explain/explain.vue'], resolve)
       },
+      {
+        path: '/user/quickinfo',
+        name: 'quickInfo',
+        meta: {
+          title: '快捷支付'
+        },
+        component: resolve => require(['@/components/user/quickPayment/quickInfo/index.vue'], resolve)
+      },
 //    一期活动相关路由
       {
         path: '/user/activity/one',
