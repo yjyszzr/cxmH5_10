@@ -27,7 +27,7 @@
                         </div>
                         <i></i>
                         <div class="yh_ItemBottom">
-                            <a href="/freebuy/singleNote?id=6">立即使用</a>
+                            <router-link v-if="item.bonusStatus==0" to="/freebuy/singleNote?id=6">立即使用</router-link>
                             <p>
                                 <span>有效期:</span>
                                 <span>{{item.limitTime}}</span>

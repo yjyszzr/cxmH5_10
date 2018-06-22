@@ -640,6 +640,43 @@ const router = new Router({
           name: 'setchange',
           component: resolve => require(['@/components/user/setchange/setup.vue'], resolve)
       },
+      //appball足球资讯
+      //帮助中心：/appball/help
+      //购彩协议：/appball/protocol
+      //服务协议：/appball/service
+      //玩法介绍：/appball/inToplay
+      //胆说明：  /appball/explain
+      //安全保障：/appball/insurance
+      {
+          path: '/appball/help',
+          name: 'help',
+          component: resolve => require(['@/components/appball/help/index.vue'], resolve)
+      },
+      {
+          path: '/appball/protocol',
+          name: 'protocol',
+          component: resolve => require(['@/components/appball/protocol/index.vue'], resolve)
+      },
+      {
+          path: '/appball/service',
+          name: 'service',
+          component: resolve => require(['@/components/appball/service/index.vue'], resolve)
+      },
+      {
+          path: '/appball/inToplay',
+          name: 'inToplay',
+          component: resolve => require(['@/components/appball/intoplay/index.vue'], resolve)
+      },
+      {
+          path: '/appball/explain',
+          name: 'explain',
+          component: resolve => require(['@/components/appball/explain/explain.vue'], resolve)
+      },
+      {
+          path: '/appball/insurance',
+          name: 'insurance',
+          component: resolve => require(['@/components/appball/insurance/insurance.vue'], resolve)
+      },
   ]
 })
 
