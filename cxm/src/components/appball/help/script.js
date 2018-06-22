@@ -13,7 +13,7 @@ export default {
     },
     mounted(){
       window.getCxmTitle = function(){
-          return '必中彩·帮助中心'
+          return '足球资讯·帮助中心'
       }
     }
 }

@@ -25,7 +25,7 @@ export default {
                 return
             }
             if(this.newpassval != this.confirmpassval){
-                Toast('两次密码不一致')
+                Toast('两次输入密码不一致')
                 return
             }
 
@@ -39,10 +39,8 @@ export default {
                     if(res.code==0) {
                         //console.log(res)
                         this.setingobj = res.data
-                        this.$router.push({
-                            path: '/user/setup',
-                            replace: false
-                        })
+                            this.$router.go(-1)
+                        this.$store.state.userInfo.hasPass = '1'
                         Toast(res.msg)
                     }
                 })
