@@ -86,7 +86,10 @@
                         <p>投注倍数：<span v-if="orderObj.passType==='null'">{{orderObj.betNum}}注{{orderObj.cathectic}}倍</span><span v-else>{{orderObj.cathectic}}倍</span></p>
                     </div>
                     <div class="yue">
-                        支付方式：余额支付<span>{{orderObj.surplus}}元</span>
+                        <em>支付方式：</em>
+                        <div v-if="orderObj.surplus > 0">余额支付<span>{{orderObj.surplus}}元</span></div>
+                        <div v-if="orderObj.bonus > 0">优惠券抵现<span>{{orderObj.bonus}} 元</span></div>
+                        <div v-if="orderObj.thirdPartyPaid > 0">{{orderObj.payName}}<span>{{orderObj.thirdPartyPaid}}元</span></div>
                     </div>
                 </div>
             </div>
