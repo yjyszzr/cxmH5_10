@@ -221,8 +221,9 @@ export default {
         this.$route.path.split("/")[2] == "incomedetail"||
         this.$route.path.split("/")[2] == "discount"||
         this.$route.path.split("/")[2] == "world_matchList"||
-        this.$route.path.split("/")[2] == "cathectic"||
-        this.$route.path.split("/")[1] == "user"
+        this.$route.path.split("/")[2] == "cathectic"
+        // ||
+        // this.$route.path.split("/")[1] == "user"
       ) {
         return true;
       } else {
