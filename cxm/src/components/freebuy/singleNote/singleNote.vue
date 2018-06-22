@@ -26,7 +26,7 @@
                         <div class="matchRightBox">
                             <p :class="item.myspf&&item.myspf.indexOf(3)!=-1?'selected':''">
                                 <b class="mMark" @click="selectedClick($event)"></b>
-                                <span>{{item.homeTeamAbbr}}</span>
+                                <span><em v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</em>{{item.homeTeamAbbr}}</span>
                                 <span>{{item.matchPlays[0].homeCell.cellName}}{{item.matchPlays[0].homeCell.cellOdds}}</span>
                             </p>
                             <p :class="item.myspf&&item.myspf.indexOf(1)!=-1?'selected':''">
@@ -36,7 +36,7 @@
                             </p>
                             <p :class="item.myspf&&item.myspf.indexOf(0)!=-1?'selected':''">
                                 <b class="mMark" @click="selectedClick($event)"></b>
-                                <span>{{item.visitingTeamAbbr}}</span>
+                                <span><em v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</em>{{item.visitingTeamAbbr}}</span>
                                 <span>{{item.matchPlays[0].visitingCell.cellName}}{{item.matchPlays[0].visitingCell.cellOdds}}</span>
                             </p>
                         </div>
@@ -165,7 +165,7 @@
                         <div class="matchRightBox">
                             <p :class="item.myspf&&item.myspf.indexOf(3)!=-1?'selected':''">
                                 <b class="mMark" @click="selectedClick($event)"></b>
-                                <span>{{item.homeTeamAbbr}}</span>
+                                <span><em v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</em>{{item.homeTeamAbbr}}</span>
                                 <span>
                                     {{item.matchPlays[0].homeCell.cellName}}{{item.matchPlays[0].homeCell.cellOdds}}
                                 </span>
@@ -179,7 +179,7 @@
                             </p>
                             <p :class="item.myspf&&item.myspf.indexOf(0)!=-1?'selected':''">
                                 <b class="mMark" @click="selectedClick($event)"></b>
-                                <span>{{item.visitingTeamAbbr}}</span>
+                                <span><em v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</em>{{item.visitingTeamAbbr}}</span>
                                 <span>
                                     {{item.matchPlays[0].visitingCell.cellName}}{{item.matchPlays[0].visitingCell.cellOdds}}
                                 </span>

@@ -580,6 +580,9 @@ export default {
 			}else if(this.disable==true){
 				Toast('请至少选择2场比赛')
 				return
+			}else if(this.betObj.money<100){
+				Toast('最低投注100元!')
+				return
 			}else if(this.arrTime[0]*1000<new Date().getTime()){
 				Toast('部分比赛投注截止')
 				return

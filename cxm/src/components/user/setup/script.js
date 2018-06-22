@@ -5,7 +5,7 @@ export default {
     name: 'record',
     data () {
       return {
-          haspass:{}
+          
       }
     },
     created(){
@@ -15,7 +15,7 @@ export default {
     },
     computed: {
         userInfo(){
-            return this.$store.state
+            return this.$store.state.userInfo
         }
     },  
     watch: {

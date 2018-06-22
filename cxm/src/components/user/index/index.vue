@@ -99,16 +99,16 @@
                             <span class="message">帮助中心</span>
                         </div>
                     </router-link>
-                    <a href="tel:400-012-6600">
+                    <!-- <a href="tel:400-012-6600">
                         <div>
                             <i class="iconfont icon-icon-4"></i>
                             <span class="arrow_kefu float_right">400-012-6600 </span>
                             <span class="message">联系客服</span>
                         </div>
-                    </a>
+                    </a> -->
                     <a href="https://www.sobot.com/chat/h5/index.html?sysNum=1a549fa1ac1b4c0f9eeda9953f62b9b2&titleFlag=3">
                         <div>
-                            <i class="iconfont icon-icon-4"></i>
+                            <img src="./img/zaiixiankefu@3x.png" alt="">
                             <span class="arrow_right float_right"></span>
                             <span class="message">在线客服</span>
                         </div>

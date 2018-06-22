@@ -118,7 +118,7 @@ export default {
             })
         },
         goProtocol(){
-            if(this.channel.substr(0,3)=='c26'||this.channel.substr(0,3)=='c20'){
+            if(this.channel.substr(0,1)=='c'&&(Number(this.channel.substr(1,2))>=20&&Number(this.channel.substr(1,2))<=29)){
                 location.href = '/appsjb/world_explain?showtitle=1'
             }else{
                 location.href = '/freebuy/protocol?showtitle=1'
