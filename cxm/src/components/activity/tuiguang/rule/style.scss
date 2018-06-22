@@ -19,4 +19,16 @@
         color: #e95504;
       }
     }
+    table{
+      margin-top: px2rem(10px);
+      width: 100%;
+      border: 1px solid #e5e5e5;
+      td{
+        height: px2rem(46px);
+        text-align: center;
+        border: 1px solid #e5e5e5;
+        color: #ea5504;
+        font-size: px2rem(22px);
+      }
+    }
 }

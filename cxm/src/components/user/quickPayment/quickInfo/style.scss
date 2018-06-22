@@ -21,11 +21,21 @@
                 color: #505050;
             }
         }
-        li:first-of-type,li:last-of-type{
+        .isxq,li:last-of-type{
             justify-content: space-between;
         }
         li:nth-child(2){
             color: #9f9f9f;
+        }
+        li:last-of-type{
+            border: none;
+            p:first-of-type{
+                width: 65%;
+            }
+            p:last-of-type{
+                border-left: 1px solid #f0f0f0;
+                padding-left: px2rem(15px);
+            }
         }
     }
     .nCode{
