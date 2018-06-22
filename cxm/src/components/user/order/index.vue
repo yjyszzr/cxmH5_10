@@ -87,7 +87,7 @@
                     </div>
                     <div class="yue">
                         <em>支付方式：</em>
-                        <!--<div v-if="orderObj.surplus > 0">余额支付<span>{{orderObj.surplus}}元</span></div>-->
+                        <div v-if="orderObj.surplus > 0">余额支付<span>{{orderObj.surplus}}元</span></div>
                         <div v-if="orderObj.bonus > 0">优惠券抵现<span>{{orderObj.bonus}} 元</span></div>
                         <div v-if="orderObj.thirdPartyPaid > 0">{{orderObj.payName}}<span>{{orderObj.thirdPartyPaid}}元</span></div>
                     </div>
