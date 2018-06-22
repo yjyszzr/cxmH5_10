@@ -679,7 +679,7 @@ const router = new Router({
       },
       //天天体育
       {
-          path: 'appty/help',
+          path: '/appty/help',
           name: 'help',
           component: resolve => require(['@/components/mjb/appty/help/index.vue'], resolve)
       },
