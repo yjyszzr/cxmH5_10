@@ -4,6 +4,25 @@
 
 <template>
     <div class="setup">
+        <div class="section">
+            <ul class="msg_list">
+                <li>
+                    <a>
+                        <div>
+                            <router-link to="/user/certification" v-if="userInfo.isReal ==0" class="arrow_kefu float_right">待认证</router-link>
+                            <router-link to='/user/setchange' v-if="userInfo.isReal ==1 " class="arrow_kefu float_right">{{userInfo.isReal}}</router-link>
+                            <span class="message">头像</span>
+                        </div>
+                    </a>
+                    <a>
+                        <div>
+                            <span @click="nickname()" v-if="userInfo.isReal ==0" class="arrow_kefu float_right">待认证></span>
+                            <span class="message">昵称</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
         <p>账户安全</p>
         <div class="section">
             <ul class="msg_list">
@@ -17,6 +36,13 @@
                     </label>  
                 </div>
                 <li>
+                    <a>
+                        <div>
+                            <router-link to="/user/certification" v-if="userInfo.isReal ==0" class="arrow_kefu float_right">待认证</router-link>
+                            <router-link to='/user/setchange' v-if="userInfo.isReal ==1 " class="arrow_kefu float_right">{{userInfo.isReal}}</router-link>
+                            <span class="message">身份认证</span>
+                        </div>
+                    </a>
                     <a>
                         <div>
                             <span class="arrow_kefu float_right">{{userInfo.mobile}}</span>
