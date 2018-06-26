@@ -29,7 +29,7 @@
                         </div>
                         <i></i>
                         <div class="yh_ItemBottom">
-                            <router-link v-if="item.bonusStatus==0 && item.soonExprireBz != 2 " to="/freebuy/singleNote?id=6">立即使用</router-link>
+                            <a v-if="item.bonusStatus==0 && item.soonExprireBz != 2 " @click="goFreebuy()">立即使用</a>
                             <p class="poiu" v-if="item.soonExprireBz==2">立即使用</p>
                             <p>
                                 <span>有效期:</span>

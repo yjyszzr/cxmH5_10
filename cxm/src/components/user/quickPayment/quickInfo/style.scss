@@ -32,9 +32,13 @@
             p:first-of-type{
                 width: 65%;
             }
-            p:last-of-type{
+            button{
+                border: none;
                 border-left: 1px solid #f0f0f0;
                 padding-left: px2rem(15px);
+                background: white;
+                font-size: px2rem(26px);
+                color: #505050;
             }
         }
     }
@@ -58,5 +62,8 @@
         height: px2rem(90px);
         border-radius: px2rem(10px);
         font-size: px2rem(30px);
+    }
+    .cfBtn{
+        background: #ccc;
     }
 }

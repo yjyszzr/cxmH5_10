@@ -1,5 +1,5 @@
 $.showIndicator();
-console.log(baseUrl)
+// console.log(baseUrl)
 function getUrlStr(name, url) {
 	var reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)", "i");
 	if (reg.test(url)) {

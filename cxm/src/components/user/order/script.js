@@ -42,6 +42,7 @@ export default {
               replace: false
           })
         }else{
+          this.$store.state.freebuyId = this.orderObj.lotteryPlayClassifyId
           this.$router.push({
             path: '/freebuy/singleNote',
               query:{

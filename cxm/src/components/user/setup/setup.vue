@@ -1,4 +1,4 @@
-<style lang='scss' scoped src='./style.scss'>
+<style lang='scss' src='./style.scss'>
 
 </style>
 
@@ -7,6 +7,15 @@
         <p>账户安全</p>
         <div class="section">
             <ul class="msg_list">
+                <div class="pictureBox">
+                    <div class="txtest">我的头像</div>
+                    <input v-if="!panel" type="file" id="change" accept="image" @change="change" style="display:none;">  
+                    <label for="change">
+                        <img class="picture" :src="headerImage" alt="" v-if="headerImage!==''">
+                        <!-- <div class="picture" :style="'background:url('+headerImage+')'" v-if="headerImage!==''"></div> -->
+                        <img src="../../../assets/img/portrait.png" alt="" v-else>    
+                    </label>  
+                </div>
                 <li>
                     <a>
                         <div>
@@ -25,6 +34,16 @@
                 </li>
             </ul>
         </div>
+        <!-- 遮罩层 -->  
+        <div class="container" v-show="panel">  
+        <div>  
+            <img id="image" :src="url" alt="Picture">  
+        </div>  
+    
+        <button type="button" id="button" @click="commit">确定</button>  
+        <button type="button" id="cancel" @click="cancel">取消</button> 
+            
+        </div> 
     </div>
 </template>
 

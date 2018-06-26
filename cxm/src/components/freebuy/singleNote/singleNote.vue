@@ -114,11 +114,11 @@
                         </div>
                         <div class="matchRighthhBox">
                             <div class="team_left">
-                            		<div class="team_top" v-if="item.matchPlays[1].isShow=='0'">
+                            		<div class="team_top" v-if="item.matchPlays[1]&&item.matchPlays[1].isShow=='0'">
                             			<p>0</p>
                             			<p style="flex: 9;">未开售</p>
                             		</div>
-                                <div class="team_top" v-if="item.matchPlays[1].isShow=='1'" :style="{'border':item.matchPlays[1]&&item.matchPlays[1].single=='1'?'1px solid #ea5504':'','margin':item.matchPlays[1]&&item.matchPlays[1].single=='1'?'-1px 0 0 -1px':''}">
+                                <div class="team_top" v-if="item.matchPlays[1]&&item.matchPlays[1].isShow=='1'" :style="{'border':item.matchPlays[1]&&item.matchPlays[1].single=='1'?'1px solid #ea5504':'','margin':item.matchPlays[1]&&item.matchPlays[1].single=='1'?'-1px 0 0 -1px':''}">
                                     <p>0</p>
                                     <p :class="item.matchPlays[1].homeCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].homeCell.cellName}} {{item.matchPlays[1].homeCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[1].flatCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].flatCell.cellName}} {{item.matchPlays[1].flatCell.cellOdds}}</p>
@@ -259,11 +259,11 @@
                         </div>
                         <div class="matchRighthhBox">
                             <div class="team_left" :class="item.matchPlays[1]&&item.matchPlays[1].single=='1'?'signleSected':''">
-                            		<div class="team_top" v-if="item.matchPlays[1].isShow=='0'">
+                            		<div class="team_top" v-if="item.matchPlays[1]&&item.matchPlays[1].isShow=='0'">
                             			<p>0</p>
                             			<p style="flex: 9;">未开售</p>
                             		</div>
-                                <div class="team_top" v-if="item.matchPlays[1].isShow=='1'" :style="{'border':item.matchPlays[1]&&item.matchPlays[1].single=='1'?'1px solid #ea5504':'','margin':item.matchPlays[1]&&item.matchPlays[1].single=='1'?'-1px 0 0 -1px':''}">
+                                <div class="team_top" v-if="item.matchPlays[1]&&item.matchPlays[1].isShow=='1'" :style="{'border':item.matchPlays[1]&&item.matchPlays[1].single=='1'?'1px solid #ea5504':'','margin':item.matchPlays[1]&&item.matchPlays[1].single=='1'?'-1px 0 0 -1px':''}">
                                     <p>0</p>
                                     <p :class="item.matchPlays[1].homeCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].homeCell.cellName}} {{item.matchPlays[1].homeCell.cellOdds}}</p>
                                     <p :class="item.matchPlays[1].flatCell.isSelected?'selected':''" @click="unSelectedClickspf($event,item)">{{item.matchPlays[1].flatCell.cellName}} {{item.matchPlays[1].flatCell.cellOdds}}</p>

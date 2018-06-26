@@ -722,24 +722,24 @@ router.beforeEach(async(to, from, next) => {
 		)
     }
     let toPath = to.path
-    if(to.meta.title&&wxPd()) {
-        if(toPath=='/freebuy/singleNote'){
-            let noteTitle = (id) => {
-                switch (id){
-                    case '2' : return "胜平负";
-                    case '1' : return "让球胜平负";
-                    case '4' : return "总进球";
-                    case '5' : return "半全场";
-                    case '3' : return "比分";
-                    case '7' : return "2选1";
-                    case '6' : return "混合投注";
-                }
-            }
-            document.title = '彩小秘·'+noteTitle(to.query.id);
-        }else{
-            document.title = '彩小秘·'+to.meta.title;
-        }
-    }
+    // if(to.meta.title&&wxPd()) {
+    //     if(toPath=='/freebuy/singleNote'){
+    //         let noteTitle = (id) => {
+    //             switch (id){
+    //                 case '2' : return "胜平负";
+    //                 case '1' : return "让球胜平负";
+    //                 case '4' : return "总进球";
+    //                 case '5' : return "半全场";
+    //                 case '3' : return "比分";
+    //                 case '7' : return "2选1";
+    //                 case '6' : return "混合投注";
+    //             }
+    //         }
+    //         document.title = '彩小秘·'+noteTitle(to.query.id);
+    //     }else{
+    //         document.title = '彩小秘·'+to.meta.title;
+    //     }
+    // }
     NProgress.start(); // 开启Progress
     // 进入详情页时需要记录滚动条距离头部距离
     if(toPath === '/index/consult'&&(from.path==='/'||from.path==='/find')){

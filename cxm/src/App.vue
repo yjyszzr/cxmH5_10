@@ -222,8 +222,8 @@ export default {
         this.$route.path.split("/")[2] == "discount"||
         this.$route.path.split("/")[2] == "world_matchList"||
         this.$route.path.split("/")[2] == "cathectic"
-        // ||
-        // this.$route.path.split("/")[1] == "user"
+        ||
+        this.$route.path.split("/")[1] == "user"
       ) {
         return true;
       } else {
@@ -231,7 +231,12 @@ export default {
       }
     },
     showTitle(){
-      if ((window.location.href.split("?")[1]&&getUrlStr('showtitle',location.href)=='1')||wxPd()) {
+      // if ((window.location.href.split("?")[1]&&getUrlStr('showtitle',location.href)=='1')||wxPd()) {
+      //    return false;
+      // } else {
+      //    return true;
+      // }
+      if ((window.location.href.split("?")[1]&&getUrlStr('showtitle',location.href)=='1')) {
          return false;
       } else {
          return true;
@@ -410,7 +415,10 @@ export default {
     font-size: px2rem(32px);
   }
   .mint-msgbox-message {
-    font-size: px2rem(32px);
+    font-size: px2rem(30px);
+    color: #666;
+    line-height: px2rem(52px);
+    text-align: center;
   }
   .mint-msgbox-btn {
     font-size: px2rem(26px);

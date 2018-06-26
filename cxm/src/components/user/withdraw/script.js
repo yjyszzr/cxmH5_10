@@ -56,10 +56,11 @@ export default {
           }
           api.withdraw(data)
           .then(res => {
-              if(res.code==0) {
+              if(res.code==0||res.code=='304056') {
                 //console.log(res)
                 Toast(res.msg)
-                this.fetchData()
+                // this.fetchData()
+                this.$router.go(-1);
               }
           })
         }

@@ -1,11 +1,27 @@
-import {MessageBox} from 'mint-ui';
+import {MessageBox,Toast,Indicator} from 'mint-ui';
+import api from '../../../../fetch/api'
 export default {
     name: 'quickInfo',
     data(){
         return {
             blankNum: '',
-            blankFlag: false,
-            xyInputFlag: false
+            xyInputFlag: false,
+            bankType: '',
+            bankName: '',
+            name: '',
+            sfz: '',
+            yxq: '',
+            ccvv: '',
+            telval: '',
+            codeval: '',
+            //验证码初始化
+            smsCode: {
+                changeNumber: 60,
+                changeText: '获取短信验证码',
+                disabled: false,
+                timer: ''
+            },
+            token: ''
         }
     },
     methods:{
@@ -42,5 +58,98 @@ export default {
                 
             });
         },
+        telxq(){
+            MessageBox.alert('', {
+                message: '银行预留手机号是办理该银行卡时所填写的手机号码。没有预留,手机号忘记或者 已停用请联系银行客服处理 。',
+                title: '手机号说明',
+                confirmButtonText: '知道了',
+                closeOnClickModal: false
+            }).then(action => {
+                
+            });
+        },
+        nocodeClick(){
+            MessageBox.alert('', {
+                message: '1、请确认当前手机是否为银行预留手机号码 。2、请检查短信是否被手机安全软件拦截。3、请确认当前手机号是否存在欠费停机、关机或无法接通的情况。4、获取更多帮助，请联系我们在线客服。',
+                title: '提示 ',
+                confirmButtonText: '知道了',
+                closeOnClickModal: false
+            }).then(action => {
+                
+            });
+        },
+        backType(){
+            if(this.blankNum!==''){
+                let data = {
+                    'bankCardNo':this.blankNum.replace(/\s/g,'')
+                  }
+                  api.getBankType(data)
+                  .then(res => {
+                      if(res.code==0) {
+                        this.bankType = res.data.bankType
+                        this.bankName = res.data.bankName
+                      }else{
+                        this.bankType = ''
+                        this.bankName = ''
+                      }
+                  })
+            }else{
+                this.bankType = ''
+            }
+        },
+        changeNum(){
+            Indicator.open()
+            //验证码信息
+            let data = {
+                'accNo': this.blankNum.replace(/\s/g,''),
+                'certNo': this.sfz,
+                'code':this.codeval,
+                'name': this.name,
+                'phone': this.telval,
+                'payLogId': this.$route.query.id,
+                'token': this.token
+            }
+            api.xfapp(data)
+                .then(res => {
+                    if(res.code==0) {
+                        this.smsCode.disabled = true
+                        this.token = res.data.token
+                        this.smsCode.timer = setInterval(() => {
+                            this.smsCode.changeNumber--;
+                            if (this.smsCode.changeNumber <= 0) {
+                                this.smsCode.changeText = '重新获取验证码'
+                                clearInterval(this.smsCode.timer)
+                                this.smsCode.changeNumber = 60
+                                this.smsCode.disabled = false
+                            } else {
+                                this.smsCode.changeText = '<b style="color: #ea5504;font-weight:400;">'+this.smsCode.changeNumber + 's</b>后重新获取'
+                            }
+                        }, 1000)
+                        Toast(res.msg)
+                    }
+                })
+        },
+        cfmBtn(){
+            if(this.bankName===''||this.name===''||this.sfz===''||this.telval===''||this.codeval===''){
+                Toast('请填写完整')
+                return false
+            }
+            Indicator.open()
+            //验证码信息
+            let data = {
+                'code': this.codeval,
+                'payLogId': this.$route.query.id
+            }
+            api.xfappConfirm(data)
+                .then(res => {
+                    if(res.code==0) {
+                        console.log(res)
+                    }
+                })
+        }
+    },
+    beforeRouteLeave (to, from, next) {
+        clearInterval(this.smsCode.timer)
+        next()
     }
 }

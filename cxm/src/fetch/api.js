@@ -318,6 +318,22 @@ export default {
     allPayment(params) {
         return fetchPost('payment/payment/allPayment', params)
     },
+    //先锋支付识别银行卡类型
+    getBankType(params) {
+        return fetchPost('payment/payment/xianfeng/getBankType', params)
+    },
+    //先锋支付获取短信验证码
+    xfsms(params) {
+        return fetchPost('payment/payment/xianfeng/sms', params)
+    },
+    //先锋支付请求 
+    xfapp(params) {
+        return fetchPost('payment/payment/xianfeng/app', params)
+    },
+    //先锋支付确认
+    xfappConfirm(params) {
+        return fetchPost('payment/payment/xianfeng/appConfirm', params)
+    },
     //轮回查询
     query(params) {
         return fetchPost('payment/payment/query', params)
