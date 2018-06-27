@@ -21,6 +21,9 @@ export default {
     },
     mounted() {
     },
+
+
+    // this.fr == 'c042-52'
     methods: {
         lqBtn() {
             if (detect() === 'ios') {
@@ -37,7 +40,7 @@ export default {
                     }else {
                     location.href = "https://m.caixiaomi.net/down/cxm106_jc035.apk"
                 }
-            }
+			}
         }
     }
 }
