@@ -8,15 +8,12 @@ import {
 } from 'mint-ui'
 import router from '../router/index'
 import {getUrlStr} from '../util/common'
-// import {baseUrl}from '../../static/publicJS/api'
-// console.log(baseUrl)
 // axios 配置
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 //axios.defaults.baseURL = 'http://api.caixiaomi.net/api';
 // axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
 axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
-//console.log(window)
 
 //拦截 token
 axios.interceptors.request.use(
@@ -42,7 +39,7 @@ axios.interceptors.request.use(
 // });
 //返回状态错误处理
 axios.interceptors.response.use((res) => {
-    if (res.request.responseURL.indexOf('payment/query') == -1) {
+    if (res.config.url.indexOf('payment/query') == -1) {
         if (res.data.code >= 30000 && res.data.code <= 310000) {
             Toast(res.data.msg)
         } else if (res.data.code == 600) {
@@ -50,7 +47,7 @@ axios.interceptors.response.use((res) => {
                 location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5'
             }else{
                 localStorage.clear()
-                if(res.request.responseURL.indexOf('recharge/countUserRecharge') != -1||res.request.responseURL.indexOf('collect/add') != -1){
+                if(res.config.url.indexOf('recharge/countUserRecharge') != -1||res.config.url.indexOf('collect/add') != -1){
                     router.push({
                         path: '/user/sms',
                     })
@@ -153,6 +150,7 @@ export function fetchPost(url, body) {
                 resolve(response.data);
             }, err => {
                 reject(err);
+                alert(err)
             })
             .catch((error) => {
                 Indicator.close()

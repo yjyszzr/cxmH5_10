@@ -97,15 +97,6 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
   margin: 0;
 }
-// @media only screen and (device-width: 375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
-//   #app{
-//     padding-bottom: 34px;
-//     box-sizing: border-box;
-//   }
-//   .matchDetail,.mark_playut,.bqc,.score,.mix,.popup,.mark_footer,.yhMark,.bottom,.count{
-//     bottom: 34px!important;
-//   }
-// }
 
 @supports (bottom: env(safe-area-inset-bottom)) {
    .fixBottom{

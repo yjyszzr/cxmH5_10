@@ -11,9 +11,6 @@
               <router-view v-if="$route.meta.keepAlive"></router-view>
             </keep-alive>
             <router-view v-if="!$route.meta.keepAlive"></router-view>
-            <!-- <keep-alive>
-              <router-view></router-view>
-            </keep-alive> -->
         </div>
     </transition>
     <v-footer v-show='showBar()'></v-footer>
@@ -201,7 +198,6 @@ export default {
         } else {
           this.isShowHeader = false;
         }
-        //this.isShowHeader=false
         switch (this.$route.path.split("/")[1]) {
           case "user":
             return "我的";
@@ -222,8 +218,8 @@ export default {
         this.$route.path.split("/")[2] == "discount"||
         this.$route.path.split("/")[2] == "world_matchList"||
         this.$route.path.split("/")[2] == "cathectic"
-        ||
-        this.$route.path.split("/")[1] == "user"
+        // ||
+        // this.$route.path.split("/")[1] == "user"
       ) {
         return true;
       } else {
