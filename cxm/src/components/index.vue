@@ -46,8 +46,11 @@
         color: #505050;
       }
     }
-    li:nth-child(5),li:nth-child(6),li:nth-child(7),li:nth-child(8){
-        margin-top: px2rem(52px);
+    li:nth-child(5),
+    li:nth-child(6),
+    li:nth-child(7),
+    li:nth-child(8) {
+      margin-top: px2rem(52px);
     }
     .entry_icon {
       width: px2rem(93px);
@@ -109,31 +112,31 @@
     }
   }
 }
-.downDrop{
+.downDrop {
   background: rgb(59, 60, 61);
   height: px2rem(88px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 px2rem(30px);
-  .downLeft{
+  .downLeft {
     display: flex;
     align-items: center;
-    img{
+    img {
       width: px2rem(48px);
       margin-right: px2rem(20px);
     }
-    span{
+    span {
       color: white;
       font-size: px2rem(28px);
     }
   }
-  .downRight{
+  .downRight {
     padding: px2rem(5px) px2rem(15px);
     border: 1px solid #fff;
     box-sizing: border-box;
     border-radius: px2rem(5px);
-    span{
+    span {
       color: #fff;
       font-size: px2rem(26px);
     }
@@ -205,7 +208,7 @@ import { Toast } from "mint-ui";
 import { Indicator } from "mint-ui";
 import silder from "./index/lunbo";
 import activity from "./index/activity";
-import informal from './public/informal/informalList'
+import informal from "./public/informal/informalList";
 export default {
   name: "index",
   data() {
@@ -227,37 +230,42 @@ export default {
   },
   beforeCreate() {
     Indicator.open();
-    if(localStorage.getItem('activefrom')&&localStorage.getItem('payLogId')!=''){
-              api.query({
-                    'payLogId': localStorage.getItem('payLogId')
-              })
-              .then(res => {
-                    if(res.code==0){
-                      this.$store.state.mark_showAc = true
-                    }else{
-                      let num = 0;
-                      this.$store.state.timertz = setInterval(()=>{
-                          num++
-                          api.query({
-                                'payLogId': localStorage.getItem('payLogId')
-                          })
-                            .then(res => {
-                                if(res.code==0){
-                                  this.$store.state.mark_showAc = true
-                                  //Toast('成功')
-                                  clearInterval(this.$store.state.timertz)
-                                }else{
-                                  if(num>=3){
-                                    localStorage.removeItem('payLogId')
-                                    localStorage.removeItem('activefrom')
-                                    clearInterval(this.$store.state.timertz)
-                                  }
-                                }
-                          })
-                      },3000)
+    if (
+      localStorage.getItem("activefrom") &&
+      localStorage.getItem("payLogId") != ""
+    ) {
+      api
+        .query({
+          payLogId: localStorage.getItem("payLogId")
+        })
+        .then(res => {
+          if (res.code == 0) {
+            this.$store.state.mark_showAc = true;
+          } else {
+            let num = 0;
+            this.$store.state.timertz = setInterval(() => {
+              num++;
+              api
+                .query({
+                  payLogId: localStorage.getItem("payLogId")
+                })
+                .then(res => {
+                  if (res.code == 0) {
+                    this.$store.state.mark_showAc = true;
+                    //Toast('成功')
+                    clearInterval(this.$store.state.timertz);
+                  } else {
+                    if (num >= 3) {
+                      localStorage.removeItem("payLogId");
+                      localStorage.removeItem("activefrom");
+                      clearInterval(this.$store.state.timertz);
                     }
-              })
-      }
+                  }
+                });
+            }, 3000);
+          }
+        });
+    }
   },
   components: {
     "v-slider": silder,
@@ -276,10 +284,10 @@ export default {
       this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
       this.$store.state.mark_playObj.bfIdSaveMap = {};
       this.$store.dispatch("changefsList", []);
-      this.$store.dispatch("changefsNum", '2');
+      this.$store.dispatch("changefsNum", "2");
       this.$store.dispatch("changefirstList", []);
-      this.$store.state.world_cupObj.worldfliter = []
-      if(c=='0'){
+      this.$store.state.world_cupObj.worldfliter = [];
+      if (c == "0") {
         this.$router.push({
           path: "/activity/world_matchList",
           query: {
@@ -287,7 +295,7 @@ export default {
           },
           replace: false
         });
-      }else{
+      } else {
         this.$router.push({
           path: "/freebuy/singleNote",
           query: {
@@ -306,11 +314,11 @@ export default {
         .dllist(data)
         .then(res => {
           if (res.code == 0) {
-           //console.log(res);
+            //console.log(res);
             this.zxObj = res.data;
             if (this.page == 1) {
               this.zxList = this.zxList.concat(res.data.list);
-              this.trFlag = false
+              this.trFlag = false;
             } else {
               setTimeout(() => {
                 this.trFlag = false;
@@ -318,22 +326,27 @@ export default {
                 this.zxList = this.zxList.concat(res.data.list);
               }, 800);
             }
-          } 
+          }
         })
-        .catch(err=>{
+        .catch(err => {
           setTimeout(() => {
-                this.trFlag = false;
-                this.cxLoadFlag = true;
+            this.trFlag = false;
+            this.cxLoadFlag = true;
           }, 800);
-        })
+        });
     },
-    cxLoadClick(){
+    cxLoadClick() {
       this.trFlag = true;
       this.cxLoadFlag = false;
-      this.fetchData()
+      this.fetchData();
     },
-    carouselMoney(c){
-        return c.winningMsg+'<b style="color:#ea5504;font-weight:400;">'+c.winningMoney+'</b>元'
+    carouselMoney(c) {
+      return (
+        c.winningMsg +
+        '<b style="color:#ea5504;font-weight:400;">' +
+        c.winningMoney +
+        "</b>元"
+      );
     },
     handleScroll(e) {
       if (
@@ -351,50 +364,48 @@ export default {
         }
       }
     },
-    goDownLoad(){
+    goDownLoad() {
       this.$router.push({
-        path: '/activity/down/cxm?ct=2&fr=cxm_h5home'
-      })
+        path: "/activity/down/cxm?ct=2&fr=cxm_h5home"
+      });
     }
   },
   created: function() {},
   mounted() {
     // location.href = 'caixm://caixiaomi.net'
-    localStorage.removeItem('tab')
+    localStorage.removeItem("tab");
     //console.log('1')
     document
       .querySelector("#content")
       .addEventListener("scroll", this.handleScroll);
     let data = {};
-    api
-      .getHallData(data)
-      .then(res => {
-        //console.log(res)
-        if (res.code == 0) {
-          this.bannerList = res.data.navBanners;
-          this.activity = res.data.activity;
-          this.y_Carousel = res.data.winningMsgs;
-          this.dlPlay = res.data.dlPlayClassifyDetailDTOs;
-          if (this.y_Carousel.length == 0) {
-            this.show = true;
-            this.hide = false;
-          } else {
-            this.show = false;
-            this.hide = true;
-            setInterval(_ => {
-              if (this.activeIndex < this.y_Carousel.length - 1) {
-                this.activeIndex += 1;
-              } else {
-                this.activeIndex = 0;
-              }
-            }, 3000);
-          }
+    api.getHallData(data).then(res => {
+      //console.log(res)
+      if (res.code == 0) {
+        this.bannerList = res.data.navBanners;
+        this.activity = res.data.activity;
+        this.y_Carousel = res.data.winningMsgs;
+        this.dlPlay = res.data.dlPlayClassifyDetailDTOs;
+        if (this.y_Carousel.length == 0) {
+          this.show = true;
+          this.hide = false;
+        } else {
+          this.show = false;
+          this.hide = true;
+          setInterval(_ => {
+            if (this.activeIndex < this.y_Carousel.length - 1) {
+              this.activeIndex += 1;
+            } else {
+              this.activeIndex = 0;
+            }
+          }, 3000);
         }
-      })
+      }
+    });
     this.fetchData();
   },
-  activated(){
-      document.getElementById('content').scrollTop = this.$root.consultScrolltop
+  activated() {
+    document.getElementById("content").scrollTop = this.$root.consultScrolltop;
   }
 };
 </script>

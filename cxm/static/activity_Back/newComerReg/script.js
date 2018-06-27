@@ -37,14 +37,6 @@ var device = {
 //		    return undefined
 //		}
 
-var _hmt = _hmt || [];
-(function () {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?add59b43ed799751ac06c40214d0b5b7";
-	var s = document.getElementsByTagName("script")[0];
-	s.parentNode.insertBefore(hm, s);
-})();
-
 //判断苹果系统和安卓系统
 function detect() {
 	var equipmentType = "";

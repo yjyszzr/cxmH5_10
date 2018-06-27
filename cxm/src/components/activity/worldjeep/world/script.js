@@ -39,70 +39,96 @@ export default {
                 api.guessingCompetition(data)
                     .then(res => {
                         if (res.code == 0) {
-                            if(res.data.bettingNum<=0){
-                                if(getUrlStr('cfrom',location.href)=='app'){
-                                    MessageBox.alert('', {
-                                        message: '您目前暂无竞猜次数,请前往投注页进行投注,累计消费每200元即可获得1次竞猜资格 ',
-                                        title: '提示',
-                                        confirmButtonText: '我知道了',
-                                        closeOnClickModal: false
-                                    }).then(action => {
-                                        
-                                    });
-                                }else{
-                                    MessageBox.confirm('', {
-                                        message: '您目前暂无竞猜次数,请前往投注页进行投注,累计消费每200元即可获得1次竞猜资格 ',
-                                        title: '提示',
-                                        confirmButtonText: '立即购彩'
-                                    }).then(action => {
-                                        this.$router.replace({
-                                            path: '/'
-                                        })
-                                    },action => {
-                    
-                                    });
+                            if(res.data.jumpStatus<=0){
+                                MessageBox.alert('', {
+                                    message: '本期竞猜活动已结束,敬请期待下次活动',
+                                    title: '提示',
+                                    confirmButtonText: '我知道了',
+                                    closeOnClickModal: false
+                                }).then(action => {
+                
+                                });
+                            }else if(res.data.jumpStatus=='2'){
+                                MessageBox.alert('', {
+                                    message: res.data.describetion,
+                                    title: '提示',
+                                    confirmButtonText: '我知道了',
+                                    closeOnClickModal: false
+                                }).then(action => {
+                
+                                });
+                            }else if(res.data.jumpStatus=='3'){
+                                if(res.data.bettingNum<=0){
+                                    if(getUrlStr('cfrom',location.href)=='app'){
+                                        MessageBox.alert('', {
+                                            message: '您目前暂无竞猜次数,请前往投注页进行投注,累计消费每200元即可获得1次竞猜资格 ',
+                                            title: '提示',
+                                            confirmButtonText: '我知道了',
+                                            closeOnClickModal: false
+                                        }).then(action => {
+                                            
+                                        });
+                                    }else{
+                                        MessageBox.confirm('', {
+                                            message: '您目前暂无竞猜次数,请前往投注页进行投注,累计消费每200元即可获得1次竞猜资格 ',
+                                            title: '提示',
+                                            confirmButtonText: '立即购彩'
+                                        }).then(action => {
+                                            this.$router.replace({
+                                                path: '/'
+                                            })
+                                        },action => {
+                        
+                                        });
+                                    }
+                                    return false;
                                 }
-                            }else{
-                                if(res.data.jumpStatus<=0){
-                                    MessageBox.alert('', {
-                                        message: '本期竞猜活动已结束,敬请期待下次活动',
-                                        title: '提示',
-                                        confirmButtonText: '我知道了',
-                                        closeOnClickModal: false
-                                    }).then(action => {
-                    
-                                    });
-                                }else if(res.data.jumpStatus=='2'){
-                                    MessageBox.alert('', {
-                                        message: res.data.describetion,
-                                        title: '提示',
-                                        confirmButtonText: '我知道了',
-                                        closeOnClickModal: false
-                                    }).then(action => {
-                    
-                                    });
-                                }else if(res.data.jumpStatus=='3'){
-                                    sessionStorage.setItem('teamObj',JSON.stringify(res.data.sixteenGroupSixteen.sixteenGroupFourList))
+                                sessionStorage.setItem('teamObj',JSON.stringify(res.data.sixteenGroupSixteen.sixteenGroupFourList))
+                                if(getUrlStr('cfrom',location.href)=='app'){
+                                    location.href = '/activity/world/sixty?from=worldenter'
+                                }else{
+                                    this.$router.push({
+                                        path: '/activity/world/sixty',
+                                        query:{
+                                            from: 'worldenter'
+                                        }
+                                    })
+                                }
+                            }else if(res.data.jumpStatus=='1'){
+                                if(res.data.bettingNum<=0){
                                     if(getUrlStr('cfrom',location.href)=='app'){
-                                        location.href = '/activity/world/sixty?from=worldenter'
+                                        MessageBox.alert('', {
+                                            message: '您目前暂无竞猜次数,请前往投注页进行投注,累计消费每200元即可获得1次竞猜资格 ',
+                                            title: '提示',
+                                            confirmButtonText: '我知道了',
+                                            closeOnClickModal: false
+                                        }).then(action => {
+                                            
+                                        });
                                     }else{
-                                        this.$router.push({
-                                            path: '/activity/world/sixty',
-                                            query:{
-                                                from: 'worldenter'
-                                            }
-                                        })
+                                        MessageBox.confirm('', {
+                                            message: '您目前暂无竞猜次数,请前往投注页进行投注,累计消费每200元即可获得1次竞猜资格 ',
+                                            title: '提示',
+                                            confirmButtonText: '立即购彩'
+                                        }).then(action => {
+                                            this.$router.replace({
+                                                path: '/'
+                                            })
+                                        },action => {
+                        
+                                        });
                                     }
-                                }else if(res.data.jumpStatus=='1'){
-                                    if(getUrlStr('cfrom',location.href)=='app'){
-                                        location.href = '/activity/world/thirtytwo'
-                                    }else{
-                                        this.$router.push({
-                                            path: '/activity/world/thirtytwo'
-                                        })
-                                    }
+                                    return false;
+                                }
+                                if(getUrlStr('cfrom',location.href)=='app'){
+                                    location.href = '/activity/world/thirtytwo'
+                                }else{
+                                    this.$router.push({
+                                        path: '/activity/world/thirtytwo'
+                                    })
                                 }
                             }
+                            
                         }
                     })
 			}

@@ -34,17 +34,6 @@ export default {
         }
       },
     methods:{
-        // all(c){
-        //     if(c.target.innerText == '全部'){
-        //         this.flag=false
-        //         this.$store.dispatch("getMatchFinish",'1')
-        //     }else{
-        //         this.flag=true
-        //         this.$store.dispatch("getMatchFinish",'')
-        //     }
-        //     Indicator.open()
-        //     this.fetchData()
-        // },
         goDetail(c){
             this.$router.push({
                 path: '/lottery/teamDetail',
