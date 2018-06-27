@@ -415,6 +415,11 @@ const router = new Router({
           },
           component: resolve => require(['@/components/activity/world_cup/index.vue'], resolve)
       },
+      {
+          path: '/user/activity/spread',
+          name: 'spread',
+          component: resolve => require(['@/components/activity/spread/spread.vue'], resolve)
+      },
       //二期活动
       {
           path: '/activity/red_packet',
@@ -708,6 +713,39 @@ const router = new Router({
           name: 'insurance',
           component: resolve => require(['@/components/mjb/appty/insurance/insurance.vue'], resolve)
       },
+      //天空体育
+      {
+          path: '/sky/help',
+          name: 'help',
+          component: resolve => require(['@/components/mjb/sky/help/index.vue'], resolve)
+      },
+      {
+          path: '/sky/protocol',
+          name: 'protocol',
+          component: resolve => require(['@/components/mjb/sky/protocol/index.vue'], resolve)
+      },
+      {
+          path: '/sky/service',
+          name: 'service',
+          component: resolve => require(['@/components/mjb/sky/service/index.vue'], resolve)
+      },
+      {
+          path: '/sky/inToplay',
+          name: 'inToplay',
+          component: resolve => require(['@/components/mjb/sky/intoplay/index.vue'], resolve)
+      },
+      {
+          path: '/sky/explain',
+          name: 'explain',
+          component: resolve => require(['@/components/mjb/sky/explain/explain.vue'], resolve)
+      },
+      {
+          path: '/sky/insurance',
+          name: 'insurance',
+          component: resolve => require(['@/components/mjb/sky/insurance/insurance.vue'], resolve)
+      },
+
+
   ]
 })
 
