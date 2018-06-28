@@ -41,7 +41,7 @@ export default {
                     }else if(this.$route.query.fr == 'c045'){
                         location.href="http://m.caixiaomi.net/down/cxm106_jc045.apk"
                     }else {
-                        location.href = "https://m.caixiaomi.net/down/cxm106_jc035.apk"
+                        location.href = "http://m.caixiaomi.net/down/cxm106_jc035.apk"
                     }
                 }
 			}
