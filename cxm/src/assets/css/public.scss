@@ -10,6 +10,16 @@ html {
   height: 100%;
 }
 
+.v-modal{
+  position: absolute!important;
+}
+::-webkit-scrollbar {
+width: 0em;
+}
+::-webkit-scrollbar:horizontal {
+height: 0em;
+}
+
 .color {
   background-color: #ffffff;
 }

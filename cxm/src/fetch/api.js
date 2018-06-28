@@ -12,7 +12,7 @@ import {getUrlStr} from '../util/common'
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 //axios.defaults.baseURL = 'http://api.caixiaomi.net/api';
-// axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
+//axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
 axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 
 //拦截 token
@@ -150,7 +150,6 @@ export function fetchPost(url, body) {
                 resolve(response.data);
             }, err => {
                 reject(err);
-                alert(err)
             })
             .catch((error) => {
                 Indicator.close()
@@ -331,6 +330,10 @@ export default {
     //先锋支付确认
     xfappConfirm(params) {
         return fetchPost('payment/payment/xianfeng/appConfirm', params)
+    },
+    //先锋支付银行卡列表 
+    appCfg(params) {
+        return fetchPost('payment/payment/xianfeng/appCfg', params)
     },
     //轮回查询
     query(params) {

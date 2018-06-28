@@ -104,6 +104,7 @@ export default {
                             location.href = res.data.payUrl
                             // console.log(res.data.payUrl)
                         }else if(s=='xf'){
+                            //Toast('功能暂未开放')
                             this.$router.push({
                                 path: '/user/quickinfo',
                                 query:{

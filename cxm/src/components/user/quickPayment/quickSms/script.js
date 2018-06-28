@@ -3,10 +3,15 @@ export default {
     name: 'quickSms',
     data(){
         return {
-            
+            numbers: ''
         }
     },
     methods:{
         
+    },
+    watch:{
+        numbers(a,b){
+            console.log(a)
+        }
     }
 }

@@ -1,7 +1,7 @@
 import {
 	means,
 	isShare,
-	getUrlStr,detect
+    getUrlStr,detect,wxPd
 } from '../../../util/common'
 import api from '../../../fetch/api'
 import {
@@ -29,7 +29,10 @@ export default {
             if (detect() === 'ios') {
                 location.href = "http://m.caixiaomi.net"
             } else {
-                if(this.$route.query.fr == 'c042'){
+                if(wxPd()){
+                    location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+                }else{
+                    if(this.$route.query.fr == 'c042'){
                         location.href="http://m.caixiaomi.net/down/cxm106_jc042.apk"
                     }else if(this.$route.query.fr == 'c043'){
                         location.href="http://m.caixiaomi.net/down/cxm106_jc043.apk"
@@ -38,7 +41,8 @@ export default {
                     }else if(this.$route.query.fr == 'c045'){
                         location.href="http://m.caixiaomi.net/down/cxm106_jc045.apk"
                     }else {
-                    location.href = "https://m.caixiaomi.net/down/cxm106_jc035.apk"
+                        location.href = "https://m.caixiaomi.net/down/cxm106_jc035.apk"
+                    }
                 }
 			}
         }

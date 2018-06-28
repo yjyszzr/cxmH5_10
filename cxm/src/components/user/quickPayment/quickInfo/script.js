@@ -1,4 +1,5 @@
 import {MessageBox,Toast,Indicator} from 'mint-ui';
+import quickSms from '../quickSms/index.vue'
 import api from '../../../../fetch/api'
 export default {
     name: 'quickInfo',
@@ -21,8 +22,24 @@ export default {
                 disabled: false,
                 timer: ''
             },
-            token: ''
+            token: '',
+            bankList: ''
         }
+    },
+    created(){
+        let data = {
+            'emptyStr': ''
+        }
+        api.appCfg(data)
+            .then(res => {
+                if(res.code==0) {
+                    console.log(res)
+                    this.bankList = res.data.bankList
+                }
+            })
+    },
+    components: {
+        "v-quicksms": quickSms
     },
     methods:{
         bankCard(){
