@@ -3,7 +3,7 @@
         <div class="headerTop" v-show="showTitle">
             <a @click="return_back()" class="go_return"></a>
             <p class="headerText">彩小秘·{{title}}</p>
-            <p class="filter" v-show="menuDisplay==true">
+            <div class="filter" v-show="menuDisplay==true">
                 <span @click='filter()' v-if="$route.path.split('/')[2]=='singleNote'" class="iconfont icon-icon-21"></span>
                 <span v-if="$route.path.split('/')[2]=='singleNote'" @click="goInToplay()">帮助</span>
                 <span v-if="$route.path.split('/')[2]=='consult'" style="opacity:0;">分享</span>
@@ -11,7 +11,13 @@
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
                 <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="djs">胆</span>
                 <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="djs">设置</span>
-            </p>
+                <ul class="djs" @click="actionSheet()"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
+                    <li>全部</li>
+                    <!--<li>最近一周</li>-->
+                    <!--<li>最近一个月</li>-->
+                    <!--<li>最近半个月</li>-->
+                </ul>
+            </div>
             <p class="filter" v-show="menuDisplay==false"></p>
         </div>
         <ul class="send" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='record'">
@@ -19,6 +25,7 @@
             <li :class="$store.state.recordTab=='2'?'cur':''"><p @click='curClick($event)'>中奖</p></li>
             <li :class="$store.state.recordTab=='3'?'cur':''"><p @click='curClick($event)'>待开奖</p></li>
         </ul>
+
         <ul class="sendaccount" id='searchBar' v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
             <li :class="$store.state.recordTab==''||$store.state.recordTab=='a1'?'cur1':''"><p @click='curClick1($event)'>全部</p></li>
             <li :class="$store.state.recordTab=='a2'?'cur1':''"><p @click='curClick1($event)'>奖金</p></li>
@@ -66,12 +73,18 @@
             <li><p @click="tabSilde(2,$event)" :class="$route.path.split('/')[3]&&$route.path.split('/')[3]=='fsplace'?'worldActive':''">冠亚军竞猜</p></li>
         </ul>
         <p class="wd_nav" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='world_detail'">已选{{$store.state.world_cupObj.fsNum}}场比赛</p>
+        <mt-actionsheet
+                :actions= "action"
+                cancelText=""
+                v-model="sheetVisible">
+        </mt-actionsheet>
     </div>
+
 </template>
 
 <script>
 import datefilter from "../../../util/datefilter";
-import { Indicator } from "mint-ui";
+import { Indicator,Actionsheet } from "mint-ui";
 import { getUrlStr } from "../../../util/common";
 export default {
   name: "Header",
@@ -83,10 +96,40 @@ export default {
   },
   data() {
     return {
-      flag: true
+      flag: true,
+
+        action:[
+            {
+                name:'全部',
+                method:this.whole
+            },
+            {
+                name:'当天',
+                method:this.sameDay
+            },
+            {
+                name:'最近一周',
+                method:this.recentMarch
+            },
+            {
+                name:'最近一月',
+                method:this.lastmonth
+            },
+            {
+                name:'最近三月',
+                method:this.recentMarch
+            }
+        ],
+        sheetVisible: false,
     };
   },
   methods: {
+      actionSheet:function () {
+          this.sheetVisible = true
+      },
+      whole:function () {
+          console.log(点击全部)
+      },
     return_back() {
       if (this.$route.path.split("/")[2]) {
         if (this.$route.path.split("/")[2] == "singleNote") {
@@ -183,6 +226,7 @@ export default {
         this.$store.dispatch("changeRecordTab", "d3");
       }
     },
+
     curClick3(c) {
       $(".cur3").removeClass("cur3");
       c.target.parentElement.className = "cur3";
@@ -304,6 +348,9 @@ export default {
 @import "../../../assets/css/function.scss";
 .Header {
   width: 100%;
+    .mint-actionsheet-listitem, .mint-actionsheet-button{
+        font-size: px2rem(28px)!important;
+    }
   .headerTop {
     overflow: hidden;
     height: px2rem(100px);
@@ -326,6 +373,18 @@ export default {
       height: 100%;
       width: px2rem(138px);
       box-sizing: border-box;
+        ul{
+            display: block;
+            height: 100%;
+            padding: 0 px2rem(10px) 0 px2rem(10px);
+            display: flex;
+            align-items: center;
+            font-size: px2rem(28px);
+            color: #787878;
+            li{
+                font-size: px2rem(28px);
+            }
+        }
       span {
         display: block;
         height: 100%;

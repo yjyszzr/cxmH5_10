@@ -451,4 +451,8 @@ export default {
     setinglogin(params){
         return fetchPost('/member/user/setLoginPass', params)
     },
+    //账户明细title
+    detailsTitle(params){
+        return fetchPost('/member/user/account/getUserAccountListAndCountTotal', params)
+    },
 }

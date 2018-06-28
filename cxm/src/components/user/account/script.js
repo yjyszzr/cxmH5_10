@@ -25,6 +25,9 @@ export default {
   created() {
 
   },
+    //  @ApiModelProperty("时间段：0-全部 1-当天 2-前一周 3-前一个月 4-前三个月 ")
+    //   private String timeType;
+
   methods: {
     mxfetch() {
       let data = {
