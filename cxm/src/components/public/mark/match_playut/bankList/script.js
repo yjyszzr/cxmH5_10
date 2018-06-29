@@ -16,6 +16,10 @@ export default {
       tjxkClick(){
         this.$emit('closeMarkCz')
         this.$store.commit('XFBANKLIST',[])
+      },
+      bkClick(c){
+        this.$emit('closeMarkCz')
+        this.$store.commit('XFBANKSELCTED',c)
       }
     }
 }

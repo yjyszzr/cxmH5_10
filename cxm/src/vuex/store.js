@@ -60,6 +60,7 @@ const state = {
         findActive: '1' //发现选中参数
     },
     xfbanklist: '',   //先锋银行卡列表
+    xfbankSelected: {},   //选中的银行卡信息 
     //世界杯活动
     world_cupObj: {
         firstList: [],   //冠军竞猜
