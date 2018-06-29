@@ -69,7 +69,10 @@ const state = {
         fsplaceObj: {},  //初始化信息
         world_tab: false
     },
-    timertz: '', //充值送弹窗定时器 
+    user_account: {
+        timeType: 2
+    },
+    timertz: '', //充值送弹窗定时器
     mark_showAc: false, //充值送弹窗
     pop: '',
 }
