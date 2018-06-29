@@ -59,6 +59,7 @@ const state = {
         findTab: [],   //发现顶部列表
         findActive: '1' //发现选中参数
     },
+    xfbanklist: '',   //先锋银行卡列表
     //世界杯活动
     world_cupObj: {
         firstList: [],   //冠军竞猜

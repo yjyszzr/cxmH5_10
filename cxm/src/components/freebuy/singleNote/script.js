@@ -47,11 +47,7 @@ export default {
       return datefilter(Number(c * 1000), 1)
     },
     activeNameNum(c) {
-      if (this.$store.state.matchObj.hotPlayList.length > 0) {
-        return Number(c + 2) + ''
-      } else {
-        return Number(c + 1) + ''
-      }
+      return Number(c + 1) + ''
     },
     bfBtn(c) {
       if (this.playType == '6') {
@@ -125,12 +121,6 @@ export default {
     confirm_mix() {
       this.arrNum = 0;
       let obj = {};
-      this.$store.state.matchObj.hotPlayList.forEach(item => {
-        if (item.selectedNum && item.selectedNum > 0) {
-          this.arrNum++
-            obj = item
-        }
-      });
       this.$store.state.matchObj.playList.forEach(item => {
         for (let i = 0; i < item.playList.length; i++) {
           if (item.playList[i].selectedNum && item.playList[i].selectedNum > 0) {
@@ -387,11 +377,6 @@ export default {
     confirm() {
       if (this.playType == '6') {
         this.$store.state.matchSelectedList = []
-        this.$store.state.matchObj.hotPlayList.forEach(item => {
-          if (item.selectedNum > 0) {
-            this.$store.state.matchSelectedList.push(item)
-          }
-        });
         this.$store.state.matchObj.playList.forEach(item => {
           for (let i = 0; i < item.playList.length; i++) {
             if (item.playList[i].selectedNum > 0) {
@@ -401,15 +386,6 @@ export default {
         });
       } else {
         this.$store.state.matchSelectedList = []
-        this.$store.state.matchObj.hotPlayList.forEach(item => {
-          delete item.myspf
-          for (let [key, value] of this.matchSelectObj) {
-            if (key == item.matchId) {
-              item.myspf = Array.from(value)
-              this.$store.state.matchSelectedList.push(item)
-            }
-          }
-        });
         this.$store.state.matchObj.playList.forEach(item => {
           for (let i = 0; i < item.playList.length; i++) {
             delete item.playList[i].myspf

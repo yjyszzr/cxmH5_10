@@ -19,7 +19,11 @@ const actions = {
         api.getMatchList(value)
             .then(res => {
                 if (res.code == 0) {
-                    //console.log(res)
+                    let obj = {}
+                    if(res.data.hotPlayList.length>0){
+                        obj.playList = [].concat(res.data.hotPlayList)
+                        res.data.playList.unshift(obj) 
+                    }
                     commit("MATCHLIST", res.data);
                 }
             })

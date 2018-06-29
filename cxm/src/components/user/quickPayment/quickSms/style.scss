@@ -51,10 +51,18 @@
         position: absolute;
         height: px2rem(70px);
         opacity: 0;
-        left: 0;
-        width: px2rem(480px);
+        left: px2rem(-160px);
+        width: px2rem(810px);
         caret-color:#fff; 
     }
+    // input{
+    //     width: 70%;
+    //     height: px2rem(60px);
+    //     display: block;
+    //     margin: px2rem(40px) auto 0;
+    //     border-radius: 0;
+    //     font-size: px2rem(28px);
+    // }
     .getCodeBtn{
         width: 90%;
         background: #ea5504;

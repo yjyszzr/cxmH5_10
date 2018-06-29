@@ -1,6 +1,7 @@
 <template>
     <div class="quickInfo">
-        <div class="quickListBox" v-if="typeof(bankList)!='string'&&bankList.length>0">
+        <transition name="fade"> 
+        <div class="quickListBox" v-if="typeof(xfbklist)!='string'&&xfbklist.length<=0">
             <ul class="quickList">
                 <li class="isxq">
                     <p>
@@ -10,7 +11,7 @@
                     <p @click='khxq()'>详情</p>
                 </li>
                 <li v-show="bankType!==''">
-                    {{bankName}}&nbsp;<span>{{bankType=='1'?'储蓄卡':'信用卡'}}</span> 
+                    {{bankName}}&nbsp;<span>{{bankType=='0'?'储蓄卡':'信用卡'}}</span> 
                 </li>
                 <li>
                     <p>
@@ -24,14 +25,14 @@
                         <input v-model="sfz" type="text" placeholder="请输入持卡人身份证号">
                     </p>
                 </li>
-                <li v-show="xyInputFlag" class="isxq">
+                <li v-show="bankType!==''&&bankType=='1'" class="isxq">
                     <p>
                         <span>有效期:</span>
                         <input v-model="yxq" type="text" placeholder="请输入月份/年份">
                     </p>
                     <p @click='yxqxq()'>详情</p>
                 </li>
-                <li v-show="xyInputFlag" class="isxq">
+                <li v-show="bankType!==''&&bankType=='1'" class="isxq">
                     <p>
                         <span>CCVV2:</span>
                         <input v-model="ccvv" type="tel" placeholder="请输入卡背后三位数">
@@ -62,7 +63,10 @@
                 确认支付
             </button>
         </div>
-        <v-quicksms v-if="typeof(bankList)=='string'"></v-quicksms>
+        </transition> 
+        <transition name="fade"> 
+        <v-quicksms :amt='amt' v-if="typeof(xfbklist)!='string'&&xfbklist.length>0"></v-quicksms>
+        </transition> 
     </div>
 </template>
 <style src='./style.scss' scoped lang='scss'>

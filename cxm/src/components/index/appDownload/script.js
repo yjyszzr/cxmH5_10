@@ -20,12 +20,14 @@ export default{
     methods:{
         andrClick(){
             if(wxPd()){
-                location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+                location.href = 'https://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
             }else{
                 if(getUrlStr('ct',location.href)=='2'){
-                    location.href = 'http://m.caixiaomi.net/down/cxm106_jc035.apk'
+                    alert(1)
+                    location.href = 'https://m.caixiaomi.net/down/cxm106_jc035.apk'
                 }else{
-                    location.href = 'http://m.caixiaomi.net/down/cxm106_zc037.apk'
+                    alert(2)
+                    location.href = 'https://m.caixiaomi.net/down/cxm106_zc037.apk'
                 }
             }
         }

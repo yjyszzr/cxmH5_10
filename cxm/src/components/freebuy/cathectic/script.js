@@ -55,19 +55,6 @@ export default {
 					this.$store.state.matchSelectedList.splice(s, 1)
 				}
 			});
-			this.$store.state.matchObj.hotPlayList.forEach(data => {
-				if(data.matchId == c) {
-					if(this.$route.query.playType == '6') {
-						this.$store.state.chushihuaObj.hotPlayList.forEach(kk => {
-							if(kk.matchId == c) {
-								data = kk
-							}
-						})
-					} else {
-						delete data.myspf
-					}
-				}
-			});
 			this.$store.state.matchObj.playList.forEach(data => {
 				for(let i = 0; i < data.playList.length; i++) {
 					if(data.playList[i].matchId == c) {
@@ -160,16 +147,6 @@ export default {
 		},
 		cshCz(n) {
 			this.$store.state.matchSelectedList = []
-
-			this.$store.state.matchObj.hotPlayList.forEach(item => {
-				delete item.myspf
-				for(let [key, value] of this.matchSelectObj) {
-					if(key == item.matchId) {
-						item.myspf = Array.from(value)
-						this.$store.state.matchSelectedList.push(item)
-					}
-				}
-			});
 			this.$store.state.matchObj.playList.forEach(item => {
 				for(let i = 0; i < item.playList.length; i++) {
 					delete item.playList[i].myspf
@@ -745,11 +722,6 @@ export default {
 			if(this.$route.query.playType == '6') {
 				let n = this.$store.state.matchSelectedList.length
 				this.$store.state.matchSelectedList = []
-				this.$store.state.matchObj.hotPlayList.forEach(item => {
-					if(item.selectedNum > 0) {
-						this.$store.state.matchSelectedList.push(item)
-					}
-				});
 				this.$store.state.matchObj.playList.forEach(item => {
 					for(let i = 0; i < item.playList.length; i++) {
 						if(item.playList[i].selectedNum > 0) {

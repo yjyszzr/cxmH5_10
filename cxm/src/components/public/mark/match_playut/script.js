@@ -4,6 +4,7 @@ import bqc from './bqc/index.vue'
 import mix from './mix/index.vue'
 import matchDetail from './matchDetail/index.vue'
 import popup from './popup/popup.vue'
+import bankList from './bankList/index.vue'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 export default {
@@ -19,13 +20,14 @@ export default {
     'v-bqc': bqc,
     'v-mix': mix,
     'v-matchdetail': matchDetail,
-    'v-popup': popup
+    'v-popup': popup,
+    'v-banklist': bankList
   },
   methods: {
     closeMarkCz(){
-      this.$store.state.mark_playObj.mark_play = '' 
+      this.$store.dispatch("getMarkplay",'')
       setTimeout(()=>{
-        this.$store.state.mark_playObj.mark_playBox = false
+        this.$store.dispatch("getMarkplayBox",false)
       },250)
     },
     closeMarkCzZz(){
@@ -78,7 +80,10 @@ export default {
   computed: {  
     status() {  
         return this.$store.state.mark_playObj.playutText; 
-    }  
+    },
+    markStatus(){
+        return this.$store.state.mark_playObj.mark_play;
+    } 
   },  
   watch: {
     status(a,b){
