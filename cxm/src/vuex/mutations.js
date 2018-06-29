@@ -165,6 +165,9 @@ const mutations = {
     FINACTIVE(state, data){
         state.findObj.findActive = data
     },
+    XFBANKLIST(state, data){
+        state.xfbanklist = data
+    },
     //世界杯
     FSNUM(state, data){
         if(data=='1'){

@@ -23,18 +23,20 @@ export default {
                 timer: ''
             },
             token: '',
-            bankList: ''
+            amt: ''
         }
     },
     created(){
         let data = {
-            'emptyStr': ''
+            'emptyStr': '',
+            'PayLogId': this.$route.query.id
         }
         api.appCfg(data)
             .then(res => {
                 if(res.code==0) {
                     console.log(res)
-                    this.bankList = res.data.bankList
+                    this.amt = res.data.amt
+                    this.$store.commit('XFBANKLIST',res.data.bankList)
                 }
             })
     },
@@ -124,7 +126,9 @@ export default {
                 'name': this.name,
                 'phone': this.telval,
                 'payLogId': this.$route.query.id,
-                'token': this.token
+                'token': this.token,
+                'cvn2': this.ccvv,
+                'validDate': this.yxq
             }
             api.xfapp(data)
                 .then(res => {
@@ -160,13 +164,24 @@ export default {
             api.xfappConfirm(data)
                 .then(res => {
                     if(res.code==0) {
-                        console.log(res)
+                        Toast('支付成功')
+                        this.$router.replace({
+                            path: '/'
+                        })
                     }
                 })
         }
     },
+    computed: {
+        xfbklist() {
+          return this.$store.state.xfbanklist;
+        }
+    },
     beforeRouteLeave (to, from, next) {
         clearInterval(this.smsCode.timer)
+        this.$store.dispatch("getMarkplay",'')
+        this.$store.commit('XFBANKLIST','')
+        this.$store.dispatch("getMarkplayBox",false)
         next()
     }
 }

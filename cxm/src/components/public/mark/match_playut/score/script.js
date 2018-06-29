@@ -43,11 +43,6 @@ export default {
                 }
             }
         });
-        this.$store.state.matchObj.hotPlayList.forEach(item => {
-            if(item.matchId == this.$store.state.mark_playObj.bfmatchId){
-                this.scoreObj =  item
-            }
-        });
         if(_.has(this.$store.state.mark_playObj.bfIdSaveMap,this.scoreObj.matchId)){
             this.scoreArr = new Set()
             _.forIn(this.$store.state.mark_playObj.bfIdSaveMap, (value, key) => {

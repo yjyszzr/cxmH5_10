@@ -6,12 +6,16 @@ export default {
             numbers: ''
         }
     },
+    props:[
+        'amt'
+    ],
     methods:{
-        
-    },
-    watch:{
-        numbers(a,b){
-            console.log(a)
+        reset(){
+            this.numbers = ''
+        },
+        bankClick(){
+            this.$store.dispatch("getMarkplay",'banklist')
+            this.$store.dispatch("getMarkplayBox",true)
         }
     }
 }

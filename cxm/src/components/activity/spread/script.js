@@ -27,19 +27,19 @@ export default {
     methods: {
         lqBtn() {
             if (detect() === 'ios') {
-                location.href = "http://m.caixiaomi.net"
+                location.href = "https://m.caixiaomi.net"
             } else {
                 if(wxPd()){
-                    location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+                    location.href = 'https://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
                 }else{
                     if(this.$route.query.fr == 'c042'){
-                        location.href="http://m.caixiaomi.net/down/cxm106_jc042.apk"
+                        location.href="https://m.caixiaomi.net/down/cxm106_jc042.apk"
                     }else if(this.$route.query.fr == 'c043'){
-                        location.href="http://m.caixiaomi.net/down/cxm106_jc043.apk"
+                        location.href="https://m.caixiaomi.net/down/cxm106_jc043.apk"
                     }else if(this.$route.query.fr == 'c044'){
-                        location.href="http://m.caixiaomi.net/down/cxm106_jc044.apk"
+                        location.href="https://m.caixiaomi.net/down/cxm106_jc044.apk"
                     }else if(this.$route.query.fr == 'c045'){
-                        location.href="http://m.caixiaomi.net/down/cxm106_jc045.apk"
+                        location.href="https://m.caixiaomi.net/down/cxm106_jc045.apk"
                     }else {
                         location.href = "https://m.caixiaomi.net/down/cxm106_jc035.apk"
                     }
