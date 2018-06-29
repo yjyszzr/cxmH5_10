@@ -4,49 +4,30 @@
 
 <template>
     <div class="setup">
-        <div class="section">
-            <ul class="msg_list">
-                <li>
-                    <a>
-                        <div>
-                            <router-link to="/user/certification" v-if="userInfo.isReal ==0" class="arrow_kefu float_right">待认证</router-link>
-                            <router-link to='/user/setchange' v-if="userInfo.isReal ==1 " class="arrow_kefu float_right">{{userInfo.isReal}}</router-link>
-                            <span class="message">头像</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div>
-                            <span @click="nickname()" v-if="userInfo.isReal ==0" class="arrow_kefu float_right">待认证></span>
-                            <span class="message">昵称</span>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
         <p>账户安全</p>
         <div class="section">
             <ul class="msg_list">
-                <div class="pictureBox">
-                    <div class="txtest">我的头像</div>
-                    <input v-if="!panel" type="file" id="change" accept="image" @change="change" style="display:none;">  
-                    <label for="change">
-                        <img class="picture" :src="headerImage" alt="" v-if="headerImage!==''">
-                        <!-- <div class="picture" :style="'background:url('+headerImage+')'" v-if="headerImage!==''"></div> -->
-                        <img src="../../../assets/img/portrait.png" alt="" v-else>    
-                    </label>  
-                </div>
+                <!--<div class="pictureBox">-->
+                    <!--<div class="txtest">我的头像</div>-->
+                    <!--<input v-if="!panel" type="file" id="change" accept="image" @change="change" style="display:none;">  -->
+                    <!--<label for="change">-->
+                        <!--<img class="picture" :src="headerImage" alt="" v-if="headerImage!==''">-->
+                        <!--&lt;!&ndash; <div class="picture" :style="'background:url('+headerImage+')'" v-if="headerImage!==''"></div> &ndash;&gt;-->
+                        <!--<img src="../../../assets/img/portrait.png" alt="" v-else>    -->
+                    <!--</label>  -->
+                <!--</div>-->
                 <li>
                     <a>
                         <div>
-                            <router-link to="/user/certification" v-if="userInfo.isReal ==0" class="arrow_kefu float_right">待认证</router-link>
-                            <router-link to='/user/setchange' v-if="userInfo.isReal ==1 " class="arrow_kefu float_right">{{userInfo.isReal}}</router-link>
-                            <span class="message">身份认证</span>
+                            <span class="arrow_kefu float_right">{{userInfo.mobile}}</span>
+                            <span class="message">手机认证</span>
                         </div>
                     </a>
                     <a>
                         <div>
-                            <span class="arrow_kefu float_right">{{userInfo.mobile}}</span>
-                            <span class="message">账户安全</span>
+                            <router-link to="/user/certification" v-if="userInfo.isReal ==0" class="arrow_kefu float_right">待认证</router-link>
+                            <router-link to='/user/setchange' v-if="userInfo.isReal ==1 " class="arrow_kefu float_right">{{userInfo.realInfo}}</router-link>
+                            <span class="message">身份认证</span>
                         </div>
                     </a>
                     <a>

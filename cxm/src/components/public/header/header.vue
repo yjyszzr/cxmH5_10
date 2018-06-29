@@ -12,7 +12,7 @@
                 <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="djs">胆</span>
                 <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="djs">设置</span>
                 <ul class="djs" @click="actionSheet()"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
-                    <li>{{this.timeTypeShow}}</li>
+                    <li>{{this.timeTypeShow}}<i class="iconfont icon-icon-22"></i></li>
                 </ul>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
@@ -94,12 +94,7 @@
         data() {
             return {
                 flag: true,
-
                 action:[
-                    {
-                        name:'全部',
-                        method:this.whole
-                    },
                     {
                         name:'当天',
                         method:this.sameDay
@@ -115,7 +110,11 @@
                     {
                         name:'最近三月',
                         method:this.recentMarchs
-                    }
+                    },
+                    {
+                        name:'全部',
+                        method:this.whole
+                    },
                 ],
                 sheetVisible: false,
                 timeTypeShow: '最近一周',
@@ -125,10 +124,6 @@
 
             actionSheet:function () {
                 this.sheetVisible = true
-            },
-            whole:function () {
-                this.timeTypeShow = '全部';
-                this.$store.dispatch("changeTimeType", 0);
             },
             sameDay:function () {
                 this.timeTypeShow = '当天';
@@ -146,6 +141,10 @@
             recentMarchs:function () {
                 this.timeTypeShow = '最近三月';
                 this.$store.dispatch("changeTimeType", 4);
+            },
+            whole:function () {
+                this.timeTypeShow = '全部';
+                this.$store.dispatch("changeTimeType", 0);
             },
             return_back() {
                 if (this.$route.path.split("/")[2]) {
@@ -364,10 +363,6 @@
 <style lang='scss' scoped>
     @import "../../../assets/css/function.scss";
     .Header {
-        width: 100%;
-        .mint-actionsheet-listitem, .mint-actionsheet-button{
-            font-size: px2rem(28px)!important;
-        }
         .headerTop {
             overflow: hidden;
             height: px2rem(100px);
@@ -388,7 +383,7 @@
                 flex: 1;
                 display: flex;
                 height: 100%;
-                width: px2rem(138px);
+                width: px2rem(200px);
                 box-sizing: border-box;
                 ul{
                     display: block;
@@ -442,7 +437,7 @@
                 }
             }
             .headerText {
-                flex: 3;
+                flex: 2;
                 height: 100%;
                 display: flex;
                 align-items: center;

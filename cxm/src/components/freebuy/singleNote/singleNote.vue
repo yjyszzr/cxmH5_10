@@ -25,8 +25,12 @@
                             <img src="../../../assets/img/freebuy_img/Collapse@3x.png" alt="">
                         </span>
                     </div>
+
                     <div class="matchRight" v-if="playType=='1'||playType=='2'">
-                        <div class="matchRightBox">
+                        <div class="halt" v-if="item.isShutDown == 1">
+                            <i class="halt_p">本场停售</i><i @click="halt()" class="halt_p">详情>></i>
+                        </div>
+                        <div class="matchRightBox" :style="{'opacity':item.isShutDown == 1?'0.3':'1'}">
                             <p :class="item.myspf&&item.myspf.indexOf(3)!=-1?'selected':''">
                                 <b class="mMark" @click="selectedClick($event)"></b>
                                 <span><em v-if="item.homeTeamRank!==''">[{{item.homeTeamRank}}]</em>{{item.homeTeamAbbr}}</span>
@@ -56,7 +60,11 @@
                             <span>VS</span>
                             <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
-                        <div class="matchRightBox">
+                        <div class="haltBox" v-if="item.isShutDown == 1">
+                            <i class="halt_p">本场停售</i>
+                            <i @click="halt()" class="halt_p">详情>></i>
+                        </div>
+                        <div class="matchRightBox" :style="{'opacity':item.isShutDown == 1?'0.3':'1'}">
                             <p v-for='(data,index) in item.matchPlays[0].matchCells' :key='index' :class="item.myspf&&item.myspf.indexOf('jqs:'+data.cellCode)!=-1?'selected':''" >
                                 <b class="mMark" @click="selectedClick($event,data)"></b>
                                 <span>{{data.cellName}}</span>&nbsp;
@@ -72,7 +80,10 @@
                             <span>VS</span>
                             <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
-                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
+                        <div class="fhBoxhalt" v-if="item.isShutDown == 1">
+                            <i @click="halt()" class="halt_p">本场停售&nbsp;&nbsp;详情>></i>
+                        </div>
+                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" :style="{'opacity':item.isShutDown == 1?'0.3':'1'}" @click="bfBtn(item)">
                             点击进行比分投注
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item)">
@@ -87,7 +98,10 @@
                             <span>VS</span>
                             <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
-                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" @click="bfBtn(item)">
+                        <div class="fhBoxhalt" v-if="item.isShutDown == 1">
+                            <i @click="halt()" class="halt_p">本场停售&nbsp;&nbsp;详情>></i>
+                        </div>
+                        <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" :style="{'opacity':item.isShutDown == 1?'0.3':'1'}" @click="bfBtn(item)">
                             点击进行半全场投注
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item)">
@@ -102,7 +116,10 @@
                             <span>VS</span>
                             <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
-                        <div class="matchRightstoneBox">
+                        <div class="fhBoxhaltbf" v-if="item.isShutDown == 1">
+                            <i @click="halt()" class="halt_p">本场停售&nbsp;&nbsp;详情>></i>
+                        </div>
+                        <div class="matchRightstoneBox" :style="{'opacity':item.isShutDown == 1?'0.3':'1'}">
                             <p :class="item.myspf&&item.myspf.indexOf(item.matchPlays[0].homeCell.cellName)!=-1?'selected':''">
                                 <b class="mMark" @click="selectedTwoClick($event,item.matchPlays[0].homeCell.cellName)"></b>
                                 <span>{{item.matchPlays[0].homeCell.cellName}}</span>
@@ -121,7 +138,11 @@
                             <span>VS</span>
                             <span><span v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</span>{{item.visitingTeamAbbr}}</span>
                         </div>
-                        <div class="matchRighthhBox">
+                        <div class="haltBoxth" v-if="item.isShutDown == 1">
+                            <i class="halt_p">本场停售</i>
+                            <i @click="halt()" class="halt_p">详情>></i>
+                        </div>
+                        <div class="matchRighthhBox" :style="{'opacity':item.isShutDown == 1?'0.3':'1'}">
                             <div class="team_left" :class="item.matchPlays[1]&&item.matchPlays[1].single=='1'?'signleSected':''">
                             		<div class="team_top" v-if="item.matchPlays[1]&&item.matchPlays[1].isShow=='0'">
                             			<p>0</p>

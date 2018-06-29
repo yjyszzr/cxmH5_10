@@ -36,6 +36,16 @@ export default {
 
   },
   methods: {
+      halt(){
+          MessageBox.alert('', {
+              message: '因出票限制，暂停销售',
+              title: '停售原因',
+              confirmButtonText: '我知道了',
+              closeOnClickModal: false
+          }).then(action => {
+
+          });
+      },
     fetchData() {
       let data = {
         'leagueId': this.leagueId,
