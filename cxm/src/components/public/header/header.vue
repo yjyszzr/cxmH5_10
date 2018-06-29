@@ -12,10 +12,7 @@
                 <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="djs">胆</span>
                 <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="djs">设置</span>
                 <ul class="djs" @click="actionSheet()"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
-                    <li>全部</li>
-                    <!--<li>最近一周</li>-->
-                    <!--<li>最近一个月</li>-->
-                    <!--<li>最近半个月</li>-->
+                    <li>{{this.timeTypeShow}}</li>
                 </ul>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
@@ -61,11 +58,11 @@
             <li @click='all($event)' v-if="flag==false">已结束<i class="iconfont icon-icon-31"></i></li>
         </ul>
         <div class="swiper-container findTab" v-if="$route.path.split('/')[1]=='find'">
-          <div class="swiper-wrapper">
+            <div class="swiper-wrapper">
                 <div class="swiper-slide" @click="findTabClick($event,item.cat)" v-for="item in findTab" :key='item.cat' :class="item.cat==findStatus?'findactive':''">
-                  <p>{{item.catName=='世界杯'?'其他':(item.catName=='竞彩预测'?'重心推荐':item.catName)}}</p>	
-                </div>		        
-          </div>
+                    <p>{{item.catName=='世界杯'?'其他':(item.catName=='竞彩预测'?'重心推荐':item.catName)}}</p>
+                </div>
+            </div>
         </div>
         <!-- //世界杯头部 -->
         <ul class="world_top" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='world_matchList'">
@@ -83,528 +80,548 @@
 </template>
 
 <script>
-import datefilter from "../../../util/datefilter";
-import { Indicator,Actionsheet } from "mint-ui";
-import { getUrlStr } from "../../../util/common";
-export default {
-  name: "Header",
-  props: {
-    title: String,
-    menuDisplay: Boolean,
-    menuNosult: Boolean,
-    showTitle: Boolean
-  },
-  data() {
-    return {
-      flag: true,
+    import datefilter from "../../../util/datefilter";
+    import { Indicator,Actionsheet } from "mint-ui";
+    import { getUrlStr } from "../../../util/common";
+    export default {
+        name: "Header",
+        props: {
+            title: String,
+            menuDisplay: Boolean,
+            menuNosult: Boolean,
+            showTitle: Boolean
+        },
+        data() {
+            return {
+                flag: true,
 
-        action:[
-            {
-                name:'全部',
-                method:this.whole
+                action:[
+                    {
+                        name:'全部',
+                        method:this.whole
+                    },
+                    {
+                        name:'当天',
+                        method:this.sameDay
+                    },
+                    {
+                        name:'最近一周',
+                        method:this.recentMarch
+                    },
+                    {
+                        name:'最近一月',
+                        method:this.lastmonth
+                    },
+                    {
+                        name:'最近三月',
+                        method:this.recentMarchs
+                    }
+                ],
+                sheetVisible: false,
+                timeTypeShow: '最近一周',
+            };
+        },
+        methods: {
+
+            actionSheet:function () {
+                this.sheetVisible = true
             },
-            {
-                name:'当天',
-                method:this.sameDay
+            whole:function () {
+                this.timeTypeShow = '全部';
+                this.$store.dispatch("changeTimeType", 0);
             },
-            {
-                name:'最近一周',
-                method:this.recentMarch
+            sameDay:function () {
+                this.timeTypeShow = '当天';
+
+                this.$store.dispatch("changeTimeType", 1);
             },
-            {
-                name:'最近一月',
-                method:this.lastmonth
+            recentMarch:function () {
+                this.timeTypeShow = '最近一周';
+                this.$store.dispatch("changeTimeType", 2);
             },
-            {
-                name:'最近三月',
-                method:this.recentMarch
+            lastmonth:function () {
+                this.timeTypeShow = '最近一月';
+                this.$store.dispatch("changeTimeType", 3);
+            },
+            recentMarchs:function () {
+                this.timeTypeShow = '最近三月';
+                this.$store.dispatch("changeTimeType", 4);
+            },
+            return_back() {
+                if (this.$route.path.split("/")[2]) {
+                    if (this.$route.path.split("/")[2] == "singleNote") {
+                        this.$store.dispatch("getmatchSelectedList", []);
+                    } else if (
+                        location.href.split("?")[1] &&
+                        location.href.split("?")[1].split("=")[0] == "orderStatus"
+                    ) {
+                        this.$router.push({
+                            path: "/",
+                            replace: false
+                        });
+                        return false;
+                    }
+                }
+                this.$router.go(-1);
+            },
+            datePd(c) {
+                return datefilter(Number(c * 1000), 3);
+            },
+            goInToplay() {
+                this.$router.push({
+                    path: "/freebuy/inToplay",
+                    replace: false
+                });
+            },
+            onGal(){
+                this.$router.push({
+                    path: "/freebuy/explain",
+                    replace: false
+                });
+            },
+            setUp(){
+                this.$router.push({
+                    path: "/user/setup",
+                    replace: false
+                });
+            },
+            custormAnchor(anchorName) {
+                // 找到锚点
+                let anchorElement = document.getElementById(anchorName);
+                // 如果对应id的锚点存在，就跳转到锚点
+                if (anchorElement) {
+                    anchorElement.scrollIntoView();
+                }
+            },
+            filter() {
+                this.$store.dispatch("getMarkShow", true);
+                this.$store.dispatch("getMarkShowType", "2");
+            },
+            colMenu(c) {
+                if (this.deleteFlag == false) {
+                    this.$store.dispatch("deleteMyFlag", true);
+                } else {
+                    this.$store.dispatch("deleteMyFlag", false);
+                }
+            },
+            curClick(c) {
+                $(".cur").removeClass("cur");
+                c.target.parentElement.className = "cur";
+                if (c.target.innerText == "全部") {
+                    this.$store.dispatch("changeRecordTab", "1");
+                } else if (c.target.innerText == "中奖") {
+                    this.$store.dispatch("changeRecordTab", "2");
+                } else if (c.target.innerText == "待开奖") {
+                    this.$store.dispatch("changeRecordTab", "3");
+                }
+            },
+            curClick1(c) {
+                $(".cur1").removeClass("cur1");
+                c.target.parentElement.className = "cur1";
+                if (c.target.innerText == "全部") {
+                    this.$store.dispatch("changeRecordTab", "a1");
+                } else if (c.target.innerText == "奖金") {
+                    this.$store.dispatch("changeRecordTab", "a2");
+                } else if (c.target.innerText == "充值") {
+                    this.$store.dispatch("changeRecordTab", "a3");
+                } else if (c.target.innerText == "购彩") {
+                    this.$store.dispatch("changeRecordTab", "a4");
+                } else if (c.target.innerText == "提现") {
+                    this.$store.dispatch("changeRecordTab", "a5");
+                } else if (c.target.innerText == "红包") {
+                    this.$store.dispatch("changeRecordTab", "a6");
+                }
+            },
+            curClick2(c) {
+                $(".cur2").removeClass("cur2");
+                c.target.parentElement.className = "cur2";
+                if (c.target.innerText == "未使用") {
+                    this.$store.dispatch("changeRecordTab", "d1");
+                } else if (c.target.innerText == "已使用") {
+                    this.$store.dispatch("changeRecordTab", "d2");
+                } else if (c.target.innerText == "已过期") {
+                    this.$store.dispatch("changeRecordTab", "d3");
+                }
+            },
+
+            curClick3(c) {
+                $(".cur3").removeClass("cur3");
+                c.target.parentElement.className = "cur3";
+                if (c.target.innerText == "通知") {
+                    localStorage.setItem("itemStatus", 1);
+                    this.$store.dispatch("changeRecordTab", "m1");
+                } else if (c.target.innerText == "消息") {
+                    localStorage.setItem("itemStatus", 2);
+                    this.$store.dispatch("changeRecordTab", "m2");
+                }
+            },
+            collection(c) {
+                if (c.target.className == "iconfont icon-icon-34") {
+                    this.$store.dispatch("getCollectionFlag", true);
+                    c.target.className = "iconfont icon-icon-32";
+                } else {
+                    this.$store.dispatch("getCollectionFlag", false);
+                    c.target.className = "iconfont icon-icon-34";
+                }
+            },
+            data_time() {
+                this.$store.dispatch("getMarkShow", true);
+                this.$store.dispatch("getMarkShowType", 1);
+            },
+            more() {
+                this.$store.dispatch("getMarkShow", true);
+                this.$store.dispatch("getMarkShowType", 2);
+            },
+            all(c) {
+                if (c.target.innerText == "全部") {
+                    this.flag = false;
+                    this.$store.dispatch("getMatchFinish", "1");
+                } else {
+                    this.flag = true;
+                    this.$store.dispatch("getMatchFinish", "");
+                }
+                Indicator.open();
+                let data = {
+                    dateStr: this.$store.state.mark_showObj.mark_dateVal,
+                    isAlreadyBuyMatch: this.$store.state.mark_showObj.isAlreadyBuyMatch,
+                    leagueIds: this.$store.state.mark_showObj.leagueIds,
+                    matchFinish: this.$store.state.mark_showObj.matchFinish
+                };
+                this.$store.dispatch("getResultList", data);
+            },
+            getUrl() {
+                if (getUrlStr("frz", location.href) == undefined) {
+                    return true;
+                } else {
+                    if (getUrlStr("frz", location.href) == "1") {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            },
+            findTabClick(c,s){
+                if(c.target.localName=='p'&&c.target.parentElement.className.indexOf('findactive')==-1){
+                    Indicator.open()
+                    $('.findactive').removeClass('findactive')
+                    c.target.parentElement.className = "swiper-slide findactive";
+                    this.$store.dispatch("changeFinActive",s)
+                }
+            },
+            tabSilde(c,s){
+                $('.worldActive').removeClass('worldActive')
+                s.target.className= 'worldActive'
+                this.$store.state.world_cupObj.world_tab = false
+                if(c==1){
+                    this.$store.dispatch("changefsNum", '2');
+                    if(getUrlStr('showtitle',location.href)=='1'){
+                        this.$router.replace({
+                            path: '/activity/world_matchList/worldwinner',
+                            query:{
+                                'showtitle': '1'
+                            }
+                        })
+                    }else{
+                        this.$router.replace({
+                            path: '/activity/world_matchList/worldwinner'
+                        })
+                    }
+                }else{
+                    this.$store.dispatch("changefsNum", '2');
+                    if(getUrlStr('showtitle',location.href)=='1'){
+                        this.$router.replace({
+                            path: '/activity/world_matchList/fsplace',
+                            query:{
+                                'showtitle': '1'
+                            }
+                        })
+                    }else{
+                        this.$router.replace({
+                            path: '/activity/world_matchList/fsplace'
+                        })
+                    }
+                }
             }
-        ],
-        sheetVisible: false,
+        },
+        computed: {
+            deleteFlag() {
+                return this.$store.state.deleteFlag;
+            },
+            zxCollectionFlag() {
+                return this.$store.state.zxCollectionFlag;
+            },
+            findTab() {
+                return this.$store.state.findObj.findTab;
+            },
+            findStatus() {
+                return this.$store.state.findObj.findActive;
+            }
+        }
     };
-  },
-  methods: {
-      actionSheet:function () {
-          this.sheetVisible = true
-      },
-      whole:function () {
-          console.log(点击全部)
-      },
-    return_back() {
-      if (this.$route.path.split("/")[2]) {
-        if (this.$route.path.split("/")[2] == "singleNote") {
-          this.$store.dispatch("getmatchSelectedList", []);
-        } else if (
-          location.href.split("?")[1] &&
-          location.href.split("?")[1].split("=")[0] == "orderStatus"
-        ) {
-          this.$router.push({
-            path: "/",
-            replace: false
-          });
-          return false;
-        }
-      }
-      this.$router.go(-1);
-    },
-    datePd(c) {
-      return datefilter(Number(c * 1000), 3);
-    },
-    goInToplay() {
-      this.$router.push({
-        path: "/freebuy/inToplay",
-        replace: false
-      });
-    },
-  onGal(){
-      this.$router.push({
-          path: "/freebuy/explain",
-          replace: false
-      });
-  },
-  setUp(){
-      this.$router.push({
-          path: "/user/setup",
-          replace: false
-      });
-  },
-    custormAnchor(anchorName) {
-      // 找到锚点
-      let anchorElement = document.getElementById(anchorName);
-      // 如果对应id的锚点存在，就跳转到锚点
-      if (anchorElement) {
-        anchorElement.scrollIntoView();
-      }
-    },
-    filter() {
-      this.$store.dispatch("getMarkShow", true);
-      this.$store.dispatch("getMarkShowType", "2");
-    },
-    colMenu(c) {
-      if (this.deleteFlag == false) {
-        this.$store.dispatch("deleteMyFlag", true);
-      } else {
-        this.$store.dispatch("deleteMyFlag", false);
-      }
-    },
-    curClick(c) {
-      $(".cur").removeClass("cur");
-      c.target.parentElement.className = "cur";
-      if (c.target.innerText == "全部") {
-        this.$store.dispatch("changeRecordTab", "1");
-      } else if (c.target.innerText == "中奖") {
-        this.$store.dispatch("changeRecordTab", "2");
-      } else if (c.target.innerText == "待开奖") {
-        this.$store.dispatch("changeRecordTab", "3");
-      }
-    },
-    curClick1(c) {
-      $(".cur1").removeClass("cur1");
-      c.target.parentElement.className = "cur1";
-      if (c.target.innerText == "全部") {
-        this.$store.dispatch("changeRecordTab", "a1");
-      } else if (c.target.innerText == "奖金") {
-        this.$store.dispatch("changeRecordTab", "a2");
-      } else if (c.target.innerText == "充值") {
-        this.$store.dispatch("changeRecordTab", "a3");
-      } else if (c.target.innerText == "购彩") {
-        this.$store.dispatch("changeRecordTab", "a4");
-      } else if (c.target.innerText == "提现") {
-        this.$store.dispatch("changeRecordTab", "a5");
-      } else if (c.target.innerText == "红包") {
-        this.$store.dispatch("changeRecordTab", "a6");
-      }
-    },
-    curClick2(c) {
-      $(".cur2").removeClass("cur2");
-      c.target.parentElement.className = "cur2";
-      if (c.target.innerText == "未使用") {
-        this.$store.dispatch("changeRecordTab", "d1");
-      } else if (c.target.innerText == "已使用") {
-        this.$store.dispatch("changeRecordTab", "d2");
-      } else if (c.target.innerText == "已过期") {
-        this.$store.dispatch("changeRecordTab", "d3");
-      }
-    },
-
-    curClick3(c) {
-      $(".cur3").removeClass("cur3");
-      c.target.parentElement.className = "cur3";
-      if (c.target.innerText == "通知") {
-        localStorage.setItem("itemStatus", 1);
-        this.$store.dispatch("changeRecordTab", "m1");
-      } else if (c.target.innerText == "消息") {
-        localStorage.setItem("itemStatus", 2);
-        this.$store.dispatch("changeRecordTab", "m2");
-      }
-    },
-    collection(c) {
-      if (c.target.className == "iconfont icon-icon-34") {
-        this.$store.dispatch("getCollectionFlag", true);
-        c.target.className = "iconfont icon-icon-32";
-      } else {
-        this.$store.dispatch("getCollectionFlag", false);
-        c.target.className = "iconfont icon-icon-34";
-      }
-    },
-    data_time() {
-      this.$store.dispatch("getMarkShow", true);
-      this.$store.dispatch("getMarkShowType", 1);
-    },
-    more() {
-      this.$store.dispatch("getMarkShow", true);
-      this.$store.dispatch("getMarkShowType", 2);
-    },
-    all(c) {
-      if (c.target.innerText == "全部") {
-        this.flag = false;
-        this.$store.dispatch("getMatchFinish", "1");
-      } else {
-        this.flag = true;
-        this.$store.dispatch("getMatchFinish", "");
-      }
-      Indicator.open();
-      let data = {
-        dateStr: this.$store.state.mark_showObj.mark_dateVal,
-        isAlreadyBuyMatch: this.$store.state.mark_showObj.isAlreadyBuyMatch,
-        leagueIds: this.$store.state.mark_showObj.leagueIds,
-        matchFinish: this.$store.state.mark_showObj.matchFinish
-      };
-      this.$store.dispatch("getResultList", data);
-    },
-    getUrl() {
-      if (getUrlStr("frz", location.href) == undefined) {
-        return true;
-      } else {
-        if (getUrlStr("frz", location.href) == "1") {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    },
-    findTabClick(c,s){
-      if(c.target.localName=='p'&&c.target.parentElement.className.indexOf('findactive')==-1){
-        Indicator.open()
-        $('.findactive').removeClass('findactive')
-        c.target.parentElement.className = "swiper-slide findactive";
-        this.$store.dispatch("changeFinActive",s)
-      }
-    },
-    tabSilde(c,s){
-      $('.worldActive').removeClass('worldActive')
-      s.target.className= 'worldActive'
-      this.$store.state.world_cupObj.world_tab = false
-      if(c==1){
-        this.$store.dispatch("changefsNum", '2');
-        if(getUrlStr('showtitle',location.href)=='1'){
-          this.$router.replace({
-            path: '/activity/world_matchList/worldwinner',
-            query:{
-              'showtitle': '1'
-            }
-          })
-        }else{
-          this.$router.replace({
-            path: '/activity/world_matchList/worldwinner'
-          })
-        }
-      }else{
-        this.$store.dispatch("changefsNum", '2');
-        if(getUrlStr('showtitle',location.href)=='1'){
-          this.$router.replace({
-            path: '/activity/world_matchList/fsplace',
-            query:{
-              'showtitle': '1'
-            }
-          })
-        }else{
-          this.$router.replace({
-            path: '/activity/world_matchList/fsplace'
-          })
-        }
-      }
-    }
-  },
-  computed: {
-    deleteFlag() {
-      return this.$store.state.deleteFlag;
-    },
-    zxCollectionFlag() {
-      return this.$store.state.zxCollectionFlag;
-    },
-    findTab() {
-      return this.$store.state.findObj.findTab;
-    },
-    findStatus() {
-      return this.$store.state.findObj.findActive;
-    }
-  }
-};
 </script>
 
 
 <style lang='scss' scoped>
-@import "../../../assets/css/function.scss";
-.Header {
-  width: 100%;
-    .mint-actionsheet-listitem, .mint-actionsheet-button{
-        font-size: px2rem(28px)!important;
-    }
-  .headerTop {
-    overflow: hidden;
-    height: px2rem(100px);
-    background: #f4f4f4;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .go_return {
-      flex: 1;
-      // padding-left: px2rem(80px);
-      height: 100%;
-      background: url("../../../assets/img/ret.png") no-repeat;
-      background-position: px2rem(34px) center;
-      background-size: px2rem(30px) auto;
-      vertical-align: middle;
-    }
-    .filter {
-      flex: 1;
-      display: flex;
-      height: 100%;
-      width: px2rem(138px);
-      box-sizing: border-box;
-        ul{
-            display: block;
-            height: 100%;
-            padding: 0 px2rem(10px) 0 px2rem(10px);
+    @import "../../../assets/css/function.scss";
+    .Header {
+        width: 100%;
+        .mint-actionsheet-listitem, .mint-actionsheet-button{
+            font-size: px2rem(28px)!important;
+        }
+        .headerTop {
+            overflow: hidden;
+            height: px2rem(100px);
+            background: #f4f4f4;
             display: flex;
             align-items: center;
-            font-size: px2rem(28px);
-            color: #787878;
-            li{
-                font-size: px2rem(28px);
+            justify-content: space-between;
+            .go_return {
+                flex: 1;
+                // padding-left: px2rem(80px);
+                height: 100%;
+                background: url("../../../assets/img/ret.png") no-repeat;
+                background-position: px2rem(34px) center;
+                background-size: px2rem(30px) auto;
+                vertical-align: middle;
+            }
+            .filter {
+                flex: 1;
+                display: flex;
+                height: 100%;
+                width: px2rem(138px);
+                box-sizing: border-box;
+                ul{
+                    display: block;
+                    height: 100%;
+                    padding: 0 px2rem(10px) 0 px2rem(10px);
+                    display: flex;
+                    align-items: center;
+                    font-size: px2rem(28px);
+                    color: #787878;
+                    li{
+                        font-size: px2rem(28px);
+                    }
+                }
+                span {
+                    display: block;
+                    height: 100%;
+                    padding: 0 px2rem(10px) 0 px2rem(10px);
+                    display: flex;
+                    align-items: center;
+                    font-size: px2rem(28px);
+                    color: #787878;
+                }
+                .actine_sms {
+                    font-size: px2rem(18px);
+                }
+                .iconfont {
+                    font-size: px2rem(30px);
+                }
+                .colMenu {
+                    width: 100%;
+                    justify-content: flex-end;
+                    padding-right: px2rem(30px);
+                    box-sizing: border-box;
+                }
+                .active_sm {
+                    width: 100%;
+                    justify-content: flex-end;
+                    padding-right: px2rem(30px);
+                    box-sizing: border-box;
+                    display: block;
+                }
+                .icon-icon-44 {
+                    color: #787878;
+                }
+                .djs{
+                    padding: 0;
+                    flex: 1;
+                    display: flex;
+                    justify-content: flex-end;
+                    padding-right: px2rem(30px);
+                }
+            }
+            .headerText {
+                flex: 3;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                //width: px2rem(500px);
+                font-size: px2rem(32px);
+                color: #505050;
+                justify-content: center;
             }
         }
-      span {
-        display: block;
-        height: 100%;
-        padding: 0 px2rem(10px) 0 px2rem(10px);
-        display: flex;
-        align-items: center;
-        font-size: px2rem(28px);
-        color: #787878;
-      }
-      .actine_sms {
-        font-size: px2rem(18px);
-      }
-      .iconfont {
-        font-size: px2rem(30px);
-      }
-      .colMenu {
-        width: 100%;
-        justify-content: flex-end;
-        padding-right: px2rem(30px);
-        box-sizing: border-box;
-      }
-      .active_sm {
-        width: 100%;
-        justify-content: flex-end;
-        padding-right: px2rem(30px);
-        box-sizing: border-box;
-        display: block;
-      }
-      .icon-icon-44 {
-        color: #787878;
-      }
-      .djs{
-       padding: 0;
-       flex: 1;
-       display: flex;
-       justify-content: flex-end;
-       padding-right: px2rem(30px);
-      }
+        .send,
+        .sendaccount,
+        .senddetail {
+            height: px2rem(88px);
+            background: #fff;
+            overflow: hidden;
+            display: flex;
+            border-bottom: 1px solid #f0f0f0;
+            li {
+                flex: 1;
+                height: px2rem(48px);
+                margin-top: px2rem(20px);
+                border-right: 1px solid #f1f1f1;
+                color: #505050;
+                font-size: px2rem(30px);
+                text-align: center;
+                p {
+                    height: px2rem(64px);
+                    display: block;
+                    margin: 0 auto;
+                }
+            }
+            .cur p,
+            .cur1 p,
+            .cur2 p,
+            .cur3 p {
+                color: #e95504;
+                width: 50%;
+                border-bottom: 2px solid #e95504;
+                display: block;
+            }
+            li:last-child {
+                border-right: none;
+            }
+        }
+        .share {
+            display: flex;
+            height: 100%;
+            width: 1.84rem;
+            font-size: 0.37333rem;
+            color: #505050;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            img {
+                display: inline-block;
+                width: px2rem(32px);
+                height: px2rem(32px);
+                margin-right: px2rem(10px);
+                vertical-align: middle;
+            }
+        }
+        .matchHeader,.wd_nav {
+            background: #fff;
+            height: px2rem(72px);
+            line-height: px2rem(72px);
+            padding: 0 px2rem(30px);
+            box-sizing: border-box;
+            font-size: px2rem(28px);
+            color: #a0a0a0;
+            width: 100%;
+            border-bottom: 1px solid #f0f0f0;
+            span {
+                color: #e95504;
+            }
+        }
+        .help_ul {
+            background: #fff;
+            padding: 0 px2rem(32px) px2rem(36px);
+            li {
+                background: #f6921e;
+                display: inline-block;
+                font-size: px2rem(26px);
+                border-radius: px2rem(10px);
+                width: px2rem(200px);
+                height: px2rem(57px);
+                text-align: center;
+                line-height: px2rem(57px);
+                margin-top: px2rem(36px);
+                margin-right: px2rem(25px);
+                a {
+                    color: #fff;
+                }
+            }
+            li:nth-child(3) {
+                margin-right: 0;
+            }
+        }
+        .list {
+            height: px2rem(88px);
+            //line-height: px2rem(88px);
+            display: flex;
+            background: #fff;
+            -webkit-box-flex: 1;
+            width: 100%;
+            border-bottom: 1px solid #f1f1f1;
+            box-sizing: border-box;
+            li {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex: 1;
+                height: px2rem(88px);
+                text-align: center;
+                border-right: 1px solid #f1f1f1;
+                color: #9f9f9f;
+                font-size: px2rem(28px);
+                position: relative;
+                i {
+                    color: #ea5504;
+                    font-size: px2rem(20px);
+                    right: 0;
+                    position: absolute;
+                    bottom: 0;
+                }
+            }
+        }
+        .findTab {
+            background: white;
+            height: px2rem(88px);
+            line-height: px2rem(88px);
+        }
+        .swiper-slide {
+            width: 25%;
+            background: url("../../../assets/img/freebuy_img/line3.png") no-repeat right
+            center;
+            background-size: 1px px2rem(40px);
+            text-align: center;
+            color: #505050;
+            p {
+                margin: 0 px2rem(38px);
+                height: px2rem(84px);
+                font-size: px2rem(26px);
+            }
+        }
+        .findactive {
+            color: #ea5504;
+            p {
+                border-bottom: px2rem(4px) solid #ea5504;
+            }
+        }
+        .swiper-slide:last-of-type {
+            background: none;
+        }
+        .world_top{
+            display: flex;
+            background: white;
+            height: px2rem(88px);
+            li{
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                p{
+                    height: 100%;
+                    font-size: px2rem(28px);
+                    color: #505050;
+                    line-height: px2rem(88px);
+                    box-sizing: border-box;
+                }
+                .worldActive{
+                    color: #ea5504;
+                    border-bottom: 2px solid #ea5504;
+                }
+            }
+            li:first-of-type{
+                background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
+                background-size: 1px px2rem(50px);
+            }
+        }
     }
-    .headerText {
-      flex: 3;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      //width: px2rem(500px);
-      font-size: px2rem(32px);
-      color: #505050;
-      justify-content: center;
-    }
-  }
-  .send,
-  .sendaccount,
-  .senddetail {
-    height: px2rem(88px);
-    background: #fff;
-    overflow: hidden;
-    display: flex;
-    border-bottom: 1px solid #f0f0f0;
-    li {
-      flex: 1;
-      height: px2rem(48px);
-      margin-top: px2rem(20px);
-      border-right: 1px solid #f1f1f1;
-      color: #505050;
-      font-size: px2rem(30px);
-      text-align: center;
-      p {
-        height: px2rem(64px);
-        display: block;
-        margin: 0 auto;
-      }
-    }
-    .cur p,
-    .cur1 p,
-    .cur2 p,
-    .cur3 p {
-      color: #e95504;
-      width: 50%;
-      border-bottom: 2px solid #e95504;
-      display: block;
-    }
-    li:last-child {
-      border-right: none;
-    }
-  }
-  .share {
-    display: flex;
-    height: 100%;
-    width: 1.84rem;
-    font-size: 0.37333rem;
-    color: #505050;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    img {
-      display: inline-block;
-      width: px2rem(32px);
-      height: px2rem(32px);
-      margin-right: px2rem(10px);
-      vertical-align: middle;
-    }
-  }
-  .matchHeader,.wd_nav {
-    background: #fff;
-    height: px2rem(72px);
-    line-height: px2rem(72px);
-    padding: 0 px2rem(30px);
-    box-sizing: border-box;
-    font-size: px2rem(28px);
-    color: #a0a0a0;
-    width: 100%;
-    border-bottom: 1px solid #f0f0f0;
-    span {
-      color: #e95504;
-    }
-  }
-  .help_ul {
-    background: #fff;
-    padding: 0 px2rem(32px) px2rem(36px);
-    li {
-      background: #f6921e;
-      display: inline-block;
-      font-size: px2rem(26px);
-      border-radius: px2rem(10px);
-      width: px2rem(200px);
-      height: px2rem(57px);
-      text-align: center;
-      line-height: px2rem(57px);
-      margin-top: px2rem(36px);
-      margin-right: px2rem(25px);
-      a {
-        color: #fff;
-      }
-    }
-    li:nth-child(3) {
-      margin-right: 0;
-    }
-  }
-  .list {
-    height: px2rem(88px);
-    //line-height: px2rem(88px);
-    display: flex;
-    background: #fff;
-    -webkit-box-flex: 1;
-    width: 100%;
-    border-bottom: 1px solid #f1f1f1;
-    box-sizing: border-box;
-    li {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
-      height: px2rem(88px);
-      text-align: center;
-      border-right: 1px solid #f1f1f1;
-      color: #9f9f9f;
-      font-size: px2rem(28px);
-      position: relative;
-      i {
-        color: #ea5504;
-        font-size: px2rem(20px);
-        right: 0;
-        position: absolute;
-        bottom: 0;
-      }
-    }
-  }
-  .findTab {
-    background: white;
-    height: px2rem(88px);
-    line-height: px2rem(88px);
-  }
-  .swiper-slide {
-    width: 25%;
-    background: url("../../../assets/img/freebuy_img/line3.png") no-repeat right
-      center;
-    background-size: 1px px2rem(40px);
-    text-align: center;
-    color: #505050;
-    p {
-      margin: 0 px2rem(38px);
-      height: px2rem(84px);
-      font-size: px2rem(26px);
-    }
-  }
-  .findactive {
-    color: #ea5504;
-    p {
-      border-bottom: px2rem(4px) solid #ea5504;
-    }
-  }
-  .swiper-slide:last-of-type {
-    background: none;
-  }
-  .world_top{
-    display: flex;
-    background: white;
-    height: px2rem(88px);
-    li{
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      p{
-        height: 100%;
-        font-size: px2rem(28px);
-        color: #505050;
-        line-height: px2rem(88px);
-        box-sizing: border-box;
-      }
-      .worldActive{
-        color: #ea5504;
-        border-bottom: 2px solid #ea5504;
-      }
-    }
-    li:first-of-type{
-      background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
-      background-size: 1px px2rem(50px);
-    }
-  }
-}
 </style>
 

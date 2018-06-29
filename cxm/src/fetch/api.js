@@ -225,12 +225,12 @@ export default {
     },
     //账户明细列表
     getUserAccountList(params) {
-        return fetchPost('member/user/account/getUserAccountList', params)
+        return fetchPost('/member/user/account/getUserAccountListAndCountTotal', params)
     },
-    //合计
-    countMoneyCurrentMonth(params) {
-        return fetchPost('member/user/account/countMoneyCurrentMonth', params)
-    },
+    // //合计
+    // countMoneyCurrentMonth(params) {
+    //     return fetchPost('member/user/account/countMoneyCurrentMonth', params)
+    // },
     //红包列表
     queryBonusListByStatus(params) {
         return fetchPost('member/user/bonus/queryBonusListByStatus', params)
@@ -451,8 +451,8 @@ export default {
     setinglogin(params){
         return fetchPost('/member/user/setLoginPass', params)
     },
-    //账户明细title
-    detailsTitle(params){
-        return fetchPost('/member/user/account/getUserAccountListAndCountTotal', params)
-    },
+    // //账户明细title
+    // detailsTitle(params){
+    //     return fetchPost('/member/user/account/getUserAccountListAndCountTotal', params)
+    // },
 }

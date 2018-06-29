@@ -156,8 +156,8 @@ const mutations = {
     ARRTIME(state, data){
         state.arrTime = data
     },
-    changeRecruitScrollY(state,recruitScrollY) {   
-        state.recruitScrollY = recruitScrollY  
+    changeRecruitScrollY(state,recruitScrollY) {
+        state.recruitScrollY = recruitScrollY
     },
     FINDTAB(state, data){
         state.findObj.findTab = data
@@ -174,6 +174,9 @@ const mutations = {
         }else if(data=='2'){
             state.world_cupObj.fsNum = 0
         }
+    },
+    USERACCOUNT(state, data){
+        state.user_account.timeType = data
     },
     FIRSTLIST(state, data){
         state.world_cupObj.firstList = data

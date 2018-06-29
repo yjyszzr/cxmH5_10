@@ -4,29 +4,29 @@ import {
 } from 'mint-ui'
 const actions = {
     getSmsCode({
-        commit
-    }, value) {
+                   commit
+               }, value) {
         commit("GETSMSCODE", value);
     },
     reset({
-        commit
-    }) {
+              commit
+          }) {
         commit("RESET");
     },
     getMatchList({
-        commit
-    }, value) {
+                     commit
+                 }, value) {
         api.getMatchList(value)
             .then(res => {
                 if (res.code == 0) {
-                    	//console.log(res)
+                    //console.log(res)
                     commit("MATCHLIST", res.data);
                 }
             })
     },
     getResultList({
-        commit
-    }, value) {
+                      commit
+                  }, value) {
         api.queryMatchResult(value)
             .then(res => {
                 if (res.code == 0) {
@@ -36,143 +36,143 @@ const actions = {
             })
     },
     changeFindphone({
-        commit
-    }, value) {
+                        commit
+                    }, value) {
         commit("FINDPHONE", value);
     },
     changeUserInfo({
-        commit
-    }, value) {
+                       commit
+                   }, value) {
         commit("USERINFO", value);
     },
     changeRecordTab({
-        commit
-    }, value) {
+                        commit
+                    }, value) {
         commit("RECORDTAB", value);
     },
     getMarkDateVal({
-        commit
-    }, value) {
+                       commit
+                   }, value) {
         commit("MARKDATEVAL", value);
     },
     getMarkShow({
-        commit
-    }, value) {
+                    commit
+                }, value) {
         commit("MARKSHOW", value);
     },
     getMarkReset({
-        commit
-    }, value) {
+                     commit
+                 }, value) {
         commit("MARKRESET", value);
     },
     getMarkShowType({
-        commit
-    }, value) {
+                        commit
+                    }, value) {
         commit("MARKSHOWTYPE", value);
     },
     getMatchFinish({
-        commit
-    }, value) {
+                       commit
+                   }, value) {
         commit("MATCHFINISH", value);
     },
     getLeagueIds({
-        commit
-    }, value) {
+                     commit
+                 }, value) {
         commit("LEAGUEIDS", value);
     },
     getisAlreadyBuyMatch({
-        commit
-    }, value) {
+                             commit
+                         }, value) {
         commit("ISAlREADYBUYMATCH", value);
     },
     getFreebuyId({
-        commit
-    }, value) {
+                     commit
+                 }, value) {
         commit("FREEBUYID", value);
     },
     getmatchobj({
-        commit
-    }, value) {
+                    commit
+                }, value) {
         commit("MATCHOBJ", value);
     },
     getmatchSelectedList({
-        commit
-    }, value) {
+                             commit
+                         }, value) {
         commit("MATCHSELECTEDLIST", value);
     },
     getmatchSaveInfo({
-        commit
-    }, value) {
+                         commit
+                     }, value) {
         commit("MATCHSAVEINFO", value);
     },
     getMarkplayBox({
-        commit
-    }, value) {
+                       commit
+                   }, value) {
         commit("MARKPLAYBOX", value);
     },
     getMarkplay({
-        commit
-    }, value) {
+                    commit
+                }, value) {
         commit("MARKPLAY", value);
     },
     getPlayList({
-        commit
-    }, value) {
+                    commit
+                }, value) {
         commit("PLAYLIST", value);
     },
     getPlayuText({
-        commit
-    }, value) {
+                     commit
+                 }, value) {
         commit("PLAYUTTEXT", value);
     },
     changeMupNum({
-        commit
-    }, value) {
+                     commit
+                 }, value) {
         commit("MUPNUM", value);
     },
     changeYhList({
-        commit
-    }, value) {
+                     commit
+                 }, value) {
         commit("YHLIST", value);
     },
     getMyBounsId({
-        commit
-    }, value) {
+                     commit
+                 }, value) {
         commit("MYBOUNSID", value);
     },
     getBfMatchId({
-        commit
-    }, value) {
+                     commit
+                 }, value) {
         commit("BFMATCHID", value);
     },
     getBfIdSaveMap({
-        commit
-    }, value) {
+                       commit
+                   }, value) {
         commit("BFIDSAVEMAP", value);
     },
     getBfIdSaveMapFlag({
-        commit
-    }, value) {
+                           commit
+                       }, value) {
         commit("BFIDSAVEMAPFLAG", value);
     },
     getMatchDetailFlag({
-        commit
-    }, value) {
+                           commit
+                       }, value) {
         commit("MATCHDETAILFLAG", value);
     },
     deleteMyFlag({
-        commit
-    }, value) {
+                     commit
+                 }, value) {
         commit("DELETEFLAG", value);
     },
     getCollectionFlag({
-        commit
-    }, value) {
+                          commit
+                      }, value) {
         commit("ZXCOLLEXCTIONFLAG", value)
     },
     getDetailObj({
-        commit
-    }, value) {
+                     commit
+                 }, value) {
         api.articleDetail(value)
             .then(res => {
                 if (res.code == 0) {
@@ -192,6 +192,9 @@ const actions = {
     //世界杯
     changefsNum({commit},value){
         commit("FSNUM", value)
+    },
+    changeTimeType({commit}, value){
+        commit("USERACCOUNT", value)
     },
     changefirstList({commit},value){
         commit("FIRSTLIST", value)
