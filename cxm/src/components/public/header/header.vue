@@ -363,6 +363,10 @@
 <style lang='scss' scoped>
     @import "../../../assets/css/function.scss";
     .Header {
+        width: 100%;
+        .mint-actionsheet-listitem, .mint-actionsheet-button{
+            font-size: px2rem(20px)!important;
+        }
         .headerTop {
             overflow: hidden;
             height: px2rem(100px);
