@@ -12,7 +12,7 @@
                 <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="djs">胆</span>
                 <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="djs">设置</span>
                 <ul class="djs" @click="actionSheet()"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
-                    <li>{{this.timeTypeShow}}<i class="iconfont icon-icon-22"></i></li>
+                    <li>{{this.timeTypeShow}}<i style="font-size: 0.3rem;" class="iconfont icon-icon-22"></i></li>
                 </ul>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
@@ -121,13 +121,11 @@
             };
         },
         methods: {
-
             actionSheet:function () {
                 this.sheetVisible = true
             },
             sameDay:function () {
                 this.timeTypeShow = '当天';
-
                 this.$store.dispatch("changeTimeType", 1);
             },
             recentMarch:function () {
@@ -364,9 +362,6 @@
     @import "../../../assets/css/function.scss";
     .Header {
         width: 100%;
-        .mint-actionsheet-listitem, .mint-actionsheet-button{
-            font-size: px2rem(20px)!important;
-        }
         .headerTop {
             overflow: hidden;
             height: px2rem(100px);
@@ -384,6 +379,7 @@
                 vertical-align: middle;
             }
             .filter {
+
                 flex: 1;
                 display: flex;
                 height: 100%;

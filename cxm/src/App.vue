@@ -262,6 +262,9 @@ export default {
 <style lang='scss'>
 @import "./assets/css/public.scss";
 @import "./assets/css/function.scss";
+.mint-actionsheet-listitem, .mint-actionsheet-button{
+    font-size: px2rem(26px)!important;
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
