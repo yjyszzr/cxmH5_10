@@ -168,6 +168,9 @@ const mutations = {
     XFBANKLIST(state, data){
         state.xfbanklist = data
     },
+    XFBANKSELCTED(state, data){
+        state.xfbankSelected = data
+    },
     //世界杯
     FSNUM(state, data){
         if(data=='1'){

@@ -74,6 +74,9 @@ export default {
                 }else if(this.payCode == 'app_rongbao'){  //rongbao支付逻辑
                     innerWechat = '0'
                     payTypePd = 'rb'
+                }else if(this.payCode == 'app_xianfeng'){  //rongbao支付逻辑
+                    innerWechat = '0'
+                    payTypePd = 'xf'
                 }
                 let data = {
                     'payCode': this.payCode,
@@ -134,6 +137,13 @@ export default {
                                 location.href = res.data.payUrl+ '&h5ck=' + encodeURIComponent(url)
                             }else if(s=='wx'){
                                 location.href = res.data.payUrl
+                            }else if(s=='xf'){
+                                this.$router.push({
+                                    path: '/user/quickinfo',
+                                    query:{
+                                        id: res.data.payLogId
+                                    }
+                                })
                             }
                         }
                     }

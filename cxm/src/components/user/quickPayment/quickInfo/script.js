@@ -34,9 +34,9 @@ export default {
         api.appCfg(data)
             .then(res => {
                 if(res.code==0) {
-                    console.log(res)
                     this.amt = res.data.amt
                     this.$store.commit('XFBANKLIST',res.data.bankList)
+                    this.$store.commit('XFBANKSELCTED',res.data.bankList[0])
                 }
             })
     },
