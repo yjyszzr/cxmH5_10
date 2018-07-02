@@ -12,7 +12,7 @@
                 <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="djs">胆</span>
                 <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="djs">设置</span>
                 <ul class="djs" @click="actionSheet()"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
-                    <li class="tas">{{timeTypeShow(this.timeTypeStatus)}}</li>
+                    <li>{{timeTypeShow(this.timeTypeStatus)}}<i style="font-size: 0.3rem;" class="iconfont icon-icon-22"></i></li>
                 </ul>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
@@ -94,6 +94,7 @@
         data() {
             return {
                 flag: true,
+
                 action:[
                     {
                         name:'全部',
@@ -131,18 +132,11 @@
             },
             actionSheet:function () {
                 this.sheetVisible = true
-                let liList = $('.mint-actionsheet-listitem')
-                liList.forEach(item => {
-                    item.className='mint-actionsheet-listitem'
-                    if(item.innerText==$('.tas')[0].innerText){
-                        item.className='mint-actionsheet-listitem liActive'
-                    }
-                });
             },
             whole:function () {
                 this.$store.dispatch("changeTimeType", 0);
             },
-            sameDay:function ($event) {
+            sameDay:function () {
                 this.$store.dispatch("changeTimeType", 1);
             },
             recentMarch:function () {
@@ -366,13 +360,6 @@
             timeTypeStatus(){
                 return this.$store.state.user_account.timeType;
             }
-        },
-        watch:{
-            $route(to,from){
-                if(from.path=='/user/account'){
-                    this.sheetVisible = false
-                }
-            }
         }
     };
 </script>
@@ -459,7 +446,7 @@
                 }
             }
             .headerText {
-                flex: 3;
+                flex: 2;
                 height: 100%;
                 display: flex;
                 align-items: center;
