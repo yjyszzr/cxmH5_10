@@ -367,6 +367,13 @@
             timeTypeStatus(){
                 return this.$store.state.user_account.timeType;
             }
+        },
+        watch:{
+            $route(to,from){
+                if(from.path=='/user/account'){
+                    this.sheetVisible = false
+                }
+            }
         }
     };
 </script>
