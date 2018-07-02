@@ -20,7 +20,7 @@
                     <a>
                         <div>
                             <span class="arrow_kefu float_right">{{userInfo.mobile}}</span>
-                            <span class="message">2323手机认证111</span>
+                            <span class="message">手机认证</span>
                         </div>
 
                     </a>
