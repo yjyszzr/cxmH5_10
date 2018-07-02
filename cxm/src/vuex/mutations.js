@@ -171,6 +171,9 @@ const mutations = {
     XFBANKSELCTED(state, data){
         state.xfbankSelected = data
     },
+    TIMESHOW(state, data){
+        state.user_account.timeShow = data
+    },
     //世界杯
     FSNUM(state, data){
         if(data=='1'){
