@@ -12,7 +12,7 @@
                 <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="djs">胆</span>
                 <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="djs">设置</span>
                 <ul class="djs" @click="actionSheet()"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
-                    <li>{{timeTypeShow(this.timeTypeStatus)}}</li>
+                    <li class="tas">{{timeTypeShow(this.timeTypeStatus)}}</li>
                 </ul>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
@@ -131,6 +131,13 @@
             },
             actionSheet:function () {
                 this.sheetVisible = true
+                let liList = $('.mint-actionsheet-listitem')
+                liList.forEach(item => {
+                    item.className='mint-actionsheet-listitem'
+                    if(item.innerText==$('.tas')[0].innerText){
+                        item.className='mint-actionsheet-listitem liActive'
+                    }
+                });
             },
             whole:function () {
                 this.$store.dispatch("changeTimeType", 0);
