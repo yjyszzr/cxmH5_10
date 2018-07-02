@@ -12,7 +12,7 @@
                 <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="djs">胆</span>
                 <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="djs">设置</span>
                 <ul class="djs" @click="actionSheet()"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
-                    <li>{{this.timeTypeShow}}<i style="font-size: 0.3rem;" class="iconfont icon-icon-22"></i></li>
+                    <li>{{timeTypeShow(this.timeTypeStatus)}}</li>
                 </ul>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
@@ -94,7 +94,12 @@
         data() {
             return {
                 flag: true,
+
                 action:[
+                    {
+                        name:'全部',
+                        method:this.whole
+                    },
                     {
                         name:'当天',
                         method:this.sameDay
@@ -110,39 +115,38 @@
                     {
                         name:'最近三月',
                         method:this.recentMarchs
-                    },
-                    {
-                        name:'全部',
-                        method:this.whole
-                    },
+                    }
                 ],
-                sheetVisible: false,
-                timeTypeShow: '最近一周',
+                sheetVisible: false
             };
         },
         methods: {
+            timeTypeShow(c){
+                switch (c){
+                    case 0 : return '全部'
+                    case 1 : return '当天'
+                    case 2 : return '最近一周'
+                    case 3 : return '最近一月'
+                    case 4 : return '最近三月'
+                }
+            },
             actionSheet:function () {
                 this.sheetVisible = true
             },
+            whole:function () {
+                this.$store.dispatch("changeTimeType", 0);
+            },
             sameDay:function () {
-                this.timeTypeShow = '当天';
                 this.$store.dispatch("changeTimeType", 1);
             },
             recentMarch:function () {
-                this.timeTypeShow = '最近一周';
                 this.$store.dispatch("changeTimeType", 2);
             },
             lastmonth:function () {
-                this.timeTypeShow = '最近一月';
                 this.$store.dispatch("changeTimeType", 3);
             },
             recentMarchs:function () {
-                this.timeTypeShow = '最近三月';
                 this.$store.dispatch("changeTimeType", 4);
-            },
-            whole:function () {
-                this.timeTypeShow = '全部';
-                this.$store.dispatch("changeTimeType", 0);
             },
             return_back() {
                 if (this.$route.path.split("/")[2]) {
@@ -352,6 +356,9 @@
             },
             findStatus() {
                 return this.$store.state.findObj.findActive;
+            },
+            timeTypeStatus(){
+                return this.$store.state.user_account.timeType;
             }
         }
     };
@@ -362,6 +369,9 @@
     @import "../../../assets/css/function.scss";
     .Header {
         width: 100%;
+        .mint-actionsheet-listitem, .mint-actionsheet-button{
+            font-size: px2rem(28px)!important;
+        }
         .headerTop {
             overflow: hidden;
             height: px2rem(100px);
@@ -379,11 +389,10 @@
                 vertical-align: middle;
             }
             .filter {
-
                 flex: 1;
                 display: flex;
                 height: 100%;
-                width: px2rem(200px);
+                width: px2rem(138px);
                 box-sizing: border-box;
                 ul{
                     display: block;
@@ -437,7 +446,7 @@
                 }
             }
             .headerText {
-                flex: 2;
+                flex: 3;
                 height: 100%;
                 display: flex;
                 align-items: center;

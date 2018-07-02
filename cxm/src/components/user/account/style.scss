@@ -14,7 +14,7 @@
      overflow: scroll;
      width: 100%;
      top: 0;
-     bottom:px2rem(140px);
+     bottom:px2rem(124px);
    }
    .zhmxlist{
     .list{
@@ -23,6 +23,8 @@
        li{
          width: 100%;
          padding: px2rem(30px) 0;
+         display: flex;
+         justify-content: space-between;
          .gczt{
            width: px2rem(73px);
            height: px2rem(73px);
@@ -37,13 +39,17 @@
          }
          div{
            display: inline-block;
-           width: 85%;
+           width: 88%;
            p{
              font-size: px2rem(28px);
              color: #505050;
              i{
                font-style: normal;
                float: right;
+               em{
+                font-size: px2rem(26px);
+                margin-bottom: px2rem(-5px);
+              }
              }
            }
            b{
@@ -62,10 +68,6 @@
               float: right;
               display: flex;
               align-items: center;
-              em{
-                font-size: px2rem(26px);
-                margin-bottom: px2rem(-5px);
-              }
             }
            }
          }
@@ -82,7 +84,7 @@
    bottom: 0;
    width: 100%;
    margin-top: 0;
-   padding: px2rem(36px) 0 px2rem(36px) px2rem(30px);
+   padding: px2rem(28px) 0 px2rem(28px) px2rem(30px);
    box-sizing: border-box;
    p{
      color:#505050;

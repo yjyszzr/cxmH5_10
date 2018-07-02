@@ -30,17 +30,11 @@ export default {
             Indicator.open()
             //验证码信息
             let data = {
-                'accNo': this.xfSelected.bankCardNo,
-                'certNo': this.xfSelected.certNo,
-                'code':this.numbers,
-                'name': this.xfSelected.userName,
-                'phone': this.xfSelected.phone,
+                'recordId': this.xfSelected.recordId,
                 'payLogId': this.$route.query.id,
                 'token': this.token,
-                'cvn2': this.xfSelected.cvn2,
-                'validDate': this.xfSelected.vaildDate
             }
-            api.xfapp(data)
+            api.appBankListPay(data)
                 .then(res => {
                     if(res.code==0) {
                         this.smsCode.disabled = true

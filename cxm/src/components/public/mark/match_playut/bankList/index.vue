@@ -6,7 +6,7 @@
             选择支付方式
         </div>
         <ul class="bkList">
-            <li @click="bkClick(item)" v-for="(item,i) in xfbklist" :key='i'>{{item.bankName}}（尾号{{item.bankCardNo.substr(-4)}}）</li>
+            <li @click="bkClick(item)" v-for="(item,i) in xfbklist" :key='i'>{{item.message}}</li>
             <div class="tjxk" @click="tjxkClick()">
                 <span>添加新卡支付</span>
                 <img src="../../../../../assets/img/add.png" alt="">

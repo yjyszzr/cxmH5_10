@@ -8,7 +8,9 @@
                         <span>卡号:</span>
                         <input @blur="backType()" v-model="blankNum" type="tel" @input="bankCard()" maxlength='26' onKeyPress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" placeholder="请输入银行卡号">
                     </p>
-                    <p @click='khxq()'>详情</p>
+                    <p @click='khxq()'>
+                        <img src="./img/detail.png" alt="">
+                    </p>
                 </li>
                 <li v-show="bankType!==''">
                     {{bankName}}&nbsp;<span>{{bankType=='0'?'储蓄卡':'信用卡'}}</span> 
@@ -30,21 +32,21 @@
                         <span>有效期:</span>
                         <input v-model="yxq" type="text" placeholder="请输入月份/年份">
                     </p>
-                    <p @click='yxqxq()'>详情</p>
+                    <p @click='yxqxq()'><img src="./img/detail.png" alt=""></p>
                 </li>
                 <li v-show="bankType!==''&&bankType=='1'" class="isxq">
                     <p>
                         <span>CCVV2:</span>
                         <input v-model="ccvv" type="tel" placeholder="请输入卡背后三位数">
                     </p>
-                    <p @click='ccv()'>详情</p>
+                    <p @click='ccv()'><img src="./img/detail.png" alt=""></p>
                 </li>
                 <li class="isxq">
                     <p>
                         <span>手机号:</span>
                         <input v-model="telval" type="tel" placeholder="请输入银行预留手机号">
                     </p>
-                    <p @click='telxq()'>详情</p>
+                    <p @click='telxq()'><img src="./img/detail.png" alt=""></p>
                 </li>
                 <li>
                     <p>
