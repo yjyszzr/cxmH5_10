@@ -132,6 +132,13 @@
             },
             actionSheet:function () {
                 this.sheetVisible = true
+                let liList = $('.mint-actionsheet-listitem')
+                liList.forEach(item => {
+                    item.className='mint-actionsheet-listitem'
+                    if(item.innerText==$('.tas')[0].innerText){
+                        item.className='mint-actionsheet-listitem liActive'
+                    }
+                });
             },
             sameDay:function () {
                 this.$store.dispatch("changeTimeType", 1);
