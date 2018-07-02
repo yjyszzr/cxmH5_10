@@ -71,8 +71,95 @@
                 }
             }
         }
+        .halt{
+            position: absolute;
+            background: rgba(0,0,0,.1);
+            width: 80%;
+            height: 1.41333rem;
+            color: #000;
+            font-size: px2rem(28px);
+            z-index: 999;
+            .halt_p{
+                height: 0.2rem;
+                margin: 0 auto;
+                padding-top: 0.6em;
+                font-style: normal;
+                display: block;
+                text-align: center;
+            }
+        }
+        .fhBoxhalt{
+            position: absolute;
+            background: rgba(0,0,0,.1);
+            width: 6.4rem;
+            height: 0.74667rem;
+            color: #000;
+            font-size: px2rem(28px);
+            z-index: 999;
+            .halt_p{
+                height: 0.2rem;
+                margin: 0 auto;
+                padding-top: 0.2em;
+                font-style: normal;
+                display: block;
+                text-align: center;
+            }
+        }
+        .haltBox{
+            position: absolute;
+            background: rgba(0,0,0,.1);
+            width: 7.33333rem;
+            height:1.9rem;
+            color: #000;
+            font-size: px2rem(28px);
+            z-index: 999;
+            .halt_p{
+                height: 0.2rem;
+                margin: 0 auto;
+                padding-top: 1em;
+                font-style: normal;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        .fhBoxhaltbf{
+            position: absolute;
+            background: rgba(0, 0, 0, 0.1);
+            width: 7.33333rem;
+            height: 0.74667rem;
+            color: #000;
+            font-size: 0.37333rem;
+            z-index: 999;
+            .halt_p{
+                height: 0.2rem;
+                margin: 0 auto;
+                padding-top: 0.2em;
+                font-style: normal;
+                display: block;
+                text-align: center;
+            }
+        }
+        .haltBoxth{
+            position: absolute;
+            background: rgba(0,0,0,.1);
+            width: 7.33333rem;
+            height:1.8rem;
+            color: #000;
+            font-size: px2rem(28px);
+            z-index: 999;
+            .halt_p{
+                height: 0.2rem;
+                margin: 0 auto;
+                padding-top: 1em;
+                font-style: normal;
+                display: block;
+                text-align: center;
+            }
+        }
         .matchRight{
             .matchRightBox{
+                position: relative;
                 height: px2rem(106px);
                 border: 1px solid #c7c7c7;
                 box-sizing: border-box;
@@ -137,6 +224,7 @@
                 }
             }
             .matchRightbfBox{
+                position: relative;
                 overflow: hidden;
                 text-overflow:ellipsis;
                 white-space: nowrap;
@@ -151,6 +239,7 @@
                 margin-right: px2rem(30px);
             }
             .matchRightstoneBox{
+                position: relative;
                 width: px2rem(550px);
                 display: flex;
                 align-items: center;
@@ -179,6 +268,7 @@
                 }
             }
             .matchRighthhBox{
+                position: relative;
                 width: px2rem(550px);
                 display: flex;
                 align-items: center;
@@ -236,6 +326,7 @@
                 }
             }
             .matchRightBox{
+                position: relative;
                 box-sizing: border-box;
                 overflow: hidden;
                 border: 1px solid #c7c7c7;
