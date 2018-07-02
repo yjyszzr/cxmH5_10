@@ -30,10 +30,11 @@ export default {
                 return
             }
 
-            if(this.cipherpassval == this.newpassval){
-                Toast('原密码和新密码不能相同')
-                return
-            }else if(this.newpassval != this.confirmpassval){
+            // if(this.cipherpassval == this.newpassval){
+            //     Toast('原密码和新密码不能相同')
+            //     return
+            // }else
+                if(this.newpassval != this.confirmpassval){
                 Toast('两次输入密码不一致')
                 return
             }
