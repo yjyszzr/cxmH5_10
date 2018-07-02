@@ -335,6 +335,10 @@ export default {
     appCfg(params) {
         return fetchPost('payment/payment/xianfeng/appCfg', params)
     },
+    //先锋支付银行卡列表获取验证码 
+    appBankListPay(params) {
+        return fetchPost('payment/payment/xianfeng/appBankListPay', params)
+    },
     //轮回查询
     query(params) {
         return fetchPost('payment/payment/query', params)

@@ -70,14 +70,16 @@ export default {
                 return '#f6ad41'
             }
         },
-        goTxxq(c) {
-            this.$router.push({
-                path: '/user/give_details',
-                query: {
-                    id: c
-                },
-                replace: false
-            })
+        goTxxq(s,c) {
+            if(s==4){
+                this.$router.push({
+                    path: '/user/give_details',
+                    query: {
+                        id: c
+                    },
+                    replace: false
+                })
+            }
         }
     },
     computed: {
@@ -126,15 +128,9 @@ export default {
             this.amountType = '4'
         }
         this.mxfetch()
-        // let data = {
-        //     'str': ''
-        // }
-        // api.getUserAccountList(data)
-        //     .then(res => {
-        //         // console.log(res)
-        //         if (res.code == 0) {
-        //             this.totalNum = res.data
-        //         }
-        //     })
+    },
+    beforeRouteLeave(to,from,next){
+        this.$store.dispatch("changeTimeType", 2);
+        next()
     }
 }

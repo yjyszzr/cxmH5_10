@@ -12,7 +12,7 @@
                 <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="djs">胆</span>
                 <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="djs">设置</span>
                 <ul class="djs" @click="actionSheet()"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
-                    <li>{{this.timeTypeShow}}</li>
+                    <li>{{timeTypeShow(this.timeTypeStatus)}}</li>
                 </ul>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
@@ -117,34 +117,35 @@
                         method:this.recentMarchs
                     }
                 ],
-                sheetVisible: false,
-                timeTypeShow: '最近一周',
+                sheetVisible: false
             };
         },
         methods: {
-
+            timeTypeShow(c){
+                switch (c){
+                    case 0 : return '全部'
+                    case 1 : return '当天'
+                    case 2 : return '最近一周'
+                    case 3 : return '最近一月'
+                    case 4 : return '最近三月'
+                }
+            },
             actionSheet:function () {
                 this.sheetVisible = true
             },
             whole:function () {
-                this.timeTypeShow = '全部';
                 this.$store.dispatch("changeTimeType", 0);
             },
             sameDay:function () {
-                this.timeTypeShow = '当天';
-
                 this.$store.dispatch("changeTimeType", 1);
             },
             recentMarch:function () {
-                this.timeTypeShow = '最近一周';
                 this.$store.dispatch("changeTimeType", 2);
             },
             lastmonth:function () {
-                this.timeTypeShow = '最近一月';
                 this.$store.dispatch("changeTimeType", 3);
             },
             recentMarchs:function () {
-                this.timeTypeShow = '最近三月';
                 this.$store.dispatch("changeTimeType", 4);
             },
             return_back() {
@@ -355,6 +356,9 @@
             },
             findStatus() {
                 return this.$store.state.findObj.findActive;
+            },
+            timeTypeStatus(){
+                return this.$store.state.user_account.timeType;
             }
         }
     };

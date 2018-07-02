@@ -11,12 +11,12 @@
                 <div class="zhmxlist" v-for="(item,i) in mxList" :key='i' style="background: white;">
                         <p class="data" style='background: #f4f4f4;' v-if="i==0||(i>0&&item.addTime!=mxList[i-1].addTime)">{{item.addTime}}</p>
                         <ul class="list">
-                            <li>
+                            <li @click="goTxxq(item.processType,item.payId)">
                                <p class="gczt" :style="{'background':bg_Color(item.processType)}">{{item.processTypeChar}}</p>
                                 <div>
-                                    <p>{{item.processTypeName}}<i :style="{'color':item.processType=='1'?'#ea5504':'#505050'}">{{item.changeAmount}}</i></p>
+                                    <p>{{item.processTypeName}}<i :style="{'color':item.processType=='1'?'#ea5504':'#505050'}">{{item.changeAmount}}<em v-if="item.processType==4" class="iconfont icon-icon-14"></em></i></p>
                                     <b v-html='item.note'></b>
-                                    <span>{{item.shotTime}}<i v-if="item.processType==4" @click="goTxxq(item.payId)">{{item.status}}<em class="iconfont icon-icon-14"></em></i></span>
+                                    <span>{{item.shotTime}}<i v-if="item.processType==4">{{item.status}}</i></span>
                                 </div>
                             </li>
                         </ul>

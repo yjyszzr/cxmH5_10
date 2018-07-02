@@ -14,6 +14,11 @@
             p:first-of-type{
                 width: 75%;
             }
+            p:last-of-type{
+                img{
+                    width: px2rem(38px);
+                }
+            }
             input{
                 width: 75%;
                 border: none;
@@ -26,7 +31,7 @@
             justify-content: space-between;
         }
         li:nth-child(2){
-            color: #9f9f9f;
+            color: #505050;
         }
         li:last-of-type{
             border: none;

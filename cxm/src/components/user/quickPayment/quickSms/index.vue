@@ -4,7 +4,7 @@
             <span>¥</span>&nbsp;{{this.amt}}
         </div>
         <p>支付金额</p>
-        <p @click="bankClick()">{{xfSelected.bankName}}（尾号{{xfSelected.bankCardNo.substr(-4)}}）<img src="../../../../assets/img/Jump.png" alt=""></p>
+        <p @click="bankClick()">{{xfSelected.message}}<img src="../../../../assets/img/Jump.png" alt=""></p>
         <div class="container">
             <div class="item" v-for="i in 6" :key="i">{{numbers[i-1]}}</div>
             <input v-model="numbers" maxlength="6" type="tel" @focus="reset()"/>
