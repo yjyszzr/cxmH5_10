@@ -14,8 +14,7 @@
         .picker_p2{
             font-size: px2rem(24px);
             color: #787878;
-            height: px2rem(40px);
-            line-height: px2rem(40px);
+            padding: px2rem(6px) 0;
         }
         .picker_p3{
             color: #A0A0A0;
@@ -25,4 +24,7 @@
             }
         }
     }
+}
+.page-loadmore-wrapper{
+    overflow: scroll;
 }

@@ -32,7 +32,6 @@
         </section>
         <section class="forgetM">
             <router-link :to='{path:"/user/pwd",query:{"returnGo":returnGo}}' class="x_in">密码登录</router-link>
-
         </section>
         <div class="prompt"></div>
     </div>

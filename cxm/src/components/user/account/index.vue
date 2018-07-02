@@ -7,7 +7,7 @@
     <div class="wrap">
         <section class="count">
             <div class="ov_account" >
-                <mt-loadmore :bottom-method="loadBottom" :bottom-distance='-20' :auto-fill="false" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleTopChange" @scroll='handleScroll($event)'>
+                <mt-loadmore :bottom-method="loadBottom" :bottom-distance='60' :auto-fill="false" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleTopChange" @scroll='handleScroll($event)'>
                 <div class="zhmxlist" v-for="(item,i) in mxList" :key='i' style="background: white;">
                         <p class="data" style='background: #f4f4f4;' v-if="i==0||(i>0&&item.addTime!=mxList[i-1].addTime)">{{item.addTime}}</p>
                         <ul class="list">

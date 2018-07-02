@@ -787,21 +787,21 @@ router.beforeEach(async(to, from, next) => {
             from.meta.keepAlive = false
         }
     }
-    if(to.matched.some(record => record.meta.requireAuth)) {
-		if(!localStorage.getItem('token')) {
-			next({
-				path: '/user/sms',
-				query: {
-					redirect: to.fullPath
-				}
-			})
-		} else {
-			next()
-		}
-	} else {
-		next()
-	}
-	// next()
+    // if(to.matched.some(record => record.meta.requireAuth)) {
+	// 	if(!localStorage.getItem('token')) {
+	// 		next({
+	// 			path: '/user/sms',
+	// 			query: {
+	// 				redirect: from.fullPath
+	// 			}
+	// 		})
+	// 	} else {
+	// 		next()
+	// 	}
+	// } else {
+	// 	next()
+	// }
+	next()
 })
 
 router.afterEach(async(to, from) => {

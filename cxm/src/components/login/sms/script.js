@@ -33,7 +33,6 @@ export default {
             'smsCode': this.telVal,
             'loginSource': '4'
         }
-        // console.log(JSON.parse(data))
         api.loginBySms(data)
         .then(res => {
             if(res.code==0) {
@@ -75,9 +74,7 @@ export default {
       if(from.path=='/freebuy/cathectic'||from.path=='/activity/world_detail'||from.path=='/user/recharge'||from.path=='/activity/world/worldenter'){
           next(vm=>{
                vm.returnGo =  true 
-               //console.log(vm.returnGo)
           })
-          //localStorage.removeItem('matchSaveInfo')
       }else{
           next(vm=>{
             vm.returnGo =  false 

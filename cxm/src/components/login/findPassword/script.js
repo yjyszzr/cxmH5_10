@@ -30,9 +30,6 @@ export default {
         this.$refs.sjh.style.color = '#9f9f9f'
       },
     },
-    created(){
-      
-    },
     mounted(){
         
     }

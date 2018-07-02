@@ -7,7 +7,6 @@
     <div class="wrap">
         <section>
             <!-- <v-userHeader :title='"投注明细"'></v-userHeader> -->
-
             <mt-loadmore :bottom-method="loadBottom" :bottom-distance='60' :auto-fill="false" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleTopChange" @scroll='handleScroll($event)'>
                 <div class="section cont" v-for="(item,i) in recordList" :key='i'>
                     <a @click="goDetail(item.orderId)">
