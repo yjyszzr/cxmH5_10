@@ -12,7 +12,7 @@
                 <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="djs">胆</span>
                 <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="djs">设置</span>
                 <ul class="djs" @click="actionSheet()"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
-                    <li>{{timeTypeShow(this.timeTypeStatus)}}<i style="font-size: 0.3rem;" class="iconfont icon-icon-22"></i></li>
+                    <li class="tas">{{timeTypeShow(this.timeTypeStatus)}}<i style="font-size: 0.3rem;" class="iconfont icon-icon-22"></i></li>
                 </ul>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
@@ -97,10 +97,6 @@
 
                 action:[
                     {
-                        name:'全部',
-                        method:this.whole
-                    },
-                    {
                         name:'当天',
                         method:this.sameDay
                     },
@@ -115,6 +111,10 @@
                     {
                         name:'最近三月',
                         method:this.recentMarchs
+                    },
+                    {
+                        name:'全部',
+                        method:this.whole
                     }
                 ],
                 sheetVisible: false
@@ -123,18 +123,15 @@
         methods: {
             timeTypeShow(c){
                 switch (c){
-                    case 0 : return '全部'
                     case 1 : return '当天'
                     case 2 : return '最近一周'
                     case 3 : return '最近一月'
                     case 4 : return '最近三月'
+                    case 0 : return '全部'
                 }
             },
             actionSheet:function () {
                 this.sheetVisible = true
-            },
-            whole:function () {
-                this.$store.dispatch("changeTimeType", 0);
             },
             sameDay:function () {
                 this.$store.dispatch("changeTimeType", 1);
@@ -147,6 +144,9 @@
             },
             recentMarchs:function () {
                 this.$store.dispatch("changeTimeType", 4);
+            },
+            whole:function () {
+                this.$store.dispatch("changeTimeType", 0);
             },
             return_back() {
                 if (this.$route.path.split("/")[2]) {
