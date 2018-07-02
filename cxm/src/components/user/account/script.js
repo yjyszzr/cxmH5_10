@@ -30,6 +30,7 @@ export default {
 
         mxfetch() {
             let data = {
+
                 'amountType': this.amountType,
                 'timeType': this.timeType,
                 'pageSize': 20,
