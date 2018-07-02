@@ -219,7 +219,6 @@ export default {
         this.$route.path.split("/")[2] == "world_matchList"||
         this.$route.path.split("/")[2] == "cathectic" ||
         this.$route.path.split("/")[2] == "account"
-
         ||
         this.$route.path.split("/")[1] == "user"
       ) {
@@ -262,10 +261,6 @@ export default {
 <style lang='scss'>
 @import "./assets/css/public.scss";
 @import "./assets/css/function.scss";
-.mint-actionsheet-listitem, .mint-actionsheet-button{
-    font-size: px2rem(26px)!important;
-
-}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

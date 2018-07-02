@@ -94,7 +94,6 @@
         data() {
             return {
                 flag: true,
-
                 action:[
                     {
                         name:'全部',
@@ -136,7 +135,7 @@
             whole:function () {
                 this.$store.dispatch("changeTimeType", 0);
             },
-            sameDay:function () {
+            sameDay:function ($event) {
                 this.$store.dispatch("changeTimeType", 1);
             },
             recentMarch:function () {
@@ -359,6 +358,13 @@
             },
             timeTypeStatus(){
                 return this.$store.state.user_account.timeType;
+            }
+        },
+        watch:{
+            $route(to,from){
+                if(from.path=='/user/account'){
+                    this.sheetVisible = false
+                }
             }
         }
     };

@@ -71,7 +71,8 @@ const state = {
         world_tab: false
     },
     user_account: {
-        timeType: 2
+        timeType: 2,  //账户明细日期
+        timeShow: false  //控制actionSheet开关
     },
     timertz: '', //充值送弹窗定时器
     mark_showAc: false, //充值送弹窗
