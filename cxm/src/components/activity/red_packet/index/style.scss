@@ -1,38 +1,84 @@
 @import '../../../../assets/css/function.scss';
 .packetindex{
   margin-bottom: px2rem(-15px);
+  background: #DC351C;
   .imgTop{
-    margin-bottom: px2rem(-120px);
+    margin-bottom: px2rem(-100px);
   }
   .time{
-    width: 100%;
-    height: px2rem(70px);
+    width:px2rem(538px);
+    height: px2rem(163px);
     color: #e14d24;
     line-height: px2rem(70px);
     text-align: center;
     font-size: px2rem(30px);
     letter-spacing: px2rem(2px);
-    // margin-top: px2rem(-120px);
-    //margin-bottom: px2rem(20px);
+    background: #FFF7E5;
+    margin: 0 auto;
+    z-index: 999;
+    position: relative;
+    border-radius: px2rem(10px);
+    -moz-box-shadow:0px 5px 5px #af2c17;
+    -webkit-box-shadow:0px 5px 5px #af2c17;
+    box-shadow:0px 5px 5px #af2c17;
+    h5{
+      font-size: px2rem(30px);
+      text-align: center;
+      height: px2rem(86px);
+      width: px2rem(487px);
+      color:rgba(255,247,229,1);
+      z-index:99;
+      margin: 0 auto;
+      background:url(../image/xin_title.png) no-repeat;
+      background-size: 100% 100%;
+      line-height: px2rem(70px);
+    }
     span{
-      // background: #fff076;
       padding: px2rem(20px);
-      color: #da2d1c;
+      color: #972302;
       text-align: center;
       margin: 0 px2rem(5px);
       border-radius: px2rem(10px);
+      b{
+        border-radius: px2rem(10px);
+        margin-right: px2rem(10px);
+        font-weight: normal;
+      }
     }
   }
   .carousel{
-    background: rgba(255, 255,255, 0.6);
+    background: #FFF7E5;
     text-align: center;
     position: relative;
     z-index: 10;
-    width: px2rem(600px);
-    margin: 0 auto;
-    border-radius: px2rem(20px);
+    width: px2rem(682px);
+    height: px2rem(78px);
+    line-height: px2rem(75px);
+    margin: px2rem(40px) px2rem(30px) auto;
+    border-radius: px2rem(50px);
+    -moz-box-shadow:0px 5px 5px #af2c17;
+    -webkit-box-shadow:0px 5px 5px #af2c17;
+    box-shadow:0px 5px 5px #af2c17;
+    i{
+      width: px2rem(13px);
+      height: px2rem(13px);
+      border-radius: 50%;
+      background: #972302;
+      position: absolute;
+      left: 3%;
+      top: 44%;
+    }
+    em{
+      width: px2rem(13px);
+      height: px2rem(13px);
+      border-radius: 50%;
+      background: #972302;
+      position: absolute;
+      right: 3%;
+      top: 44%;
+    }
     .scroll-wrap {
-      height: px2rem(50px);
+      height: px2rem(78px);
       overflow: hidden;
       position: relative;
       width: 100%;
@@ -44,12 +90,14 @@
         position: absolute;
         transition: top 0.5s;
         width: 100%;
-        // left: px2rem(72px);
       }
       .scroll-content li {
-        font-size: px2rem(24px);
-        color: #ea5504;
-        height: px2rem(50px);
+        font-size: px2rem(28px);
+        color: #8C1C06;
+        height: px2rem(78px);
+        width: 89%;
+        margin: 0 auto;
+        line-height: 0.4rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -69,61 +117,58 @@
     }
     .box{
       padding-top: px2rem(30px);
-      background: url(../image/img4.png) no-repeat;
+      background:#DC351C;
       width: 100%;
       height: 100%;
       ul{
         width: 100%;
         margin:0 auto;
-        margin-bottom: px2rem(100px);
+        margin-bottom: px2rem(50px);
         li{
           margin: px2rem(10px) 0;
           width: 50%;
           display: inline-block;
           div{
-            background: url(../image/img2.png) no-repeat center;
-            background-size: 95% 95%;
-            width: px2rem(364px);
-            height: px2rem(220px);
+            background: url(../image/xin_bg1.png) no-repeat center;
+            background-size: 100% 100%;
+            width: px2rem(344px);
+            height: px2rem(230px);
             position: relative;
-            i{
-              background: url(../image/img3.png) no-repeat;
-              position: absolute;
-              right: px2rem(23px);
-              top: px2rem(18px);
-              width: px2rem(246px);
-              height: px2rem(87px);
-            }
-            .img3{
-              background: url(../image/img3.png) no-repeat;
-              background-size: 100% 100%;
-            }
-            .img5{
-              width: px2rem(186px);
-              background: url(../image/img5.png) no-repeat;
-              background-size: 100% 100%;
-            }
-            p{
-              margin-left: px2rem(40px);
+            text-align: center;
+            margin: 0 auto;
+            b{
+              font-size: px2rem(30px);
+              font-weight: normal;
             }
             p:nth-of-type(1){
               height: px2rem(60px);
               line-height: px2rem(60px);
-              padding-top: px2rem(80px);
-              color: #e14d24;
+              padding-top: px2rem(85px);
+              color: #fff;
               font-size: px2rem(40px);
               span{
-                font-size: px2rem(68px);
-                font-weight: 600;
+                font-size: px2rem(60px);
+                font-weight: 500;
               }
               span:nth-of-type(2){
-                font-size: px2rem(40px);
+                font-size: px2rem(49px);
               }
+            }
+            .disnone{
+              display: none;
+            }
+            p:nth-of-type(2).mtop{
+              padding-top: px2rem(125px);
+              height:px2rem(33px);
+              color:#972302;
+              font-weight: 600;
+              font-size:px2rem(30px);
             }
             p:nth-of-type(2){
               margin-top: px2rem(20px);
-              color: #db8204 ;
+              color: #724C01;
               font-size: px2rem(24px);
+              font-weight: bold;
               span{
                 color: #e14d24;
                 font-size: px2rem(26px);
@@ -131,50 +176,53 @@
               }
             }
           }
+          .img3{
+            background: url(../image/xin_bg.png) no-repeat;
+            background-size: 100% 100%;
+          }
+          .img5{
+            background: url(../image/xin_bg1.png) no-repeat;
+            background-size: 100% 100%;
+          }
           .btn{
             text-align: center;
-            margin: px2rem(18px) auto;
-            border-radius: px2rem(30px);
-            width: px2rem(220px);
-            height: px2rem(55px);
-            line-height: px2rem(55px);
-            color: #ffe6b9;
-            background: #e14d24;
+            margin: px2rem(7px) auto px2rem(18px);
+            width: px2rem(298px);
+            height: px2rem(82px);
+            background: url(../image/xin_btn.png) no-repeat;
+            background-size: 100% 100%;
             font-size: px2rem(22px);
-            letter-spacing: px2rem(2px);
           }
         }
       }
       .rule{
-        width: 80%;
+        width: 90%;
         margin:0 auto;
-        border-radius: px2rem(40px);
-        background: #e14d24;
-        color:#ffe6b9;
+        border-radius: px2rem(10px);
+        background: #FFF7E5;
+        color:#333;
         font-size: px2rem(24px);
         padding:0 px2rem(10px);
         line-height: px2rem(40px);
+        -moz-box-shadow:0px 5px 5px #af2c17;
+        -webkit-box-shadow:0px 5px 5px #af2c17;
+        box-shadow:0px 5px 5px #af2c17;
         h5{
-          font-size: px2rem(36px);
+          font-size: px2rem(30px);
           text-align: center;
-          height: px2rem(80px);
-          opacity: 0.8;
-          width: px2rem(250px);
+          height: px2rem(86px);
+          width: px2rem(487px);
+          color:rgba(255,247,229,1);
           z-index:99;
           margin: 0 auto;
-          background: rgb(237,138,96);
-          line-height: px2rem(80px);
-          border-radius:0 0  px2rem(25px) px2rem(25px);
+          background:url(../image/xin_title.png) no-repeat;
+          background-size: 100% 100%;
+          line-height: px2rem(70px);
         }
         div{
-          padding:px2rem(50px);
+          padding:px2rem(30px);
           letter-spacing: px2rem(2px);
-          span{
-            width: px2rem(30px);
-            float: left;
-          }
           p{
-            width: 90%;
             display: inline-block;
           }
         }

@@ -51,13 +51,13 @@
                         sec = sec < 10 ? "0" + sec : sec;
                         let format = '';
                         if(day > 0){
-                            format =  `距离活动结束还有<b style='background:#fff076;padding:0 0.05rem;'>${day}</b>天<b style='background:#fff076;padding:0 0.05rem;'>${hour}</b>小时<b style='background:#fff076;padding:0 0.05rem;'>${min}</b>分<b style='background:#fff076;padding:0 0.05rem;'>${sec}</b>秒`;
+                            format =  `<b style='background:#DC351C;border-radius:3px;margin:0 2px;font-weight: normal;padding:0 0.05rem;color: #fff'>${day}</b>天<b style='background:#DC351C;border-radius:3px;margin:0 2px;font-weight: normal;padding:0 0.05rem;color: #fff'>${hour}</b>小时<b style='background:#DC351C;border-radius:3px;margin:0 2px;font-weight:normal;padding:0 0.05rem;color: #fff'>${min}</b>分<b style='background:#DC351C;border-radius:3px;margin:0 2px;font-weight: normal;padding:0 0.05rem;color: #fff'>${sec}</b>秒`;
                         }
                         if(day <= 0 && hour > 0 ){
-                            format = `距离活动结束还有<b style='background:#fff076;padding:0 0.05rem;'>${day}</b>天<b style='background:#fff076;padding:0 0.05rem;'>${hour}</b>小时<b style='background:#fff076;padding:0 0.05rem;'>${min}</b>分<b style='background:#fff076;padding:0 0.05rem;'>${sec}</b>秒`;
+                            format = `<b style='background:#DC351C;border-radius:3px;margin:0 2px;font-weight: normal;padding:0 0.05rem;color: #fff'>${day}</b>天<b style='background:#DC351C;border-radius:3px;margin:0 2px;font-weight: normal;padding:0 0.05rem;color: #fff'>${hour}</b>小时<b style='background:#DC351C;border-radius:3px;margin:0 2px;font-weight:normal;padding:0 0.05rem;color: #fff'>${min}</b>分<b style='background:#DC351C;border-radius:3px;margin:0 2px;font-weight: normal;padding:0 0.05rem;color: #fff'>${sec}</b>秒`;
                         }
                         if(day <= 0 && hour <= 0){
-                            format =`距离活动结束还有<b style='background:#fff076;padding:0 0.05rem;'>${day}</b>天<b style='background:#fff076;padding:0 0.05rem;'>0</b>小时<b style='background:#fff076;padding:0 0.05rem;'>${min}</b>分<b style='background:#fff076;padding:0 0.05rem;'>${sec}</b>秒`;
+                            format =`<b style='background:#DC351C;border-radius:3px;margin:0 2px;font-weight: normal;padding:0 0.05rem;color: #fff'>${day}</b>天<b style='background:#DC351C;border-radius:3px;margin:0 2px;font-weight: normal;padding:0 0.05rem;color: #fff'>0</b>小时<b style='background:#DC351C;border-radius:3px;margin:0 2px;font-weight:normal;padding:0 0.05rem;color: #fff'>${min}</b>分<b style='background:#DC351C;border-radius:3px;margin:0 2px;font-weight: normal;padding:0 0.05rem;color: #fff'>${sec}</b>秒`;
                         }
                         self.content = format;
                     }else{

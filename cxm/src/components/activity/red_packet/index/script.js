@@ -59,7 +59,7 @@ export default {
     computed: {
         //跑马灯
         top() {
-          return -this.activeIndex * 0.66667 + "rem";
+          return -this.activeIndex * 1.03 + "rem";
         }
     },
     methods: {
