@@ -95,13 +95,15 @@
         font-size: px2rem(28px);
         color: #8C1C06;
         height: px2rem(78px);
+        line-height: px2rem(78px);
         width: 89%;
         margin: 0 auto;
-        line-height: 0.4rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        //display: flex;
+        //align-items: center;
+        //justify-content: center;
       }
     }
   }
