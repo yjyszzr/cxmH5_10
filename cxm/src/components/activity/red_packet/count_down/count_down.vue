@@ -65,7 +65,7 @@
                         self.content = self.endText;
                         self._callback();
                     }
-                },1000);
+                },10);
             },
             _callback(){
                 if(this.callback && this.callback instanceof Function){
