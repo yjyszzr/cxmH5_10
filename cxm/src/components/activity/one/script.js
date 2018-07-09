@@ -26,7 +26,6 @@ export default {
 		}
 	},
 	mounted() {
-		document.title = '注册送好礼';
 		means('注册送红包').isTitle
 		isShare(' 新人注册送好礼，100元红包等你来领', '注册就送100元新人大礼包', '/static/activity_Back/newComerReg/newComerReg.html?id=1', '/static/activity_Back/newComerReg/img/logozc.jpg')
 	},

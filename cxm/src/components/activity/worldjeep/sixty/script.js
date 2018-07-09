@@ -240,7 +240,6 @@ export default {
     setTimeout(()=>{
       this.show = false
     },3000)
-    document.title='世界杯冠军之路'
     if(this.from=='worldenter'){
       let arr1 = [],arr2 = []
       arr1 = this.teamObj[0].sixteenGroupTwoList

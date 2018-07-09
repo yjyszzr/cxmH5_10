@@ -43,7 +43,7 @@ export default {
         }
     },
     mounted(){
-        document.title='活动说明'
+        
     }
 }
 </script>

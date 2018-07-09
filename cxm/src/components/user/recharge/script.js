@@ -101,16 +101,16 @@ export default {
                                 localStorage.setItem('payLogId', res.data.payLogId)
                                 localStorage.setItem('activefrom',this.activefrom)
                             }
-                            location.href = res.data.payUrl
+                            // location.href = res.data.payUrl
                             // console.log(res.data.payUrl)
                         }else if(s=='xf'){
-                            Toast('功能暂未开放')
-                            // this.$router.push({
-                            //     path: '/user/quickinfo',
-                            //     query:{
-                            //         id: res.data.payLogId
-                            //     }
-                            // })
+                            //Toast('功能暂未开放')
+                            this.$router.push({
+                                path: '/user/quickinfo',
+                                query:{
+                                    id: res.data.payLogId
+                                }
+                            })
                         }
                     }
             })
