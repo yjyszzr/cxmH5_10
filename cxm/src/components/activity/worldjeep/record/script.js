@@ -23,7 +23,7 @@ export default {
         }
     },
     mounted(){
-          document.title='我的竞猜记录'
+          // document.title='我的竞猜记录'
           api.worldCupPlanlist({})
             .then(res => {
               if (res.code == 0) {

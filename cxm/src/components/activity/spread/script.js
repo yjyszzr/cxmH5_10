@@ -40,12 +40,15 @@ export default {
                     if(this.fr){
                         if(this.$route.query.fr == 'c044'){
                             this._sql.report('transfer', {}, function (res) {
+                                console.log(true)
                             }, function (code) {
+                                console.log(false)
                             });
                         }
                         location.href="http://m.caixiaomi.net/down/cxm106_j"+this.$route.query.fr+".apk"
                     }
                 }else {
+
                     location.href = "https://m.caixiaomi.net/down/cxm106_jc035.apk"
                 }
             }

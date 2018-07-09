@@ -92,7 +92,7 @@ export default {
         }
     },
     mounted(){
-        document.title='世界杯冠军之路'
+        // document.title='世界杯冠军之路'
         $.ajax({
             url: '../../../../../static/jsonData/world_team.json',
             data:{

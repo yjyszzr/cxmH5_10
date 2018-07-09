@@ -168,6 +168,8 @@ export default {
           //二期活动
             case 'red_packet':
               return "充值送壕礼";
+              case 'one':
+                  return "注册送红包";
 
             case 'world_cup':
                   return "世界杯";

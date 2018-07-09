@@ -150,7 +150,7 @@ export default {
         }
     },
     mounted(){
-        document.title='世界杯冠军之路'
+        // document.title='世界杯冠军之路'
         isShare('竞猜世界杯冠军之路，50万奖金等你瓜分', '点击这里，参与世界杯竞猜，跟我一起瓜分大奖!', '/activity/world/worldenter?cxmxc=scm&usinfo=2&cmshare=1&type=1','/static/activity_Back/newComerReg/img/logowd.jpg')
     },
     beforeRouteLeave(to, from, next) {
