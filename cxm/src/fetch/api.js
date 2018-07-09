@@ -455,3 +455,5 @@ export default {
         return fetchPost('/member/user/setLoginPass', params)
     }
 }
+
+

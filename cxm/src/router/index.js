@@ -329,7 +329,7 @@ const router = new Router({
       },
 //    一期活动相关路由
       {
-        path: '/user/activity/one',
+        path: '/activity/one',
         name: 'activity',
         meta: {
             title: '注册送好礼'

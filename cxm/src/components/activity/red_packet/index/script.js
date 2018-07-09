@@ -15,6 +15,7 @@ export default {
             activeIndex: 0
         }
     },
+
     beforeCreate() {
         Indicator.open()
     },
@@ -58,7 +59,7 @@ export default {
     computed: {
         //跑马灯
         top() {
-          return -this.activeIndex * 0.66667 + "rem";
+          return -this.activeIndex * 1.03 + "rem";
         }
     },
     methods: {
@@ -66,6 +67,7 @@ export default {
         callback(){},
         //火速充值按钮操作
         btn(realValue, type){
+
             Indicator.open()
              //app充值传钱转对象
             let price = {"price":realValue}
@@ -79,7 +81,11 @@ export default {
                     if (res.code == 0) {
                         this.countUserInfo = res.data;
                         //yesOrNo0未充值 1充值         type 0 新用户，1老用户
-                        if(this.countUserInfo.yesOrNo == 0 && type == 1){
+                        if (!localStorage.getItem('token')) {
+                            this.$router.push({
+                                path: '/user/sms'
+                            })
+                        }else if(this.countUserInfo.yesOrNo == 0 && type == 1){
                             MessageBox.confirm('',{
                                 message: '有新用户专享活动，仍然继续？',
                                 title: '提示',
