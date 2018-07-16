@@ -23,7 +23,6 @@ export default {
                 for (let i = 0; i < item.playList.length; i++) {
                     if (item.playList[i].matchId == this.$store.state.mark_playObj.bfmatchId) {
                         item.playList[i] = this.scoreObj
-
                     }
                 }
             });

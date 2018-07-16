@@ -80,7 +80,7 @@ const router = new Router({
       },
       {
           path: '/find',
-          name: 'find',
+          name: 'findtab',
           meta: {
             keepAlive: true,
             title: '发现'
@@ -435,7 +435,7 @@ const router = new Router({
           children: [
             {
                 path: '/',
-                name: 'worldwinner',
+                name: 'worldwinners',
                 meta: {
                     title: '世界杯'
                 },
@@ -493,32 +493,32 @@ const router = new Router({
       //安全保障：/appinfo/insurance
       {
           path: '/appinfo/help',
-          name: 'help',
+          name: 'helpmjb',
           component: resolve => require(['@/components/mjb/appinfo/help/index.vue'], resolve)
       },
       {
           path: '/appinfo/protocol',
-          name: 'protocol',
+          name: 'protocolmjb',
           component: resolve => require(['@/components/mjb/appinfo/protocol/index.vue'], resolve)
       },
       {
           path: '/appinfo/service',
-          name: 'service',
+          name: 'servicemjb',
           component: resolve => require(['@/components/mjb/appinfo/service/index.vue'], resolve)
       },
       {
           path: '/appinfo/inToplay',
-          name: 'inToplay',
+          name: 'inToplaymjb',
           component: resolve => require(['@/components/mjb/appinfo/intoplay/index.vue'], resolve)
       },
       {
           path: '/appinfo/explain',
-          name: 'explain',
+          name: 'explainmjb',
           component: resolve => require(['@/components/mjb/appinfo/explain/explain.vue'], resolve)
       },
       {
           path: '/appinfo/insurance',
-          name: 'insurance',
+          name: 'insurancemjb',
           component: resolve => require(['@/components/mjb/appinfo/insurance/insurance.vue'], resolve)
       },
       {
@@ -535,32 +535,32 @@ const router = new Router({
       //安全保障：/appmust/insurance
       {
           path: '/appmust/help',
-          name: 'help',
+          name: 'helpmjbm',
           component: resolve => require(['@/components/mjb/appmust/help/index.vue'], resolve)
       },
       {
           path: '/appmust/protocol',
-          name: 'protocol',
+          name: 'protocolmjbm',
           component: resolve => require(['@/components/mjb/appmust/protocol/index.vue'], resolve)
       },
       {
           path: '/appmust/service',
-          name: 'service',
+          name: 'servicemjbm',
           component: resolve => require(['@/components/mjb/appmust/service/index.vue'], resolve)
       },
       {
           path: '/appmust/inToplay',
-          name: 'inToplay',
+          name: 'inToplaymjbm',
           component: resolve => require(['@/components/mjb/appmust/intoplay/index.vue'], resolve)
       },
       {
           path: '/appmust/explain',
-          name: 'explain',
+          name: 'explainmjbm',
           component: resolve => require(['@/components/mjb/appmust/explain/explain.vue'], resolve)
       },
       {
           path: '/appmust/insurance',
-          name: 'insurance',
+          name: 'insurancemjbm',
           component: resolve => require(['@/components/mjb/appmust/insurance/insurance.vue'], resolve)
       },
       //app天天买
@@ -572,38 +572,38 @@ const router = new Router({
       //安全保障：/apptt/insurance
       {
           path: '/apptt/help',
-          name: 'help',
+          name: 'helpmjbt',
           component: resolve => require(['@/components/mjb/apptt/help/index.vue'], resolve)
       },
       {
           path: '/apptt/protocol',
-          name: 'protocol',
+          name: 'protocolmjbt',
           component: resolve => require(['@/components/mjb/apptt/protocol/index.vue'], resolve)
       },
       {
           path: '/apptt/service',
-          name: 'service',
+          name: 'servicemjbt',
           component: resolve => require(['@/components/mjb/apptt/service/index.vue'], resolve)
       },
       {
           path: '/apptt/inToplay',
-          name: 'inToplay',
+          name: 'inToplaymjbt',
           component: resolve => require(['@/components/mjb/apptt/intoplay/index.vue'], resolve)
       },
       {
           path: '/apptt/explain',
-          name: 'explain',
+          name: 'explainmjbt',
           component: resolve => require(['@/components/mjb/apptt/explain/explain.vue'], resolve)
       },
       {
           path: '/apptt/insurance',
-          name: 'insurance',
+          name: 'insurancemjbt',
           component: resolve => require(['@/components/mjb/apptt/insurance/insurance.vue'], resolve)
       },
       //世界杯协议
       {
           path: '/appsjb/world_explain',
-          name: 'world_explain',
+          name: 'world_explainmjbs',
           component: resolve => require(['@/components/mjb/appsjb/world_explain/world_explain.vue'], resolve)
       },
       {
@@ -621,13 +621,18 @@ const router = new Router({
       },
       {
           path: '/activity/world/record',
-          name: 'record',
+          name: 'records',
           component: resolve => require(['@/components/activity/worldjeep/record/record.vue'], resolve)
       },
       {
           path: '/activity/world/worldenter',
           name: 'world',
           component: resolve => require(['@/components/activity/worldjeep/world/world.vue'], resolve)
+      },
+      {
+        path: '/activity/world/result',
+        name: 'result',
+        component: resolve => require(['@/components/activity/worldjeep/result/index.vue'], resolve)
       },
       {
           path: '/user/setup',
@@ -653,94 +658,94 @@ const router = new Router({
       //安全保障：/appball/insurance
       {
           path: '/appball/help',
-          name: 'help',
+          name: 'helpmjbs',
           component: resolve => require(['@/components/mjb/appball/help/index.vue'], resolve)
       },
       {
           path: '/appball/protocol',
-          name: 'protocol',
+          name: 'protocolmjbs',
           component: resolve => require(['@/components/mjb/appball/protocol/index.vue'], resolve)
       },
       {
           path: '/appball/service',
-          name: 'service',
+          name: 'servicemjbs',
           component: resolve => require(['@/components/mjb/appball/service/index.vue'], resolve)
       },
       {
           path: '/appball/inToplay',
-          name: 'inToplay',
+          name: 'inToplaymjbs',
           component: resolve => require(['@/components/mjb/appball/intoplay/index.vue'], resolve)
       },
       {
           path: '/appball/explain',
-          name: 'explain',
+          name: 'explainmjbs',
           component: resolve => require(['@/components/mjb/appball/explain/explain.vue'], resolve)
       },
       {
           path: '/appball/insurance',
-          name: 'insurance',
+          name: 'insurancemjbs',
           component: resolve => require(['@/components/mjb/appball/insurance/insurance.vue'], resolve)
       },
       //天天体育
       {
           path: '/appty/help',
-          name: 'help',
+          name: 'helpmjby',
           component: resolve => require(['@/components/mjb/appty/help/index.vue'], resolve)
       },
       {
           path: '/appty/protocol',
-          name: 'protocol',
+          name: 'protocolmjby',
           component: resolve => require(['@/components/mjb/appty/protocol/index.vue'], resolve)
       },
       {
           path: '/appty/service',
-          name: 'service',
+          name: 'servicemjby',
           component: resolve => require(['@/components/mjb/appty/service/index.vue'], resolve)
       },
       {
           path: '/appty/inToplay',
-          name: 'inToplay',
+          name: 'inToplaymjby',
           component: resolve => require(['@/components/mjb/appty/intoplay/index.vue'], resolve)
       },
       {
           path: '/appty/explain',
-          name: 'explain',
+          name: 'explainmjby',
           component: resolve => require(['@/components/mjb/appty/explain/explain.vue'], resolve)
       },
       {
           path: '/appty/insurance',
-          name: 'insurance',
+          name: 'insurancemjby',
           component: resolve => require(['@/components/mjb/appty/insurance/insurance.vue'], resolve)
       },
       //天空体育
       {
           path: '/sky/help',
-          name: 'help',
+          name: 'helpmjbk',
           component: resolve => require(['@/components/mjb/sky/help/index.vue'], resolve)
       },
       {
           path: '/sky/protocol',
-          name: 'protocol',
+          name: 'protocolmjbk',
           component: resolve => require(['@/components/mjb/sky/protocol/index.vue'], resolve)
       },
       {
           path: '/sky/service',
-          name: 'service',
+          name: 'servicemjbk',
           component: resolve => require(['@/components/mjb/sky/service/index.vue'], resolve)
       },
       {
           path: '/sky/inToplay',
-          name: 'inToplay',
+          name: 'inToplaymjbk',
           component: resolve => require(['@/components/mjb/sky/intoplay/index.vue'], resolve)
       },
       {
           path: '/sky/explain',
-          name: 'explain',
+          name: 'explainmjbk',
           component: resolve => require(['@/components/mjb/sky/explain/explain.vue'], resolve)
       },
       {
           path: '/sky/insurance',
-          name: 'insurance',
+          name: 'insurancemjbk',
           component: resolve => require(['@/components/mjb/sky/insurance/insurance.vue'], resolve)
       },
 

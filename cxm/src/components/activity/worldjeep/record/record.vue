@@ -5,7 +5,7 @@
     <div class="record">
         <div class="r_center">
             <div class="boxone" v-for="(item,i) in recordList" :key='i'>
-                <h5>竞猜时间：{{item.addTime}}</h5>
+                <h5>竞猜时间：{{item.addTime}}<span v-if="Number(item.rst1Amount)+Number(item.rst2Amount)+Number(item.rst4Amount)+Number(item.rst8Amount)+Number(item.rst16Amount)>0">恭喜获得{{(Number(item.rst1Amount)+Number(item.rst2Amount)+Number(item.rst4Amount)+Number(item.rst8Amount)+Number(item.rst16Amount)).toFixed(2)}}元</span></h5>
                 <table>
 
                     <tr>
@@ -18,21 +18,21 @@
                         <td>
                             <p :style="{'color':data.isGet=='1'?'#ea5504':'#505050'}" v-for="data in item.plan16" :key='data.countryId'>{{data.contryName}}&nbsp;</p>
                         </td>
-                        <td :style="{'color':item.rst2=='1'?'#ea5504':'#505050'}">{{item.rst16=='0'?'待开奖':item.rst16=='1'?'命中':'未命中'}}</td>
+                        <td :style="{'color':item.rst16=='1'?'#ea5504':'#505050'}">{{item.rst16=='0'?'待开奖':item.rst16=='1'?'命中':'未命中'}}</td>
                     </tr>
                     <tr>
                         <td>8强</td>
                         <td>
                             <p :style="{'color':data.isGet=='1'?'#ea5504':'#505050'}" v-for="data in item.plan8" :key='data.countryId'>{{data.contryName}}&nbsp;</p>
                         </td>
-                        <td :style="{'color':item.rst2=='1'?'#ea5504':'#505050'}">{{item.rst8=='0'?'待开奖':item.rst8=='1'?'命中':'未命中'}}</td>
+                        <td :style="{'color':item.rst8=='1'?'#ea5504':'#505050'}">{{item.rst8=='0'?'待开奖':item.rst8=='1'?'命中':'未命中'}}</td>
                     </tr>
                     <tr>
                         <td>4强</td>
                         <td>
                             <p :style="{'color':data.isGet=='1'?'#ea5504':'#505050'}" v-for="data in item.plan4" :key='data.countryId'>{{data.contryName}}&nbsp;</p>
                         </td>
-                        <td :style="{'color':item.rst2=='1'?'#ea5504':'#505050'}">{{item.rst4=='0'?'待开奖':item.rst4=='1'?'命中':'未命中'}}</td>
+                        <td :style="{'color':item.rst4=='1'?'#ea5504':'#505050'}">{{item.rst4=='0'?'待开奖':item.rst4=='1'?'命中':'未命中'}}</td>
                     </tr>
                     <tr>
                         <td>冠亚军</td>
@@ -46,14 +46,16 @@
                         <td>
                             <p :style="{'color':item.plan1.isGet=='1'?'#ea5504':'#505050'}">{{item.plan1.contryName}}&nbsp;</p>
                         </td>
-                        <td :style="{'color':item.rst2=='1'?'#ea5504':'#505050'}">{{item.rst1=='0'?'待开奖':item.rst1=='1'?'命中':'未命中'}}</td>
+                        <td :style="{'color':item.rst1=='1'?'#ea5504':'#505050'}">{{item.rst1=='0'?'待开奖':item.rst1=='1'?'命中':'未命中'}}</td>
                     </tr>
                     <tr class="list" v-if="item.plan16.length>0">
                         <td>终极大奖</td>
                         <td>
-                            <p>所有名单都猜中，即可瓜分20万大奖</p>
+                            <p v-show="item.rstAllTrue=='1'">恭喜获得{{item.rstAllTrueAmount}}元</p>
+                            <p v-show="item.rstAllTrue=='2'">很遗憾您没有获得终极大奖</p>
+                            <p v-show="item.rstAllTrue=='0'">所有名单都猜中，即可瓜分20万大奖</p>
                         </td>
-                        <td>{{item.rst1=='1'&&item.rst2=='1'&&item.rst4=='1'&&item.rst8=='1'&&item.rst16=='1'?'命中':'待确定'}}</td>
+                        <td>{{item.rstAllTrue=='1'?'命中':item.rstAllTrue=='2'?'未命中':'待确定'}}</td>
                     </tr>
                 </table>
             </div>
@@ -61,22 +63,19 @@
                     <img src="../../../../assets/img/juan.png" alt="">
                     <span>尚未提交竞猜方案</span>
             </div>
+            <div class="hdzj" v-if="recordList.length>0">活动中奖情况</div>
             <table v-if="recordList.length>0">
                 <tr class="table_list">
-                    <td>16强</td>
-                    <td>8强</td>
-                    <td>4强</td>
-                    <td>冠亚军</td>
-                    <td>冠军</td>
-                    <td>终极大奖</td>
+                    <td>奖项</td>
+                    <td>奖金池</td>
+                    <td>中奖人数</td>
+                    <td>平均中奖金额</td>
                 </tr>
-                <tr class="table_list">
-                    <td>15万</td>
-                    <td>8万</td>
-                    <td>4万</td>
-                    <td>2万</td>
-                    <td>1万</td>
-                    <td>20万</td>
+                <tr class="table_list" v-for="(item,i) in rewardList" :key='i'>
+                    <td>{{item.prize}}</td>
+                    <td>{{item.quota}}</td>
+                    <td>{{item.peopleNum}}</td>
+                    <td>{{item.average}}</td>
                 </tr>
             </table>
             <div class="prize" v-if="recordList.length>0">

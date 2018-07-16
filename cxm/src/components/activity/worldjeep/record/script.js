@@ -7,19 +7,15 @@ export default {
     },
     data(){
         return {
-            recordList: []
+            recordList: [],
+            rewardList: []
         }
     },
     methods:{
         paymentBtn(){
-            MessageBox.alert('', {
-                message: '竞猜结果将在7月16日12:00:00公布，请耐心等待',
-                title: '提示',
-                confirmButtonText: '我知道了',
-                closeOnClickModal: false
-            }).then(action => {
-
-            });
+            this.$router.push({
+                path: '/activity/world/result'
+            })
         }
     },
     mounted(){
@@ -27,6 +23,12 @@ export default {
             .then(res => {
               if (res.code == 0) {
                 this.recordList = res.data
+              }
+            })
+          api.rewardList('')
+            .then(res => {
+              if (res.code == 0) {
+                this.rewardList = res.data
               }
             })
     }

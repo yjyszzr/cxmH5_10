@@ -17,6 +17,10 @@
       height: px2rem(40px);
       line-height: px2rem(40px);
       color: #505050;
+      span{
+        float: right;
+        color: #ea5504;
+      }
     }
     table {
       width: 100%;
@@ -81,6 +85,11 @@
         color: #505050;
       }
     }
+  }
+  .hdzj{
+    text-align: center;
+    font-size: px2rem(28px);
+    color: #505050;
   }
   .paymentBtn {
     position: absolute;

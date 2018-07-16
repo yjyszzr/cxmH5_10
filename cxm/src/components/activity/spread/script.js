@@ -28,59 +28,28 @@ export default {
     methods: {
         lqBtn() {
             let _sql;
-            if(this.$route.query.fr == 'c044'){
-                _sql = new Squirrel();
-             }
             if (detect() === 'ios') {
-                location.href = "https://m.caixiaomi.net"
+                location.href = "https://itunes.apple.com/cn/app/id1402481777?mt=8"
             } else {
                 if(wxPd()){
-                    location.href = 'https://a.app.qq.com/o/simpl e.jsp?pkgname=net.caixiaomi.info'
-                }else if(this.fr >= 'c042'  && this.fr <= 'c052'){
-                    if(this.fr){
-                        if(this.$route.query.fr == 'c044'){
+                    location.href = 'https://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+                }else{
+                    if(this.fr >= 'c042'  && this.fr <= 'c052'){
+                        if(this.fr == 'c044'){
+                            let self = this
                             this._sql.report('transfer', {}, function (res) {
-                                console.log(true)
+                                location.href="https://m.caixiaomi.net/down/cxm106_j"+self.$route.query.fr+".apk"  
                             }, function (code) {
-                                console.log(false)
+                                location.href="https://m.caixiaomi.net/down/cxm106_j"+self.$route.query.fr+".apk"
                             });
+                        }else{
+                            location.href="https://m.caixiaomi.net/down/cxm106_j"+this.$route.query.fr+".apk"
                         }
-                        location.href="http://m.caixiaomi.net/down/cxm106_j"+this.$route.query.fr+".apk"
+                    }else {
+                        location.href = "https://m.caixiaomi.net/down/cxm106_jc035.apk"
                     }
-                }else {
-
-                    location.href = "https://m.caixiaomi.net/down/cxm106_jc035.apk"
                 }
             }
-
-                // if (detect() === 'ios') {
-                //     location.href = "https://m.caixiaomi.net"
-                // } else {
-                //     if(wxPd()){
-                //         location.href = 'https://a.app.qq.com/o/simpl e.jsp?pkgname=net.caixiaomi.info'
-                //     }else{
-                //         if(this.$route.query.fr == 'c042'){
-                //             location.href="https://m.caixiaomi.net/down/cxm106_jc042.apk"
-                //         }else if(this.$route.query.fr == 'c043'){
-                //             location.href="https://m.caixiaomi.net/down/cxm106_jc043.apk"
-                //         }else if(this.$route.query.fr == 'c044'){
-                //             this._sql.report('transfer', {}, function (res) {
-                //             }, function (code) {
-                //             });
-                //             location.href="https://m.caixiaomi.net/down/cxm106_jc044.apk"
-                //         }else if(this.$route.query.fr == 'c045'){
-                //             location.href="https://m.caixiaomi.net/down/cxm106_jc045.apk"
-                //         }else {
-                //             location.href = "https://m.caixiaomi.net/down/cxm106_jc035.apk"
-                //         }
-                //     }
-                // }
-
-
-
-                ///
-
-
         }
     }
 }
