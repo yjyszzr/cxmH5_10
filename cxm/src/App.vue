@@ -1,4 +1,5 @@
 <template>
+    <!--2018.7.18-->
   <div id="app">
     <v-headertop :title='title()' :showTitle='showTitle()' :menu-display="menuDisplay()" v-show='isShowHeader'></v-headertop>
     <mainSkeleton v-show="!consultinit"></mainSkeleton>
