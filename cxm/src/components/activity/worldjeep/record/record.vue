@@ -59,12 +59,12 @@
                     </tr>
                 </table>
             </div>
-            <div class="nullstatus" v-if="recordList.length==0"  style="marginBottom:2.5rem;">
+            <div class="nullstatus" v-if="recordList.length==0"  style="marginBottom:1rem;paddingTop:1rem;">
                     <img src="../../../../assets/img/juan.png" alt="">
                     <span>尚未提交竞猜方案</span>
             </div>
-            <div class="hdzj" v-if="recordList.length>0">活动中奖情况</div>
-            <table v-if="recordList.length>0">
+            <div class="hdzj">活动中奖情况</div>
+            <table>
                 <tr class="table_list">
                     <td>奖项</td>
                     <td>奖金池</td>
@@ -78,14 +78,14 @@
                     <td>{{item.average}}</td>
                 </tr>
             </table>
-            <div class="prize" v-if="recordList.length>0">
+            <div class="prize">
                 <span>终极大奖：</span>猜对16强、8强、4强、冠亚军和冠军所有赛果，可平分20万巨额奖金
             </div>
-            <div class="prize" v-if="recordList.length>0">
+            <div class="prize">
                 <span>阶段分奖：</span>每阶段猜对赛果，均可平分巨额奖金
             </div>
         </div>
-        <button class="paymentBtn" @click="paymentBtn()" v-if="recordList.length>0">
+        <button class="paymentBtn" @click="paymentBtn()">
             竞猜赛果
         </button>
     </div>
