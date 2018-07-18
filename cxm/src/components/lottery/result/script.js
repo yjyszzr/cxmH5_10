@@ -1,10 +1,13 @@
 import api from '../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import datefilter from '../../../util/datefilter'
+import {weekTime} from '../../../util/common'
 export default {
     name: 'result',
     beforeCreate() {
         Indicator.open()
+
+
     },
     data () {
       return {
@@ -14,15 +17,21 @@ export default {
       }
     },
     created(){
-      
+
     },
     mounted(){
         this.$store.dispatch("getMarkDateVal",datefilter(new Date().getTime(),2))
         this.fetchData()
     },
     computed: {
+        weekDate(){
+          return weekTime(this.$store.state.mark_showObj.mark_dateVal)
+        },
         status() {
           return this.$store.state.mark_showObj.mark_dateVal;
+        },
+        listd(){
+            return this.$store.state.resultList
         }
       },
       watch: {
@@ -46,15 +55,16 @@ export default {
         fetchData(){
             let data={
                 dateStr: this.$store.state.mark_showObj.mark_dateVal,
-                isAlreadyBuyMatch: this.$store.state.mark_showObj.isAlreadyBuyMatch,
+                // isAlreadyBuyMatch: this.$store.state.mark_showObj.isAlreadyBuyMatch,
                 leagueIds: this.$store.state.mark_showObj.leagueIds,
-                matchFinish: this.$store.state.mark_showObj.matchFinish
+                type:this.$store.state.mark_showObj.lotteryResultTableIndex,
+                // matchFinish: this.$store.state.mark_showObj.matchFinish
             }
             this.$store.dispatch("getResultList",data)
         },
         matchFilsh(){
             let num = 0;
-            this.$store.state.resultList.forEach(item => {
+            this.$store.state.resultList.lotteryMatchDTOList.forEach(item => {
                 if(item.matchFinish=='1'){
                     num++
                 }

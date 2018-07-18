@@ -28,13 +28,13 @@ const actions = {
                 }
             })
     },
-    getResultList({
+    getResultList({//赛事
                       commit
                   }, value) {
         api.queryMatchResult(value)
             .then(res => {
                 if (res.code == 0) {
-                    //console.log(res)
+                    console.log(res)
                     commit("RESULT", res.data);
                 }
             })

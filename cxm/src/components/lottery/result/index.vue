@@ -1,14 +1,15 @@
 <style lang='scss' src='./style.scss'></style>
 <template>
     <div class="wrap result">
-        <section>
+        <section v-if="listd.lotteryMatchDTOList">
             <p class="title">
-                <span class="spfList">共有{{$store.state.resultList.length}}场比赛 已结束<span>{{matchFilsh()}}</span>场</span>
+                <span class="spfList">{{weekDate}}共有<span>{{listd.lotteryMatchDTOList.length}}</span>场比赛</span>
             </p>
             <ul class="hotMatchList">
-                <li v-for="(list,i) in $store.state.resultList" :key='i' @click='goDetail(list.matchId)'>
+                <li v-for="(list,i) in listd.lotteryMatchDTOList" :key='i' @click='goDetail(list.matchId)'>
                     <small><i>{{list.changci}}</i><i>{{list.leagueName}}</i><i>{{list.matchTime}}</i></small>
                     <div class="pink">
+                        <i></i>
                         <i><img :src="list.homeTeamLogo"></i>
                         <div>
                             <p><em>{{list.homeTeamAbbr}}</em><span>VS</span><em style="text-align: left">{{list.visitingTeamAbbr}}</em></p>

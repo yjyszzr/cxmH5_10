@@ -12,10 +12,11 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cropperjs": "^1.4.0",
-    "element-ui": "^2.3.2",
+    "element-ui": "^2.3.npm 2",
     "localscrollfix": "^2.2.0",
     "lodash": "^4.17.10",
     "mint-ui": "^2.2.13",
+    "moment": "^2.22.2",
     "node-sass": "^4.8.3",
     "nprogress": "^0.2.0",
     "prerender-spa-plugin": "^3.2.1",

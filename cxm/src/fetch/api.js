@@ -272,7 +272,7 @@ export default {
     },
     //比赛结果
     queryMatchResult(params) {
-        return fetchPost('lottery/lottery/match/queryMatchResult', params)
+        return fetchPost('lottery/lottery/match/queryMatchResultNew', params)
     },
     //赛事详情分析弹窗
     matchTeamInfosSum(params) {

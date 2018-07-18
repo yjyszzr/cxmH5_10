@@ -25,7 +25,7 @@ const state = {
     freebuyId: '', //玩法页面区分
     mark_show: false, //控制遮罩
     mark_Reset: 0, //重制赛事数据
-    resultList: [], //赛果列表
+    resultList: {}, //赛果列表
     arrTime: [], //赛事截止时间
     mark_showObj: { //赛果遮罩
         mark_show_type: 1, //遮罩显示类型
@@ -33,6 +33,7 @@ const state = {
         matchFinish: '', //全部
         leagueIds: '', //更多条件
         isAlreadyBuyMatch: '', //已购
+        lotteryResultTableIndex:'0', //tableIndex
     },
     matchObj: {}, //赛事列表
     matchSelectedList: [], //选中赛事处理
@@ -83,6 +84,6 @@ export default new Vuex.Store({
     state,
     actions,
     mutations,
-    plugins: [createPersistedState({'key':'issue','paths':['userInfo','matchObj','matchSelectedList','freebuyId','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','chushihuaObj','findObj','world_cupObj'],storage: window.sessionStorage})]
+    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','freebuyId','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','chushihuaObj','findObj','world_cupObj'],storage: window.sessionStorage})]
     //strict: true
 })

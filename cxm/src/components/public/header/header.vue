@@ -9,11 +9,15 @@
                 <span v-if="$route.path.split('/')[2]=='consult'" style="opacity:0;">分享</span>
                 <span v-if="$route.path.split('/')[2]=='consult'&&getUrl()" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
-                <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()"  class="danxm">胆</span>
-                <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="setting">设置</span>
+                <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="djs">胆</span>
+                <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="djs">设置</span>
                 <ul class="djs" @click="actionSheet()"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
-                    <li class="tas">{{timeTypeShow(this.timeTypeStatus)}}<i style="font-size: 0.3rem;" class="iconfont icon-icon-22"></i></li>
+                    <li>{{timeTypeShow(this.timeTypeStatus)}}</li>
                 </ul>
+                <div class="lottery-select" v-if="$route.path.split('/')[1]=='lotteryResult'" >
+                    <span @click='data_time()'><i class="icon-img icon-img-date"></i></span>
+                    <span @click='more()'>筛选</span>
+                </div>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
         </div>
@@ -51,11 +55,12 @@
             </ul>
             <div v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'" style="height: 10px; background: #f1f1f1;width: 100%"></div>
         </div>
+
         <ul class="list" v-if="$route.path.split('/')[1]=='lotteryResult'">
-            <li @click='data_time()'>{{$store.state.mark_showObj.mark_dateVal}}<i class="iconfont icon-icon-31"></i></li>
-            <li @click='more()'>更多条件<i class="iconfont icon-icon-31"></i></li>
-            <li @click='all($event)' v-if="flag==true">全部<i class="iconfont icon-icon-31"></i></li>
-            <li @click='all($event)' v-if="flag==false">已结束<i class="iconfont icon-icon-31"></i></li>
+            <li v-for="item in lotteryResultTable" @click="lotteryTable($event,item.key)" :key='item.key' :class="item.key==activeIndex?'findactive':''">
+                <p>{{item.name}}</p>
+                <span class="iconNum">{{item.cont}}</span>
+            </li>
         </ul>
         <div class="swiper-container findTab" v-if="$route.path.split('/')[1]=='find'">
             <div class="swiper-wrapper">
@@ -83,6 +88,7 @@
     import datefilter from "../../../util/datefilter";
     import { Indicator,Actionsheet } from "mint-ui";
     import { getUrlStr } from "../../../util/common";
+    import api from '../../../fetch/api'
     export default {
         name: "Header",
         props: {
@@ -94,8 +100,11 @@
         data() {
             return {
                 flag: true,
-
                 action:[
+                    {
+                        name:'全部',
+                        method:this.whole
+                    },
                     {
                         name:'当天',
                         method:this.sameDay
@@ -111,36 +120,45 @@
                     {
                         name:'最近三月',
                         method:this.recentMarchs
-                    },
-                    {
-                        name:'全部',
-                        method:this.whole
                     }
                 ],
-                sheetVisible: false
+                sheetVisible: false,
+                lotteryResultTable:[
+                    {
+                        name:"未结束",
+                        cont:this.$store.state.resultList.notfinishCount,
+                        key:'0'
+                    },
+                    {
+                        name:"已结束",
+                        cont:this.$store.state.resultList.finishCount,
+                        key:'1'
+                    },
+                    {
+                        name:"我的比赛",
+                        cont:this.$store.state.resultList.matchCollectCount,
+                        key:'2'
+                    }
+                ]
             };
         },
         methods: {
             timeTypeShow(c){
                 switch (c){
+                    case 0 : return '全部'
                     case 1 : return '当天'
                     case 2 : return '最近一周'
                     case 3 : return '最近一月'
                     case 4 : return '最近三月'
-                    case 0 : return '全部'
                 }
             },
             actionSheet:function () {
                 this.sheetVisible = true
-                let liList = $('.mint-actionsheet-listitem')
-                liList.forEach(item => {
-                    item.className='mint-actionsheet-listitem'
-                    if(item.innerText==$('.tas')[0].innerText){
-                        item.className='mint-actionsheet-listitem liActive'
-                    }
-                });
             },
-            sameDay:function () {
+            whole:function () {
+                this.$store.dispatch("changeTimeType", 0);
+            },
+            sameDay:function ($event) {
                 this.$store.dispatch("changeTimeType", 1);
             },
             recentMarch:function () {
@@ -151,9 +169,6 @@
             },
             recentMarchs:function () {
                 this.$store.dispatch("changeTimeType", 4);
-            },
-            whole:function () {
-                this.$store.dispatch("changeTimeType", 0);
             },
             return_back() {
                 if (this.$route.path.split("/")[2]) {
@@ -316,6 +331,15 @@
                     this.$store.dispatch("changeFinActive",s)
                 }
             },
+            lotteryTable(c,s){
+                this.$store.commit("LOTTERYRESULTTABLEINDEX",s)
+                let data={
+                    dateStr: this.$store.state.mark_showObj.mark_dateVal,
+                    leagueIds: this.$store.state.mark_showObj.leagueIds,
+                    type:this.$store.state.mark_showObj.lotteryResultTableIndex,
+                }
+                this.$store.dispatch("getResultList", data);
+            },
             tabSilde(c,s){
                 $('.worldActive').removeClass('worldActive')
                 s.target.className= 'worldActive'
@@ -357,6 +381,9 @@
             },
             zxCollectionFlag() {
                 return this.$store.state.zxCollectionFlag;
+            },
+            activeIndex(){
+                return this.$store.state.mark_showObj.lotteryResultTableIndex;
             },
             findTab() {
                 return this.$store.state.findObj.findTab;
@@ -456,20 +483,11 @@
                     flex: 1;
                     display: flex;
                     justify-content: flex-end;
-                    margin-left: px2rem(-30px);
-                    .tas{
-                        padding-right: px2rem(30px);
-                        .icon-icon-22{
-                            margin-left: px2rem(4px);
-                        }
-                    }
-                }
-                .setting,.danxm{
-                    padding: 0;
-                    width: 100%;
-                    display: flex;
-                    justify-content: flex-end;
                     padding-right: px2rem(30px);
+                }
+                .lottery-select{
+                    display: flex;
+                    justify-content: center;
                 }
             }
             .headerText {
@@ -585,7 +603,7 @@
                 justify-content: center;
                 align-items: center;
                 flex: 1;
-                height: px2rem(88px);
+                line-height: px2rem(88px);
                 text-align: center;
                 border-right: 1px solid #f1f1f1;
                 color: #9f9f9f;
@@ -597,6 +615,11 @@
                     right: 0;
                     position: absolute;
                     bottom: 0;
+                }
+                p{
+                    box-sizing: border-box;
+                    height: px2rem(84px);
+                    font-size: px2rem(26px);
                 }
             }
         }
@@ -619,9 +642,12 @@
             }
         }
         .findactive {
-            color: #ea5504;
+            color: #ea5504!important;
             p {
                 border-bottom: px2rem(4px) solid #ea5504;
+            }
+            span {
+                background-color: rgba(200,85,4,.6);
             }
         }
         .swiper-slide:last-of-type {
@@ -652,6 +678,25 @@
                 background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
                 background-size: 1px px2rem(50px);
             }
+        }
+
+        .icon-img{
+            display: inline-block;
+            height: px2rem(30px);
+            width: px2rem(30px);
+            background: url('./images/date@3x.png') no-repeat center;
+            background-size: 100%;
+        }
+        .iconNum{
+            margin-left: px2rem(8px);
+            display: inline-block;
+            font-size: px2rem(16px);
+            background-color: #9f9f9f;
+            color: #ffffff;
+            line-height: px2rem(30px);
+            width: px2rem(30px);
+            text-align: center;
+            border-radius: px2rem(5px);
         }
     }
 </style>
