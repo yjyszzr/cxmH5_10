@@ -88,7 +88,6 @@
     import datefilter from "../../../util/datefilter";
     import { Indicator,Actionsheet } from "mint-ui";
     import { getUrlStr } from "../../../util/common";
-    import api from '../../../fetch/api'
     export default {
         name: "Header",
         props: {
@@ -126,20 +125,21 @@
                 lotteryResultTable:[
                     {
                         name:"未结束",
-                        cont:this.$store.state.resultList.notfinishCount,
+                        cont:0,
                         key:'0'
                     },
                     {
                         name:"已结束",
-                        cont:this.$store.state.resultList.finishCount,
+                        cont:0,
                         key:'1'
                     },
                     {
                         name:"我的比赛",
-                        cont:this.$store.state.resultList.matchCollectCount,
+                        cont:0,
                         key:'2'
                     }
-                ]
+                ],
+                resultBage:{}
             };
         },
         methods: {
@@ -393,6 +393,9 @@
             },
             timeTypeStatus(){
                 return this.$store.state.user_account.timeType;
+            },
+            resultList(){
+                return this.$store.state.resultList;
             }
         },
         watch:{
@@ -400,6 +403,19 @@
                 if(from.path=='/user/account'){
                     this.sheetVisible = false
                 }
+            },
+            resultList(a,b){
+                this.lotteryResultTable.forEach(item => {
+                      if(item.name=='未结束'){
+                          item.cont =  a.notfinishCount
+                      }
+                      else if(item.name=='已结束'){
+                          item.cont =  a.finishCount
+                      }
+                      else if(item.name=='我的比赛'){
+                          item.cont =  a.matchCollectCount
+                      }
+                });
             }
         }
     };

@@ -34,7 +34,6 @@ const actions = {
         api.queryMatchResult(value)
             .then(res => {
                 if (res.code == 0) {
-                    console.log(res)
                     commit("RESULT", res.data);
                 }
             })
@@ -83,11 +82,6 @@ const actions = {
                      commit
                  }, value) {
         commit("LEAGUEIDS", value);
-    },
-    getisAlreadyBuyMatch({
-                             commit
-                         }, value) {
-        commit("ISAlREADYBUYMATCH", value);
     },
     getFreebuyId({
                      commit

@@ -32,7 +32,6 @@ const state = {
         mark_dateVal: '', //选中日期值
         matchFinish: '', //全部
         leagueIds: '', //更多条件
-        isAlreadyBuyMatch: '', //已购
         lotteryResultTableIndex:'0', //tableIndex
     },
     matchObj: {}, //赛事列表

@@ -87,9 +87,6 @@ const mutations = {
     LEAGUEIDS(state, data) {
         state.mark_showObj.leagueIds = data
     },
-    ISAlREADYBUYMATCH(state, data) {
-        state.mark_showObj.isAlreadyBuyMatch = data
-    },
     LOTTERYRESULTTABLEINDEX(state, data) {
         state.mark_showObj.lotteryResultTableIndex = data
     },

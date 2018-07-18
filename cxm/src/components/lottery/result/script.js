@@ -1,4 +1,3 @@
-import api from '../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import datefilter from '../../../util/datefilter'
 import {weekTime} from '../../../util/common'
@@ -21,7 +20,6 @@ export default {
     },
     mounted(){
         this.$store.dispatch("getMarkDateVal",datefilter(new Date().getTime(),2))
-        this.fetchData()
     },
     computed: {
         weekDate(){
