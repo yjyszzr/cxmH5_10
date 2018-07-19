@@ -91,6 +91,11 @@ export let weekTime = (data) =>{
             default:"星期格式化的时候错误啦！"
         }
     }
-
-
+}
+// 转化成 11：45
+export let hour = (data)=>{
+    return moment(new Date()).format('MMMM Do YYYY, h:mm:ss a')
+}
+export let nowDataYYYYMMDD = () => {
+    return moment().format('YYYY-MM-DD')
 }

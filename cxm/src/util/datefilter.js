@@ -5,8 +5,8 @@ let format = (value) => {
 	return value >= 10 ? value : '0' + value
 }
 
-let dateFilter = (time, type) => {
-	let date = new Date(time)
+let dateFilter = (time,type) => {
+    let date = new Date(time)
 	let year = date.getFullYear()
 	let month = date.getMonth() + 1
 	let day = date.getDate()

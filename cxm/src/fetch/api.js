@@ -457,6 +457,14 @@ export default {
     //设置用户登录密码
     setinglogin(params){
         return fetchPost('/member/user/setLoginPass', params)
+    },
+    //添加收藏比赛
+    collectMatchId(params) {
+        return fetchPost('/member/user/matchCollect/collectMatchId', params)
+    },
+    //赛事比分的日期筛选条件调用接口
+    giveMatchChooseDate(params) {
+        return fetchPost('/lottery/lottery/match/giveMatchChooseDate', params)
     }
 }
 

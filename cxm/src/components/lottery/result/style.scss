@@ -1,5 +1,8 @@
  @import '../../../assets/css/function.scss';
  .result{
+   .col-red{
+      color: rgb(234, 85, 4)
+   }
    .title{
     height: px2rem(60px);
     line-height: px2rem(60px);
@@ -24,7 +27,7 @@
        border-bottom: 1px dashed #f0f0f0;
        padding-top: px2rem(18px);
        width: 100%;
-       height: px2rem(120px);
+       height: px2rem(130px);
        position: relative;
        padding-bottom: px2rem(22px); 
        small{
@@ -36,6 +39,22 @@
            margin-right: px2rem(10px);
          }
        }
+       .icon-collection {
+         position: absolute;
+         line-height: px2rem(90px);
+         width: px2rem(60px);
+         top: px2rem(60px);
+       }
+       .arrow_right{
+         position: absolute;
+         right: px2rem(2px);
+         top: px2rem(60px);
+         width: 17px;
+         height: 1.16rem;
+         background: url(../../../assets/img/arange.png) no-repeat;
+         background-position: right center;
+         background-size: auto 30%;
+       }
        .pink{
          margin-top: px2rem(27px);
          i{
@@ -44,7 +63,7 @@
            display: flex;
            align-items: center;
            justify-content: center;
-           left: px2rem(24px);
+           left: px2rem(60px);
            position: absolute;
            top: px2rem(71px);
            img{
@@ -58,13 +77,15 @@
           justify-content: center;
            height: px2rem(80px);
            position: absolute;
-           right: px2rem(24px);
+           right: px2rem(60px);
            top: px2rem(71px);
            img{
              height: 100%;
            }
          }
-         div{
+         .vs-name{
+           margin: 0 auto;
+           width: px2rem(500px);
            text-align: center;
            p{
               font-weight: normal;

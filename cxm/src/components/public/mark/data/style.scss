@@ -2,6 +2,10 @@
 .data1{
   width: px2rem(652px);
   background: white;
+  .data-box{
+    height: px2rem(800px);
+    overflow: auto;
+  }
   .dt_title{
     text-align: center;
     font-size: px2rem(28px);

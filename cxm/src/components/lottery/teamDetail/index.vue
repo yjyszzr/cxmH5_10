@@ -21,11 +21,15 @@
                 </ul>
             </div>
             <ul class="analytical">
-                <li class="currer"><p @click="fxTab($event,'1')"></p><span>分析</span></li>
+                <li class="currer"><p @click="fxTab($event,'0')"></p><span>赛况</span></li>
+                <li><p @click="fxTab($event,'1')"></p><span>分析</span></li>
                 <li><p @click="fxTab($event,'2')"></p><span>赔率</span></li>
+                <li><p @click="fxTab($event,'3')"></p><span>阵容</span></li>
             </ul>
+            <!--赛况-->
+            <v-outs v-if="flag=='0'"></v-outs>
             <!--分析-->
-            <div class="analysis" v-if="flag==false">
+            <div class="analysis" v-if="flag=='1'">
                 <div class="detail_list">
                     <p>历史交锋<span>近{{ckxqObj.hvMatchTeamInfo.total}}场比赛</span><span>主队</span><span>{{ckxqObj.hvMatchTeamInfo.win}}胜</span><span>{{ckxqObj.hvMatchTeamInfo.draw}}平</span><span>{{ckxqObj.hvMatchTeamInfo.lose}}负</span></p>
                 </div>
@@ -218,7 +222,7 @@
                 </div>
             </div>
             <!--赔率-->
-            <v-detail v-if="flag==true" :leagueMatchAsias='ckxqObj.leagueMatchAsias' :leagueMatchEuropes='ckxqObj.leagueMatchEuropes'></v-detail>
+            <v-detail v-if="flag=='2'" :leagueMatchAsias='ckxqObj.leagueMatchAsias' :leagueMatchEuropes='ckxqObj.leagueMatchEuropes'></v-detail>
         </section>
     </div>
 </template>
