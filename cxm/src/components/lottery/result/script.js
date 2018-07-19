@@ -83,17 +83,41 @@ export default {
         },
         //点击收藏小星星
         collection(list){
+            var that = this
             let data = {
                 dateStr:datefilter(this.$store.state.mark_showObj.mark_dateVal,2) ,//收藏日期
                 matchId: list.matchId//比赛ID
             }
-            api.collectMatchId(data)
-                .then(res => {
-                    if (res.code == 0) {
-                    
-                    }
-                })
-        }
+            if(list.isCollect=="1"){//取消收藏
+                api.cancle(data)
+                    .then(res => {
+                        if (res.code == 0) {
+                            let data={
+                                dateStr: that.$store.state.mark_showObj.mark_dateVal,
+                                leagueIds: that.$store.state.mark_showObj.leagueIds,
+                                type:that.$store.state.mark_showObj.lotteryResultTableIndex,
+                            }
+                            Indicator.open();
+                            that.$store.dispatch("getResultList", data);
+                        }
+                    })
+
+            }else { //收藏
+                api.collectMatchId(data)
+                    .then(res => {
+                        if (res.code == 0) {
+
+                            let data={
+                                dateStr: that.$store.state.mark_showObj.mark_dateVal,
+                                leagueIds: that.$store.state.mark_showObj.leagueIds,
+                                type:that.$store.state.mark_showObj.lotteryResultTableIndex,
+                            }
+                            Indicator.open();
+                            that.$store.dispatch("getResultList", data);
+                        }
+                    })
+            }
+        },
     },
     beforeRouteLeave(to, from, next) {
         next()

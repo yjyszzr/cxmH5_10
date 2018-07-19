@@ -6,6 +6,44 @@
                 <div class="img-star-box">
                     <img class="img-star" src="./images/star@3x.png" alt="">
                 </div>
+
+                <div class=tree-ul>
+                    <p class="line-one"></p>
+                    <div class="tree-li">
+                        <div class="left-box">
+                            <div class="event-card">
+                                <img class="card-img" src="./images/Yellowcard_2@3x.png" alt="">
+                                <img class="ball-img" src="./images/Owngoals_2@3x.png" alt="">
+                            </div>
+                        </div>
+                        <div class="circle">
+                            kkkk
+                        </div>
+                        <div class="right-box">
+                            <div class="event-card">
+                                <img class="card-img" src="./images/Yellowcard_2@3x.png" alt="">
+                            </div>
+                        </div>
+
+                        <!--<p>33</p>-->
+                    </div>
+                </div>
+                <div class=tree-ul>
+                    <p class="line-one"></p>
+                    <div class="tree-li">
+                        <p>11</p>
+                        <p>22</p>
+                        <p>33</p>
+                    </div>
+                </div>
+                <div class=tree-ul>
+                    <p class="line-one"></p>
+                    <div class="tree-li">
+                        <p>11</p>
+                        <p>33</p>
+                        <p>33</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -40,17 +78,68 @@
             color: #9f9f9f;
         }
         .event-box{
+            overflow: hidden;
             display: flex;
-            justify-content: center;
-            .img-star-box{
+
+            flex-direction: column;
+            align-items: center;
+            .line-one{
+                height:px2rem(42px);
+                width: 1px;
+                border-left: 1px solid rgb(240, 140,30);
+            }
+            .img-star-box {
+                margin-top: px2rem(72px);
                 height: px2rem(54px);
                 width: px2rem(54px);
-                background: url("./images/ses_set@3x.png") no-repeat;
-                background-size: 100%;
-                .img-star{
+                /*background-color: rgba(240, 140, 30, .5);*/
+                .img-star {
                     height: 100%;
                     width: 100%;
                 }
+            }
+            .tree-ul{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+               .tree-li{
+                   display: flex;
+                   justify-content: center;
+                   flex-direction: row;
+                   .card-img{
+                       height: px2rem(32px);
+                       width: px2rem(32px);
+                   }
+                   .ball-img{
+                       height: px2rem(36px);
+                       width: px2rem(36px);
+                   }
+                   .left-box{
+                       display: flex;
+                       flex-direction: row-reverse;
+                       align-items: center;
+                       width: px2rem(300px);
+                       .event-card{
+                           margin-right:px2rem(20px) ;
+                       }
+                   }
+                   .circle{
+                       height: px2rem(54px);
+                       width: px2rem(54px);
+                       border: 2px solid #f08c1e;
+                       border-radius: 100%;
+                   }
+                   .right-box{
+                       display: flex;
+                       flex-direction: row;
+                       align-items: center;
+                       width: px2rem(300px);
+                       .event-card{
+                           margin-left:px2rem(20px) ;
+                       }
+                   }
+
+               }
             }
         }
     }

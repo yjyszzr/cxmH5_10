@@ -55,7 +55,7 @@
             </ul>
             <div v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'" style="height: 10px; background: #f1f1f1;width: 100%"></div>
         </div>
-
+        <!--比赛结果 未结束、已结束、我的比赛-->
         <ul class="list" v-if="$route.path.split('/')[1]=='lotteryResult'">
             <li v-for="item in lotteryResultTable" @click="lotteryTable($event,item.key)" :key='item.key' :class="item.key==activeIndex?'findactive':''">
                 <p>{{item.name}}</p>
@@ -298,23 +298,6 @@
                 this.$store.dispatch("getMarkShow", true);
                 this.$store.dispatch("getMarkShowType", 2);
             },
-            all(c) {
-                if (c.target.innerText == "全部") {
-                    this.flag = false;
-                    this.$store.dispatch("getMatchFinish", "1");
-                } else {
-                    this.flag = true;
-                    this.$store.dispatch("getMatchFinish", "");
-                }
-                Indicator.open();
-                let data = {
-                    dateStr: this.$store.state.mark_showObj.mark_dateVal,
-                    isAlreadyBuyMatch: this.$store.state.mark_showObj.isAlreadyBuyMatch,
-                    leagueIds: this.$store.state.mark_showObj.leagueIds,
-                    matchFinish: this.$store.state.mark_showObj.matchFinish
-                };
-                this.$store.dispatch("getResultList", data);
-            },
             getUrl() {
                 if (getUrlStr("frz", location.href) == undefined) {
                     return true;
@@ -342,6 +325,7 @@
                     leagueIds: this.$store.state.mark_showObj.leagueIds,
                     type:this.$store.state.mark_showObj.lotteryResultTableIndex,
                 }
+                Indicator.open();
                 this.$store.dispatch("getResultList", data);
             },
             tabSilde(c,s){

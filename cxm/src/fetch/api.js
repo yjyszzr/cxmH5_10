@@ -462,6 +462,10 @@ export default {
     collectMatchId(params) {
         return fetchPost('/member/user/matchCollect/collectMatchId', params)
     },
+    //取消收藏比赛
+    cancle(params) {
+        return fetchPost('/member/user/matchCollect/cancle', params)
+    },
     //赛事比分的日期筛选条件调用接口
     giveMatchChooseDate(params) {
         return fetchPost('/lottery/lottery/match/giveMatchChooseDate', params)
