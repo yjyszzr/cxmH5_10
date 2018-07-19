@@ -67,12 +67,13 @@ export default {
                 //验证码信息
                 let data = {
                     'code': this.numbers,
-                    'payLogId': this.$route.query.id
+                    'payLogId': this.$route.query.id,
+                    'token': this.token
                 }
                 api.xfappConfirm(data)
                     .then(res => {
                         if(res.code==0) {
-                            Toast('支付成功')
+                            Toast(res.msg)
                             this.$router.replace({
                                 path: '/'
                             })
