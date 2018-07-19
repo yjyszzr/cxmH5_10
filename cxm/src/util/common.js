@@ -69,5 +69,33 @@ export let wxPd = function(){
 }
 // 将日期格式化成星期
 export let weekTime = (data) =>{
-    return moment(data).format('llll')
+    return weekFn(moment(data).format('YYYY-MM-DD dddd'));
+    function weekFn (dataed) {
+        var yes = dataed.substr(0,10)
+        var wek = dataed.substr(11, dataed.length - 10)+""
+        switch (wek){
+            case "Monday" : return yes+" 周一"
+                break;
+            case "Tuesday" : return yes+" 周二"
+                break;
+            case "Wednesday" :return yes+" 周三"
+                break;
+            case "Thursday" : return yes+" 周四"
+                break;
+            case "Friday" : return yes+" 周五"
+                break;
+            case "Saturday" : return yes+" 周六"
+                break;
+            case "Sunday" : return yes+" 周日"
+                break;
+            default:"星期格式化的时候错误啦！"
+        }
+    }
+}
+// 转化成 11：45
+export let hour = (data)=>{
+    return moment(new Date()).format('MMMM Do YYYY, h:mm:ss a')
+}
+export let nowDataYYYYMMDD = () => {
+    return moment().format('YYYY-MM-DD')
 }

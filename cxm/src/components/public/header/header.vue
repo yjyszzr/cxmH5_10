@@ -172,6 +172,9 @@
             },
             return_back() {
                 if (this.$route.path.split("/")[2]) {
+                    if(this.$route.path.split("/")[2] == "sms"){
+                        this.$store.commit("LOTTERYRESULTTABLEINDEX",'0')
+                    }
                     if (this.$route.path.split("/")[2] == "singleNote") {
                         this.$store.dispatch("getmatchSelectedList", []);
                     } else if (

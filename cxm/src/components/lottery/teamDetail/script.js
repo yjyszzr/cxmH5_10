@@ -2,6 +2,7 @@ import api from '../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import datefilter from '../../../util/datefilter'
 import detail from '../detail/index'
+import outs from '../outs/outs.vue'
 export default {
     name: 'teamDetail',
     beforeCreate() {
@@ -9,17 +10,16 @@ export default {
     },
     data () {
       return {
-        flag: false,
-        ckxqObj:{
-			
-        }
+        flag: '0',
+        ckxqObj:{}
       }
     },
     created(){
       
     },
     components:{
-    		'v-detail': detail
+        'v-detail': detail,
+        'v-outs':outs
     },
     methods:{
       fetchData(){
@@ -29,7 +29,6 @@ export default {
         api.matchTeamInfos(data)
             .then(res => {
                 if(res.code==0) {
-                   // console.log(res)
                   this.ckxqObj = res.data
                 }
             })
@@ -43,11 +42,7 @@ export default {
       fxTab(c,s){
       	$('.currer').removeClass('currer')
       	c.target.parentElement.className='currer'
-      	if(s=='1'){
-      		this.flag=false
-      	}else{
-      		this.flag=true
-      	}
+        this.flag=s
       },
       colorMatchRs(c){
           switch (c) {
