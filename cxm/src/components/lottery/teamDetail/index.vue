@@ -21,8 +21,8 @@
                 </ul>
             </div>
             <ul class="analytical">
-                <li class="currer"><p @click="fxTab($event,'0')"></p><span>赛况</span></li>
-                <li><p @click="fxTab($event,'1')"></p><span>分析</span></li>
+                <li><p @click="fxTab($event,'0')"></p><span>赛况</span></li>
+                <li class="currer"><p @click="fxTab($event,'1')"></p><span>分析</span></li>
                 <li><p @click="fxTab($event,'2')"></p><span>赔率</span></li>
                 <li><p @click="fxTab($event,'3')"></p><span>阵容</span></li>
             </ul>
@@ -111,11 +111,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="ranking" style="display:none;">
+                <div class="ranking">
                     <p>积分排名</p>
                     <div class="zcScore">
 						<div class="zcTitle">
-							阿森纳(主场)
+							{{ckxqObj.homeTeamScoreInfo.teamName}}
 						</div>
 						<div class="tbLIst">
 							<ul class="tbListNav">
@@ -124,7 +124,7 @@
 								<li>胜</li>
 								<li>平</li>
 								<li>负</li>
-								<li>进/失</li>
+								<li>进/失/净</li>
 								<li>积分</li>
 								<li>名次</li>
 							</ul>
@@ -136,13 +136,13 @@
 								</div>
 								<div class="tabListRight">
 									<ul>
-										<li>29</li>
-										<li>13</li>
-										<li>9</li>
-										<li>7</li>
-										<li>51/36</li>
-										<li>48</li>
-										<li>4</li>
+										<!-- <li>{{ckxqObj.homeTeamScoreInfo.hteamScore.matchNum}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.matchH}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.matchD}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.matchL}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.ballIn}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballLose}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballClean}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.score}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.score}}</li> -->
 									</ul>
 									<ul>
 										<li>29</li>
@@ -168,7 +168,7 @@
                     </div>
                     <div class="kcScore">
 						<div class="zcTitle">
-							阿森纳(客场)
+							{{ckxqObj.visitingTeamScoreInfo.teamName}}
 						</div>
 						<div class="tbLIst">
                             <ul class="tbListNav">
@@ -222,7 +222,9 @@
                 </div>
             </div>
             <!--赔率-->
-            <v-detail v-if="flag=='2'" :leagueMatchAsias='ckxqObj.leagueMatchAsias' :leagueMatchEuropes='ckxqObj.leagueMatchEuropes'></v-detail>
+            <v-detail v-if="flag=='2'" :leagueMatchAsias='ckxqObj.leagueMatchAsias' :leagueMatchEuropes='ckxqObj.leagueMatchEuropes' :leagueMatchDaoxiaos='ckxqObj.leagueMatchDaoxiaos'></v-detail>
+            <!-- 阵容 -->
+            <v-lineup v-if="flag=='3'"></v-lineup>
         </section>
     </div>
 </template>

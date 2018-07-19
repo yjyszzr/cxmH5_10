@@ -3,6 +3,7 @@ import {Indicator, Toast} from 'mint-ui'
 import datefilter from '../../../util/datefilter'
 import detail from '../detail/index'
 import outs from '../outs/outs.vue'
+import lineup from '../lineup'
 export default {
     name: 'teamDetail',
     beforeCreate() {
@@ -10,7 +11,7 @@ export default {
     },
     data () {
       return {
-        flag: '0',
+        flag: '1',
         ckxqObj:{}
       }
     },
@@ -19,7 +20,8 @@ export default {
     },
     components:{
         'v-detail': detail,
-        'v-outs':outs
+        'v-outs':outs,
+        'v-lineup': lineup
     },
     methods:{
       fetchData(){

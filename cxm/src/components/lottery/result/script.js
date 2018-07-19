@@ -6,13 +6,12 @@ export default {
     name: 'result',
     beforeCreate() {
         Indicator.open()
-
-
     },
     data () {
       return {
           result:{},
           activeName: '1',
+          topStatus: '',
         //   flag: true,
       }
     },
@@ -42,6 +41,15 @@ export default {
         }
       },
     methods:{
+        handleTopChange(status) {
+            this.topStatus = status;
+        },
+        loadTop(){
+            this.fetchData()
+            setTimeout(()=>{
+                this.$refs.loadmore.onTopLoaded();
+            },400)
+        },
         starTimeFormat(time){
            hour(time*1000);
         },
@@ -82,13 +90,7 @@ export default {
             api.collectMatchId(data)
                 .then(res => {
                     if (res.code == 0) {
-                        console.log(res);
-                        // let obj = {}
-                        // if(res.data.hotPlayList.length>0){
-                        //     obj.playList = [].concat(res.data.hotPlayList)
-                        //     res.data.playList.unshift(obj)
-                        // }
-                        // commit("MATCHLIST", res.data);
+                    
                     }
                 })
         }
@@ -99,7 +101,6 @@ export default {
         this.$store.dispatch("getMarkShowType",'')
         this.$store.dispatch("getMatchFinish",'')
         this.$store.dispatch("getLeagueIds",'')
-        this.$store.dispatch("getisAlreadyBuyMatch",'')
         this.$store.dispatch("getMarkDateVal",'')
       }
 }

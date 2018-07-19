@@ -335,6 +335,7 @@
                 }
             },
             lotteryTable(c,s){
+                Indicator.open()
                 this.$store.commit("LOTTERYRESULTTABLEINDEX",s)
                 let data={
                     dateStr: this.$store.state.mark_showObj.mark_dateVal,
