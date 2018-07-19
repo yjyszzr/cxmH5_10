@@ -115,7 +115,6 @@ export default {
         this.$store.dispatch("getMarkShowType",'')
         this.$store.dispatch("getMatchFinish",'')
         this.$store.dispatch("getLeagueIds",'')
-        this.$store.dispatch("getisAlreadyBuyMatch",'')
         this.$store.dispatch("getMarkDateVal",'')
       }
 }
