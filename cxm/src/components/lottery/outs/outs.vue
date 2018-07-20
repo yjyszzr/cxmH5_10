@@ -136,19 +136,19 @@
                             </li>
 
                             <li>
-                                <div><img class="up-down-img" src="./images/Invalid goal@3x.png" alt=""></div>
+                                <div><img class="ball-img" src="./images/Invalid goal@3x.png" alt=""></div>
                                 <span>入球无效</span>
                             </li>
                             <li>
-                                <div><img class="up-down-img" src="./images/Iost Penalty@3x.png" alt=""></div>
+                                <div><img class="ball-img" src="./images/Iost Penalty@3x.png" alt=""></div>
                                 <span>点球未进</span>
                             </li>
                             <li>
-                                <div><img class="up-down-img" src="./images/Redden@3x.png" alt=""></div>
+                                <div><img class="ball-img" src="./images/Redden@3x.png" alt=""></div>
                                 <span>两黄变红</span>
                             </li>
                             <li>
-                                <div><img class="up-down-img" src="./images/Assist@3x.png" alt=""></div>
+                                <div><img class="ball-img" src="./images/Assist@3x.png" alt=""></div>
                                 <span>助攻</span>
                             </li>
                         </ul>
@@ -215,7 +215,6 @@
         },
         created(){
             this.getInfo()
-            console.log(this.matchInfo)
         },
         methods:{
             // 获取比赛赛况
@@ -239,7 +238,6 @@
                        })
                },60000)
                function dataFn (res) {
-                   console.log(res);
                    that.res = res.data
                    that.eventList = res.data.eventList
                    that.matchLiveStatisticsDTO = res.data.matchLiveStatisticsDTO
@@ -248,7 +246,6 @@
             //计算个数比例
            filt(item,num){
                if(item.dataType=="0"){
-                   console.log(((num/(Number(item.teamAData)+Number(item.teamHData)))*100+'%')+"")
                    return ((num/(Number(item.teamAData)+Number(item.teamHData)))*100+'%')+""
 
                }else {
@@ -258,9 +255,6 @@
                    return num+""
                }
            }
-        },
-        computed:{
-
         },
         destroyed(){
             clearInterval(this.setInterval)
