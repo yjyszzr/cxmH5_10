@@ -469,6 +469,10 @@ export default {
     //赛事比分的日期筛选条件调用接口
     giveMatchChooseDate(params) {
         return fetchPost('/lottery/lottery/match/giveMatchChooseDate', params)
+    },
+    //比赛赛况接口
+    info(params) {
+        return fetchPost('/lottery/match/live/info', params)
     }
 }
 
