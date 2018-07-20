@@ -7,41 +7,52 @@
                     <img class="img-star" src="./images/star@3x.png" alt="">
                 </div>
 
-                <div class=tree-ul>
+                <div class=tree-ul >
                     <p class="line-one"></p>
                     <div class="tree-li">
                         <div class="left-box">
                             <div class="event-card">
-                                <img class="card-img" src="./images/Yellowcard_2@3x.png" alt="">
+                                <!--吃盘-->
+                                <!--<img class="card-img" src="./images/Yellowcard_2@3x.png" alt="">-->
+                                <!--入球、乌龙球-->
                                 <img class="ball-img" src="./images/Owngoals_2@3x.png" alt="">
+                            </div>
+                            <!--点球-->
+                            <div class="point-ball">
+                                <img class="ball-img" src="./images/Owngoals_2@3x.png" alt="">
+                            </div>
+                            <!--比分-->
+                            <div class="score">
+                                <span class="score-text">1:0</span>
+                            </div>
+                            <!--人-->
+                            <div class=person>
+                                <span class="person-text">九巴</span>
                             </div>
                         </div>
                         <div class="circle">
-                            kkkk
+                            12
                         </div>
                         <div class="right-box">
                             <div class="event-card">
-                                <img class="card-img" src="./images/Yellowcard_2@3x.png" alt="">
+                                <!--吃盘-->
+                                <!--<img class="card-img" src="./images/Yellowcard_2@3x.png" alt="">-->
+                                <!--入球、乌龙球-->
+                                <img class="ball-img" src="./images/Owngoals_2@3x.png" alt="">
+                            </div>
+                            <!--点球-->
+                            <div class="point-ball">
+                                <img class="ball-img" src="./images/Owngoals_2@3x.png" alt="">
+                            </div>
+                            <!--比分-->
+                            <div class="score">
+                                <span class="score-text">1:0</span>
+                            </div>
+                            <!--人-->
+                            <div class=person>
+                                <span class="person-text">九巴</span>
                             </div>
                         </div>
-
-                        <!--<p>33</p>-->
-                    </div>
-                </div>
-                <div class=tree-ul>
-                    <p class="line-one"></p>
-                    <div class="tree-li">
-                        <p>11</p>
-                        <p>22</p>
-                        <p>33</p>
-                    </div>
-                </div>
-                <div class=tree-ul>
-                    <p class="line-one"></p>
-                    <div class="tree-li">
-                        <p>11</p>
-                        <p>33</p>
-                        <p>33</p>
                     </div>
                 </div>
             </div>
@@ -51,8 +62,14 @@
 
 <script>
     export default {
-        name: "outs"
+        name: "outs",
+        data(){
+            return{
+                
+            }
+        }
     }
+
 </script>
 
 <style scoped lang="scss">
@@ -106,6 +123,14 @@
                    display: flex;
                    justify-content: center;
                    flex-direction: row;
+                   .person-text{
+                       font-size: px2rem(26px);
+                       color: #505050;
+                   }
+                   .score-text{
+                       font-size: px2rem(26px);
+                       color: #f08c1e;
+                   }
                    .card-img{
                        height: px2rem(32px);
                        width: px2rem(32px);
@@ -113,6 +138,16 @@
                    .ball-img{
                        height: px2rem(36px);
                        width: px2rem(36px);
+                   }
+
+                   .circle{
+                       line-height: px2rem(54px);
+                       width: px2rem(54px);
+                       border: 2px solid #f08c1e;
+                       border-radius: 100%;
+                       font-size: px2rem(24px);
+                       color: #505050;
+                       text-align: center;
                    }
                    .left-box{
                        display: flex;
@@ -122,12 +157,16 @@
                        .event-card{
                            margin-right:px2rem(20px) ;
                        }
-                   }
-                   .circle{
-                       height: px2rem(54px);
-                       width: px2rem(54px);
-                       border: 2px solid #f08c1e;
-                       border-radius: 100%;
+                       .point-ball{
+                           margin-right: px2rem(10px);
+                       }
+                       .score{
+                           margin-right: px2rem(16px);
+                       }
+                       .person{
+                           position: absolute;
+                           left: px2rem(50px);
+                       }
                    }
                    .right-box{
                        display: flex;
@@ -136,6 +175,16 @@
                        width: px2rem(300px);
                        .event-card{
                            margin-left:px2rem(20px) ;
+                       }
+                       .point-ball{
+                           margin-left: px2rem(10px);
+                       }
+                       .score{
+                           margin-left: px2rem(16px);
+                       }
+                       .person{
+                           position: absolute;
+                           right: px2rem(50px);
                        }
                    }
 
