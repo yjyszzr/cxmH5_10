@@ -27,7 +27,7 @@
                 <li><p @click="fxTab($event,'3')"></p><span>阵容</span></li>
             </ul>
             <!--赛况-->
-            <v-outs v-if="flag=='0'"></v-outs>
+            <v-outs  v-if="flag=='0'" :matchInfo='ckxqObj.matchInfo'></v-outs>
             <!--分析-->
             <div class="analysis" v-if="flag=='1'">
                 <div class="detail_list">
