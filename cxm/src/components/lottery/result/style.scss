@@ -1,5 +1,13 @@
  @import '../../../assets/css/function.scss';
  .result{
+   position: absolute;
+   min-height: 100%;
+   width: 100%;
+   .mint-loadmore{
+     position: absolute;
+     min-height: 100%;
+     width: 100%;
+   }
    .col-red{
       color: rgb(234, 85, 4)
    }

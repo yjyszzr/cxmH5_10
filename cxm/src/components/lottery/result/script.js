@@ -126,5 +126,5 @@ export default {
         this.$store.dispatch("getMatchFinish",'')
         this.$store.dispatch("getLeagueIds",'')
         this.$store.dispatch("getMarkDateVal",'')
-      }
+    }
 }

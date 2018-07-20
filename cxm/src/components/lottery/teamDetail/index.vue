@@ -135,32 +135,32 @@
 									<span>客</span>
 								</div>
 								<div class="tabListRight">
-									<ul>
-										<!-- <li>{{ckxqObj.homeTeamScoreInfo.hteamScore.matchNum}}</li>
+									<ul v-if="ckxqObj.homeTeamScoreInfo.tteamScore!=null">
+										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.matchNum}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.matchH}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.matchD}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.matchL}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.ballIn}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballLose}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballClean}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.score}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.score}}</li>
+									</ul>
+									<ul v-if="ckxqObj.homeTeamScoreInfo.hteamScore!=null">
+										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.matchNum}}</li>
 										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.matchH}}</li>
 										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.matchD}}</li>
 										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.matchL}}</li>
 										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.ballIn}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballLose}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballClean}}</li>
 										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.score}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.score}}</li> -->
+										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.score}}</li>
 									</ul>
-									<ul>
-										<li>29</li>
-										<li>13</li>
-										<li>9</li>
-										<li>7</li>
-										<li>51/36</li>
-										<li>48</li>
-										<li>4</li>
-									</ul>
-									<ul>
-										<li>29</li>
-										<li>13</li>
-										<li>9</li>
-										<li>7</li>
-										<li>51/36</li>
-										<li>48</li>
-										<li>4</li>
+									<ul v-if="ckxqObj.homeTeamScoreInfo.lteamScore!=null">
+										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.matchNum}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.matchH}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.matchD}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.matchL}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.ballIn}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballLose}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballClean}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.score}}</li>
+										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.score}}</li>
 									</ul>
 								</div>
 							</div>
@@ -177,7 +177,7 @@
 								<li>胜</li>
 								<li>平</li>
 								<li>负</li>
-								<li>进/失</li>
+								<li>进/失/净</li>
 								<li>积分</li>
 								<li>名次</li>
 							</ul>
@@ -188,37 +188,81 @@
 									<span>客</span>
 								</div>
 								<div class="tabListRight">
-									<ul>
-										<li>29</li>
-										<li>13</li>
-										<li>9</li>
-										<li>7</li>
-										<li>51/36</li>
-										<li>48</li>
-										<li>4</li>
+									<ul v-if="ckxqObj.visitingTeamScoreInfo.tteamScore!=null">
+										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.matchNum}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.matchH}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.matchD}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.matchL}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.ballIn}}/{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballLose}}/{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballClean}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.score}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.score}}</li>
 									</ul>
-									<ul>
-										<li>29</li>
-										<li>13</li>
-										<li>9</li>
-										<li>7</li>
-										<li>51/36</li>
-										<li>48</li>
-										<li>4</li>
+									<ul v-if="ckxqObj.visitingTeamScoreInfo.hteamScore!=null">
+										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.matchNum}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.matchH}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.matchD}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.matchL}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballIn}}/{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballLose}}/{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballClean}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.score}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.score}}</li>
 									</ul>
-									<ul>
-										<li>29</li>
-										<li>13</li>
-										<li>9</li>
-										<li>7</li>
-										<li>51/36</li>
-										<li>48</li>
-										<li>4</li>
+									<ul v-if="ckxqObj.visitingTeamScoreInfo.lteamScore!=null">
+										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.matchNum}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.matchH}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.matchD}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.matchL}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.ballIn}}/{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballLose}}/{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballClean}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.score}}</li>
+										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.score}}</li>
 									</ul>
                                 </div>
 							</div>
 						</div>
                     </div>
+                </div>
+                <div class="future-events">
+                        <div class="title">
+                            未来赛事<span>{{ckxqObj.matchInfo.homeTeamAbbr}}</span>
+                        </div>
+                        <table>
+                            <th>
+                                <td>赛事</td>
+                                <td>日期</td>
+                                <td>主队</td>
+                                <td>客队</td>
+                            </th>
+                            <tr v-for="(item,i) in ckxqObj.hFutureMatchInfos" :key='i'>
+                                <td>{{item.leagueAbbr}}</td>
+                                <td>{{item.matchDate}}</td>
+                                <td :style="{'color':item.homeTeamAbbr==ckxqObj.matchInfo.homeTeamAbbr?'#505050':'#9f9f9f'}">{{item.homeTeamAbbr}}</td>
+                                <td :style="{'color':item.visitorTeamAbbr==ckxqObj.matchInfo.homeTeamAbbr?'#505050':'#9f9f9f'}">{{item.visitorTeamAbbr}}</td>
+                            </tr>
+                            <div class="nullws" v-if="ckxqObj.hFutureMatchInfos&&ckxqObj.hFutureMatchInfos.length<=0">
+                                暂无数据
+                            </div>
+                        </table>
+                    </div>
+                    <div class="future-events">
+                        <div class="title">
+                            未来赛事<span>{{ckxqObj.matchInfo.visitingTeamAbbr}}</span>
+                        </div>
+                        <table>
+                            <th>
+                                <td>赛事</td>
+                                <td>日期</td>
+                                <td>主队</td>
+                                <td>客队</td>
+                            </th>
+                            <tr v-for="(item,i) in ckxqObj.vFutureMatchInfos" :key='i'>
+                                <td>{{item.leagueAbbr}}</td>
+                                <td>{{item.matchDate}}</td>
+                                <td :style="{'color':item.homeTeamAbbr==ckxqObj.matchInfo.visitingTeamAbbr?'#505050':'#9f9f9f'}">{{item.homeTeamAbbr}}</td>
+                                <td :style="{'color':item.visitorTeamAbbr==ckxqObj.matchInfo.visitingTeamAbbr?'#505050':'#9f9f9f'}">{{item.visitorTeamAbbr}}</td>
+                            </tr>
+                            <div class="nullws" v-if="ckxqObj.vFutureMatchInfos&&ckxqObj.vFutureMatchInfos.length<=0">
+                                暂无数据
+                            </div>
+                        </table>
                 </div>
             </div>
             <!--赔率-->

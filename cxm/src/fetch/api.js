@@ -274,6 +274,10 @@ export default {
     queryMatchResult(params) {
         return fetchPost('lottery/lottery/match/queryMatchResultNew', params)
     },
+    //比赛阵容
+    lineupinfo(params) {
+        return fetchPost('lottery/match/lineup/info', params)
+    },
     //赛事详情分析弹窗
     matchTeamInfosSum(params) {
         return fetchPost('lottery/lottery/match/matchTeamInfosSum', params)
