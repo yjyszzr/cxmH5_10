@@ -16,11 +16,15 @@
         color: #9f9f9f;
         font-size: px2rem(30px);
         text-align: center;
-
         b{
           display: block;
           font-weight: normal;
           font-size: px2rem(26px);
+        }
+        i{
+          font-style: normal;
+          font-size: px2rem(48px);
+          color: #ea5504;
         }
       }
       li{
@@ -43,12 +47,10 @@
             font-weight: 400;
           }
         }
-        i{
-          color: #9f9f9f;
-          font-size: px2rem(26px);
-          font-style: normal;
-        }
       }
+    }
+    .start-time{
+      align-items: center;
     }
   }
   .analytical{

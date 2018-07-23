@@ -6,17 +6,15 @@
                 <p class="p1">
                     {{ckxqObj.matchInfo.changci}} {{ckxqObj.matchInfo.leagueAddr}} {{matchTimeDate(ckxqObj.matchInfo.matchTime)}}
                 </p>
-                <ul>
+                <ul :class="res.matchStatus=='0'?'start-time':''">
                     <li>
                          <img :src="ckxqObj.matchInfo.homeTeamPic" alt="">
                         <span><b v-show="ckxqObj.matchInfo.homeTeamRank!==''">[{{ckxqObj.matchInfo.homeTeamRank}}]</b>{{ckxqObj.matchInfo.homeTeamAbbr}}</span>
-                        <i>主胜{{ckxqObj.matchInfo.hOdds}}</i>
                     </li>
-                    <p>VS<b>平{{ckxqObj.matchInfo.dOdds}}</b></p>
+                    <p><span><i v-if="res.matchStatus!=0">{{res.fsH}}</i>&nbsp;{{res.matchStatus=='1'?'已结束':res.matchStatus=='0'?dtfilter(res.matchTime):res.minute+'‘'}}&nbsp;<i v-if="res.matchStatus!=0">{{res.fsA}}</i></span><b v-show="res.matchStatus!=0">半场 {{res.htsH}}:{{res.htsA}}</b></p>
                     <li>
                         <img :src="ckxqObj.matchInfo.visitingTeamPic" alt="">
                         <span><b v-show="ckxqObj.matchInfo.visitingTeamRank!==''">[{{ckxqObj.matchInfo.visitingTeamRank}}]</b>{{ckxqObj.matchInfo.visitingTeamAbbr}}</span>
-                        <i>客胜{{ckxqObj.matchInfo.aOdds}}</i>
                     </li>
                 </ul>
             </div>
@@ -27,7 +25,7 @@
                 <li><p @click="fxTab($event,'3')"></p><span>阵容</span></li>
             </ul>
             <!--赛况-->
-            <v-outs  v-if="flag=='0'" :matchInfo='ckxqObj.matchInfo'></v-outs>
+            <v-outs :res='res' :eventList='eventList' :matchLiveStatisticsDTO='matchLiveStatisticsDTO' v-if="flag=='0'" :matchInfo='ckxqObj.matchInfo'></v-outs>
             <!--分析-->
             <div class="analysis" v-if="flag=='1'">
                 <div class="detail_list">

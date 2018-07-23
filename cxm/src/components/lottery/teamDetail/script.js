@@ -15,7 +15,11 @@ export default {
         ckxqObj:{},
         zObj: {},
         dfList: ['matchNum','matchH','matchD','matchL','ballIn','ballLose','ballClean','score','teamOrder'],
-        kobj: {}
+        kobj: {},
+        setInterval: '',
+        res: {},
+        eventList: [],
+        matchLiveStatisticsDTO: []
       }
     },
     created(){
@@ -90,9 +94,42 @@ export default {
               case '负':
                 return '#44ae35'
           }
+      },
+      // 获取比赛赛况
+      getInfo(){
+          var that = this
+          let data = {
+              matchId: that.$route.query.id
+          }
+          api.info(data)
+              .then(res=>{
+                  if(res.code == 0){
+                      dataFn(res)
+                  }
+              })
+          that.setInterval = setInterval(function () {
+              api.info(data)
+                  .then(res=>{
+                      if(res.code == 0){
+                          dataFn(res)
+                      }
+                  })
+          },60000)
+          function dataFn (res) {
+              that.res = res.data
+              that.eventList = res.data.eventList
+              that.matchLiveStatisticsDTO = res.data.matchLiveStatisticsDTO
+          }
+      },
+      dtfilter(c){
+        return `${datefilter(c*1000,0)} ${datefilter(c*1000,1)}`
       }
     },
     mounted(){
+      this.getInfo()
       this.fetchData()
     },
+    destroyed(){
+        clearInterval(this.setInterval)
+    }
 }
