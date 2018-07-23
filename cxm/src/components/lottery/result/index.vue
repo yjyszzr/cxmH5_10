@@ -17,7 +17,7 @@
                                     <p><em>{{list.homeTeamAbbr}}</em><span>VS</span><em style="text-align: left">{{list.visitingTeamAbbr}}</em></p>
                                     <!--0未开赛-->
                                     <div v-if="list.matchFinish =='0'">
-                                        <b>未开赛<span>{{starTimeFormat(list.matchTimeStart)}}</span></b>
+                                        <b>未开赛<span>{{list.matchTime.substr(6,12)}}</span></b>
                                     </div>
                                     <!--1已结束-->
                                     <div v-if="list.matchFinish =='1'">

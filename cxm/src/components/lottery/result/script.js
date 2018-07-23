@@ -50,9 +50,6 @@ export default {
                 this.$refs.loadmore.onTopLoaded();
             },400)
         },
-        starTimeFormat(time){
-           hour(time*1000);
-        },
         goDetail(c){
             this.$router.push({
                 path: '/lottery/teamDetail',
