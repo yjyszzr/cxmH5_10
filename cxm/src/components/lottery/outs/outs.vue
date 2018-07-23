@@ -197,7 +197,7 @@
                     </div>
                 </div>
             </div>
-            <div v-if="res.matchLiveStatisticsDTO.length==0" class="nullstatus">
+            <div v-if="res.matchLiveStatisticsDTO.length == 0" class="nullstatus">
                 <img src="../../../assets/img/juan.png" alt="">
                 <span>暂无数据</span>
             </div>
@@ -218,7 +218,10 @@
                 setIntervalTime:'',
                 eventList:[],//事件列表 ,
                 matchLiveStatisticsDTO:[],//统计数据,
-                res:{},//赛况数据
+                res:{
+                    eventList:[],
+                    matchLiveStatisticsDTO:[]
+                },//赛况数据
             }
         },
         created(){
