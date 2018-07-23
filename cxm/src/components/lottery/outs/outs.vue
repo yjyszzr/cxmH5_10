@@ -3,7 +3,7 @@
         <div class="event">
             <p class="title"> <i class="vertical-line"></i>事件</p>
             <div>
-                <div class="event-box" v-if="res.eventList.length != 0">
+                <div class="event-box">
                     <!--进程图-->
                     <div class="img-star-box">
                         <img class="img-star" src="./images/star@3x.png" alt="">
@@ -154,7 +154,7 @@
                         </ul>
                     </div>
                 </div>
-                <div v-else class="nullstatus">
+                <div class="nullstatus"  v-if="res.eventList.length == 0">
                     <img src="../../../assets/img/juan.png" alt="">
                     <span>暂无数据</span>
                 </div>
@@ -162,7 +162,7 @@
         </div>
         <div class="event">
             <p class="title"> <i class="vertical-line"></i>技术统计</p>
-            <div class="skill-tongji" v-if="res.matchLiveStatisticsDTO.length!=0">
+            <div class="skill-tongji">
                 <div class="skill-box">
                     <div class="skill-box-head skill">
                         <div class="left-text">
@@ -197,7 +197,7 @@
                     </div>
                 </div>
             </div>
-            <div v-else class="nullstatus">
+            <div v-if="res.matchLiveStatisticsDTO.length==0" class="nullstatus">
                 <img src="../../../assets/img/juan.png" alt="">
                 <span>暂无数据</span>
             </div>
