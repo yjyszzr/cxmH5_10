@@ -55,7 +55,7 @@ export default {
         },
 
 
-        
+
         goDetail(c){
             this.$router.push({
                 path: '/lottery/teamDetail',
