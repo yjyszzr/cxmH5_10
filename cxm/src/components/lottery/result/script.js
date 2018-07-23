@@ -53,6 +53,9 @@ export default {
         starTimeFormat(time){
            hour(time*1000);
         },
+
+
+        
         goDetail(c){
             this.$router.push({
                 path: '/lottery/teamDetail',
