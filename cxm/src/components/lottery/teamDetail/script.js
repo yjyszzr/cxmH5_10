@@ -12,7 +12,10 @@ export default {
     data () {
       return {
         flag: '1',
-        ckxqObj:{}
+        ckxqObj:{},
+        zObj: {},
+        dfList: ['matchNum','matchH','matchD','matchL','ballIn','ballLose','ballClean','score','teamOrder'],
+        kobj: {}
       }
     },
     created(){
@@ -32,6 +35,38 @@ export default {
             .then(res => {
                 if(res.code==0) {
                   this.ckxqObj = res.data
+                  let zlist = [],hlist = [],klist = [],vzlist=[],vhlist=[],vklist=[]
+                  function lt(obj,list,item){
+                    if(obj==null){
+                      list.push('-')
+                    }else{
+                      _.forIn(obj, (value, key)=> {
+                        if(item==key){
+                          if(value==null){
+                            value = '-'
+                          }
+                          if(item=='ballIn'||item=='ballLose'){
+                            value += '/'
+                          }
+                          list.push(value)
+                        }
+                      });
+                    }
+                  }
+                  this.dfList.forEach(item => {
+                    lt(res.data.homeTeamScoreInfo.lteamScore,zlist,item)
+                    lt(res.data.homeTeamScoreInfo.hteamScore,hlist,item)
+                    lt(res.data.homeTeamScoreInfo.tteamScore,klist,item)
+                    lt(res.data.visitingTeamScoreInfo.lteamScore,vzlist,item)
+                    lt(res.data.visitingTeamScoreInfo.hteamScore,vhlist,item)
+                    lt(res.data.visitingTeamScoreInfo.tteamScore,vklist,item)
+                  });
+                  this.zObj.zlist = zlist
+                  this.zObj.hlist = hlist
+                  this.zObj.klist = klist
+                  this.kobj.zlist = vzlist
+                  this.kobj.hlist = vhlist
+                  this.kobj.klist = vklist
                 }
             })
       },

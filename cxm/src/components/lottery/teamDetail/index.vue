@@ -135,32 +135,20 @@
 									<span>客</span>
 								</div>
 								<div class="tabListRight">
-									<ul v-if="ckxqObj.homeTeamScoreInfo.tteamScore!=null">
-										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.matchNum}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.matchH}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.matchD}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.matchL}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.ballIn}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballLose}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballClean}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.score}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.tteamScore.score}}</li>
+									<ul>
+										<li v-for="(item,i) in zObj.zlist" :key='i'>
+                                            {{item}}
+                                        </li>
 									</ul>
-									<ul v-if="ckxqObj.homeTeamScoreInfo.hteamScore!=null">
-										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.matchNum}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.matchH}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.matchD}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.matchL}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.ballIn}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballLose}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballClean}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.score}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.hteamScore.score}}</li>
+									<ul>
+										<li v-for="(item,i) in zObj.hlist" :key='i'>
+                                            {{item}}
+                                        </li>
 									</ul>
-									<ul v-if="ckxqObj.homeTeamScoreInfo.lteamScore!=null">
-										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.matchNum}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.matchH}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.matchD}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.matchL}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.ballIn}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballLose}}/{{ckxqObj.homeTeamScoreInfo.hteamScore.ballClean}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.score}}</li>
-										<li>{{ckxqObj.homeTeamScoreInfo.lteamScore.score}}</li>
+									<ul>
+										<li v-for="(item,i) in zObj.klist" :key='i'>
+                                            {{item}}
+                                        </li>
 									</ul>
 								</div>
 							</div>
@@ -188,32 +176,20 @@
 									<span>客</span>
 								</div>
 								<div class="tabListRight">
-									<ul v-if="ckxqObj.visitingTeamScoreInfo.tteamScore!=null">
-										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.matchNum}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.matchH}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.matchD}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.matchL}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.ballIn}}/{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballLose}}/{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballClean}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.score}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.tteamScore.score}}</li>
+									<ul>
+										<li v-for="(item,i) in kobj.zlist" :key='i'>
+                                            {{item}}
+                                        </li>
 									</ul>
-									<ul v-if="ckxqObj.visitingTeamScoreInfo.hteamScore!=null">
-										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.matchNum}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.matchH}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.matchD}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.matchL}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballIn}}/{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballLose}}/{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballClean}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.score}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.hteamScore.score}}</li>
+									<ul>
+										<li v-for="(item,i) in kobj.hlist" :key='i'>
+                                            {{item}}
+                                        </li>
 									</ul>
-									<ul v-if="ckxqObj.visitingTeamScoreInfo.lteamScore!=null">
-										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.matchNum}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.matchH}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.matchD}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.matchL}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.ballIn}}/{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballLose}}/{{ckxqObj.visitingTeamScoreInfo.hteamScore.ballClean}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.score}}</li>
-										<li>{{ckxqObj.visitingTeamScoreInfo.lteamScore.score}}</li>
+									<ul>
+										<li v-for="(item,i) in kobj.klist" :key='i'>
+                                            {{item}}
+                                        </li>
 									</ul>
                                 </div>
 							</div>
