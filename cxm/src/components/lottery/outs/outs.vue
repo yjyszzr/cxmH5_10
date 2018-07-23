@@ -169,7 +169,7 @@
                             <p class="name">{{matchInfo.homeTeamAbbr}}</p>
                         </div>
                         <div class="center-text">
-                            <p>vs</p>
+                            <p>VS</p>
                         </div>
                         <div class="right-text">
                             <img class="tem-img" :src="matchInfo.visitingTeamPic" alt="">
@@ -197,7 +197,6 @@
                 </div>
             </div>
             <div v-else class="no-data">
-                <img src="../../../assets/img/juan.png" alt="">
                 <p >暂无数据</p>
             </div>
         </div>
@@ -284,6 +283,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #a5a5a5;
         }
         .heightred{
             background-color: #ea5504!important;
@@ -482,7 +482,7 @@
                     margin-right: px2rem(28px);
                 }
                 img{
-                    margin-right: px2rem(70px);
+                    margin-right: px2rem(50px);
                 }
             }
             .right-text{
@@ -493,10 +493,10 @@
                 .name{
                     font-size: px2rem(28px);
                     color: #505050;
-                    margin-left: 28px;
+                    margin-left:px2rem(28px);
                 }
                 img{
-                    margin-left: px2rem(70px);
+                    margin-left: px2rem(50px);
                 }
             }
             .skill-box-head{
