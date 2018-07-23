@@ -3,7 +3,7 @@
         <div class="event">
             <p class="title"> <i class="vertical-line"></i>事件</p>
             <div>
-                <div class="event-box">
+                <div class="event-box" v-if="res.eventList.length > 0">
                     <!--进程图-->
                     <div class="img-star-box">
                         <img class="img-star" src="./images/star@3x.png" alt="">
@@ -154,15 +154,14 @@
                         </ul>
                     </div>
                 </div>
-                <div class="nullstatus"  v-if="res.eventList.length == 0">
-                    <img src="../../../assets/img/juan.png" alt="">
-                    <span>暂无数据</span>
+                <div v-else class="no-data">
+                    <p>暂无数据</p>
                 </div>
             </div>
         </div>
         <div class="event">
             <p class="title"> <i class="vertical-line"></i>技术统计</p>
-            <div class="skill-tongji">
+            <div class="skill-tongji" v-if="res.matchLiveStatisticsDTO.length > 0" >
                 <div class="skill-box">
                     <div class="skill-box-head skill">
                         <div class="left-text">
@@ -181,7 +180,7 @@
                     <div v-for="(item,index) in matchLiveStatisticsDTO" :key=index class="skill-box-body skill">
                         <div class="left-text">
                             <div class="bar-out">
-                                <div :style="{width:filt(item,item.teamHData)}" class="bar-in"></div>
+                                <div :style="{width:filt(item,item.teamHData)}" class="bar-in" :class="item.teamHData>=item.teamAData?'heightred':'lowblack'"></div>
                             </div>
                             <span class="bar-text">{{item.teamHData}}</span>
                         </div>
@@ -190,16 +189,16 @@
                         </div>
                         <div class="right-text">
                             <div class="bar-out">
-                                <div :style="{width:filt(item,item.teamAData)}" class="bar-in"></div>
+                                <div :style="{width:filt(item,item.teamAData)}" class="bar-in" :class="item.teamHData<=item.teamAData?'heightred':'lowblack'"></div>
                             </div>
                             <span class="bar-text">{{item.teamAData}}</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div v-if="res.matchLiveStatisticsDTO.length == 0" class="nullstatus">
+            <div v-else class="no-data">
                 <img src="../../../assets/img/juan.png" alt="">
-                <span>暂无数据</span>
+                <p >暂无数据</p>
             </div>
         </div>
 
@@ -279,6 +278,19 @@
     .main-body{
         width: 100%;
         margin: 0 auto;
+        .no-data{
+            height: px2rem(160px);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .heightred{
+            background-color: #ea5504!important;
+        }
+        .lowblack{
+            background-color: #a5a5a5!important;
+        }
         .skill-tongji{
             margin-top: px2rem(40px);
         }
@@ -494,19 +506,17 @@
                 }
             }
             .skill-box-body{
-                margin-top: px2rem(50px);
-                padding-bottom: px2rem(50px);
+                margin-top: px2rem(28px);
                 .bar-out{
                     height: 2px;
                     width: px2rem(206px);
-                    background-color: #666666;
+                    background-color: #e5e5e5;
                     display: flex;
                     flex-direction: row-reverse;
                 }
                 .bar-in{
                     height: 100%;
                     width: px2rem(106px);
-                    background-color: #ea5504;
                 }
                 .center-text{
                     font-size: px2rem(26px);
