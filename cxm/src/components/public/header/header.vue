@@ -293,6 +293,7 @@
             data_time() {
                 this.$store.dispatch("getMarkShow", true);
                 this.$store.dispatch("getMarkShowType", 1);
+                // this.router.push('/lotteryResult')
             },
             more() {
                 this.$store.dispatch("getMarkShow", true);
