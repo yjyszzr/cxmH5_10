@@ -25,7 +25,7 @@
                                     </div>
                                     <!--6比赛进行中-->
                                     <div v-if="list.matchFinish =='6'">
-                                        <b><span class="col-red">{{list.minute}}</span><span>半场{{list.firstHalf}}</span></b>
+                                        <b><span class="col-red">{{list.minute}}'</span><span>半场{{list.firstHalf}}</span></b>
                                     </div>
                                 </div>
                                 <s><img :src="list.visitingTeamLogo"></s>

@@ -3,7 +3,7 @@
         <div class="event">
             <p class="title"> <i class="vertical-line"></i>事件</p>
             <div>
-                <div class="event-box">
+                <div class="event-box" v-if="res.eventList.length != 0">
                     <!--进程图-->
                     <div class="img-star-box">
                         <img class="img-star" src="./images/star@3x.png" alt="">
@@ -55,7 +55,7 @@
                                 </template>
                             </div>
                             <div class="circle">
-                                {{item.minute}}`
+                                {{item.minute}}'
                             </div>
                             <div class="right-box" >
                                 <template v-if='item.isHa == "a"'>
@@ -154,11 +154,15 @@
                         </ul>
                     </div>
                 </div>
+                <div v-else class="nullstatus">
+                    <img src="../../../assets/img/juan.png" alt="">
+                    <span>暂无数据</span>
+                </div>
             </div>
         </div>
         <div class="event">
             <p class="title"> <i class="vertical-line"></i>技术统计</p>
-            <div class="skill-tongji">
+            <div class="skill-tongji" v-if="res.matchLiveStatisticsDTO.length!=0">
                 <div class="skill-box">
                     <div class="skill-box-head skill">
                         <div class="left-text">
@@ -192,6 +196,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div v-else class="nullstatus">
+                <img src="../../../assets/img/juan.png" alt="">
+                <span>暂无数据</span>
             </div>
         </div>
 
@@ -436,7 +444,7 @@
         .skill-box{
             .tem-img{
                 height:px2rem(80px) !important ;
-                width:px2rem(80px)!important; ;
+                /*width:px2rem(80px)!important;*/
             }
             .skill{
                 display: flex;
@@ -479,7 +487,7 @@
             .skill-box-head{
                 img{
                     height: px2rem(60px);
-                    width: px2rem(60px);
+                    /*width: px2rem(60px);*/
                 }
             }
             .skill-box-body{
