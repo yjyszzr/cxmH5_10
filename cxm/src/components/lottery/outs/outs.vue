@@ -199,6 +199,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        
                         <div v-else>
                             <div class="skill-box-body skill">
                                 <div class="left-text">
