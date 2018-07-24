@@ -3,7 +3,7 @@
         <div class="event">
             <p class="title"> <i class="vertical-line"></i>事件</p>
             <div>
-                <div class="event-box">
+                <div class="event-box" v-if="res.eventList.length>0">
                     <!--进程图-->
                     <div class="img-star-box">
                         <img class="img-star" src="./images/star@3x.png" alt="">
@@ -154,15 +154,14 @@
                         </ul>
                     </div>
                 </div>
-                <div class="nullstatus"  v-if="res.eventList.length == 0">
-                    <img src="../../../assets/img/juan.png" alt="">
-                    <span>暂无数据</span>
+                <div v-else class="no-data">
+                    <p>暂无数据</p>
                 </div>
             </div>
         </div>
         <div class="event">
             <p class="title"> <i class="vertical-line"></i>技术统计</p>
-            <div class="skill-tongji">
+            <div class="skill-tongji" v-if="res.matchLiveStatisticsDTO.length>0">
                 <div class="skill-box">
                     <div class="skill-box-head skill">
                         <div class="left-text">
@@ -170,36 +169,37 @@
                             <p class="name">{{matchInfo.homeTeamAbbr}}</p>
                         </div>
                         <div class="center-text">
-                            <p>vs</p>
+                            <p>VS</p>
                         </div>
                         <div class="right-text">
                             <img class="tem-img" :src="matchInfo.visitingTeamPic" alt="">
                             <p class="name">{{matchInfo.visitingTeamAbbr}}</p>
                         </div>
                     </div>
-
-                    <div v-for="(item,index) in matchLiveStatisticsDTO" :key=index class="skill-box-body skill">
-                        <div class="left-text">
-                            <div class="bar-out">
-                                <div :style="{width:filt(item,item.teamHData)}" class="bar-in"></div>
+                    <div class="skill-box">
+                        <div v-for="(item,index) in matchLiveStatisticsDTO" :key=index class="skill-box-body skill">
+                            <div class="left-text">
+                                <div class="bar-out">
+                                    <div :style="{width:filt(item,item.teamHData)}" class="bar-in" :class="item.teamHData>=item.teamAData?'hight-bar':'black-bar'"></div>
+                                </div>
+                                <span class="bar-text">{{item.teamHData}}</span>
                             </div>
-                            <span class="bar-text">{{item.teamHData}}</span>
-                        </div>
-                        <div class="center-text ">
-                            <p>{{item.dataName}}</p>
-                        </div>
-                        <div class="right-text">
-                            <div class="bar-out">
-                                <div :style="{width:filt(item,item.teamAData)}" class="bar-in"></div>
+                            <div class="center-text ">
+                                <p>{{item.dataName}}</p>
                             </div>
-                            <span class="bar-text">{{item.teamAData}}</span>
+                            <div class="right-text">
+                                <div class="bar-out">
+                                    <div :style="{width:filt(item,item.teamAData)}" class="bar-in" :class="item.teamHData<=item.teamAData?'hight-bar':'black-bar'"></div>
+                                </div>
+                                <span class="bar-text">{{item.teamAData}}</span>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
-            <div v-if="res.matchLiveStatisticsDTO.length == 0" class="nullstatus">
-                <img src="../../../assets/img/juan.png" alt="">
-                <span>暂无数据</span>
+            <div v-else class="no-data">
+                <p>暂无数据</p>
             </div>
         </div>
 

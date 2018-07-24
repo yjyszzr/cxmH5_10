@@ -2,6 +2,14 @@
     .main-body{
         width: 100%;
         margin: 0 auto;
+        .no-data{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: px2rem(200px);
+            color: #a5a5a5;
+        }
         .skill-tongji{
             margin-top: px2rem(40px);
         }
@@ -204,7 +212,7 @@
                 .name{
                     font-size: px2rem(28px);
                     color: #505050;
-                    margin-left: 28px;
+                    margin-left: px2rem(28px);
                 }
                 img{
                     margin-left: px2rem(70px);
@@ -216,20 +224,28 @@
                     /*width: px2rem(60px);*/
                 }
             }
-            .skill-box-body{
+            .skill-box{
                 margin-top: px2rem(50px);
                 padding-bottom: px2rem(50px);
+            }
+            .skill-box-body{
+                margin-top: px2rem(15px);
+                .hight-bar{
+                    background-color: #ea5504!important;
+                }
+                .black-bar{
+                    background-color: #a5a5a5!important;
+                }
                 .bar-out{
                     height: 2px;
                     width: px2rem(206px);
-                    background-color: #666666;
+                    background-color: #e5e5e5;
                     display: flex;
                     flex-direction: row-reverse;
                 }
                 .bar-in{
                     height: 100%;
                     width: px2rem(106px);
-                    background-color: #ea5504;
                 }
                 .center-text{
                     font-size: px2rem(26px);
