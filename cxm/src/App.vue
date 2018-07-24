@@ -205,7 +205,7 @@ export default {
           case "user":
             return "我的";
           case "lotteryResult":
-            return "比赛结果";
+            return "比赛";
           case "find":
             return "发现";
         }

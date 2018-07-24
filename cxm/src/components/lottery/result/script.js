@@ -18,7 +18,6 @@ export default {
 
     },
     mounted(){
-        console.log(this.$store.state.mark_showObj.mark_dateVal);
         if(this.$store.state.mark_showObj.mark_dateVal==''){
             this.$store.dispatch("getMarkDateVal",datefilter(new Date().getTime(),2))
         }

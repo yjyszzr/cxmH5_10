@@ -41,9 +41,9 @@
 			<ul class="box_list_1">
 				<li>公司</li>
 				<li></li>
-				<li>主</li>
+				<li>主水</li>
 				<li>盘口</li>
-				<li>负</li>
+				<li>客水</li>
 			</ul>
 			<div class="box_list_2">
 				<ul v-for="(data,i) in leagueMatchAsias" :key='i'>
