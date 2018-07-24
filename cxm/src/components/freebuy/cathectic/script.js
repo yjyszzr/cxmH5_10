@@ -523,12 +523,18 @@ export default {
 				.getBetInfo(data)
 				.then(res => {
 					if(res.code == 0) {
-						if(res.data.maxLotteryMoney>20000||res.data.betNum>10000||res.data.betNum<0){
+						if(res.msg===''){
+							if(res.data.maxLotteryMoney>20000||res.data.betNum>10000||res.data.betNum<0){
+								this.maxButNum = true
+								this.maxButNumMsg = res.msg
+								Toast(res.msg)
+							}else{
+								this.maxButNum = false
+							}
+						}else{
 							this.maxButNum = true
 							this.maxButNumMsg = res.msg
 							Toast(res.msg)
-						}else{
-							this.maxButNum = false
 						}
 						this.betObj = res.data
 					}else{
