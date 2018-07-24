@@ -5,7 +5,7 @@ import api from '../../../fetch/api'
 export default {
     name: 'result',
     beforeCreate() {
-        Indicator.open()
+        // Indicator.open()
     },
     data () {
       return {
@@ -18,7 +18,10 @@ export default {
 
     },
     mounted(){
-        this.$store.dispatch("getMarkDateVal",datefilter(new Date().getTime(),2))
+        console.log(this.$store.state.mark_showObj.mark_dateVal);
+        if(this.$store.state.mark_showObj.mark_dateVal==''){
+            this.$store.dispatch("getMarkDateVal",datefilter(new Date().getTime(),2))
+        }
     },
     computed: {
         weekDate(){
@@ -121,6 +124,6 @@ export default {
         this.$store.dispatch("getMarkShowType",'')
         this.$store.dispatch("getMatchFinish",'')
         this.$store.dispatch("getLeagueIds",'')
-        this.$store.dispatch("getMarkDateVal",'')
+        // this.$store.dispatch("getMarkDateVal",'')
     }
 }

@@ -2,7 +2,10 @@ import api from "../../../fetch/api"
     export default {
         name: "outs",
         props:[
-            'matchInfo','matchLiveStatisticsDTO','res','eventList'
+            'matchInfo',
+            'matchLiveStatisticsDTO',
+            'res',
+            'eventList'
         ],
         data(){
             return{
