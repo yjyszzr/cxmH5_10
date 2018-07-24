@@ -41,6 +41,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            .event-list{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: px2rem(130px);
+                padding-bottom: px2rem(30px);
+            }
             .card-img{
                 height: px2rem(32px);
                 width: px2rem(32px);
@@ -66,7 +73,7 @@
                 width: px2rem(25px);
             }
             .Legend{
-                margin-top:px2rem(108px) ;
+                //margin-top:px2rem(108px) ;
                 .Legend-ul{
                     display: flex;
                     flex-direction: row;
