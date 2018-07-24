@@ -11,8 +11,7 @@ export default {
       return {
           result:{},
           activeName: '1',
-          topStatus: '',
-        //   flag: true,
+          topStatus: ''
       }
     },
     created(){

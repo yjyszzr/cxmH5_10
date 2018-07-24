@@ -170,7 +170,7 @@
                             <p class="name">{{matchInfo.homeTeamAbbr}}</p>
                         </div>
                         <div class="center-text">
-                            <p>vs</p>
+                            <p>VS</p>
                         </div>
                         <div class="right-text">
                             <img class="tem-img" :src="matchInfo.visitingTeamPic" alt="">

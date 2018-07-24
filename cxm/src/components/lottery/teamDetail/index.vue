@@ -34,15 +34,15 @@
                 <div class="progress">
                     <div class="h_progress">
                         <span>主胜</span>
-                        <el-progress :percentage="(ckxqObj.hvMatchTeamInfo.win/ckxqObj.hvMatchTeamInfo.total)*100" status="exception"></el-progress>
+                        <el-progress :percentage="ckxqObj.hvMatchTeamInfo.total==0?0:(ckxqObj.hvMatchTeamInfo.win/ckxqObj.hvMatchTeamInfo.total)*100" status="exception"></el-progress>
                     </div>
                     <div class="p_progress">
                         <span>平</span>
-                        <el-progress :percentage="(ckxqObj.hvMatchTeamInfo.draw/ckxqObj.hvMatchTeamInfo.total)*100" :show-text='false'></el-progress>
+                        <el-progress :percentage="ckxqObj.hvMatchTeamInfo.total==0?0:(ckxqObj.hvMatchTeamInfo.draw/ckxqObj.hvMatchTeamInfo.total)*100" :show-text='false'></el-progress>
                     </div>
                     <div class="f_progress">
                         <span>客胜</span>
-                        <el-progress :percentage="(ckxqObj.hvMatchTeamInfo.lose/ckxqObj.hvMatchTeamInfo.total)*100" status="success"></el-progress>
+                        <el-progress :percentage="ckxqObj.hvMatchTeamInfo.total==0?0:(ckxqObj.hvMatchTeamInfo.lose/ckxqObj.hvMatchTeamInfo.total)*100" status="success"></el-progress>
                     </div>
                 </div>
                 <div class="cen_list">
