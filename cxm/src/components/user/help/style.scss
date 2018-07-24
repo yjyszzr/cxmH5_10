@@ -1,6 +1,8 @@
 @import '../../../assets/css/function.scss';
 .help{
-
+  .el-collapse-item__header{
+    padding-left: 0px;
+  }
   .help_center{
     .help_cen{
       padding: px2rem(36px) px2rem(32px);

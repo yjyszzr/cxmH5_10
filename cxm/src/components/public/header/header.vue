@@ -52,6 +52,7 @@
                 <li><a href="" @click.prevent="custormAnchor('a3')">提现问题</a></li>
                 <li><a href="" @click.prevent="custormAnchor('a4')">购彩问题</a></li>
                 <li><a href="" @click.prevent="custormAnchor('a5')">中奖派奖问题</a></li>
+                <li><a href="" @click.prevent="custormAnchor('a6')">玩法帮助</a></li>
             </ul>
             <div v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'" style="height: 10px; background: #f1f1f1;width: 100%"></div>
         </div>
@@ -585,7 +586,7 @@
                 text-align: center;
                 line-height: px2rem(57px);
                 margin-top: px2rem(36px);
-                margin-right: px2rem(25px);
+                margin-right: px2rem(20px);
                 a {
                     color: #fff;
                 }
