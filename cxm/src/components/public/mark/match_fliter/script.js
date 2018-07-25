@@ -67,9 +67,8 @@ export default {
             this.$store.dispatch("getLeagueIds",arrTeam.join(','))
             let data={
                 dateStr: this.$store.state.mark_showObj.mark_dateVal,
-                isAlreadyBuyMatch: this.$store.state.mark_showObj.isAlreadyBuyMatch,
                 leagueIds: this.$store.state.mark_showObj.leagueIds,
-                matchFinish: this.$store.state.mark_showObj.matchFinish
+                type: this.$store.state.mark_showObj.lotteryResultTableIndex
             }
             this.$store.dispatch("getResultList",data)
         }else{

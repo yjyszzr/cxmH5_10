@@ -634,6 +634,24 @@ const router = new Router({
         name: 'result',
         component: resolve => require(['@/components/activity/worldjeep/result/index.vue'], resolve)
       },
+      // 竞彩答题
+      {
+          path: '/activity/jingcai/index',
+          name: 'jingcai',
+          component: resolve => require(['@/components/activity/jingcai/index.vue'], resolve)
+      },
+      // 竞彩答题-纪录
+      {
+          path: '/activity/jingcai/record',
+          name: 'record',
+          component: resolve => require(['@/components/activity/jingcai/record.vue'], resolve)
+      },
+      // 老带新
+      {
+          path: '/activity/oldwithnew',
+          name: 'old_with_new',
+          component: resolve => require(['@/components/activity/old_With_New/old_with_new.vue'], resolve)
+      },
       {
           path: '/user/setup',
           name: 'setup',
