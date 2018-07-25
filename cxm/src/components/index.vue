@@ -254,12 +254,16 @@ export default {
                     this.$store.state.mark_showAc = true;
                     //Toast('成功')
                     clearInterval(this.$store.state.timertz);
-                  } else {
+                  } else if(res.code == '304036') {
                     if (num >= 3) {
                       localStorage.removeItem("payLogId");
                       localStorage.removeItem("activefrom");
                       clearInterval(this.$store.state.timertz);
                     }
+                  } else{
+                    localStorage.removeItem("payLogId");
+                    localStorage.removeItem("activefrom");
+                    clearInterval(this.$store.state.timertz);
                   }
                 });
             }, 3000);

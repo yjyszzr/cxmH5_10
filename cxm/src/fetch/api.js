@@ -40,7 +40,9 @@ axios.interceptors.request.use(
 axios.interceptors.response.use((res) => {
     if (res.config.url.indexOf('payment/query') == -1) {
         if (res.data.code >= 30000 && res.data.code <= 310000) {
-            Toast(res.data.msg)
+            if(router.history.current.path!='/activity/one'){
+                Toast(res.data.msg)
+            }
         } else if (res.data.code == 600) {
             if(getUrlStr('from',location.href)=='app'){
                 location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5'
