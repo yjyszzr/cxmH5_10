@@ -61,9 +61,19 @@
 								path: '/activity/red_packet'
 							})
 						}else if(url.indexOf('activity/world/worldenter')!=-1){
-							this.$router.push({
-								path: '/activity/world/worldenter'
-							})
+                            this.$router.push({
+                                path: '/activity/world/worldenter'
+                            })
+							//竞猜轮播图
+                        }else if(url.indexOf('activity/jingcai/index')!=-1){
+                            this.$router.push({
+                                path: '/activity/jingcai/index'
+                            })
+                            //老带新轮播图
+                        }else if(url.indexOf('activity/world/worldenter')!=-1){
+                            this.$router.push({
+                                path: '/activity/world/worldenter'
+                            })
 						}else{
 							location.href=url
 						}

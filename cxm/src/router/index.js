@@ -634,6 +634,18 @@ const router = new Router({
         name: 'result',
         component: resolve => require(['@/components/activity/worldjeep/result/index.vue'], resolve)
       },
+      // 竞彩答题
+      {
+          path: '/activity/jingcai/index',
+          name: 'jingcai',
+          component: resolve => require(['@/components/activity/jingcai/index.vue'], resolve)
+      },
+      // 老带新
+      {
+          path: '/activity/old_With_New/old_with_new',
+          name: 'jingcai',
+          component: resolve => require(['@/components/activity/old_With_New/old_with_new.vue'], resolve)
+      },
       {
           path: '/user/setup',
           name: 'setup',

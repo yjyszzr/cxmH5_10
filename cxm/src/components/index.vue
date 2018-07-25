@@ -368,6 +368,12 @@ export default {
       this.$router.push({
         path: "/activity/down/cxm?ct=2&fr=cxm_h5home"
       });
+      //   this.$router.push({
+      //       path: "/activity/jingcai/index"
+      //   });
+      //   this.$router.push({
+      //       path: "/activity/old_With_New/old_with_new"
+      //   });
     }
   },
   created: function() {},
