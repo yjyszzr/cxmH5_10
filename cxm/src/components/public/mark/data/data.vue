@@ -4,7 +4,7 @@
             日期
         </div>
         <div class="data-box">
-            <ul >
+            <ul id="sroll-height">
                 <li :class="$store.state.mark_showObj.mark_dateVal==list.strDate?'cur':''" v-for="(list,i) in dataList" :key='i' ref='match_name' @click="list_li(list,i)">{{list.strDate}}</li>
             </ul>
         </div>

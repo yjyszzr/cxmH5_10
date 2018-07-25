@@ -55,6 +55,9 @@ export default {
                         if(that.$store.state.mark_showObj.mark_dateVal==''){
                             this.$store.dispatch("getMarkDateVal",nowDataYYYYMMDD())
                         }
+                        this.$nextTick(()=>{
+                            $('#sroll-height').scrollTop($('.cur').offset().top-134)
+                        })
                     }
                 })
         },
@@ -66,5 +69,8 @@ export default {
             this.$store.dispatch("getMarkShow", false)
             this.$store.dispatch("getMarkDateVal",c.strDate)
         }
+    },
+    mounted(){
+    
     }
 }
