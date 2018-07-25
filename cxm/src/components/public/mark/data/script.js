@@ -13,6 +13,10 @@ export default {
     },
     created() {
         this.getDate()
+
+    },
+    mounted(){
+        // this.dataUl()
     },
     computed: {
         // data_list() {
@@ -43,6 +47,15 @@ export default {
         // },
     },
     methods: {
+        dataUl(even){
+            // $('#databox1').css("background-color",'red')
+            // this.$refs.dataUl.style.background="red"
+            $('#databox1').scrollTop(200)
+            console.log($('#databox1 li'))
+            // document.getElementById("databox1").scrollTop = 100;
+            // console.log();
+            console.log($('#databox1').scrollTop(200));
+        },
         getDate() {
             var that = this
             let data = {
@@ -61,6 +74,7 @@ export default {
                     }
                 })
         },
+
         cancel() {
             this.$store.dispatch("getMarkShow", false)
         },
