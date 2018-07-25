@@ -70,9 +70,9 @@
                                 path: '/activity/jingcai/index'
                             })
                             //老带新轮播图
-                        }else if(url.indexOf('activity/world/worldenter')!=-1){
+                        }else if(url.indexOf('activity/old_With_New/old_with_new')!=-1){
                             this.$router.push({
-                                path: '/activity/world/worldenter'
+                                path: '/activity/old_With_New/old_with_new'
                             })
 						}else{
 							location.href=url
