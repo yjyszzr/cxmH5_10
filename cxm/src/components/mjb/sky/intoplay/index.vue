@@ -77,7 +77,7 @@ export default {
     },
     mounted(){
         window.getCxmTitle = function(){
-            return '天天体育·玩法帮助'
+            return '天空体育·玩法帮助'
         }
         this.$store.state.matchObj = {};
     }

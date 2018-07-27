@@ -13,7 +13,7 @@ export default {
     },
     mounted(){
       window.getCxmTitle = function(){
-          return '天天体育·帮助中心'
+          return '天空体育·帮助中心'
       }
     }
 }

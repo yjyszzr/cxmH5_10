@@ -53,7 +53,7 @@ export default {
   },
   mounted(){
       window.getCxmTitle = function(){
-          return '天天体育·安全保障'
+          return '天空体育·安全保障'
       }
   }
 }
