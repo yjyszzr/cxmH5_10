@@ -369,12 +369,12 @@ export default {
       }
     },
     goDownLoad() {
-      // this.$router.push({
-      //   path: "/activity/down/cxm?ct=2&fr=cxm_h5home"
-      // });
-        this.$router.push({
-            path: "/activity/jingcai"
-        });
+      this.$router.push({
+        path: "/activity/down/cxm?ct=2&fr=cxm_h5home"
+      });
+        // this.$router.push({
+        //     path: "/activity/jingcai"
+        // });
       //   this.$router.push({
       //       path: "/activity/old_With_New/old_with_new"
       //   });

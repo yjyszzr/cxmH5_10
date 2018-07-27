@@ -2,7 +2,7 @@
     <div class="record-list" :style="{width:'100%'}">
         <div class="body">
             <ul class="ul-list">
-                <li @click="goMyRecord(item.matchId)" v-for="(item,index) in historyList" :key=index>
+                <li @click="goMyRecord(item)" v-for="(item,index) in historyList" :key=index>
                     <p class="left-p">{{item.period}} <span class="img-new"><img v-if="index==0" src="./images/new.png" alt=""></span> </p>
                     <p class="right-p">查看竞猜详情 > </p>
                 </li>
@@ -77,11 +77,11 @@
                     })
             },
             //去详情页
-            goMyRecord(matchId){
+            goMyRecord(item){
                 this.$router.push({
                     path:"/activity/jingcai",
                     query:{
-                        matchId:matchId
+                        matchId:item.matchId
                     }
                 })
             }

@@ -220,7 +220,8 @@
                 timeId: '',//计时器
                 qudata: [], //答案数据
                 answerAllPull:'',//答案是否提交
-                HaveRightAnswer:false
+                HaveRightAnswer:false, //是否已经公布正确答案
+                fromeRouter:''//在哪个路由来
             }
         },
         created() {
@@ -232,7 +233,6 @@
             } else {
                 this.login = false
             }
-
         },
         computed: {},
         methods: {
@@ -261,7 +261,8 @@
             // 查看上期纪录
             lookupRecord() {
                 this.$router.push({
-                    path: "/activity/upRecord"
+                    path: "/activity/upRecord",
+                    query:{matchId:this.matchId}
                 })
             },
             // 查看我的竞猜纪录
@@ -303,8 +304,6 @@
                 }else {
                     Toast("历史记录只能看哟！")
                 }
-
-
             },
             // 提交答案
             add() {
@@ -367,11 +366,18 @@
                     that.stopTime()
                 }, 1000)
 
+            },
+            fetchDate(){
+                alert(222333)
             }
         },
-        watch: {},
         destroyed() {
             // clearInterval(this.timeId)
+        },
+        beforeRouteEnter(to,from,next){
+            next(vm=>{
+                vm.fromeRouter = from.name
+            })
         }
     }
 </script>
