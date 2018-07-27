@@ -60,7 +60,7 @@
         <ul class="list" v-if="$route.path.split('/')[1]=='lotteryResult'">
             <li v-for="item in lotteryResultTable" @click="lotteryTable($event,item.key)" :key='item.key' :class="item.key==activeIndex?'findactive':''">
                 <p>{{item.name}}</p>
-                <span class="iconNum">{{item.cont}}</span>
+                <!--<span class="iconNum">{{item.cont}}</span>-->
             </li>
         </ul>
         <div class="swiper-container findTab" v-if="$route.path.split('/')[1]=='find'">

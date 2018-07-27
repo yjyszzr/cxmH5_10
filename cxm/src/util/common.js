@@ -94,7 +94,7 @@ export let weekTime = (data) =>{
 }
 // 转化成 11：45
 export let hour = (data)=>{
-    return moment(new Date()).format('MMMM Do YYYY, h:mm:ss a')
+    return moment(new Date(data)).format('hh:mm:ss')
 }
 export let nowDataYYYYMMDD = () => {
     return moment().format('YYYY-MM-DD')

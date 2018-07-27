@@ -3,9 +3,9 @@
     <div class="wrap result">
         <mt-loadmore ref="loadmore" :top-method="loadTop" @top-status-change="handleTopChange">
             <section v-if="listd.lotteryMatchDTOList">
-                <!--<p class="title" v-if="listd.lotteryMatchDTOList.length>0">-->
-                    <!--<span class="spfList">{{weekDate}}共有<span>{{listd.lotteryMatchDTOList.length}}</span>场比赛</span>-->
-                <!--</p>-->
+                <p class="title" v-if="listd.lotteryMatchDTOList.length>0">
+                    <span class="spfList">{{weekDate}}共有<span>{{listd.lotteryMatchDTOList.length}}</span>场比赛</span>
+                </p>
                 <ul class="hotMatchList">
                     <li v-for="(list,i) in listd.lotteryMatchDTOList" :key='i'>
                         <small><i>{{list.changci}}</i><i>{{list.leagueAddr}}</i><i>{{list.matchTime}}</i></small>

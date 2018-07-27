@@ -636,15 +636,27 @@ const router = new Router({
       },
       // 竞彩答题
       {
-          path: '/activity/jingcai/index',
+          path: '/activity/jingcai',
           name: 'jingcai',
           component: resolve => require(['@/components/activity/jingcai/index.vue'], resolve)
       },
       // 竞彩答题-纪录
       {
-          path: '/activity/jingcai/record',
+          path: '/activity/recorded',
           name: 'record',
           component: resolve => require(['@/components/activity/jingcai/record.vue'], resolve)
+      },
+      // 竞彩答题-纪录列表
+      {
+          path: '/activity/recordedList',
+          name: 'recordedList',
+          component: resolve => require(['@/components/activity/jingcai/recordList.vue'], resolve)
+      },
+      // 竞彩答题-上期纪录
+      {
+          path: '/activity/upRecord',
+          name: 'upRecord',
+          component: resolve => require(['@/components/activity/jingcai/upRecord.vue'], resolve)
       },
       // 老带新
       {

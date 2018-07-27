@@ -172,6 +172,14 @@
                             return "充值送壕礼";
                         case 'oldwithnew':
                             return "小白课堂";
+                        case 'jingcai':
+                            return "体育竞猜";
+                        case 'recorded':
+                            return "竞猜纪录";
+                        case 'recordedList':
+                            return "竞猜纪录";
+                        case 'upRecord':
+                            return "上期纪录";
                         case 'one':
                             return "注册送红包";
                         case 'world_cup':

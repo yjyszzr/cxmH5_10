@@ -1,61 +1,70 @@
 <template>
     <div class="jing-cai" :style="{width:'100%'}">
-        <div class="body">
+        <div v-if="baseDate.lenth!=0" class="body">
             <p class="active-describe" @click="activeDescribe">活动说明</p>
-            <p class="money">2867.22 <span>元</span></p>
+            <p class="money">{{baseDate.bonusPool}} <span>元</span></p>
             <p class="describe">奖金滚存</p>
-            <p class="person">260人次参加竞猜</p>
+            <p class="person">{{baseDate.numOfPeople}}人次参加竞猜</p>
             <p class="memo">备注：每增加一个用户，奖池增加0.5元</p>
             <div class="history">
-                <p>查看上期中奖纪录</p>
-                <p>查看我的竞猜纪录</p>
+                <p @click="lookupRecord">查看上期中奖纪录</p>
+                <p v-if="login" @click="lookMyRecord">查看我的竞猜纪录</p>
             </div>
             <div class="team">
                 <div class="img-box">
-
+                    <img :src="baseDate.homeTeamPic" alt="">
                 </div>
                 <div>
                     <p class="team-name">
-                        <span>汗秘尔顿</span>
+                        <span>{{baseDate.homeTeamAbbr}}</span>
                         VS
-                        <span>凯尔特人</span>
+                        <span>{{baseDate.visitingTeamAbbr}}</span>
                     </p>
-                    <p class="active-time">
-                        活动倒计时： <span>01:22:15</span>
-                    </p>
+                    <!--<p class="active-time">-->
+                    <!--活动倒计时：<span>{{stopTime}}</span>-->
+                    <!--</p>-->
                 </div>
                 <div class="img-box">
-
+                    <img :src="baseDate.visitingTeamPic" alt="">
                 </div>
             </div>
-            <p class="once-time">拥有一次竞猜机会，剩余7次奖金翻倍机会</p>
-            <ul class="ul-box">
-                <li>
-                    <p>全场进球数大于2.5</p>
+            <!--answerTimeStatus = 0 代表本次答题活动已结束,1开始,2未开始-->
+            <p class="once-time" v-if="baseDate.answerTimeStatus=='0'">本期竞猜已截止，下次早点哦！</p>
+            <p class="once-time" v-if="baseDate.answerTimeStatus=='1'">本期竞猜未开始，稍等片刻！</p>
+            <p class="once-time" v-if="baseDate.answerTimeStatus=='2'">竞猜活动倒计时{{timesd}}</p>
+            <ul v-if="questionAndAnswersList.length!=0" class="ul-box">
+                <li v-for="(item,index) in questionAndAnswersList" :key=index>
+                    <p>{{item.questionSetting}}</p>
                     <div class="btn-box">
-                        <div>是</div>
-                        <div>否</div>
-                    </div>
-                </li>
-                <li>
-                    <p>全场进球数大于2.5</p>
-                    <div class="btn-box">
-                        <div>是</div>
-                        <div>否</div>
+                        <div :class="item.isSelected == '0'||item.answerStatus1=='1'?'cur':''" @click="itemClic('0',item,$event)">
+                            {{item.answerSetting1}}
+                            <span v-if="item.rightAnswerStatus1=='1'"><img src="./images/yes.png" alt=""></span>
+                        </div>
+                        <div :class="item.isSelected == '1'||item.answerStatus2=='1'?'cur':''" @click="itemClic('1',item,$event)">
+                            {{item.answerSetting2}}
+                            <span v-if="item.rightAnswerStatus2=='1'"><img src="./images/yes.png" alt=""></span>
+                        </div>
                     </div>
                 </li>
             </ul>
-            <p class="jingcai-now">立即竞猜</p>
+            <p @click="add" class="jingcai-now">立即竞猜</p>
         </div>
+
     </div>
 </template>
 
 <style lang="scss">
     @import "../../../assets/css/function.scss";
+
     .jing-cai {
         background: url("./images/base.jpg") no-repeat center;
         background-size: 100% auto;
+        height: auto;
+        overflow: hidden;
         .body {
+            .cur {
+                background-color: #ea5504 !important;
+            }
             position: relative;
             .active-describe {
                 position: absolute;
@@ -103,7 +112,7 @@
                     font-size: px2rem(26px);
                     color: #cccccc;
                     padding: 0 px2rem(20px);
-                    text-decoration:underline
+                    text-decoration: underline
                 }
             }
             .team {
@@ -123,9 +132,11 @@
                 .img-box {
                     height: px2rem(80px);
                     width: px2rem(80px);
-                    background-color: red;
                     border-radius: 100%;
                     overflow: hidden;
+                    img {
+                        width: 100%;
+                    }
                 }
                 .active-time {
                     text-align: center;
@@ -159,9 +170,23 @@
                         align-items: center;
                         div {
                             margin: px2rem(30px);
-                            padding: px2rem(15px) px2rem(120px);
+                            padding: px2rem(15px) 0;
                             border: 1px solid #ffffff;
                             font-size: px2rem(28px);
+                            width: px2rem(280px);
+                            text-align: center;
+                            position: relative;
+                            span{
+                                display: inline-block;
+                                position: absolute;
+                                height: px2rem(40px);
+                                width: px2rem(40px);
+                                right: px2rem(0px);
+                                bottom: px2rem(0px);
+                                img{
+                                    width: 100%;
+                                }
+                            }
                         }
                     }
                 }
@@ -179,14 +204,38 @@
     }
 </style>
 <script>
-    import {MessageBox} from 'mint-ui';
+    import { MessageBox ,Toast} from 'mint-ui'
+    import api from '../../../fetch/api'
 
     export default {
         name: "jingcai",
         data() {
-            return {}
+            return {
+                login: false,
+                matchId:this.$route.query.matchId,//赛事ID
+                questionAndAnswersList: [],
+                userAnswersList:[],
+                baseDate: {},
+                timesd: '',
+                timeId: '',//计时器
+                qudata: [], //答案数据
+                answerAllPull:'',//答案是否提交
+            }
         },
+        created() {
+            // this.matchId = this.$route.query.matchId
+            this.getDetails()
+            // 判断是否登录
+            if (localStorage.getItem('token')) {
+                this.login = true
+            } else {
+                this.login = false
+            }
+
+        },
+        computed: {},
         methods: {
+            // 活动介绍
             activeDescribe() {
                 MessageBox.alert('', {
                     message: '1.用户累计购彩满50元即可获得1次竞猜机会，\n' +
@@ -207,8 +256,108 @@
                 }).then(action => {
 
                 });
+            },
+            // 查看上期纪录
+            lookupRecord() {
+                this.$router.push({
+                    path: "/activity/upRecord"
+                })
+            },
+            // 查看我的竞猜纪录
+            lookMyRecord() {
+                this.$router.push({
+                    path: "/activity/recordedList"
+                })
+            },
+            //获取竞猜详情
+            getDetails() {
+                let data = {
+                    matchId:this.matchId,
+                    // matchId: '18021'
+                }
+                api.guessingCompetitionDetails(data)
+                    .then(res => {
+                        if (res.code == 0) {
+                            this.baseDate = res.data
+                            this.questionAndAnswersList = res.data.questionAndAnswersList
+                            this.userAnswersList = res.data.userAnswersList
+                            if (this.baseDate.answerTimeStatus == '2') {
+                                this.stopTime()
+                            }
+                        }
+                    })
+            },
+            //点击item
+            itemClic(type, item, c) {
+                this.$set(item, 'isSelected', type)
+
+            },
+            // 提交答案
+            add() {
+                if(this.answerAllPull!="已经提交"){
+                    if($('.cur').length<this.questionAndAnswersList.length){
+                        Toast("请将所有问题答完！")
+                        return false;
+                    }
+                    let arr= []
+                    this.questionAndAnswersList.forEach(item => {
+                        let obj = {
+                            answerStatus1 : '0',
+                            answerStatus2 : '0',
+                            questionNum:item.questionNum
+                        }
+                        if (item.isSelected == '0') {
+                            obj.answerStatus1 = '1'
+                            obj.answerStatus2 = '0'
+                        }else if(item.isSelected == '1'){
+                            obj.answerStatus1 = '0'
+                            obj.answerStatus2 = '1'
+                        }
+                        arr.push(obj)
+                    })
+                    let data = {
+                        answers:arr,
+                        matchId:this.matchId,
+                        // matchId:'18021'
+                    }
+                    api.add(data)
+                        .then(res => {
+                            if (res.code == 0) {
+                                Toast("答案提交成功")
+                                this.answerAllPull = "已经提交"
+                            }
+                        })
+                }else {
+                    Toast("不可重复提交！")
+                }
+
+            },
+            // 活动倒计时
+            stopTime() {
+                var that = this
+                //获取当前时间
+                var date = new Date();
+                var now = date.getTime();
+                //时间差
+                var leftTime = this.baseDate.stopTime * 1000 - now;
+                //定义变量 d,h,m,s保存倒计时的时间
+                var d, h, m, s;
+                if (leftTime >= 0) {
+                    d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
+                    h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
+                    m = Math.floor(leftTime / 1000 / 60 % 60);
+                    s = Math.floor(leftTime / 1000 % 60);
+                }
+                that.timesd = h + '小时' + m + '分' + s + '秒'
+                that.timeId = setInterval(function () {
+                    that.stopTime()
+                }, 1000)
 
             }
+        },
+        watch: {},
+        destroyed() {
+            // clearInterval(this.timeId)
         }
     }
 </script>

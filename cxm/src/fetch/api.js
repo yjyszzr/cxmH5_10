@@ -479,6 +479,18 @@ export default {
     //比赛赛况接口
     info(params) {
         return fetchPost('/lottery/match/live/info', params)
+    },
+    //答题竞猜体育
+    guessingCompetitionDetails(params) {
+        return fetchPost('/activity/dlQuestionsAndAnswersUser/guessingCompetitionDetails', params)
+    },
+    //答题竞猜提交答案
+    add(params) {
+        return fetchPost('/activity/dlQuestionsAndAnswersUser/add', params)
+    },
+    //我的竞猜纪录历史列表
+    userAnswersList(params) {
+        return fetchPost('/activity/dlQuestionsAndAnswersUser/userAnswersList', params)
     }
 }
 
