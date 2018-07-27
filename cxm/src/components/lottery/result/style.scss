@@ -52,6 +52,7 @@
          width: px2rem(60px);
          top: px2rem(60px);
          color: #505050;
+         z-index: 2;
        }
        .arrow_right{
          position: absolute;
@@ -75,7 +76,7 @@
            position: absolute;
            top: px2rem(71px);
            img{
-             height: 100%;
+             max-height: 100%;
            }
          }
          s{

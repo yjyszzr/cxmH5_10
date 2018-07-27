@@ -167,14 +167,14 @@
             <div class="skill-tongji">
                 <div class="skill-box">
                     <div class="skill-box-head skill">
-                        <div class="left-text">
+                        <div class="left-text-title">
                             <img class="tem-img"  :src="matchInfo.homeTeamPic" alt="">
                             <p class="name">{{matchInfo.homeTeamAbbr}}</p>
                         </div>
                         <div class="center-text">
                             <p>VS</p>
                         </div>
-                        <div class="right-text">
+                        <div class="right-text-title">
                             <img class="tem-img" :src="matchInfo.visitingTeamPic" alt="">
                             <p class="name">{{matchInfo.visitingTeamAbbr}}</p>
                         </div>
@@ -186,7 +186,9 @@
                                     <div class="bar-out">
                                         <div :style="{width:filt(item,item.teamHData)}" class="bar-in" :class="parseInt(item.teamHData)>=parseInt(item.teamAData)?'hight-bar':'black-bar'"></div>
                                     </div>
-                                    <span class="bar-text">{{item.teamHData==''?'0%':item.teamHData}}</span>
+                                    <span v-if="index=='0'" class="bar-text">{{item.teamHData==''?'0%':item.teamHData}}</span>
+                                    <span v-if="index!='0'" class="bar-text">{{item.teamHData==''?'0':item.teamHData}}</span>
+                                    <!--<span class="bar-text">{{item.teamHData==''&& index=='0'?'0%':item.teamHData}}</span>-->
                                 </div>
                                 <div class="center-text ">
                                     <p>{{item.dataName}}</p>
@@ -195,12 +197,13 @@
                                     <div class="bar-out">
                                         <div :style="{width:filt(item,item.teamAData)}" class="bar-in" :class="parseInt(item.teamHData)<=parseInt(item.teamAData)?'hight-bar':'black-bar'"></div>
                                     </div>
-                                    <span class="bar-text">{{item.teamHData==''?'0%':item.teamHData}}</span>
+                                    <span v-if="index=='0'" class="bar-text">{{item.teamAData==''?'0%':item.teamAData}}</span>
+                                    <span v-if="index!='0'" class="bar-text">{{item.teamAData==''?'0':item.teamAData}}</span>
                                 </div>
                             </div>
                         </div>
 
-                        
+
                         <div v-else>
                             <div class="skill-box-body skill">
                                 <div class="left-text">
@@ -348,5 +351,5 @@
 </script>
 
 <style scoped lang="scss" src='./style.scss'>
-    
+
 </style>
