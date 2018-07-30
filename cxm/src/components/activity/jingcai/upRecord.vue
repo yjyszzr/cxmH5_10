@@ -171,7 +171,6 @@
                     .then(res => {
                         if (res.code == 0) {
                             this.data = res.data
-                            console.log(res);
                         }
                     })
             }
