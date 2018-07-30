@@ -64,6 +64,9 @@
                             <li :style="{'color':colorMatchRs(item.matchRs)}">{{item.matchRs}}</li>
                         </ul>
                     </div>
+                    <div class="nullws" v-if="ckxqObj.hvMatchTeamInfo.matchInfos&&ckxqObj.hvMatchTeamInfo.matchInfos.length<=0">
+                        暂无数据
+                    </div>
                 </div>
                 <div class="cen_list">
                     <div class="detail_list" style="border-bottom:1px solid #f0f0f0;">

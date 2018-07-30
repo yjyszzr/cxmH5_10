@@ -1,15 +1,8 @@
+import helpTable from '../../../public/help'
 export default {
     name: 'help',
-    data () {
-      return {
-        
-      }
-    },
-    created(){
-      
-    },
-    methods:{
-     
+    components: {
+      "v-table": helpTable
     },
     mounted(){
       window.getCxmTitle = function(){
