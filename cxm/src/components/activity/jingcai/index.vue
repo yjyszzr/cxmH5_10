@@ -32,24 +32,22 @@
             <p class="once-time" v-if="baseDate.answerTimeStatus=='0'">本期竞猜已截止，下次早点哦！</p>
             <p class="once-time" v-if="baseDate.answerTimeStatus=='2'">本期竞猜未开始，稍等片刻！</p>
             <p class="once-time" v-if="baseDate.answerTimeStatus=='1'">竞猜活动结束倒计时{{timesd}}</p>
-            <template v-if="baseDate.answerTimeStatus=='1'">
-                <ul v-if="questionAndAnswersList.length!=0" class="ul-box">
-                    <li v-for="(item,index) in questionAndAnswersList" :key=index>
-                        <p>{{item.questionSetting}}</p>
-                        <div class="btn-box">
-                            <div :class="item.isSelected == '0'||item.answerStatus1=='1'?'cur':''" @click="itemClic('0',item,$event)">
-                                {{item.answerSetting1}}
-                                <span v-if="item.rightAnswerStatus1=='1'"><img src="./images/yes.png" alt=""></span>
-                            </div>
-                            <div :class="item.isSelected == '1'||item.answerStatus2=='1'?'cur':''" @click="itemClic('1',item,$event)">
-                                {{item.answerSetting2}}
-                                <span v-if="item.rightAnswerStatus2=='1'"><img src="./images/yes.png" alt=""></span>
-                            </div>
+            <ul v-if="questionAndAnswersList.length!=0" class="ul-box">
+                <li v-for="(item,index) in questionAndAnswersList" :key=index>
+                    <p>{{item.questionSetting}}</p>
+                    <div class="btn-box">
+                        <div :class="item.isSelected == '0'||item.answerStatus1=='1'?'cur':''" @click="itemClic('0',item,$event)">
+                            {{item.answerSetting1}}
+                            <span v-if="item.rightAnswerStatus1=='1'"><img src="./images/yes.png" alt=""></span>
                         </div>
-                    </li>
-                </ul>
-                <p @click="add" class="jingcai-now">立即竞猜</p>
-            </template>
+                        <div :class="item.isSelected == '1'||item.answerStatus2=='1'?'cur':''" @click="itemClic('1',item,$event)">
+                            {{item.answerSetting2}}
+                            <span v-if="item.rightAnswerStatus2=='1'"><img src="./images/yes.png" alt=""></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <p @click="add" class="jingcai-now">立即竞猜</p>
 
         </div>
 
