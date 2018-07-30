@@ -640,12 +640,6 @@ const router = new Router({
           name: 'jingcai',
           component: resolve => require(['@/components/activity/jingcai/index.vue'], resolve)
       },
-      // 竞彩答题-纪录
-      {
-          path: '/activity/recorded',
-          name: 'record',
-          component: resolve => require(['@/components/activity/jingcai/record.vue'], resolve)
-      },
       // 竞彩答题-纪录列表
       {
           path: '/activity/recordedList',

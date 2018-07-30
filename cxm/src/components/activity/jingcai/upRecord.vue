@@ -1,65 +1,63 @@
 <template>
     <div class="Uprecord" :style="{width:'100%'}">
         <div class="main">
-            <div v-if="!login">
-                <div class="yes" v-if="true" >
+            <div v-if="login">
+                <div class="yes" v-if="data.participateOrNot=='1'">
                     <div class="title-box">
                         <div class="left-box">
-                            <p class="money"><span>28657.95</span>元</p>
+                            <p class="money"><span>{{data.bonusPool}}</span>元</p>
                             <p class="money-text">奖池累计金额</p>
                         </div>
                         <p class="line"></p>
                         <div class="right-box">
-                            <p class="money"><span>28657.95</span>元</p>
-                            <p class="money-text">奖池累计金额</p>
+                            <p class="money"><span>{{data.reward}}</span>元</p>
+                            <p class="money-text">获奖单注奖金</p>
                         </div>
                     </div>
                     <div class="body-box">
                         <div class="img-box">
                             <img src="./images/cup.png" alt="">
                         </div>
-                        <p class="text-one">恭喜你获得奖金 <span>200</span> 元</p>
-                        <p class="text-tow">恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金 <span>200</span> 元</p>
+                        <p class="text-one">恭喜你获得奖金 <span>{{data.reward}}</span> 元</p>
+                        <!--<p class="text-tow">恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金 <span>200</span> 元</p>-->
                     </div>
                 </div>
-                <div class="no" v-if="!true">
+                <div class="no" v-if="data.participateOrNot=='0'">
                     <div class="body-box">
                         <div class="img-box">
                             <img src="./images/nocup.png" alt="">
                         </div>
                         <p class="text-one">很抱歉，您本期未参与竞猜</p>
-                        <p class="text-tow">恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金 <span>200</span> 元</p>
                     </div>
                 </div>
             </div>
-            <div v-if="login">
-                <div class="yes">
+            <div v-if="!login">
+                <div class="yes" v-if="data.numOfPeople !='0'">
                     <div class="title-box">
                         <div class="left-box">
-                            <p class="money"><span>28657.95</span>元</p>
-                            <p class="money-text">奖池累计金额</p>
+                            <p class="money"><span>{{data.bonusPool}}</span>元</p>
+                            <p class="money-text">上期奖池金额</p>
                         </div>
                         <p class="line"></p>
                         <div class="right-box">
-                            <p class="money"><span>28657.95</span>元</p>
-                            <p class="money-text">奖池累计金额</p>
+                            <p class="money"><span>{{data.reward}}</span>元</p>
+                            <p class="money-text">获奖单注奖金</p>
                         </div>
                     </div>
                     <div class="body-box">
                         <div class="img-box">
                             <img src="./images/cup.png" alt="">
                         </div>
-                        <p class="text-one">恭喜你获得奖金 <span>200</span> 元</p>
-                        <p class="text-tow">恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金 <span>200</span> 元</p>
+                        <p class="text-one">恭喜 <span>{{data.numOfPeople}}</span> 位小秘用户中奖</p>
                     </div>
                 </div>
-                <div class="no">
+                <div class="no" v-if="data.numOfPeople =='0'">
                     <div class="body-box">
                         <div class="img-box">
                             <img src="./images/nocup.png" alt="">
                         </div>
-                        <p class="text-one">很抱歉，您本期未参与竞猜</p>
-                        <p class="text-tow">恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金 <span>200</span> 元</p>
+                        <p class="text-one">本期暂未有人中奖</p>
+                        <!--<p class="text-tow">恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金 <span>200</span> 元</p>-->
                     </div>
                 </div>
             </div>
@@ -118,9 +116,9 @@
                 justify-content: center;
                 align-items: center;
                 .img-box{
-                    margin-top: px2rem(200px);
-                    height: px2rem(250px);
-                    width: px2rem(250px);
+                    margin-top: px2rem(350px);
+                    height: px2rem(150px);
+                    width: px2rem(150px);
                     overflow: hidden;
                     img{
                         width: 100%;
@@ -149,22 +147,30 @@
         name: "jingcai",
         data() {
             return {
-                login:false
+                login:true,
+                matchId:this.$route.query.matchId,
+                data:{},
+                token:localStorage.getItem('token')
             }
         },
         created(){
-            this.getMyhistoryList()
+            if(localStorage.getItem('token')==null){
+                this.login = false
+            }else{
+                this.login = true
+            }
+            this.getistoryDetil()
         },
         methods: {
             //获取竞猜详情
-            getMyhistoryList(){
-                alert("222")
+            getistoryDetil(){
                 let data = {
-                    str:''
+                    matchId:this.matchId
                 }
-                api.userAnswersList(data)
+                api.beforePeriodNote(data)
                     .then(res => {
                         if (res.code == 0) {
+                            this.data = res.data
                             console.log(res);
                         }
                     })

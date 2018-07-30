@@ -491,6 +491,10 @@ export default {
     //我的竞猜纪录历史列表
     userAnswersList(params) {
         return fetchPost('/activity/dlQuestionsAndAnswersUser/userAnswersList', params)
+    },
+    //上期竞猜详情
+    beforePeriodNote(params) {
+        return fetchPost('/activity/dlQuestionsAndAnswersUser/beforePeriodNote', params)
     }
 }
 

@@ -214,12 +214,14 @@
                 login: false,
                 matchId:this.$route.query.matchId,//赛事ID
                 questionAndAnswersList: [],
-                userAnswersList:[],
+
                 baseDate: {},
                 timesd: '',
                 timeId: '',//计时器
                 qudata: [], //答案数据
                 answerAllPull:'',//答案是否提交
+                HaveRightAnswer:false, //是否已经公布正确答案
+                fromeRouter:''//在哪个路由来
             }
         },
         created() {
@@ -231,7 +233,6 @@
             } else {
                 this.login = false
             }
-
         },
         computed: {},
         methods: {
@@ -260,7 +261,8 @@
             // 查看上期纪录
             lookupRecord() {
                 this.$router.push({
-                    path: "/activity/upRecord"
+                    path: "/activity/upRecord",
+                    query:{matchId:this.matchId}
                 })
             },
             // 查看我的竞猜纪录
@@ -271,6 +273,7 @@
             },
             //获取竞猜详情
             getDetails() {
+                var that = this
                 let data = {
                     matchId:this.matchId,
                     // matchId: '18021'
@@ -280,21 +283,31 @@
                         if (res.code == 0) {
                             this.baseDate = res.data
                             this.questionAndAnswersList = res.data.questionAndAnswersList
-                            this.userAnswersList = res.data.userAnswersList
                             if (this.baseDate.answerTimeStatus == '2') {
                                 this.stopTime()
                             }
+                            this.questionAndAnswersList.forEach(item=>{
+                                if(item.rightAnswerStatus1=='1'||item.rightAnswerStatus2=='1'){
+                                    that.HaveRightAnswer = true
+                                }
+                                if(item.answerStatus1=='1'||item.answerStatus2=='1'){
+                                    this.answerAllPull = "已经提交"
+                                }
+                            })
                         }
                     })
             },
             //点击item
             itemClic(type, item, c) {
-                this.$set(item, 'isSelected', type)
-
+                if(!this.HaveRightAnswer){
+                    this.$set(item, 'isSelected', type)
+                }else {
+                    Toast("历史记录只能看哟！")
+                }
             },
             // 提交答案
             add() {
-                if(this.answerAllPull!="已经提交"){
+                if(this.answerAllPull!="已经提交"||!this.HaveRightAnswer){
                     if($('.cur').length<this.questionAndAnswersList.length){
                         Toast("请将所有问题答完！")
                         return false;
@@ -353,11 +366,18 @@
                     that.stopTime()
                 }, 1000)
 
+            },
+            fetchDate(){
+                alert(222333)
             }
         },
-        watch: {},
         destroyed() {
             // clearInterval(this.timeId)
+        },
+        beforeRouteEnter(to,from,next){
+            next(vm=>{
+                vm.fromeRouter = from.name
+            })
         }
     }
 </script>
