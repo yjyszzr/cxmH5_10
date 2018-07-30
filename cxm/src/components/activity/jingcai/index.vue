@@ -30,24 +30,27 @@
             </div>
             <!--answerTimeStatus = 0 代表本次答题活动已结束,1开始,2未开始-->
             <p class="once-time" v-if="baseDate.answerTimeStatus=='0'">本期竞猜已截止，下次早点哦！</p>
-            <p class="once-time" v-if="baseDate.answerTimeStatus=='1'">本期竞猜未开始，稍等片刻！</p>
-            <p class="once-time" v-if="baseDate.answerTimeStatus=='2'">竞猜活动倒计时{{timesd}}</p>
-            <ul v-if="questionAndAnswersList.length!=0" class="ul-box">
-                <li v-for="(item,index) in questionAndAnswersList" :key=index>
-                    <p>{{item.questionSetting}}</p>
-                    <div class="btn-box">
-                        <div :class="item.isSelected == '0'||item.answerStatus1=='1'?'cur':''" @click="itemClic('0',item,$event)">
-                            {{item.answerSetting1}}
-                            <span v-if="item.rightAnswerStatus1=='1'"><img src="./images/yes.png" alt=""></span>
+            <p class="once-time" v-if="baseDate.answerTimeStatus=='2'">本期竞猜未开始，稍等片刻！</p>
+            <p class="once-time" v-if="baseDate.answerTimeStatus=='1'">竞猜活动结束倒计时{{timesd}}</p>
+            <template v-if="baseDate.answerTimeStatus=='1'">
+                <ul v-if="questionAndAnswersList.length!=0" class="ul-box">
+                    <li v-for="(item,index) in questionAndAnswersList" :key=index>
+                        <p>{{item.questionSetting}}</p>
+                        <div class="btn-box">
+                            <div :class="item.isSelected == '0'||item.answerStatus1=='1'?'cur':''" @click="itemClic('0',item,$event)">
+                                {{item.answerSetting1}}
+                                <span v-if="item.rightAnswerStatus1=='1'"><img src="./images/yes.png" alt=""></span>
+                            </div>
+                            <div :class="item.isSelected == '1'||item.answerStatus2=='1'?'cur':''" @click="itemClic('1',item,$event)">
+                                {{item.answerSetting2}}
+                                <span v-if="item.rightAnswerStatus2=='1'"><img src="./images/yes.png" alt=""></span>
+                            </div>
                         </div>
-                        <div :class="item.isSelected == '1'||item.answerStatus2=='1'?'cur':''" @click="itemClic('1',item,$event)">
-                            {{item.answerSetting2}}
-                            <span v-if="item.rightAnswerStatus2=='1'"><img src="./images/yes.png" alt=""></span>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <p @click="add" class="jingcai-now">立即竞猜</p>
+                    </li>
+                </ul>
+                <p @click="add" class="jingcai-now">立即竞猜</p>
+            </template>
+
         </div>
 
     </div>
@@ -62,6 +65,7 @@
         height: auto;
         overflow: hidden;
         .body {
+            min-height: px2rem(1400px);
             .cur {
                 background-color: #ea5504 !important;
             }
@@ -219,7 +223,7 @@
                 timesd: '',
                 timeId: '',//计时器
                 qudata: [], //答案数据
-                answerAllPull:'',//答案是否提交
+                // answerAllPull:'',//答案是否提交
                 HaveRightAnswer:false, //是否已经公布正确答案
                 fromeRouter:''//在哪个路由来
             }
@@ -283,7 +287,7 @@
                         if (res.code == 0) {
                             this.baseDate = res.data
                             this.questionAndAnswersList = res.data.questionAndAnswersList
-                            if (this.baseDate.answerTimeStatus == '2') {
+                            if (this.baseDate.answerTimeStatus == '1') {
                                 this.stopTime()
                             }
                             this.questionAndAnswersList.forEach(item=>{
@@ -291,7 +295,8 @@
                                     that.HaveRightAnswer = true
                                 }
                                 if(item.answerStatus1=='1'||item.answerStatus2=='1'){
-                                    this.answerAllPull = "已经提交"
+                                    // this.answerAllPull = "已经提交"
+                                    this.HaveRightAnswer = true
                                 }
                             })
                         }
@@ -299,51 +304,64 @@
             },
             //点击item
             itemClic(type, item, c) {
-                if(!this.HaveRightAnswer){
-                    this.$set(item, 'isSelected', type)
+                if(this.login){
+                    if(!this.HaveRightAnswer){
+                        this.$set(item, 'isSelected', type)
+                    }else {
+                        Toast("历史记录只能看哟！")
+                    }
                 }else {
-                    Toast("历史记录只能看哟！")
+                    this.$router.push(
+                        {
+                            path:'/user/sms'
+                        }
+                    )
                 }
+
             },
             // 提交答案
             add() {
-                if(this.answerAllPull!="已经提交"||!this.HaveRightAnswer){
-                    if($('.cur').length<this.questionAndAnswersList.length){
-                        Toast("请将所有问题答完！")
-                        return false;
-                    }
-                    let arr= []
-                    this.questionAndAnswersList.forEach(item => {
-                        let obj = {
-                            answerStatus1 : '0',
-                            answerStatus2 : '0',
-                            questionNum:item.questionNum
+                if(this.baseDate.chance == '1'){
+                    if(!this.HaveRightAnswer){
+                        if($('.cur').length<this.questionAndAnswersList.length){
+                            Toast("请将所有问题答完！")
+                            return false;
                         }
-                        if (item.isSelected == '0') {
-                            obj.answerStatus1 = '1'
-                            obj.answerStatus2 = '0'
-                        }else if(item.isSelected == '1'){
-                            obj.answerStatus1 = '0'
-                            obj.answerStatus2 = '1'
-                        }
-                        arr.push(obj)
-                    })
-                    let data = {
-                        answers:arr,
-                        matchId:this.matchId,
-                        // matchId:'18021'
-                    }
-                    api.add(data)
-                        .then(res => {
-                            if (res.code == 0) {
-                                Toast("答案提交成功")
-                                this.answerAllPull = "已经提交"
+                        let arr= []
+                        this.questionAndAnswersList.forEach(item => {
+                            let obj = {
+                                answerStatus1 : '0',
+                                answerStatus2 : '0',
+                                questionNum:item.questionNum
                             }
+                            if (item.isSelected == '0') {
+                                obj.answerStatus1 = '1'
+                                obj.answerStatus2 = '0'
+                            }else if(item.isSelected == '1'){
+                                obj.answerStatus1 = '0'
+                                obj.answerStatus2 = '1'
+                            }
+                            arr.push(obj)
                         })
+                        let data = {
+                            answers:arr,
+                            matchId:this.matchId,
+                            // matchId:'18021'
+                        }
+                        api.add(data)
+                            .then(res => {
+                                if (res.code == 0) {
+                                    this.HaveRightAnswer = true
+                                    // this.answerAllPull = "已经提交"
+                                    Toast("答案提交成功")
+                                }
+                            })
+                    }else {
+                        Toast("不可重复提交！")
+                    }
                 }else {
-                    Toast("不可重复提交！")
+                    Toast("消费超过50元才有机会参加呢亲！")
                 }
-
             },
             // 活动倒计时
             stopTime() {

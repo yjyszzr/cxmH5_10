@@ -1,12 +1,19 @@
 <template>
     <div class="record-list" :style="{width:'100%'}">
         <div class="body">
-            <ul class="ul-list">
+            <ul class="ul-list" v-if="historyList>0">
                 <li @click="goMyRecord(item)" v-for="(item,index) in historyList" :key=index>
                     <p class="left-p">{{item.period}} <span class="img-new"><img v-if="index==0" src="./images/new.png" alt=""></span> </p>
                     <p class="right-p">查看竞猜详情 > </p>
                 </li>
             </ul>
+            <div v-else class="not-canjia">
+                <div class="img-box">
+                    <img src="./images/nocup.png" alt="">
+                </div>
+                <p class="text-one">很抱歉，您还未参加过竞猜</p>
+                <!--<p @click="nowCanjia()" class="now-canjia">立即参加</p>-->
+            </div>
         </div>
     </div>
 </template>
@@ -47,6 +54,30 @@
                     }
                 }
             }
+            .not-canjia{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: px2rem(36px);
+                color: #f8d15c;
+                overflow: hidden;
+                padding-top: px2rem(300px);
+                .img-box{
+                    height: px2rem(150px);
+                    width: px2rem(150px);
+                    overflow: hidden;
+                    img{
+                        width: 100%;
+                    }
+                }
+                p{
+                    margin-top: px2rem(50px);
+                }
+                .now-canjia{
+                    color: #ea5504;
+                }
+            }
 
         }
     }
@@ -84,6 +115,9 @@
                         matchId:item.matchId
                     }
                 })
+            },
+            nowCanjia(){
+                this.$router.go(-1)
             }
         }
     }
