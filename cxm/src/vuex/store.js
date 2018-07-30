@@ -30,7 +30,6 @@ const state = {
     mark_showObj: { //赛果遮罩
         mark_show_type: 1, //遮罩显示类型
         mark_dateVal: '', //选中日期值
-        matchFinish: '', //全部
         leagueIds: '', //更多条件
         lotteryResultTableIndex:'0', //tableIndex
     },

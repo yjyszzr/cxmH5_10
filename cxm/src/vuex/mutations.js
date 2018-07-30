@@ -81,9 +81,6 @@ const mutations = {
     MARKSHOWTYPE(state, data) {
         state.mark_showObj.mark_show_type = data
     },
-    MATCHFINISH(state, data) {
-        state.mark_showObj.matchFinish = data
-    },
     LEAGUEIDS(state, data) {
         state.mark_showObj.leagueIds = data
     },

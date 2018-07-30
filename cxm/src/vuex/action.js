@@ -73,11 +73,6 @@ const actions = {
                     }, value) {
         commit("MARKSHOWTYPE", value);
     },
-    getMatchFinish({
-                       commit
-                   }, value) {
-        commit("MATCHFINISH", value);
-    },
     getLeagueIds({
                      commit
                  }, value) {

@@ -51,6 +51,9 @@
             .code-box{
                 display: flex;
                 align-items: center;
+                .text1{
+                    width: px2rem(200px);
+                }
             }
             button{
                 font-size: px2rem(28px);
