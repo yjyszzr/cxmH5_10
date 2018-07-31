@@ -180,8 +180,9 @@
             },
             return_back() {
                 if (this.$route.path.split("/")[2]) {
-                    if(this.$route.path.split("/")[2] == "sms"){
-                        this.$store.commit("LOTTERYRESULTTABLEINDEX",'0')
+                    if(this.$route.path.split("/")[2] == "quickinfo"&&!this.$route.query.from){
+                        location.href = 'caixm://caixiaomi.net'
+                        return false;
                     }
                     if (this.$route.path.split("/")[2] == "singleNote") {
                         this.$store.dispatch("getmatchSelectedList", []);

@@ -142,7 +142,8 @@ export default {
                                 this.$router.push({
                                     path: '/user/quickinfo',
                                     query:{
-                                        id: res.data.payLogId
+                                        id: res.data.payLogId,
+                                        from: 'h5'
                                     }
                                 })
                             }

@@ -21,6 +21,9 @@ export default {
         if(this.$store.state.mark_showObj.mark_dateVal==''){
             this.$store.dispatch("getMarkDateVal",datefilter(new Date().getTime(),2))
         }
+        this.$nextTick(()=>{
+            this.fetchData()
+        })
     },
     computed: {
         weekDate(){
@@ -36,10 +39,12 @@ export default {
       watch: {
         status(a, b) {
             this.$nextTick(()=>{
-                this.$store.dispatch("getMarkDateVal",a)
-                this.$store.dispatch("getLeagueIds",'')
-                Indicator.open()
-                this.fetchData()
+                if(b != ''){
+                    this.$store.dispatch("getMarkDateVal",a)
+                    this.$store.dispatch("getLeagueIds",'')
+                    Indicator.open()
+                    this.fetchData()
+                }
             })
         }
       },
@@ -130,8 +135,6 @@ export default {
         next(vm=>{
             if(from.path=='/user/sms'){
                 vm.$store.commit('LOTTERYRESULTTABLEINDEX','0')
-                vm.$store.dispatch("getLeagueIds",'')
-                vm.$store.dispatch("getMarkDateVal",'')
             }
         })
     },

@@ -186,7 +186,7 @@
                                     <div class="bar-out">
                                         <div :style="{width:filt(item,item.teamHData)}" class="bar-in" :class="parseInt(item.teamHData)>=parseInt(item.teamAData)?'hight-bar':'black-bar'"></div>
                                     </div>
-                                    <span v-if="index=='0'" class="bar-text">{{item.teamHData==''?'0%':item.teamHData}}</span>
+                                    <span v-if="index=='0'" class="bar-text">{{item.teamHData==''?'0%':item.teamHData+'%'}}</span>
                                     <span v-if="index!='0'" class="bar-text">{{item.teamHData==''?'0':item.teamHData}}</span>
                                     <!--<span class="bar-text">{{item.teamHData==''&& index=='0'?'0%':item.teamHData}}</span>-->
                                 </div>
@@ -197,7 +197,7 @@
                                     <div class="bar-out">
                                         <div :style="{width:filt(item,item.teamAData)}" class="bar-in" :class="parseInt(item.teamHData)<=parseInt(item.teamAData)?'hight-bar':'black-bar'"></div>
                                     </div>
-                                    <span v-if="index=='0'" class="bar-text">{{item.teamAData==''?'0%':item.teamAData}}</span>
+                                    <span v-if="index=='0'" class="bar-text">{{item.teamAData==''?'0%':item.teamAData+'%'}}</span>
                                     <span v-if="index!='0'" class="bar-text">{{item.teamAData==''?'0':item.teamAData}}</span>
                                 </div>
                             </div>
