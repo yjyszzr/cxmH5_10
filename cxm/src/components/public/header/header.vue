@@ -9,10 +9,10 @@
                 <span v-if="$route.path.split('/')[2]=='consult'" style="opacity:0;">分享</span>
                 <span v-if="$route.path.split('/')[2]=='consult'&&getUrl()" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
-                <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="djs">胆</span>
-                <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="djs">设置</span>
+                <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="danxm">胆</span>
+                <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="setting">设置</span>
                 <ul class="djs" @click="actionSheet()"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
-                    <li>{{timeTypeShow(this.timeTypeStatus)}}</li>
+                    <li class="tas">{{timeTypeShow(this.timeTypeStatus)}}<i style="font-size: 0.3rem;" class="iconfont icon-icon-22"></i></li>
                 </ul>
                 <div class="lottery-select" v-if="$route.path.split('/')[1]=='lotteryResult'" >
                     <span @click='data_time()'><i class="icon-img icon-img-date"></i></span>
@@ -155,6 +155,13 @@
             },
             actionSheet:function () {
                 this.sheetVisible = true
+                let liList = $('.mint-actionsheet-listitem')
+                liList.forEach(item => {
+                    item.className='mint-actionsheet-listitem'
+                    if(item.innerText==$('.tas')[0].innerText){
+                        item.className='mint-actionsheet-listitem liActive'
+                    }
+                });
             },
             whole:function () {
                 this.$store.dispatch("changeTimeType", 0);
@@ -487,6 +494,19 @@
                 .djs{
                     padding: 0;
                     flex: 1;
+                    display: flex;
+                    justify-content: flex-end;
+                    margin-left: px2rem(-30px);
+                    .tas{
+                        padding-right: px2rem(30px);
+                        .icon-icon-22{
+                            margin-left: px2rem(4px);
+                        }
+                    }
+                }
+                .setting,.danxm{
+                    padding: 0;
+                    width: 100%;
                     display: flex;
                     justify-content: flex-end;
                     padding-right: px2rem(30px);

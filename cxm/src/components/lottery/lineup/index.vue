@@ -149,6 +149,9 @@
                     </div>
                 </div>
             </div>
+            <div class="nullSt" v-if="lineupinfo.hbenchPersons&&lineupinfo.hbenchPersons.length<=0&&lineupinfo.hInjureiesPersons.length<=0">
+                暂无替补
+            </div>
         </div>
         <div class="subst_lineup">
             <div class="title">

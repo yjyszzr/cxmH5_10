@@ -48,7 +48,7 @@ axios.interceptors.response.use((res) => {
                 location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5'
             }else{
                 localStorage.clear()
-                if(res.config.url.indexOf('recharge/countUserRecharge') != -1||res.config.url.indexOf('collect/add') != -1){
+                if(res.config.url.indexOf('match/queryMatchResultNew') != -1||res.config.url.indexOf('recharge/countUserRecharge') != -1||res.config.url.indexOf('collect/add') != -1){
                     router.push({
                         path: '/user/sms',
                     })

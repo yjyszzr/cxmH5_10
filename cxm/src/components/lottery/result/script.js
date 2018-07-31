@@ -35,10 +35,12 @@ export default {
       },
       watch: {
         status(a, b) {
-            this.$store.dispatch("getMarkDateVal",a)
-            this.$store.dispatch("getLeagueIds",'')
-            Indicator.open()
-            this.fetchData()
+            this.$nextTick(()=>{
+                this.$store.dispatch("getMarkDateVal",a)
+                this.$store.dispatch("getLeagueIds",'')
+                Indicator.open()
+                this.fetchData()
+            })
         }
       },
     methods:{
@@ -116,14 +118,28 @@ export default {
                     })
             }
         },
+        matchfinsh(c){
+            switch (c){
+                case '2': return '取消';
+                case '4': return '推迟';
+                case '5': return '暂停';
+            }
+        }
+    },
+    beforeRouteEnter(to, from, next){
+        next(vm=>{
+            if(from.path=='/user/sms'){
+                vm.$store.commit('LOTTERYRESULTTABLEINDEX','0')
+                vm.$store.dispatch("getLeagueIds",'')
+                vm.$store.dispatch("getMarkDateVal",'')
+            }
+        })
     },
     beforeRouteLeave(to, from, next) {
         next()
         if(to.path!='/lottery/teamDetail'){
             this.$store.dispatch("getMarkShow",false)
             this.$store.dispatch("getMarkShowType",'')
-            this.$store.dispatch("getLeagueIds",'')
-            this.$store.dispatch("getMarkDateVal",'')
         }
     }
 }

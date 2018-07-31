@@ -50,7 +50,7 @@ export default {
 						this.Interval = setInterval(this.update, 1000)
 					} else if (res.code == '301010') {
 						MessageBox.alert('', {
-							message: '您已领取，可在’我的卡券’里查看，将这个好消息告诉好友！',
+							message: '您已领取，可在"我的卡券"里查看，将这个好消息告诉好友！',
 							title: '提示',
 							confirmButtonText: '我知道了',
 							closeOnClickModal: false

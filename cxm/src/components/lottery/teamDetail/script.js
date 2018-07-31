@@ -123,6 +123,13 @@ export default {
       },
       dtfilter(c){
         return `${datefilter(c*1000,0)} ${datefilter(c*1000,1)}`
+      },
+      matchfinsh(c){
+        switch (c){
+            case '2': return '取消';
+            case '4': return '推迟';
+            case '5': return '暂停';
+        }
       }
     },
     mounted(){
