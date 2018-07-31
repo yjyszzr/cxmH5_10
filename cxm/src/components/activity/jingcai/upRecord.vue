@@ -18,7 +18,7 @@
                         <div class="img-box">
                             <img src="./images/cup.png" alt="">
                         </div>
-                        <p class="text-one">恭喜你获得奖金 <span>{{data.reward}}</span> 元</p>
+                        <p class="text-one">恭喜你获得奖金 <span>{{data.reward}}</span> 元！</p>
                         <!--<p class="text-tow">恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金 <span>200</span> 元</p>-->
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                         <div class="img-box">
                             <img src="./images/nocup.png" alt="">
                         </div>
-                        <p class="text-one">很抱歉，您本期未参与竞猜</p>
+                        <p class="text-one">很抱歉，您本期未参与竞猜！</p>
                     </div>
                 </div>
             </div>
@@ -48,14 +48,14 @@
                         <div class="img-box">
                             <img src="./images/cup.png" alt="">
                         </div>
-                        <p class="text-one">恭喜 <span>{{data.numOfPeople}}</span> 位小秘用户中奖</p>
+                        <p class="text-one">恭喜 <span>{{data.numOfPeople}}</span> 位小秘用户中奖！</p>
                     </div>
                     <div v-if="data.numOfPeople =='0'" class="body-box">
                         <div class="img-box">
                             <img src="./images/nocup.png" alt="">
                         </div>
-                        <p class="text-one">本期暂未有人中奖</p>
-                        <p class="text-tow"> 奖池金额已转入下一期赛事快去参与竞猜，祝您掏空奖池</p>
+                        <p class="text-one">本期暂未有人中奖！</p>
+                        <p class="text-tow"> 奖池金额已转入下一期赛事快去参与竞猜，祝您掏空奖池！</p>
                     </div>
                 </div>
             </div>

@@ -8,8 +8,8 @@
             <p class="person">{{baseDate.numOfPeople}}人次参加竞猜</p>
             <p class="memo">备注：每增加一个用户，奖池增加1元</p>
             <div class="history">
-                <p @click="lookupRecord">查看上期中奖纪录</p>
-                <p v-if="login" @click="lookMyRecord">查看我的竞猜纪录</p>
+                <p @click="lookupRecord">查看上期中奖记录</p>
+                <p v-if="login" @click="lookMyRecord">查看我的竞猜记录</p>
             </div>
             <div class="team">
                 <div class="img-box">
@@ -34,17 +34,14 @@
             <template v-if="!login">
                 <p class="once-time" v-if="baseDate.answerTimeStatus=='0'">本期竞猜已截止，下次早点哦！</p>
                 <p class="once-time" v-if="baseDate.answerTimeStatus=='2'">本期竞猜未开始，稍等片刻！</p>
-                <p class="once-time" v-if="baseDate.answerTimeStatus=='1'">竞猜活动结束倒计时{{timesd}}</p>
+                <p class="once-time" v-if="baseDate.answerTimeStatus=='1'">活动倒计时：{{timesd}}</p>
             </template>
             <!--登录-->
             <template v-if="login">
                 <template v-if="baseDate.userGetAwardStatus !='3'">
                     <p class="once-time" v-if="baseDate.userGetAwardStatus=='0'">很遗憾，您本期未中奖！</p>
-                    <template v-if="baseDate.userGetAwardStatus=='1'">
-                        <p v-if="baseDate.reward !=''" class="once-time yellow" >恭喜中奖 {{baseDate.reward}}元</p>
-                        <p v-if="baseDate.reward ==''" class="once-time yellow" >待派奖</p>
-                    </template>
-                    <p class="once-time" v-if="baseDate.userGetAwardStatus=='2'">待开奖（如中奖奖金*8）</p>
+                    <p class="once-time yellow" v-if="baseDate.userGetAwardStatus=='2'">恭喜中奖 {{baseDate.reward}}元</p>
+                    <p class="once-time" v-if="baseDate.userGetAwardStatus=='4'||baseDate.userGetAwardStatus=='1'">待开奖（如中奖奖金*8）</p>
                 </template>
                 <template v-if="baseDate.userGetAwardStatus =='3'">
                     <p class="once-time" v-if="baseDate.answerTimeStatus=='0'">本期竞猜已截止，下次早点哦！</p>
@@ -112,10 +109,14 @@
             align-items: center;
             .pop-title{
                 line-height: px2rem(60px);
+                font-size: 0.4rem;
+                font-weight: 700;
             }
             .pop-body{
                 p{
-                    line-height: px2rem(44px);
+                    font-size: 0.4rem;
+                    color: #666;
+                    line-height: px2rem(50px)
                 }
             }
         }
@@ -288,7 +289,6 @@
                 login: false,
                 matchId:this.$route.query.matchId,//赛事ID
                 questionAndAnswersList: [],
-
                 baseDate: {},
                 timesd: '',
                 timeId: '',//计时器
@@ -324,7 +324,8 @@
             // 查看我的竞猜纪录
             lookMyRecord() {
                 this.$router.push({
-                    path: "/activity/recordedList"
+                    path: "/activity/recordedList",
+                    query:{matchId:this.matchId}
                 })
             },
             //获取竞猜详情
@@ -357,14 +358,16 @@
             //点击item
             itemClic(type, item, c) {
                 if(this.login){
-                    if(this.baseDate.chance == '1'){
-                        if(!this.HaveRightAnswer){
-                            this.$set(item, 'isSelected', type)
+                    if(this.baseDate.answerTimeStatus=='1'&&this.HaveRightAnswer==false){
+                        if(this.baseDate.chance == '1'){
+                            if(!this.HaveRightAnswer){
+                                this.$set(item, 'isSelected', type)
+                            }else {
+                                Toast("竞猜已结束，下次早点呦！")
+                            }
                         }else {
-                            Toast("竞猜已结束，下次早点呦！")
+                            Toast("消费超过50元才有机会参加呢亲！")
                         }
-                    }else {
-                        Toast("消费超过50元才有机会参加呢亲！")
                     }
                 }else {
                     this.$router.push(
@@ -378,6 +381,9 @@
             // 提交答案
             add() {
                 if(!this.HaveRightAnswer){
+                    if(!this.login){
+                        this.$router.push({path:'/user/sms'})
+                    }
                     if($('.cur').length<this.questionAndAnswersList.length){
                         Toast("请将所有问题答完！")
                         return false;
@@ -431,7 +437,7 @@
                     m = Math.floor(leftTime / 1000 / 60 % 60);
                     s = Math.floor(leftTime / 1000 % 60);
                 }
-                that.timesd = h + '小时' + m + '分' + s + '秒'
+                that.timesd = h + '：' + m + '：' + s
                 that.timeId = setTimeout(function () {
                     that.stopTime()
                 }, 1000)

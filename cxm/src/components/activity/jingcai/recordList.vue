@@ -1,7 +1,7 @@
 <template>
     <div class="record-list" :style="{width:'100%'}">
         <div class="body">
-            <ul class="ul-list" v-if="historyList>0">
+            <ul class="ul-list" v-if="historyList.length>0">
                 <li @click="goMyRecord(item)" v-for="(item,index) in historyList" :key=index>
                     <p class="left-p">{{item.period}} <span class="img-new"><img v-if="index==0" src="./images/new.png" alt=""></span> </p>
                     <p class="right-p">查看竞猜详情 > </p>
@@ -90,8 +90,10 @@
     export default {
         name: "jingcai",
         data() {
+
             return {
-                historyList:[]
+                historyList:[],
+                matchId:this.$route.query.matchId,//赛事ID
             }
         },
         created(){
@@ -100,8 +102,9 @@
         methods: {
             //获取我的历史记录
             getMyhistoryList(){
+                var that = this
                 let data = {
-                    str:''
+                    str:that.matchId
                 }
                 api.userAnswersList(data)
                     .then(res => {
