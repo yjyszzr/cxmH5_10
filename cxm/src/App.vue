@@ -173,13 +173,13 @@
                         case 'oldwithnew':
                             return "小白课堂";
                         case 'jingcai':
-                            return "体育竞猜";
+                            return "竞猜";
                         case 'recorded':
                             return "竞猜纪录";
                         case 'recordedList':
-                            return "竞猜纪录";
+                            return "竞猜记录";
                         case 'upRecord':
-                            return "上期纪录";
+                            return "中奖记录";
                         case 'one':
                             return "注册送红包";
                         case 'world_cup':
@@ -233,7 +233,8 @@
                     this.$route.path.split("/")[2] == "cathectic" ||
                     this.$route.path.split("/")[2] == "account" ||
                     this.$route.path.split("/")[1] == "user" ||
-                    this.$route.path.split("/")[1] == "lotteryResult"
+                    this.$route.path.split("/")[1] == "lotteryResult"||
+                    this.$route.path.split("/")[2] == "selectNumber"
                 ) {
                     return true;
                 } else {

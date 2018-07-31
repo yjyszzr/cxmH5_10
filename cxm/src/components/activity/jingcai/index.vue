@@ -1,11 +1,12 @@
 <template>
     <div class="jing-cai" :style="{width:'100%'}">
+        <!--未登录-->
         <div v-if="baseDate.lenth!=0" class="body">
             <p class="active-describe" @click="activeDescribe">活动说明</p>
             <p class="money">{{baseDate.bonusPool}} <span>元</span></p>
             <p class="describe">奖金滚存</p>
             <p class="person">{{baseDate.numOfPeople}}人次参加竞猜</p>
-            <p class="memo">备注：每增加一个用户，奖池增加0.5元</p>
+            <p class="memo">备注：每增加一个用户，奖池增加1元</p>
             <div class="history">
                 <p @click="lookupRecord">查看上期中奖纪录</p>
                 <p v-if="login" @click="lookMyRecord">查看我的竞猜纪录</p>
@@ -29,16 +30,36 @@
                 </div>
             </div>
             <!--answerTimeStatus = 0 代表本次答题活动已结束,1开始,2未开始-->
-            <p class="once-time" v-if="baseDate.answerTimeStatus=='0'">本期竞猜已截止，下次早点哦！</p>
-            <p class="once-time" v-if="baseDate.answerTimeStatus=='2'">本期竞猜未开始，稍等片刻！</p>
-            <p class="once-time" v-if="baseDate.answerTimeStatus=='1'">竞猜活动结束倒计时{{timesd}}</p>
+            <!--未登录-->
+            <template v-if="!login">
+                <p class="once-time" v-if="baseDate.answerTimeStatus=='0'">本期竞猜已截止，下次早点哦！</p>
+                <p class="once-time" v-if="baseDate.answerTimeStatus=='2'">本期竞猜未开始，稍等片刻！</p>
+                <p class="once-time" v-if="baseDate.answerTimeStatus=='1'">竞猜活动结束倒计时{{timesd}}</p>
+            </template>
+            <!--登录-->
+            <template v-if="login">
+                <template v-if="baseDate.userGetAwardStatus !='3'">
+                    <p class="once-time" v-if="baseDate.userGetAwardStatus=='0'">很遗憾，您本期未中奖！</p>
+                    <template v-if="baseDate.userGetAwardStatus=='1'">
+                        <p v-if="baseDate.reward !=''" class="once-time yellow" >恭喜中奖 {{baseDate.reward}}元</p>
+                        <p v-if="baseDate.reward ==''" class="once-time yellow" >待派奖</p>
+                    </template>
+                    <p class="once-time" v-if="baseDate.userGetAwardStatus=='2'">待开奖（如中奖奖金*8）</p>
+                </template>
+                <template v-if="baseDate.userGetAwardStatus =='3'">
+                    <p class="once-time" v-if="baseDate.answerTimeStatus=='0'">本期竞猜已截止，下次早点哦！</p>
+                    <p class="once-time" v-if="baseDate.answerTimeStatus=='2'">本期竞猜未开始，稍等片刻！</p>
+                    <p class="once-time" v-if="baseDate.answerTimeStatus=='1'">竞猜活动结束倒计时{{timesd}}</p>
+                </template>
+            </template>
+            <p class="tishi">*橙色标识的是您的竞猜选项，对号的为猜中</p>
             <ul v-if="questionAndAnswersList.length!=0" class="ul-box">
                 <li v-for="(item,index) in questionAndAnswersList" :key=index>
                     <p>{{item.questionSetting}}</p>
                     <div class="btn-box">
                         <div :class="item.isSelected == '0'||item.answerStatus1=='1'?'cur':''" @click="itemClic('0',item,$event)">
                             {{item.answerSetting1}}
-                            <span v-if="item.rightAnswerStatus1=='1'"><img src="./images/yes.png" alt=""></span>
+                            <span v-if="item.rightAnswerStatus1 =='1'"><img src="./images/yes.png" alt=""></span>
                         </div>
                         <div :class="item.isSelected == '1'||item.answerStatus2=='1'?'cur':''" @click="itemClic('1',item,$event)">
                             {{item.answerSetting2}}
@@ -47,9 +68,28 @@
                     </div>
                 </li>
             </ul>
-            <p @click="add" class="jingcai-now">立即竞猜</p>
-
+            <p v-if="baseDate.answerTimeStatus=='1'" @click="add" class="jingcai-now">
+                <template v-if="!HaveRightAnswer">
+                    立即竞猜
+                </template>
+            </p>
         </div>
+
+        <mt-popup
+                v-model="popupVisible"
+                :modal=true
+                popup-transition="popup-fade">
+            <div class="pop">
+                <p class="pop-title">活动说明</p>
+                <div class="pop-body">
+                    <p>1.用户累计购彩满50元即可获得1次竞猜机会，参与竞猜只能提交一次答案，其余竞猜机会将转化为该竞猜答案的获奖次数。例：有3次竞猜机会，提交答案后将视为3次竞猜，若最后全部答对，即可获得3次瓜分奖池的机会。</p>
+                    <p>2.需竞猜该场比赛的所有选项，全部答对即可瓜分奖池内的奖金。</p>
+                    <p>3.每1人次参加竞猜，奖池奖金将增加1元，上不封顶，若8个选项全部答对，将瓜分奖池内的奖金。</p>
+                    <p>4.竞猜所得奖金只可用户购彩不能提现，购彩中奖奖金可以提现。</p>
+                    <p>5.本活动最终解释权归彩小秘所有。</p>
+                </div>
+            </div>
+        </mt-popup>
 
     </div>
 </template>
@@ -60,12 +100,43 @@
     .jing-cai {
         background: url("./images/base.jpg") no-repeat center;
         background-size: 100% auto;
-        height: auto;
-        overflow: hidden;
+        height: 100%;
+        overflow: auto;
+        .pop{
+            width: px2rem(600px);
+            margin: 0 auto;
+            padding: px2rem(40px) px2rem(30px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .pop-title{
+                line-height: px2rem(60px);
+            }
+            .pop-body{
+                p{
+                    line-height: px2rem(44px);
+                }
+            }
+        }
         .body {
+            height: auto;
+            padding-bottom: px2rem(50px);
+            .tishi{
+                color: #ffffff;
+                margin-top: px2rem(15px);
+                font-size: px2rem(18px) !important;
+            }
             min-height: px2rem(1400px);
+
             .cur {
                 background-color: #ea5504 !important;
+                border: 0 none!important;
+                padding: px2rem(16px) 0!important;
+                width: px2rem(282px) !important;
+            }
+            .yellow{
+                color: #f8d15c!important;
             }
             position: relative;
             .active-describe {
@@ -206,13 +277,14 @@
     }
 </style>
 <script>
-    import { MessageBox ,Toast} from 'mint-ui'
+    import { MessageBox ,Toast,Popup} from 'mint-ui'
     import api from '../../../fetch/api'
 
     export default {
         name: "jingcai",
         data() {
             return {
+                popupVisible:false,
                 login: false,
                 matchId:this.$route.query.matchId,//赛事ID
                 questionAndAnswersList: [],
@@ -240,25 +312,7 @@
         methods: {
             // 活动介绍
             activeDescribe() {
-                MessageBox.alert('', {
-                    message: '1.用户累计购彩满50元即可获得1次竞猜机会，\n' +
-                    '参与竞猜只能提交一次答案，其余竞猜机会将转\n' +
-                    '化为该竞猜答案的获奖次数。例：有3次竞猜机\n' +
-                    '会，提交答案后将视为3次竞猜，若最后全部答\n' +
-                    '对，即可获得3次瓜分奖池的机会。\n' +
-                    '2.需竞猜该场比赛的所有选项，全部答对即可瓜\n' +
-                    '分奖池内的奖金。\n' +
-                    '3.每1人次参加竞猜，奖池奖金将增加1元，上不\n' +
-                    '封顶，若8个选项全部答对，将瓜分奖池内的奖金。\n' +
-                    '4. 竞猜所得奖金只可用户购彩不能提现，购彩中\n' +
-                    '奖奖金可以提现。\n' +
-                    '5. 本活动最终解释权归彩小秘所有。',
-                    title: '活动说明 ',
-                    // confirmButtonText: '知道了',
-                    // closeOnClickModal: false
-                }).then(action => {
-
-                });
+                this.popupVisible = true
             },
             // 查看上期纪录
             lookupRecord() {
@@ -303,10 +357,14 @@
             //点击item
             itemClic(type, item, c) {
                 if(this.login){
-                    if(!this.HaveRightAnswer){
-                        this.$set(item, 'isSelected', type)
+                    if(this.baseDate.chance == '1'){
+                        if(!this.HaveRightAnswer){
+                            this.$set(item, 'isSelected', type)
+                        }else {
+                            Toast("竞猜已结束，下次早点呦！")
+                        }
                     }else {
-                        Toast("历史记录只能看哟！")
+                        Toast("消费超过50元才有机会参加呢亲！")
                     }
                 }else {
                     this.$router.push(
@@ -319,46 +377,42 @@
             },
             // 提交答案
             add() {
-                if(this.baseDate.chance == '1'){
-                    if(!this.HaveRightAnswer){
-                        if($('.cur').length<this.questionAndAnswersList.length){
-                            Toast("请将所有问题答完！")
-                            return false;
-                        }
-                        let arr= []
-                        this.questionAndAnswersList.forEach(item => {
-                            let obj = {
-                                answerStatus1 : '0',
-                                answerStatus2 : '0',
-                                questionNum:item.questionNum
-                            }
-                            if (item.isSelected == '0') {
-                                obj.answerStatus1 = '1'
-                                obj.answerStatus2 = '0'
-                            }else if(item.isSelected == '1'){
-                                obj.answerStatus1 = '0'
-                                obj.answerStatus2 = '1'
-                            }
-                            arr.push(obj)
-                        })
-                        let data = {
-                            answers:arr,
-                            matchId:this.matchId,
-                            // matchId:'18021'
-                        }
-                        api.add(data)
-                            .then(res => {
-                                if (res.code == 0) {
-                                    this.HaveRightAnswer = true
-                                    // this.answerAllPull = "已经提交"
-                                    Toast("答案提交成功")
-                                }
-                            })
-                    }else {
-                        Toast("不可重复提交！")
+                if(!this.HaveRightAnswer){
+                    if($('.cur').length<this.questionAndAnswersList.length){
+                        Toast("请将所有问题答完！")
+                        return false;
                     }
+                    let arr= []
+                    this.questionAndAnswersList.forEach(item => {
+                        let obj = {
+                            answerStatus1 : '0',
+                            answerStatus2 : '0',
+                            questionNum:item.questionNum
+                        }
+                        if (item.isSelected == '0') {
+                            obj.answerStatus1 = '1'
+                            obj.answerStatus2 = '0'
+                        }else if(item.isSelected == '1'){
+                            obj.answerStatus1 = '0'
+                            obj.answerStatus2 = '1'
+                        }
+                        arr.push(obj)
+                    })
+                    let data = {
+                        answers:arr,
+                        matchId:this.matchId,
+                        // matchId:'18021'
+                    }
+                    api.add(data)
+                        .then(res => {
+                            if (res.code == 0) {
+                                this.HaveRightAnswer = true
+                                // this.answerAllPull = "已经提交"
+                                Toast("答案提交成功")
+                            }
+                        })
                 }else {
-                    Toast("消费超过50元才有机会参加呢亲！")
+                    Toast("不可重复提交！")
                 }
             },
             // 活动倒计时
@@ -378,17 +432,14 @@
                     s = Math.floor(leftTime / 1000 % 60);
                 }
                 that.timesd = h + '小时' + m + '分' + s + '秒'
-                that.timeId = setInterval(function () {
+                that.timeId = setTimeout(function () {
                     that.stopTime()
                 }, 1000)
 
-            },
-            fetchDate(){
-                alert(222333)
             }
         },
         destroyed() {
-            // clearInterval(this.timeId)
+            window.clearInterval(this.timeId)
         },
         beforeRouteEnter(to,from,next){
             next(vm=>{

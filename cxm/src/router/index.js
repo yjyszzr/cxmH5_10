@@ -772,8 +772,6 @@ const router = new Router({
           name: 'insurancemjbk',
           component: resolve => require(['@/components/mjb/sky/insurance/insurance.vue'], resolve)
       },
-
-
   ]
 })
 
