@@ -28,6 +28,9 @@ export default{
                     location.href = 'https://m.caixiaomi.net/down/cxm106_zc037.apk'
                 }
             }
+        },
+        iosClick(){
+            location.href="https://itunes.apple.com/cn/app/id1402481777?mt=8"
         }
     }
 }
