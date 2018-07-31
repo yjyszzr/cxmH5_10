@@ -14,7 +14,7 @@
                         <div class="nullStatus" v-if="matchFilterList.length<=0">
                                 <mt-spinner type="snake" color="#ea5504"></mt-spinner>
                         </div>
-                        <li :class="$store.state.mark_showObj.leagueIds.indexOf(item.leagueId)!=-1?'filterActive':''" v-for='(item,i) in matchFilterList' :key='i' ref='match_name' @click="team(i)">{{item.leagueAddr}}</li>
+                        <li :class="$store.state.mark_showObj.leagueIds.split(',').indexOf(item.leagueId)!=-1?'filterActive':''" v-for='(item,i) in matchFilterList' :key='i' ref='match_name' @click="team(i)">{{item.leagueAddr}}</li>
                     </ul>
                     <div class="confim_btn">
                         <p @click='confim()'>确定</p>

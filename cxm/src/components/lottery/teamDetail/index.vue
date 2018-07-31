@@ -11,7 +11,7 @@
                          <img :src="ckxqObj.matchInfo.homeTeamPic" alt="">
                         <span><b v-show="ckxqObj.matchInfo.homeTeamRank!==''">[{{ckxqObj.matchInfo.homeTeamRank}}]</b>{{ckxqObj.matchInfo.homeTeamAbbr}}</span>
                     </li>
-                    <p><span><i v-if="res.matchStatus!=0">{{res.fsH}}</i>&nbsp;&nbsp;{{res.matchStatus=='1'?'已结束':res.matchStatus=='0'?dtfilter(res.matchTime):res.minute+'‘'}}&nbsp;&nbsp;<i v-if="res.matchStatus!=0">{{res.fsA}}</i></span><b v-if="res.matchStatus!=0">半场 {{res.htsH}}:{{res.htsA}}</b><b v-else>未开赛</b></p>
+                    <p><span><i v-if="res.matchStatus==1||res.matchStatus==6">{{res.fsH}}</i>&nbsp;&nbsp;{{res.matchStatus=='1'?'已结束':res.matchStatus=='0'?'未开赛':res.matchStatus=='2'||res.matchStatus=='4'||res.matchStatus=='5'?matchfinsh(res.matchStatus):res.minute+'‘'}}&nbsp;&nbsp;<i v-if="res.matchStatus==1||res.matchStatus==6">{{res.fsA}}</i></span><b v-if="res.matchStatus==1||res.matchStatus==6">半场 {{res.htsH}}:{{res.htsA}}</b><b v-else>{{dtfilter(res.matchTime)}}</b></p>
                     <li>
                         <img :src="ckxqObj.matchInfo.visitingTeamPic" alt="">
                         <span><b v-show="ckxqObj.matchInfo.visitingTeamRank!==''">[{{ckxqObj.matchInfo.visitingTeamRank}}]</b>{{ckxqObj.matchInfo.visitingTeamAbbr}}</span>
@@ -63,6 +63,9 @@
                             </li>
                             <li :style="{'color':colorMatchRs(item.matchRs)}">{{item.matchRs}}</li>
                         </ul>
+                    </div>
+                    <div class="nullws" v-if="ckxqObj.hvMatchTeamInfo.matchInfos&&ckxqObj.hvMatchTeamInfo.matchInfos.length<=0">
+                        暂无数据
                     </div>
                 </div>
                 <div class="cen_list">
