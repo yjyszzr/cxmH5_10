@@ -2,7 +2,7 @@
     <div class="Uprecord" :style="{width:'100%'}">
         <div class="main">
             <div v-if="login">
-                <div class="yes" v-if="data.participateOrNot=='1'">
+                <div v-if="data.participateOrNot=='1'">
                     <div class="title-box">
                         <div class="left-box">
                             <p class="money"><span>{{data.bonusPool}}</span>元</p>
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div v-if="!login">
-                <div class="yes" v-if="data.numOfPeople !='0'">
+                <div>
                     <div class="title-box">
                         <div class="left-box">
                             <p class="money"><span>{{data.bonusPool}}</span>元</p>
@@ -44,25 +44,21 @@
                             <p class="money-text">获奖单注奖金</p>
                         </div>
                     </div>
-                    <div class="body-box">
+                    <div v-if="data.numOfPeople !='0'" class="body-box">
                         <div class="img-box">
                             <img src="./images/cup.png" alt="">
                         </div>
                         <p class="text-one">恭喜 <span>{{data.numOfPeople}}</span> 位小秘用户中奖</p>
                     </div>
-                </div>
-                <div class="no" v-if="data.numOfPeople =='0'">
-                    <div class="body-box">
+                    <div v-if="data.numOfPeople =='0'" class="body-box">
                         <div class="img-box">
                             <img src="./images/nocup.png" alt="">
                         </div>
                         <p class="text-one">本期暂未有人中奖</p>
-                        <!--<p class="text-tow">恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金 <span>200</span> 元</p>-->
+                        <p class="text-tow"> 奖池金额已转入下一期赛事快去参与竞猜，祝您掏空奖池</p>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </template>
@@ -135,7 +131,6 @@
                     margin-top: px2rem(15px);
                     font-size: px2rem(18px);
                     color: #ffffff;
-
                 }
             }
         }
