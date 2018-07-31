@@ -22,8 +22,11 @@
     @import "../../../assets/css/function.scss";
     .record-list {
         background: url("./images/base.jpg") no-repeat center;
-        min-height: px2rem(1200px);
+        background-size: 100% auto;
+        height: 100%;
+        overflow: auto;
         .body {
+            height: auto;
             .ul-list{
                 width: 100%;
                 padding: 0 px2rem(32px);

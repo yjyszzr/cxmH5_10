@@ -68,8 +68,11 @@
 
     .Uprecord {
         background: url("./images/base.jpg") no-repeat center;
-        min-height: px2rem(1200px);
+        background-size: 100% auto;
+        height: 100%;
+        overflow: auto;
         .main {
+            height: auto;
             .title-box {
                 display: flex;
                 justify-content: center;

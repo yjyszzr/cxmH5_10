@@ -100,8 +100,8 @@
     .jing-cai {
         background: url("./images/base.jpg") no-repeat center;
         background-size: 100% auto;
-        height: auto;
-        overflow: hidden;
+        height: 100%;
+        overflow: auto;
         .pop{
             width: px2rem(600px);
             margin: 0 auto;
@@ -120,6 +120,8 @@
             }
         }
         .body {
+            height: auto;
+            padding-bottom: px2rem(50px);
             .tishi{
                 color: #ffffff;
                 margin-top: px2rem(15px);
