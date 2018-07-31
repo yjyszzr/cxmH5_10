@@ -41,7 +41,7 @@
                 <template v-if="baseDate.userGetAwardStatus !='3'">
                     <p class="once-time" v-if="baseDate.userGetAwardStatus=='0'">很遗憾，您本期未中奖！</p>
                     <p class="once-time yellow" v-if="baseDate.userGetAwardStatus=='2'">恭喜中奖 {{baseDate.reward}}元</p>
-                    <p class="once-time" v-if="baseDate.userGetAwardStatus=='4'||baseDate.userGetAwardStatus=='1'">待开奖（如中奖奖金*8）</p>
+                    <p class="once-time" v-if="baseDate.userGetAwardStatus=='4'||baseDate.userGetAwardStatus=='1'">待开奖</p>
                 </template>
                 <template v-if="baseDate.userGetAwardStatus =='3'">
                     <p class="once-time" v-if="baseDate.answerTimeStatus=='0'">本期竞猜已截止，下次早点哦！</p>
@@ -193,6 +193,7 @@
                 margin-top: px2rem(48px);
                 display: flex;
                 flex-direction: row;
+                align-items: center;
                 border-radius: px2rem(10px);
                 background-color: rgba(49, 60, 19, .5);
                 padding: px2rem(36px) px2rem(28px) px2rem(45px) px2rem(28px);
@@ -222,7 +223,7 @@
             }
             .once-time {
                 margin-top: px2rem(24px);
-                font-size: px2rem(24px);
+                font-size: px2rem(30px);
                 color: #cccccc;
 
             }
@@ -357,29 +358,29 @@
             },
             //点击item
             itemClic(type, item, c) {
-                if(this.login){
-                    if(this.baseDate.answerTimeStatus=='1'&&this.HaveRightAnswer==false){
-                        if(this.baseDate.chance == '1'){
-                            if(!this.HaveRightAnswer){
+                if(this.baseDate.answerTimeStatus=='1'){
+                    if(this.login){
+                        if(this.HaveRightAnswer==false){
+                            if(this.baseDate.chance == '1'){
                                 this.$set(item, 'isSelected', type)
                             }else {
-                                Toast("竞猜已结束，下次早点呦！")
+                                Toast("消费超过50元才有机会参加呢亲！")
                             }
                         }else {
-                            Toast("消费超过50元才有机会参加呢亲！")
+                            Toast("竞猜已结束，下次早点呦！")
                         }
+                    }else {
+                        this.$router.push(
+                            {
+                                path:'/user/sms'
+                            }
+                        )
                     }
-                }else {
-                    this.$router.push(
-                        {
-                            path:'/user/sms'
-                        }
-                    )
                 }
-
             },
             // 提交答案
             add() {
+                var that = this
                 if(!this.HaveRightAnswer){
                     if(!this.login){
                         this.$router.push({path:'/user/sms'})
@@ -414,7 +415,8 @@
                             if (res.code == 0) {
                                 this.HaveRightAnswer = true
                                 // this.answerAllPull = "已经提交"
-                                Toast("答案提交成功")
+                                that.baseDate.userGetAwardStatus = '4'
+                                Toast("答案提交成功!")
                             }
                         })
                 }else {

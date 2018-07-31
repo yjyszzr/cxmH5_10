@@ -22,7 +22,19 @@
                         <!--<p class="text-tow">恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金 <span>200</span> 元</p>-->
                     </div>
                 </div>
+
                 <div class="no" v-if="data.participateOrNot=='0'">
+                    <div class="title-box">
+                        <div class="left-box">
+                            <p class="money"><span>{{data.bonusPool}}</span>元</p>
+                            <p class="money-text">奖池累计金额</p>
+                        </div>
+                        <p class="line"></p>
+                        <div class="right-box">
+                            <p class="money"><span>{{data.reward}}</span>元</p>
+                            <p class="money-text">获奖单注奖金</p>
+                        </div>
+                    </div>
                     <div class="body-box">
                         <div class="img-box">
                             <img src="./images/nocup.png" alt="">
