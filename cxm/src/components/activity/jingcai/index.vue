@@ -304,7 +304,7 @@
         },
         created() {
             let that = this
-            if(this.$route.query.cfrom=='app'){
+            if(this.$route.query.cfrom=='app'&&this.status == 1){
                 window.actionMessage = function (arg) {
                     // alert(JSON.parse(arg).token)
                     that.token = JSON.parse(arg).token
