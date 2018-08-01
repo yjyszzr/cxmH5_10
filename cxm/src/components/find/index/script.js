@@ -3,6 +3,7 @@ import api from '../../../fetch/api'
 import { Indicator } from 'mint-ui'
 import silder from '../../index/lunbo.vue'
 import informal from '../../public/informal/informalList'
+import Loading from '../../public/loading/loading.vue'
 export default {
     name: 'find',
     data(){
@@ -22,7 +23,8 @@ export default {
     },
     components: {
         "v-slider": silder,
-        "v-informal": informal
+        "v-informal": informal,
+        "v-loading": Loading
     },
     methods:{
         fetchData(){
