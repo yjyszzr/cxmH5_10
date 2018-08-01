@@ -371,16 +371,18 @@
             },
             //点击item
             itemClic(type, item, c) {
-                if(this.$route.query.cfrom=='app'&&this.token===''&&this.status==1){
-                    location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
-                    return false
-                }
-                if(!localStorage.getItem('token')){
-                    this.$router.push({path:'/user/sms'})
-                    return false
-                }
-                this.login = true
+                // answerTimeStatus==1 活动倒计时状态
                 if(this.baseDate.answerTimeStatus=='1'){
+                    if(this.$route.query.cfrom=='app'&&this.token===''&&this.status==1){
+                        location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
+                        return false
+                    }
+                    if(!localStorage.getItem('token')){
+                        this.$router.push({path:'/user/sms'})
+                        return false
+                    }
+                    this.login = true
+                    //this.HaveRightAnswer==false 未公布答案
                     if(this.HaveRightAnswer==false){
                         if(this.baseDate.chance == '1'){
                             this.$set(item, 'isSelected', type)
