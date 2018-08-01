@@ -367,7 +367,7 @@
                                 Toast("消费超过50元才有机会参加呢亲！")
                             }
                         }else {
-                            Toast("竞猜已结束，下次早点呦！")
+
                         }
                     }else {
                         this.$router.push(
