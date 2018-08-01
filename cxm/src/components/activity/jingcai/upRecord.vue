@@ -149,7 +149,7 @@
                 justify-content: center;
                 align-items: center;
                 .img-box{
-                    margin-top: px2rem(280px);
+                    margin-top: px2rem(200px);
                     height: px2rem(150px);
                     width: px2rem(150px);
                     overflow: hidden;
