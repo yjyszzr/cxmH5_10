@@ -9,7 +9,7 @@
             <p class="memo">备注：每增加一个用户，奖池增加1元</p>
             <div class="history">
                 <p @click="lookupRecord">查看上期中奖记录</p>
-                <p v-if="login" @click="lookMyRecord">查看我的竞猜记录</p>
+                <p @click="lookMyRecord">查看我的竞猜记录</p>
             </div>
             <div class="team">
                 <div class="img-box">
@@ -298,23 +298,14 @@
                 HaveRightAnswer:false, //是否已经公布正确答案
                 fromeRouter:'',//在哪个路由来
                 token:'',
-                login: false,
-                status: 1
+                login: false
             }
         },
         created() {
             let that = this
-            if(this.$route.query.cfrom=='app'){
-                window.actionMessage = function (arg) {
-                    // alert(JSON.parse(arg).token)
-                    that.token = JSON.parse(arg).token
-                    that.login = true
-                    localStorage.setItem('token', JSON.parse(arg).token)
-                }
-            }else{
-                if(localStorage.getItem('token')){
-                    that.login = true
-                }
+            window.actionMessage = function (arg) {
+                that.token = JSON.parse(arg).token
+                localStorage.setItem('token', JSON.parse(arg).token)
             }
             this.getDetails()
 
@@ -337,6 +328,14 @@
             },
             // 查看我的竞猜纪录
             lookMyRecord() {
+                if(this.$route.query.cfrom=='app'&&this.token===''){
+                    location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
+                    return false
+                }
+                if(!localStorage.getItem('token')){
+                    this.$router.push({path:'/user/sms'})
+                    return false
+                }
                 this.$router.push({
                     path: "/activity/recordedList",
                     query:{matchId:this.matchId,showtitle:'1'}
@@ -371,7 +370,7 @@
             },
             //点击item
             itemClic(type, item, c) {
-                if(this.$route.query.cfrom=='app'&&this.token===''&&this.status==1){
+                if(this.$route.query.cfrom=='app'&&this.token===''){
                     location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
                     return false
                 }
@@ -392,7 +391,7 @@
             },
             // 提交答案
             add() {
-                if(this.$route.query.cfrom=='app'&&this.token===''&&this.status==1){
+                if(this.$route.query.cfrom=='app'&&this.token===''){
                     location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
                     return false
                 }
@@ -472,9 +471,6 @@
         },
         beforeRouteEnter(to,from,next){
             next(vm=>{
-                if(from.path=='/activity/upRecord'||from.path=='/activity/recordedList'){
-                    vm.status = 2
-                }
                 vm.fromeRouter = from.name
             })
         }
