@@ -298,15 +298,23 @@
                 HaveRightAnswer:false, //是否已经公布正确答案
                 fromeRouter:'',//在哪个路由来
                 token:'',
-                login: false
+                login: false,
+                status: 1
             }
         },
         created() {
             let that = this
-            window.actionMessage = function (arg) {
-                // alert(JSON.parse(arg).token)
-                that.token = JSON.parse(arg).token
-                localStorage.setItem('token', JSON.parse(arg).token)
+            if(this.$route.query.cfrom=='app'){
+                window.actionMessage = function (arg) {
+                    // alert(JSON.parse(arg).token)
+                    that.token = JSON.parse(arg).token
+                    that.login = true
+                    localStorage.setItem('token', JSON.parse(arg).token)
+                }
+            }else{
+                if(localStorage.getItem('token')){
+                    that.login = true
+                }
             }
             this.getDetails()
 
@@ -363,7 +371,7 @@
             },
             //点击item
             itemClic(type, item, c) {
-                if(this.$route.query.cfrom=='app'&&this.token===''){
+                if(this.$route.query.cfrom=='app'&&this.token===''&&this.status==1){
                     location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
                     return false
                 }
@@ -384,7 +392,7 @@
             },
             // 提交答案
             add() {
-                if(this.$route.query.cfrom=='app'&&this.token===''){
+                if(this.$route.query.cfrom=='app'&&this.token===''&&this.status==1){
                     location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
                     return false
                 }
@@ -464,6 +472,9 @@
         },
         beforeRouteEnter(to,from,next){
             next(vm=>{
+                if(from.path=='/activity/upRecord'||from.path=='/activity/recordedList'){
+                    vm.status = 2
+                }
                 vm.fromeRouter = from.name
             })
         }
