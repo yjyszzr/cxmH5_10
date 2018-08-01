@@ -1,6 +1,8 @@
 <template>
     <div class="new-old" :style="{width:'100%'}">
-        <img class="bgimg" src="./images/bgimg.jpg" alt="">
+        <div class="bgimgBox">
+            <img class="bgimg" src="./images/bgimg.jpg" alt="">
+        </div>
         <div class="btn-box">
             <p class="btn-tou" @click="go">
                 <img src="./images/btn.png" alt="">
@@ -42,10 +44,16 @@
         height: 100%;
         position: relative;
         overflow: auto;
-        .bgimg{
-            height: auto;
-            /*width: auto;*/
-            width: 100%;
+        .bgimgBox{
+            position: absolute;
+            overflow: auto;
+            top: 0;
+            bottom: 0;
+            .bgimg{
+                height: auto;
+                /*width: auto;*/
+                width: 100%;
+            }
         }
         .btn-box{
             display: flex;
@@ -54,7 +62,7 @@
 
         }
         .btn-tou {
-            position: fixed;
+            position: absolute;
             bottom: 0;
             height: px2rem(150px);
             width: 70%;
