@@ -288,7 +288,6 @@
         data() {
             return {
                 popupVisible:false,
-                login: false,
                 matchId:this.$route.query.matchId,//赛事ID
                 questionAndAnswersList: [],
                 baseDate: {},
@@ -298,20 +297,17 @@
                 // answerAllPull:'',//答案是否提交
                 HaveRightAnswer:false, //是否已经公布正确答案
                 fromeRouter:'',//在哪个路由来
-                token:''
-
+                token:'',
+                login: false
             }
         },
         created() {
-
             let that = this
             window.actionMessage = function (arg) {
                 // alert(JSON.parse(arg).token)
                 that.token = JSON.parse(arg).token
                 localStorage.setItem('token', JSON.parse(arg).token)
             }
-
-            // this.setToken()
             this.getDetails()
 
         },
@@ -320,17 +316,6 @@
             means('竞猜').isTitle
         },
         methods: {
-            //
-            pp(){
-                if(this.$route.query.cfrom=='app'&&this.token===''){
-                    location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
-                    return false
-                }
-                if(!localStorage.getItem('token')){
-                    this.$router.push({path:'/user/sms'})
-                    return false
-                }
-            },
             // 活动介绍
             activeDescribe() {
                 this.popupVisible = true
@@ -378,38 +363,39 @@
             },
             //点击item
             itemClic(type, item, c) {
-                this.pp()
-                alert(1)
+                if(this.$route.query.cfrom=='app'&&this.token===''){
+                    location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
+                    return false
+                }
+                if(!localStorage.getItem('token')){
+                    this.$router.push({path:'/user/sms'})
+                    return false
+                }
+                this.login = true
                 if(this.baseDate.answerTimeStatus=='1'){
-                    if(this.login){
-                        if(this.HaveRightAnswer==false){
-                            if(this.baseDate.chance == '1'){
-                                this.$set(item, 'isSelected', type)
-                            }else {
-                                Toast("消费超过50元才有机会参加呢亲！")
-                            }
+                    if(this.HaveRightAnswer==false){
+                        if(this.baseDate.chance == '1'){
+                            this.$set(item, 'isSelected', type)
+                        }else {
+                            Toast("消费超过50元才有机会参加呢亲！")
                         }
-                    }else {
-                        this.goLogin()
                     }
                 }
             },
-            //跳转到登录页面
-            // goLogin(){
-            //     if(this.$route.query.cfrom=='app'){
-            //         location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
-            //     }else {
-            //         this.$router.push({path:'/user/sms'})
-            //     }
-            // },
             // 提交答案
             add() {
+                if(this.$route.query.cfrom=='app'&&this.token===''){
+                    location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
+                    return false
+                }
+                if(!localStorage.getItem('token')){
+                    this.$router.push({path:'/user/sms'})
+                    return false
+                }
+                this.login = true
                 var that = this
                 if(!this.HaveRightAnswer){
-                    if(!this.login){
-                        this.goLogin()
-                    }else {
-                        if($('.cur').length<this.questionAndAnswersList.length){
+                    if($('.cur').length<this.questionAndAnswersList.length){
                             Toast("请将所有问题答完！")
                             return false;
                         }
@@ -443,7 +429,6 @@
                                     Toast("答案提交成功!")
                                 }
                             })
-                    }
                 }else {
                     Toast("不可重复提交！")
                 }
