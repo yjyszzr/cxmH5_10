@@ -1,9 +1,11 @@
 <template>
     <div class="new-old" :style="{width:'100%'}">
         <img class="bgimg" src="./images/bgimg.jpg" alt="">
-        <p class="btn-tou" @click="go">
-            <img src="./images/btn.png" alt="">
-        </p>
+        <div class="btn-box">
+            <p class="btn-tou" @click="go">
+                <img src="./images/btn.png" alt="">
+            </p>
+        </div>
     </div>
 </template>
 
@@ -37,12 +39,16 @@
         height: 100%;
         position: relative;
         overflow: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         .bgimg{
-            height: px2rem(6000px);
+            height: auto;
+            /*width: auto;*/
             width: 100%;
+        }
+        .btn-box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
         }
         .btn-tou {
             position: fixed;
