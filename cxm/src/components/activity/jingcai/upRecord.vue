@@ -2,6 +2,7 @@
     <div class="Uprecord" :style="{width:'100%'}">
         <div class="main">
             <div v-if="login">
+                <!--参与竞猜-->
                 <div v-if="data.participateOrNot=='1'">
                     <div class="title-box">
                         <div class="left-box">
@@ -9,12 +10,25 @@
                             <p class="money-text">奖池累计金额</p>
                         </div>
                         <p class="line"></p>
-                        <div class="right-box">
+                        <div v-if="data.numOfPeople!='0'" class="right-box">
                             <p class="money"><span>{{data.reward}}</span>元</p>
                             <p class="money-text">获奖单注奖金</p>
                         </div>
+                        <div v-if="data.numOfPeople =='0'" class="right-box">
+                            <p class="money"><span>未中奖</span></p>
+                            <p class="money-text">获奖单注奖金</p>
+                        </div>
                     </div>
-                    <div class="body-box">
+                    <!--参与未中奖-->
+                    <div v-if="data.getAwardOrNot=='0'" class="body-box">
+                        <div class="img-box">
+                            <img src="./images/nocup.png" alt="">
+                        </div>
+                        <p class="text-one">很遗憾，您本期未中奖！</p>
+                        <!--<p class="text-tow">恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金 <span>200</span> 元</p>-->
+                    </div>
+                    <!--参与并中奖-->
+                    <div v-if="data.getAwardOrNot=='1'" class="body-box">
                         <div class="img-box">
                             <img src="./images/cup.png" alt="">
                         </div>
@@ -22,7 +36,7 @@
                         <!--<p class="text-tow">恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金恭喜你获得奖金 <span>200</span> 元</p>-->
                     </div>
                 </div>
-
+                <!--未参与竞猜-->
                 <div class="no" v-if="data.participateOrNot=='0'">
                     <div class="title-box">
                         <div class="left-box">
@@ -30,8 +44,12 @@
                             <p class="money-text">奖池累计金额</p>
                         </div>
                         <p class="line"></p>
-                        <div class="right-box">
+                        <div v-if="data.numOfPeople !='0'" class="right-box">
                             <p class="money"><span>{{data.reward}}</span>元</p>
+                            <p class="money-text">获奖单注奖金</p>
+                        </div>
+                        <div v-if="data.numOfPeople =='0'" class="right-box">
+                            <p class="money"><span>未中奖</span></p>
                             <p class="money-text">获奖单注奖金</p>
                         </div>
                     </div>
@@ -51,7 +69,11 @@
                             <p class="money-text">上期奖池金额</p>
                         </div>
                         <p class="line"></p>
-                        <div class="right-box">
+                        <div v-if="data.numOfPeople =='0'" class="right-box">
+                            <p class="money"><span>未中奖</span></p>
+                            <p class="money-text">获奖单注奖金</p>
+                        </div>
+                        <div v-if="data.numOfPeople !='0'" class="right-box">
                             <p class="money"><span>{{data.reward}}</span>元</p>
                             <p class="money-text">获奖单注奖金</p>
                         </div>
@@ -127,7 +149,7 @@
                 justify-content: center;
                 align-items: center;
                 .img-box{
-                    margin-top: px2rem(350px);
+                    margin-top: px2rem(280px);
                     height: px2rem(150px);
                     width: px2rem(150px);
                     overflow: hidden;

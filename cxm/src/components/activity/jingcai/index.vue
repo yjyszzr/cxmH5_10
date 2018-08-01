@@ -34,7 +34,7 @@
             <template v-if="!login">
                 <p class="once-time" v-if="baseDate.answerTimeStatus=='0'">本期竞猜已截止，下次早点哦！</p>
                 <p class="once-time" v-if="baseDate.answerTimeStatus=='2'">本期竞猜未开始，稍等片刻！</p>
-                <p class="once-time" v-if="baseDate.answerTimeStatus=='1'">活动倒计时：{{timesd}}</p>
+                <p class="once-time" v-if="baseDate.answerTimeStatus=='1'">活动倒计时 ：{{timesd}}</p>
             </template>
             <!--登录-->
             <template v-if="login">
@@ -384,41 +384,42 @@
                 if(!this.HaveRightAnswer){
                     if(!this.login){
                         this.$router.push({path:'/user/sms'})
-                    }
-                    if($('.cur').length<this.questionAndAnswersList.length){
-                        Toast("请将所有问题答完！")
-                        return false;
-                    }
-                    let arr= []
-                    this.questionAndAnswersList.forEach(item => {
-                        let obj = {
-                            answerStatus1 : '0',
-                            answerStatus2 : '0',
-                            questionNum:item.questionNum
+                    }else {
+                        if($('.cur').length<this.questionAndAnswersList.length){
+                            Toast("请将所有问题答完！")
+                            return false;
                         }
-                        if (item.isSelected == '0') {
-                            obj.answerStatus1 = '1'
-                            obj.answerStatus2 = '0'
-                        }else if(item.isSelected == '1'){
-                            obj.answerStatus1 = '0'
-                            obj.answerStatus2 = '1'
-                        }
-                        arr.push(obj)
-                    })
-                    let data = {
-                        answers:arr,
-                        matchId:this.matchId,
-                        // matchId:'18021'
-                    }
-                    api.add(data)
-                        .then(res => {
-                            if (res.code == 0) {
-                                this.HaveRightAnswer = true
-                                // this.answerAllPull = "已经提交"
-                                that.baseDate.userGetAwardStatus = '4'
-                                Toast("答案提交成功!")
+                        let arr= []
+                        this.questionAndAnswersList.forEach(item => {
+                            let obj = {
+                                answerStatus1 : '0',
+                                answerStatus2 : '0',
+                                questionNum:item.questionNum
                             }
+                            if (item.isSelected == '0') {
+                                obj.answerStatus1 = '1'
+                                obj.answerStatus2 = '0'
+                            }else if(item.isSelected == '1'){
+                                obj.answerStatus1 = '0'
+                                obj.answerStatus2 = '1'
+                            }
+                            arr.push(obj)
                         })
+                        let data = {
+                            answers:arr,
+                            matchId:this.matchId,
+                            // matchId:'18021'
+                        }
+                        api.add(data)
+                            .then(res => {
+                                if (res.code == 0) {
+                                    this.HaveRightAnswer = true
+                                    // this.answerAllPull = "已经提交"
+                                    that.baseDate.userGetAwardStatus = '4'
+                                    Toast("答案提交成功!")
+                                }
+                            })
+                    }
                 }else {
                     Toast("不可重复提交！")
                 }
@@ -439,7 +440,10 @@
                     m = Math.floor(leftTime / 1000 / 60 % 60);
                     s = Math.floor(leftTime / 1000 % 60);
                 }
-                that.timesd = h + '：' + m + '：' + s
+                if(h<10){h="0"+h.toString()}
+                if(m<10){m="0"+m.toString()}
+                if(s<10){s="0"+s.toString()}
+                that.timesd = " "+h+':'+ m + ':'+ s
                 that.timeId = setTimeout(function () {
                     that.stopTime()
                 }, 1000)
