@@ -279,6 +279,7 @@
     }
 </style>
 <script>
+    import {means} from '../../../util/common'
     import { MessageBox ,Toast,Popup} from 'mint-ui'
     import api from '../../../fetch/api'
 
@@ -296,21 +297,40 @@
                 qudata: [], //答案数据
                 // answerAllPull:'',//答案是否提交
                 HaveRightAnswer:false, //是否已经公布正确答案
-                fromeRouter:''//在哪个路由来
+                fromeRouter:'',//在哪个路由来
+                token:''
+
             }
         },
         created() {
-            // this.matchId = this.$route.query.matchId
-            this.getDetails()
-            // 判断是否登录
-            if (localStorage.getItem('token')) {
-                this.login = true
-            } else {
-                this.login = false
+
+            let that = this
+            window.actionMessage = function (arg) {
+                // alert(JSON.parse(arg).token)
+                that.token = JSON.parse(arg).token
+                localStorage.setItem('token', JSON.parse(arg).token)
             }
+
+            // this.setToken()
+            this.getDetails()
+
         },
         computed: {},
+        mounted(){
+            means('竞猜').isTitle
+        },
         methods: {
+            //
+            pp(){
+                if(this.$route.query.cfrom=='app'&&this.token===''){
+                    location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
+                    return false
+                }
+                if(!localStorage.getItem('token')){
+                    this.$router.push({path:'/user/sms'})
+                    return false
+                }
+            },
             // 活动介绍
             activeDescribe() {
                 this.popupVisible = true
@@ -319,14 +339,14 @@
             lookupRecord() {
                 this.$router.push({
                     path: "/activity/upRecord",
-                    query:{matchId:this.matchId}
+                    query:{matchId:this.matchId,showtitle:'1'}
                 })
             },
             // 查看我的竞猜纪录
             lookMyRecord() {
                 this.$router.push({
                     path: "/activity/recordedList",
-                    query:{matchId:this.matchId}
+                    query:{matchId:this.matchId,showtitle:'1'}
                 })
             },
             //获取竞猜详情
@@ -358,6 +378,8 @@
             },
             //点击item
             itemClic(type, item, c) {
+                this.pp()
+                alert(1)
                 if(this.baseDate.answerTimeStatus=='1'){
                     if(this.login){
                         if(this.HaveRightAnswer==false){
@@ -366,24 +388,26 @@
                             }else {
                                 Toast("消费超过50元才有机会参加呢亲！")
                             }
-                        }else {
-
                         }
                     }else {
-                        this.$router.push(
-                            {
-                                path:'/user/sms'
-                            }
-                        )
+                        this.goLogin()
                     }
                 }
             },
+            //跳转到登录页面
+            // goLogin(){
+            //     if(this.$route.query.cfrom=='app'){
+            //         location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
+            //     }else {
+            //         this.$router.push({path:'/user/sms'})
+            //     }
+            // },
             // 提交答案
             add() {
                 var that = this
                 if(!this.HaveRightAnswer){
                     if(!this.login){
-                        this.$router.push({path:'/user/sms'})
+                        this.goLogin()
                     }else {
                         if($('.cur').length<this.questionAndAnswersList.length){
                             Toast("请将所有问题答完！")
