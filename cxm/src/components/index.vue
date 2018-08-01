@@ -191,7 +191,7 @@
 					<v-informal :zxList='zxList'></v-informal>
 				</li>
 				<div class="triple" v-show="trFlag">
-					<mt-spinner type="triple-bounce" color="#999"></mt-spinner>&nbsp;<span>正在加载</span>
+					<v-loading></v-loading>&nbsp;<span style="font-size:0.34rem;">正在加载...</span>
 				</div>
         <div class="cxLoad" v-show="cxLoadFlag" @click="cxLoadClick()">
           加载失败,点击重试
@@ -209,6 +209,7 @@ import { Indicator } from "mint-ui";
 import silder from "./index/lunbo";
 import activity from "./index/activity";
 import informal from "./public/informal/informalList";
+import Loading from './public/loading/loading.vue'
 export default {
   name: "index",
   data() {
@@ -274,7 +275,8 @@ export default {
   components: {
     "v-slider": silder,
     "v-activity": activity,
-    "v-informal": informal
+    "v-informal": informal,
+    "v-loading": Loading
   },
   computed: {
     top() {

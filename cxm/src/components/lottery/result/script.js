@@ -2,10 +2,11 @@ import {Indicator, Toast} from 'mint-ui'
 import datefilter from '../../../util/datefilter'
 import {weekTime,hour} from '../../../util/common'
 import api from '../../../fetch/api'
+import Loading from '../../public/loading/loading.vue'
 export default {
     name: 'result',
     beforeCreate() {
-        // Indicator.open()
+        Indicator.open()
     },
     data () {
       return {
@@ -17,6 +18,9 @@ export default {
     created(){
 
     },
+    components: {
+        "v-loading": Loading
+      },
     mounted(){
         if(this.$store.state.mark_showObj.mark_dateVal==''){
             this.$store.dispatch("getMarkDateVal",datefilter(new Date().getTime(),2))

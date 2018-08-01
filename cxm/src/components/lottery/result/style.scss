@@ -145,5 +145,16 @@
         border-top:0 none;
      }
    }
-
+   .mint-loadmore-top{
+     span{
+       color: #9f9f9f!important;
+       font-size: px2rem(26px)!important;
+     }
+    .loading-down{
+      height: 100%;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+   }
  }
