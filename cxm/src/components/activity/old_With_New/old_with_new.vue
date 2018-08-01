@@ -1,6 +1,11 @@
 <template>
     <div class="new-old" :style="{width:'100%'}">
-        <p class="btn-tou" @click="go"></p>
+        <img class="bgimg" src="./images/bgimg.jpg" alt="">
+        <div class="btn-box">
+            <p class="btn-tou" @click="go">
+                <img src="./images/btn.png" alt="">
+            </p>
+        </div>
     </div>
 </template>
 
@@ -34,15 +39,28 @@
     @import "../../../assets/css/function.scss";
 
     .new-old {
-        height: px2rem(6000px);
-        background: url("./images/saommang.jpg") no-repeat center;
-        background-size: 100% auto;
+        height: 100%;
         position: relative;
-        .btn-tou {
-            position: absolute;
-            bottom: 0;
-            height: px2rem(200px);
+        overflow: auto;
+        .bgimg{
+            height: auto;
+            /*width: auto;*/
             width: 100%;
+        }
+        .btn-box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .btn-tou {
+            position: fixed;
+            bottom: 0;
+            height: px2rem(150px);
+            width: 70%;
+            img{
+                width: 100%;
+            }
         }
     }
 </style>
