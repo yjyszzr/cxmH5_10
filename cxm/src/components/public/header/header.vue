@@ -20,10 +20,6 @@
                     <span @click='data_time()'><i class="icon-img icon-img-date"></i></span>
                     <span @click='more()'>筛选</span>
                 </div>
-                <!--大乐透-选号 头-->
-                <div class="lottery-select" v-if="$route.path.split('/')[2]=='selectNumber'" >
-                    <span @click='data_time()'><i class="icon-img icon-img-date"></i></span>
-                </div>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
         </div>
@@ -108,6 +104,8 @@
         },
         data() {
             return {
+
+                activeNames: ['1'],//默认转开第一个
                 flag: true,
                 action:[
                     {
@@ -153,6 +151,9 @@
             };
         },
         methods: {
+            handleChange(val) {
+                console.log(val);
+            },
             timeTypeShow(c){
                 switch (c){
                     case 0 : return '全部'
@@ -524,6 +525,9 @@
                 .lottery-select{
                     display: flex;
                     justify-content: center;
+                }
+                .daletou-menu{
+                    margin-left: 60%;
                 }
             }
             .headerText {
