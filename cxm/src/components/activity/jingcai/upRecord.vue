@@ -175,9 +175,12 @@
 </style>
 <script>
     import api from '../../../fetch/api'
-    import {means} from '../../../util/common'
+    import {Indicator} from 'mint-ui'
     export default {
         name: "jingcai",
+        beforeCreate() {
+            Indicator.open()
+        },
         data() {
             return {
                 login:true,
@@ -207,9 +210,6 @@
                         }
                     })
             }
-        },
-        mounted(){
-            means('中奖记录').isTitle
         }
     }
 </script>

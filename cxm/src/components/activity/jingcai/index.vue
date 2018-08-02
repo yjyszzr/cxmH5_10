@@ -9,7 +9,7 @@
             <p class="memo">备注：每增加一个用户，奖池增加1元</p>
             <div class="history">
                 <p @click="lookupRecord">查看上期中奖记录</p>
-                <p @click="lookMyRecord">查看我的竞猜记录</p>
+                <p v-if="login" @click="lookMyRecord">查看我的竞猜记录</p>
             </div>
             <div class="team">
                 <div class="img-box">
@@ -280,11 +280,14 @@
 </style>
 <script>
     import {means} from '../../../util/common'
-    import { MessageBox ,Toast,Popup} from 'mint-ui'
+    import {Toast,Popup,Indicator} from 'mint-ui'
     import api from '../../../fetch/api'
 
     export default {
         name: "jingcai",
+        beforeCreate() {
+            Indicator.open()
+        },
         data() {
             return {
                 popupVisible:false,
@@ -302,13 +305,37 @@
             }
         },
         created() {
-            let that = this
-            window.actionMessage = function (arg) {
-                that.token = JSON.parse(arg).token
-                localStorage.setItem('token', JSON.parse(arg).token)
+            this.$nextTick(()=>{
+                if(this.$route.query.cfrom=='app'){
+                    if(!this.fromeRouter){
+                        localStorage.clear()
+                    }else{
+                        this.token = localStorage.getItem('token')?localStorage.getItem('token'):''
+                        if(this.token!==''){
+                            this.login = true
+                        }
+                    }
+                }
+            })
+            if(this.$route.query.cfrom=='app'){
+                let that = this
+                window.actionMessage = function (arg) {
+                    if(JSON.parse(arg).token!==''){
+                        that.token = JSON.parse(arg).token
+                        that.login = true
+                        localStorage.setItem('token', JSON.parse(arg).token)
+                    }
+                }
+            }else{
+                if(localStorage.getItem('token')){
+                    this.login = true
+                }else{
+                    this.login = false
+                }
             }
-            this.getDetails()
-
+            setTimeout(()=>{
+                this.getDetails()
+            },1000)
         },
         computed: {},
         mounted(){
@@ -321,33 +348,25 @@
             },
             // 查看上期纪录
             lookupRecord() {
-                if(this.$route.query.cfrom=='app'){
-                    location.href = '/activity/upRecord?cxmxc=scm&matchId='+this.matchId+'&showtitle=1'
-                }else{
-                    this.$router.push({
-                        path: "/activity/upRecord",
-                        query:{matchId:this.matchId,showtitle:'1'}
-                    })
-                }
+                this.$router.push({
+                    path: "/activity/upRecord",
+                    query:{matchId:this.matchId,showtitle:'1'}
+                })
             },
             // 查看我的竞猜纪录
             lookMyRecord() {
-                if(this.$route.query.cfrom=='app'&&this.token===''){
-                    location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
-                    return false
-                }
-                if(!localStorage.getItem('token')){
-                    this.$router.push({path:'/user/sms'})
-                    return false
-                }
-                if(this.$route.query.cfrom=='app'){
-                    location.href = '/activity/recordedList?cxmxc=scm&matchId='+this.matchId+'&showtitle=1'
-                }else{
-                    this.$router.push({
-                        path: "/activity/recordedList",
-                        query:{matchId:this.matchId,showtitle:'1'}
-                    })
-                }
+                // if(this.$route.query.cfrom=='app'&&this.token===''){
+                //     location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
+                //     return false
+                // }
+                // if(!localStorage.getItem('token')){
+                //     this.$router.push({path:'/user/sms'})
+                //     return false
+                // }
+                this.$router.push({
+                    path: "/activity/recordedList",
+                    query:{matchId:this.matchId,showtitle:'1'}
+                })
             },
             //获取竞猜详情
             getDetails() {
@@ -378,7 +397,6 @@
             },
             //点击item
             itemClic(type, item, c) {
-
                 if(this.baseDate.answerTimeStatus=='1'){
                     if(this.$route.query.cfrom=='app'&&this.token===''){
                         location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
@@ -388,8 +406,6 @@
                         this.$router.push({path:'/user/sms'})
                         return false
                     }
-                    this.login = true
-
                     if(this.HaveRightAnswer==false){
                         if(this.baseDate.chance == '1'){
                             this.$set(item, 'isSelected', type)
@@ -409,7 +425,6 @@
                     this.$router.push({path:'/user/sms'})
                     return false
                 }
-                this.login = true
                 var that = this
                 if(!this.HaveRightAnswer){
                     if($('.cur').length<this.questionAndAnswersList.length){
