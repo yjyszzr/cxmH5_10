@@ -87,6 +87,7 @@
 </style>
 <script>
     import api from '../../../fetch/api'
+    import {means} from '../../../util/common'
     export default {
         name: "jingcai",
         data() {
@@ -125,6 +126,9 @@
             nowCanjia(){
                 this.$router.go(-1)
             }
+        },
+        mounted(){
+            means('竞猜记录').isTitle
         }
     }
 </script>

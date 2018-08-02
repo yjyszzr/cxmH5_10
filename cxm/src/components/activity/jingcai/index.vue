@@ -321,10 +321,14 @@
             },
             // 查看上期纪录
             lookupRecord() {
-                this.$router.push({
-                    path: "/activity/upRecord",
-                    query:{matchId:this.matchId,showtitle:'1'}
-                })
+                if(this.$route.query.cfrom=='app'){
+                    location.href = '/activity/upRecord?cxmxc=scm&matchId='+this.matchId+'&showtitle=1'
+                }else{
+                    this.$router.push({
+                        path: "/activity/upRecord",
+                        query:{matchId:this.matchId,showtitle:'1'}
+                    })
+                }
             },
             // 查看我的竞猜纪录
             lookMyRecord() {
@@ -336,10 +340,14 @@
                     this.$router.push({path:'/user/sms'})
                     return false
                 }
-                this.$router.push({
-                    path: "/activity/recordedList",
-                    query:{matchId:this.matchId,showtitle:'1'}
-                })
+                if(this.$route.query.cfrom=='app'){
+                    location.href = '/activity/recordedList?cxmxc=scm&matchId='+this.matchId+'&showtitle=1'
+                }else{
+                    this.$router.push({
+                        path: "/activity/recordedList",
+                        query:{matchId:this.matchId,showtitle:'1'}
+                    })
+                }
             },
             //获取竞猜详情
             getDetails() {
