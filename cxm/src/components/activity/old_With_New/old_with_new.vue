@@ -66,7 +66,7 @@
         }
         .btn-tou {
             position: absolute;
-            bottom: 0;
+            bottom: px2rem(30px);
             left: 15%;
             height: px2rem(150px);
             width: 70%;
