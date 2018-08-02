@@ -2,6 +2,7 @@
     <div class="Uprecord" :style="{width:'100%'}">
         <div class="main">
             <div v-if="login">
+                {{data}}
                 <!--参与竞猜-->
                 <div v-if="data.participateOrNot=='1'">
                     <div class="title-box">
@@ -190,7 +191,7 @@
             }
         },
         created(){
-            if(localStorage.getItem('token')==null){
+            if(localStorage.getItem('token')==null||localStorage.getItem('token')=='Error'){
                 this.login = false
             }else{
                 this.login = true
