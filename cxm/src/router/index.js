@@ -458,11 +458,6 @@ const router = new Router({
           name: 'insurancemjb',
           component: resolve => require(['@/components/mjb/appinfo/insurance/insurance.vue'], resolve)
       },
-      {
-            path: '/activity/world/sixty',
-            name: 'sixty',
-            component: resolve => require(['@/components/activity/worldjeep/sixty/sixty.vue'], resolve)
-       },
       //app必中彩
       //帮助中心：/appmust/help
       //购彩协议：/appmust/protocol
