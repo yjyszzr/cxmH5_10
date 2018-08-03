@@ -142,6 +142,11 @@ const device = {
     token: ''
 }
 export function fetchPost(url, body) {
+    if(location.href.indexOf('activity/one')!=-1&&getUrlStr('fr', location.href)){
+        device.channel = getUrlStr('fr', location.href)
+    }else{
+        device.channel = 'h5'
+    }
     return new Promise((resolve, reject) => {
         axios.post(url, {
                 device,

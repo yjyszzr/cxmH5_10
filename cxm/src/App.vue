@@ -200,6 +200,8 @@
                             return "设置登录密码";
                         case 'setchange':
                             return "修改登录密码";
+                        case 'selectNumber':
+                            return "标准选号";
                     }
                 } else {
                     if (

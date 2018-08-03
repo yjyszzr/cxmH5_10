@@ -1,6 +1,13 @@
 <template>
     <div class="new-old" :style="{width:'100%'}">
-        <p class="btn-tou" @click="go"></p>
+        <div class="bgimgBox">
+            <img class="bgimg" src="./images/bgimg.jpg" alt="">
+        </div>
+        <div class="btn-box">
+            <p class="btn-tou" @click="go">
+                <img src="./images/btn.png" alt="">
+            </p>
+        </div>
     </div>
 </template>
 
@@ -15,10 +22,13 @@
         methods: {
             go() {
                 this.$store.commit('FREEBUYID', '6')
-                this.$router.push({
+                if(this.$route.query.cfrom=='app'){
+                    location.href = 'https://caixiaomi.net?cxmxc=scm&type=3&id=1&subid=6'
+                }else{
+                    this.$router.push({
                         path: "/freebuy/singleNote?id=6"
-                    }
-                )
+                    })
+                }
             }
         },
         mounted() {
@@ -31,15 +41,34 @@
     @import "../../../assets/css/function.scss";
 
     .new-old {
-        height: px2rem(6000px);
-        background: url("./images/saommang.jpg") no-repeat center;
-        background-size: 100% auto;
+        height: 100%;
         position: relative;
+        overflow: auto;
+        .bgimgBox{
+            position: absolute;
+            overflow: auto;
+            top: 0;
+            bottom: 0;
+            .bgimg{
+                height: auto;
+                /*width: auto;*/
+                width: 100%;
+            }
+        }
+        .btn-box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
         .btn-tou {
             position: absolute;
             bottom: 0;
-            height: px2rem(200px);
-            width: 100%;
+            height: px2rem(150px);
+            width: 70%;
+            img{
+                width: 100%;
+            }
         }
     }
 </style>

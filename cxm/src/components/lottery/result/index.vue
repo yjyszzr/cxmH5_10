@@ -2,6 +2,13 @@
 <template>
     <div class="wrap result">
         <mt-loadmore ref="loadmore" :top-method="loadTop" @top-status-change="handleTopChange">
+            <div slot="top" class="mint-loadmore-top">
+                <span v-show="topStatus === 'pull'">下拉刷新</span>
+                <span v-show="topStatus === 'drop'">释放更新</span>
+                <span v-show="topStatus === 'loading'" class="loading-down">
+                    <v-loading></v-loading>
+                </span>
+            </div>
             <section v-if="listd.lotteryMatchDTOList">
                 <p class="title" v-if="listd.lotteryMatchDTOList.length>0">
                     <span class="spfList">{{weekDate}}共有<span>{{listd.lotteryMatchDTOList.length}}</span>场比赛</span>

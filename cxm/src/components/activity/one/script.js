@@ -1,15 +1,12 @@
 import {
 	means,
-	isShare
+	isShare,detect
 } from '../../../util/common'
 import api from '../../../fetch/api'
 import {
 	Toast,
-	Indicator
+	Indicator,MessageBox
 } from 'mint-ui'
-import {
-	MessageBox
-} from 'mint-ui';
 export default {
 	name: 'one',
 	data() {
@@ -32,7 +29,7 @@ export default {
 			}
 		})
 		means('注册送红包').isTitle
-		isShare(' 新人注册送好礼，100元红包等你来领', '注册就送100元新人大礼包', '/static/activity_Back/newComerReg/newComerReg.html?id=1', '/static/activity_Back/newComerReg/img/logozc.jpg')
+		isShare(' 新人注册送好礼，100元红包等你来领', '注册就送100元新人大礼包', '/activity/one?type=isShare', '/static/activity_Back/newComerReg/img/logozc.jpg')
 	},
 	methods: {
 		changeNum() {
@@ -49,14 +46,37 @@ export default {
 						this.stop = true;
 						this.Interval = setInterval(this.update, 1000)
 					} else if (res.code == '301010') {
-						MessageBox.alert('', {
-							message: '您已领取，可在"我的卡券"里查看，将这个好消息告诉好友！',
-							title: '提示',
-							confirmButtonText: '我知道了',
-							closeOnClickModal: false
-						}).then(action => {
-
-						});
+						if(this.$route.query.type=='isShare'){
+							MessageBox.alert('', {
+								message: '您已领取',
+								title: '提示',
+								confirmButtonText: '查看',
+								closeOnClickModal: true
+							}).then(action => {
+								if(detect()==='ios'){
+									this.$router.push({
+										path: '/'
+									})
+								}else{
+									this.$router.push({
+										path: '/activity/down/cxm',
+										query:{
+											ct: '2',
+											fr: 'cxm_h5home'
+										}
+									})
+								}
+							});
+						}else{
+							MessageBox.alert('', {
+								message: '您已领取，可在"我的卡券"里查看，将这个好消息告诉好友！',
+								title: '提示',
+								confirmButtonText: '我知道了',
+								closeOnClickModal: false
+							}).then(action => {
+	
+							});
+						}
 					} else if (res.code >= 30000 && res.code <= 310000) {
 						Toast(res.msg)
 					}
@@ -87,7 +107,30 @@ export default {
 			api.Register(data)
 				.then(res => {
 					if (res.code == 0) {
-						Toast('领取成功')
+						if(this.$route.query.type=='isShare'){
+							MessageBox.alert('', {
+								message: '领取成功',
+								title: '提示',
+								confirmButtonText: '查看',
+								closeOnClickModal: true
+							}).then(action => {
+								if(detect()==='ios'){
+									this.$router.push({
+										path: '/'
+									})
+								}else{
+									this.$router.push({
+										path: '/activity/down/cxm',
+										query:{
+											ct: '2',
+											fr: 'cxm_h5home'
+										}
+									})
+								}
+							});
+						}else{
+							Toast('领取成功,请到我的卡券查看')
+						}
 					} else if (res.code >= 30000 && res.code <= 310000) {
 						Toast(res.msg)
 					}

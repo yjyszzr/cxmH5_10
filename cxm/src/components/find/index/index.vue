@@ -8,7 +8,7 @@
 						<v-informal :from='from' :zxList='zxList'></v-informal>
 					</li>
 					<div class="triple" v-show="trFlag">
-						<mt-spinner type="triple-bounce" color="#999"></mt-spinner>&nbsp;<span>正在加载</span>
+						<v-loading></v-loading>&nbsp;<span style="font-size:0.34rem;">正在加载...</span>
 					</div>
 					<div class="cxLoad" v-show="cxLoadFlag" @click="cxLoadClick()">
 					加载失败,点击重试

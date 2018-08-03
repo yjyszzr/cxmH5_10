@@ -772,14 +772,12 @@ const router = new Router({
           name: 'insurancemjbk',
           component: resolve => require(['@/components/mjb/sky/insurance/insurance.vue'], resolve)
       },
-      //大乐透选号
+      // 大乐透选号
       {
-          path: '/daletou/selectNumber',
-          name: 'insurancemjbk',
+          path: '/components/daletou/selectNumber',
+          name: 'selectNumber',
           component: resolve => require(['@/components/daletou/selectNumber.vue'], resolve)
       },
-
-
   ]
 })
 
