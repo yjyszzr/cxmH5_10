@@ -170,26 +170,7 @@ const mutations = {
     },
     TIMESHOW(state, data){
         state.user_account.timeShow = data
-    },
-    //世界杯
-    FSNUM(state, data){
-        if(data=='1'){
-            state.world_cupObj.fsNum ++
-        }else if(data=='0'){
-            state.world_cupObj.fsNum --
-        }else if(data=='2'){
-            state.world_cupObj.fsNum = 0
-        }
-    },
-    USERACCOUNT(state, data){
-        state.user_account.timeType = data
-    },
-    FIRSTLIST(state, data){
-        state.world_cupObj.firstList = data
-    },
-    FSLIST(state, data){
-        state.world_cupObj.fsList = data
-    },
+    }
 }
 
 export default mutations

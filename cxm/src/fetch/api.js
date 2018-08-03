@@ -390,34 +390,6 @@ export default {
     incomedetail(params) {
         return fetchPost('/member/dl/channelConsumer/incomeDetails', params)
     },
-    //代金券列表
-    cashCouponList(params) {
-        return fetchPost('/member/dl/cashCoupon/cashCouponList', params)
-    },
-    //已兑换代金券列表
-    userCashCouponUserList(params) {
-        return fetchPost('/member/dl/cashCoupon/userCashCouponUserList', params)
-    },
-    //活动 订单
-    toCreateOrder(params) {
-        return fetchPost('/member/dl/cashCoupon/toCreateOrder', params)
-    },
-    //支付页面
-    toPaymentPage(params) {
-        return fetchPost('/member/dl/cashCoupon/toPaymentPage', params)
-    },
-    //冠军竞猜列表
-    gjs(params) {
-        return fetchPost('/lottery/dl/wc/gjs', params)
-    },
-    //冠亚军竞猜列表
-    gyjs(params) {
-        return fetchPost('/lottery/dl/wc/gyjs', params)
-    },
-    //下单
-    saveBetInfoWd(params) {
-        return fetchPost('/lottery/dl/wc/saveBetInfo', params)
-    },
     //充值送红包
     toRechange(params) {
         return fetchPost('/member/donation/rechargeCard/list', params)
@@ -448,22 +420,6 @@ export default {
     //注册推广员短信
     registSms(params){
         return fetchPost('/member/dl/channelConsumer/smsCodeForDistributor', params)
-    },
-    //世界杯推演 竞猜
-    guessingCompetition(params){
-        return fetchPost('/activity/worldCupPlan/guessingCompetition', params)
-    },
-    //提交推演方案
-    worldCupPlanadd(params){
-        return fetchPost('/activity/worldCupPlan/add', params)
-    },
-    //推演订单 
-    worldCupPlanlist(params){
-        return fetchPost('/activity/worldCupPlan/list', params)
-    },
-    //推演赛果 
-    rewardList(params){
-        return fetchPost('/activity/worldCupPlan/rewardList', params)
     },
     //设置用户登录密码
     setinglogin(params){

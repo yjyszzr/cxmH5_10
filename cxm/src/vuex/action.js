@@ -182,19 +182,6 @@ const actions = {
     changeFinActive({commit},value){
         commit("FINACTIVE", value)
     },
-    //世界杯
-    changefsNum({commit},value){
-        commit("FSNUM", value)
-    },
-    changeTimeType({commit}, value){
-        commit("USERACCOUNT", value)
-    },
-    changefirstList({commit},value){
-        commit("FIRSTLIST", value)
-    },
-    changefsList({commit},value){
-        commit("FSLIST", value)
-    },
 }
 
 export default actions

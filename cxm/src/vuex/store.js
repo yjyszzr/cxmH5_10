@@ -60,15 +60,6 @@ const state = {
     },
     xfbanklist: '',   //先锋银行卡列表
     xfbankSelected: {},   //选中的银行卡信息 
-    //世界杯活动
-    world_cupObj: {
-        firstList: [],   //冠军竞猜
-        fsList: [],  //冠亚军竞猜
-        fsNum: 0,   //选中值计数
-        worldfliter: [],   //筛选选中值
-        fsplaceObj: {},  //初始化信息
-        world_tab: false
-    },
     user_account: {
         timeType: 2,  //账户明细日期
         timeShow: false  //控制actionSheet开关

@@ -159,14 +159,6 @@
                             return "收入明细";
                         case 'include':
                             return "如何计算收益";
-                        case 'discount':
-                            return "优惠兑换";
-                        case 'payConfirm':
-                            return "支付订单";
-                        case 'discountList':
-                            return "活动卡券";
-                        case 'world_cup':
-                            return "世界杯";
                         //二期活动
                         case 'red_packet':
                             return "充值送壕礼";
@@ -182,12 +174,6 @@
                             return "中奖记录";
                         case 'one':
                             return "注册送红包";
-                        case 'world_cup':
-                            return "世界杯";
-                        case 'world_matchList':
-                            return "世界杯";
-                        case 'world_detail':
-                            return "世界杯";
                         case 'explain':
                             return "胆说明";
                         case 'success':

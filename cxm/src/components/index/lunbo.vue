@@ -60,12 +60,8 @@
 							this.$router.push({
 								path: '/activity/red_packet'
 							})
-						}else if(url.indexOf('activity/world/worldenter')!=-1){
-                            this.$router.push({
-                                path: '/activity/world/worldenter'
-                            })
-							//竞猜轮播图
-                        }else if(url.indexOf('activity/jingcai')!=-1){
+						}
+						else if(url.indexOf('activity/jingcai')!=-1){
                             this.$router.push({
                                 path: '/activity/jingcai',
                                 // query:{matchId:url.split('=')[1].split('&')[0],showtitle:'1'},

@@ -32,8 +32,7 @@ export default {
             this.$store.state.mark_playObj.mark_play = '3'
         },
         fetchData(c) {
-            if(c.betIds){
-                api.saveBetInfoWd(c)
+            api.saveBetInfo(c)
                 .then(res => {
                     //console.log(res)
                     if (res.code == 0) {
@@ -41,18 +40,7 @@ export default {
                         this.$store.state.mark_playObj.yhList = res.data.bonusList
                         this.$store.state.mark_playObj.bounsId = res.data.bonusId
                     }
-                })
-            }else{
-                api.saveBetInfo(c)
-                .then(res => {
-                    //console.log(res)
-                    if (res.code == 0) {
-                        this.payment = res.data
-                        this.$store.state.mark_playObj.yhList = res.data.bonusList
-                        this.$store.state.mark_playObj.bounsId = res.data.bonusId
-                    }
-                })
-            }
+            })
             api.allPayment({})
                 .then(res => {
                     if (res.code == 0) {
