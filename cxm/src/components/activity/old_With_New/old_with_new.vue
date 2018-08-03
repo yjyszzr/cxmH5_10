@@ -3,7 +3,7 @@
         <div class="bgimgBox">
             <img class="bgimg" src="./images/bgimg.jpg" alt="">
         </div>
-        <div class="btn-box">
+        <div class="btn-box" v-if="$route.query.cfrom!='app'||detect!=='ios'">
             <p class="btn-tou" @click="go">
                 <img src="./images/btn.png" alt="">
             </p>
@@ -12,12 +12,14 @@
 </template>
 
 <script>
-    import {means} from '../../../util/common'
+    import {means,detect} from '../../../util/common'
 
     export default {
         name: "old_with_new",
         data() {
-            return {}
+            return {
+                detect: ''
+            }
         },
         methods: {
             go() {
@@ -32,6 +34,7 @@
             }
         },
         mounted() {
+            this.detect = detect()
             means('小白课堂').isTitle
         },
     }
@@ -63,7 +66,8 @@
         }
         .btn-tou {
             position: absolute;
-            bottom: 0;
+            bottom: px2rem(30px);
+            left: 15%;
             height: px2rem(150px);
             width: 70%;
             img{

@@ -32,7 +32,7 @@
                                     </div>
                                     <!--6比赛进行中-->
                                     <div v-if="list.matchFinish =='6'">
-                                        <b><span class="col-red">{{list.minute}}'</span><span class="col-red">半场{{list.firstHalf}}</span></b>
+                                        <b><span class="col-red">{{list.minute}}'</span><span class="col-red">{{list.whole}}</span></b>
                                     </div>
                                     <div v-else>
                                         <span style="color:#505050;font-size:0.32rem;">{{matchfinsh(list.matchFinish)}}</span>

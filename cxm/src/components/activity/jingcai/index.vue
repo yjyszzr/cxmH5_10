@@ -8,8 +8,8 @@
             <p class="person">{{baseDate.numOfPeople}}人次参加竞猜</p>
             <p class="memo">备注：每增加一个用户，奖池增加1元</p>
             <div class="history">
-                <p @click="lookupRecord">查看上期中奖纪录</p>
-                <p v-if="login" @click="lookMyRecord">查看我的竞猜纪录</p>
+                <p @click="lookupRecord">查看上期中奖记录</p>
+                <p v-if="login" @click="lookMyRecord">查看我的竞猜记录</p>
             </div>
             <div class="team">
                 <div class="img-box">
@@ -34,17 +34,14 @@
             <template v-if="!login">
                 <p class="once-time" v-if="baseDate.answerTimeStatus=='0'">本期竞猜已截止，下次早点哦！</p>
                 <p class="once-time" v-if="baseDate.answerTimeStatus=='2'">本期竞猜未开始，稍等片刻！</p>
-                <p class="once-time" v-if="baseDate.answerTimeStatus=='1'">竞猜活动结束倒计时{{timesd}}</p>
+                <p class="once-time" v-if="baseDate.answerTimeStatus=='1'">活动倒计时 ：{{timesd}}</p>
             </template>
             <!--登录-->
             <template v-if="login">
                 <template v-if="baseDate.userGetAwardStatus !='3'">
                     <p class="once-time" v-if="baseDate.userGetAwardStatus=='0'">很遗憾，您本期未中奖！</p>
-                    <template v-if="baseDate.userGetAwardStatus=='1'">
-                        <p v-if="baseDate.reward !=''" class="once-time yellow" >恭喜中奖 {{baseDate.reward}}元</p>
-                        <p v-if="baseDate.reward ==''" class="once-time yellow" >待派奖</p>
-                    </template>
-                    <p class="once-time" v-if="baseDate.userGetAwardStatus=='2'">待开奖（如中奖奖金*8）</p>
+                    <p class="once-time yellow" v-if="baseDate.userGetAwardStatus=='2'">恭喜中奖 {{baseDate.reward}}元</p>
+                    <p class="once-time" v-if="baseDate.userGetAwardStatus=='4'||baseDate.userGetAwardStatus=='1'">待开奖</p>
                 </template>
                 <template v-if="baseDate.userGetAwardStatus =='3'">
                     <p class="once-time" v-if="baseDate.answerTimeStatus=='0'">本期竞猜已截止，下次早点哦！</p>
@@ -100,8 +97,8 @@
     .jing-cai {
         background: url("./images/base.jpg") no-repeat center;
         background-size: 100% auto;
-        height: auto;
-        overflow: hidden;
+        height: 100%;
+        overflow: auto;
         .pop{
             width: px2rem(600px);
             margin: 0 auto;
@@ -112,14 +109,20 @@
             align-items: center;
             .pop-title{
                 line-height: px2rem(60px);
+                font-size: 0.4rem;
+                font-weight: 700;
             }
             .pop-body{
                 p{
-                    line-height: px2rem(44px);
+                    font-size: 0.4rem;
+                    color: #666;
+                    line-height: px2rem(50px)
                 }
             }
         }
         .body {
+            height: auto;
+            padding-bottom: px2rem(50px);
             .tishi{
                 color: #ffffff;
                 margin-top: px2rem(15px);
@@ -190,6 +193,7 @@
                 margin-top: px2rem(48px);
                 display: flex;
                 flex-direction: row;
+                align-items: center;
                 border-radius: px2rem(10px);
                 background-color: rgba(49, 60, 19, .5);
                 padding: px2rem(36px) px2rem(28px) px2rem(45px) px2rem(28px);
@@ -219,7 +223,7 @@
             }
             .once-time {
                 margin-top: px2rem(24px);
-                font-size: px2rem(24px);
+                font-size: px2rem(30px);
                 color: #cccccc;
 
             }
@@ -275,38 +279,68 @@
     }
 </style>
 <script>
-    import { MessageBox ,Toast,Popup} from 'mint-ui'
+    import {means} from '../../../util/common'
+    import {Toast,Popup,Indicator} from 'mint-ui'
     import api from '../../../fetch/api'
 
     export default {
         name: "jingcai",
+        beforeCreate() {
+            Indicator.open()
+        },
         data() {
             return {
                 popupVisible:false,
-                login: false,
                 matchId:this.$route.query.matchId,//赛事ID
                 questionAndAnswersList: [],
-
                 baseDate: {},
                 timesd: '',
                 timeId: '',//计时器
                 qudata: [], //答案数据
                 // answerAllPull:'',//答案是否提交
                 HaveRightAnswer:false, //是否已经公布正确答案
-                fromeRouter:''//在哪个路由来
+                fromeRouter:'',//在哪个路由来
+                token:'',
+                login: false
             }
         },
         created() {
-            // this.matchId = this.$route.query.matchId
-            this.getDetails()
-            // 判断是否登录
-            if (localStorage.getItem('token')) {
-                this.login = true
-            } else {
-                this.login = false
+            this.$nextTick(()=>{
+                if(this.$route.query.cfrom=='app'){
+                    if(!this.fromeRouter){
+                        localStorage.clear()
+                    }else{
+                        this.token = localStorage.getItem('token')?localStorage.getItem('token'):''
+                        if(this.token!==''){
+                            this.login = true
+                        }
+                    }
+                }
+            })
+            if(this.$route.query.cfrom=='app'){
+                let that = this
+                window.actionMessage = function (arg) {
+                    if(JSON.parse(arg).token!==''){
+                        that.token = JSON.parse(arg).token
+                        that.login = true
+                        localStorage.setItem('token', JSON.parse(arg).token)
+                    }
+                }
+            }else{
+                if(localStorage.getItem('token')){
+                    this.login = true
+                }else{
+                    this.login = false
+                }
             }
+            setTimeout(()=>{
+                this.getDetails()
+            },1000)
         },
         computed: {},
+        mounted(){
+            means('竞猜').isTitle
+        },
         methods: {
             // 活动介绍
             activeDescribe() {
@@ -316,13 +350,22 @@
             lookupRecord() {
                 this.$router.push({
                     path: "/activity/upRecord",
-                    query:{matchId:this.matchId}
+                    query:{matchId:this.matchId,showtitle:'1'}
                 })
             },
             // 查看我的竞猜纪录
             lookMyRecord() {
+                // if(this.$route.query.cfrom=='app'&&this.token===''){
+                //     location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
+                //     return false
+                // }
+                // if(!localStorage.getItem('token')){
+                //     this.$router.push({path:'/user/sms'})
+                //     return false
+                // }
                 this.$router.push({
-                    path: "/activity/recordedList"
+                    path: "/activity/recordedList",
+                    query:{matchId:this.matchId,showtitle:'1'}
                 })
             },
             //获取竞猜详情
@@ -354,61 +397,70 @@
             },
             //点击item
             itemClic(type, item, c) {
-                if(this.login){
-                    if(this.baseDate.chance == '1'){
-                        if(!this.HaveRightAnswer){
+                if(this.baseDate.answerTimeStatus=='1'){
+                    if(this.$route.query.cfrom=='app'&&this.token===''){
+                        location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
+                        return false
+                    }
+                    if(!localStorage.getItem('token')){
+                        this.$router.push({path:'/user/sms'})
+                        return false
+                    }
+                    if(this.HaveRightAnswer==false){
+                        if(this.baseDate.chance == '1'){
                             this.$set(item, 'isSelected', type)
                         }else {
-                            Toast("竞猜已结束，下次早点呦！")
+                            Toast("消费超过50元才有机会参加呢亲！")
                         }
-                    }else {
-                        Toast("消费超过50元才有机会参加呢亲！")
                     }
-                }else {
-                    this.$router.push(
-                        {
-                            path:'/user/sms'
-                        }
-                    )
                 }
-
             },
             // 提交答案
             add() {
+                if(this.$route.query.cfrom=='app'&&this.token===''){
+                    location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
+                    return false
+                }
+                if(!localStorage.getItem('token')){
+                    this.$router.push({path:'/user/sms'})
+                    return false
+                }
+                var that = this
                 if(!this.HaveRightAnswer){
                     if($('.cur').length<this.questionAndAnswersList.length){
-                        Toast("请将所有问题答完！")
-                        return false;
-                    }
-                    let arr= []
-                    this.questionAndAnswersList.forEach(item => {
-                        let obj = {
-                            answerStatus1 : '0',
-                            answerStatus2 : '0',
-                            questionNum:item.questionNum
+                            Toast("请将所有问题答完！")
+                            return false;
                         }
-                        if (item.isSelected == '0') {
-                            obj.answerStatus1 = '1'
-                            obj.answerStatus2 = '0'
-                        }else if(item.isSelected == '1'){
-                            obj.answerStatus1 = '0'
-                            obj.answerStatus2 = '1'
-                        }
-                        arr.push(obj)
-                    })
-                    let data = {
-                        answers:arr,
-                        matchId:this.matchId,
-                        // matchId:'18021'
-                    }
-                    api.add(data)
-                        .then(res => {
-                            if (res.code == 0) {
-                                this.HaveRightAnswer = true
-                                // this.answerAllPull = "已经提交"
-                                Toast("答案提交成功")
+                        let arr= []
+                        this.questionAndAnswersList.forEach(item => {
+                            let obj = {
+                                answerStatus1 : '0',
+                                answerStatus2 : '0',
+                                questionNum:item.questionNum
                             }
+                            if (item.isSelected == '0') {
+                                obj.answerStatus1 = '1'
+                                obj.answerStatus2 = '0'
+                            }else if(item.isSelected == '1'){
+                                obj.answerStatus1 = '0'
+                                obj.answerStatus2 = '1'
+                            }
+                            arr.push(obj)
                         })
+                        let data = {
+                            answers:arr,
+                            matchId:this.matchId,
+                            // matchId:'18021'
+                        }
+                        api.add(data)
+                            .then(res => {
+                                if (res.code == 0) {
+                                    this.HaveRightAnswer = true
+                                    // this.answerAllPull = "已经提交"
+                                    that.baseDate.userGetAwardStatus = '4'
+                                    Toast("答案提交成功!")
+                                }
+                            })
                 }else {
                     Toast("不可重复提交！")
                 }
@@ -429,7 +481,10 @@
                     m = Math.floor(leftTime / 1000 / 60 % 60);
                     s = Math.floor(leftTime / 1000 % 60);
                 }
-                that.timesd = h + '小时' + m + '分' + s + '秒'
+                if(h<10){h="0"+h.toString()}
+                if(m<10){m="0"+m.toString()}
+                if(s<10){s="0"+s.toString()}
+                that.timesd = " "+h+':'+ m + ':'+ s
                 that.timeId = setTimeout(function () {
                     that.stopTime()
                 }, 1000)

@@ -87,8 +87,12 @@
 </style>
 <script>
     import api from '../../../fetch/api'
+    import {Indicator} from 'mint-ui'
     export default {
         name: "jingcai",
+        beforeCreate() {
+            Indicator.open()
+        },
         data() {
 
             return {
@@ -118,7 +122,8 @@
                 this.$router.push({
                     path:"/activity/jingcai",
                     query:{
-                        matchId:item.matchId
+                        matchId:item.matchId,
+                        showtitle: '1'
                     }
                 })
             },

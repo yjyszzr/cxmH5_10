@@ -11,7 +11,76 @@
                 <span class="memu-btn" @click="popShow = !popShow"><img src="./images/More@3x.png" alt=""></span>
             </div>
         </div>
-        <!--头部结束-->
+        <!--躯干-->
+        <div class="body">
+            <div class="body-title" @click = "popupVisible = !popupVisible">
+                <p>2018期 截止时间 07-11 19：00</p>
+                <p class="history-p">历史开奖 <span class="arrow_right"><img src="../../assets/img/arange.png" alt=""></span></p>
+            </div>
+            <div class="biaozhun" v-if="false">
+                <div class="selection">
+                    <div class="phone">
+                        <span class="phone-img-box"><img src="./images/IntelligentChoice@3x.png" alt=""></span>
+                        <span>机选</span>
+                    </div>
+                    <div class="bonus-box">
+                        奖池： <span>59亿888万</span>
+                    </div>
+                </div>
+                <div class="ball-box">
+                    <ul class="red-ball-ul ball-ul">
+                        <li class="ball-li">
+                            <span class="ball red-ball">01</span>
+                            <span class="miss">1</span>
+                        </li>
+                    </ul>
+                    <ul class="blue-ball-ul ball-ul">
+                        <li class="ball-li">
+                            <span class="ball blue-ball">01</span>
+                            <span class="miss">1</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="dantuo">
+                <p class="what-dantuo"> 什么是胆拖？</p>
+                <div class="selection">
+                    <p class="desceibe">胆码-红球，至多选4个，至少选1个</p>
+                    <div class="bonus-box">
+                        奖池： <span>59亿888万</span>
+                    </div>
+                </div>
+                <div class="ball-box">
+                    <ul class="red-ball-ul ball-ul">
+                        <li class="ball-li">
+                            <span class="ball red-ball">01</span>
+                            <span class="miss">1</span>
+                        </li>
+                    </ul>
+                    <ul class="blue-ball-ul ball-ul">
+                        <li class="ball-li">
+                            <span class="ball blue-ball">01</span>
+                            <span class="miss">1</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!--底部-->
+        <div class="footer">
+            <div class="dele">
+                <i class="iconfont icon-icon-26"></i>
+            </div>
+            <div class="text">
+                请至少选择 <span class="red">5</span>个红球，<span class="blue">2</span>个篮球
+            </div>
+            <div class="ok">
+                确定
+            </div>
+            <!--<span><img src="./" alt=""></span>-->
+        </div>
+        <!--选号方式-->
         <div class="collspce" >
             <transition name="mybox">
                 <div class="title-collspce" v-if="collapseShow">
@@ -20,52 +89,10 @@
                 </div>
             </transition>
             <transition name="ceng">
-                <div class="meng-cheng" v-if="collapseShow"></div>
+                <div class="meng-cheng" @click="openOrclose()" v-if="collapseShow"></div>
             </transition>
         </div>
-        <div class="body">
-            <div class="body-title" @click = "popupVisible = !popupVisible">
-                <p>2018期 截止时间 07-11 19：00</p>
-                <p>历史开奖</p>
-            </div>
-            <div class="selection">
-                <div class="phone">
-                    <span class="phone-img-box"><img src="./images/IntelligentChoice@3x.png" alt=""></span>
-                    <span>机选</span>
-                </div>
-                <div class="bonus-box">
-                    奖池： <span>59亿888万</span>
-                </div>
-            </div>
-            <div class="ball-box">
-                <ul class="red-ball-ul ball-ul">
-                    <li class="ball-li">
-                        <span class="ball red-ball">01</span>
-                        <span class="miss">1</span>
-                    </li>
-                </ul>
-                <ul class="blue-ball-ul ball-ul">
-                    <li class="ball-li">
-                        <span class="ball blue-ball">01</span>
-                        <span class="miss">1</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer">
-            <div>
-                <i class="iconfont icon-icon-26"></i>
-            </div>
-            <i class="line"></i>
-            <div class="text">
-                ddddddd
-            </div>
-            <button class="confirm" :disabled='flag' @click="confirm()" :class="classFlag?'noConfirm':''">
-                确定
-            </button>
-            <!--<span><img src="./" alt=""></span>-->
-        </div>
-
+        <!--菜单弹窗-->
         <transition name="fade">
             <div class="pop" @click="popShow = !popShow" v-if="popShow">
                 <div class="pop-body">
@@ -75,6 +102,7 @@
                 </div>
             </div>
         </transition>
+        <!--历史开奖-->
         <div class="history">
             <mt-popup
                     v-model="popupVisible"
@@ -334,6 +362,11 @@
                 border-bottom: 1px solid #787878;
                 padding: 0 px2rem(15px);
             }
+            .dantuo{
+                .desceibe{
+                    color: #c7c7c7;
+                }
+            }
             .selection{
                 display: flex;
                 flex-direction: row;
@@ -414,6 +447,56 @@
                     }
 
                 }
+            }
+        }
+        .footer{
+            box-sizing: border-box;
+            width: 100%;
+            background-color: #ffffff;
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            height: px2rem(100px);
+            justify-content: space-between;
+            align-items: center;
+            .dele{
+                width: px2rem(100px);
+                border-right: 1px solid #c7c7c7;
+                text-align: center;
+                line-height: px2rem(70px);
+                i{
+                    font-size: px2rem(40px);
+                }
+            }
+            .text{
+                color: #787878;
+                .red{
+                    color: #EA5504;
+                }
+                .blue{
+                    color: #0081cc;
+                }
+            }
+            .ok{
+                width: px2rem(250px);
+                text-align: center;
+                line-height: px2rem(100px);
+                color: #ffffff;
+                font-size: px2rem(28px);
+                background-color: #ea5504;
+            }
+        }
+        .history-p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .arrow_right{
+            margin-left: px2rem(10px);
+            height: px2rem(28px);
+            width: px2rem(15px);
+            img{
+                width: 100%;
             }
         }
     }

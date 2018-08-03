@@ -6,7 +6,7 @@
 <template>
     <div class="wrap about" >
         <div class="logo">
-            <img src="../../../assets/img/logo.png" alt="彩小秘"/><i>v1.0.8</i>
+            <img src="../../../assets/img/logo.png" alt="彩小秘"/><i>v2.1.0</i>
         </div>
         <section style="background: #fff">
             <section class=" wechat">
