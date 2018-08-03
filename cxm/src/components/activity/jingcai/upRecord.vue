@@ -138,6 +138,7 @@
 </style>
 <script>
     import api from '../../../fetch/api'
+    import {means} from '../../../util/common'
     export default {
         name: "jingcai",
         data() {
@@ -169,6 +170,9 @@
                         }
                     })
             }
+        },
+        mounted(){
+            means('中奖记录').isTitle
         }
     }
 </script>

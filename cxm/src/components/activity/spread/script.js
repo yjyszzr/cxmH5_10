@@ -29,9 +29,17 @@ export default {
         lqBtn() {
             let _sql;
             if (detect() === 'ios') {
-                countLog.init(()=>{
+                if(this.fr == 'c046'){
+                    countLog.init(()=>{
+                        location.href="https://itunes.apple.com/app/apple-store/id1402481777?pt=118446425&ct=nicetui1&mt=8"
+                    });
+                }else if(this.fr == 'c047'){
+                    countLog.init(()=>{
+                        location.href="https://itunes.apple.com/app/apple-store/id1402481777?pt=118446425&ct=nicetui2&mt=8"
+                    });
+                }else{
                     location.href="https://itunes.apple.com/cn/app/id1402481777?mt=8"
-                });
+                }
             } else {
                 if(wxPd()){
                     location.href = 'https://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
