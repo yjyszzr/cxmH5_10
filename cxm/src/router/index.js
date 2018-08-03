@@ -677,7 +677,7 @@ const router = new Router({
       },
       // 大乐透选号
       {
-          path: '/components/daletou/selectNumber',
+          path: '/lottery/daletou/selectnumber',
           name: 'selectNumber',
           component: resolve => require(['@/components/daletou/selectNumber.vue'], resolve)
       },
