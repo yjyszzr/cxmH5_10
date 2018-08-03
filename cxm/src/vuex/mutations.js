@@ -87,9 +87,6 @@ const mutations = {
     LOTTERYRESULTTABLEINDEX(state, data) {
         state.mark_showObj.lotteryResultTableIndex = data
     },
-    FREEBUYID(state, data) {
-        state.freebuyId = data
-    },
     MATCHOBJ(state, data) {
         state.matchObj = data
     },

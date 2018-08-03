@@ -78,11 +78,6 @@ const actions = {
                  }, value) {
         commit("LEAGUEIDS", value);
     },
-    getFreebuyId({
-                     commit
-                 }, value) {
-        commit("FREEBUYID", value);
-    },
     getmatchobj({
                     commit
                 }, value) {

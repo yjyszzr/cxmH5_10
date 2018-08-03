@@ -166,7 +166,7 @@
       <!-- <router-link to='/activity/world/thirtytwo'>啦啦啦啦啦</router-link> -->
 			<div class="section center">
 				<ul>
-					<li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.playType)">
+					<li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.redirectUrl)">
 						<img :src="item.playClassifyImg" class="entry_icon">
 						<p>{{item.playClassifyName}}</p>
             <div class="subTitle" :style="{'color':item.subTitle=='敬请期待'?'#9f9f9f':'#ea5504'}">{{item.subTitle}}</div>
@@ -194,8 +194,8 @@
 <script>
 // import http from '../api/http'
 import api from "../fetch/api";
-import { Toast } from "mint-ui";
-import { Indicator } from "mint-ui";
+import { Toast,Indicator } from "mint-ui";
+import {getUrlStr} from '../util/common'
 import silder from "./index/lunbo";
 import activity from "./index/activity";
 import informal from "./public/informal/informalList";
@@ -274,18 +274,25 @@ export default {
     }
   },
   methods: {
-    goFreebuy(c) {
+    goFreebuy(url) {
       this.$store.state.matchObj = {};
-      this.$store.state.freebuyId = c;
       this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
       this.$store.state.mark_playObj.bfIdSaveMap = {};
-      this.$router.push({
-          path: "/freebuy/singleNote",
-          query: {
-            id: c
-          },
-          replace: false
-      });
+      let go_id = getUrlStr('id',url)
+      if(go_id=='1'){
+        this.$router.push({
+            path: "/freebuy/singleNote",
+            query: {
+              id: 6
+            }
+        });
+      }else if(go_id=='2'){
+        this.$router.push({
+            path: "/lottery/daletou/selectnumber"
+        });
+      }else{
+        Toast('敬请期待')
+      }
     },
     fetchData() {
       let data = {

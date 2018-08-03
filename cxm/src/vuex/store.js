@@ -22,7 +22,6 @@ const state = {
     },
     findphone: '', //找回密码手机号
     userInfo: {}, //个人信息
-    freebuyId: '', //玩法页面区分
     mark_show: false, //控制遮罩
     mark_Reset: 0, //重制赛事数据
     resultList: {}, //赛果列表

@@ -54,7 +54,6 @@ export default {
         })
       },
       goFreebuy(){
-          this.$store.state.freebuyId = '6'
           this.$router.push({
             path: '/freebuy/singleNote',
               query:{
