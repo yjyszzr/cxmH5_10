@@ -18,7 +18,7 @@
                     <p>{{data.term_num}}期  截止时间 {{data.endDate}}</p>
                     <p class="history-p">历史开奖 <span class="arrow_right"><img src="../../assets/img/arange.png" alt=""></span></p>
                 </div>
-                <!--标砖选号-->
+                <!--标准选号-->
                 <div class="biaozhun" v-if="selectedIndex=='0'">
                     <div class="selection">
                         <div class="phone">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="ball-box">
                         <ul class="red-ball-ul ball-ul">
-                            <li class="ball-li" v-for="(item,index) in preList" :key=index>
+                            <li class="ball-li" @click="biaozhunSelect(index+1,'redBall')" v-for="(item,index) in preList" :key=index>
                                 <span class="ball red-ball">{{index<9?'0'+(index+1):index+1}}</span>
                                 <span class="miss">{{item}}</span>
                             </li>
@@ -128,9 +128,13 @@
                 <div class="history-box">
                     <ul class="history-ul">
                         <li class="history-li" v-for="(item,index) in prizeList" :key=index>
-                            <span>{{item.termNum}}</span>
+                            <span class="history-day">{{item.termNum}}</span>
                             <ul class="sun-ul">
-                                <li v-for="(sunItem,sunindex) in item.numList" :key=sunindex>{{sunItem}}</li>
+                                <li v-for="(sunItem,sunindex) in item.numList" :key=sunindex>
+                                    <span :class="sunindex<5?'redBall':'blueBall'">
+                                        {{sunItem}}
+                                    </span>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -157,9 +161,25 @@
 <style scoped lang="scss">
     @import "../../assets/css/function.scss";
     .select-num{
+        .curRedBall{
+            color: #ffffff;
+            background-color: #eb1c24;
+            border: 1px solid #eb1c24;
+        }
+        .curBlueBall{
+            color: #ffffff;
+            background-color: #0081cc;
+            border: 1px solid #0081cc;
+        }
         .cur{
             color: #ea5504!important;
             border: 1px solid #ea5504 !important;
+        }
+        .redBall{
+            color:#ea5504!important;
+        }
+        .blueBall{
+            color:#0081cc!important;
         }
         .head{
             overflow: hidden;
@@ -363,7 +383,7 @@
                         line-height: px2rem(72px);
                         border-bottom: 1px solid #e8e8e8;
                         font-size: px2rem(28px);
-                        span{
+                        .history-day{
                             padding-right: px2rem(50px);
                             color: #787878;
                             font-size: px2rem(26px);
@@ -620,6 +640,12 @@
                             this.prizeList = res.data.prizeList
                         }
                     })
+            },
+            //标准选号
+            biaozhunSelect(num,type){
+                if(type=='redBall'){
+
+                }
             },
             //删除所选号
             deleFn(){
