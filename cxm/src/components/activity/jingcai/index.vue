@@ -300,6 +300,7 @@
                 // answerAllPull:'',//答案是否提交
                 HaveRightAnswer:false, //是否已经公布正确答案
                 fromeRouter:'',//在哪个路由来
+                token:'',
                 login: false
             }
         },
@@ -397,7 +398,7 @@
             //点击item
             itemClic(type, item, c) {
                 if(this.baseDate.answerTimeStatus=='1'){
-                    if(this.$route.query.cfrom=='app'&&!login){
+                    if(this.$route.query.cfrom=='app'&&this.token===''){
                         location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
                         return false
                     }
@@ -416,7 +417,7 @@
             },
             // 提交答案
             add() {
-                if(this.$route.query.cfrom=='app'&&!login){
+                if(this.$route.query.cfrom=='app'&&this.token===''){
                     location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
                     return false
                 }
