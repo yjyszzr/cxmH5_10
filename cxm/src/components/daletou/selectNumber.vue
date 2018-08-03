@@ -30,20 +30,40 @@
             </div>
             <div class="selection">
                 <div class="phone">
-                    <span>手机</span>
+                    <span class="phone-img-box"><img src="./images/IntelligentChoice@3x.png" alt=""></span>
                     <span>机选</span>
                 </div>
-                <div>
-                    奖池： 59亿888万
+                <div class="bonus-box">
+                    奖池： <span>59亿888万</span>
                 </div>
             </div>
-            <div>
-                <table>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </table>
+            <div class="ball-box">
+                <ul class="red-ball-ul ball-ul">
+                    <li class="ball-li">
+                        <span class="ball red-ball">01</span>
+                        <span class="miss">1</span>
+                    </li>
+                </ul>
+                <ul class="blue-ball-ul ball-ul">
+                    <li class="ball-li">
+                        <span class="ball blue-ball">01</span>
+                        <span class="miss">1</span>
+                    </li>
+                </ul>
             </div>
+        </div>
+        <div class="footer">
+            <div>
+                <i class="iconfont icon-icon-26"></i>
+            </div>
+            <i class="line"></i>
+            <div class="text">
+                ddddddd
+            </div>
+            <button class="confirm" :disabled='flag' @click="confirm()" :class="classFlag?'noConfirm':''">
+                确定
+            </button>
+            <!--<span><img src="./" alt=""></span>-->
         </div>
 
         <transition name="fade">
@@ -294,11 +314,16 @@
 
         }
         .body{
+            position: absolute;
+            top: px2rem(100px);
+            bottom: px2rem(100px);
+            overflow: auto;
+            -webkit-overflow-scrolling: touch !important;
             box-sizing: border-box;
             width: 100%;
             height: px2rem(500px);
             background-color: #ffffff;
-            padding: 0 px2rem(10px);
+            padding: 0 px2rem(8px);
             .body-title{
                 display: flex;
                 justify-content: space-between;
@@ -315,10 +340,79 @@
                 justify-content: space-between;
                 align-items: center;
                 height: px2rem(100px);
+                padding: 0 px2rem(20px);
                 .phone{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     height: px2rem(60px);
                     width: px2rem(168px);
-                    background: rgba(0,0,0,.5);
+                    background: rgba(245,145,30,.2);
+                    border-radius: px2rem(20px);
+                    font-size: px2rem(26px);
+                    color: #f5911e;
+                    .phone-img-box{
+                        padding-right: px2rem(20px);
+                        display: inline-block;
+                        height:px2rem(36px) ;
+                        width: px2rem(36px);
+                        overflow: hidden;
+                        img{
+                            width: 100%;
+                        }
+                    }
+                }
+                .bonus-box{
+                    font-size: px2rem(26px);
+                    color: #787878;
+                    span{
+                        color: #ea5504;
+                    }
+                }
+            }
+            .ball-box{
+                margin-top: px2rem(20px);
+                .red-ball-ul{
+                    border-bottom: 1px solid #c7c7c7;
+                    .red-ball{
+                        color: #eb1c24;
+                    }
+                }
+                .blue-ball-ul{
+                    margin-top: px2rem(20px) ;
+                    .blue-ball{
+                        color:#0081cc ;
+                    }
+                }
+                .ball-ul{
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    .ball-li{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 0 px2rem(14px);
+                    }
+                    .ball{
+                        display: inline-block;
+                        line-height:px2rem(72px) ;
+                        width:px2rem(72px) ;
+                        border-radius: 100%;
+                        border: 1px solid #c7c7c7;
+                        text-align: center;
+                        font-size: px2rem(30px);
+
+                    }
+                    .miss{
+                        margin-top: px2rem(10px);
+                        color: #c7c7c7;
+                        font-size:px2rem(22px);
+                        margin-bottom: px2rem(10px);
+                    }
+
                 }
             }
         }
