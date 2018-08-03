@@ -8,21 +8,89 @@
                 <span class="header-down" @click="openOrclose()"><img id="downImg" src="../../assets/img/freebuy_img/Collapse@3x.png" alt=""></span>
             </div>
             <div>
-                <span class="memu"><img src="./images/More@3x.png" alt=""></span>
+                <span class="memu-btn" @click="popShow = !popShow"><img src="./images/More@3x.png" alt=""></span>
             </div>
         </div>
         <!--头部结束-->
-        <transition name="mybox">
-            <div class="title-collspce" v-if="this.$store.state.daletou.collaspe">
-                <p class="btn-box">标准选号 <span class="img-box"><img src="./images/Check@3x.png" alt=""></span></p>
-                <p class="btn-box">胆拖选号 <span class="img-box"><img src="./images/Check@3x.png" alt=""></span></p>
+        <div class="collspce" >
+            <transition name="mybox">
+                <div class="title-collspce" v-if="collapseShow">
+                    <p class="btn-box">标准选号 <span class="img-box"><img src="./images/Check@3x.png" alt=""></span></p>
+                    <p class="btn-box">胆拖选号 <span class="img-box"><img src="./images/Check@3x.png" alt=""></span></p>
+                </div>
+            </transition>
+            <transition name="ceng">
+                <div class="meng-cheng" v-if="collapseShow"></div>
+            </transition>
+        </div>
+        <div class="body">
+            <div class="body-title" @click = "popupVisible = !popupVisible">
+                <p>2018期 截止时间 07-11 19：00</p>
+                <p>历史开奖</p>
             </div>
-        </transition>
-        <div class="pop">
-            <div class="pop-body">
-
+            <div class="selection">
+                <div class="phone">
+                    <span>手机</span>
+                    <span>机选</span>
+                </div>
+                <div>
+                    奖池： 59亿888万
+                </div>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </table>
             </div>
         </div>
+
+        <transition name="fade">
+            <div class="pop" @click="popShow = !popShow" v-if="popShow">
+                <div class="pop-body">
+                    <ul class="memu-ul">
+                        <li v-for="(item,index) in memu" @click="goNext()"><i><img :src="item.imgSrc" alt=""></i>{{item.name}}</li>
+                    </ul>
+                </div>
+            </div>
+        </transition>
+        <div class="history">
+            <mt-popup
+                    v-model="popupVisible"
+                    position="bottom">
+                <div class="history-box">
+                    <ul class="history-ul">
+                        <li class="history-li">
+                            <span>20180808期</span>
+                            <ul class="sun-ul">
+                                <li>09</li>
+                                <li>90</li>
+                                <li>78</li>
+                                <li>67</li>
+                                <li>67</li>
+                                <li>56</li>
+                                <li>67</li>
+                            </ul>
+                        </li>
+                        <li class="history-li">
+                            <span>20180808期</span>
+                            <ul class="sun-ul">
+                                <li>09</li>
+                                <li>90</li>
+                                <li>78</li>
+                                <li>67</li>
+                                <li>67</li>
+                                <li>56</li>
+                                <li>67</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </mt-popup>
+        </div>
+
+
     </div>
 </template>
 <style scoped lang="scss">
@@ -59,11 +127,11 @@
                     }
                 }
             }
-            .memu{
+            .memu-btn{
                 display: inline-block;
                 height: px2rem(30px);
                 width: px2rem(30px);
-                margin-right: px2rem(50px);
+                margin-right: px2rem(30px);
                 img{
                     width: 100%;
                 }
@@ -80,9 +148,30 @@
             height:0px !important;
         }
         .mybox-leave,.mybox-enter-active{
-            height: px2rem(100px);
+            height: 100%;
         }
+        .ceng-enter-active,
+        .ceng-leave-active {
+            transition: opacity 0.3s;
+        }
+        .ceng-enter,
+        .ceng-leave-active {
+            opacity: 0;
+        }
+        .meng-cheng{
+            z-index: 1;
+            position: absolute;
+            top: px2rem(100px);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,.5);
+        }
+        /*top:px2rem(100px);*/
         .title-collspce{
+            z-index: 2;
+            position: absolute;
+            width: 100%;
             height: px2rem(100px);
             border-top: 1px solid #9f9f9f;
             display: flex;
@@ -90,6 +179,7 @@
             flex-direction: row;
             align-items: center;
             overflow: hidden;
+            background: #f4f4f4;
             .btn-box{
                 line-height: px2rem(60px);
                 width: px2rem(180px);
@@ -112,6 +202,14 @@
                 }
             }
         }
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 0.3s;
+        }
+        .fade-enter,
+        .fade-leave-active {
+            opacity: 0;
+        }
         .pop{
             position: absolute;
             top: 0;
@@ -119,15 +217,143 @@
             right: 0;
             bottom: 0;
             background: rgba(0,0,0,0.5);
+            .pop-body{
+                position: absolute;
+                /*height: px2rem(200px);*/
+                /*width: px2rem(100px);*/
+                background-color: #ffffff;
+                right: px2rem(20px);
+                top: px2rem(100px);
+            }
+            .pop-body::before{
+                width:0;
+                height:0;
+                border-width:0 px2rem(20px) px2rem(20px) ;
+                border-style:solid;
+                border-color:transparent transparent #ffffff;/*透明 透明  灰*/
+
+                top: -10.5px;
+                right: 0px;
+                position: absolute;
+                content: "";
+            }
+        }
+        .memu-ul{
+            width: px2rem(183px);
+            li{
+                height:px2rem(72px);
+                border-bottom: 1px solid #555555;
+                display: flex;
+                align-items: center;
+                justify-content: left;
+                i{
+                    height: px2rem(30px);
+                    width: px2rem(30px);
+                    display: inline-block;
+                    margin: 0 px2rem(10px);
+                    img{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .history{
+            width: 100%;
+            .mint-popup{
+                width: 100%;
+            }
+            .history-box{
+                height: px2rem(800px);
+                overflow: auto;
+                .history-ul{
+                    padding: 0 px2rem(15px);
+                    .history-li{
+                        padding-left: 10px;
+                        display: flex;
+                        flex-direction: row;
+                        line-height: px2rem(72px);
+                        border-bottom: 1px solid #e8e8e8;
+                        font-size: px2rem(28px);
+                        span{
+                            padding-right: px2rem(50px);
+                            color: #787878;
+                            font-size: px2rem(26px);
+                        }
+                        .sun-ul{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            li{
+                                padding: 0 px2rem(10px);
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+        .body{
+            box-sizing: border-box;
+            width: 100%;
+            height: px2rem(500px);
+            background-color: #ffffff;
+            padding: 0 px2rem(10px);
+            .body-title{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: px2rem(80px);
+                color: #9f9f9f;
+                font-size: px2rem(26px);
+                border-bottom: 1px solid #787878;
+                padding: 0 px2rem(15px);
+            }
+            .selection{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                height: px2rem(100px);
+                .phone{
+                    height: px2rem(60px);
+                    width: px2rem(168px);
+                    background: rgba(0,0,0,.5);
+                }
+            }
         }
     }
 </style>
 <script>
+    import GameDescription from "./images/GameDescription@3x.png"
+    import LotteryResult from "./images/LotteryResult@3x.png"
+    import Trend from "./images/Trend@3x.png"
+    import Missing from "./images/Missing@3x.png"
     export default {
         name: "select-number",
         data(){
           return{
-              popupVisible : true
+              popShow : false, //菜单列表弹窗
+              collapseShow: false, //折叠选号方式
+              popupVisible:false,//历史开奖列表
+              memu:[
+                  {
+                      name:'走势图',
+                      imgSrc:Trend
+                  },
+                  {
+                      name:'玩法帮助',
+                      imgSrc: GameDescription
+                  },
+                  {
+                      name:'开奖结果',
+                      imgSrc:LotteryResult
+                  },
+                  {
+                      name:'隐藏遗漏',
+                      imgSrc:Missing
+                  }
+              ]
           }
         },
         created(){
@@ -145,8 +371,12 @@
                 }else{
                     $('#downImg').addClass('tranform180')
                 }
-                this.$store.dispatch("daletouCollaspe",!this.$store.state.daletou.collaspe)
+                this.collapseShow = !this.collapseShow
             },
+            goNext(){
+                alert("ewee")
+            }
+
         },
         beforeRouteLeave(to, from, next) {
             // next()

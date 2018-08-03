@@ -190,10 +190,6 @@ const mutations = {
     FSLIST(state, data){
         state.world_cupObj.fsList = data
     },
-    //  大乐透
-    DALTOU(state, data){
-        state.daletou.collaspe = data
-    },
 }
 
 export default mutations

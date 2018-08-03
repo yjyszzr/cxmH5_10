@@ -195,9 +195,6 @@ const actions = {
     changefsList({commit},value){
         commit("FSLIST", value)
     },
-    daletouCollaspe({commit},value){
-        commit("DALTOU", value)
-    },
 }
 
 export default actions
