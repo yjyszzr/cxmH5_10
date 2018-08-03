@@ -87,9 +87,12 @@
 </style>
 <script>
     import api from '../../../fetch/api'
-    import {means} from '../../../util/common'
+    import {Indicator} from 'mint-ui'
     export default {
         name: "jingcai",
+        beforeCreate() {
+            Indicator.open()
+        },
         data() {
 
             return {
@@ -119,16 +122,14 @@
                 this.$router.push({
                     path:"/activity/jingcai",
                     query:{
-                        matchId:item.matchId
+                        matchId:item.matchId,
+                        showtitle: '1'
                     }
                 })
             },
             nowCanjia(){
                 this.$router.go(-1)
             }
-        },
-        mounted(){
-            means('竞猜记录').isTitle
         }
     }
 </script>
