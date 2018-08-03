@@ -29,19 +29,6 @@ export default {
       },
 
       jxtz(){
-        if(this.orderObj.lotteryPlayClassifyId=='8'){
-          this.$store.dispatch("changefsList", []);
-          this.$store.dispatch("changefsNum", '2');
-          this.$store.dispatch("changefirstList", []);
-          this.$store.state.world_cupObj.worldfliter = []
-          this.$router.push({
-              path: '/activity/world_matchList',
-              query:{
-                id: 0
-              },
-              replace: false
-          })
-        }else{
           this.$store.state.freebuyId = this.orderObj.lotteryPlayClassifyId
           this.$router.push({
             path: '/freebuy/singleNote',
@@ -50,7 +37,6 @@ export default {
               },
               replace: false
           })
-        }
       }
     },
     mounted(){

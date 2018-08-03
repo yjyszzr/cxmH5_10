@@ -279,27 +279,13 @@ export default {
       this.$store.state.freebuyId = c;
       this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
       this.$store.state.mark_playObj.bfIdSaveMap = {};
-      this.$store.dispatch("changefsList", []);
-      this.$store.dispatch("changefsNum", "2");
-      this.$store.dispatch("changefirstList", []);
-      this.$store.state.world_cupObj.worldfliter = [];
-      if (c == "0") {
-        this.$router.push({
-          path: "/activity/world_matchList",
-          query: {
-            id: c
-          },
-          replace: false
-        });
-      } else {
-        this.$router.push({
+      this.$router.push({
           path: "/freebuy/singleNote",
           query: {
             id: c
           },
           replace: false
-        });
-      }
+      });
     },
     fetchData() {
       let data = {

@@ -391,30 +391,6 @@ const router = new Router({
           component: resolve => require(['@/components/activity/tuiguang/include/index.vue'], resolve)
       },
       {
-          path: '/activity/discount',
-          name: 'discount',
-          meta: {
-            title: '优惠兑换'
-          },
-          component: resolve => require(['@/components/activity/tuiguang/discount/discount.vue'], resolve)
-      },
-      {
-          path: '/activity/payConfirm',
-          name: 'payConfirm',
-          meta: {
-            title: '支付订单'
-          },
-          component: resolve => require(['@/components/activity/tuiguang/payConfirm/index.vue'], resolve)
-      },
-      {
-          path: '/activity/world_cup',
-          name: 'world_cup',
-          meta: {
-            title: '世界杯资讯'
-          },
-          component: resolve => require(['@/components/activity/world_cup/index.vue'], resolve)
-      },
-      {
           path: '/user/activity/spread',
           name: 'spread',
           component: resolve => require(['@/components/activity/spread/spread.vue'], resolve)
@@ -427,45 +403,6 @@ const router = new Router({
             title: '充值送壕礼'
           },
           component: resolve => require(['@/components/activity/red_packet/index/index.vue'], resolve),
-      },
-      {
-          path: '/activity/world_matchList',
-          name: 'world_matchList',
-          component: resolve => require(['@/components/activity/world_cup_guessing/world_matchList/matchListBox/matchList.vue'], resolve),
-          children: [
-            {
-                path: '/',
-                name: 'worldwinners',
-                meta: {
-                    title: '世界杯'
-                },
-                component: resolve => require(['@/components/activity/world_cup_guessing/world_matchList/matchwinner/matchwinner.vue'], resolve)
-            },
-            {
-              path: 'worldwinner',
-              name: 'worldwinner',
-              meta: {
-                title: '世界杯'
-              },
-              component: resolve => require(['@/components/activity/world_cup_guessing/world_matchList/matchwinner/matchwinner.vue'], resolve)
-            },
-            {
-              path: 'fsplace',
-              name: 'fsplace',
-              meta: {
-                title: '世界杯'
-              },
-              component: resolve => require(['@/components/activity/world_cup_guessing/world_matchList/fsplace/fsplace.vue'], resolve)
-            }
-          ]
-      },
-      {
-          path: '/activity/world_detail',
-          name: 'world_detail',
-          meta: {
-            title: '世界杯'
-          },
-          component: resolve => require(['@/components/activity/world_cup_guessing/world_detail/index.vue'], resolve)
       },
       {
           path: '/activity/tuiguang/registration',
@@ -599,40 +536,6 @@ const router = new Router({
           path: '/apptt/insurance',
           name: 'insurancemjbt',
           component: resolve => require(['@/components/mjb/apptt/insurance/insurance.vue'], resolve)
-      },
-      //世界杯协议
-      {
-          path: '/appsjb/world_explain',
-          name: 'world_explainmjbs',
-          component: resolve => require(['@/components/mjb/appsjb/world_explain/world_explain.vue'], resolve)
-      },
-      {
-            path: '/activity/world/thirtytwo',
-            name: 'thirtytwo',
-            meta:{
-                keepAlive: true
-            },
-            component: resolve => require(['@/components/activity/worldjeep/thirtytwo/thirtytwo.vue'], resolve)
-      },
-      {
-          path: '/activity/world/illustrate',
-          name: 'illustrate',
-          component: resolve => require(['@/components/activity/worldjeep/illustrate/illustrate.vue'], resolve)
-      },
-      {
-          path: '/activity/world/record',
-          name: 'records',
-          component: resolve => require(['@/components/activity/worldjeep/record/record.vue'], resolve)
-      },
-      {
-          path: '/activity/world/worldenter',
-          name: 'world',
-          component: resolve => require(['@/components/activity/worldjeep/world/world.vue'], resolve)
-      },
-      {
-        path: '/activity/world/result',
-        name: 'result',
-        component: resolve => require(['@/components/activity/worldjeep/result/index.vue'], resolve)
       },
       // 竞彩答题
       {
@@ -820,20 +723,6 @@ router.beforeEach(async(to, from, next) => {
             from.meta.keepAlive = false
         }
     }
-    // if(to.matched.some(record => record.meta.requireAuth)) {
-	// 	if(!localStorage.getItem('token')) {
-	// 		next({
-	// 			path: '/user/sms',
-	// 			query: {
-	// 				redirect: from.fullPath
-	// 			}
-	// 		})
-	// 	} else {
-	// 		next()
-	// 	}
-	// } else {
-	// 	next()
-	// }
 	next()
 })
 

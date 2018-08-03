@@ -73,12 +73,6 @@
                 </div>
             </div>
         </div>
-        <!-- //世界杯头部 -->
-        <ul class="world_top" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='world_matchList'">
-            <li><p @click="tabSilde(1,$event)" :class="!$route.path.split('/')[3]||$route.path.split('/')[3]=='worldwinner'?'worldActive':''">冠军竞猜</p></li>
-            <li><p @click="tabSilde(2,$event)" :class="$route.path.split('/')[3]&&$route.path.split('/')[3]=='fsplace'?'worldActive':''">冠亚军竞猜</p></li>
-        </ul>
-        <p class="wd_nav" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='world_detail'">已选{{$store.state.world_cupObj.fsNum}}场比赛</p>
         <mt-actionsheet
                 :actions= "action"
                 cancelText=""
@@ -347,40 +341,6 @@
                 }
                 Indicator.open();
                 this.$store.dispatch("getResultList", data);
-            },
-            tabSilde(c,s){
-                $('.worldActive').removeClass('worldActive')
-                s.target.className= 'worldActive'
-                this.$store.state.world_cupObj.world_tab = false
-                if(c==1){
-                    this.$store.dispatch("changefsNum", '2');
-                    if(getUrlStr('showtitle',location.href)=='1'){
-                        this.$router.replace({
-                            path: '/activity/world_matchList/worldwinner',
-                            query:{
-                                'showtitle': '1'
-                            }
-                        })
-                    }else{
-                        this.$router.replace({
-                            path: '/activity/world_matchList/worldwinner'
-                        })
-                    }
-                }else{
-                    this.$store.dispatch("changefsNum", '2');
-                    if(getUrlStr('showtitle',location.href)=='1'){
-                        this.$router.replace({
-                            path: '/activity/world_matchList/fsplace',
-                            query:{
-                                'showtitle': '1'
-                            }
-                        })
-                    }else{
-                        this.$router.replace({
-                            path: '/activity/world_matchList/fsplace'
-                        })
-                    }
-                }
             }
         },
         computed: {
@@ -692,32 +652,6 @@
         }
         .swiper-slide:last-of-type {
             background: none;
-        }
-        .world_top{
-            display: flex;
-            background: white;
-            height: px2rem(88px);
-            li{
-                flex: 1;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                p{
-                    height: 100%;
-                    font-size: px2rem(28px);
-                    color: #505050;
-                    line-height: px2rem(88px);
-                    box-sizing: border-box;
-                }
-                .worldActive{
-                    color: #ea5504;
-                    border-bottom: 2px solid #ea5504;
-                }
-            }
-            li:first-of-type{
-                background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
-                background-size: 1px px2rem(50px);
-            }
         }
 
         .icon-img{
