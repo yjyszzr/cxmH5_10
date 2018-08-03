@@ -682,7 +682,7 @@
                         }
                     })
 
-                this.getLocalStorageFn()
+                this.getLocalStorageFn('biaoZhun')
             },
             //标准选号
             biaozhunSelect(item, type) {
@@ -765,8 +765,8 @@
             // 取出所选号码
             getLocalStorageFn(type){
                 if(type == 'biaoZhun'){
-                    this.redBallList = JSON.parse(localStorage.getItem(redBallList))
-                    this.blueBallList = JSON.parse(localStorage.getItem(redBallList))
+                    this.redBallList = JSON.parse(localStorage.getItem('redBallList'))
+                    this.blueBallList = JSON.parse(localStorage.getItem('redBallList'))
                     this.preList.forEach(item=>{
                         this.redBallList.forEach(sunItem=>{
                             if(item.num==sunItem){
@@ -781,11 +781,12 @@
                             }
                         })
                     })
+                    console.log(this.preList);
                 }else if(type == 'dantuo'){
-                    this.danRedMaList = JSON.parse(localStorage.getItem(danRedMaList))
-                    this.tuoRedMaList = JSON.parse(localStorage.getItem(tuoRedMaList))
-                    this.danBlueMaList = JSON.parse(localStorage.getItem(danBlueMaList))
-                    this.tuoBlueMaList = JSON.parse(localStorage.getItem(tuoBlueMaList))
+                    this.danRedMaList = JSON.parse(localStorage.getItem('danRedMaList'))
+                    this.tuoRedMaList = JSON.parse(localStorage.getItem('tuoRedMaList'))
+                    this.danBlueMaList = JSON.parse(localStorage.getItem('danBlueMaList'))
+                    this.tuoBlueMaList = JSON.parse(localStorage.getItem('tuoBlueMaList'))
                 }
             },
             //列出每注
