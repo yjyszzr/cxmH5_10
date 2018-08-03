@@ -456,6 +456,10 @@ export default {
     //上期竞猜详情
     beforePeriodNote(params) {
         return fetchPost('/activity/dlQuestionsAndAnswersUser/beforePeriodNote', params)
+    },
+    //选号投注
+    getTicketInfo(params) {
+        return fetchPost('/lotto/lotto/getTicketInfo', params)
     }
 }
 
