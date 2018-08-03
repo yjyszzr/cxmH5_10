@@ -250,7 +250,7 @@ export default {
     },
     //获取大厅数据
     getHallData(params) {
-        return fetchPost('lottery/lottery/hall/getHallData', params)
+        return fetchPost('lottery/lottery/hall/getAllLotteryInHallMixData', params)
     },
     //获取比赛列表
     getMatchList(params) {

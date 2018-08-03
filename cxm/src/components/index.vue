@@ -45,6 +45,9 @@
         font-size: px2rem(28px);
         color: #505050;
       }
+      .subTitle{
+        font-size: px2rem(20px);
+      }
     }
     li:nth-child(5),
     li:nth-child(6),
@@ -57,15 +60,6 @@
       margin: 0 auto;
     }
   }
-}
-
-.boll {
-  height: px2rem(80px);
-  font-size: px2rem(30px);
-  line-height: px2rem(80px);
-  margin-left: px2rem(30px);
-  border-bottom: 1px solid #f1f1f1;
-  color: #505050;
 }
 
 .scroll-wrap {
@@ -171,15 +165,11 @@
 			<v-activity :activity='activity'></v-activity>
       <!-- <router-link to='/activity/world/thirtytwo'>啦啦啦啦啦</router-link> -->
 			<div class="section center">
-				<p class="boll">竞彩足球</p>
 				<ul>
 					<li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.playType)">
 						<img :src="item.playClassifyImg" class="entry_icon">
 						<p>{{item.playClassifyName}}</p>
-						<img src="../assets/img/Awards@2x.png" class="entry_status" alt="" v-if="item.playClassifyLabelId=='3'">
-						<img src="../assets/img/Lottery@2x.png" class="entry_status lottery" alt="" v-if="item.playClassifyLabelId=='2'">
-						<img src="../assets/img/Popular@2x.png" class="entry_status" alt="" v-if="item.playClassifyLabelId=='4'">
-						<img src="../assets/img/Singlepass@2x.png" class="entry_status" alt="" v-if="item.playClassifyLabelId=='1'">
+            <div class="subTitle" :style="{'color':item.subTitle=='敬请期待'?'#9f9f9f':'#ea5504'}">{{item.subTitle}}</div>
 					</li>
 				</ul>
 			</div>
@@ -384,10 +374,10 @@ export default {
     api.getHallData(data).then(res => {
       //console.log(res)
       if (res.code == 0) {
-        this.bannerList = res.data.navBanners;
-        this.activity = res.data.activity;
-        this.y_Carousel = res.data.winningMsgs;
-        this.dlPlay = res.data.dlPlayClassifyDetailDTOs;
+        this.bannerList = res.data.dlHallDTO.navBanners;
+        this.activity = res.data.dlHallDTO.activity;
+        this.y_Carousel = res.data.dlHallDTO.winningMsgs;
+        this.dlPlay = res.data.dlHallDTO.dlPlayClassifyDetailDTOs;
         if (this.y_Carousel.length == 0) {
           this.show = true;
           this.hide = false;
