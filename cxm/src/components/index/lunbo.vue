@@ -71,10 +71,15 @@
                                 // query:{matchId:url.split('=')[1].split('&')[0],showtitle:'1'},
                                 query:{matchId:getUrlStr('matchId',url),showtitle:'1'}
                             })
-                            //老带新轮播图
+                            //小白课堂轮播图
                         }else if(url.indexOf('activity/oldwithnew')!=-1){
                             this.$router.push({
                                 path: '/activity/oldwithnew'
+							})
+							//老带新轮播图
+						}else if(url.indexOf('activity/oldbeltnew')!=-1){
+                            this.$router.push({
+                                path: '/activity/oldbeltnew'
                             })
 						}else{
 							location.href=url

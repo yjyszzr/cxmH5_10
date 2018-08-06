@@ -484,6 +484,15 @@ const router = new Router({
           },
           component: resolve => require(['@/components/activity/tuiguang/success/success.vue'], resolve)
       },
+      //老带新 活动
+      {
+        path: '/activity/oldbeltnew',
+        name: 'oldbeltnew',
+        meta: {
+          title: '老带新'
+        },
+        component: resolve => require(['@/components/activity/oldbeltnew'], resolve)
+     },
       //app彩小秘彩票
       //帮助中心：appinfo/help
       //购彩协议：appinfo/protocol
