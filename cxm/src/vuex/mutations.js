@@ -97,6 +97,9 @@ const mutations = {
             state.matchSelectedList.push(data)
         }
     },
+    FREEBUYID(state, data){
+        state.freebuyId = data
+    },
     MATCHSAVEINFO(state, data) {
         state.matchSaveInfo = data
     },

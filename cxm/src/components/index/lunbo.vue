@@ -31,13 +31,9 @@
 						this.$store.state.matchObj = {};
 						this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
 						this.$store.state.mark_playObj.bfIdSaveMap = new Map();
-						this.$store.state.freebuyId = getUrlStr('subid',url);
+						this.$store.commit('FREEBUYID',getUrlStr('subid',url))
 						this.$router.push({
-							path: "/freebuy/singleNote",
-							query: {
-								id: getUrlStr('subid',url)
-							},
-							replace: false
+							path: "/lottery/freebuy/singleNote"
 						});
 					}else if(getUrlStr('type',url)=='4'){
 						this.$router.push({

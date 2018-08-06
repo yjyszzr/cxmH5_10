@@ -14,7 +14,6 @@ export default {
   data() {
     return {
       activeName: ['1', '2', '3', '4', '5', '6'],
-      playType: this.$route.query.id,
       leagueId: '',
       matchObj: {},
       flag: true,
@@ -24,7 +23,38 @@ export default {
       id: '',
       arr: new Set(),
       mapKey: [],
-      arrNum: 0
+      arrNum: 0,
+      collapseShow: false,
+      playList:[
+        {
+          name: '混合投注',
+          id: '6'
+        },
+        {
+          name: '胜平负',
+          id: '2'
+        },
+        {
+          name: '让球胜平负',
+          id: '1'
+        },
+        {
+          name: '总进球',
+          id: '4'
+        },
+        {
+          name: '半全场',
+          id: '5'
+        },
+        {
+          name: '比分',
+          id: '3'
+        },
+        {
+          name: '2选1',
+          id: '7'
+        }
+      ]
     }
   },
   beforeCreate() {
@@ -36,6 +66,48 @@ export default {
 
   },
   methods: {
+      sntTitle(c){
+        switch(Number(c)){
+          case 2: return "胜平负";
+          case 1: return "让球胜平负";
+          case 4: return "总进球";
+          case 5: return "半全场";
+          case 3: return "比分";
+          case 7: return "2选1";
+          case 6: return "混合投注";
+        }
+      },
+      // 头部返回
+      goBack() {
+        this.$store.dispatch("getmatchSelectedList", []);
+        this.$router.go(-1);
+      },
+      //是否展开
+      openOrclose(event) {
+        if ($('#downImg').hasClass('rotate')) {
+            $('#downImg').removeClass('rotate')
+        } else {
+            $('#downImg').addClass('rotate')
+        }
+        this.collapseShow = !this.collapseShow
+      },
+      filter() {
+          this.$store.dispatch("getMarkShow", true);
+          this.$store.dispatch("getMarkShowType", "2");
+      },
+      goInToplay() {
+          this.$router.push({
+              path: "/freebuy/inToplay",
+              replace: false
+          });
+      },
+      stntab(c){
+        Indicator.open()
+        this.clear_match()
+        this.$store.commit('FREEBUYID',c.id)
+        this.fetchData()
+        this.collapseShow = !this.collapseShow
+      },
       halt(){
           MessageBox.alert('', {
               message: '因出票限制，暂停销售',
@@ -434,6 +506,9 @@ export default {
     },
     matchDetailMark() {
       return this.$store.state.mark_playObj.matchDetailFlag;
+    },
+    playType(){
+      return this.$store.state.freebuyId;
     }
   },
   watch: {

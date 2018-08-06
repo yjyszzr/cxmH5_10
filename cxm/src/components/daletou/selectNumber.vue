@@ -260,23 +260,6 @@
         .tranform180 {
             transform: rotate(180deg)
         }
-        .mybox-leave-active, .mybox-enter-active {
-            transition: all .5s ease;
-        }
-        .mybox-leave-active, .mybox-enter {
-            height: 0px !important;
-        }
-        .mybox-leave, .mybox-enter-active {
-            height: 100%;
-        }
-        .ceng-enter-active,
-        .ceng-leave-active {
-            transition: opacity 0.3s;
-        }
-        .ceng-enter,
-        .ceng-leave-active {
-            opacity: 0;
-        }
         .meng-cheng {
             z-index: 1;
             position: absolute;

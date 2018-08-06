@@ -106,22 +106,6 @@
                             return "出票方案";
                         case "payment":
                             return "支付订单";
-                        case "singleNote":
-                            if (this.$store.state.freebuyId == "2") {
-                                return "胜平负";
-                            } else if (this.$store.state.freebuyId == "1") {
-                                return "让球胜平负";
-                            } else if (this.$store.state.freebuyId == "4") {
-                                return "总进球";
-                            } else if (this.$store.state.freebuyId == "5") {
-                                return "半全场";
-                            } else if (this.$store.state.freebuyId == "3") {
-                                return "比分";
-                            } else if (this.$store.state.freebuyId == "7") {
-                                return "2选1";
-                            } else if (this.$store.state.freebuyId == "6") {
-                                return "混合投注";
-                            }
                         case "cathectic":
                             return "投注确认";
                         case "teamDetail":

@@ -280,11 +280,9 @@ export default {
       this.$store.state.mark_playObj.bfIdSaveMap = {};
       let go_id = getUrlStr('id',url)
       if(go_id=='1'){
+        this.$store.commit('FREEBUYID','6')
         this.$router.push({
-            path: "/freebuy/singleNote",
-            query: {
-              id: 6
-            }
+            path: "/lottery/freebuy/singleNote"
         });
       }else if(go_id=='2'){
         this.$router.push({

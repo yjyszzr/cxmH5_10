@@ -220,7 +220,7 @@ const router = new Router({
           component: resolve => require(['@/components/freebuy/protocol/index.vue'], resolve)
       },
       {
-          path: '/freebuy/singleNote',
+          path: '/lottery/freebuy/singleNote',
           name: 'singleNote',
           cname:'单注页面',
           meta: {

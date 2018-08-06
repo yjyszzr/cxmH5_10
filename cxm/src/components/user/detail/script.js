@@ -54,11 +54,9 @@ export default {
         })
       },
       goFreebuy(){
+          this.$store.commit('FREEBUYID','6')
           this.$router.push({
-            path: '/freebuy/singleNote',
-              query:{
-                id: '6'
-              }
+            path: '/lottery/freebuy/singleNote'
           })
       }
     },

@@ -29,12 +29,9 @@ export default {
       },
 
       jxtz(){
+          this.$store.commit('FREEBUYID',this.orderObj.lotteryPlayClassifyId)
           this.$router.push({
-            path: '/freebuy/singleNote',
-              query:{
-                id: this.orderObj.lotteryPlayClassifyId
-              },
-              replace: false
+            path: '/lottery/freebuy/singleNote'
           })
       }
     },

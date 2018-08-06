@@ -1,5 +1,35 @@
 <template>
     <div class="singleNote">
+        <!--头部开始-->
+        <div class="head">
+            <span class="back-img" @click="goBack()"><img src="../../../assets/img/ret.png" alt=""></span>
+            <div class="head-text" @click="openOrclose()">
+                <span>彩小秘·<span>{{sntTitle(playType)}}</span></span>
+                <span class="header-down"><img id="downImg" src="../../../assets/img/freebuy_img/Collapse@3x.png"
+                                               alt=""></span>
+            </div>
+            <div class="snt-filter">
+                <span @click='filter()' class="iconfont icon-icon-21"></span>
+                <span @click="goInToplay()">帮助</span>
+            </div>
+        </div>
+        <!--选号方式-->
+        <div class="collspce">
+            <transition name="mybox">
+                <div class="title-collspce" v-if="collapseShow">
+                    <p @click="stntab(item)" :class="item.id==playType?'cur':''" class="btn-box" v-for="(item,i) in playList" :key='i'>
+                        {{item.name}} 
+                        <span
+                            class="img-box" v-show="item.id==playType">
+                            <img src="../../daletou/images/Check@3x.png" alt="">
+                        </span>
+                    </p>
+                </div>
+            </transition>
+            <transition name="ceng">
+                <div class="meng-cheng" @click="openOrclose()" v-if="collapseShow"></div>
+            </transition>
+        </div>
         <div class="matchTitle">
             共有{{$store.state.matchObj.allMatchCount}}场比赛可投
         </div>

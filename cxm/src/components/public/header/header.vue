@@ -5,8 +5,6 @@
             <a @click="return_back()" class="go_return"></a>
             <p class="headerText">彩小秘·{{title}}</p>
             <div class="filter" v-show="menuDisplay==true">
-                <span @click='filter()' v-if="$route.path.split('/')[2]=='singleNote'" class="iconfont icon-icon-21"></span>
-                <span v-if="$route.path.split('/')[2]=='singleNote'" @click="goInToplay()">帮助</span>
                 <span v-if="$route.path.split('/')[2]=='consult'" style="opacity:0;">分享</span>
                 <span v-if="$route.path.split('/')[2]=='consult'&&getUrl()" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
@@ -188,9 +186,7 @@
                         location.href = 'caixm://caixiaomi.net'
                         return false;
                     }
-                    if (this.$route.path.split("/")[2] == "singleNote") {
-                        this.$store.dispatch("getmatchSelectedList", []);
-                    } else if (
+                    if (
                         location.href.split("?")[1] &&
                         location.href.split("?")[1].split("=")[0] == "orderStatus"
                     ) {
@@ -205,12 +201,6 @@
             },
             datePd(c) {
                 return datefilter(Number(c * 1000), 3);
-            },
-            goInToplay() {
-                this.$router.push({
-                    path: "/freebuy/inToplay",
-                    replace: false
-                });
             },
             onGal(){
                 this.$router.push({
@@ -231,10 +221,6 @@
                 if (anchorElement) {
                     anchorElement.scrollIntoView();
                 }
-            },
-            filter() {
-                this.$store.dispatch("getMarkShow", true);
-                this.$store.dispatch("getMarkShowType", "2");
             },
             colMenu(c) {
                 if (this.deleteFlag == false) {
