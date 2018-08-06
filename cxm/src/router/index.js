@@ -676,6 +676,12 @@ const router = new Router({
           name: 'selectNumber',
           component: resolve => require(['@/components/daletou/selectNumber.vue'], resolve)
       },
+      // 大乐透选号
+      {
+          path: '/lottery/daletou/touZhuConfirm',
+          name: 'selectNumber',
+          component: resolve => require(['@/components/daletou/touZhuConfirm.vue'], resolve)
+      },
   ]
 })
 

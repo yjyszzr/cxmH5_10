@@ -109,7 +109,7 @@
                     <p v-if="!danTuotextType">共<span class="red">{{danTuoZhu.zhuNum}}</span>注，合计<span class="blue">{{danTuoZhu.zhuNum*2}}</span>元</p>
                 </template>
             </div>
-            <div class="ok">
+            <div class="ok" @click = 'goTouZhuConfirm()'>
                 确定
             </div>
             <!--<span><img src="./" alt=""></span>-->
@@ -651,6 +651,10 @@
             danTuoCount()
         },
         methods: {
+            // 头部返回
+            goBack() {
+                this.$router.go(-1);
+            },
             //获取详情
             getTicketInfoFn() {
                 api.getTicketInfo('')
@@ -936,7 +940,6 @@
                     }
                 }
             },
-
             //删除所选号
             deleFn() {
                 if (this.selectedIndex == '0') {
@@ -1001,10 +1004,6 @@
                 }
 
             },
-            // 头部返回
-            goBack() {
-                this.$router.go(-1);
-            },
             //大乐透选号头部是否展开
             openOrclose(event) {
                 if ($('#downImg').hasClass('tranform180')) {
@@ -1021,10 +1020,17 @@
                     this.getLocalStorageFn('dantuo')
                 }
             },
+
             goNext(item) {
                 if (item.name == '隐藏遗漏') {
                     this.historyMiss = !this.historyMiss
                 }
+            },
+            // 投注确认
+            goTouZhuConfirm(){
+                this.$router.push({
+                    path:'/lottery/daletou/touZhuConfirm'
+                })
             },
             //获得注数
             combination: (arr /*n需要组合的一维数组*/, num /*m需要取几个元素来组合*/, fun /*对组合后的元素的处理函数，如全排列permutate*/) => {
