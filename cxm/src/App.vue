@@ -189,6 +189,8 @@
                         case 'world_detail':
                             return "世界杯";
                         //老带新
+                        case 'oldbeltyd':
+                            return "邀请得红包";
                         case 'oldbeltnew':
                             return "邀请得红包";
                         case 'explain':

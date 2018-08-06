@@ -39,9 +39,11 @@ export default {
 				'mobile': this.mobileVal,
 				'smsType': 1
 			}
-			let sendldxType = api.SendSmsCode(data)
+			let sendldxType = ''
 			if(this.$route.query.from=='ldx'){
 				sendldxType = api.sendVerificationCode(data)
+			}else{
+				sendldxType = api.SendSmsCode(data)
 			}
 			sendldxType
 				.then(res => {
@@ -108,10 +110,12 @@ export default {
 				'loginSource': '4',
 				'passWord': -1
 			}
-			let sendldxType = api.Register(data)
+			let sendldxType = ''
 			if(this.$route.query.from=='ldx'){
-				data.invitationUserId = this.$route.query.uid
+				data.invitationUserId = this.$route.query.a_
 				sendldxType = api.oldbeltnewregister(data)
+			}else{
+				sendldxType = api.Register(data)
 			}
 			sendldxType
 				.then(res => {

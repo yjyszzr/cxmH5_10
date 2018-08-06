@@ -1,10 +1,10 @@
 <template>
     <div class="yq-bouns">
         <div class="yq-top">
-            <img src="./img/bg.jpg" alt="">
+            <img src="../img/bg.jpg" alt="">
         </div>
         <div class="bouns">
-            <img src="./img/bouns.jpg" alt="">
+            <img src="../img/bouns.jpg" alt="">
             <div class="yq-news">
                 <p>
                     成功邀请
@@ -32,21 +32,21 @@
             </div>
             <ul>
                 <li>
-                    <img src="./img/hbouns.jpg" alt="">
+                    <img src="../img/hbouns.jpg" alt="">
                     <p>
                         <span>好友注册</span>
                         <span>好友获得100元红包</span>
                     </p>
                 </li>
                 <li>
-                    <img src="./img/twobouns.jpg" alt="">
+                    <img src="../img/twobouns.jpg" alt="">
                     <p>
                         <span>好友购彩后</span>
                         <span>您可得20元奖励</span>
                     </p>
                 </li>
                 <li>
-                    <img src="./img/otherbouns.jpg" alt="">
+                    <img src="../img/otherbouns.jpg" alt="">
                     <p>
                         <span>多多益善</span>
                         <span>邀请越多奖励越多</span>
@@ -61,7 +61,7 @@
             <div class="pbcontent">
                 <div class="bounsNum">
                     <div class="num-item" v-for="(item,i) in nums" :key='i'>
-                        <img src="./img/pbouns.png" alt="">
+                        <img src="../img/pbouns.png" alt="">
                         <span>{{item}}</span>
                     </div>
                 </div>
@@ -104,9 +104,21 @@
                 7.本活活动最终解释权归彩小秘所有。
             </div>
         </div>
-        <div class="lqbth" @click="fx()" v-show="$route.query.cfrom=='app'">
-            <img src="./img/lqbtn.png" alt="">
+        <div class="lqbth" @click="fx()">
+            <img src="../img/lqbtn.png" alt="">
         </div>
+        <transition name="fade">
+            <div @click="markflag=!markflag" class="yq-mark" @touchmove.prevent v-if="markflag">
+                <img src="../img/yqmb.jpg" alt="">
+            </div>
+            <div class="zdl zdl-mark" @touchmove.prevent v-if="zdlflag">
+                <div class="zdl-text">
+                    <div class="zdl-title">请手动复制链接</div>
+                    <p>{{geturl()}}</p>
+                    <div @click="zdlflag=!zdlflag" class="zl-btn">我知道了</div>
+                </div>
+            </div>
+        </transition>
     </div>
 </template>
 <style lang='scss' src='./style.scss'>

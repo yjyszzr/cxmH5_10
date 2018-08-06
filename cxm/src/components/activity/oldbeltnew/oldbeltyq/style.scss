@@ -1,4 +1,4 @@
-@import '../../../assets/css/function.scss';
+@import '../../../../assets/css/function.scss';
 .yq-bouns{
     position: absolute;
     width: 100%;
@@ -56,7 +56,7 @@
         border-radius: px2rem(10px);
         .bounsSm-title,.rule-title{
             height: px2rem(67px);
-            background: url('./img/title.jpg') no-repeat center;
+            background: url('../img/title.jpg') no-repeat center;
             background-size: px2rem(454px) 100%;
             text-align: center;
             line-height: px2rem(60px);
@@ -193,6 +193,53 @@
             display: block;
             margin: 0 auto;
             width: px2rem(610px);
+        }
+    }
+    .yq-mark,.zdl-mark{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        img{
+            width: 80%;
+            margin-left: px2rem(60px);
+        }
+        .zdl-text{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            z-index: 40;
+            width: 55%;
+            height: px2rem(300px);
+            background: white;
+            border-radius: px2rem(20px);
+            .zdl-title{
+                height: px2rem(60px);
+                text-align: center;
+                line-height: px2rem(60px);
+                color: #505050;
+                font-size: px2rem(30px);
+                border-bottom: 1px solid #f0f0f0;
+            }
+            p{
+                word-wrap:break-word;
+                font-size: px2rem(26px);
+                color: #505050;
+                padding: 0 px2rem(20px);
+            }
+            .zl-btn{
+                height: px2rem(60px);
+                font-size: px2rem(30px);
+                color: #ea5504;
+                line-height: px2rem(60px);
+                text-align: center;
+                border-top: 1px solid #f0f0f0;
+            }
         }
     }
 }

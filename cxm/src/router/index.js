@@ -486,12 +486,20 @@ const router = new Router({
       },
       //老带新 活动
       {
+        path: '/activity/oldbeltyd',
+        name: 'oldbeltyd',
+        meta: {
+          title: '老带新引导'
+        },
+        component: resolve => require(['@/components/activity/oldbeltnew/oldbeltyd'], resolve)
+       },
+      {
         path: '/activity/oldbeltnew',
         name: 'oldbeltnew',
         meta: {
           title: '老带新'
         },
-        component: resolve => require(['@/components/activity/oldbeltnew'], resolve)
+        component: resolve => require(['@/components/activity/oldbeltnew/oldbeltyq'], resolve)
      },
       //app彩小秘彩票
       //帮助中心：appinfo/help

@@ -77,9 +77,9 @@
                                 path: '/activity/oldwithnew'
 							})
 							//老带新轮播图
-						}else if(url.indexOf('activity/oldbeltnew')!=-1){
+						}else if(url.indexOf('activity/oldbeltyd')!=-1){
                             this.$router.push({
-                                path: '/activity/oldbeltnew'
+                                path: '/activity/oldbeltyd'
                             })
 						}else{
 							location.href=url

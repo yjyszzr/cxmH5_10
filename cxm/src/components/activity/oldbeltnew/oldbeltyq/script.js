@@ -1,15 +1,16 @@
 import {
 	means,
-	isShare
-} from '../../../util/common'
-import api from '../../../fetch/api'
+    isShare,
+    getCsUrl
+} from '../../../../util/common'
+import api from '../../../../fetch/api'
 import {
 	Indicator
 } from 'mint-ui'
 export default {
     name: 'oldbeltnew',
     beforeCreate() {
-        // Indicator.open()
+        Indicator.open()
     },
     data(){
         return {
@@ -20,31 +21,15 @@ export default {
                 'invitationNum': '-',
                 'reward': '-'
             },
-            uid:'',
+            uid:this.$route.query.uid,
             numList:[0,0,0,0,0,0],
-            login: this.$route.query.isLogin,
-            token: ''
+            markflag: false,
+            cfrom: this.$route.query.cfrom,
+            zdlflag: false
         }
     },
     created(){
-        let that = this
-            window.actionMessage = (arg) => {
-                if(JSON.parse(arg).token!==''){
-                    that.token = JSON.parse(arg).token
-                    localStorage.setItem('token', JSON.parse(arg).token)
-                    let data = {
-                        'str': ''
-                    }
-                    api.shareMyLinks(data)
-                        .then(res => {
-                            if (res.code == 0) {
-                                isShare('新人注册送好礼，100元红包等你来领', '注册就送100元新人大礼包', '/activity/one?type=isShare&from=ldx&uid='+res.data.userld, '/static/activity_Back/newComerReg/img/logozc.jpg')
-                                window.reload()
-                            }
-                        })
-                    that.fetchData()
-                }
-            }
+       
     },
     methods:{
         fetchData(){
@@ -90,21 +75,19 @@ export default {
 				})
         },
         fx(){
-            if(this.login=='0'&&this.token==''){
-                location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
+            if(this.cfrom=='app'){
+                this.markflag = true
             }else{
-                alert('分享')
+                this.zdlflag = true
             }
+        },
+        geturl(){
+            return getCsUrl()+'/activity/one?type=isShare&from=ldx&a_='+this.uid
         }
     },
     mounted(){
-        if(this.$route.query.cfrom=='app'){
-            if(this.login!='0'||this.token!=''){
-                this.fetchData()
-            }
-        }else{
-            this.fetchData()
-        }
+        this.fetchData()
+        isShare('新人注册送好礼，100元红包等你来领', '注册就送100元新人大礼包', '/activity/one?type=isShare&from=ldx&a_='+this.uid, '/static/activity_Back/newComerReg/img/logozc.jpg')
         means('邀请得红包').isTitle
     }
 }

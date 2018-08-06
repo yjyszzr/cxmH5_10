@@ -34,7 +34,7 @@
                             <li :class="item.myspf.indexOf(0)!=-1?'cont_cur':''"><p @click="selectedClick($event)"></p><span><em v-if="item.visitingTeamRank!==''">[{{item.visitingTeamRank}}]</em>{{item.visitingTeamAbbr}}</span><span>客胜{{item.matchPlays[0].visitingCell.cellOdds}}</span></li>
                         </ul>
                         <ul v-if="$route.query.playType=='4'" class="zjq">
-                            <li v-for='(data,index) in item.matchPlays[0].matchCells' :key='index' :class="item.myspf.indexOf('jqs:'+data.cellCode)!=-1?'cont_cur':''"><p @click="selectedClick($event,data)"></p><span>{{data.cellCode}}</span>&nbsp;<span>{{data.cellOdds}}</span></li>
+                            <li v-for='(data,index) in item.matchPlays[0].matchCells' :key='index' :class="item.myspf.indexOf('jqs:'+data.cellCode)!=-1?'cont_cur':''"><p @click="selectedClick($event,data)"></p><span>{{data.cellName}}</span>&nbsp;<span>{{data.cellOdds}}</span></li>
                         </ul>
                         <ul v-if="$route.query.playType=='3'||$route.query.playType=='5'" class="bf">
                             <li @click="bfClick(item.matchId)">
