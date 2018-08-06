@@ -4,7 +4,7 @@
         <div class="head">
             <span class="back-img" @click="goBack()"><img src="../../assets/img/ret.png" alt=""></span>
             <div class="head-text" @click="openOrclose()">
-                <span>彩小秘·标准选号</span>
+                <span>彩小秘·<span v-if="selectedIndex=='0'">标准选号</span><span v-if="selectedIndex=='1'">胆拖选号</span></span>
                 <span class="header-down"><img id="downImg" src="../../assets/img/freebuy_img/Collapse@3x.png"
                                                alt=""></span>
             </div>
@@ -57,28 +57,28 @@
                             </div>
                         </div>
                         <ul class="red-ball-ul ball-ul">
-                            <li class="ball-li" v-for="(item,index) in preList" :key=index @click="danTuoSelect(item,'preList','dan')" >
+                            <li class="ball-li" v-for="(item,index) in danTuoRedPreList" :key=index @click="danTuoSelect(item,'redBall','dan')" >
                                 <span class="ball red-ball" :class="item.selected?'curRedBall':''">{{item.num}}</span>
                                 <span class="miss" v-if="historyMiss">{{item.missNum}}</span>
                             </li>
                         </ul>
                         <p class="name-ball red-two">拖码-红球，至少选2个</p>
                         <ul class="red-ball-ul ball-ul">
-                            <li class="ball-li" v-for="(item,index) in preList" :key=index @click="danTuoSelect(item,'preList','tuo')">
+                            <li class="ball-li" v-for="(item,index) in danTuoRedPreList" :key=index @click="danTuoSelect(item,'redBall','tuo')">
                                 <span class="ball red-ball" :class="item.selected?'curRedBall':''">{{item.num}}</span>
                                 <span class="miss" v-if="historyMiss">{{item.missNum}}</span>
                             </li>
                         </ul>
                         <p class="name-ball">胆码-篮球，至多选1个</p>
                         <ul class="blue-ball-ul ball-ul">
-                            <li class="ball-li" v-for="(item,index) in postList" :key=index @click="danTuoSelect(item,'postList','dan')">
+                            <li class="ball-li" v-for="(item,index) in danTuoBluePostList" :key=index @click="danTuoSelect(item,'blueBall','dan')">
                                 <span class="ball blue-ball" :class="item.selected?'curBlueBall':''">{{item.num}}</span>
                                 <span class="miss" v-if="historyMiss">{{item.missNum}}</span>
                             </li>
                         </ul>
                         <p class="name-ball">胆码-篮球，至多选2个</p>
                         <ul class="blue-ball-ul ball-ul">
-                            <li class="ball-li" v-for="(item,index) in postList" :key=index @click="danTuoSelect(item,'postList','tuo')">
+                            <li class="ball-li" v-for="(item,index) in danTuoBluePostList" :key=index @click="danTuoSelect(item,'blueBall','tuo')">
                                 <span class="ball blue-ball" :class="item.selected?'curBlueBall':''">{{item.num}}</span>
                                 <span class="miss" v-if="historyMiss">{{item.missNum}}</span>
                             </li>
@@ -611,16 +611,18 @@
                 popupVisible: false,//历史开奖列表
                 popdantuo: false,//但拖介绍
                 historyMiss: true,//显示历史遗漏
-                selectedIndex: '0',//但拖选好
+                selectedIndex: '1',//但拖选好
                 postList: [],//后区遗漏 ,
                 preList: [],//前区遗漏
+                danTuoBluePostList: [],//胆拖后区遗漏 ,
+                danTuoRedPreList: [],//胆拖前区遗漏
                 prizeList: [],//历史中奖，
-                redBallList: [],//选中红球集合
-                blueBallList: [],//选中篮球集合,
-                danRedMaList:[],//胆码红球集合
-                tuoRedMaList:[],//托码红求集合
-                danBlueMaList:[],//胆码蓝球集合
-                tuoBlueMaList:[],//托码蓝求集合
+                redBallList: [],//标准选号选中红球集合
+                blueBallList: [],//标准选号选中篮球集合,
+                danRedMaList:[],//胆码选号红球集合
+                tuoRedMaList:[],//托码选号红求集合
+                danBlueMaList:[],//胆码选号蓝球集合
+                tuoBlueMaList:[],//托码选号蓝求集合
                 redBallBox:['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35'],
                 blueBallBox:['01','02','03','04','05','06','07','08','09','10','11','12'],
                 textType: true,
@@ -653,15 +655,21 @@
             this.getTicketInfoFn()
         },
         methods: {
-            // 获取详情
+            //获取详情
             getTicketInfoFn() {
                 api.getTicketInfo('')
                     .then(res => {
                         if (res.code == 0) {
                             this.data = res.data
-                            this.prizeList = res.data.prizeList
                             res.data.postList.forEach((item, index) => {
                                 this.postList.push(
+                                    {
+                                        num: index + 1,
+                                        missNum: item,
+                                        selected: false
+                                    }
+                                )
+                                this.danTuoRedPreList.push(
                                     {
                                         num: index + 1,
                                         missNum: item,
@@ -677,19 +685,25 @@
                                         selected: false
                                     }
                                 )
+                                this.danTuoBluePostList.push(
+                                    {
+                                        num: index + 1,
+                                        missNum: item,
+                                        selected: false
+                                    }
+                                )
 
                             })
                         }
+                        this.getLocalStorageFn('biaoZhun')
                     })
-
-                this.getLocalStorageFn('biaoZhun')
             },
             //标准选号
             biaozhunSelect(item, type) {
                 this.$set(item, 'selected', !item.selected)
                 if (type == 'preList') { //点击前区
                     if (item.selected) {
-                        this.redBallList.push(item.num)
+                        this.redBallList.push(item.num);
                     } else {
                         var index = this.redBallList.indexOf(item.num);
                         if (index > -1) {
@@ -750,7 +764,26 @@
                 this.viewText()
                 this.setLocalStorageFn('biaoZhun')
             },
-            // 存储 所选号码
+            //胆拖选号
+            danTuoSelect(item,ballTyoe,type){
+                if(ballTyoe == 'redBall'){
+                    if(type == 'dan'){
+
+                    }
+                    if(type == 'tuo'){
+
+                    }
+                }
+                if(ballTyoe == 'blueBall'){
+                    if(type == 'dan'){
+
+                    }
+                    if(type == 'tuo'){
+
+                    }
+                }
+            },
+            //存储 所选号码
             setLocalStorageFn(type){
                 if(type == 'biaoZhun'){
                     localStorage.setItem('redBallList', JSON.stringify(this.redBallList))
@@ -762,26 +795,30 @@
                     localStorage.setItem('tuoBlueMaList', JSON.stringify(this.tuoBlueMaList))
                 }
             },
-            // 取出所选号码
+            //内存中取出所选号码
             getLocalStorageFn(type){
                 if(type == 'biaoZhun'){
-                    this.redBallList = JSON.parse(localStorage.getItem('redBallList'))
-                    this.blueBallList = JSON.parse(localStorage.getItem('redBallList'))
-                    this.preList.forEach(item=>{
-                        this.redBallList.forEach(sunItem=>{
-                            if(item.num==sunItem){
-                                item.selected = true
-                            }
+                    var that = this
+                    if(JSON.parse(localStorage.getItem('redBallList'))!=null){
+                        this.redBallList = JSON.parse(localStorage.getItem('redBallList'))
+                        this.preList.forEach(item =>{
+                            that.redBallList.forEach(sunItem=>{
+                                if(item.num==sunItem){
+                                    item.selected = true
+                                }
+                            })
                         })
-                    })
-                    this.postList.forEach(item=>{
-                        this.blueBallList.forEach(sunItem=>{
-                            if(item.num==sunItem){
-                                item.selected = true
-                            }
+                    }
+                    if(JSON.parse(localStorage.getItem('redBallList'))!=null){
+                        this.blueBallList = JSON.parse(localStorage.getItem('redBallList'))
+                            this.postList.forEach(item=>{
+                            this.blueBallList.forEach(sunItem=>{
+                                if(item.num==sunItem){
+                                    item.selected = true
+                                }
+                            })
                         })
-                    })
-                    console.log(this.preList);
+                    }
                 }else if(type == 'dantuo'){
                     this.danRedMaList = JSON.parse(localStorage.getItem('danRedMaList'))
                     this.tuoRedMaList = JSON.parse(localStorage.getItem('tuoRedMaList'))
