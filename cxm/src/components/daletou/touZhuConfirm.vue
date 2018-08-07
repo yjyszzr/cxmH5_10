@@ -11,45 +11,50 @@
         <!--躯干-->
         <div class="body">
             <div class="add">
-                <div class="add-item">
+                <div class="add-item" @click="handAdd()">
                     <span class="img-box"><img src="./images/AddManully@3x.png" alt=""></span>
                     <p>手动添加</p>
                 </div>
-                <div class="add-item">
+                <div class="add-item" @click="machineSelection('0')">
                     <span class="img-box"><img src="./images/Add@3x.png" alt=""></span>
                     <p>机选1注</p>
                 </div>
-                <div class="add-item">
+                <div class="add-item" @click="machineSelection('1')">
                     <span class="img-box"><img src="./images/Add@3x.png" alt=""></span>
                     <p>机选5注</p>
                 </div>
             </div>
-            
             <div class="zhu-box">
-                <ul>
-                    <li>
-                        <div>
-                            <span><img src="./images/Add@3x.png" alt=""></span>
-                            <div>
-                                <div>
-                                    <ul>
-                                        <li>1</li>
-                                        <li>4</li>
-                                        <li>4</li>
-                                        <li>4</li>
-                                        <li>4</li>
-                                    </ul>
-                                    <ul>
-                                        <li>9</li>
-                                        <li>9</li>
-                                    </ul>
-                                </div>
-                                <p>但式 1注 1倍 100.00元</p>
+                <ul class="item-ul">
+                    <li class="item-li" v-for='(item,index) in conformBallList' :key=index>
+                        <span class="delimg" @click="delItem(index)"><img src="../../assets/img/sut.png" alt=""></span>
+                        <div class="item-text">
+                            <div class="item-num">
+                                <ul class="sun-ul" >
+                                    <li class="item-sun-li" v-for="(sunitem,index) in item.ballList" :key=index :class="sunitem.type=='redBall'?'redBall':sunitem.type=='blueBall'?'blueBall':'gray'">{{sunitem.num}}</li>
+                                </ul>
                             </div>
-                            <span><img src="../../assets/img/arange.png" alt=""></span>
+                            <p class="item-describe">{{item.msg.danFn}} {{item.msg.zhuNum}}注 {{item.msg.bei}}倍 {{item.msg.money+'.00'}} 元</p>
                         </div>
+                        <span class="go-detalis"><img src="../../assets/img/arange.png" alt=""></span>
                     </li>
                 </ul>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="one">
+                <div class="add-box">
+                    <div class='add-in'>
+                        <span class="add"></span>
+                        <span>追加投注</span>
+                    </div>
+                    <p>每注追加1元，单注最高奖金1600万</p>
+                </div>
+                <p class="multiple" @click='mupClick()'>倍数 {{$store.state.mark_playObj.mupNum}} 倍</p>
+            </div>
+            <div class="two">
+                <p class="p1">4注5倍 共需：<span>￥20</span></p>
+                <p class="ok">确定</p>
             </div>
         </div>
 
@@ -60,6 +65,8 @@
     @import "../../assets/css/function.scss";
 
     .touzhu-confirm {
+        /*.clearfix:after {content:"."; display:block; height:0; visibility:hidden; clear:both; }*/
+        /*.clearfix { *zoom:1; }　*/
         .head {
             overflow: hidden;
             height: px2rem(100px);
@@ -88,6 +95,15 @@
             }
         }
         .body{
+            .redBall{
+                color: #eb1c24!important;
+            }
+            .blueBall{
+                color: #0081cc!important;
+            }
+            .gray{
+                color: #c7c7c7!important;
+            }
             .add{
                 display: flex;
                 justify-content: center;
@@ -98,11 +114,13 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    width: px2rem(200px);
-                    height: px2rem(70px);
-                    background: rgba(0,0,0,.2);
+                    width: px2rem(186px);
+                    height: px2rem(60px);
+                    background: rgba(245, 145, 30, 0.2);
                     margin: px2rem(20px);
                     border-radius: px2rem(20px);
+                    font-size: px2rem(26px);
+                    color: #f5911e;
                     .img-box{
                         display: inline-block;
                         height:px2rem(40px) ;
@@ -116,29 +134,236 @@
                 }
             }
             .zhu-box{
+                width: 100%;
+                position: absolute;
+                top: px2rem(200px);
+                bottom: px2rem(200px);
+                overflow: auto;
+                .item-ul{
+                    width: 100%;
+                    .item-li{
+                        /*height: px2rem(140px);*/
+                        box-sizing: border-box;
+                        width: 100%;
+                        background-color: #ffffff;
+                        margin: px2rem(10px) 0;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: px2rem(30px) px2rem(30px);
+                        .item-text{
+                            width: 80%;
+                            .item-num{
+                                font-size: px2rem(32px);
+                                .sun-ul{
+                                    display: flex;
+                                    align-items: center;
+                                    flex-direction: row;
+                                    flex-wrap: wrap;
+                                    li{
+                                        padding: 0 px2rem(15px);
+                                    }
+                                }
+                            }
+                            .item-describe{
+                                font-size: px2rem(26px);
+                                color: #787878;
+                                padding: px2rem(10px) px2rem(15px);
+                            }
+                        }
+                        .delimg{
+                            display: inline-block;
+                            padding: px2rem(20px) px2rem(30px) px2rem(20px) 0;
 
+                            img{
+                                height: px2rem(30px);
+                                width: px2rem(30px);
+                                overflow: hidden;
+                            }
+                        }
+                        .go-detalis{
+                            display: inline-block;
+                            padding: px2rem(20px) 0 px2rem(20px) px2rem(30px);
+                            img{
+                                height: px2rem(30px);
+                                width: px2rem(25px);
+                                overflow: hidden;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .footer{
+            box-sizing: border-box;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            .one{
+                display: flex;
+                justify-content: space-between;
+                height: px2rem(100px);
+                .add-box{
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: left;
+                    justify-content: center;
+                    padding-left: px2rem(30px);
+                    flex: 2;
+                    font-size: px2rem(24px);
+                    p{
+                        color: #9f9f9f;
+                    }
+                    .add-in{
+                        display: flex;
+                        align-items: center;
+                        .add{
+                            display: inline-block;
+                            border-radius: 4px;
+                            height: px2rem(34px);
+                            width: px2rem(34px);
+                            border: 1px solid #c7c7c7;
+                        }
+                    }
+                }
+                .multiple{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex: 1;
+                    border-left: 1px solid #c7c7c7;
+
+                }
+            }
+            .two{
+                height: px2rem(100px);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 24px;
+                color: #9f9f9f;
+                .p1{
+                    line-height: px2rem(100px);
+                    border-top: 1px solid #c7c7c7;
+                    padding-left: px2rem(30px);
+                    font-size: px2rem(28px);
+                    flex: 2;
+                    span{
+                        color:#ea5504;
+                    }
+                }
+                .ok{
+                    flex: 1;
+                    text-align: center;
+                    line-height: px2rem(100px);
+                    background-color:#ea5504 ;
+                    border: 1px solid #ea5504;
+                    color: #ffffff;
+                    font-size: px2rem(28px);
+                }
             }
         }
     }
 </style>
 <script>
-
-    import {MessageBox, Popup} from 'mint-ui';
-
+    import {getArrayItems} from '../../util/common'
     export default {
         name: "touZhuConfirm",
         data() {
             return{
-
+                conformBallList:[],
+                redBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'],
+                blueBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
             }
         },
         created() {
-
+            this.getBallFn()
         },
         methods:{
+            //在localStor中获取数据
+            getBallFn() {
+                this.conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
+            },
             // 头部返回
             goBack() {
                 this.$router.go(-1);
+            },
+            //手动添加
+            handAdd(){
+                this.$router.push({
+                    path:'/lottery/daletou/selectnumber'
+                })
+            },
+            //机选
+            machineSelection(type){
+                if(type=='0'){
+                    let ballList = []
+                    getArrayItems(this.redBallBox, 5).forEach(item=>{
+                        ballList.push({
+                            num:item,
+                            type:'redBall'
+                        })
+                    })
+                    getArrayItems(this.blueBallBox, 2).forEach(item=>{
+                        ballList.push({
+                            num:item,
+                            type:'blueBall',
+                        })
+                    })
+                    this.conformBallList.push({
+                        ballList:ballList,
+                        ballType:'biaozhun',
+                        msg:{
+                            zhuNum:'1',
+                            danFn:'单式',
+                            bei:1,
+                            money:2
+                        }
+                    })
+                }
+                if(type=='1'){
+                    for (let i=0;i<5;i++){
+                        let ballList = []
+                        getArrayItems(this.redBallBox, 5).forEach(item=>{
+                            ballList.push({
+                                num:item,
+                                type:'redBall'
+                            })
+                        })
+                        getArrayItems(this.blueBallBox, 2).forEach(item=>{
+                            ballList.push({
+                                num:item,
+                                type:'blueBall'
+                            })
+                        })
+                        this.conformBallList.push({
+                            ballList:ballList,
+                            ballType:'biaozhun',
+                            msg:{
+                                zhuNum:'1',
+                                danFn:'单式',
+                                bei:1,
+                                money:2
+                            }
+                        })
+                    }
+                }
+                localStorage.setItem('conformBallList',JSON.stringify(this.conformBallList))
+
+            },
+            //删除
+            delItem(index){
+                this.conformBallList.splice(index,1)
+                localStorage.setItem('conformBallList',JSON.stringify(this.conformBallList))
+            },
+            // 选择倍数
+            mupClick() {
+                this.$store.state.mark_playObj.mark_playBox = true
+                this.$store.state.mark_playObj.mark_play = '2'
             },
         },
         beforeRouteLeave(to, from, next) {

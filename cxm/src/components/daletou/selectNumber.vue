@@ -17,8 +17,7 @@
             <div class="body-main">
                 <div class="body-title" @click="popupVisible = !popupVisible">
                     <p>{{data.term_num}}期 截止时间 {{data.endDate}}</p>
-                    <p class="history-p">历史开奖 <span class="arrow_right"><img src="../../assets/img/arange.png"
-                                                                             alt=""></span></p>
+                    <p class="history-p">历史开奖 <span class="arrow_right"><img src="../../assets/img/arange.png" alt=""></span></p>
                 </div>
                 <!--标准选号-->
                 <div class="biaozhun" v-if="selectedIndex=='0'">
@@ -109,9 +108,16 @@
                     <p v-if="!danTuotextType">共<span class="red">{{danTuoZhu.zhuNum}}</span>注，合计<span class="blue">{{danTuoZhu.zhuNum*2}}</span>元</p>
                 </template>
             </div>
-            <div class="ok" @click = 'goTouZhuConfirm()'>
-                确定
-            </div>
+            <template v-if="selectedIndex==0">
+                <div  class="ok" :class="!textType?'okcur':''" @click = 'goTouZhuConfirm(!textType)'>
+                    确定
+                </div>
+            </template>
+            <template v-if="selectedIndex==1">
+                <div  class="ok" :class="!danTuotextType?'okcur':''" @click = 'goTouZhuConfirm(!danTuotextType)'>
+                    确定
+                </div>
+            </template>
             <!--<span><img src="./" alt=""></span>-->
         </div>
         <!--选号方式-->
@@ -203,6 +209,9 @@
         }
         .blueBall {
             color: #0081cc !important;
+        }
+        .okcur{
+            background-color: #ea5504!important;
         }
         .head {
             overflow: hidden;
@@ -563,7 +572,7 @@
                 line-height: px2rem(100px);
                 color: #ffffff;
                 font-size: px2rem(28px);
-                background-color: #ea5504;
+                background-color: #c7c7c7;
             }
         }
         .history-p {
@@ -599,7 +608,7 @@
                 popupVisible: false,//历史开奖列表
                 popdantuo: false,//胆拖介绍
                 historyMiss: true,//显示历史遗漏
-                selectedIndex: '0',//胆拖选号
+                selectedIndex: JSON.parse(localStorage.getItem('selectedIndex'))?JSON.parse(localStorage.getItem('selectedIndex')):'0',//'0'标准选号 '1'胆拖选号
                 preList: [],//前区遗漏
                 postList: [],//后区遗漏 ,
                 danRedPreList: [],//胆前区遗漏
@@ -648,7 +657,6 @@
         },
         created() {
             this.getTicketInfoFn()
-            danTuoCount()
         },
         methods: {
             // 头部返回
@@ -665,21 +673,21 @@
                             res.data.postList.forEach((item, index) => {
                                 this.postList.push(
                                     {
-                                        num: index + 1,
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
                                 this.danBluePostList.push(
                                     {
-                                        num: index + 1,
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
                                 this.tuoBluePostList.push(
                                     {
-                                        num: index + 1,
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
                                         missNum: item,
                                         selected: false
                                     }
@@ -688,21 +696,21 @@
                             res.data.preList.forEach((item, index) => {
                                 this.preList.push(
                                     {
-                                        num: index + 1,
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
                                 this.danRedPreList.push(
                                     {
-                                        num: index + 1,
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
                                 this.tuoRedPreList.push(
                                     {
-                                        num: index + 1,
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
                                         missNum: item,
                                         selected: false
                                     }
@@ -725,7 +733,6 @@
                             this.redBallList.splice(index, 1);
                         }
                     }
-
                 }
                 if (type == 'postList') { //点后区
                     if (item.selected) {
@@ -789,6 +796,10 @@
                 })
                 this.viewText()
                 this.setLocalStorageFn('biaoZhun')
+                setTimeout(function () {
+                    that.goTouZhuConfirm(!this.textType)
+                },500)
+
             },
             //胆拖选号
             danTuoSelect(item, index, ballType, type) {
@@ -939,6 +950,7 @@
                         })
                     }
                 }
+                this.viewText()
             },
             //删除所选号
             deleFn() {
@@ -1015,6 +1027,7 @@
             },
             //投注方式选择
             numType(index) {
+                localStorage.setItem('selectedIndex', '0')
                 this.selectedIndex = index
                 if (index == '1') {
                     this.getLocalStorageFn('dantuo')
@@ -1027,10 +1040,106 @@
                 }
             },
             // 投注确认
-            goTouZhuConfirm(){
-                this.$router.push({
-                    path:'/lottery/daletou/touZhuConfirm'
-                })
+            goTouZhuConfirm(key){
+                if(key){
+                    localStorage.setItem('selectedIndex', JSON.stringify(this.selectedIndex))
+                    this.dataProcess()
+                    this.$router.push({
+                        path:'/lottery/daletou/touZhuConfirm'
+                    })
+                }
+            },
+            // 去投注数据处理
+            dataProcess(){
+                let ballList = []
+                let conformBallList = []
+                if(JSON.parse(localStorage.getItem('conformBallList'))!=null){
+                    conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
+                }
+                if(this.selectedIndex=='0'){
+                    this.redBallList.forEach(item=>{
+                        ballList.push({
+                            num:item,
+                            type:'redBall'
+                        })
+                    })
+                    this.blueBallList.forEach(item=>{
+                        ballList.push({
+                            num:item,
+                            type:'blueBall'
+                        })
+                    })
+                    conformBallList.push({
+                        ballList:ballList,
+                        ballType:'biaozhun',
+                        msg:{
+                            zhuNum:this.selectZhu.zhuNum,
+                            danFn:ballList.length>7?'复试':'单式',
+                            bei:1,
+                            money:this.selectZhu.zhuNum*2
+                        }
+                    })
+                }
+                if(this.selectedIndex=='1'){
+                    for(let i=0;i<this.danRedMaList.length+1;i++){
+                        if(i<this.danRedMaList.length){
+                            ballList.push({
+                                num:this.danRedMaList[i],
+                                type:'redBall'
+                            })
+                        }else{
+                            ballList.push({
+                                num:'—',
+                                type:'3'
+                            })
+                        }
+                    }
+                    for(let i=0;i<this.tuoRedMaList.length+1;i++){
+                        if(i<this.tuoRedMaList.length){
+                            ballList.push({
+                                num:this.tuoRedMaList[i],
+                                type:'redBall'
+                            })
+                        }else{
+                            ballList.push({
+                                num:'—',
+                                type:'4'
+                            })
+                        }
+                    }
+                    for(let i=0;i<this.danBlueMaList.length+1;i++){
+                        if(i<this.danBlueMaList.length){
+                            ballList.push({
+                                num:this.danBlueMaList[i],
+                                type:'blueBall'
+                            })
+                        }else{
+                            ballList.push({
+                                num:'—',
+                                type:'5'
+                            })
+                        }
+                    }
+                    for(let i=0;i<this.tuoBlueMaList.length+1;i++){
+                        if(i<this.tuoBlueMaList.length){
+                            ballList.push({
+                                num:this.tuoBlueMaList[i],
+                                type:'blueBall'
+                            })
+                        }
+                    }
+                    conformBallList.push({
+                        ballList:ballList,
+                        ballType:'dantuo',
+                        msg:{
+                            zhuNum:this.selectZhu.zhuNum,
+                            danFn:ballList.length>7?'复试':'单式',
+                            bei:1,
+                            money:this.selectZhu.zhuNum*2
+                        }
+                    })
+                }
+                localStorage.setItem('conformBallList',JSON.stringify(conformBallList))
             },
             //获得注数
             combination: (arr /*n需要组合的一维数组*/, num /*m需要取几个元素来组合*/, fun /*对组合后的元素的处理函数，如全排列permutate*/) => {
@@ -1056,11 +1165,9 @@
                 str = str.replace(replaceStr, temp);
                 return (new Function(str)).apply(null, [arr, fun]);
             },
-
         },
         beforeRouteLeave(to, from, next) {
             next()
         }
     }
 </script>
-
