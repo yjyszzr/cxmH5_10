@@ -14,6 +14,19 @@
     color: #505050;
   }
 }
+
+.fixedRight{
+    position: fixed;
+    right: px2rem(20px);
+    bottom: px2rem(190px);
+    z-index: 200;
+    background: #ea5504;
+    padding: px2rem(10px) px2rem(15px);
+    font-size: px2rem(24px);
+    color: #fff;
+    border-radius: px2rem(10px);
+    line-height: px2rem(32px);
+}
 /*.mation p*/
 
 .center {
@@ -155,6 +168,11 @@
         <span>立即打开</span>
       </div>
     </div>
+    <!-- 桌面引导 -->
+    <div v-if='detect=="ios"' class="fixedRight" @click="shortClick()">
+      <p>放到</p>
+      <p>桌面</p>
+    </div>
 		<v-slider :bannerList='bannerList'></v-slider>
 		<!--首页-->
 		<div class="index_center">
@@ -210,6 +228,7 @@ import silder from "./index/lunbo";
 import activity from "./index/activity";
 import informal from "./public/informal/informalList";
 import Loading from './public/loading/loading.vue'
+import {detect} from '../util/common.js'
 export default {
   name: "index",
   data() {
@@ -226,7 +245,8 @@ export default {
       zxObj: {},
       trFlag: true,
       isbool: true,
-      cxLoadFlag: false
+      cxLoadFlag: false,
+      detect: ''   //判断设备信息
     };
   },
   beforeCreate() {
@@ -284,6 +304,9 @@ export default {
     }
   },
   methods: {
+    shortClick(){
+      this.$store.commit('MARKSHORTCUT',true)
+    },
     goFreebuy(c) {
       this.$store.state.matchObj = {};
       this.$store.state.freebuyId = c;
@@ -384,6 +407,7 @@ export default {
   },
   created: function() {},
   mounted() {
+    this.detect = detect()
     // location.href = 'caixm://caixiaomi.net'
     localStorage.removeItem("tab");
     //console.log('1')
@@ -418,6 +442,9 @@ export default {
   },
   activated() {
     document.getElementById("content").scrollTop = this.$root.consultScrolltop;
+  },
+  destroyed(){
+    this.$store.commit('MARKSHORTCUT',false)
   }
 };
 </script>

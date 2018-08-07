@@ -1,5 +1,5 @@
 <template>
-    <div class="foot fixBottom" @touchmove.prevent v-if="showtabber&&isShowTabbar()">
+    <div class="foot fixBottom" @touchmove.prevent v-if="isShowTabbar()">
             <router-link to='/' :style="{'color': $route.path.split('/')[1] == ''?'#ea5504':'#505050'}">
                 <i class="iconfont icon-dibucaidan_svg_huaban"></i>
                 <span>大厅</span>
@@ -23,18 +23,13 @@
 export default {
 	data() {
 		return {
-            showtabber: false
+            
 		}
 	},
 	methods: {
 		isShowTabbar () {
             let routeLength = this.$route.path.split('/').length
-            if(routeLength>2||this.$route.name=='404'){
-                this.showtabber = false
-            }else{
-                this.showtabber = true
-            }
-			return routeLength > 2 ? false : true
+			return routeLength > 2||this.$route.name=='404' ? false : true
 		}
 	}
 }

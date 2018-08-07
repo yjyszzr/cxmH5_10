@@ -75,6 +75,7 @@ const state = {
     },
     timertz: '', //充值送弹窗定时器
     mark_showAc: false, //充值送弹窗
+    mark_shortcut: false, //首页引导弹窗
     pop: '',
 }
 

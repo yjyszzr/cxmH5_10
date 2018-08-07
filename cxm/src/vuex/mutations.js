@@ -190,6 +190,9 @@ const mutations = {
     FSLIST(state, data){
         state.world_cupObj.fsList = data
     },
+    MARKSHORTCUT(state, data){
+        state.mark_shortcut = data
+    }
 }
 
 export default mutations

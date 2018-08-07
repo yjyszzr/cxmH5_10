@@ -5,6 +5,9 @@
                      v-show='isShowHeader'></v-headertop>
         <mainSkeleton v-show="!consultinit"></mainSkeleton>
         <transition name="fade">
+            <v-shortcut v-if="this.$store.state.mark_shortcut"></v-shortcut>
+        </transition>
+        <transition name="fade">
             <div id='content' class="content" v-show='consultinit'>
                 <!-- <transition  mode="out-in" enter-active-class='bounce-enter' leave-active-class="bounce-leave">
                     <router-view></router-view>
@@ -36,6 +39,7 @@
     import {wxPd} from './util/common'
     import {getUrlStr} from './util/common'
     import mainSkeleton from './components/public/mainSkeleton/main.skeleton.vue'
+    import shortcut from './components/index/shortcut.vue'
     // import LocalScrollFix from 'Localscrollfix'
     export default {
         name: "App",
@@ -45,6 +49,7 @@
             "v-mark": mark,
             "v-pmark": pmark,
             "v-popup": popup,
+            "v-shortcut": shortcut,
             mainSkeleton
         },
         data() {
