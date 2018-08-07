@@ -68,11 +68,11 @@
                 <div class="pro-step">
                     <div class="range">
                         <div class="range-item" v-for="(item,i) in nums" :key='i'>
-                            <span></span>
+                            <span ref="numsItem"></span>
                         </div>
                     </div>
                     <div class="gs-num">
-                        <el-progress v-for="(item,i) in numList" :key='i' :text-inside="true" :stroke-width="18" :percentage="item"></el-progress>
+                        <el-progress v-for="(item,i) in numList" :key='i' :text-inside="true" :stroke-width="18" :percentage="Number(item)"></el-progress>
                     </div>
                 </div>
                 <div class="pro-pop">

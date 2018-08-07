@@ -40,7 +40,7 @@ export default {
 				'smsType': 1
 			}
 			let sendldxType = ''
-			if(this.$route.query.from=='ldx'){
+			if(this.$route.query.frtype=='ldx'){
 				sendldxType = api.sendVerificationCode(data)
 			}else{
 				sendldxType = api.SendSmsCode(data)
@@ -111,8 +111,9 @@ export default {
 				'passWord': -1
 			}
 			let sendldxType = ''
-			if(this.$route.query.from=='ldx'){
+			if(this.$route.query.frtype=='ldx'){
 				data.invitationUserId = this.$route.query.a_
+				data.loginSource = 'ldx'
 				sendldxType = api.oldbeltnewregister(data)
 			}else{
 				sendldxType = api.Register(data)

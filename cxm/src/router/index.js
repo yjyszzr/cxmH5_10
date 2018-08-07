@@ -9,6 +9,14 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   routes: [
+    { 
+        path: '*', 
+        name: '404',
+        meta: {
+            title: '404未找到'
+        },
+        component: resolve => require(['@/components/public/notfoundRoute'], resolve), 
+    },
     {
       path: '/',
       name: 'index',
@@ -500,6 +508,15 @@ const router = new Router({
           title: '老带新'
         },
         component: resolve => require(['@/components/activity/oldbeltnew/oldbeltyq'], resolve)
+     },
+     //大转盘
+     {
+        path: '/activity/wheel',
+        name: 'wheel',
+        meta: {
+          title: '大转盘'
+        },
+        component: resolve => require(['@/components/activity/wheel'], resolve)
      },
       //app彩小秘彩票
       //帮助中心：appinfo/help

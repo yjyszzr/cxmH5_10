@@ -43,11 +43,29 @@ export default {
                         if(res.data.invitationNum=='-'){
                             return false;
                         }
+                        if(res.data.invitationNum>=10){
+                            this.$refs.numsItem[0].style.background = '#ea5504'
+                        }
+                        if(res.data.invitationNum>=20){
+                            this.$refs.numsItem[1].style.background = '#ea5504'
+                        }
+                        if(res.data.invitationNum>=30){
+                            this.$refs.numsItem[2].style.background = '#ea5504'
+                        }
+                        if(res.data.invitationNum>=40){
+                            this.$refs.numsItem[3].style.background = '#ea5504'
+                        }
+                        if(res.data.invitationNum>=50){
+                            this.$refs.numsItem[4].style.background = '#ea5504'
+                        }
+                        if(res.data.invitationNum>=100){
+                            this.$refs.numsItem[5].style.background = '#ea5504'
+                        }
                         if(res.data.invitationNum<=10){
                             this.numList[0] = (res.data.invitationNum/10)*100
                         }else if(res.data.invitationNum>10&&res.data.invitationNum<=20){
                             this.numList[0] = 100
-                            this.numList[1] = ((res.data.invitationNum)-10/10)*100
+                            this.numList[1] = ((res.data.invitationNum-10)/10)*100
                         }else if(res.data.invitationNum>20&&res.data.invitationNum<=30){
                             this.numList[0] = 100
                             this.numList[1] = 100
@@ -56,20 +74,20 @@ export default {
                             this.numList[0] = 100
                             this.numList[1] = 100
                             this.numList[2] = 100
-                            this.numList[3] = ((res.data.invitationNum)-30/10)*100
+                            this.numList[3] = ((res.data.invitationNum-30)/10)*100
                         }else if(res.data.invitationNum>40&&res.data.invitationNum<=50){
                             this.numList[0] = 100
                             this.numList[1] = 100
                             this.numList[2] = 100
                             this.numList[3] = 100
-                            this.numList[4] = ((res.data.invitationNum)-40/10)*100
+                            this.numList[4] = ((res.data.invitationNum-40)/10)*100
                         }else{
                             this.numList[0] = 100
                             this.numList[1] = 100
                             this.numList[2] = 100
                             this.numList[3] = 100
                             this.numList[4] = 100
-                            this.numList[5] = res.data.invitationNum>=100?100:((res.data.invitationNum)-50/50)*100
+                            this.numList[5] = res.data.invitationNum>=100?100:((res.data.invitationNum-50)/50)*100
                         }
 					}
 				})
@@ -82,12 +100,12 @@ export default {
             }
         },
         geturl(){
-            return getCsUrl()+'/activity/one?type=isShare&from=ldx&a_='+this.uid
+            return getCsUrl()+'/activity/one?type=isShare&frtype=ldx&a_='+this.uid
         }
     },
     mounted(){
         this.fetchData()
-        isShare('新人注册送好礼，100元红包等你来领', '注册就送100元新人大礼包', '/activity/one?type=isShare&from=ldx&a_='+this.uid, '/static/activity_Back/newComerReg/img/logozc.jpg')
-        means('邀请得红包').isTitle
+        isShare('新人注册送好礼，100元红包等你来领', '注册就送100元新人大礼包', '/activity/one?type=isShare&frtype=ldx&a_='+this.uid, '/static/activity_Back/newComerReg/img/logozc.jpg')
+        means('邀请好友得红包').isTitle
     }
 }

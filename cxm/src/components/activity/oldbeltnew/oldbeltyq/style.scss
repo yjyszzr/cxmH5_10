@@ -29,6 +29,10 @@
                     color: #FEB434;
                     padding: px2rem(1px) px2rem(8px);
                     border-radius: px2rem(6px);
+                    margin-left: px2rem(3px);
+                }
+                span:first-of-type{
+                    margin-left: 0;
                 }
             }
             p:last-of-type{
@@ -207,15 +211,7 @@
             margin-left: px2rem(60px);
         }
         .zdl-text{
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            margin: auto;
-            z-index: 40;
             width: 55%;
-            height: px2rem(300px);
             background: white;
             border-radius: px2rem(20px);
             .zdl-title{
@@ -241,5 +237,10 @@
                 border-top: 1px solid #f0f0f0;
             }
         }
+    }
+    .zdl-mark{
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }

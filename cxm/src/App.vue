@@ -190,9 +190,12 @@
                             return "世界杯";
                         //老带新
                         case 'oldbeltyd':
-                            return "邀请得红包";
+                            return "邀请好友得红包";
                         case 'oldbeltnew':
-                            return "邀请得红包";
+                            return "邀请好友得红包";
+                        //大转盘
+                        case 'wheel':
+                            return "幸运大转盘";
                         case 'explain':
                             return "胆说明";
                         case 'success':

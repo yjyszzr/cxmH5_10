@@ -3,7 +3,7 @@ import {
 } from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {
-	Indicator
+	Indicator,Toast
 } from 'mint-ui'
 export default {
     name: 'oldbeltyd',
@@ -35,7 +35,7 @@ export default {
                     api.shareMyLinks(data)
                         .then(res => {
                             if (res.code == 0) {
-                                location.href = '/activity/oldbeltnew?cxmxc=scm&type=1&showtitle=1&cmshare=1&cfrom=app&uid='+res.data.userld
+                                location.href = '/activity/oldbeltnew?cxmxc=scm&showtitle=1&cmshare=1&cfrom=app&uid='+res.data.userld
                             }
                         })
                 }
@@ -65,6 +65,6 @@ export default {
         }
     },
     mounted(){
-        means('邀请得红包').isTitle
+        means('邀请好友得红包').isTitle
     }
 }
