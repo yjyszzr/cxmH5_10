@@ -170,6 +170,10 @@ const mutations = {
     },
     TIMESHOW(state, data){
         state.user_account.timeShow = data
+    },
+    //大乐透tab切换
+    DALETOUACTIVE(state, data){
+        state.daletouActive = data
     }
 }
 

@@ -67,12 +67,13 @@ const state = {
     timertz: '', //充值送弹窗定时器
     mark_showAc: false, //充值送弹窗
     pop: '',
+    daletouActive: '1',  //大乐透tab
 }
 
 export default new Vuex.Store({
     state,
     actions,
     mutations,
-    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','freebuyId','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','chushihuaObj','findObj','world_cupObj'],storage: window.sessionStorage})]
+    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','freebuyId','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','chushihuaObj','findObj','world_cupObj','daletouActive'],storage: window.sessionStorage})]
     //strict: true
 })

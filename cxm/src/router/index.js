@@ -676,6 +676,11 @@ const router = new Router({
           name: 'selectNumber',
           component: resolve => require(['@/components/daletou/selectNumber.vue'], resolve)
       },
+      {
+        path: '/lottery/daletou/runchart',
+        name: 'runchart',
+        component: resolve => require(['@/components/daletou/runChart'], resolve)
+      },
   ]
 })
 
