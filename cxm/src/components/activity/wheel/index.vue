@@ -71,7 +71,7 @@
         position: absolute;
         bottom: px2rem(50px);
         color: #fff;
-        font-size: px2rem(28px);
+        font-size: px2rem(24px);
         text-align: center;
         width: 100%;
     }

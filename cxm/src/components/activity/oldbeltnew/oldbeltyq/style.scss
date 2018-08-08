@@ -167,7 +167,10 @@
                 }
                 .el-progress:first-of-type{
                     width: 6%;
-                    margin-left: 2%;
+                    margin-left: 3%;
+                }
+                .el-progress:nth-child(5),.el-progress:nth-child(6){
+                    margin-left: -1%;
                 }
                 .el-progress-bar__outer{
                     height: px2rem(10px)!important;
@@ -223,10 +226,17 @@
                 border-bottom: 1px solid #f0f0f0;
             }
             p{
-                word-wrap:break-word;
+                white-space:normal;
+                word-break:break-all;
+                word-wrap:break-word; 
                 font-size: px2rem(26px);
                 color: #505050;
-                padding: 0 px2rem(20px);
+                padding: px2rem(10px) px2rem(20px);
+                -webkit-touch-callout: all;
+                -webkit-user-select: all;
+                -moz-user-select: all;
+                -ms-user-select: all;
+                user-select: all;
             }
             .zl-btn{
                 height: px2rem(60px);
