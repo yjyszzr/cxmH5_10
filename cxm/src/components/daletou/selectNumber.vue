@@ -17,13 +17,12 @@
             <div class="body-main">
                 <div class="body-title" @click="popupVisible = !popupVisible">
                     <p>{{data.term_num}}期 截止时间 {{data.endDate}}</p>
-                    <p class="history-p">历史开奖 <span class="arrow_right"><img src="../../assets/img/arange.png"
-                                                                             alt=""></span></p>
+                    <p class="history-p">历史开奖 <span class="arrow_right"><img src="../../assets/img/arange.png" alt=""></span></p>
                 </div>
                 <!--标准选号-->
                 <div class="biaozhun" v-if="selectedIndex=='0'">
                     <div class="selection">
-                        <div class="phone" @click = "machineSelection()">
+                        <div class="phone" @click="machineSelection()">
                             <span class="phone-img-box"><img src="./images/IntelligentChoice@3x.png" alt=""></span>
                             <span>机选</span>
                         </div>
@@ -33,13 +32,15 @@
                     </div>
                     <div class="ball-box">
                         <ul class="red-ball-ul ball-ul">
-                            <li class="ball-li" v-for="(item,index) in preList" :key=index @click="biaozhunSelect(item,'preList')">
+                            <li class="ball-li" v-for="(item,index) in preList" :key=index
+                                @click="biaozhunSelect(item,'preList')">
                                 <span class="ball red-ball" :class="item.selected?'curRedBall':''">{{item.num}}</span>
                                 <span class="miss" v-if="historyMiss">{{item.missNum}}</span>
                             </li>
                         </ul>
                         <ul class="blue-ball-ul ball-ul">
-                            <li class="ball-li" v-for="(item,index) in postList" :key=index @click="biaozhunSelect(item,'postList')">
+                            <li class="ball-li" v-for="(item,index) in postList" :key=index
+                                @click="biaozhunSelect(item,'postList')">
                                 <span class="ball blue-ball" :class="item.selected?'curBlueBall':''">{{item.num}}</span>
                                 <span class="miss" v-if="historyMiss">{{item.missNum}}</span>
                             </li>
@@ -57,28 +58,32 @@
                             </div>
                         </div>
                         <ul class="red-ball-ul ball-ul">
-                            <li class="ball-li" v-for="(item,index) in danTuoRedPreList" :key=index @click="danTuoSelect(item,'redBall','dan')" >
+                            <li class="ball-li" v-for="(item,index) in danRedPreList" :key=index
+                                @click="danTuoSelect(item,index,'redBall','dan')">
                                 <span class="ball red-ball" :class="item.selected?'curRedBall':''">{{item.num}}</span>
                                 <span class="miss" v-if="historyMiss">{{item.missNum}}</span>
                             </li>
                         </ul>
                         <p class="name-ball red-two">拖码-红球，至少选2个</p>
                         <ul class="red-ball-ul ball-ul">
-                            <li class="ball-li" v-for="(item,index) in danTuoRedPreList" :key=index @click="danTuoSelect(item,'redBall','tuo')">
+                            <li class="ball-li" v-for="(item,index) in tuoRedPreList" :key=index
+                                @click="danTuoSelect(item,index,'redBall','tuo')">
                                 <span class="ball red-ball" :class="item.selected?'curRedBall':''">{{item.num}}</span>
                                 <span class="miss" v-if="historyMiss">{{item.missNum}}</span>
                             </li>
                         </ul>
                         <p class="name-ball">胆码-篮球，至多选1个</p>
                         <ul class="blue-ball-ul ball-ul">
-                            <li class="ball-li" v-for="(item,index) in danTuoBluePostList" :key=index @click="danTuoSelect(item,'blueBall','dan')">
+                            <li class="ball-li" v-for="(item,index) in danBluePostList" :key=index
+                                @click="danTuoSelect(item,index,'blueBall','dan')">
                                 <span class="ball blue-ball" :class="item.selected?'curBlueBall':''">{{item.num}}</span>
                                 <span class="miss" v-if="historyMiss">{{item.missNum}}</span>
                             </li>
                         </ul>
-                        <p class="name-ball">胆码-篮球，至多选2个</p>
+                        <p class="name-ball">拖码-篮球，至少选2个</p>
                         <ul class="blue-ball-ul ball-ul">
-                            <li class="ball-li" v-for="(item,index) in danTuoBluePostList" :key=index @click="danTuoSelect(item,'blueBall','tuo')">
+                            <li class="ball-li" v-for="(item,index) in tuoBluePostList" :key=index
+                                @click="danTuoSelect(item,index,'blueBall','tuo')">
                                 <span class="ball blue-ball" :class="item.selected?'curBlueBall':''">{{item.num}}</span>
                                 <span class="miss" v-if="historyMiss">{{item.missNum}}</span>
                             </li>
@@ -93,12 +98,26 @@
                 <i class="iconfont icon-icon-26"></i>
             </div>
             <div class="text">
-                <p v-if="textType">请至少选择 <span class="red">5</span>个红球，<span class="blue">2</span>个篮球</p>
-                <p v-if="!textType">共<span class="red">{{selectZhu.zhuNum}}</span>注，合计<span class="blue">{{selectZhu.zhuNum*2}}</span>元</p>
+                <template v-if="selectedIndex == '0'">
+                    <p v-if="textType">请至少选择 <span class="red">5</span>个红球，<span class="blue">2</span>个篮球</p>
+                    <p v-if="!textType">共<span class="red">{{selectZhu.zhuNum}}</span>注，合计<span class="blue">{{selectZhu.zhuNum*2}}</span>元
+                    </p>
+                </template>
+                <template v-if="selectedIndex =='1'">
+                    <p v-if="danTuotextType">请至少选择 <span class="red">6</span>个红球，<span class="blue">2</span>个篮球</p>
+                    <p v-if="!danTuotextType">共<span class="red">{{danTuoZhu.zhuNum}}</span>注，合计<span class="blue">{{danTuoZhu.zhuNum*2}}</span>元</p>
+                </template>
             </div>
-            <div class="ok">
-                确定
-            </div>
+            <template v-if="selectedIndex==0">
+                <div  class="ok" :class="!textType?'okcur':''" @click = 'goTouZhuConfirm(!textType)'>
+                    确定
+                </div>
+            </template>
+            <template v-if="selectedIndex==1">
+                <div  class="ok" :class="!danTuotextType?'okcur':''" @click = 'goTouZhuConfirm(!danTuotextType)'>
+                    确定
+                </div>
+            </template>
             <!--<span><img src="./" alt=""></span>-->
         </div>
         <!--选号方式-->
@@ -190,6 +209,9 @@
         }
         .blueBall {
             color: #0081cc !important;
+        }
+        .okcur{
+            background-color: #ea5504!important;
         }
         .head {
             overflow: hidden;
@@ -550,7 +572,7 @@
                 line-height: px2rem(100px);
                 color: #ffffff;
                 font-size: px2rem(28px);
-                background-color: #ea5504;
+                background-color: #c7c7c7;
             }
         }
         .history-p {
@@ -569,7 +591,7 @@
     }
 </style>
 <script>
-    import {getCombinationCount,getArrayItems} from '../../util/common'
+    import {getCombinationCount, getArrayItems,danTuoCount} from '../../util/common'
     import {MessageBox, Popup} from 'mint-ui';
     import api from '../../fetch/api'
     import GameDescription from "./images/GameDescription@3x.png"
@@ -584,26 +606,33 @@
                 popShow: false, //菜单列表弹窗
                 collapseShow: false, //折叠选号方式
                 popupVisible: false,//历史开奖列表
-                popdantuo: false,//但拖介绍
+                popdantuo: false,//胆拖介绍
                 historyMiss: true,//显示历史遗漏
-                selectedIndex: '1',//但拖选好
-                postList: [],//后区遗漏 ,
+                selectedIndex: JSON.parse(localStorage.getItem('selectedIndex'))?JSON.parse(localStorage.getItem('selectedIndex')):'0',//'0'标准选号 '1'胆拖选号
                 preList: [],//前区遗漏
-                danTuoBluePostList: [],//胆拖后区遗漏 ,
-                danTuoRedPreList: [],//胆拖前区遗漏
+                postList: [],//后区遗漏 ,
+                danRedPreList: [],//胆前区遗漏
+                tuoRedPreList: [],//拖前区遗漏
+                danBluePostList: [],//胆后区遗漏 ,
+                tuoBluePostList: [],//拖后区遗漏 ,
                 prizeList: [],//历史中奖，
                 redBallList: [],//标准选号选中红球集合
                 blueBallList: [],//标准选号选中篮球集合,
-                danRedMaList:[],//胆码选号红球集合
-                tuoRedMaList:[],//托码选号红求集合
-                danBlueMaList:[],//胆码选号蓝球集合
-                tuoBlueMaList:[],//托码选号蓝求集合
-                redBallBox:['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35'],
-                blueBallBox:['01','02','03','04','05','06','07','08','09','10','11','12'],
-                textType: true,
-                selectZhu:{
-                    zhuNum:'',
-                    zhuHe:[]
+                danRedMaList: [],//胆码选号红球集合
+                tuoRedMaList: [],//托码选号红求集合
+                danBlueMaList: [],//胆码选号蓝球集合
+                tuoBlueMaList: [],//托码选号蓝求集合
+                redBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'],
+                blueBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+                textType: true, //标准选号提示文字
+                danTuotextType: true, //胆拖选号提示文字
+                selectZhu: {
+                    zhuNum: '',//标注选号注数
+                    zhuHe: []  //标准选号组合
+                },
+                danTuoZhu:{
+                    zhuNum:'', //胆拖选号注数
+                    zhuHe:[]  // 标准选号组合
                 },
                 data: {},
                 memu: [
@@ -630,23 +659,35 @@
             this.getTicketInfoFn()
         },
         methods: {
+            // 头部返回
+            goBack() {
+                this.$router.go(-1);
+            },
             //获取详情
             getTicketInfoFn() {
                 api.getTicketInfo('')
                     .then(res => {
                         if (res.code == 0) {
                             this.data = res.data
+                            this.prizeList = res.data.prizeList
                             res.data.postList.forEach((item, index) => {
                                 this.postList.push(
                                     {
-                                        num: index + 1,
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
-                                this.danTuoRedPreList.push(
+                                this.danBluePostList.push(
                                     {
-                                        num: index + 1,
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
+                                        missNum: item,
+                                        selected: false
+                                    }
+                                )
+                                this.tuoBluePostList.push(
+                                    {
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
                                         missNum: item,
                                         selected: false
                                     }
@@ -655,14 +696,21 @@
                             res.data.preList.forEach((item, index) => {
                                 this.preList.push(
                                     {
-                                        num: index + 1,
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
-                                this.danTuoBluePostList.push(
+                                this.danRedPreList.push(
                                     {
-                                        num: index + 1,
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
+                                        missNum: item,
+                                        selected: false
+                                    }
+                                )
+                                this.tuoRedPreList.push(
+                                    {
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
                                         missNum: item,
                                         selected: false
                                     }
@@ -685,7 +733,6 @@
                             this.redBallList.splice(index, 1);
                         }
                     }
-
                 }
                 if (type == 'postList') { //点后区
                     if (item.selected) {
@@ -701,69 +748,134 @@
                 this.setLocalStorageFn('biaoZhun')
             },
             //提示信息
-            viewText(){
-                if (this.redBallList.length > 4 && this.blueBallList.length > 1) {
-                    this.textType = false
-                    this.selectZhu.zhuNum=getCombinationCount(this.redBallList.length, 5)*getCombinationCount(this.blueBallList.length, 2)
-                } else {
-                    this.textType = true
+            viewText() {
+                if(this.selectedIndex=='0'){
+                    if (this.redBallList.length > 4 && this.blueBallList.length > 1) {
+                        this.textType = false
+                        this.selectZhu.zhuNum = getCombinationCount(this.redBallList.length, 5) * getCombinationCount(this.blueBallList.length, 2)
+                    } else {
+                        this.textType = true
+                    }
+                }
+                if(this.selectedIndex=='1'){
+                    console.log(this.danBlueMaList.length + this.tuoBlueMaList.length);
+                    if (this.danRedMaList.length > 0 && this.tuoRedMaList.length > 1 && this.tuoBlueMaList.length > 1&& (this.danRedMaList.length+this.tuoRedMaList.length)>5 && (this.danBlueMaList.length+this.tuoBlueMaList.length)>1) {
+                        this.danTuotextType = false
+                        this.danTuoZhu.zhuNum = danTuoCount(this.danRedMaList.length,this.tuoRedMaList.length,this.danBlueMaList.length,this.tuoBlueMaList.length)
+                    } else {
+                        this.danTuotextType = true
+                    }
                 }
             },
             //机选
-            machineSelection(){
+            machineSelection() {
                 var that = this
-                this.preList.forEach(sunItem=>{
+                this.preList.forEach(sunItem => {
                     sunItem.selected = false
                 })
-                this.postList.forEach(sunItem=>{
+                this.postList.forEach(sunItem => {
                     sunItem.selected = false
                 })
-                this.redBallList=[]
-                this.blueBallList=[]
+                this.redBallList = []
+                this.blueBallList = []
                 this.redBallList = this.redBallList.concat(getArrayItems(this.redBallBox, 5))
                 this.blueBallList = this.blueBallList.concat(getArrayItems(this.blueBallBox, 2))
-                getArrayItems(this.redBallBox, 5).forEach(item=>{
-                    that.preList.forEach(sunItem=>{
-                        if(sunItem.num == item){
+                getArrayItems(this.redBallBox, 5).forEach(item => {
+                    that.preList.forEach(sunItem => {
+                        if (sunItem.num == item) {
                             sunItem.selected = true
                         }
                     })
                 })
-                getArrayItems(this.blueBallBox, 2).forEach(item=>{
-                    that.postList.forEach(sunItem=>{
-                        if(sunItem.num == item){
+                getArrayItems(this.blueBallBox, 2).forEach(item => {
+                    that.postList.forEach(sunItem => {
+                        if (sunItem.num == item) {
                             sunItem.selected = true
                         }
                     })
                 })
                 this.viewText()
                 this.setLocalStorageFn('biaoZhun')
+                setTimeout(function () {
+                    that.goTouZhuConfirm(!this.textType)
+                },500)
+
             },
             //胆拖选号
-            danTuoSelect(item,ballTyoe,type){
-                if(ballTyoe == 'redBall'){
-                    if(type == 'dan'){
-
+            danTuoSelect(item, index, ballType, type) {
+                if (ballType == 'redBall') {
+                    if (type == 'dan') {
+                        let danRedIndex = this.danRedMaList.indexOf(item.num)
+                        if(danRedIndex>-1){
+                            this.$set(item, 'selected', !item.selected)
+                            this.danRedMaList.splice(danRedIndex, 1);
+                        }else if(this.danRedMaList.length<4) {
+                            this.$set(item, 'selected', !item.selected)
+                            this.danRedMaList.push(item.num);
+                            this.tuoRedPreList[index].selected = false
+                            let tuoIndex = this.tuoRedMaList.indexOf(item.num)
+                            if (tuoIndex != -1) {
+                                this.tuoRedMaList.splice(tuoIndex, 1);
+                            }
+                        }
                     }
-                    if(type == 'tuo'){
-
+                    if (type == 'tuo') {
+                        let tuoRedIndex = this.tuoRedMaList.indexOf(item.num)
+                        if(tuoRedIndex>-1){
+                            this.$set(item, 'selected', !item.selected)
+                            this.tuoRedMaList.splice(tuoRedIndex, 1);
+                        }else {
+                            this.$set(item, 'selected', !item.selected)
+                            this.tuoRedMaList.push(item.num);
+                            this.danRedPreList[index].selected = false
+                            let danindex = this.danRedMaList.indexOf(item.num)
+                            if (danindex != -1) {
+                                this.danRedMaList.splice(danindex, 1);
+                            }
+                        }
                     }
                 }
-                if(ballTyoe == 'blueBall'){
-                    if(type == 'dan'){
-
+                if (ballType == 'blueBall') {
+                    if (type == 'dan') {
+                        let danBlueIndex = this.danBlueMaList.indexOf(item.num)
+                        if(danBlueIndex>-1){
+                            this.$set(item, 'selected', !item.selected)
+                            this.danBlueMaList.splice(danBlueIndex, 1);
+                        }else if(this.danBlueMaList.length<1){
+                            this.$set(item, 'selected', !item.selected)
+                            this.danBlueMaList.push(item.num);
+                            this.tuoBluePostList[index].selected = false
+                            let tuoIndex = this.tuoBlueMaList.indexOf(item.num)
+                            if (tuoIndex != -1) {
+                                this.tuoBlueMaList.splice(tuoIndex, 1);
+                            }
+                        }
                     }
-                    if(type == 'tuo'){
-
+                    if (type == 'tuo') {
+                        let tuoBlueIndex =  this.tuoBlueMaList.indexOf(item.num)
+                        if(tuoBlueIndex>-1){
+                            this.$set(item, 'selected', !item.selected)
+                            this.tuoBlueMaList.splice(tuoBlueIndex,1)
+                        }else{
+                            this.$set(item, 'selected', !item.selected)
+                            this.tuoBlueMaList.push(item.num);
+                            this.danBluePostList[index].selected = false
+                            let danIndex = this.danBlueMaList.indexOf(item.num)
+                            if (danIndex != -1) {
+                                this.danBlueMaList.splice(danIndex, 1);
+                            }
+                        }
                     }
                 }
+                this.viewText()
+                this.setLocalStorageFn('dantuo')
             },
             //存储 所选号码
-            setLocalStorageFn(type){
-                if(type == 'biaoZhun'){
+            setLocalStorageFn(type) {
+                if (type == 'biaoZhun') {
                     localStorage.setItem('redBallList', JSON.stringify(this.redBallList))
                     localStorage.setItem('blueBallList', JSON.stringify(this.blueBallList))
-                }else if(type == 'dantuo'){
+                } else if (type == 'dantuo') {
                     localStorage.setItem('danRedMaList', JSON.stringify(this.danRedMaList))
                     localStorage.setItem('tuoRedMaList', JSON.stringify(this.tuoRedMaList))
                     localStorage.setItem('danBlueMaList', JSON.stringify(this.danBlueMaList))
@@ -771,83 +883,138 @@
                 }
             },
             //内存中取出所选号码
-            getLocalStorageFn(type){
-                if(type == 'biaoZhun'){
+            getLocalStorageFn(type) {
+                if (type == 'biaoZhun') {
                     var that = this
-                    if(JSON.parse(localStorage.getItem('redBallList'))!=null){
+                    if (JSON.parse(localStorage.getItem('redBallList')) != null) {
                         this.redBallList = JSON.parse(localStorage.getItem('redBallList'))
-                        this.preList.forEach(item =>{
-                            that.redBallList.forEach(sunItem=>{
-                                if(item.num==sunItem){
+                        this.preList.forEach(item => {
+                            that.redBallList.forEach(sunItem => {
+                                if (item.num == sunItem) {
                                     item.selected = true
                                 }
                             })
                         })
                     }
-                    if(JSON.parse(localStorage.getItem('redBallList'))!=null){
-                        this.blueBallList = JSON.parse(localStorage.getItem('redBallList'))
-                            this.postList.forEach(item=>{
-                            this.blueBallList.forEach(sunItem=>{
-                                if(item.num==sunItem){
+                    if (JSON.parse(localStorage.getItem('redBallList')) != null) {
+                        this.blueBallList = JSON.parse(localStorage.getItem('blueBallList'))
+                        console.log(this.postList)
+                        this.postList.forEach(item => {
+                            this.blueBallList.forEach(sunItem => {
+                                if (item.num == sunItem) {
+                                    item.selected = true
+                                }
+                            })
+                        })
+                        console.log(this.postList)
+                    }
+                } else if (type == 'dantuo') {
+                    if (JSON.parse(localStorage.getItem('danRedMaList')) != null) {
+                        this.danRedMaList = JSON.parse(localStorage.getItem('danRedMaList'))
+                        this.danRedPreList.forEach(item => {
+                            this.danRedMaList.forEach(sunItem => {
+                                if (item.num == sunItem) {
                                     item.selected = true
                                 }
                             })
                         })
                     }
-                }else if(type == 'dantuo'){
-                    this.danRedMaList = JSON.parse(localStorage.getItem('danRedMaList'))
-                    this.tuoRedMaList = JSON.parse(localStorage.getItem('tuoRedMaList'))
-                    this.danBlueMaList = JSON.parse(localStorage.getItem('danBlueMaList'))
-                    this.tuoBlueMaList = JSON.parse(localStorage.getItem('tuoBlueMaList'))
+                    if (JSON.parse(localStorage.getItem('tuoRedMaList')) != null) {
+                        this.tuoRedMaList = JSON.parse(localStorage.getItem('tuoRedMaList'))
+                        this.tuoRedPreList.forEach(item => {
+                            this.tuoRedMaList.forEach(sunItem => {
+                                if (item.num == sunItem) {
+                                    item.selected = true
+                                }
+                            })
+                        })
+                    }
+                    if (JSON.parse(localStorage.getItem('danBlueMaList')) != null) {
+                        this.danBlueMaList = JSON.parse(localStorage.getItem('danBlueMaList'))
+                        this.danBluePostList.forEach(item => {
+                            this.danBlueMaList.forEach(sunItem => {
+                                if (item.num == sunItem) {
+                                    item.selected = true
+                                }
+                            })
+                        })
+                    }
+                    if (JSON.parse(localStorage.getItem('tuoBlueMaList')) != null) {
+                        this.tuoBlueMaList = JSON.parse(localStorage.getItem('tuoBlueMaList'))
+                        this.tuoBluePostList.forEach(item => {
+                            this.tuoBlueMaList.forEach(sunItem => {
+                                if (item.num == sunItem) {
+                                    item.selected = true
+                                }
+                            })
+                        })
+                    }
                 }
-            },
-            //列出每注
-            combination: (arr /*n需要组合的一维数组*/ , num /*m需要取几个元素来组合*/ , fun /*对组合后的元素的处理函数，如全排列permutate*/ ) => {
-                /*这里假设num最大值为10 一般A(n,m)中的m应该不会太大 */
-                if(arr.length < num || num > 10) {
-                    return [];
-                }
-                var variable = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u"];
-                var replaceStr = "#$#";
-                var str = " var arr=arguments[0]; var fun=arguments[1];  var ret=[]; for (var a = 0; a < arr.length; a++) { " + replaceStr + " } return ret;"
-                for(var i = 1; i < num; i++) {
-                    str = str.replace(replaceStr, " for (var " + variable[i] + " =" + variable[i - 1] + "+ 1; " + variable[i] + " < arr.length; " + variable[i] + "++) { " + replaceStr + "  }")
-                }
-                var temp = " var temp= []; ";
-                for(var i = 0; i < num; i++) {
-                    temp += "temp.push(arr[" + variable[i] + "]); ";
-                }
-                if(fun) {
-                    temp += " ret.push(fun(temp)); ";
-                } else {
-                    temp += " ret.push(temp); ";
-                }
-                str = str.replace(replaceStr, temp);
-                return(new Function(str)).apply(null, [arr, fun]);
+                this.viewText()
             },
             //删除所选号
             deleFn() {
-                if(this.redBallList.length>0||this.blueBallList.length>0){
-                    MessageBox({
-                        title: '温馨提示',
-                        message: '确定删除所选号码吗?',
-                        showCancelButton: true
-                    }).then(action => {
-                        this.redBallList=[]
-                        this.blueBallList=[]
-                        this.preList.forEach(sunItem=>{
-                            sunItem.selected = false
-                        })
-                        this.postList.forEach(sunItem=>{
-                            sunItem.selected = false
-                        })
-                        this.viewText()
-                    });
+                if (this.selectedIndex == '0') {
+                    if (this.redBallList.length > 0 || this.blueBallList.length > 0) {
+                        MessageBox({
+                            title: '温馨提示',
+                            message: '确定删除所选号码吗?',
+                            showCancelButton: true
+                        }).then(action => {
+                            if(this.redBallList.length>0){
+                                this.preList.forEach(sunItem => {
+                                    sunItem.selected = false
+                                })
+                            }
+                            if(this.blueBallList.length>0){
+                                this.postList.forEach(sunItem => {
+                                    sunItem.selected = false
+                                })
+                            }
+                            this.redBallList = []
+                            this.blueBallList = []
+                            this.setLocalStorageFn('biaoZhun')
+                            this.viewText()
+                        });
+                    }
                 }
-            },
-            // 头部返回
-            goBack() {
-                this.$router.go(-1);
+                if (this.selectedIndex == '1') {
+                    if (this.danRedMaList.length > 0 || this.tuoRedMaList.length > 0 || this.danBlueMaList.length > 0 || this.tuoBlueMaList.length > 0) {
+                        MessageBox({
+                            title: '温馨提示',
+                            message: '确定删除所选号码吗?',
+                            showCancelButton: true
+                        }).then(action => {
+                            if(this.danRedMaList.length>0){
+                                this.danRedPreList.forEach(sunItem => {
+                                    sunItem.selected = false
+                                })
+                            }
+                            if(this.tuoRedMaList.length>0){
+                                this.tuoRedPreList.forEach(sunItem => {
+                                    sunItem.selected = false
+                                })
+                            }
+                            if(this.danBlueMaList.length>0){
+                                this.danBluePostList.forEach(sunItem => {
+                                    sunItem.selected = false
+                                })
+                            }
+                            if(this.tuoBlueMaList.length>0){
+                                this.tuoBluePostList.forEach(sunItem => {
+                                    sunItem.selected = false
+                                })
+                            }
+                            this.danRedMaList = [],//胆码选号红球集合
+                                this.tuoRedMaList = [],//托码选号红求集合
+                                this.danBlueMaList = [],//胆码选号蓝球集合
+                                this.tuoBlueMaList = [],//托码选号蓝求集合
+                                this.setLocalStorageFn('dantuo')
+                            this.viewText()
+                        });
+                    }
+                }
+
             },
             //大乐透选号头部是否展开
             openOrclose(event) {
@@ -858,20 +1025,149 @@
                 }
                 this.collapseShow = !this.collapseShow
             },
-            //种类选择
+            //投注方式选择
             numType(index) {
+                localStorage.setItem('selectedIndex', '0')
                 this.selectedIndex = index
+                if (index == '1') {
+                    this.getLocalStorageFn('dantuo')
+                }
             },
+
             goNext(item) {
                 if (item.name == '隐藏遗漏') {
                     this.historyMiss = !this.historyMiss
                 }
-            }
-
+            },
+            // 投注确认
+            goTouZhuConfirm(key){
+                if(key){
+                    localStorage.setItem('selectedIndex', JSON.stringify(this.selectedIndex))
+                    this.dataProcess()
+                    this.$router.push({
+                        path:'/lottery/daletou/touZhuConfirm'
+                    })
+                }
+            },
+            // 去投注数据处理
+            dataProcess(){
+                let ballList = []
+                let conformBallList = []
+                if(JSON.parse(localStorage.getItem('conformBallList'))!=null){
+                    conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
+                }
+                if(this.selectedIndex=='0'){
+                    this.redBallList.forEach(item=>{
+                        ballList.push({
+                            num:item,
+                            type:'redBall'
+                        })
+                    })
+                    this.blueBallList.forEach(item=>{
+                        ballList.push({
+                            num:item,
+                            type:'blueBall'
+                        })
+                    })
+                    conformBallList.push({
+                        ballList:ballList,
+                        ballType:'biaozhun',
+                        msg:{
+                            zhuNum:this.selectZhu.zhuNum,
+                            danFn:ballList.length>7?'复试':'单式',
+                            bei:1,
+                            money:this.selectZhu.zhuNum*2
+                        }
+                    })
+                }
+                if(this.selectedIndex=='1'){
+                    for(let i=0;i<this.danRedMaList.length+1;i++){
+                        if(i<this.danRedMaList.length){
+                            ballList.push({
+                                num:this.danRedMaList[i],
+                                type:'redBall'
+                            })
+                        }else{
+                            ballList.push({
+                                num:'—',
+                                type:'3'
+                            })
+                        }
+                    }
+                    for(let i=0;i<this.tuoRedMaList.length+1;i++){
+                        if(i<this.tuoRedMaList.length){
+                            ballList.push({
+                                num:this.tuoRedMaList[i],
+                                type:'redBall'
+                            })
+                        }else{
+                            ballList.push({
+                                num:'—',
+                                type:'4'
+                            })
+                        }
+                    }
+                    for(let i=0;i<this.danBlueMaList.length+1;i++){
+                        if(i<this.danBlueMaList.length){
+                            ballList.push({
+                                num:this.danBlueMaList[i],
+                                type:'blueBall'
+                            })
+                        }else{
+                            ballList.push({
+                                num:'—',
+                                type:'5'
+                            })
+                        }
+                    }
+                    for(let i=0;i<this.tuoBlueMaList.length+1;i++){
+                        if(i<this.tuoBlueMaList.length){
+                            ballList.push({
+                                num:this.tuoBlueMaList[i],
+                                type:'blueBall'
+                            })
+                        }
+                    }
+                    conformBallList.push({
+                        ballList:ballList,
+                        ballType:'dantuo',
+                        msg:{
+                            zhuNum:this.selectZhu.zhuNum,
+                            danFn:ballList.length>7?'复试':'单式',
+                            bei:1,
+                            money:this.selectZhu.zhuNum*2
+                        }
+                    })
+                }
+                localStorage.setItem('conformBallList',JSON.stringify(conformBallList))
+            },
+            //获得注数
+            combination: (arr /*n需要组合的一维数组*/, num /*m需要取几个元素来组合*/, fun /*对组合后的元素的处理函数，如全排列permutate*/) => {
+                /*这里假设num最大值为10 一般A(n,m)中的m应该不会太大 */
+                if (arr.length < num || num > 10) {
+                    return [];
+                }
+                var variable = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u"];
+                var replaceStr = "#$#";
+                var str = " var arr=arguments[0]; var fun=arguments[1];  var ret=[]; for (var a = 0; a < arr.length; a++) { " + replaceStr + " } return ret;"
+                for (var i = 1; i < num; i++) {
+                    str = str.replace(replaceStr, " for (var " + variable[i] + " =" + variable[i - 1] + "+ 1; " + variable[i] + " < arr.length; " + variable[i] + "++) { " + replaceStr + "  }")
+                }
+                var temp = " var temp= []; ";
+                for (var i = 0; i < num; i++) {
+                    temp += "temp.push(arr[" + variable[i] + "]); ";
+                }
+                if (fun) {
+                    temp += " ret.push(fun(temp)); ";
+                } else {
+                    temp += " ret.push(temp); ";
+                }
+                str = str.replace(replaceStr, temp);
+                return (new Function(str)).apply(null, [arr, fun]);
+            },
         },
         beforeRouteLeave(to, from, next) {
             next()
         }
     }
 </script>
-

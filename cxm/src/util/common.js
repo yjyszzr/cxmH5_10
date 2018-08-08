@@ -108,6 +108,23 @@ export let getCombinationCount = (m, n) => {
     }
     return parseInt(a, 0)
 }
+// 大乐透 胆拖选号注数计算
+export let danTuoCount = (a,b,c,d) => {
+    // a = 胆红
+    // b = 拖红
+    // c = 胆蓝
+    // d = 拖蓝
+    return (numOne (b,5-a) * numOne (d,2-c))
+    function numOne(m,n) {
+        n = (n < m - n) ? n : (m - n)
+        let a = 1
+        for(let i = 1; i <= n; i++) {
+            a = a * m--/ i
+        }
+        return parseInt(a, 0)
+    }
+
+}
 //机选
 export let getArrayItems = (arr, num) => {
     //新建一个数组,将传入的数组复制过来,用于运算,而不要直接操作传入的数组;
