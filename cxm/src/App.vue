@@ -260,7 +260,7 @@
                 // } else {
                 //    return true;
                 // }
-                if ((window.location.href.split("?")[1] && getUrlStr('showtitle', location.href) == '1')) {
+                if ((window.location.href.split("?")[1] && getUrlStr('showtitle', location.href) == '1')||this.$route.name=='404' ) {
                     return false;
                 } else {
                     return true;

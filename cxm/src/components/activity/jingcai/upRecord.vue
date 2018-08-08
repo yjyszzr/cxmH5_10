@@ -7,7 +7,7 @@
                     <div class="title-box">
                         <div class="left-box">
                             <p class="money"><span>{{data.bonusPool}}</span>元</p>
-                            <p class="money-text">奖池累计金额</p>
+                            <p class="money-text">奖池金额</p>
                         </div>
                         <p class="line"></p>
                         <div v-if="data.numOfPeople!='0'" class="right-box">

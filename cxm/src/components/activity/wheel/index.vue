@@ -188,8 +188,12 @@ export default {
       },
       lqbtn(){
             if (detect() === 'ios') {
-                if(this.fr == 'c046'||this.fr == 'c047'){
+                if(this.fr == 'c039'){
                     countLog.init(()=>{
+                        location.href="https://itunes.apple.com/app/apple-store/id1402481777?pt=118446425&ct=tuia&mt=8"
+                    });
+                }else if(this.fr == 'c046'||this.fr == 'c047'){
+                    nicetuiLog.init(()=>{
                         location.href="https://itunes.apple.com/app/apple-store/id1402481777?pt=118446425&ct=nicetui1&mt=8"
                     });
                 }else{
@@ -199,8 +203,12 @@ export default {
                 if(wxPd()){
                     location.href = 'https://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
                 }else{
-                    if(this.fr == 'c046'||this.fr == 'c047'){
+                    if(this.fr == 'c039'){
                         countLog.init(()=>{
+                            location.href="https://static.caixiaomi.net/softs/"+this.fr+"/caixiaomi_"+this.fr+".apk"
+                        });
+                    }else if(this.fr == 'c046'||this.fr == 'c047'){
+                        nicetuiLog.init(()=>{
                             location.href="https://static.caixiaomi.net/softs/"+this.fr+"/caixiaomi_"+this.fr+".apk"
                         });
                     }else{
@@ -211,6 +219,7 @@ export default {
       }
     },
     mounted () {
+        // console.log(nicetuiLog,countLog)
       this.detect = detect()
     }
 }
