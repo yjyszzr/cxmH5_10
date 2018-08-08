@@ -1,6 +1,6 @@
 // const expUrl = 'http://192.168.31.205:8080'
-const expUrl = 'http://39.106.18.39:9805'
-// const expUrl = 'https://m.caixiaomi.net'
+//const expUrl = 'http://39.106.18.39:9805'
+const expUrl = 'https://m.caixiaomi.net'
 var moment = require('moment');
 //app h5页面分享
 export let isShare = (arg,text,url,thumbUrl) =>{
