@@ -11,33 +11,68 @@
             </div>
         </div>
         <ul class="runc-title">
-            <li :class="{active: i+1==daletouActive}" v-for="(item,i) in runchartTab" :key='i'>
+            <li @click="tabClick(i)" :class="{active: i+1==daletouActive}" v-for="(item,i) in runchartTab" :key='i'>
                 <span>{{item}}</span>
             </li>
         </ul>
         <section class="runc-box">
-            <div class="box-head">
-                <p>期号</p>
-                <p>开奖号码</p>
+            <div class="kjhm" v-if="daletouActive==1">
+                <div class="box-head">
+                    <p>期号</p>
+                    <p>开奖号码</p>
+                </div>
+                <ul class="box-content">
+                    <li v-for="(item,i) in runchartData.lottoNums" :key='i'>
+                        <p>{{item.termNum}}</p>
+                        <p>
+                            <span v-for="(data,index) in item.numList" :key='index'>
+                                {{data}}
+                            </span>
+                        </p>
+                    </li>
+                </ul>
             </div>
-            <ul class="box-content">
-                <li>
-                    <p>2018080期</p>
-                    <p>
-                        <span>09</span>
-                        <span>11</span>
-                        <span>11</span>
-                        <span>11</span>
-                        <span>11</span>
-                        <span>11</span>
-                        <span>11</span>
-                    </p>
-                </li>
-            </ul>
         </section>
         <footer class="runc-foot">
-            <div class="kj-foot">
-                第18092期&nbsp;&nbsp;&nbsp;截止时间 07-11 19:00
+            <div class="kj-foot" v-if="daletouActive==1">
+                第{{runchartData.stopTime.split('|')[0]}}期&nbsp;&nbsp;&nbsp;截止时间 {{runchartData.stopTime.split('|')[1]}}
+            </div>
+            <div class="hz-foot" v-if="daletouActive==2">
+                <div class="hz-footTop">
+                    <div class="tab-box">
+                        <div class="xh">选号</div>
+                        <div class="tab" ref="tab">
+                            <div class="tab_content" ref="tabcontent">
+                                <div class="tab_item" v-for="item in 35" :key='item'>
+                                    {{smjs(item)}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-box">
+                        <div class="xh">已选</div>
+                        <div class="tab" ref="stab">
+                            <div class="tab_content" ref="stabcontent">
+                                <div class="tab_item" v-for="(item,i) in h_nums" :key='i'>
+                                    {{item}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hz-footBottom">
+                    <div class="hz-fbleft">
+                        <div class="hz-delete" @click="clearNums()">
+                            <i class="iconfont icon-icon-26"></i>
+                        </div>
+                        <div class="hz-text">
+                            
+                        </div>
+                    </div>
+                    <div class="hz-fbright">
+                        确定
+                    </div>
+                </div>
             </div>
         </footer>
     </div>

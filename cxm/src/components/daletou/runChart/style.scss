@@ -120,10 +120,19 @@
                 p:last-of-type{
                     flex: 3;
                     color: #eb1c24;
+                    span{
+                        margin-right: px2rem(10px);
+                    }
+                    span:last-of-type{
+                        margin-right: 0;
+                    }
                     span:nth-child(6),span:nth-child(7){
                         color: #0081cc;
                     }
                 }
+            }
+            li:last-of-type{
+                border: none;
             }
         }
     }
@@ -132,15 +141,88 @@
         bottom: 0;
         background: white;
         width: 100%;
-        height: px2rem(80px);
         left: 0;
         .kj-foot{
+            height: px2rem(80px);
             height: 100%;
             line-height: px2rem(80px);
             text-align: center;
             font-size: px2rem(26px);
             color: #505050;
             border-top: 1px solid #f0f0f0;
+        }
+        .hz-foot{
+            .hz-footTop{
+                padding: px2rem(10px) 0;
+            }
+            .hz-footBottom{
+                height: px2rem(88px);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .hz-fbleft{
+                    flex: 6.8;
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    border-top: 1px solid #f0f0f0;
+                    .hz-delete{
+                        height: 100%;
+                        padding: 0 px2rem(28px);
+                        display: flex;
+                        align-items: center;
+                        .icon-icon-26{
+                            color: #9f9f9f;
+                            font-size: px2rem(40px);
+                        }
+                    }
+                    .hz-text{
+                        height: px2rem(66px);
+                        font-size: px2rem(22px);
+                        color: #787878;
+                        border-left: 1px solid #f0f0f0;
+                        display: flex;
+                        justify-content: space-between;
+                        flex-direction: column;
+                        padding-left: px2rem(30px); 
+                    }
+                }
+                .hz-fbright{
+                    flex: 3.2;
+                    height: 100%;
+                    text-align: center;
+                    line-height: px2rem(88px);
+                    background: #ea5504;
+                    color: white;
+                    font-size: px2rem(30px);
+                }
+            }
+            .tab-box{
+                height: px2rem(48px);
+                display: flex;
+                align-items: center;
+                .xh{
+                    flex: 1;
+                    line-height: px2rem(48px);
+                    text-align: center;
+                    font-size: px2rem(26px);
+                    color: #9f9f9f;
+                }
+                .tab{
+                    flex: 7;
+                    overflow: hidden;
+                    height: px2rem(48px);
+                    .tab_item{
+                        display: inline-block;
+                        height: px2rem(48px);
+                        line-height: px2rem(48px);
+                        width: px2rem(65px);
+                        text-align: center;
+                        color: #eb1c25;
+                        font-size: px2rem(26px);
+                    }    
+                }
+            }
         }
     }
 }
