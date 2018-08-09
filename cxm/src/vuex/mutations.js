@@ -174,6 +174,17 @@ const mutations = {
     //大乐透tab切换
     DALETOUACTIVE(state, data){
         state.daletouActive = data
+    },
+    RUNCHARTFILTER(state, data){
+        switch(data.type){
+            case '1': state.runchartfilter.compute = data.value;break;
+            case '2': state.runchartfilter.count = data.value;break;
+            case '3': state.runchartfilter.drop = data.value;break;
+            case '4': state.runchartfilter.sort = data.value;break;
+        }
+    },
+    RUNCHARTDATA(state, data){
+        state.runchartData = data
     }
 }
 

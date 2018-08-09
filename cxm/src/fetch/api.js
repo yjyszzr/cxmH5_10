@@ -460,7 +460,11 @@ export default {
     //选号投注
     getTicketInfo(params) {
         return fetchPost('/lotto/lotto/getTicketInfo', params)
-    }
+    },
+    //走势图数据
+    getChartData(params) {
+        return fetchPost('/lotto/lotto/getChartData', params)
+    },
 }
 
 

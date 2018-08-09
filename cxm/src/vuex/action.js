@@ -177,6 +177,17 @@ const actions = {
     changeFinActive({commit},value){
         commit("FINACTIVE", value)
     },
+    //走势图
+    getRunchart({
+        commit
+    }, value) {
+        api.getChartData(value)
+        .then(res => {
+            if (res.code == 0) {
+                commit("RUNCHARTDATA", res.data);
+            }
+        })
+    }
 }
 
 export default actions

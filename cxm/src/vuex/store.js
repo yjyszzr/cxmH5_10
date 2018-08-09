@@ -68,6 +68,13 @@ const state = {
     mark_showAc: false, //充值送弹窗
     pop: '',
     daletouActive: '1',  //大乐透tab
+    runchartfilter: {    //走势图筛选条件
+        compute: 1,   //是否计算统计
+        count: 100,  //期数
+        drop: 1,  //是否显示遗漏
+        sort: 0    //排序方式
+    },
+    runchartData: {},  //走势图数据
 }
 
 export default new Vuex.Store({

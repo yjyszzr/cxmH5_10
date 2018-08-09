@@ -14,10 +14,23 @@ export default {
         goBack() {
             this.$router.go(-1);
         },
+        fetchData(){
+            let data={
+                compute: this.runchartfilter.compute,
+                count: this.runchartfilter.count,
+                drop: this.runchartfilter.drop,
+                sort: this.runchartfilter.sort
+            }
+            this.$store.dispatch("getRunchart",data)
+        }
     },
     computed: {
       ...mapState({
-           daletouActive: state => state.daletouActive
+           daletouActive: state => state.daletouActive,
+           runchartfilter: state => state.runchartfilter
       })
+    },
+    mounted(){
+        this.fetchData()
     }
 }
