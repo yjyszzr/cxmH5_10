@@ -21,7 +21,7 @@
                     </div>
                     <div class="wheel-app">
                         <p>红包已放入您的账户</p>
-                        <p>请登录{{detect==='ios'?'天天体育':'彩小秘'}}APP使用</p>
+                        <p>请登录{{detect==='ios'?'天天体育':fr=='c039'?'必中彩':'彩小秘'}}APP使用</p>
                     </div>
                 </div>
             </div>
@@ -207,6 +207,8 @@ export default {
                         countLog.init(()=>{
                             location.href="https://static.caixiaomi.net/softs/"+this.fr+"/caixiaomi_"+this.fr+".apk"
                         });
+                    }else if(this.fr == 'c239'){
+                        location.href = 'https://static.caixiaomi.net/softs/oppo/bizhongcai_c20039.apk'
                     }else if(this.fr == 'c046'||this.fr == 'c047'){
                         nicetuiLog.init(()=>{
                             location.href="https://static.caixiaomi.net/softs/"+this.fr+"/caixiaomi_"+this.fr+".apk"
