@@ -103,6 +103,28 @@
             width: 100%;
             overflow: auto;
             -webkit-overflow-scrolling: touch !important;
+            li{
+                display: flex;
+                align-items: center;
+                margin: 0 px2rem(20px);
+                border-bottom: 1px solid #f0f0f0;
+                height: px2rem(72px);
+                p{
+                    font-size: px2rem(28px);
+                    text-align: center;
+                }
+                p:first-of-type{
+                    flex: 1;
+                    color: #787878;
+                }
+                p:last-of-type{
+                    flex: 3;
+                    color: #eb1c24;
+                    span:nth-child(6),span:nth-child(7){
+                        color: #0081cc;
+                    }
+                }
+            }
         }
     }
     .runc-foot{
