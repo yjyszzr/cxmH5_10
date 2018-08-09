@@ -149,6 +149,11 @@ export default {
             fr: this.$route.query.fr
         }
     },
+    created(){
+      if(this.fr=='c039'||this.fr=='c239'){
+          document.title = '必中彩'
+      }
+    },
     methods: {
       go(seconds) {
         const SECONDS = seconds * 1000;
@@ -160,7 +165,7 @@ export default {
             if(this.actvieIndex >= this.items.length ) {this.actvieIndex = 0;}
              
             if (this.count >= HALF_SECONDS) {
-               this.i+= 8;
+               this.i+= 10;
                this.count += 50 + this.i;
             } else {
               this.count += 50;
@@ -180,7 +185,7 @@ export default {
               this.actvieIndex = 0
               this.i = 0
               this.count = 0
-              this.go(5)
+              this.go(1)
           }
       },
       close(){

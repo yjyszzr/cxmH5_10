@@ -63,7 +63,7 @@
         methods: {
             title() {
                 if (this.$route.path.split("/")[2]) {
-                    if (this.$route.path.split("/")[3] && this.$route.path.split("/")[3] != 'worldwinner' && this.$route.path.split("/")[3] != 'fsplace') {
+                    if ((this.$route.path.split("/")[3] && this.$route.path.split("/")[3] != 'worldwinner' && this.$route.path.split("/")[3] != 'fsplace')||this.$route.path.split("/")[2]=='wheel') {
                         this.isShowHeader = false;
                     } else {
                         this.isShowHeader = true;

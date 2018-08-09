@@ -514,7 +514,7 @@ const router = new Router({
         path: '/activity/wheel',
         name: 'wheel',
         meta: {
-          title: '大转盘'
+          title: '必中彩'
         },
         component: resolve => require(['@/components/activity/wheel'], resolve)
      },
@@ -820,6 +820,10 @@ router.beforeEach(async(to, from, next) => {
 		)
     }
     let toPath = to.path
+    //落地页区分马甲包
+    if(toPath=='/activity/wheel'&&(to.query.fr=='c039'||to.query.fr=='c239')){
+        document.title = '必中彩';
+    }
     // if(to.meta.title&&wxPd()) {
     //     if(toPath=='/freebuy/singleNote'){
     //         let noteTitle = (id) => {
