@@ -410,7 +410,7 @@
                         if(this.baseDate.chance == '1'){
                             this.$set(item, 'isSelected', type)
                         }else {
-                            Toast("您还许在消费"+this.baseDate.onceBettingAmount+"元才有机会参加呢亲！")
+                            Toast("您还需再消费"+this.baseDate.onceBettingAmount+"元才有机会参加呢亲！")
                         }
                     }
                 }
