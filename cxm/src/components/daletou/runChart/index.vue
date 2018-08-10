@@ -16,7 +16,7 @@
             </li>
         </ul>
         <section class="runc-box">
-            <div class="kjhm" v-if="daletouActive==1">
+            <div class="kjhm" v-show="daletouActive==1">
                 <div class="box-head">
                     <p>期号</p>
                     <p>开奖号码</p>
@@ -32,29 +32,155 @@
                     </li>
                 </ul>
             </div>
+            <div class="hqzs" v-show="daletouActive==2||daletouActive==3">
+                <div class="hq-left">
+                    <div class="hql-top">
+                        期号
+                    </div>
+                    <div ref='hqlist' class="hql-list" v-if="runchartData.preLottoDrop&&daletouActive==2">
+                        <div class="hql-item" v-for="(item,i) in runchartData.preLottoDrop.drop" :key='i'>
+                            {{item.termNum.substr(3)}}
+                        </div>
+                        <div class="hql-item countNum">出现次数</div>
+                        <div class="hql-item averageData">平均遗漏</div>
+                        <div class="hql-item maxData">最大遗漏</div>
+                        <div class="hql-item maxContinue">最大连出</div>
+                    </div>
+                    <div ref='hqlist' class="hql-list" v-if="runchartData.postLottoDrop&&daletouActive==3">
+                        <div class="hql-item" v-for="(item,i) in runchartData.postLottoDrop.drop" :key='i'>
+                            {{item.termNum.substr(3)}}
+                        </div>
+                        <div class="hql-item countNum">出现次数</div>
+                        <div class="hql-item averageData">平均遗漏</div>
+                        <div class="hql-item maxData">最大遗漏</div>
+                        <div class="hql-item maxContinue">最大连出</div>
+                    </div>
+                </div>
+                <div class="hq-right">
+                    <table class="hqr-top" ref='hqrtop'>
+                        <tr v-if="daletouActive==2">
+                            <th class="hqr-nums" v-for="(item,i) in 35" :key='i'>
+                                {{smjs(item)}}
+                            </th>
+                        </tr>
+                        <tr v-if="daletouActive==3">
+                            <th class="hqr-nums" v-for="(item,i) in 12" :key='i'>
+                                {{smjs(item)}}
+                            </th>
+                        </tr>
+                    </table>
+                    <div class="hqr-content" ref='hqrct'>
+                        <!-- 红球走势 -->
+                        <table class="hqrctcontent" ref="hqrctcontent" v-if="runchartData.preLottoDrop&&daletouActive==2">
+                            <tr v-for="(item,i) in runchartData.preLottoDrop.drop" :key='i'>
+                                <td class="hqrct-item" v-for="(data,index) in item.numList" :key='index'>
+                                    <span :class="{ylActive: data=='0'}">{{data=='0'?smjs(index+1):data}}</span>
+                                </td>
+                            </tr>
+                            <tr class="countNum">
+                                <td class="hqrct-item" v-for="(item,i) in runchartData.preLottoDrop.countNum" :key='i'>
+                                    {{item}}
+                                </td>
+                            </tr>
+                            <tr class="averageData">
+                                <td class="hqrct-item" v-for="(item,i) in runchartData.preLottoDrop.averageData" :key='i'>
+                                    {{item}}
+                                </td>
+                            </tr>
+                            <tr class="maxData">
+                                <td class="hqrct-item" v-for="(item,i) in runchartData.preLottoDrop.maxData" :key='i'>
+                                    {{item}}
+                                </td>
+                            </tr>
+                            <tr class="maxContinue">
+                                <td class="hqrct-item" v-for="(item,i) in runchartData.preLottoDrop.maxContinue" :key='i'>
+                                    {{item}}
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- 蓝球走势 -->
+                        <table class="hqrctcontent lqrctcontent" ref="hqrctcontent" v-if="runchartData.postLottoDrop&&daletouActive==3">
+                            <tr v-for="(item,i) in runchartData.postLottoDrop.drop" :key='i'>
+                                <td class="hqrct-item" v-for="(data,index) in item.numList" :key='index'>
+                                    <span :class="{dlActive: data=='0'}">{{data=='0'?smjs(index+1):data}}</span>
+                                </td>
+                            </tr>
+                            <tr class="countNum">
+                                <td class="hqrct-item" v-for="(item,i) in runchartData.postLottoDrop.countNum" :key='i'>
+                                    {{item}}
+                                </td>
+                            </tr>
+                            <tr class="averageData">
+                                <td class="hqrct-item" v-for="(item,i) in runchartData.postLottoDrop.averageData" :key='i'>
+                                    {{item}}
+                                </td>
+                            </tr>
+                            <tr class="maxData">
+                                <td class="hqrct-item" v-for="(item,i) in runchartData.postLottoDrop.maxData" :key='i'>
+                                    {{item}}
+                                </td>
+                            </tr>
+                            <tr class="maxContinue">
+                                <td class="hqrct-item" v-for="(item,i) in runchartData.postLottoDrop.maxContinue" :key='i'>
+                                    {{item}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="hq_hot" v-show="daletouActive==4||daletouActive==5">
+                <ul class="hq_hotTitle">
+                    <li>号码</li>
+                    <li>30期</li>
+                    <li>50期</li>
+                    <li>100期</li>
+                    <li>遗漏</li>
+                </ul>
+                <div class="hq_hotContent">
+                    <div class="hq_hotList"  v-if="daletouActive==4">
+                        <div class="hq_item" v-for="(item,i) in runchartData.preHeatColds" :key='i'>
+                            <p>{{smjs(item.num)}}</p>
+                            <p>{{item.countA}}</p>
+                            <p>{{item.countB}}</p>
+                            <p>{{item.countC}}</p>
+                            <p>{{item.drop}}</p>
+                        </div>
+                    </div>
+                    <div class="hq_hotList" v-if="daletouActive==5" style="border-bottom:1px solid #f0f0f0;">
+                        <div class="hq_item" v-for="(item,i) in runchartData.postHeatColds" :key='i'>
+                            <p style="color:#0081cc;">{{smjs(item.num)}}</p>
+                            <p>{{item.countA}}</p>
+                            <p>{{item.countB}}</p>
+                            <p>{{item.countC}}</p>
+                            <p>{{item.drop}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <footer class="runc-foot">
-            <div class="kj-foot" v-if="daletouActive==1">
+            <div class="kj-foot" v-if="daletouActive==1&&runchartData.stopTime">
                 第{{runchartData.stopTime.split('|')[0]}}期&nbsp;&nbsp;&nbsp;截止时间 {{runchartData.stopTime.split('|')[1]}}
             </div>
-            <div class="hz-foot" v-if="daletouActive==2">
+            <div class="hz-foot" v-show="daletouActive==2||daletouActive==3||daletouActive==4||daletouActive==5">
                 <div class="hz-footTop">
                     <div class="tab-box">
                         <div class="xh">选号</div>
                         <div class="tab" ref="tab">
                             <div class="tab_content" ref="tabcontent">
-                                <div class="tab_item" v-for="item in 35" :key='item'>
+                                <div @click="tabsClick($event,'h')" class="tab_item" v-for="item in 35" :key='item'>
                                     {{smjs(item)}}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="tab-box">
-                        <div class="xh">已选</div>
+                        <div class="xh">选号</div>
                         <div class="tab" ref="stab">
                             <div class="tab_content" ref="stabcontent">
-                                <div class="tab_item" v-for="(item,i) in h_nums" :key='i'>
-                                    {{item}}
+                                <div @click="tabsClick($event,'l')" class="tab_item" v-for="(item,i) in 12" :key='i'>
+                                    {{smjs(item)}}
                                 </div>
                             </div>
                         </div>
@@ -65,13 +191,13 @@
                         <div class="hz-delete" @click="clearNums()">
                             <i class="iconfont icon-icon-26"></i>
                         </div>
-                        <div class="hz-text">
+                        <div class="hz-text" v-html="text">
                             
                         </div>
                     </div>
-                    <div class="hz-fbright">
+                    <button @click="goTouzhu()" class="hz-fbright" :disabled='disabled' :style="{'background':disabled?'#ccc':'#ea5504'}">
                         确定
-                    </div>
+                    </button>
                 </div>
             </div>
         </footer>
