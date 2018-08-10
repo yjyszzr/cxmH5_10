@@ -680,7 +680,6 @@
                                 that.blueBallList.push(item.num)
                             }
                         })
-                        console.log(that.redBallList);
                         this.setSelectBallFn('biaoZhun')
                     }
                     if(localStorage.getItem('selectedIndex')=='1'){
@@ -850,7 +849,6 @@
                     }
                 }
                 if(this.selectedIndex=='1'){
-                    console.log(this.danBlueMaList.length + this.tuoBlueMaList.length);
                     if (this.danRedMaList.length > 0 && this.tuoRedMaList.length > 1 && this.tuoBlueMaList.length > 1&& (this.danRedMaList.length+this.tuoRedMaList.length)>5 && (this.danBlueMaList.length+this.tuoBlueMaList.length)>1) {
                         this.danTuotextType = false
                         this.danTuoZhu.zhuNum = danTuoCount(this.danRedMaList.length,this.tuoRedMaList.length,this.danBlueMaList.length,this.tuoBlueMaList.length)
