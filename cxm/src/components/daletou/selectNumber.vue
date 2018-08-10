@@ -109,7 +109,7 @@
                 </template>
             </div>
             <template v-if="selectedIndex==0">
-                <div  class="ok" :class="!textType?'okcur':''" @click = 'goTouZhuConfirm(!textType)'>
+                <div  class="ok" :class="canOk&&!textType?'okcur':''" @click = 'goTouZhuConfirm(!textType)'>
                     确定
                 </div>
             </template>
@@ -592,7 +592,7 @@
 </style>
 <script>
     import {getCombinationCount, getArrayItems,danTuoCount} from '../../util/common'
-    import {MessageBox, Popup,Indicator} from 'mint-ui';
+    import {MessageBox, Popup,Indicator,Toast} from 'mint-ui';
     import api from '../../fetch/api'
     import GameDescription from "./images/GameDescription@3x.png"
     import LotteryResult from "./images/LotteryResult@3x.png"
@@ -626,6 +626,7 @@
                 blueBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
                 textType: true, //标准选号提示文字
                 danTuotextType: true, //胆拖选号提示文字
+                canOk:true, //是否能点击确定
                 selectZhu: {
                     zhuNum: '',//标注选号注数
                     zhuHe: []  //标准选号组合
@@ -814,18 +815,30 @@
             },
             //标准选号
             biaozhunSelect(item, type) {
-                this.$set(item, 'selected', !item.selected)
                 if (type == 'preList') { //点击前区
-                    if (item.selected) {
-                        this.redBallList.push(item.num);
-                    } else {
+                    if(this.redBallList.length<18){
+                        this.$set(item, 'selected', !item.selected)
+                        if (item.selected) {
+                            this.redBallList.push(item.num);
+                        } else {
+                            var index = this.redBallList.indexOf(item.num);
+                            if (index > -1) {
+                                this.redBallList.splice(index, 1);
+                            }
+                        }
+                    }else {
+                        this.$set(item, 'selected', false)
                         var index = this.redBallList.indexOf(item.num);
                         if (index > -1) {
                             this.redBallList.splice(index, 1);
                         }
+                        if(this.redBallList.length>=18){
+                            Toast('最多只能选择18个红球')
+                        }
                     }
                 }
                 if (type == 'postList') { //点后区
+                    this.$set(item, 'selected', !item.selected)
                     if (item.selected) {
                         this.blueBallList.push(item.num)
                     } else {
@@ -844,6 +857,12 @@
                     if (this.redBallList.length > 4 && this.blueBallList.length > 1) {
                         this.textType = false
                         this.selectZhu.zhuNum = getCombinationCount(this.redBallList.length, 5) * getCombinationCount(this.blueBallList.length, 2)
+                        if(parseInt(this.selectZhu.zhuNum)*2 > 20000){
+                            Toast('单次投注最多2万元')
+                            this.canOk = false
+                            return
+                        }
+                        this.canOk = true
                     } else {
                         this.textType = true
                     }
@@ -872,10 +891,6 @@
                 this.blueBallList = this.blueBallList.concat(getArrayItems(this.blueBallBox, 2))
                 this.setSelectBallFn('biaoZhun')
                 this.setLocalStorageFn('biaoZhun')
-                setTimeout(function () {
-                    that.goTouZhuConfirm(!this.textType)
-                },500)
-
             },
             //胆拖选号
             danTuoSelect(item, index, ballType, type) {
