@@ -663,6 +663,93 @@
             goBack() {
                 this.$router.go(-1);
             },
+            //通过路由来回填选中号码集合
+            setSelectByrouter(){
+                var that = this
+                let ballList = this.$route.query.ballList
+                if (ballList!=undefined){
+                    if(localStorage.getItem('selectedIndex')=='0'){
+                        ballList.forEach(item=>{
+                            if(item.type == 'redBall'){
+                                that.redBallList.push(item.num)
+                            }
+                            if(item.type == 'blueBall'){
+                                that.blueBallList.push(item.num)
+                            }
+                        })
+                        console.log(that.redBallList);
+                        this.setSelectBallFn('biaoZhun')
+                    }
+                    if(localStorage.getItem('selectedIndex')=='1'){
+                        ballList.forEach(item=>{
+                            if(item.type == 'danRedBall'){
+                                that.danRedMaList.push(item.num)
+                            }
+                            if(item.type == 'tuoRedBall'){
+                                that.tuoRedMaList.push(item.num)
+                            }
+                            if(item.type == 'danBlueBall'){
+                                that.danBlueMaList.push(item.num)
+                            }
+                            if(item.type == 'tuoBlueBall'){
+                                that.tuoBlueMaList.push(item.num)
+                            }
+                        })
+                        this.setSelectBallFn('dantuo')
+                    }
+                }
+            },
+            //回显选中球号
+            setSelectBallFn(type){
+                if (type == 'biaoZhun') {
+                    var that = this
+                    this.preList.forEach(item => {
+                        that.redBallList.forEach(sunItem => {
+                            if (item.num == sunItem) {
+                                item.selected = true
+                            }
+                        })
+                    })
+                    this.postList.forEach(item => {
+                        this.blueBallList.forEach(sunItem => {
+                            if (item.num == sunItem) {
+                                item.selected = true
+                            }
+                        })
+                    })
+
+                } else if (type == 'dantuo') {
+                    this.danRedPreList.forEach(item => {
+                        this.danRedMaList.forEach(sunItem => {
+                            if (item.num == sunItem) {
+                                item.selected = true
+                            }
+                        })
+                    })
+                    this.tuoRedPreList.forEach(item => {
+                        this.tuoRedMaList.forEach(sunItem => {
+                            if (item.num == sunItem) {
+                                item.selected = true
+                            }
+                        })
+                    })
+                    this.danBluePostList.forEach(item => {
+                        this.danBlueMaList.forEach(sunItem => {
+                            if (item.num == sunItem) {
+                                item.selected = true
+                            }
+                        })
+                    })
+                    this.tuoBluePostList.forEach(item => {
+                        this.tuoBlueMaList.forEach(sunItem => {
+                            if (item.num == sunItem) {
+                                item.selected = true
+                            }
+                        })
+                    })
+                }
+                this.viewText()
+            },
             //获取详情
             getTicketInfoFn() {
                 api.getTicketInfo('')
@@ -718,7 +805,8 @@
 
                             })
                         }
-                        this.getLocalStorageFn('biaoZhun')
+                        this.setSelectByrouter()
+                        //this.getLocalStorageFn('biaoZhun')
                     })
             },
             //标准选号
@@ -780,21 +868,7 @@
                 this.blueBallList = []
                 this.redBallList = this.redBallList.concat(getArrayItems(this.redBallBox, 5))
                 this.blueBallList = this.blueBallList.concat(getArrayItems(this.blueBallBox, 2))
-                getArrayItems(this.redBallBox, 5).forEach(item => {
-                    that.preList.forEach(sunItem => {
-                        if (sunItem.num == item) {
-                            sunItem.selected = true
-                        }
-                    })
-                })
-                getArrayItems(this.blueBallBox, 2).forEach(item => {
-                    that.postList.forEach(sunItem => {
-                        if (sunItem.num == item) {
-                            sunItem.selected = true
-                        }
-                    })
-                })
-                this.viewText()
+                this.setSelectBallFn('biaoZhun')
                 this.setLocalStorageFn('biaoZhun')
                 setTimeout(function () {
                     that.goTouZhuConfirm(!this.textType)
@@ -888,67 +962,26 @@
                     var that = this
                     if (JSON.parse(localStorage.getItem('redBallList')) != null) {
                         this.redBallList = JSON.parse(localStorage.getItem('redBallList'))
-                        this.preList.forEach(item => {
-                            that.redBallList.forEach(sunItem => {
-                                if (item.num == sunItem) {
-                                    item.selected = true
-                                }
-                            })
-                        })
                     }
                     if (JSON.parse(localStorage.getItem('redBallList')) != null) {
                         this.blueBallList = JSON.parse(localStorage.getItem('blueBallList'))
-                        console.log(this.postList)
-                        this.postList.forEach(item => {
-                            this.blueBallList.forEach(sunItem => {
-                                if (item.num == sunItem) {
-                                    item.selected = true
-                                }
-                            })
-                        })
-                        console.log(this.postList)
                     }
+                    this.setSelectBallFn('biaoZhun')
+
                 } else if (type == 'dantuo') {
                     if (JSON.parse(localStorage.getItem('danRedMaList')) != null) {
                         this.danRedMaList = JSON.parse(localStorage.getItem('danRedMaList'))
-                        this.danRedPreList.forEach(item => {
-                            this.danRedMaList.forEach(sunItem => {
-                                if (item.num == sunItem) {
-                                    item.selected = true
-                                }
-                            })
-                        })
                     }
                     if (JSON.parse(localStorage.getItem('tuoRedMaList')) != null) {
                         this.tuoRedMaList = JSON.parse(localStorage.getItem('tuoRedMaList'))
-                        this.tuoRedPreList.forEach(item => {
-                            this.tuoRedMaList.forEach(sunItem => {
-                                if (item.num == sunItem) {
-                                    item.selected = true
-                                }
-                            })
-                        })
                     }
                     if (JSON.parse(localStorage.getItem('danBlueMaList')) != null) {
                         this.danBlueMaList = JSON.parse(localStorage.getItem('danBlueMaList'))
-                        this.danBluePostList.forEach(item => {
-                            this.danBlueMaList.forEach(sunItem => {
-                                if (item.num == sunItem) {
-                                    item.selected = true
-                                }
-                            })
-                        })
                     }
                     if (JSON.parse(localStorage.getItem('tuoBlueMaList')) != null) {
                         this.tuoBlueMaList = JSON.parse(localStorage.getItem('tuoBlueMaList'))
-                        this.tuoBluePostList.forEach(item => {
-                            this.tuoBlueMaList.forEach(sunItem => {
-                                if (item.num == sunItem) {
-                                    item.selected = true
-                                }
-                            })
-                        })
                     }
+                    this.setSelectBallFn('dantuo')
                 }
                 this.viewText()
             },
@@ -1049,21 +1082,126 @@
                     })
                 }
             },
+            // 所选球大小排序
+            sortFn(Arr){
+                let min;
+                for(var i=0; i<Arr.length; i++){
+                    for(var j=i; j<Arr.length;j++){
+                        if(Arr[i]>Arr[j]){
+                            min=Arr[j];
+                            Arr[j]=Arr[i];
+                            Arr[i]=min;
+                        }
+                    }
+                }
+                return Arr
+            },
             // 去投注数据处理
             dataProcess(){
+                var that = this
+                let a = false
+                let b = false
+                let c = false
+                let d = false
                 let ballList = []
                 let conformBallList = []
+                // 判断所选号码是否与已有的重复
                 if(JSON.parse(localStorage.getItem('conformBallList'))!=null){
                     conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
+                    if(this.selectedIndex=='0'){
+                        conformBallList.forEach(item=>{
+                            let redBallLength=0
+                            let blueBallLength=0
+                            item.ballList.forEach(sunItem=>{
+                                if(sunItem.type == 'redBall'){
+                                    redBallLength++
+                                    that.redBallList.forEach( redItem=>{
+                                        if(sunItem.num == redItem){
+                                            if(that.redBallList.length == redBallLength){
+                                                a = true
+                                            }
+                                        }
+                                    })
+                                }
+                                if(sunItem.type == 'blueBall'){
+                                    blueBallLength++
+                                    that.blueBallList.forEach( blueItem=>{
+                                        if(sunItem.num == blueItem){
+                                            if(that.blueBallList.length == blueBallLength){
+                                                b = true
+                                            }
+                                        }
+                                    })
+                                }
+                            })
+                        })
+                        if(a&&b){
+                            return
+                        }
+                    }
+                    if(this.selectedIndex=='1'){
+                        conformBallList.forEach(item=>{
+                            let danRedBallLength=0
+                            let tuoRedBallLength=0
+                            let danBlueBallLength=0
+                            let tuoBlueBallLength=0
+                            item.ballList.forEach(sunItem=>{
+                                if(sunItem.type == 'danRedBall'){
+                                    danRedBallLength++
+                                    that.danRedMaList.forEach( redItem=>{
+                                        if(sunItem.num == redItem){
+                                            if(that.danRedMaList.length == danRedBallLength){
+                                                a = true
+                                            }
+                                        }
+                                    })
+                                }
+                                if(sunItem.type == 'tuoRedBall'){
+                                    tuoRedBallLength++
+                                    that.tuoRedMaList.forEach( redItem=>{
+                                        if(sunItem.num == redItem){
+                                            if(that.tuoRedMaList.length == tuoRedBallLength){
+                                                b = true
+                                            }
+                                        }
+                                    })
+                                }
+                                if(sunItem.type == 'danBlueBall'){
+                                    danBlueBallLength++
+                                    that.danBlueMaList.forEach( redItem=>{
+                                        if(sunItem.num == redItem){
+                                            if(that.danBlueMaList.length == danBlueBallLength){
+                                                c = true
+                                            }
+                                        }
+                                    })
+                                }
+                                if(sunItem.type == 'tuoBlueBall'){
+                                    tuoBlueBallLength++
+                                    that.tuoBlueMaList.forEach( redItem=>{
+                                        if(sunItem.num == redItem){
+                                            if(that.tuoBlueMaList.length == tuoBlueBallLength){
+                                                d = true
+                                            }
+                                        }
+                                    })
+                                }
+                            })
+                        })
+                        if(a&&b&&c&&d){
+                            return
+                        }
+                    }
                 }
+                // 将数据整理
                 if(this.selectedIndex=='0'){
-                    this.redBallList.forEach(item=>{
+                    this.sortFn(this.redBallList).forEach(item=>{
                         ballList.push({
                             num:item,
                             type:'redBall'
                         })
                     })
-                    this.blueBallList.forEach(item=>{
+                    this.sortFn(this.blueBallList).forEach(item=>{
                         ballList.push({
                             num:item,
                             type:'blueBall'
@@ -1075,56 +1213,57 @@
                         msg:{
                             zhuNum:this.selectZhu.zhuNum,
                             danFn:ballList.length>7?'复试':'单式',
-                            bei:1,
-                            money:this.selectZhu.zhuNum*2
+                            bei:JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
+                            money:this.selectZhu.zhuNum*2,
+                            baseMoney:this.selectZhu.zhuNum*2,
                         }
                     })
                 }
                 if(this.selectedIndex=='1'){
-                    for(let i=0;i<this.danRedMaList.length+1;i++){
+                    for(let i=0;i<this.sortFn(this.danRedMaList).length+1;i++){
                         if(i<this.danRedMaList.length){
                             ballList.push({
                                 num:this.danRedMaList[i],
-                                type:'redBall'
+                                type:'danRedBall'
                             })
                         }else{
                             ballList.push({
                                 num:'—',
-                                type:'3'
+                                type:'line'
                             })
                         }
                     }
-                    for(let i=0;i<this.tuoRedMaList.length+1;i++){
+                    for(let i=0;i<this.sortFn(this.tuoRedMaList).length+1;i++){
                         if(i<this.tuoRedMaList.length){
                             ballList.push({
                                 num:this.tuoRedMaList[i],
-                                type:'redBall'
+                                type:'tuoRedBall'
                             })
                         }else{
                             ballList.push({
                                 num:'—',
-                                type:'4'
+                                type:'line'
                             })
                         }
                     }
-                    for(let i=0;i<this.danBlueMaList.length+1;i++){
+                    for(let i=0;i<this.sortFn(this.danBlueMaList).length+1;i++){
                         if(i<this.danBlueMaList.length){
                             ballList.push({
                                 num:this.danBlueMaList[i],
-                                type:'blueBall'
+                                type:'danBlueBall'
                             })
                         }else{
                             ballList.push({
                                 num:'—',
-                                type:'5'
+                                type:'line'
                             })
                         }
                     }
-                    for(let i=0;i<this.tuoBlueMaList.length+1;i++){
+                    for(let i=0;i<this.sortFn(this.tuoBlueMaList).length+1;i++){
                         if(i<this.tuoBlueMaList.length){
                             ballList.push({
                                 num:this.tuoBlueMaList[i],
-                                type:'blueBall'
+                                type:'tuoBlueBall'
                             })
                         }
                     }
@@ -1134,8 +1273,9 @@
                         msg:{
                             zhuNum:this.selectZhu.zhuNum,
                             danFn:ballList.length>7?'复试':'单式',
-                            bei:1,
-                            money:this.selectZhu.zhuNum*2
+                            bei:JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
+                            money:this.selectZhu.zhuNum*2,
+                            baseMoney:this.selectZhu.zhuNum*2,
                         }
                     })
                 }
