@@ -59,7 +59,7 @@
             </div>
             <div class="two">
                 <p class="p1">{{adds.zhuNum}}注 {{adds.bei}}倍 共需：<span>￥{{adds.money+'.00'}}</span> 元</p>
-                <p class="ok">确定</p>
+                <p class="ok" :class="canPay?'canpay':'nopay'">确定</p>
             </div>
         </div>
 
@@ -72,6 +72,14 @@
     .touzhu-confirm {
         /*.clearfix:after {content:"."; display:block; height:0; visibility:hidden; clear:both; }*/
         /*.clearfix { *zoom:1; }　*/
+        .canpay{
+            background-color: #EA5504!important;
+            border: 1px solid #EA5504!important;
+        }
+        .nopay{
+            border: 1px solid #c7c7c7!important;
+            background-color: #c7c7c7!important;
+        }
         .head {
             overflow: hidden;
             height: px2rem(100px);
@@ -299,6 +307,7 @@
         name: "touZhuConfirm",
         data() {
             return {
+                canPay:true,
                 conformBallList: [],
                 num:1,
                 adds: {
@@ -466,7 +475,9 @@
             xySelectedClick(){
                 if(this.$refs.xySelected.className=='icon-icon-29 iconfont xySelected'){
                     this.$refs.xySelected.className = 'icon-icon-29 iconfont'
+                    this.canPay  = false
                 }else{
+                    this.canPay  = true
                     this.$refs.xySelected.className = 'icon-icon-29 iconfont xySelected'
                 }
             },
