@@ -592,7 +592,7 @@
 </style>
 <script>
     import {getCombinationCount, getArrayItems,danTuoCount} from '../../util/common'
-    import {MessageBox, Popup} from 'mint-ui';
+    import {MessageBox, Popup,Indicator} from 'mint-ui';
     import api from '../../fetch/api'
     import GameDescription from "./images/GameDescription@3x.png"
     import LotteryResult from "./images/LotteryResult@3x.png"
@@ -654,6 +654,9 @@
                     }
                 ]
             }
+        },
+        beforeCreate() {
+            Indicator.open()
         },
         created() {
             this.getTicketInfoFn()
@@ -755,6 +758,7 @@
                 api.getTicketInfo('')
                     .then(res => {
                         if (res.code == 0) {
+                            Indicator.close()
                             this.data = res.data
                             this.prizeList = res.data.prizeList
                             res.data.postList.forEach((item, index) => {
@@ -1271,11 +1275,11 @@
                         ballList:ballList,
                         ballType:'dantuo',
                         msg:{
-                            zhuNum:this.selectZhu.zhuNum,
+                            zhuNum:this.danTuoZhu.zhuNum,
                             danFn:ballList.length>7?'复试':'单式',
                             bei:JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
-                            money:this.selectZhu.zhuNum*2,
-                            baseMoney:this.selectZhu.zhuNum*2,
+                            money:this.danTuoZhu.zhuNum*2,
+                            baseMoney:this.danTuoZhu.zhuNum*2,
                         }
                     })
                 }

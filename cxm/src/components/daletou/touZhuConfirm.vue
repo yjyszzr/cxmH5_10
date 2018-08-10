@@ -43,18 +43,19 @@
                         <span class="go-detalis" @click="goSelect(item)"><img src="../../assets/img/arange.png" alt=""></span>
                     </li>
                 </ul>
+                <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"> </i> <p> 我已阅读并同意<router-link to="/freebuy/protocol">《彩小秘投注服务协议》</router-link></p></div>
             </div>
         </div>
         <div class="footer">
             <div class="one">
-                <div class="add-box">
+                <div class="add-box" @click="addOne(true)">
                     <div class='add-in'>
                         <span class="add-goOn"><img :src="adds.imgUrl" alt=""></span>
                         <span>追加投注</span>
                     </div>
-                    <p @click="addOne(true)">每注追加1元，单注最高奖金1600万</p>
+                    <p>每注追加1元，单注最高奖金1600万</p>
                 </div>
-                <p class="multiple" @click='mupClick()'>倍数 {{adds.bei}} 倍</p>
+                <p class="multiple" @click='mupClick()'>倍数 {{adds.bei}} 倍 <i></i></p>
             </div>
             <div class="two">
                 <p class="p1">{{adds.zhuNum}}注 {{adds.bei}}倍 共需：<span>￥{{adds.money+'.00'}}</span> 元</p>
@@ -99,6 +100,9 @@
             }
         }
         .body {
+            .xySelected{
+                color: #e95504!important;
+            }
             .redBall {
                 color: #eb1c24 !important;
             }
@@ -242,6 +246,16 @@
                     justify-content: center;
                     flex: 1;
                     border-left: 1px solid #c7c7c7;
+                    position: relative;
+                    i{
+                        width: px2rem(20px);
+                        height: px2rem(20px);
+                        background: url(../../assets/img/free/Clickable@2x.png);
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        background-size: 100% 100%;
+                    }
 
                 }
             }
@@ -277,7 +291,7 @@
 </style>
 <script>
     import {getArrayItems} from '../../util/common'
-    import {MessageBox, Popup} from 'mint-ui';
+    import {MessageBox, Popup,Indicator} from 'mint-ui';
     import SelectionBox from "./images/SelectionBox1@3x.png"
     import Selected from "./images/Selected1@3x.png"
 
@@ -304,7 +318,9 @@
             this.getBallFn()
             this.addOne()
         },
+        mounted(){
 
+        },
         methods: {
             //在localStor中获取数据
             getBallFn() {
@@ -446,6 +462,13 @@
                         ballList: item.ballList
                     }
                 })
+            },
+            xySelectedClick(){
+                if(this.$refs.xySelected.className=='icon-icon-29 iconfont xySelected'){
+                    this.$refs.xySelected.className = 'icon-icon-29 iconfont'
+                }else{
+                    this.$refs.xySelected.className = 'icon-icon-29 iconfont xySelected'
+                }
             },
             // 选择倍数
             mupClick() {

@@ -25,8 +25,8 @@ export default {
 		}
 	},
 	beforeCreate() {
-		Indicator.open()
-	},
+        Indicator.open()
+    },
 	created() {
 
 	},
