@@ -693,6 +693,18 @@ const router = new Router({
           name: 'programmeDetails',
           component: resolve => require(['@/components/daletou/programmeDetails.vue'], resolve)
       },
+      // 胆拖介绍
+      {
+          path: '/lottery/daletou/whatDantuo',
+          name: 'whatDantuo',
+          component: resolve => require(['@/components/daletou/whatDantuo.vue'], resolve)
+      },
+      // 玩法帮助
+      {
+          path: '/lottery/daletou/playHelp',
+          name: 'playHelp',
+          component: resolve => require(['@/components/daletou/playHelp.vue'], resolve)
+      },
   ]
 })
 

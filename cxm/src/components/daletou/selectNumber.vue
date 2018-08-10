@@ -49,7 +49,7 @@
                 </div>
                 <!--胆拖选号-->
                 <div class="dantuo" v-if="selectedIndex=='1'">
-                    <p class="what-dantuo" @click="popdantuo = !popdantuo"> 什么是胆拖？</p>
+                    <router-link to="/lottery/daletou/whatDantuo"> <p class="what-dantuo" >什么是胆拖？</p></router-link>
                     <div class="ball-box">
                         <div class="selection dantuo-selection">
                             <p class="desceibe">胆码-红球，至多选4个，至少选1个</p>
@@ -170,18 +170,18 @@
             </mt-popup>
         </div>
         <!--胆拖介绍-->
-        <div class="popdantuo-box">
-            <mt-popup
-                    popup-transition="popup-fade"
-                    v-model="popdantuo">
-                <div class="dantuo-pop">
-                    <p class="dantuo-pop-title">活动说明</p>
-                    <div class="dantuo-pop-body">
-                        <p>1.erwerwerewrwrwerewrw</p>
-                    </div>
-                </div>
-            </mt-popup>
-        </div>
+        <!--<div class="popdantuo-box">-->
+            <!--<mt-popup-->
+                    <!--popup-transition="popup-fade"-->
+                    <!--v-model="popdantuo">-->
+                <!--<div class="dantuo-pop">-->
+                    <!--<p class="dantuo-pop-title">活动说明</p>-->
+                    <!--<div class="dantuo-pop-body">-->
+                        <!--<p>1.erwerwerewrwrwerewrw</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</mt-popup>-->
+        <!--</div>-->
 
 
     </div>
@@ -606,7 +606,7 @@
                 popShow: false, //菜单列表弹窗
                 collapseShow: false, //折叠选号方式
                 popupVisible: false,//历史开奖列表
-                popdantuo: false,//胆拖介绍
+                //popdantuo: false,//胆拖介绍
                 historyMiss: true,//显示历史遗漏
                 selectedIndex: JSON.parse(localStorage.getItem('selectedIndex'))?JSON.parse(localStorage.getItem('selectedIndex')):'0',//'0'标准选号 '1'胆拖选号
                 preList: [],//前区遗漏
@@ -1062,7 +1062,7 @@
             },
             //投注方式选择
             numType(index) {
-                localStorage.setItem('selectedIndex', '0')
+                localStorage.setItem('selectedIndex', index)
                 this.selectedIndex = index
                 if (index == '1') {
                     this.getLocalStorageFn('dantuo')
@@ -1072,6 +1072,11 @@
             goNext(item) {
                 if (item.name == '隐藏遗漏') {
                     this.historyMiss = !this.historyMiss
+                }
+                if (item.name == '玩法帮助') {
+                    this.$router.push({
+                        path:'/lottery/daletou/playHelp'
+                    })
                 }
             },
             // 投注确认
