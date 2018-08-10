@@ -30,31 +30,36 @@
                         <span class="delimg" @click="delItem(index)"><img src="../../assets/img/sut.png" alt=""></span>
                         <div class="item-text">
                             <div class="item-num">
-                                <ul class="sun-ul" >
-                                    <li class="item-sun-li" v-for="(sunitem,index) in item.ballList" :key=index :class="sunitem.type=='redBall'?'redBall':sunitem.type=='blueBall'?'blueBall':'gray'">{{sunitem.num}}</li>
+                                <ul class="sun-ul">
+                                    <li class="item-sun-li" v-for="(sunitem,index) in item.ballList" :key=index
+                                        :class="(sunitem.type == 'redBall'||sunitem.type=='tuoRedBall'||sunitem.type=='danRedBall')?'redBall':(sunitem.type=='blueBall'||sunitem.type=='danBlueBall'||sunitem.type=='tuoBlueBall')?'blueBall':'gray'">
+                                        {{sunitem.num}}
+                                    </li>
                                 </ul>
                             </div>
-                            <p class="item-describe">{{item.msg.danFn}} {{item.msg.zhuNum}}注 {{item.msg.bei}}倍 {{item.msg.money+'.00'}} 元</p>
+                            <p class="item-describe">{{item.msg.danFn}} {{item.msg.zhuNum}}注 {{item.msg.bei}}倍
+                                {{item.msg.money+'.00'}} 元</p>
                         </div>
-                        <span class="go-detalis"><img src="../../assets/img/arange.png" alt=""></span>
+                        <span class="go-detalis" @click="goSelect(item)"><img src="../../assets/img/arange.png" alt=""></span>
                     </li>
                 </ul>
+                <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"> </i> <p> 我已阅读并同意<router-link to="/freebuy/protocol">《彩小秘投注服务协议》</router-link></p></div>
             </div>
         </div>
         <div class="footer">
             <div class="one">
-                <div class="add-box">
+                <div class="add-box" @click="addOne(true)">
                     <div class='add-in'>
-                        <span class="add"></span>
+                        <span class="add-goOn"><img :src="adds.imgUrl" alt=""></span>
                         <span>追加投注</span>
                     </div>
                     <p>每注追加1元，单注最高奖金1600万</p>
                 </div>
-                <p class="multiple" @click='mupClick()'>倍数 {{$store.state.mark_playObj.mupNum}} 倍</p>
+                <p class="multiple" @click='mupClick()'>倍数 {{adds.bei}} 倍 <i></i></p>
             </div>
             <div class="two">
-                <p class="p1">4注5倍 共需：<span>￥20</span></p>
-                <p class="ok">确定</p>
+                <p class="p1">{{adds.zhuNum}}注 {{adds.bei}}倍 共需：<span>￥{{adds.money+'.00'}}</span> 元</p>
+                <p class="ok" :class="canPay?'canpay':'nopay'">确定</p>
             </div>
         </div>
 
@@ -67,6 +72,14 @@
     .touzhu-confirm {
         /*.clearfix:after {content:"."; display:block; height:0; visibility:hidden; clear:both; }*/
         /*.clearfix { *zoom:1; }　*/
+        .canpay{
+            background-color: #EA5504!important;
+            border: 1px solid #EA5504!important;
+        }
+        .nopay{
+            border: 1px solid #c7c7c7!important;
+            background-color: #c7c7c7!important;
+        }
         .head {
             overflow: hidden;
             height: px2rem(100px);
@@ -90,27 +103,30 @@
                 color: #505050;
 
             }
-            .memu{
+            .memu {
                 width: px2rem(30px);
             }
         }
-        .body{
-            .redBall{
-                color: #eb1c24!important;
+        .body {
+            .xySelected{
+                color: #e95504!important;
             }
-            .blueBall{
-                color: #0081cc!important;
+            .redBall {
+                color: #eb1c24 !important;
             }
-            .gray{
-                color: #c7c7c7!important;
+            .blueBall {
+                color: #0081cc !important;
             }
-            .add{
+            .gray {
+                color: #c7c7c7 !important;
+            }
+            .add {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-direction: row;
                 background-color: #ffffff;
-                .add-item{
+                .add-item {
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -121,27 +137,27 @@
                     border-radius: px2rem(20px);
                     font-size: px2rem(26px);
                     color: #f5911e;
-                    .img-box{
+                    .img-box {
                         display: inline-block;
-                        height:px2rem(40px) ;
+                        height: px2rem(40px);
                         width: px2rem(40px);
                         overflow: hidden;
                         margin-right: px2rem(20px);
-                        img{
+                        img {
                             width: 100%;
                         }
                     }
                 }
             }
-            .zhu-box{
+            .zhu-box {
                 width: 100%;
                 position: absolute;
                 top: px2rem(200px);
                 bottom: px2rem(200px);
                 overflow: auto;
-                .item-ul{
+                .item-ul {
                     width: 100%;
-                    .item-li{
+                    .item-li {
                         /*height: px2rem(140px);*/
                         box-sizing: border-box;
                         width: 100%;
@@ -151,42 +167,42 @@
                         justify-content: space-between;
                         align-items: center;
                         padding: px2rem(30px) px2rem(30px);
-                        .item-text{
-                            width: 80%;
-                            .item-num{
+                        .item-text {
+                            max-width: 80%;
+                            .item-num {
                                 font-size: px2rem(32px);
-                                .sun-ul{
+                                .sun-ul {
                                     display: flex;
                                     align-items: center;
                                     flex-direction: row;
                                     flex-wrap: wrap;
-                                    li{
-                                        padding: 0 px2rem(15px);
+                                    li {
+                                        padding: 0 px2rem(10px);
                                     }
                                 }
                             }
-                            .item-describe{
+                            .item-describe {
                                 font-size: px2rem(26px);
                                 color: #787878;
                                 padding: px2rem(10px) px2rem(15px);
                             }
                         }
-                        .delimg{
+                        .delimg {
                             display: inline-block;
                             padding: px2rem(20px) px2rem(30px) px2rem(20px) 0;
 
-                            img{
+                            img {
                                 height: px2rem(30px);
                                 width: px2rem(30px);
                                 overflow: hidden;
                             }
                         }
-                        .go-detalis{
+                        .go-detalis {
                             display: inline-block;
                             padding: px2rem(20px) 0 px2rem(20px) px2rem(30px);
-                            img{
+                            img {
                                 height: px2rem(30px);
-                                width: px2rem(25px);
+                                width: px2rem(20px);
                                 overflow: hidden;
                             }
                         }
@@ -194,7 +210,7 @@
                 }
             }
         }
-        .footer{
+        .footer {
             box-sizing: border-box;
             width: 100%;
             position: absolute;
@@ -202,11 +218,11 @@
             background-color: #ffffff;
             display: flex;
             flex-direction: column;
-            .one{
+            .one {
                 display: flex;
                 justify-content: space-between;
                 height: px2rem(100px);
-                .add-box{
+                .add-box {
                     box-sizing: border-box;
                     display: flex;
                     flex-direction: column;
@@ -215,52 +231,64 @@
                     padding-left: px2rem(30px);
                     flex: 2;
                     font-size: px2rem(24px);
-                    p{
+                    p {
                         color: #9f9f9f;
                     }
-                    .add-in{
+                    .add-in {
                         display: flex;
                         align-items: center;
-                        .add{
+                        margin-bottom: px2rem(5px);
+                        .add-goOn {
                             display: inline-block;
-                            border-radius: 4px;
-                            height: px2rem(34px);
-                            width: px2rem(34px);
-                            border: 1px solid #c7c7c7;
+                            margin-right: px2rem(15px);
+                            img {
+                                height: px2rem(34px);
+                                width: px2rem(34px);
+                            }
                         }
                     }
                 }
-                .multiple{
+                .multiple {
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     flex: 1;
                     border-left: 1px solid #c7c7c7;
+                    position: relative;
+                    i{
+                        width: px2rem(20px);
+                        height: px2rem(20px);
+                        background: url(../../assets/img/free/Clickable@2x.png);
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        background-size: 100% 100%;
+                    }
 
                 }
             }
-            .two{
+            .two {
                 height: px2rem(100px);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 font-size: 24px;
                 color: #9f9f9f;
-                .p1{
+                .p1 {
                     line-height: px2rem(100px);
                     border-top: 1px solid #c7c7c7;
                     padding-left: px2rem(30px);
                     font-size: px2rem(28px);
                     flex: 2;
-                    span{
-                        color:#ea5504;
+                    span {
+                        color: #ea5504;
                     }
                 }
-                .ok{
+                .ok {
                     flex: 1;
                     text-align: center;
                     line-height: px2rem(100px);
-                    background-color:#ea5504 ;
+                    background-color: #ea5504;
                     border: 1px solid #ea5504;
                     color: #ffffff;
                     font-size: px2rem(28px);
@@ -271,100 +299,220 @@
 </style>
 <script>
     import {getArrayItems} from '../../util/common'
+    import {MessageBox, Popup,Indicator} from 'mint-ui';
+    import SelectionBox from "./images/SelectionBox1@3x.png"
+    import Selected from "./images/Selected1@3x.png"
+
     export default {
         name: "touZhuConfirm",
         data() {
-            return{
-                conformBallList:[],
+            return {
+                canPay:true,
+                conformBallList: [],
+                num:1,
+                adds: {
+                    add: false,  //是否追加 默认不追加
+                    imgUrl: SelectionBox,
+                    zhuNum:0,
+                    bei: JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
+                    money:0,
+                },
                 redBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'],
                 blueBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
             }
         },
         created() {
+            this.$store.state.mark_playObj.mupNum = 1
+            this.$emit('closeMarkCz')
             this.getBallFn()
+            this.addOne()
         },
-        methods:{
+        mounted(){
+
+        },
+        methods: {
             //在localStor中获取数据
             getBallFn() {
                 this.conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
-            },
-            // 头部返回
-            goBack() {
-                this.$router.go(-1);
-            },
-            //手动添加
-            handAdd(){
-                this.$router.push({
-                    path:'/lottery/daletou/selectnumber'
+                this.adds.zhuNum = 0
+                this.adds.money = 0
+                this.conformBallList.forEach(item => {
+                    this.adds.zhuNum = this.adds.zhuNum + parseInt(item.msg.zhuNum)
+                    this.adds.money = this.adds.money + parseInt(item.msg.money)
                 })
             },
-            //机选
-            machineSelection(type){
-                if(type=='0'){
-                    let ballList = []
-                    getArrayItems(this.redBallBox, 5).forEach(item=>{
-                        ballList.push({
-                            num:item,
-                            type:'redBall'
-                        })
-                    })
-                    getArrayItems(this.blueBallBox, 2).forEach(item=>{
-                        ballList.push({
-                            num:item,
-                            type:'blueBall',
-                        })
-                    })
-                    this.conformBallList.push({
-                        ballList:ballList,
-                        ballType:'biaozhun',
-                        msg:{
-                            zhuNum:'1',
-                            danFn:'单式',
-                            bei:1,
-                            money:2
-                        }
-                    })
+            //追加一注
+            addOne(ckick) {
+                if(localStorage.getItem('adds')!=null){
+                    this.adds = JSON.parse(localStorage.getItem('adds'))
                 }
-                if(type=='1'){
-                    for (let i=0;i<5;i++){
-                        let ballList = []
-                        getArrayItems(this.redBallBox, 5).forEach(item=>{
-                            ballList.push({
-                                num:item,
-                                type:'redBall'
-                            })
+                if(ckick){
+                    this.adds.add = !this.adds.add
+                    if (this.adds.add) {
+                        this.adds.imgUrl = Selected
+                        this.conformBallList.forEach(item => {
+                            this.$set(item.msg, 'baseMoney', (parseInt(item.msg.baseMoney) + 1))
+                            this.$set(item.msg, 'money', parseInt(item.msg.baseMoney)*item.msg.bei)
                         })
-                        getArrayItems(this.blueBallBox, 2).forEach(item=>{
-                            ballList.push({
-                                num:item,
-                                type:'blueBall'
-                            })
+                    } else {
+                        this.adds.imgUrl = SelectionBox
+                        this.conformBallList.forEach(item => {
+                            this.$set(item.msg, 'baseMoney', (parseInt(item.msg.baseMoney) - 1))
+                            this.$set(item.msg, 'money', parseInt(item.msg.baseMoney)*item.msg.bei)
                         })
-                        this.conformBallList.push({
-                            ballList:ballList,
-                            ballType:'biaozhun',
-                            msg:{
-                                zhuNum:'1',
-                                danFn:'单式',
-                                bei:1,
-                                money:2
+                    }
+                }else {
+                    if(this.adds.add){
+                        this.conformBallList.forEach(item => {
+                            if(item.msg.baseMoney%2==0){
+                                this.$set(item.msg, 'baseMoney', (parseInt(item.msg.baseMoney) + 1))
+                                this.$set(item.msg, 'money', parseInt(item.msg.baseMoney)*item.msg.bei)
                             }
                         })
                     }
                 }
-                localStorage.setItem('conformBallList',JSON.stringify(this.conformBallList))
+                localStorage.setItem('adds', JSON.stringify(this.adds))
+                localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
+                this.getBallFn()
+            },
+            // 头部返回
+            goBack() {
+                MessageBox.confirm('确定清空所选号码吗?', '温馨提示').then(action => {
+                    localStorage.setItem('conformBallList', JSON.stringify([]))
+                    this.adds.bei=1
+                    this.adds.add=false
+                    this.adds.imgUrl=SelectionBox
+                    localStorage.setItem('adds', JSON.stringify(this.adds))
+                    this.$router.go(-1);
+                });
 
             },
+            //手动添加
+            handAdd() {
+                this.$router.push({
+                    path: '/lottery/daletou/selectnumber'
+                })
+            },
+            //机选
+            machineSelection(type) {
+                if (type == '0') {
+                    let ballList = []
+                    getArrayItems(this.redBallBox, 5).forEach(item => {
+                        ballList.push({
+                            num: item,
+                            type: 'redBall'
+                        })
+                    })
+                    getArrayItems(this.blueBallBox, 2).forEach(item => {
+                        ballList.push({
+                            num: item,
+                            type: 'blueBall',
+                        })
+                    })
+                    this.conformBallList.push({
+                        ballList: ballList,
+                        ballType: 'biaozhun',
+                        msg: {
+                            zhuNum: '1',
+                            danFn: '单式',
+                            bei: this.adds.bei,
+                            money: 2,
+                            baseMoney: 2
+                        }
+                    })
+                }
+                if (type == '1') {
+                    for (let i = 0; i < 5; i++) {
+                        let ballList = []
+                        getArrayItems(this.redBallBox, 5).forEach(item => {
+                            ballList.push({
+                                num: item,
+                                type: 'redBall'
+                            })
+                        })
+                        getArrayItems(this.blueBallBox, 2).forEach(item => {
+                            ballList.push({
+                                num: item,
+                                type: 'blueBall'
+                            })
+                        })
+                        this.conformBallList.push({
+                            ballList: ballList,
+                            ballType: 'biaozhun',
+                            msg: {
+                                zhuNum: '1',
+                                danFn: '单式',
+                                bei: this.adds.bei,
+                                money: 2,
+                                baseMoney: 2
+                            }
+                        })
+                    }
+                }
+                localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
+                this.getBallFn()
+                this.addOne()
+            },
             //删除
-            delItem(index){
-                this.conformBallList.splice(index,1)
-                localStorage.setItem('conformBallList',JSON.stringify(this.conformBallList))
+            delItem(index) {
+                this.conformBallList.splice(index, 1)
+                localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
+                this.getBallFn()
+            },
+            goSelect(item) {
+                if (item.ballType == 'biaozhun') {
+                    localStorage.setItem('selectedIndex', '0')
+                } else {
+                    localStorage.setItem('selectedIndex', '1')
+                }
+                this.$router.push({
+                    path: "/lottery/daletou/selectnumber",
+                    query: {
+                        ballList: item.ballList
+                    }
+                })
+            },
+            xySelectedClick(){
+                if(this.$refs.xySelected.className=='icon-icon-29 iconfont xySelected'){
+                    this.$refs.xySelected.className = 'icon-icon-29 iconfont'
+                    this.canPay  = false
+                }else{
+                    this.canPay  = true
+                    this.$refs.xySelected.className = 'icon-icon-29 iconfont xySelected'
+                }
             },
             // 选择倍数
             mupClick() {
                 this.$store.state.mark_playObj.mark_playBox = true
                 this.$store.state.mark_playObj.mark_play = '2'
             },
+        },
+        computed:{
+            bei(){
+                return this.$store.state.mark_playObj.mupNum
+            }
+        },
+        watch: {
+            // 加倍
+            bei(a,b){
+                if(this.num!=1){
+                    this.adds.money = 0
+                    this.conformBallList.forEach(item => {
+                        item.msg.bei = a
+                        item.msg.money = a*item.msg.baseMoney
+                        this.adds.money = this.adds.money + item.msg.money
+                    })
+                    localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
+                    this.adds.bei = a
+                    localStorage.setItem('adds', JSON.stringify(this.adds))
+                }else {
+                    this.num++
+                }
+            }
+        },
+        destroyed(){
+            this.$store.state.mark_playObj.mupNum = 5
+            this.$emit('closeMarkCz')
         },
         beforeRouteLeave(to, from, next) {
             next()

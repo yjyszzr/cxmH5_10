@@ -59,7 +59,7 @@ export default {
           this.mup = '1'
         }
         this.$store.state.mark_playObj.mupNum = this.mup
-        this.$emit('closeMarkCz')
+          this.$emit('closeMarkCz')
       },
     },
     mounted(){

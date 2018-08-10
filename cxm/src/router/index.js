@@ -681,11 +681,29 @@ const router = new Router({
         name: 'runchart',
         component: resolve => require(['@/components/daletou/runChart'], resolve)
       },
-      // 大乐透选号
+      // 大乐投注确认
       {
           path: '/lottery/daletou/touZhuConfirm',
           name: 'selectNumber',
           component: resolve => require(['@/components/daletou/touZhuConfirm.vue'], resolve)
+      },
+      // 大乐方案详情
+      {
+          path: '/lottery/daletou/programmeDetails',
+          name: 'programmeDetails',
+          component: resolve => require(['@/components/daletou/programmeDetails.vue'], resolve)
+      },
+      // 胆拖介绍
+      {
+          path: '/lottery/daletou/whatDantuo',
+          name: 'whatDantuo',
+          component: resolve => require(['@/components/daletou/whatDantuo.vue'], resolve)
+      },
+      // 玩法帮助
+      {
+          path: '/lottery/daletou/playHelp',
+          name: 'playHelp',
+          component: resolve => require(['@/components/daletou/playHelp.vue'], resolve)
       },
   ]
 })
