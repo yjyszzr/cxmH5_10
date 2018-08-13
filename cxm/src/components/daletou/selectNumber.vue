@@ -663,6 +663,7 @@
         },
         created() {
             this.getTicketInfoFn()
+            this.yaoyiyao()
         },
         methods: {
             // 头部返回
@@ -875,6 +876,38 @@
                         this.danTuoZhu.zhuNum = danTuoCount(this.danRedMaList.length, this.tuoRedMaList.length, this.danBlueMaList.length, this.tuoBlueMaList.length)
                     } else {
                         this.danTuotextType = true
+                    }
+                }
+            },
+            //摇一摇选号
+            yaoyiyao(){
+                var that = this
+                //运动事件监听
+                if (window.DeviceMotionEvent) {
+                    window.addEventListener('devicemotion',deviceMotionHandler,false);
+                }
+                //获取加速度信息
+                //通过监听上一步获取到的x, y, z 值在一定时间范围内的变化率，进行设备是否有进行晃动的判断。
+                //而为了防止正常移动的误判，需要给该变化率设置一个合适的临界值。
+                var SHAKE_THRESHOLD = 18000;
+                var last_update = 0;
+                var x, y, z, last_x = 0, last_y = 0, last_z = 0;
+                function deviceMotionHandler(eventData) {
+                    var acceleration =eventData.accelerationIncludingGravity;
+                    var curTime = new Date().getTime();
+                    if ((curTime-last_update)> 25) {
+                        var diffTime = curTime -last_update;
+                        last_update = curTime;
+                        x = acceleration.x;
+                        y = acceleration.y;
+                        z = acceleration.z;
+                        var speed = Math.abs(x +y + z - last_x - last_y - last_z) / diffTime * 10000;
+                        if (speed > SHAKE_THRESHOLD) {
+                            that.machineSelection()
+                        }
+                        last_x = x;
+                        last_y = y;
+                        last_z = z;
                     }
                 }
             },
@@ -1099,6 +1132,10 @@
                     this.$router.push({
                         path: '/lottery/daletou/runchart'
                     })
+                }if (item.name == '开奖结果') {
+                    this.$router.push({
+                        path: '/lottery/daletou/programmeDetails'
+                    })
                 }
             },
             // 投注确认
@@ -1317,31 +1354,6 @@
                     }
                 }
                 this.dataProcess()
-            },
-
-            //获得注数
-            combination: (arr /*n需要组合的一维数组*/, num /*m需要取几个元素来组合*/, fun /*对组合后的元素的处理函数，如全排列permutate*/) => {
-                /*这里假设num最大值为10 一般A(n,m)中的m应该不会太大 */
-                if (arr.length < num || num > 10) {
-                    return [];
-                }
-                var variable = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u"];
-                var replaceStr = "#$#";
-                var str = " var arr=arguments[0]; var fun=arguments[1];  var ret=[]; for (var a = 0; a < arr.length; a++) { " + replaceStr + " } return ret;"
-                for (var i = 1; i < num; i++) {
-                    str = str.replace(replaceStr, " for (var " + variable[i] + " =" + variable[i - 1] + "+ 1; " + variable[i] + " < arr.length; " + variable[i] + "++) { " + replaceStr + "  }")
-                }
-                var temp = " var temp= []; ";
-                for (var i = 0; i < num; i++) {
-                    temp += "temp.push(arr[" + variable[i] + "]); ";
-                }
-                if (fun) {
-                    temp += " ret.push(fun(temp)); ";
-                } else {
-                    temp += " ret.push(temp); ";
-                }
-                str = str.replace(replaceStr, temp);
-                return (new Function(str)).apply(null, [arr, fun]);
             },
         },
         beforeRouteLeave(to, from, next) {

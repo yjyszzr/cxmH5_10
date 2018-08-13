@@ -155,6 +155,9 @@
                 top: px2rem(200px);
                 bottom: px2rem(200px);
                 overflow: auto;
+                .ment{
+                    margin-bottom: px2rem(40px);
+                }
                 .item-ul {
                     width: 100%;
                     .item-li {
