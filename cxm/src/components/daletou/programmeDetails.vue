@@ -65,12 +65,18 @@
                     <router-link to="/lottery/daletou/playHelp"> <p class="question"> 奖金如何计算</p></router-link>
                 </div>
                 <div class="programme">
-                    <p class="my-num-title">
+                    <div class="my-num-title">
                         <span>方案信息</span>
-                        <span>查看出票方案</span>
-                    </p>
+                        <div class="look-programme" @click = "goProm()">
+                            <span>查看出票方案</span><img src="../../assets/img/arange.png" alt="">
+                        </div>
+                    </div>
                     <div class="my-num-main">
-
+                        <ul>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -250,6 +256,18 @@
                     display: flex;
                     font-size: px2rem(26px);
                     justify-content: space-between;
+                    .look-programme{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        img{
+                            margin-left: px2rem(15px);
+                            margin-right: px2rem(15px);
+                            height: px2rem(25px);
+                            width: px2rem(15px);
+                        }
+                    }
+
                 }
                 .my-num-main{
                     width: 100%;
@@ -784,6 +802,11 @@
             // 头部返回
             goBack() {
                 this.$router.go(-1);
+            },
+            goProm(){
+                this.$router.push({
+                    path:"/lottery/daletou/ticketScheme"
+                })
             },
             //获取详情
             getLottoOrderDetailFn() {

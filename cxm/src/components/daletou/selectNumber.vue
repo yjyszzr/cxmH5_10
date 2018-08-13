@@ -1095,6 +1095,11 @@
                         path: '/lottery/daletou/playHelp'
                     })
                 }
+                if (item.name == '走势图') {
+                    this.$router.push({
+                        path: '/lottery/daletou/runchart'
+                    })
+                }
             },
             // 投注确认
             goTouZhuConfirm(key, key2) {
