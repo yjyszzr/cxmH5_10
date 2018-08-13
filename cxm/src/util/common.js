@@ -27,7 +27,7 @@ export let means = (arg) =>{
         },
         //app title
         isTitle: window.getCxmTitle = function(){
-            return '彩小秘·'+arg
+            return arg
         }
     }
     return appMeans
