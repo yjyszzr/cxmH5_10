@@ -1,7 +1,7 @@
 import api from '../../../fetch/api'
 import {mapState} from 'vuex'
 import BScroll from 'better-scroll'
-import {Indicator} from 'mint-ui'
+import {Indicator,Toast} from 'mint-ui'
 import {getCombinationCount} from '../../../util/common'
 export default {
     name: 'runchart',
@@ -17,12 +17,27 @@ export default {
             l_nums:[],  //保存已选蓝球号码
             h_scroll: '',  //红球滚动
             s_scroll: '',  //已选滚动
+            f_scroll: '',
             posx: 0, //滚动横向距离
             posy: 0, //滚动纵向距离
             disabled: true,
             text: `请至少选择<span>5</span>个红球&nbsp;<span>2</span>个蓝球`,
             zhushu: '', //注数
+            qsValue: '',
+            ylValue: '',
+            tjValue: '',
+            pxValue: '',
+            runsetflag: false,
+            confirmObj:{
+                count: '',
+                compute: '',
+                drop: '',
+                sort: ''
+            }
         }
+    },
+    created(){
+        
     },
     methods:{
         // 头部返回
@@ -40,6 +55,9 @@ export default {
         },
         tabClick(i){
             this.$store.commit('DALETOUACTIVE',i+1)
+            if(i==1||i==2){
+                this.f_scroll = ''
+            }
         },
         smjs(c){
             return c<10?'0'+c:c
@@ -79,7 +97,8 @@ export default {
                     click:false,
                     scrollX: true,
                     freeScroll: true,
-                    probeType: 3
+                    probeType: 3,
+                    bounce: false
                 })
                 this.f_scroll.on('scroll', (pos) => {
                     this.posx = Math.abs(pos.x)
@@ -119,7 +138,24 @@ export default {
             this.disabled = true
             this.text = `请至少选择<span>5</span>个红球&nbsp;<span>2</span>个蓝球`
         },
+        confirmClick(){
+            this.$store.commit('RUNCHARTFILTER',{type: '2',value: this.confirmObj.count})
+            this.$store.commit('RUNCHARTFILTER',{type: '1',value: this.confirmObj.compute})
+            this.$store.commit('RUNCHARTFILTER',{type: '3',value: this.confirmObj.drop})
+            this.$store.commit('RUNCHARTFILTER',{type: '4',value: this.confirmObj.sort})
+            this.runsetflag = false
+            Indicator.open()
+            this.fetchData()
+        },
         goTouzhu(){
+            if(this.h_nums.length>18){
+                Toast('最多只能选择18个红球')
+                return false;
+            }
+            if(this.zhushu*2>20000){
+                Toast('单次投注最多2万元')
+                return false;
+            }
             let obj={},list=[],msg={}
             this.h_nums.forEach(item => {
                 let obj1={}
@@ -151,23 +187,6 @@ export default {
             })
         }
     },
-    watch:{
-        posx(a,b){
-            this.$refs.hqrtop.style.transform = 'translateX(-'+a+'px)'
-        },
-        posy(a,b){
-            if(this.$refs.hqlist){
-                this.$refs.hqlist.style.transform = 'translateY(-'+a+'px)'
-            }
-        },
-        daletouActive(a,b){
-            if(this.f_scroll&&this.$refs.hqlist){
-                this.$refs.hqrtop.style.transform = 'translateX(0px)'
-                this.$refs.hqlist.style.transform = 'translateY(0px)'
-                this.f_scroll.scrollTo(0,0)
-            }
-        }
-    },
     computed: {
       ...mapState({
            daletouActive: state => state.daletouActive,
@@ -178,11 +197,79 @@ export default {
     mounted(){
         this.fetchData()
     },
-    beforeUpdate(){
+    watch:{
+        posx(a,b){
+            this.$refs.hqrtop.style.transform = 'translateX(-'+a+'px)'
+        },
+        posy(a,b){
+            if(this.$refs.hqlist){
+                this.$refs.hqlist.style.transform = 'translateY(-'+a+'px)'
+            }
+        },
+        daletouActive(a,b){
+            if(this.$refs.hqlist){
+                this.$refs.hqrtop.style.transform = 'translateX(0px)'
+                this.$refs.hqlist.style.transform = 'translateY(0px)'
+            }else if(this.f_scroll!==''){
+                this.f_scroll.scrollTo(0,0)
+            }
+        },
+        qsValue(a,b){
+            this.confirmObj.count = parseInt(_.trim(a,'期'))
+        },
+        ylValue(a,b){
+            if(a=='显示遗漏'){
+                this.confirmObj.drop = 1
+            }else{
+                this.confirmObj.drop = 0
+            }
+        },
+        tjValue(a,b){
+            if(a=='显示统计'){
+                this.confirmObj.compute = 1
+            }else{
+                this.confirmObj.compute = 0
+            }
+        },
+        pxValue(a,b){
+            if(a=='倒序排列'){
+                this.confirmObj.sort = 1
+            }else{
+                this.confirmObj.sort = 0
+            }
+        },
+        runsetflag(a,b){
+            this.qsValue = this.runchartfilter.count+'期'
+            if(this.runchartfilter.compute=='1'){
+                this.tjValue = '显示统计'
+            }else{
+                this.tjValue = '隐藏统计'
+            }
+            if(this.runchartfilter.drop=='1'){
+                this.ylValue = '显示遗漏'
+            }else{
+                this.ylValue = '隐藏遗漏'
+            }
+            if(this.runchartfilter.sort=='1'){
+                this.pxValue = '倒序排列'
+            }else{
+                this.pxValue = '正序排列'
+            }
+        }
+    },
+    beforeUpdate(){ 
+        if(this.daletouActive!=1){
+            if(this.h_scroll===''){
+                this.hScroll()
+            }
+            if(this.s_scroll===''){
+                this.sScroll() 
+            }
+        }
         if(this.daletouActive==2||this.daletouActive==3){
-            this.hScroll()
-            this.sScroll()
-            this.fScroll()
+            if(this.f_scroll===''){
+                this.fScroll()
+            }
         }
     }
 }

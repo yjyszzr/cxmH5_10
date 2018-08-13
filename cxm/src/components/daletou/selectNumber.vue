@@ -1073,9 +1073,14 @@
                 if (item.name == '隐藏遗漏') {
                     this.historyMiss = !this.historyMiss
                 }
-                if (item.name == '玩法帮助') {
+                else if (item.name == '玩法帮助') {
                     this.$router.push({
                         path:'/lottery/daletou/playHelp'
+                    })
+                }
+                else if (item.name == '走势图') {
+                    this.$router.push({
+                        path:'/lottery/daletou/runchart'
                     })
                 }
             },

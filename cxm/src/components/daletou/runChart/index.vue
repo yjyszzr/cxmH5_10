@@ -7,7 +7,7 @@
                 <span>彩小秘·走势图</span>
             </div>
             <div>
-                <span class="memu-btn" @click="popShow = !popShow"><img src="../images/TrendSetting@3x.png" alt=""></span>
+                <span class="memu-btn" @click="runsetflag=!runsetflag"><img src="../images/TrendSetting@3x.png" alt=""></span>
             </div>
         </div>
         <ul class="runc-title">
@@ -201,6 +201,42 @@
                 </div>
             </div>
         </footer>
+        <transition name='fade'>
+            <div class="runchart-mark" v-if="runsetflag" @touchmove.prevent>
+                <div class="runchart-set">
+                    <div class="run-setTitle">
+                        彩小秘·走势图设置 
+                    </div>
+                    <div class="run-setContent">
+                        <mt-radio
+                        title="期数"
+                        v-model="qsValue"
+                        :options="['30期', '50期', '100期']">
+                        </mt-radio>
+                        <mt-radio
+                        title="遗漏"
+                        v-model="ylValue"
+                        :options="['显示遗漏', '隐藏遗漏']">
+                        </mt-radio>
+                        <mt-radio
+                        title="统计"
+                        v-model="tjValue"
+                        :options="['显示统计', '隐藏统计']">
+                        </mt-radio>
+                        <mt-radio
+                        title="排序"
+                        v-model="pxValue"
+                        :options="['正序排列', '倒序排列']">
+                        </mt-radio>
+                        <p>走势图底部出现次数等于统计数</p>
+                    </div>
+                    <div class="run-setFooter">
+                        <p @click="confirmClick()">确定</p>
+                        <p @click="runsetflag=!runsetflag">取消</p>
+                    </div>
+                </div>
+            </div>
+        </transition>
     </div>
 </template>
 <style lang='scss' src='./style.scss'>
