@@ -181,7 +181,7 @@ export default {
             obj.msg = msg
             obj.ballType = 'biaozhun' 
             obj.ballList = list
-            localStorage.setItem('conformBallList',JSON.stringify(obj))
+            localStorage.setItem('conformBallList',JSON.stringify(new Array(obj)))
             this.$router.push({
                 path: '/lottery/daletou/touZhuConfirm'
             })
