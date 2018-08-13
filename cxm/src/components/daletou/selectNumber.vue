@@ -17,7 +17,8 @@
             <div class="body-main">
                 <div class="body-title" @click="popupVisible = !popupVisible">
                     <p>{{data.term_num}}期 截止时间 {{data.endDate}}</p>
-                    <p class="history-p">历史开奖 <span class="arrow_right"><img src="../../assets/img/arange.png" alt=""></span></p>
+                    <p class="history-p">历史开奖 <span class="arrow_right"><img src="../../assets/img/arange.png"
+                                                                             alt=""></span></p>
                 </div>
                 <!--标准选号-->
                 <div class="biaozhun" v-if="selectedIndex=='0'">
@@ -49,7 +50,7 @@
                 </div>
                 <!--胆拖选号-->
                 <div class="dantuo" v-if="selectedIndex=='1'">
-                    <router-link to="/lottery/daletou/whatDantuo"> <p class="what-dantuo" >什么是胆拖？</p></router-link>
+                    <router-link to="/lottery/daletou/whatDantuo"><p class="what-dantuo">什么是胆拖？</p></router-link>
                     <div class="ball-box">
                         <div class="selection dantuo-selection">
                             <p class="desceibe">胆码-红球，至多选4个，至少选1个</p>
@@ -105,16 +106,17 @@
                 </template>
                 <template v-if="selectedIndex =='1'">
                     <p v-if="danTuotextType">请至少选择 <span class="red">6</span>个红球，<span class="blue">2</span>个篮球</p>
-                    <p v-if="!danTuotextType">共<span class="red">{{danTuoZhu.zhuNum}}</span>注，合计<span class="blue">{{danTuoZhu.zhuNum*2}}</span>元</p>
+                    <p v-if="!danTuotextType">共<span class="red">{{danTuoZhu.zhuNum}}</span>注，合计<span class="blue">{{danTuoZhu.zhuNum*2}}</span>元
+                    </p>
                 </template>
             </div>
             <template v-if="selectedIndex==0">
-                <div  class="ok" :class="canOk&&!textType?'okcur':''" @click = 'goTouZhuConfirm(!textType)'>
+                <div class="ok" :class="canOk&&!textType?'okcur':''" @click='goTouZhuConfirm(!textType,canOk)'>
                     确定
                 </div>
             </template>
             <template v-if="selectedIndex==1">
-                <div  class="ok" :class="!danTuotextType?'okcur':''" @click = 'goTouZhuConfirm(!danTuotextType)'>
+                <div class="ok" :class="!danTuotextType?'okcur':''" @click='goTouZhuConfirm(!danTuotextType,canOk)'>
                     确定
                 </div>
             </template>
@@ -171,16 +173,16 @@
         </div>
         <!--胆拖介绍-->
         <!--<div class="popdantuo-box">-->
-            <!--<mt-popup-->
-                    <!--popup-transition="popup-fade"-->
-                    <!--v-model="popdantuo">-->
-                <!--<div class="dantuo-pop">-->
-                    <!--<p class="dantuo-pop-title">活动说明</p>-->
-                    <!--<div class="dantuo-pop-body">-->
-                        <!--<p>1.erwerwerewrwrwerewrw</p>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</mt-popup>-->
+        <!--<mt-popup-->
+        <!--popup-transition="popup-fade"-->
+        <!--v-model="popdantuo">-->
+        <!--<div class="dantuo-pop">-->
+        <!--<p class="dantuo-pop-title">活动说明</p>-->
+        <!--<div class="dantuo-pop-body">-->
+        <!--<p>1.erwerwerewrwrwerewrw</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</mt-popup>-->
         <!--</div>-->
 
 
@@ -210,8 +212,8 @@
         .blueBall {
             color: #0081cc !important;
         }
-        .okcur{
-            background-color: #ea5504!important;
+        .okcur {
+            background-color: #ea5504 !important;
         }
         .head {
             overflow: hidden;
@@ -591,8 +593,8 @@
     }
 </style>
 <script>
-    import {getCombinationCount, getArrayItems,danTuoCount} from '../../util/common'
-    import {MessageBox, Popup,Indicator,Toast} from 'mint-ui';
+    import {getCombinationCount, getArrayItems, danTuoCount} from '../../util/common'
+    import {MessageBox, Popup, Indicator, Toast} from 'mint-ui';
     import api from '../../fetch/api'
     import GameDescription from "./images/GameDescription@3x.png"
     import LotteryResult from "./images/LotteryResult@3x.png"
@@ -608,7 +610,7 @@
                 popupVisible: false,//历史开奖列表
                 //popdantuo: false,//胆拖介绍
                 historyMiss: true,//显示历史遗漏
-                selectedIndex: JSON.parse(localStorage.getItem('selectedIndex'))?JSON.parse(localStorage.getItem('selectedIndex')):'0',//'0'标准选号 '1'胆拖选号
+                selectedIndex: JSON.parse(localStorage.getItem('selectedIndex')) ? JSON.parse(localStorage.getItem('selectedIndex')) : '0',//'0'标准选号 '1'胆拖选号
                 preList: [],//前区遗漏
                 postList: [],//后区遗漏 ,
                 danRedPreList: [],//胆前区遗漏
@@ -626,14 +628,14 @@
                 blueBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
                 textType: true, //标准选号提示文字
                 danTuotextType: true, //胆拖选号提示文字
-                canOk:true, //是否能点击确定
+                canOk: true, //是否能点击确定
                 selectZhu: {
                     zhuNum: '',//标注选号注数
                     zhuHe: []  //标准选号组合
                 },
-                danTuoZhu:{
-                    zhuNum:'', //胆拖选号注数
-                    zhuHe:[]  // 标准选号组合
+                danTuoZhu: {
+                    zhuNum: '', //胆拖选号注数
+                    zhuHe: []  // 标准选号组合
                 },
                 data: {},
                 memu: [
@@ -668,33 +670,33 @@
                 this.$router.go(-1);
             },
             //通过路由来回填选中号码集合
-            setSelectByrouter(){
+            setSelectByrouter() {
                 var that = this
                 let ballList = this.$route.query.ballList
-                if (ballList!=undefined){
-                    if(localStorage.getItem('selectedIndex')=='0'){
-                        ballList.forEach(item=>{
-                            if(item.type == 'redBall'){
+                if (ballList != undefined) {
+                    if (localStorage.getItem('selectedIndex') == '0') {
+                        ballList.forEach(item => {
+                            if (item.type == 'redBall') {
                                 that.redBallList.push(item.num)
                             }
-                            if(item.type == 'blueBall'){
+                            if (item.type == 'blueBall') {
                                 that.blueBallList.push(item.num)
                             }
                         })
                         this.setSelectBallFn('biaoZhun')
                     }
-                    if(localStorage.getItem('selectedIndex')=='1'){
-                        ballList.forEach(item=>{
-                            if(item.type == 'danRedBall'){
+                    if (localStorage.getItem('selectedIndex') == '1') {
+                        ballList.forEach(item => {
+                            if (item.type == 'danRedBall') {
                                 that.danRedMaList.push(item.num)
                             }
-                            if(item.type == 'tuoRedBall'){
+                            if (item.type == 'tuoRedBall') {
                                 that.tuoRedMaList.push(item.num)
                             }
-                            if(item.type == 'danBlueBall'){
+                            if (item.type == 'danBlueBall') {
                                 that.danBlueMaList.push(item.num)
                             }
-                            if(item.type == 'tuoBlueBall'){
+                            if (item.type == 'tuoBlueBall') {
                                 that.tuoBlueMaList.push(item.num)
                             }
                         })
@@ -703,7 +705,7 @@
                 }
             },
             //回显选中球号
-            setSelectBallFn(type){
+            setSelectBallFn(type) {
                 if (type == 'biaoZhun') {
                     var that = this
                     this.preList.forEach(item => {
@@ -764,21 +766,21 @@
                             res.data.postList.forEach((item, index) => {
                                 this.postList.push(
                                     {
-                                        num: (index + 1)<10?'0'+(index + 1):(index + 1).toString(),
+                                        num: (index + 1) < 10 ? '0' + (index + 1) : (index + 1).toString(),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
                                 this.danBluePostList.push(
                                     {
-                                        num: (index + 1)<10?'0'+(index + 1):(index + 1).toString(),
+                                        num: (index + 1) < 10 ? '0' + (index + 1) : (index + 1).toString(),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
                                 this.tuoBluePostList.push(
                                     {
-                                        num: (index + 1)<10?'0'+(index + 1):(index + 1).toString(),
+                                        num: (index + 1) < 10 ? '0' + (index + 1) : (index + 1).toString(),
                                         missNum: item,
                                         selected: false
                                     }
@@ -787,21 +789,21 @@
                             res.data.preList.forEach((item, index) => {
                                 this.preList.push(
                                     {
-                                        num: (index + 1)<10?'0'+(index + 1):(index + 1).toString(),
+                                        num: (index + 1) < 10 ? '0' + (index + 1) : (index + 1).toString(),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
                                 this.danRedPreList.push(
                                     {
-                                        num: (index + 1)<10?'0'+(index + 1):(index + 1).toString(),
+                                        num: (index + 1) < 10 ? '0' + (index + 1) : (index + 1).toString(),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
                                 this.tuoRedPreList.push(
                                     {
-                                        num: (index + 1)<10?'0'+(index + 1):(index + 1).toString(),
+                                        num: (index + 1) < 10 ? '0' + (index + 1) : (index + 1).toString(),
                                         missNum: item,
                                         selected: false
                                     }
@@ -816,7 +818,7 @@
             //标准选号
             biaozhunSelect(item, type) {
                 if (type == 'preList') { //点击前区
-                    if(this.redBallList.length<18){
+                    if (this.redBallList.length < 18) {
                         this.$set(item, 'selected', !item.selected)
                         if (item.selected) {
                             this.redBallList.push(item.num);
@@ -826,13 +828,13 @@
                                 this.redBallList.splice(index, 1);
                             }
                         }
-                    }else {
+                    } else {
                         this.$set(item, 'selected', false)
                         var index = this.redBallList.indexOf(item.num);
                         if (index > -1) {
                             this.redBallList.splice(index, 1);
                         }
-                        if(this.redBallList.length>=18){
+                        if (this.redBallList.length >= 18) {
                             Toast('最多只能选择18个红球')
                         }
                     }
@@ -853,11 +855,11 @@
             },
             //提示信息
             viewText() {
-                if(this.selectedIndex=='0'){
+                if (this.selectedIndex == '0') {
                     if (this.redBallList.length > 4 && this.blueBallList.length > 1) {
                         this.textType = false
                         this.selectZhu.zhuNum = getCombinationCount(this.redBallList.length, 5) * getCombinationCount(this.blueBallList.length, 2)
-                        if(parseInt(this.selectZhu.zhuNum)*2 > 20000){
+                        if (parseInt(this.selectZhu.zhuNum) * 2 > 20000) {
                             Toast('单次投注最多2万元')
                             this.canOk = false
                             return
@@ -867,10 +869,10 @@
                         this.textType = true
                     }
                 }
-                if(this.selectedIndex=='1'){
-                    if (this.danRedMaList.length > 0 && this.tuoRedMaList.length > 1 && this.tuoBlueMaList.length > 1&& (this.danRedMaList.length+this.tuoRedMaList.length)>5 && (this.danBlueMaList.length+this.tuoBlueMaList.length)>1) {
+                if (this.selectedIndex == '1') {
+                    if (this.danRedMaList.length > 0 && this.tuoRedMaList.length > 1 && this.tuoBlueMaList.length > 1 && (this.danRedMaList.length + this.tuoRedMaList.length) > 5 && (this.danBlueMaList.length + this.tuoBlueMaList.length) > 1) {
                         this.danTuotextType = false
-                        this.danTuoZhu.zhuNum = danTuoCount(this.danRedMaList.length,this.tuoRedMaList.length,this.danBlueMaList.length,this.tuoBlueMaList.length)
+                        this.danTuoZhu.zhuNum = danTuoCount(this.danRedMaList.length, this.tuoRedMaList.length, this.danBlueMaList.length, this.tuoBlueMaList.length)
                     } else {
                         this.danTuotextType = true
                     }
@@ -897,10 +899,10 @@
                 if (ballType == 'redBall') {
                     if (type == 'dan') {
                         let danRedIndex = this.danRedMaList.indexOf(item.num)
-                        if(danRedIndex>-1){
+                        if (danRedIndex > -1) {
                             this.$set(item, 'selected', !item.selected)
                             this.danRedMaList.splice(danRedIndex, 1);
-                        }else if(this.danRedMaList.length<4) {
+                        } else if (this.danRedMaList.length < 4) {
                             this.$set(item, 'selected', !item.selected)
                             this.danRedMaList.push(item.num);
                             this.tuoRedPreList[index].selected = false
@@ -912,10 +914,10 @@
                     }
                     if (type == 'tuo') {
                         let tuoRedIndex = this.tuoRedMaList.indexOf(item.num)
-                        if(tuoRedIndex>-1){
+                        if (tuoRedIndex > -1) {
                             this.$set(item, 'selected', !item.selected)
                             this.tuoRedMaList.splice(tuoRedIndex, 1);
-                        }else {
+                        } else {
                             this.$set(item, 'selected', !item.selected)
                             this.tuoRedMaList.push(item.num);
                             this.danRedPreList[index].selected = false
@@ -929,10 +931,10 @@
                 if (ballType == 'blueBall') {
                     if (type == 'dan') {
                         let danBlueIndex = this.danBlueMaList.indexOf(item.num)
-                        if(danBlueIndex>-1){
+                        if (danBlueIndex > -1) {
                             this.$set(item, 'selected', !item.selected)
                             this.danBlueMaList.splice(danBlueIndex, 1);
-                        }else if(this.danBlueMaList.length<1){
+                        } else if (this.danBlueMaList.length < 1) {
                             this.$set(item, 'selected', !item.selected)
                             this.danBlueMaList.push(item.num);
                             this.tuoBluePostList[index].selected = false
@@ -943,11 +945,11 @@
                         }
                     }
                     if (type == 'tuo') {
-                        let tuoBlueIndex =  this.tuoBlueMaList.indexOf(item.num)
-                        if(tuoBlueIndex>-1){
+                        let tuoBlueIndex = this.tuoBlueMaList.indexOf(item.num)
+                        if (tuoBlueIndex > -1) {
                             this.$set(item, 'selected', !item.selected)
-                            this.tuoBlueMaList.splice(tuoBlueIndex,1)
-                        }else{
+                            this.tuoBlueMaList.splice(tuoBlueIndex, 1)
+                        } else {
                             this.$set(item, 'selected', !item.selected)
                             this.tuoBlueMaList.push(item.num);
                             this.danBluePostList[index].selected = false
@@ -1011,12 +1013,12 @@
                             message: '确定删除所选号码吗?',
                             showCancelButton: true
                         }).then(action => {
-                            if(this.redBallList.length>0){
+                            if (this.redBallList.length > 0) {
                                 this.preList.forEach(sunItem => {
                                     sunItem.selected = false
                                 })
                             }
-                            if(this.blueBallList.length>0){
+                            if (this.blueBallList.length > 0) {
                                 this.postList.forEach(sunItem => {
                                     sunItem.selected = false
                                 })
@@ -1035,22 +1037,22 @@
                             message: '确定删除所选号码吗?',
                             showCancelButton: true
                         }).then(action => {
-                            if(this.danRedMaList.length>0){
+                            if (this.danRedMaList.length > 0) {
                                 this.danRedPreList.forEach(sunItem => {
                                     sunItem.selected = false
                                 })
                             }
-                            if(this.tuoRedMaList.length>0){
+                            if (this.tuoRedMaList.length > 0) {
                                 this.tuoRedPreList.forEach(sunItem => {
                                     sunItem.selected = false
                                 })
                             }
-                            if(this.danBlueMaList.length>0){
+                            if (this.danBlueMaList.length > 0) {
                                 this.danBluePostList.forEach(sunItem => {
                                     sunItem.selected = false
                                 })
                             }
-                            if(this.tuoBlueMaList.length>0){
+                            if (this.tuoBlueMaList.length > 0) {
                                 this.tuoBluePostList.forEach(sunItem => {
                                     sunItem.selected = false
                                 })
@@ -1090,160 +1092,160 @@
                 }
                 if (item.name == '玩法帮助') {
                     this.$router.push({
-                        path:'/lottery/daletou/playHelp'
+                        path: '/lottery/daletou/playHelp'
                     })
                 }
             },
             // 投注确认
-            goTouZhuConfirm(key){
-                if(key){
+            goTouZhuConfirm(key, key2) {
+                if (key && key2) {
                     localStorage.setItem('selectedIndex', JSON.stringify(this.selectedIndex))
                     this.dataProcess()
                     this.$router.push({
-                        path:'/lottery/daletou/touZhuConfirm'
+                        path: '/lottery/daletou/touZhuConfirm'
                     })
                 }
             },
             // 所选球大小排序
-            sortFn(Arr){
+            sortFn(Arr) {
                 let min;
-                for(var i=0; i<Arr.length; i++){
-                    for(var j=i; j<Arr.length;j++){
-                        if(Arr[i]>Arr[j]){
-                            min=Arr[j];
-                            Arr[j]=Arr[i];
-                            Arr[i]=min;
+                for (var i = 0; i < Arr.length; i++) {
+                    for (var j = i; j < Arr.length; j++) {
+                        if (Arr[i] > Arr[j]) {
+                            min = Arr[j];
+                            Arr[j] = Arr[i];
+                            Arr[i] = min;
                         }
                     }
                 }
                 return Arr
             },
             // 去投注数据处理
-            dataProcess(){
+            dataProcess() {
                 let ballList = []
-                if(JSON.parse(localStorage.getItem('conformBallList'))!=null){
+                if (JSON.parse(localStorage.getItem('conformBallList')) != null) {
                     var conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
-                }else {
+                } else {
                     var conformBallList = []
                 }
                 // 将数据整理
-                if(this.selectedIndex=='0'){
-                    this.sortFn(this.redBallList).forEach(item=>{
+                if (this.selectedIndex == '0') {
+                    this.sortFn(this.redBallList).forEach(item => {
                         ballList.push({
-                            num:item,
-                            type:'redBall'
+                            num: item,
+                            type: 'redBall'
                         })
                     })
-                    this.sortFn(this.blueBallList).forEach(item=>{
+                    this.sortFn(this.blueBallList).forEach(item => {
                         ballList.push({
-                            num:item,
-                            type:'blueBall'
+                            num: item,
+                            type: 'blueBall'
                         })
                     })
                     conformBallList.push({
-                        ballList:ballList,
-                        ballType:'biaozhun',
-                        msg:{
-                            zhuNum:this.selectZhu.zhuNum,
-                            danFn:ballList.length>7?'复试':'单式',
-                            bei:JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
-                            money:this.selectZhu.zhuNum*2,
-                            baseMoney:2,
+                        ballList: ballList,
+                        ballType: 'biaozhun',
+                        msg: {
+                            zhuNum: this.selectZhu.zhuNum,
+                            danFn: ballList.length > 7 ? '复试' : '单式',
+                            bei: JSON.parse(localStorage.getItem('adds')) != null ? JSON.parse(localStorage.getItem('adds')).bei : 1,
+                            money: this.selectZhu.zhuNum * 2,
+                            baseMoney: 2,
                         }
                     })
                 }
-                if(this.selectedIndex=='1'){
-                    for(let i=0;i<this.sortFn(this.danRedMaList).length+1;i++){
-                        if(i<this.danRedMaList.length){
+                if (this.selectedIndex == '1') {
+                    for (let i = 0; i < this.sortFn(this.danRedMaList).length + 1; i++) {
+                        if (i < this.danRedMaList.length) {
                             ballList.push({
-                                num:this.danRedMaList[i],
-                                type:'danRedBall'
+                                num: this.danRedMaList[i],
+                                type: 'danRedBall'
                             })
-                        }else{
+                        } else {
                             ballList.push({
-                                num:'—',
-                                type:'line'
-                            })
-                        }
-                    }
-                    for(let i=0;i<this.sortFn(this.tuoRedMaList).length+1;i++){
-                        if(i<this.tuoRedMaList.length){
-                            ballList.push({
-                                num:this.tuoRedMaList[i],
-                                type:'tuoRedBall'
-                            })
-                        }else{
-                            ballList.push({
-                                num:'—',
-                                type:'line'
+                                num: '—',
+                                type: 'line'
                             })
                         }
                     }
-                    for(let i=0;i<this.sortFn(this.danBlueMaList).length+1;i++){
-                        if(i<this.danBlueMaList.length){
+                    for (let i = 0; i < this.sortFn(this.tuoRedMaList).length + 1; i++) {
+                        if (i < this.tuoRedMaList.length) {
                             ballList.push({
-                                num:this.danBlueMaList[i],
-                                type:'danBlueBall'
+                                num: this.tuoRedMaList[i],
+                                type: 'tuoRedBall'
                             })
-                        }else{
+                        } else {
                             ballList.push({
-                                num:'—',
-                                type:'line'
+                                num: '—',
+                                type: 'line'
                             })
                         }
                     }
-                    for(let i=0;i<this.sortFn(this.tuoBlueMaList).length+1;i++){
-                        if(i<this.tuoBlueMaList.length){
+                    for (let i = 0; i < this.sortFn(this.danBlueMaList).length + 1; i++) {
+                        if (i < this.danBlueMaList.length) {
                             ballList.push({
-                                num:this.tuoBlueMaList[i],
-                                type:'tuoBlueBall'
+                                num: this.danBlueMaList[i],
+                                type: 'danBlueBall'
+                            })
+                        } else {
+                            ballList.push({
+                                num: '—',
+                                type: 'line'
+                            })
+                        }
+                    }
+                    for (let i = 0; i < this.sortFn(this.tuoBlueMaList).length + 1; i++) {
+                        if (i < this.tuoBlueMaList.length) {
+                            ballList.push({
+                                num: this.tuoBlueMaList[i],
+                                type: 'tuoBlueBall'
                             })
                         }
                     }
                     conformBallList.push({
-                        ballList:ballList,
-                        ballType:'dantuo',
-                        msg:{
-                            zhuNum:this.danTuoZhu.zhuNum,
-                            danFn:ballList.length>7?'复试':'单式',
-                            bei:JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
-                            money:this.danTuoZhu.zhuNum*2,
-                            baseMoney:2,
+                        ballList: ballList,
+                        ballType: 'dantuo',
+                        msg: {
+                            zhuNum: this.danTuoZhu.zhuNum,
+                            danFn: ballList.length > 7 ? '复试' : '单式',
+                            bei: JSON.parse(localStorage.getItem('adds')) != null ? JSON.parse(localStorage.getItem('adds')).bei : 1,
+                            money: this.danTuoZhu.zhuNum * 2,
+                            baseMoney: 2,
                         }
                     })
                 }
-                localStorage.setItem('conformBallList',JSON.stringify(conformBallList))
+                localStorage.setItem('conformBallList', JSON.stringify(conformBallList))
             },
             //判断选号是否与原有数据重复
-            repeatData(){
+            repeatData() {
                 var that = this
                 let a = false
                 let b = false
                 let c = false
                 let d = false
                 // 判断所选号码是否与已有的重复
-                if(JSON.parse(localStorage.getItem('conformBallList'))!=null){
+                if (JSON.parse(localStorage.getItem('conformBallList')) != null) {
                     var conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
-                    if(this.selectedIndex=='0'){
-                        conformBallList.forEach(item=>{
-                            let redBallLength=0
-                            let blueBallLength=0
-                            item.ballList.forEach(sunItem=>{
-                                if(sunItem.type == 'redBall'){
+                    if (this.selectedIndex == '0') {
+                        conformBallList.forEach(item => {
+                            let redBallLength = 0
+                            let blueBallLength = 0
+                            item.ballList.forEach(sunItem => {
+                                if (sunItem.type == 'redBall') {
                                     redBallLength++
-                                    that.redBallList.forEach( redItem=>{
-                                        if(sunItem.num == redItem){
-                                            if(that.redBallList.length == redBallLength){
+                                    that.redBallList.forEach(redItem => {
+                                        if (sunItem.num == redItem) {
+                                            if (that.redBallList.length == redBallLength) {
                                                 a = true
                                             }
                                         }
                                     })
                                 }
-                                if(sunItem.type == 'blueBall'){
+                                if (sunItem.type == 'blueBall') {
                                     blueBallLength++
-                                    that.blueBallList.forEach( blueItem=>{
-                                        if(sunItem.num == blueItem){
-                                            if(that.blueBallList.length == blueBallLength){
+                                    that.blueBallList.forEach(blueItem => {
+                                        if (sunItem.num == blueItem) {
+                                            if (that.blueBallList.length == blueBallLength) {
                                                 b = true
                                             }
                                         }
@@ -1251,52 +1253,52 @@
                                 }
                             })
                         })
-                        if(a&&b){
+                        if (a && b) {
                             return
                         }
                     }
-                    if(this.selectedIndex=='1'){
-                        conformBallList.forEach(item=>{
-                            let danRedBallLength=0
-                            let tuoRedBallLength=0
-                            let danBlueBallLength=0
-                            let tuoBlueBallLength=0
-                            item.ballList.forEach(sunItem=>{
-                                if(sunItem.type == 'danRedBall'){
+                    if (this.selectedIndex == '1') {
+                        conformBallList.forEach(item => {
+                            let danRedBallLength = 0
+                            let tuoRedBallLength = 0
+                            let danBlueBallLength = 0
+                            let tuoBlueBallLength = 0
+                            item.ballList.forEach(sunItem => {
+                                if (sunItem.type == 'danRedBall') {
                                     danRedBallLength++
-                                    that.danRedMaList.forEach( redItem=>{
-                                        if(sunItem.num == redItem){
-                                            if(that.danRedMaList.length == danRedBallLength){
+                                    that.danRedMaList.forEach(redItem => {
+                                        if (sunItem.num == redItem) {
+                                            if (that.danRedMaList.length == danRedBallLength) {
                                                 a = true
                                             }
                                         }
                                     })
                                 }
-                                if(sunItem.type == 'tuoRedBall'){
+                                if (sunItem.type == 'tuoRedBall') {
                                     tuoRedBallLength++
-                                    that.tuoRedMaList.forEach( redItem=>{
-                                        if(sunItem.num == redItem){
-                                            if(that.tuoRedMaList.length == tuoRedBallLength){
+                                    that.tuoRedMaList.forEach(redItem => {
+                                        if (sunItem.num == redItem) {
+                                            if (that.tuoRedMaList.length == tuoRedBallLength) {
                                                 b = true
                                             }
                                         }
                                     })
                                 }
-                                if(sunItem.type == 'danBlueBall'){
+                                if (sunItem.type == 'danBlueBall') {
                                     danBlueBallLength++
-                                    that.danBlueMaList.forEach( redItem=>{
-                                        if(sunItem.num == redItem){
-                                            if(that.danBlueMaList.length == danBlueBallLength){
+                                    that.danBlueMaList.forEach(redItem => {
+                                        if (sunItem.num == redItem) {
+                                            if (that.danBlueMaList.length == danBlueBallLength) {
                                                 c = true
                                             }
                                         }
                                     })
                                 }
-                                if(sunItem.type == 'tuoBlueBall'){
+                                if (sunItem.type == 'tuoBlueBall') {
                                     tuoBlueBallLength++
-                                    that.tuoBlueMaList.forEach( redItem=>{
-                                        if(sunItem.num == redItem){
-                                            if(that.tuoBlueMaList.length == tuoBlueBallLength){
+                                    that.tuoBlueMaList.forEach(redItem => {
+                                        if (sunItem.num == redItem) {
+                                            if (that.tuoBlueMaList.length == tuoBlueBallLength) {
                                                 d = true
                                             }
                                         }
@@ -1304,7 +1306,7 @@
                                 }
                             })
                         })
-                        if(a&&b&&c&&d){
+                        if (a && b && c && d) {
                             return
                         }
                     }
