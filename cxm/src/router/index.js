@@ -676,6 +676,7 @@ const router = new Router({
           name: 'selectNumber',
           component: resolve => require(['@/components/daletou/selectNumber.vue'], resolve)
       },
+      // 大乐走势图
       {
         path: '/lottery/daletou/runchart',
         name: 'runchart',
@@ -704,6 +705,12 @@ const router = new Router({
           path: '/lottery/daletou/playHelp',
           name: 'playHelp',
           component: resolve => require(['@/components/daletou/playHelp.vue'], resolve)
+      },
+      // 出票方案
+      {
+          path: '/lottery/daletou/ticketScheme',
+          name: 'ticketScheme',
+          component: resolve => require(['@/components/daletou/ticketScheme.vue'], resolve)
       },
   ]
 })
