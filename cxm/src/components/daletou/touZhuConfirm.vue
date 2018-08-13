@@ -40,7 +40,7 @@
                             <p class="item-describe">{{item.msg.danFn}} {{item.msg.zhuNum}}注 {{item.msg.bei}}倍
                                 {{item.msg.money+'.00'}} 元</p>
                         </div>
-                        <span class="go-detalis" @click="goSelect(item)"><img src="../../assets/img/arange.png" alt=""></span>
+                        <span class="go-detalis" @click="goSelect(item,index)"><img src="../../assets/img/arange.png" alt=""></span>
                     </li>
                 </ul>
                 <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"> </i> <p> 我已阅读并同意<router-link to="/freebuy/protocol">《彩小秘投注服务协议》</router-link></p></div>
@@ -462,12 +462,16 @@
                 localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
                 this.getBallFn()
             },
-            goSelect(item) {
+            goSelect(item,index) {
+                console.log(index);
                 if (item.ballType == 'biaozhun') {
                     localStorage.setItem('selectedIndex', '0')
                 } else {
                     localStorage.setItem('selectedIndex', '1')
                 }
+                this.conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
+                this.conformBallList.splice(index,1)
+                localStorage.setItem('conformBallList',JSON.stringify(this.conformBallList))
                 this.$router.push({
                     path: "/lottery/daletou/selectnumber",
                     query: {

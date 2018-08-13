@@ -432,7 +432,7 @@
                 height: px2rem(80px);
                 color: #9f9f9f;
                 font-size: px2rem(26px);
-                border-bottom: 1px solid #787878;
+                border-bottom: 1px solid #c7c7c7;
                 padding: 0 px2rem(15px);
             }
             .dantuo {
@@ -445,11 +445,11 @@
                     color: #F5911e;
                 }
                 .desceibe {
-                    color: #c7c7c7;
+                    color: #787878;
                 }
                 .name-ball {
                     margin-left: px2rem(20px);
-                    color: #c7c7c7;
+                    color: #787878;
                     margin-top: px2rem(20px);
                 }
                 .red-ball-ul {
@@ -514,6 +514,7 @@
                     justify-content: flex-start;
                     align-items: center;
                     flex-wrap: wrap;
+                    padding-bottom: 10px;
                     .ball-li {
                         display: flex;
                         flex-direction: column;

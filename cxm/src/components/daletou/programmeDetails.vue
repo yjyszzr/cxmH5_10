@@ -25,10 +25,10 @@
                     <div class="programme">
                         <div class="programme-type">
                             <p>方案状态</p>
-                            <p>已中奖</p>
+                            <p>中奖金额</p>
                         </div>
                         <div class="programme-money">
-                            <p>中奖金额</p>
+                            <p>已中奖</p>
                             <p>￥500000.00</p>
                         </div>
                     </div>
@@ -64,7 +64,8 @@
                     </div>
                     <router-link to="/lottery/daletou/playHelp"> <p class="question"> 奖金如何计算</p></router-link>
                 </div>
-                <div class="programme">
+
+                <div class="touzhu-mes">
                     <div class="my-num-title">
                         <span>方案信息</span>
                         <div class="look-programme" @click = "goProm()">
@@ -85,7 +86,7 @@
 
         <div class="footer">
             <p>继续购买此号</p>
-            <p>继续购买大乐透</p>
+            <p @click="goSelectNum()">继续购买大乐透</p>
         </div>
 
 
@@ -156,7 +157,7 @@
 
         .num {
             box-sizing: border-box;
-            margin-top: px2rem(20px);
+            margin-top: px2rem(10px);
             padding-left: px2rem(32px);
             display: flex;
             height: px2rem(110px);
@@ -183,8 +184,10 @@
             }
         }
         .body{
+            width: 100%;
+            box-sizing: border-box;
             position: absolute;
-            bottom: px2rem(120px);
+            bottom: px2rem(100px);
             top: px2rem(100px);
             position: absolute;
             overflow: auto;
@@ -242,11 +245,13 @@
                 }
             }
             .my-num{
+                box-sizing: border-box;
                 width: 100%;
-
-                background-color: #ffffff;
-                padding-left: px2rem(20px);
-
+                .touzhu-mes{
+                    margin-top: px2rem(10px);
+                    background-color: #ffffff;
+                    padding-bottom: px2rem(20px);
+                }
                 /*padding: 0 px2rem(15px) px2rem(15px) px2rem(15px);*/
                 .my-num-title{
                     padding: px2rem(15px);
@@ -262,7 +267,6 @@
                         align-items: center;
                         img{
                             margin-left: px2rem(15px);
-                            margin-right: px2rem(15px);
                             height: px2rem(25px);
                             width: px2rem(15px);
                         }
@@ -270,7 +274,9 @@
 
                 }
                 .my-num-main{
+                    box-sizing: border-box;
                     width: 100%;
+                    padding: 0 px2rem(20px);
                     .my-num-ul{
                         .my-num-li{
                             margin-top: px2rem(15px);
@@ -291,13 +297,13 @@
                             .num-details{
                                 font-size: px2rem(28px);
                                 color: #c7c7c7;
-                                padding-left: px2rem(15px);
+                                padding-left: px2rem(10px);
                             }
                         }
                     }
                 }
                 .question{
-                    margin-left: px2rem(15px);
+                    margin-left: px2rem(30px);
                     margin-top: px2rem(20px);
                     font-size: px2rem(26px);
                     color: #f5911e;
@@ -316,7 +322,7 @@
             p{
                line-height: px2rem(100px);
                 text-align: center;
-                color: white;
+                color: #ffffff;
                 width: 49%;
                 background-color: #EA5504;
                 font-size: px2rem(28px);
@@ -818,6 +824,12 @@
                         }
                     })
             },
+            //跳转到订单详情
+            goSelectNum(){
+                this.$router.push({
+                    path:'/lottery/daletou/selectnumber'
+                })
+            }
         },
         computed:{},
         watch: {},

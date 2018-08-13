@@ -290,6 +290,7 @@ export default {
         }else{
             next(vm=>{
             	Indicator.open()
+                console.log(vm.$store.state.matchSaveInfo);
                 vm.fetchData(vm.$store.state.matchSaveInfo)
             })
         }
