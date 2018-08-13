@@ -168,7 +168,7 @@
                         align-items: center;
                         padding: px2rem(30px) px2rem(30px);
                         .item-text {
-                            max-width: 80%;
+                            width: 80%;
                             .item-num {
                                 font-size: px2rem(32px);
                                 .sun-ul {
@@ -352,13 +352,13 @@
                         this.adds.imgUrl = Selected
                         this.conformBallList.forEach(item => {
                             this.$set(item.msg, 'baseMoney', (parseInt(item.msg.baseMoney) + 1))
-                            this.$set(item.msg, 'money', parseInt(item.msg.baseMoney)*item.msg.bei)
+                            this.$set(item.msg, 'money', 3*item.msg.zhuNum*item.msg.bei)
                         })
                     } else {
                         this.adds.imgUrl = SelectionBox
                         this.conformBallList.forEach(item => {
                             this.$set(item.msg, 'baseMoney', (parseInt(item.msg.baseMoney) - 1))
-                            this.$set(item.msg, 'money', parseInt(item.msg.baseMoney)*item.msg.bei)
+                            this.$set(item.msg, 'money', 2*item.msg.zhuNum*item.msg.bei)
                         })
                     }
                 }else {
@@ -366,7 +366,7 @@
                         this.conformBallList.forEach(item => {
                             if(item.msg.baseMoney%2==0){
                                 this.$set(item.msg, 'baseMoney', (parseInt(item.msg.baseMoney) + 1))
-                                this.$set(item.msg, 'money', parseInt(item.msg.baseMoney)*item.msg.bei)
+                                this.$set(item.msg, 'money', 3*item.msg.zhuNum*item.msg.bei)
                             }
                         })
                     }
@@ -499,7 +499,7 @@
                     this.adds.money = 0
                     this.conformBallList.forEach(item => {
                         item.msg.bei = a
-                        item.msg.money = a*item.msg.baseMoney
+                        item.msg.money = a*item.msg.baseMoney*item.msg.zhuNum
                         this.adds.money = this.adds.money + item.msg.money
                     })
                     localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))

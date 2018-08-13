@@ -465,6 +465,10 @@ export default {
     getChartData(params) {
         return fetchPost('/lotto/lotto/getChartData', params)
     },
+    //方案详情
+    getLottoOrderDetail(params) {
+        return fetchPost('/order/order/getLottoOrderDetail', params)
+    },
 }
 
 

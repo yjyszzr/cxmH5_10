@@ -217,6 +217,7 @@
             top: px2rem(100px);
             bottom: 0;
             background-color: #ffffff;
+            overflow: auto;
             .body-in{
                 background-color: #ffffff;
                 box-sizing: border-box;

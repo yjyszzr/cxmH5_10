@@ -764,21 +764,21 @@
                             res.data.postList.forEach((item, index) => {
                                 this.postList.push(
                                     {
-                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1).toString(),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
                                 this.danBluePostList.push(
                                     {
-                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1).toString(),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
                                 this.tuoBluePostList.push(
                                     {
-                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1).toString(),
                                         missNum: item,
                                         selected: false
                                     }
@@ -787,21 +787,21 @@
                             res.data.preList.forEach((item, index) => {
                                 this.preList.push(
                                     {
-                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1).toString(),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
                                 this.danRedPreList.push(
                                     {
-                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1).toString(),
                                         missNum: item,
                                         selected: false
                                     }
                                 )
                                 this.tuoRedPreList.push(
                                     {
-                                        num: (index + 1)<10?'0'+(index + 1):(index + 1),
+                                        num: (index + 1)<10?'0'+(index + 1):(index + 1).toString(),
                                         missNum: item,
                                         selected: false
                                     }
@@ -1120,16 +1120,110 @@
             },
             // 去投注数据处理
             dataProcess(){
+                let ballList = []
+                if(JSON.parse(localStorage.getItem('conformBallList'))!=null){
+                    var conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
+                }else {
+                    var conformBallList = []
+                }
+                // 将数据整理
+                if(this.selectedIndex=='0'){
+                    this.sortFn(this.redBallList).forEach(item=>{
+                        ballList.push({
+                            num:item,
+                            type:'redBall'
+                        })
+                    })
+                    this.sortFn(this.blueBallList).forEach(item=>{
+                        ballList.push({
+                            num:item,
+                            type:'blueBall'
+                        })
+                    })
+                    conformBallList.push({
+                        ballList:ballList,
+                        ballType:'biaozhun',
+                        msg:{
+                            zhuNum:this.selectZhu.zhuNum,
+                            danFn:ballList.length>7?'复试':'单式',
+                            bei:JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
+                            money:this.selectZhu.zhuNum*2,
+                            baseMoney:2,
+                        }
+                    })
+                }
+                if(this.selectedIndex=='1'){
+                    for(let i=0;i<this.sortFn(this.danRedMaList).length+1;i++){
+                        if(i<this.danRedMaList.length){
+                            ballList.push({
+                                num:this.danRedMaList[i],
+                                type:'danRedBall'
+                            })
+                        }else{
+                            ballList.push({
+                                num:'—',
+                                type:'line'
+                            })
+                        }
+                    }
+                    for(let i=0;i<this.sortFn(this.tuoRedMaList).length+1;i++){
+                        if(i<this.tuoRedMaList.length){
+                            ballList.push({
+                                num:this.tuoRedMaList[i],
+                                type:'tuoRedBall'
+                            })
+                        }else{
+                            ballList.push({
+                                num:'—',
+                                type:'line'
+                            })
+                        }
+                    }
+                    for(let i=0;i<this.sortFn(this.danBlueMaList).length+1;i++){
+                        if(i<this.danBlueMaList.length){
+                            ballList.push({
+                                num:this.danBlueMaList[i],
+                                type:'danBlueBall'
+                            })
+                        }else{
+                            ballList.push({
+                                num:'—',
+                                type:'line'
+                            })
+                        }
+                    }
+                    for(let i=0;i<this.sortFn(this.tuoBlueMaList).length+1;i++){
+                        if(i<this.tuoBlueMaList.length){
+                            ballList.push({
+                                num:this.tuoBlueMaList[i],
+                                type:'tuoBlueBall'
+                            })
+                        }
+                    }
+                    conformBallList.push({
+                        ballList:ballList,
+                        ballType:'dantuo',
+                        msg:{
+                            zhuNum:this.danTuoZhu.zhuNum,
+                            danFn:ballList.length>7?'复试':'单式',
+                            bei:JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
+                            money:this.danTuoZhu.zhuNum*2,
+                            baseMoney:2,
+                        }
+                    })
+                }
+                localStorage.setItem('conformBallList',JSON.stringify(conformBallList))
+            },
+            //判断选号是否与原有数据重复
+            repeatData(){
                 var that = this
                 let a = false
                 let b = false
                 let c = false
                 let d = false
-                let ballList = []
-                let conformBallList = []
                 // 判断所选号码是否与已有的重复
                 if(JSON.parse(localStorage.getItem('conformBallList'))!=null){
-                    conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
+                    var conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
                     if(this.selectedIndex=='0'){
                         conformBallList.forEach(item=>{
                             let redBallLength=0
@@ -1215,94 +1309,9 @@
                         }
                     }
                 }
-                // 将数据整理
-                if(this.selectedIndex=='0'){
-                    this.sortFn(this.redBallList).forEach(item=>{
-                        ballList.push({
-                            num:item,
-                            type:'redBall'
-                        })
-                    })
-                    this.sortFn(this.blueBallList).forEach(item=>{
-                        ballList.push({
-                            num:item,
-                            type:'blueBall'
-                        })
-                    })
-                    conformBallList.push({
-                        ballList:ballList,
-                        ballType:'biaozhun',
-                        msg:{
-                            zhuNum:this.selectZhu.zhuNum,
-                            danFn:ballList.length>7?'复试':'单式',
-                            bei:JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
-                            money:this.selectZhu.zhuNum*2,
-                            baseMoney:this.selectZhu.zhuNum*2,
-                        }
-                    })
-                }
-                if(this.selectedIndex=='1'){
-                    for(let i=0;i<this.sortFn(this.danRedMaList).length+1;i++){
-                        if(i<this.danRedMaList.length){
-                            ballList.push({
-                                num:this.danRedMaList[i],
-                                type:'danRedBall'
-                            })
-                        }else{
-                            ballList.push({
-                                num:'—',
-                                type:'line'
-                            })
-                        }
-                    }
-                    for(let i=0;i<this.sortFn(this.tuoRedMaList).length+1;i++){
-                        if(i<this.tuoRedMaList.length){
-                            ballList.push({
-                                num:this.tuoRedMaList[i],
-                                type:'tuoRedBall'
-                            })
-                        }else{
-                            ballList.push({
-                                num:'—',
-                                type:'line'
-                            })
-                        }
-                    }
-                    for(let i=0;i<this.sortFn(this.danBlueMaList).length+1;i++){
-                        if(i<this.danBlueMaList.length){
-                            ballList.push({
-                                num:this.danBlueMaList[i],
-                                type:'danBlueBall'
-                            })
-                        }else{
-                            ballList.push({
-                                num:'—',
-                                type:'line'
-                            })
-                        }
-                    }
-                    for(let i=0;i<this.sortFn(this.tuoBlueMaList).length+1;i++){
-                        if(i<this.tuoBlueMaList.length){
-                            ballList.push({
-                                num:this.tuoBlueMaList[i],
-                                type:'tuoBlueBall'
-                            })
-                        }
-                    }
-                    conformBallList.push({
-                        ballList:ballList,
-                        ballType:'dantuo',
-                        msg:{
-                            zhuNum:this.danTuoZhu.zhuNum,
-                            danFn:ballList.length>7?'复试':'单式',
-                            bei:JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
-                            money:this.danTuoZhu.zhuNum*2,
-                            baseMoney:this.danTuoZhu.zhuNum*2,
-                        }
-                    })
-                }
-                localStorage.setItem('conformBallList',JSON.stringify(conformBallList))
+                this.dataProcess()
             },
+
             //获得注数
             combination: (arr /*n需要组合的一维数组*/, num /*m需要取几个元素来组合*/, fun /*对组合后的元素的处理函数，如全排列permutate*/) => {
                 /*这里假设num最大值为10 一般A(n,m)中的m应该不会太大 */
