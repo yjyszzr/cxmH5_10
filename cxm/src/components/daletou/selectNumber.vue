@@ -110,12 +110,12 @@
                     </p>
                 </template>
             </div>
-            <template v-if="selectedIndex==0">
+            <template v-if="selectedIndex=='0'">
                 <div class="ok" :class="canOk&&!textType?'okcur':''" @click='goTouZhuConfirm(!textType,canOk)'>
                     确定
                 </div>
             </template>
-            <template v-if="selectedIndex==1">
+            <template v-if="selectedIndex=='1'">
                 <div class="ok" :class="!danTuotextType?'okcur':''" @click='goTouZhuConfirm(!danTuotextType,canOk)'>
                     确定
                 </div>
@@ -349,8 +349,7 @@
                 border-width: 0 px2rem(20px) px2rem(20px);
                 border-style: solid;
                 border-color: transparent transparent #ffffff; /*透明 透明  灰*/
-
-                top: -10.5px;
+                top: px2rem(-19px);
                 right: 0px;
                 position: absolute;
                 content: "";
@@ -360,7 +359,7 @@
             width: px2rem(183px);
             li {
                 height: px2rem(72px);
-                border-bottom: 1px solid #555555;
+                border-bottom: 1px solid #9f9f9f;
                 display: flex;
                 align-items: center;
                 justify-content: left;
@@ -1147,7 +1146,8 @@
             // 投注确认
             goTouZhuConfirm(key, key2) {
                 if (key && key2) {
-                    localStorage.setItem('selectedIndex', JSON.stringify(this.selectedIndex))
+                    localStorage.setItem('selectedIndex', this.selectedIndex)
+                    JSON.stringify(localStorage.getItem('conformBallList'))
                     this.dataProcess()
                     this.$router.push({
                         path: '/lottery/daletou/touZhuConfirm'
@@ -1173,6 +1173,12 @@
                 let ballList = []
                 if (JSON.parse(localStorage.getItem('conformBallList')) != null) {
                     var conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
+                    let itemIndex = JSON.parse(localStorage.getItem('adds')).itemEditIndex
+                    if(itemIndex!= -1&&conformBallList[itemIndex]!=undefined){
+                        if(conformBallList[itemIndex].msg.status == 'edit'){
+                            conformBallList.splice(itemIndex,1)
+                        }
+                    }
                 } else {
                     var conformBallList = []
                 }

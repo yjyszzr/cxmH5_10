@@ -312,13 +312,14 @@
             return {
                 canPay:true,
                 conformBallList: [],
-                num:1,
+                num:1, // 临时变量
                 adds: {
                     add: false,  //是否追加 默认不追加
-                    imgUrl: SelectionBox,
-                    zhuNum:0,
+                    imgUrl: SelectionBox, //追加是否选中-图片路径
+                    zhuNum:0, //注数
                     bei: JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
-                    money:0,
+                    money:0, //总钱数
+                    itemEditIndex:-1, // 投注编辑 item 的index
                 },
                 redBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'],
                 blueBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
@@ -461,16 +462,22 @@
                 this.conformBallList.splice(index, 1)
                 localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
                 this.getBallFn()
+                if(this.conformBallList.length==0){
+                    this.$router.push({
+                        path:"/lottery/daletou/selectnumber"
+                    })
+                }
             },
             goSelect(item,index) {
-                console.log(index);
                 if (item.ballType == 'biaozhun') {
                     localStorage.setItem('selectedIndex', '0')
                 } else {
                     localStorage.setItem('selectedIndex', '1')
                 }
-                this.conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
-                this.conformBallList.splice(index,1)
+                //this.conformBallList.splice(index,1)
+                this.adds.itemEditIndex = index
+                localStorage.setItem('adds',JSON.stringify(this.adds))
+                this.conformBallList[index].msg.status = 'edit'
                 localStorage.setItem('conformBallList',JSON.stringify(this.conformBallList))
                 this.$router.push({
                     path: "/lottery/daletou/selectnumber",
