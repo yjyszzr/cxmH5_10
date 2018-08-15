@@ -461,6 +461,10 @@ export default {
     getTicketInfo(params) {
         return fetchPost('/lotto/lotto/getTicketInfo', params)
     },
+    //保存投注信息
+    saveBetInfoDlt(params) {
+        return fetchPost('/lotto/lotto/saveBetInfo', params)
+    },
     //走势图数据
     getChartData(params) {
         return fetchPost('/lotto/lotto/getChartData', params)

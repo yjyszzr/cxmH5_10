@@ -40,7 +40,7 @@
                             <p class="item-describe">{{item.msg.danFn}} {{item.msg.zhuNum}}注 {{item.msg.bei}}倍
                                 {{item.msg.money+'.00'}} 元</p>
                         </div>
-                        <span class="go-detalis" @click="goSelect(item,index)"><img src="../../assets/img/arange.png" alt=""></span>
+                        <span class="go-detalis" @click="goSelect(item)"><img src="../../assets/img/arange.png" alt=""></span>
                     </li>
                 </ul>
                 <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"> </i> <p> 我已阅读并同意<router-link to="/freebuy/protocol">《彩小秘投注服务协议》</router-link></p></div>
@@ -59,7 +59,7 @@
             </div>
             <div class="two">
                 <p class="p1">{{adds.zhuNum}}注 {{adds.bei}}倍 共需：<span>￥{{adds.money+'.00'}}</span> 元</p>
-                <p class="ok" :class="canPay?'canpay':'nopay'">确定</p>
+                <p class="ok" :class="canPay?'canpay':'nopay'" @click="confirm()">确定</p>
             </div>
         </div>
 
@@ -248,6 +248,9 @@
                                 height: px2rem(34px);
                                 width: px2rem(34px);
                             }
+                            span{
+                                color: #505050;
+                            }
                         }
                     }
                 }
@@ -258,6 +261,8 @@
                     flex: 1;
                     border-left: 1px solid #c7c7c7;
                     position: relative;
+                    font-size: px2rem(26px);
+                    color: #505050;
                     i{
                         width: px2rem(20px);
                         height: px2rem(20px);
@@ -312,14 +317,13 @@
             return {
                 canPay:true,
                 conformBallList: [],
-                num:1, // 临时变量
+                num:1,
                 adds: {
                     add: false,  //是否追加 默认不追加
-                    imgUrl: SelectionBox, //追加是否选中-图片路径
-                    zhuNum:0, //注数
+                    imgUrl: SelectionBox,
+                    zhuNum:0,
                     bei: JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
-                    money:0, //总钱数
-                    itemEditIndex:-1, // 投注编辑 item 的index
+                    money:0,
                 },
                 redBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'],
                 blueBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
@@ -462,23 +466,13 @@
                 this.conformBallList.splice(index, 1)
                 localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
                 this.getBallFn()
-                if(this.conformBallList.length==0){
-                    this.$router.push({
-                        path:"/lottery/daletou/selectnumber"
-                    })
-                }
             },
-            goSelect(item,index) {
+            goSelect(item) {
                 if (item.ballType == 'biaozhun') {
                     localStorage.setItem('selectedIndex', '0')
                 } else {
                     localStorage.setItem('selectedIndex', '1')
                 }
-                //this.conformBallList.splice(index,1)
-                this.adds.itemEditIndex = index
-                localStorage.setItem('adds',JSON.stringify(this.adds))
-                this.conformBallList[index].msg.status = 'edit'
-                localStorage.setItem('conformBallList',JSON.stringify(this.conformBallList))
                 this.$router.push({
                     path: "/lottery/daletou/selectnumber",
                     query: {
@@ -500,6 +494,63 @@
                 this.$store.state.mark_playObj.mark_playBox = true
                 this.$store.state.mark_playObj.mark_play = '2'
             },
+            confirm(){
+                let arr = []
+                this.conformBallList.forEach(item=>{
+                    let arrRed=[],arrBlue = [],tuoarrRed = [],tuoarrBlue = [],betInfo=''
+                    if(item.ballType=='dantuo'){
+                        item.ballList.forEach(data=>{
+                            if(data.type=='danRedBall'){
+                                arrRed.push(data.num)
+                            }
+                            if(data.type=='tuoRedBall'){
+                                tuoarrRed.push(data.num)
+                            }
+                            if(data.type=='danBlueBall'){
+                                arrBlue.push(data.num)
+                            }
+                            if(data.type=='tuoBlueBall'){
+                                tuoarrBlue.push(data.num)
+                            }
+                        })
+                        betInfo = `${arrRed.join(',')}$${tuoarrRed.join(',')}|${arrBlue.length>0?arrBlue.join(',')+'$':''}${tuoarrBlue.join(',')}`
+                    }else{
+                        item.ballList.forEach(data=>{
+                            if(data.type=='redBall'){
+                                arrRed.push(data.num)
+                            }
+                            if(data.type=='blueBall'){
+                                arrBlue.push(data.num)
+                            }
+                        })
+                        betInfo = arrRed.join(',')+'|'+arrBlue.join(',')
+                    }
+                    let objinfos = {
+                        betNum: parseInt(item.msg.zhuNum),
+                        playType: item.ballType=='dantuo'?2:item.msg.danFn=='单式'?0:1,
+                        amount: item.msg.money,
+                        betInfo: betInfo
+                    }
+                    arr.push(objinfos)
+                })
+                let obj = {
+                    betNum: this.adds.zhuNum,
+                    bonusId: '',
+                    isAppend: this.adds.add?1:0,
+                    lotteryClassifyId: 2,
+                    lotteryPlayClassifyId: this.adds.add?10:9,
+                    times: this.bei,
+                    orderMoney: this.adds.money,
+                    betInfos: arr
+                }
+                this.$store.state.matchSaveInfo = obj
+                this.$router.push({
+                    path: '/freebuy/payment',
+                    query:{
+                        frd: 'dlt'
+                    }
+                })
+            }
         },
         computed:{
             bei(){
