@@ -91,9 +91,12 @@
                     border-bottom: 0 none!important;
                 }
                 .body-in-title{
+
                     border-bottom: 1px solid #c7c7c7;
                     padding-bottom: px2rem(20px);
                     padding-left: px2rem(15px);
+                    color: #9f9f9f;
+                    font-size: px2rem(28px);
                 }
                 .message{
                     box-sizing: border-box;
@@ -101,6 +104,7 @@
                     justify-content: space-between;
                     padding: px2rem(15px);
                     color: #9f9f9f;
+                    font-size: px2rem(28px);
                 }
                 .redBall {
                     color: #ea5504 !important;
@@ -138,7 +142,7 @@
                         }
                         .num-details{
                             font-size: px2rem(28px);
-                            color: #c7c7c7;
+                            color: #9f9f9f;
                             padding-left: px2rem(15px);
                         }
                         .tickt-status{

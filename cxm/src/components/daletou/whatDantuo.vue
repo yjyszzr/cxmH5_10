@@ -21,8 +21,6 @@
                 <p>01 02 03 04 05 33 ： 16</p>
             </div>
         </div>
-
-
     </div>
 </template>
 <style scoped lang="scss">
