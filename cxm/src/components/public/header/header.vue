@@ -15,7 +15,7 @@
                 </ul>
                 <!--比赛模块 头-->
                 <div class="lottery-select" v-if="$route.path.split('/')[1]=='lotteryResult'" >
-                    <span @click='data_time()'><i class="icon-img icon-img-date"></i></span>
+                    <span @click='data_time()'><i class="iconfont icon-icon-21"></i></span>
                     <span @click='more()'>筛选</span>
                 </div>
             </div>
