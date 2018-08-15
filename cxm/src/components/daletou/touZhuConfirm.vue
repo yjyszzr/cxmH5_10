@@ -306,11 +306,11 @@
     }
 </style>
 <script>
-    import {getArrayItems} from '../../util/common'
+    import {getArrayItems,saveDtInfo} from '../../util/common'
     import {MessageBox, Popup,Indicator} from 'mint-ui';
     import SelectionBox from "./images/SelectionBox1@3x.png"
     import Selected from "./images/Selected1@3x.png"
-
+    import api from '../../fetch/api'
     export default {
         name: "touZhuConfirm",
         data() {
@@ -495,60 +495,26 @@
                 this.$store.state.mark_playObj.mark_play = '2'
             },
             confirm(){
-                let arr = []
-                this.conformBallList.forEach(item=>{
-                    let arrRed=[],arrBlue = [],tuoarrRed = [],tuoarrBlue = [],betInfo=''
-                    if(item.ballType=='dantuo'){
-                        item.ballList.forEach(data=>{
-                            if(data.type=='danRedBall'){
-                                arrRed.push(data.num)
-                            }
-                            if(data.type=='tuoRedBall'){
-                                tuoarrRed.push(data.num)
-                            }
-                            if(data.type=='danBlueBall'){
-                                arrBlue.push(data.num)
-                            }
-                            if(data.type=='tuoBlueBall'){
-                                tuoarrBlue.push(data.num)
-                            }
-                        })
-                        betInfo = `${arrRed.join(',')}$${tuoarrRed.join(',')}|${arrBlue.length>0?arrBlue.join(',')+'$':''}${tuoarrBlue.join(',')}`
-                    }else{
-                        item.ballList.forEach(data=>{
-                            if(data.type=='redBall'){
-                                arrRed.push(data.num)
-                            }
-                            if(data.type=='blueBall'){
-                                arrBlue.push(data.num)
-                            }
-                        })
-                        betInfo = arrRed.join(',')+'|'+arrBlue.join(',')
-                    }
-                    let objinfos = {
-                        betNum: parseInt(item.msg.zhuNum),
-                        playType: item.ballType=='dantuo'?2:item.msg.danFn=='单式'?0:1,
-                        amount: item.msg.money,
-                        betInfo: betInfo
-                    }
-                    arr.push(objinfos)
-                })
                 let obj = {
                     betNum: this.adds.zhuNum,
                     bonusId: '',
                     isAppend: this.adds.add?1:0,
-                    lotteryClassifyId: 2,
-                    lotteryPlayClassifyId: this.adds.add?10:9,
+                    // lotteryClassifyId: 2,
+                    // lotteryPlayClassifyId: this.adds.add?10:9,
                     times: this.bei,
                     orderMoney: this.adds.money,
-                    betInfos: arr
+                    betInfos: saveDtInfo(this.conformBallList)
                 }
-                this.$store.state.matchSaveInfo = obj
-                this.$router.push({
-                    path: '/freebuy/payment',
-                    query:{
-                        frd: 'dlt'
-                    }
+                api.saveBetInfoDlt(obj)
+                .then(res => {
+                        if (res.code == 0) {
+                            this.$router.push({
+                                path: '/freebuy/payment',
+                                query:{
+                                    ptk: res.data
+                                }
+                            })
+                        }
                 })
             }
         },

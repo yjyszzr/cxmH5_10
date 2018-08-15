@@ -88,11 +88,6 @@ const actions = {
                          }, value) {
         commit("MATCHSELECTEDLIST", value);
     },
-    getmatchSaveInfo({
-                         commit
-                     }, value) {
-        commit("MATCHSAVEINFO", value);
-    },
     getMarkplayBox({
                        commit
                    }, value) {

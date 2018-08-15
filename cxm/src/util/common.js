@@ -3,32 +3,32 @@
 const expUrl = 'https://m.caixiaomi.net'
 var moment = require('moment');
 //app h5页面分享
-export let isShare = (arg,text,url,thumbUrl) =>{
-	let obj = {}
-    window.getCxmShare = function (){
-    		obj.title = arg
-            obj.description = text
-            obj.thumbUrl = expUrl+thumbUrl
-            obj.url = expUrl+url
+export let isShare = (arg, text, url, thumbUrl) => {
+    let obj = {}
+    window.getCxmShare = function () {
+        obj.title = arg
+        obj.description = text
+        obj.thumbUrl = expUrl + thumbUrl
+        obj.url = expUrl + url
         return obj
-    } 
+    }
 }
 //app h5方法
-export let means = (arg) =>{
+export let means = (arg) => {
     const appMeans = {
         //支付
-        paydata: window.paydata = function(){
+        paydata: window.paydata = function () {
             return arg
         },
         //app title
-        isTitle: window.getCxmTitle = function(){
-            return '彩小秘·'+arg
+        isTitle: window.getCxmTitle = function () {
+            return '彩小秘·' + arg
         }
     }
     return appMeans
 }
 
-export let getCsUrl = () =>{
+export let getCsUrl = () => {
     return expUrl;
 }
 
@@ -39,61 +39,70 @@ export let detect = () => {
     var android = agent.indexOf("android");
     var iphone = agent.indexOf("iphone");
     var ipad = agent.indexOf("ipad");
-    if(android != -1){
+    if (android != -1) {
         equipmentType = "android";
     }
-    if(iphone != -1 || ipad != -1){
+    if (iphone != -1 || ipad != -1) {
         equipmentType = "ios";
     }
     return equipmentType;
 }
 //获取url key
-export let getUrlStr = function(name,url){
+export let getUrlStr = function (name, url) {
     /**
      * 获取地址栏参数
      */
-    let reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)","i");
-    if(reg.test(url)){
-        return unescape(RegExp.$2.replace(/\+/g," "))
+    let reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)", "i");
+    if (reg.test(url)) {
+        return unescape(RegExp.$2.replace(/\+/g, " "))
     }
     return undefined
 }
 //判断浏览器是否位wx
-export let wxPd = function(){
-    var ua = navigator.userAgent.toLowerCase();  
-    if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+export let wxPd = function () {
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.match(/MicroMessenger/i) == "micromessenger") {
         return true;
-    } else {  
+    } else {
         return false;
-    } 
+    }
 }
 // 将日期格式化成星期
-export let weekTime = (data) =>{
+export let weekTime = (data) => {
     return weekFn(moment(data).format('YYYY-MM-DD dddd'));
-    function weekFn (dataed) {
-        var yes = dataed.substr(0,10)
-        var wek = dataed.substr(11, dataed.length - 10)+""
-        switch (wek){
-            case "Monday" : return yes+" 周一"
+
+    function weekFn(dataed) {
+        var yes = dataed.substr(0, 10)
+        var wek = dataed.substr(11, dataed.length - 10) + ""
+        switch (wek) {
+            case "Monday":
+                return yes + " 周一"
                 break;
-            case "Tuesday" : return yes+" 周二"
+            case "Tuesday":
+                return yes + " 周二"
                 break;
-            case "Wednesday" :return yes+" 周三"
+            case "Wednesday":
+                return yes + " 周三"
                 break;
-            case "Thursday" : return yes+" 周四"
+            case "Thursday":
+                return yes + " 周四"
                 break;
-            case "Friday" : return yes+" 周五"
+            case "Friday":
+                return yes + " 周五"
                 break;
-            case "Saturday" : return yes+" 周六"
+            case "Saturday":
+                return yes + " 周六"
                 break;
-            case "Sunday" : return yes+" 周日"
+            case "Sunday":
+                return yes + " 周日"
                 break;
-            default:"星期格式化的时候错误啦！"
+            default:
+                "星期格式化的时候错误啦！"
         }
     }
 }
 // 转化成 11：45
-export let hour = (data)=>{
+export let hour = (data) => {
     return moment(new Date(data)).format('hh:mm:ss')
 }
 export let nowDataYYYYMMDD = () => {
@@ -103,22 +112,23 @@ export let nowDataYYYYMMDD = () => {
 export let getCombinationCount = (m, n) => {
     n = (n < m - n) ? n : (m - n)
     let a = 1
-    for(let i = 1; i <= n; i++) {
+    for (let i = 1; i <= n; i++) {
         a = a * m--/ i
     }
     return parseInt(a, 0)
 }
 // 大乐透 胆拖选号注数计算
-export let danTuoCount = (a,b,c,d) => {
+export let danTuoCount = (a, b, c, d) => {
     // a = 胆红
     // b = 拖红
     // c = 胆蓝
     // d = 拖蓝
-    return (numOne (b,5-a) * numOne (d,2-c))
-    function numOne(m,n) {
+    return (numOne(b, 5 - a) * numOne(d, 2 - c))
+
+    function numOne(m, n) {
         n = (n < m - n) ? n : (m - n)
         let a = 1
-        for(let i = 1; i <= n; i++) {
+        for (let i = 1; i <= n; i++) {
             a = a * m--/ i
         }
         return parseInt(a, 0)
@@ -129,14 +139,14 @@ export let danTuoCount = (a,b,c,d) => {
 export let getArrayItems = (arr, num) => {
     //新建一个数组,将传入的数组复制过来,用于运算,而不要直接操作传入的数组;
     var temp_array = new Array();
-    for(var index in arr) {
+    for (var index in arr) {
         temp_array.push(arr[index]);
     }
     //取出的数值项,保存在此数组
     var return_array = new Array();
-    for(var i = 0; i < num; i++) {
+    for (var i = 0; i < num; i++) {
         //判断如果数组还有可以取出的元素,以防下标越界
-        if(temp_array.length > 0) {
+        if (temp_array.length > 0) {
             //在数组中产生一个随机索引
             var arrIndex = Math.floor(Math.random() * temp_array.length);
             //将此随机索引的对应的数组元素值复制出来
@@ -149,4 +159,50 @@ export let getArrayItems = (arr, num) => {
         }
     }
     return return_array;
+}
+//大乐透投注信息处理
+export let saveDtInfo = (list) => {
+    let arr = []
+    list.forEach(item => {
+        let arrRed = [],
+            arrBlue = [],
+            tuoarrRed = [],
+            tuoarrBlue = [],
+            betInfo = ''
+        if (item.ballType == 'dantuo') {
+            item.ballList.forEach(data => {
+                if (data.type == 'danRedBall') {
+                    arrRed.push(data.num)
+                }
+                if (data.type == 'tuoRedBall') {
+                    tuoarrRed.push(data.num)
+                }
+                if (data.type == 'danBlueBall') {
+                    arrBlue.push(data.num)
+                }
+                if (data.type == 'tuoBlueBall') {
+                    tuoarrBlue.push(data.num)
+                }
+            })
+            betInfo = `${arrRed.join(',')}$${tuoarrRed.join(',')}|${arrBlue.length>0?arrBlue.join(',')+'$':''}${tuoarrBlue.join(',')}`
+        } else {
+            item.ballList.forEach(data => {
+                if (data.type == 'redBall') {
+                    arrRed.push(data.num)
+                }
+                if (data.type == 'blueBall') {
+                    arrBlue.push(data.num)
+                }
+            })
+            betInfo = arrRed.join(',') + '|' + arrBlue.join(',')
+        }
+        let objinfos = {
+            betNum: parseInt(item.msg.zhuNum),
+            playType: item.ballType == 'dantuo' ? 2 : item.msg.danFn == '单式' ? 0 : 1,
+            amount: item.msg.money,
+            betInfo: betInfo
+        }
+        arr.push(objinfos)
+    })
+    return arr;
 }

@@ -575,11 +575,18 @@ export default {
 				Toast(this.maxButNumMsg)
 				return
 			}
-			this.$store.state.matchSaveInfo = this.matchSave
-			this.$router.push({
-				path: '/freebuy/payment',
-				replace: false
-			})
+            api.nSaveBetInfo(this.matchSave)
+                .then(res => {
+                        // console.log(res)
+                    if (res.code == 0) {
+                        this.$router.push({
+							path: '/freebuy/payment',
+							query:{
+								ptk: res.data
+							}
+						})
+                    }
+                })
 		},
 		bfClick(c) {
 			this.$store.state.mark_playObj.mark_playBox = true

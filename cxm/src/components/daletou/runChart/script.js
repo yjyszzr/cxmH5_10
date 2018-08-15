@@ -2,7 +2,7 @@ import api from '../../../fetch/api'
 import {mapState} from 'vuex'
 import BScroll from 'better-scroll'
 import {Indicator,Toast} from 'mint-ui'
-import {getCombinationCount} from '../../../util/common'
+import {getCombinationCount,saveDtInfo} from '../../../util/common'
 export default {
     name: 'runchart',
     beforeCreate() {
@@ -17,7 +17,6 @@ export default {
             l_nums:[],  //保存已选蓝球号码
             h_scroll: '',  //红球滚动
             s_scroll: '',  //已选滚动
-            f_scroll: '',
             posx: 0, //滚动横向距离
             posy: 0, //滚动纵向距离
             disabled: true,
@@ -55,9 +54,6 @@ export default {
         },
         tabClick(i){
             this.$store.commit('DALETOUACTIVE',i+1)
-            if(i==1||i==2){
-                this.f_scroll = ''
-            }
         },
         smjs(c){
             return c<10?'0'+c:c
@@ -93,17 +89,10 @@ export default {
                 }else if(this.daletouActive==3){
                     this.$refs.hqrctcontent.style.width='11.95rem'
                 }
-                this.f_scroll=new BScroll(this.$refs.hqrct, {
-                    click:false,
-                    scrollX: true,
-                    freeScroll: true,
-                    probeType: 3,
-                    bounce: false
-                })
-                this.f_scroll.on('scroll', (pos) => {
-                    this.posx = Math.abs(pos.x)
-                    this.posy = Math.abs(pos.y)
-                })
+                document.querySelector('.hqr-content').onscroll=(pos)=>{
+                    this.posx = Math.abs(pos.target.scrollLeft)
+                    this.posy = Math.abs(pos.target.scrollTop)
+                }
             })
         },
         tabsClick(c,s){
@@ -181,9 +170,24 @@ export default {
             obj.msg = msg
             obj.ballType = 'biaozhun' 
             obj.ballList = list
-            localStorage.setItem('conformBallList',JSON.stringify(new Array(obj)))
-            this.$router.push({
-                path: '/lottery/daletou/touZhuConfirm'
+            let saveobj = {
+                betNum: this.zhushu,
+                bonusId: '',
+                isAppend: 0,
+                times: 1,
+                orderMoney: this.zhushu*2,
+                betInfos: saveDtInfo(new Array(obj))
+            }
+            api.saveBetInfoDlt(saveobj)
+            .then(res => {
+                    if (res.code == 0) {
+                        this.$router.push({
+                            path: '/freebuy/payment',
+                            query:{
+                                ptk: res.data
+                            }
+                        })
+                    }
             })
         }
     },
@@ -210,8 +214,8 @@ export default {
             if(this.$refs.hqlist){
                 this.$refs.hqrtop.style.transform = 'translateX(0px)'
                 this.$refs.hqlist.style.transform = 'translateY(0px)'
-            }else if(this.f_scroll!==''){
-                this.f_scroll.scrollTo(0,0)
+                document.querySelector('.hqr-content').scrollTop = 0
+                document.querySelector('.hqr-content').scrollLeft = 0
             }
         },
         qsValue(a,b){
@@ -267,9 +271,7 @@ export default {
             }
         }
         if(this.daletouActive==2||this.daletouActive==3){
-            if(this.f_scroll===''){
-                this.fScroll()
-            }
+            this.fScroll()
         }
     }
 }

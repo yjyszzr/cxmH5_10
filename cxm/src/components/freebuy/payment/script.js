@@ -31,28 +31,20 @@ export default {
             this.$store.state.mark_playObj.mark_playBox = true
             this.$store.state.mark_playObj.mark_play = '3'
         },
-        fetchData(c) {
-            if(this.$route.query.frd=='dlt'){
-                api.saveBetInfoDlt(c)
-                .then(res => {
-                        //console.log(res)
-                        if (res.code == 0) {
-                            this.payment = res.data
-                            this.$store.state.mark_playObj.yhList = res.data.bonusList
-                            this.$store.state.mark_playObj.bounsId = res.data.bonusId
-                        }
-                })
-            }else{
-                api.saveBetInfo(c)
-                .then(res => {
-                        //console.log(res)
-                        if (res.code == 0) {
-                            this.payment = res.data
-                            this.$store.state.mark_playObj.yhList = res.data.bonusList
-                            this.$store.state.mark_playObj.bounsId = res.data.bonusId
-                        }
-                })
+        fetchData(c,s) {
+            let data = {
+                bonusId: c,
+                payToken: s
             }
+            api.unifiedPayBefore(data)
+                .then(res => {
+                        //console.log(res)
+                        if (res.code == 0) {
+                            this.payment = res.data
+                            this.$store.state.mark_playObj.yhList = res.data.bonusList
+                            this.$store.state.mark_playObj.bounsId = res.data.bonusId
+                        }
+                })
             api.allPayment({})
                 .then(res => {
                     if (res.code == 0) {
@@ -99,7 +91,7 @@ export default {
             }
         },
         payFlag(c,s){
-            api.app(c)
+            api.nUnifiedOrder(c)
                 .then(res => {
                     //console.log(res)
                     if (s == 'ye') {
@@ -246,13 +238,8 @@ export default {
     },
     watch: {
         cc(a, b) {
-            this.$store.state.matchSaveInfo.bonusId = a
             Indicator.open()
-            this.fetchData(this.$store.state.matchSaveInfo)
-            // if(b!==''){
-            //     this.$store.state.matchSaveInfo.bonusId = a
-            //     this.fetchData()
-            // }
+            this.fetchData(a,this.payment.payToken)
         }
     },
     beforeRouteEnter(to, from, next){
@@ -302,7 +289,7 @@ export default {
         }else{
             next(vm=>{
             	Indicator.open()
-                vm.fetchData(vm.$store.state.matchSaveInfo)
+                vm.fetchData('',vm.$route.query.ptk)
             })
         }
     },

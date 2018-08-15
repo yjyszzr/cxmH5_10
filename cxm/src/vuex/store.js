@@ -35,7 +35,6 @@ const state = {
     },
     matchObj: {}, //赛事列表
     matchSelectedList: [], //选中赛事处理
-    matchSaveInfo: {}, //付款接口数据保存
     mark_playObj: { //控制上啦遮罩
         mark_playBox: false,
         mark_play: '',

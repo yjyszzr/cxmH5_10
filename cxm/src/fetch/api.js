@@ -266,16 +266,16 @@ export default {
         return fetchPost('lottery/lottery/match/filterConditions', params)
     },
     //支付订单
-    saveBetInfo(params) {
-        return fetchPost('lottery/lottery/match/saveBetInfo', params)
+    nSaveBetInfo(params) {
+        return fetchPost('lottery/lottery/match/nSaveBetInfo', params)
     },
     //计算投注信息
     getBetInfo(params) {
         return fetchPost('lottery/lottery/match/getBetInfo', params)
     },
     //下单
-    app(params) {
-        return fetchPost('payment/payment/app', params)
+    nUnifiedOrder(params) {
+        return fetchPost('payment/payment/nUnifiedOrder', params)
     },
     //比赛结果
     queryMatchResult(params) {
@@ -472,6 +472,10 @@ export default {
     //方案详情
     getLottoOrderDetail(params) {
         return fetchPost('/order/order/getLottoOrderDetail', params)
+    },
+    //支付订单信息 
+    unifiedPayBefore(params) {
+        return fetchPost('/payment/payment/unifiedPayBefore', params)
     },
 }
 

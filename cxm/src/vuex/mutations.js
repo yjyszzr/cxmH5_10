@@ -100,9 +100,6 @@ const mutations = {
     FREEBUYID(state, data){
         state.freebuyId = data
     },
-    MATCHSAVEINFO(state, data) {
-        state.matchSaveInfo = data
-    },
     MARKPLAYBOX(state, data) {
         state.mark_playObj.mark_playBox = data
     },

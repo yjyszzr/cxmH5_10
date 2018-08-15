@@ -119,7 +119,7 @@ input::-webkit-inner-spin-button {
 }
 
 .mybox-leave-active, .mybox-enter-active {
-  transition: all .5s ease;
+  transition: all .3s ease;
 }
 .mybox-leave-active, .mybox-enter {
   height: 0px !important;
