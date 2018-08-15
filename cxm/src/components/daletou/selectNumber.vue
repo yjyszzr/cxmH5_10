@@ -171,21 +171,6 @@
                 </div>
             </mt-popup>
         </div>
-        <!--胆拖介绍-->
-        <!--<div class="popdantuo-box">-->
-        <!--<mt-popup-->
-        <!--popup-transition="popup-fade"-->
-        <!--v-model="popdantuo">-->
-        <!--<div class="dantuo-pop">-->
-        <!--<p class="dantuo-pop-title">活动说明</p>-->
-        <!--<div class="dantuo-pop-body">-->
-        <!--<p>1.erwerwerewrwrwerewrw</p>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</mt-popup>-->
-        <!--</div>-->
-
-
     </div>
 </template>
 <style scoped lang="scss">
@@ -1118,10 +1103,14 @@
                     this.getLocalStorageFn('dantuo')
                 }
             },
-
             goNext(item) {
-                if (item.name == '隐藏遗漏') {
+                if (item.name == '隐藏遗漏'||item.name == '显示遗漏') {
                     this.historyMiss = !this.historyMiss
+                    if(item.name == '隐藏遗漏'){
+                        this.memu[3].name='显示遗漏'
+                    }else {
+                        this.memu[3].name='隐藏遗漏'
+                    }
                 }
                 else if (item.name == '玩法帮助') {
                     this.$router.push({
@@ -1145,6 +1134,10 @@
             },
             // 投注确认
             goTouZhuConfirm(key, key2) {
+                if((this.danTuoZhu.zhuNum*2)>20000&&this.selectedIndex=='1'){
+                    Toast("投注金额不得超过2万元！")
+                    return
+                }
                 if (key && key2) {
                     localStorage.setItem('selectedIndex', this.selectedIndex)
                     JSON.stringify(localStorage.getItem('conformBallList'))

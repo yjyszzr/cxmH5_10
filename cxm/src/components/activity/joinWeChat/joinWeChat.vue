@@ -11,7 +11,6 @@
         </div>
     </div>
 </template>
-
 <script>
     import {means,detect} from '../../../util/common'
     import {Toast} from 'mint-ui';
