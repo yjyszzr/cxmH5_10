@@ -213,9 +213,10 @@
                                 p:nth-child(1){
                                     font-weight: 700;
                                     font-size: px2rem(28px);
+                                    color: #505050;
                                 }
                                 p:nth-child(2){
-                                    color: #c7c7c7;
+                                    color: #9f9f9f;
                                 }
                                 margin-left: px2rem(20px);
                             }
@@ -237,6 +238,9 @@
                         }
                         .programme-money{
                             margin-top: px2rem(5px);
+                            p:nth-child(1){
+                                color: #505050;
+                            }
                             p:nth-child(2){
                                 color: #EA5504;
                             }
@@ -265,6 +269,7 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                        color: #505050;
                         img{
                             margin-left: px2rem(15px);
                             height: px2rem(25px);
@@ -296,7 +301,7 @@
                             }
                             .num-details{
                                 font-size: px2rem(28px);
-                                color: #c7c7c7;
+                                color: #9f9f9f;
                                 padding-left: px2rem(10px);
                             }
                         }

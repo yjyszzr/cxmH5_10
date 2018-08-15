@@ -397,9 +397,7 @@
             },
             //手动添加
             handAdd() {
-                this.$router.push({
-                    path: '/lottery/daletou/selectnumber'
-                })
+                this.$router.go(-1);
             },
             //机选
             machineSelection(type) {
@@ -464,6 +462,9 @@
             //删除
             delItem(index) {
                 this.conformBallList.splice(index, 1)
+                if(this.conformBallList.length<1){
+                    this.$router.go(-1);
+                }
                 localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
                 this.getBallFn()
             },

@@ -170,8 +170,8 @@
                             return "设置登录密码";
                         case 'setchange':
                             return "修改登录密码";
-                        case 'selectNumber':
-                            return "标准选号";
+                        case 'joinWeChat':
+                            return "彩民交流群";
                     }
                 } else {
                     if (

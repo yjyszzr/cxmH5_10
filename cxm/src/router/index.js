@@ -556,6 +556,12 @@ const router = new Router({
           name: 'old_with_new',
           component: resolve => require(['@/components/activity/old_With_New/old_with_new.vue'], resolve)
       },
+      // 引流加微信
+      {
+          path: '/activity/joinWeChat',
+          name: 'joinWeChat',
+          component: resolve => require(['@/components/activity/joinWeChat/joinWeChat.vue'], resolve)
+      },
       {
           path: '/user/setup',
           name: 'setup',
