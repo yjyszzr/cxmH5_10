@@ -307,10 +307,7 @@
         created(){},
         mounted(){},
         methods:{
-            // 头部返回
-            goBack() {
-                this.$router.go(-1);
-            },
+        
         },
         computed:{},
         watch: {},

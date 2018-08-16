@@ -6,10 +6,10 @@
                 <div class="body-title">
                     <div class="title-one">
                         <div class="log">
-                            <img class="ltto-log" src="./images/SuperLtto@3x.png" alt="">
+                            <img class="ltto-log" :src="orderObj.lotteryClassifyImg" alt="">
                             <div class="log-text">
                                 <p>大乐透  20180528期</p>
-                                <p>￥ 20.00</p>
+                                <p>￥ {{orderObj.ticketAmount}}</p>
                             </div>
                         </div>
                         <img class="ltto-log" src="./images/Prize@3x.png" alt="">
@@ -303,6 +303,7 @@
         name: "programmeDetails",
         data() {
             return {
+                orderObj: {},
                 data: {
                     "programmeSn": "string",
                 },
@@ -770,10 +771,6 @@
         },
         mounted(){},
         methods:{
-            // 头部返回
-            goBack() {
-                this.$router.go(-1);
-            },
             goProm(){
                 this.$router.push({
                     path:"/daletou/ticketScheme"
@@ -786,8 +783,7 @@
                 })
                     .then(res => {
                         if (res.code == 0) {
-                            
-                            console.log(res);
+                            this.orderObj = res.data
                         }
                     })
             },
