@@ -294,6 +294,7 @@
                 }
                 .ok {
                     flex: 1;
+                    /*width: px2rem(250px);*/
                     text-align: center;
                     line-height: px2rem(100px);
                     background-color: #ea5504;
