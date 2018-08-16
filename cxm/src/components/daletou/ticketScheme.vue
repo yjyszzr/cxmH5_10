@@ -117,8 +117,8 @@
     }
 </style>
 <script>
+    import api from '../../fetch/api'
     import {Indicator} from 'mint-ui';
-
     export default {
         name: "ticktScheme",
         data() {
@@ -305,13 +305,19 @@
             }
         },
         created(){},
-        mounted(){},
         methods:{
-        
+            //获取详情
+            getLottoOrderDetailFn() {
+                api.getLottoOrderDetail({
+                    orderId: this.$route.query.id
+                }).then(res => {
+                    if (res.code == 0) {
+                        this.orderObj = res.data
+                        this.dataHandel(res.data.cathecticResults)
+                    }
+                })
+            },
         },
-        computed:{},
-        watch: {},
-        destroyed(){},
         beforeRouteLeave(to, from, next) {
             next()
         }
