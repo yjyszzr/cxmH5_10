@@ -821,7 +821,9 @@
             },
             //获取详情
             getLottoOrderDetailFn() {
-                api.getLottoOrderDetail('')
+                api.getLottoOrderDetail({
+                    orderId: '31554'
+                })
                     .then(res => {
                         if (res.code == 0) {
                             Indicator.close()
