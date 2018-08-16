@@ -492,7 +492,7 @@
                             baseMoney:'2',
                             bei:item.cathectic,
                             danFn:item.playType=='0'?'单式':item.playType=='1'?'复式':'',
-                            money:item.betNum*2,
+                            money:item.amount,
                             zhuNum:item.betNum,
                         },
                     })
