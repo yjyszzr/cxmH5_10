@@ -16,7 +16,6 @@ export default {
 
     },
     methods: {
-
       goDraw(c){
         this.$router.push({
           path: '/user/draw',
@@ -42,24 +41,17 @@ export default {
         api.getOrderDetail(data)
         .then(res => {
             if(res.code==0) {
-             //console.log(res)
               this.orderObj = res.data
-                // if(orderObj.isDan == 0){
-                //
-                // }else if(orderObj.isDan == 1){
-                //
-                // }
             }
         })
     },
 
     beforeRouteLeave(to, from, next) {
-      if(to.path!='/freebuy/cathectic'&&to.path!='/activity/world_detail'){
+      if(to.path!='/freebuy/cathectic'){
         next()
       }else{
         this.$store.state.matchSelectedList = []
         localStorage.removeItem('tab')
-        this.$store.state.world_cupObj.world_tab = false
         this.$router.push({path: '/'})
       }
     }

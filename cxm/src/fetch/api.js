@@ -477,6 +477,10 @@ export default {
     unifiedPayBefore(params) {
         return fetchPost('/payment/payment/unifiedPayBefore', params)
     },
+    //出票方案
+    getLottoTicketScheme(params) {
+        return fetchPost('/order/order/getLottoTicketScheme', params)
+    },
 }
 
 

@@ -226,15 +226,16 @@
     }
 </style>
 <script>
-    import {Indicator} from 'mint-ui';
-
+    import {means} from '../../util/common'
     export default {
-        name: "programmeDetails",
+        name: "playHelp",
         data() {
             return {}
         },
         created(){},
-        mounted(){},
+        mounted(){
+            means('玩法帮助').isTitle
+        },
         methods:{
             
         },

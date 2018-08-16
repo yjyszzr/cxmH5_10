@@ -64,13 +64,22 @@ export default {
         })
       },
       goDetail(c){
-        this.$router.push({
-          path: '/user/order',
-          query: {
-            id: c
-          },
-          replace: false
-        })
+        if(c.lotteryPlayClassifyId=='8'){
+          this.$router.push({
+              path: '/daletou/programmeDetails',
+              query: {
+                  id: c.orderId,
+              }
+          })
+        }else{
+          this.$router.push({
+            path: '/user/order',
+            query: {
+              id: c.orderId
+            },
+            replace: false
+          })
+        }
       }
     },
     computed: {  

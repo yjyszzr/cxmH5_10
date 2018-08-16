@@ -3,7 +3,7 @@
         <!--躯干-->
         <div class="body">
             <div class="body-in">
-                <p class="body-in-title">方案编号：</p>
+                <p class="body-in-title">方案编号：{{orderSn}}</p>
                 <div class="message">
                     <p>投注信息</p>
                     <p>状态</p>
@@ -118,11 +118,12 @@
 </style>
 <script>
     import {Indicator} from 'mint-ui';
-
+    import api from '../../fetch/api.js'
     export default {
         name: "ticktScheme",
         data() {
             return {
+                orderSn: this.$route.query.orderSn,
                 ticketSchemeDetailDTOs:[
                     {
                         ballList:[
@@ -305,9 +306,22 @@
             }
         },
         created(){},
-        mounted(){},
+        mounted(){
+            this.fetchData()
+        },
         methods:{
-        
+            fetchData(){
+                let data = {
+                    orderSn: this.orderSn,
+                    programmeSn: this.orderSn
+                }
+                api.getLottoTicketScheme(data)
+                .then(res => {
+                    if (res.code == 0) {
+                        console.log(res)
+                    }
+                })
+            }
         },
         computed:{},
         watch: {},
