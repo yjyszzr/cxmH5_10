@@ -40,7 +40,7 @@
                             <p class="item-describe">{{item.msg.danFn}} {{item.msg.zhuNum}}注 {{item.msg.bei}}倍
                                 {{item.msg.money+'.00'}} 元</p>
                         </div>
-                        <span class="go-detalis" @click="goSelect(item)"><img src="../../assets/img/arange.png" alt=""></span>
+                        <span class="go-detalis" @click="goSelect(item,index)"><img src="../../assets/img/arange.png" alt=""></span>
                     </li>
                 </ul>
                 <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"> </i> <p> 我已阅读并同意<router-link to="/freebuy/protocol">《彩小秘投注服务协议》</router-link></p></div>
@@ -325,6 +325,7 @@
                     zhuNum:0,
                     bei: JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
                     money:0,
+                    itemEditIndex:-1,
                 },
                 redBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'],
                 blueBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
@@ -469,10 +470,13 @@
                 localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
                 this.getBallFn()
             },
-            goSelect(item) {
+            goSelect(item,index) {
+                this.adds.itemEditIndex = index
+                this.$set(item.msg,'status','edit',)
+                localStorage.setItem('conformBallList',JSON.stringify(this.conformBallList))
+                localStorage.setItem('adds',JSON.stringify(this.adds))
                 if (item.ballType == 'biaozhun') {
                     localStorage.setItem('selectedIndex', '0')
-                    // 噗噗噗噗噗
                 } else {
                     localStorage.setItem('selectedIndex', '1')
                 }
