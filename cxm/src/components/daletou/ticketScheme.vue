@@ -10,22 +10,41 @@
                 </div>
 
                 <ul class="my-num-ul" >
-                    <li class="my-num-li" v-for="(item,index) in ticketSchemeDetailDTOs" :key=index :class="ticketSchemeDetailDTOs.length-1==index?'border-none':''">
+                    <li class="my-num-li" v-for="(item,index) in ticketList" :key=index :class="ticketList.length-1==index?'border-none':''">
                         <div class="num-box">
-                            <template v-if="item.ballType == 'biaozhun'">
-                                <ul class="num-sun-ul" >
-                                    <li class="num-sun-li" :class="sunItem.type=='redBall'?'redBall':sunItem.type=='blueBall'?'blueBall':'line'" v-for="(sunItem,index) in item.ballList" :key=index>{{sunItem.num}}</li>
+                            <template>
+                                <ul class="num-sun-ul"  v-if="item.playType == '2'">
+                                    <div class="left">
+                                        <li class="num-sun-li redBall" v-for="(sunItem,i) in item.redDanCathectics" :key='i'>{{sunItem.cathectic}}</li>
+                                    </div>
+                                    <li style="line-height:1.1rem;color:#c7c7c7;">—</li>
+                                    <div class="left">
+                                        <li class="num-sun-li redBall" v-for="(sunItem,i) in item.redTuoCathectics" :key='i'>{{sunItem.cathectic}}</li>
+                                    </div>
+                                    <li style="line-height:1.1rem;color:#c7c7c7;">—</li>
+                                    <div class="right">
+                                        <li class="num-sun-li blueBall" v-for="(sunItem,i) in item.blueDanCathectics" :key='i'>{{sunItem.cathectic}}</li>
+                                    </div>
+                                    <li style="line-height:1.1rem;color:#c7c7c7;" v-show="item.blueDanCathectics.length>0">—</li>
+                                    <div class="right">
+                                        <li class="num-sun-li blueBall" v-for="(sunItem,i) in item.blueTuoCathectics" :key='i'>{{sunItem.cathectic}}</li>
+                                    </div>
                                 </ul>
-                                <p class="num-details">单式 1注 1倍 100.00元 已追加</p>
-                            </template>
-                            <template v-else>
-                                <ul class="num-sun-ul" >
-                                    <li class="num-sun-li" :class="sunItem.type=='redBall'?'redBall':sunItem.type=='blueBall'?'blueBall':'line'" v-for="(sunItem,index) in item.ballList" :key=index>{{sunItem.num}}</li>
+                                <ul class="num-sun-ul" v-else>
+                                    <div class="left">
+                                        <li class="num-sun-li redBall" v-for="(sunItem,i) in item.redCathectics" :key='i'>{{sunItem.cathectic}}</li>
+                                    </div>
+                                    <li style="line-height:1.1rem;color:#c7c7c7;">—</li>
+                                    <div class="right">
+                                        <li class="num-sun-li blueBall" v-for="(sunItem,i) in item.blueCathectics" :key='i'>{{sunItem.cathectic}}</li>
+                                    </div>
                                 </ul>
-                                <p class="num-details">单式 1注 1倍 100.00元 已追加</p>
+                                <p class="num-details">
+                                    {{item.playType=='2'?'胆拖':item.playType=='1'?'复式':'单式'}} {{item.betNum}}注 {{item.cathectic}}倍 {{item.amount}}元 {{item.isAppend=='0'?'':'已追加'}}
+                                </p>
                             </template>
                         </div>
-                        <p class="tickt-status">出票成功</p>
+                        <p class="tickt-status">{{status(item.status)}}</p>
                     </li>
                 </ul>
             </div>
@@ -75,12 +94,6 @@
                     color: #0081cc !important;
                     border: 1px solid #c7c7c7;
                 }
-                .line{
-                    width: 8px!important;
-                    color: #c7c7c7;
-                    text-align: center;
-                    overflow: hidden;
-                }
                 .my-num-ul{
                     .my-num-li{
                         display: flex;
@@ -90,8 +103,11 @@
                         padding: px2rem(15px);
                         .num-sun-ul{
                             display: flex;
-                            flex-direction: row;
                             flex-wrap: wrap;
+                            .left,.right{
+                                display: flex;
+                                flex-direction: row;  
+                            }
                             .num-sun-li{
                                 line-height: px2rem(60px);
                                 width: px2rem(60px);
@@ -124,188 +140,9 @@
         data() {
             return {
                 orderSn: this.$route.query.orderSn,
-                ticketSchemeDetailDTOs:[
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'——', type:'line',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"biaozhun",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0, //投注倍数 ,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'——', type:'line',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"biaozhun",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0, //投注倍数 ,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'——', type:'line',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"biaozhun",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0, //投注倍数 ,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'——', type:'line',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"biaozhun",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0, //投注倍数 ,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'——', type:'line',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"biaozhun",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0, //投注倍数 ,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'——', type:'line',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"biaozhun",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0, //投注倍数 ,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'—', type:'line'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'—', type:'space',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'—', type:'space',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"dantuo",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    }
-                ],
+                ticketList:[]
             }
         },
-        created(){},
         mounted(){
             this.fetchData()
         },
@@ -318,14 +155,19 @@
                 api.getLottoTicketScheme(data)
                 .then(res => {
                     if (res.code == 0) {
-                        console.log(res)
+                        this.ticketList = res.data.lottoTicketSchemeDetailDTOs
                     }
                 })
+            },
+            status(c){
+                switch (c){
+                    case '0': return '等待出票';
+                    case '1': return '出票成功';
+                    case '2': return '出票失败';
+                    case '3': return '出票中';
+                }
             }
         },
-        computed:{},
-        watch: {},
-        destroyed(){},
         beforeRouteLeave(to, from, next) {
             next()
         }
