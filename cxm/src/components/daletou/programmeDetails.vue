@@ -8,28 +8,43 @@
                         <div class="log">
                             <img class="ltto-log" :src="orderObj.lotteryClassifyImg" alt="">
                             <div class="log-text">
-                                <p>大乐透  20180528期</p>
+                                <p>大乐透  {{orderObj.termNum}}期</p>
                                 <p>￥ {{orderObj.ticketAmount}}</p>
                             </div>
                         </div>
-                        <img class="ltto-log" src="./images/Prize@3x.png" alt="">
+                        <img v-if="orderObj.orderStatus=='5'" class="ltto-log" src="./images/Prize@3x.png" alt="">
+                        <img v-if="orderObj.orderStatus=='4'" class="ltto-log" src="./images/NoPrize@3x.png" alt="">
                     </div>
                     <div class="programme">
                         <div class="programme-type">
                             <p>方案状态</p>
-                            <p>中奖金额</p>
+                            <p v-show="orderObj.orderStatus=='5'">中奖金额</p>
                         </div>
                         <div class="programme-money">
-                            <p>已中奖</p>
-                            <p>￥500000.00</p>
+                            <p v-if="orderObj.orderStatus=='0'">待付款</p>
+                            <p v-if="orderObj.orderStatus=='1'">待出票</p>
+                            <p v-if="orderObj.orderStatus=='2'">出票失败</p>
+                            <p v-if="orderObj.orderStatus=='3'">待开奖</p>
+                            <p v-if="orderObj.orderStatus=='4'">未中奖</p>
+                            <p v-if="orderObj.orderStatus=='5'">已中奖</p>
+                            <p v-if="orderObj.orderStatus=='6'">派奖中</p>
+                            <p v-if="orderObj.orderStatus=='7'">审核中</p>
+                            <p v-if="orderObj.orderStatus=='8'">支付失败</p>
+                            <p v-show="orderObj.orderStatus=='5'">￥{{orderObj.winningMoney}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="num">
-                    <p>开奖号码</p>
-                    <ul class="num-ul">
-                        <li :class="[index==4||index==5?'allblueBall':'allredBall',index==4?'spance':'']" v-for="(item,index) in kaijiangNum" :key=index >{{item}}</li>
-                    </ul>
+                <div class="num" v-if="orderObj.prizeNum">
+                    <template v-if="orderObj.prizeNum.length>0">
+                        <p>开奖号码</p>
+                        <ul class="num-ul">
+                            <li :class="[index==4||index==5?'allblueBall':'allredBall',index==4?'spance':'']" v-for="(item,index) in orderObj.prizeNum" :key=index >{{item}}</li>
+                        </ul>
+                    </template>
+                    <template v-if="orderObj.prizeNum.length<=0">
+                        <p>开奖时间</p>
+                        <p class="num-ul">{{orderObj.prePrizeInfo}}</p>
+                    </template>
                 </div>
             </div>
 
@@ -43,7 +58,14 @@
                                     <ul class="num-sun-ul" >
                                         <li class="num-sun-li" :class="sunItem.isGuess=='1'?sunItem.type=='redBall'?'allredBall':sunItem.type=='blueBall'?'allblueBall':'line':sunItem.type=='redBall'?'redBall':sunItem.type=='blueBall'?'blueBall':'line'" v-for="(sunItem,index) in item.ballList" :key=index>{{sunItem.num}}</li>
                                     </ul>
-                                    <p class="num-details">单式 1注 1倍 100.00元 已追加</p>
+                                    <p class="num-details">
+                                        <span v-if="item.playType == '0'">单式</span>
+                                        <span v-if="item.playType == '1'">复式</span>
+                                        <span>{{item.betNum}}注</span>
+                                        <span>{{item.cathectic}}倍</span>
+                                        <span>{{item.amount+'.00'}}元</span>
+                                        <span v-if="item.isAppend == '1'">已追加</span>
+                                    </p>
                                 </template>
                                 <template v-else>
                                     <ul class="num-sun-ul" >
@@ -65,10 +87,23 @@
                         </div>
                     </div>
                     <div class="my-num-main">
-                        <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
+                        <ul class="prgram-detail">
+                            <li>
+                                <p>方案编号：</p>
+                                <p>{{orderObj.programmeSn}}</p>
+                            </li>
+                            <li>
+                                <p>创建时间：</p>
+                                <p>{{orderObj.createTime}}</p>
+                            </li>
+                            <li>
+                                <p>店主接单：</p>
+                                <p>{{orderObj.acceptTime}}</p>
+                            </li>
+                            <li>
+                                <p>店主出票：</p>
+                                <p>{{orderObj.ticketTime}}</p>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -267,6 +302,25 @@
                         }
                     }
                 }
+                .prgram-detail{
+                    margin-top: px2rem(20px);
+                    margin-left: px2rem(10px);
+                    li{
+                        display: flex;
+                        flex-direction: row;
+                        justify-items: center;
+                        align-items: center;
+                        p:nth-child(1){
+                            color: #787878;
+                            font-size: px2rem(26px);
+                        }
+                        p:nth-child(2){
+                            margin-left: px2rem(10px);
+                            color: #505050;
+                            font-size: px2rem(26px);
+                        }
+                    }
+                }
                 .question{
                     margin-left: px2rem(30px);
                     margin-top: px2rem(20px);
@@ -304,466 +358,8 @@
         data() {
             return {
                 orderObj: {},
-                data: {
-                    "programmeSn": "string",
-                },
-                kaijiangNum:['01','02','23','12','34','12'],
-                ticketSchemeDetailDTOs:[
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'', type:'space',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"biaozhun",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0, //投注倍数 ,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'', type:'space',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"biaozhun",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0, //投注倍数 ,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'', type:'space',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"biaozhun",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0, //投注倍数 ,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'', type:'space',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"biaozhun",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0, //投注倍数 ,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'', type:'space',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"biaozhun",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0, //投注倍数 ,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'', type:'space',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"biaozhun",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0, //投注倍数 ,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        ballList:[
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'1'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'—', type:'line'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'12', type:'redBall',isGuess:'0'},
-                            {num:'—', type:'space',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'—', type:'space',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'0'},
-                            {num:'13', type:'blueBall',isGuess:'1'},
-                        ],
-                        ballType:"dantuo",
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    }
-                ],
-                ticketSchemeDetailDTOsxxxxxx: [
-                    {
-                        blueCathectics: [
-                            {
-                                cathectic: "10",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "12",
-                                isGuess: "string"
-                            }
-                        ],
-                        redCathectics: [
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                        ],
-                        blueDanCathectics: [
-                            {
-                                cathectic: "23",
-                                isGuess: "string"
-                            }
-                        ],
-                        blueTuoCathectics: [
-                            {
-                                cathectic: "24",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "24",
-                                isGuess: "string"
-                            }
-                        ],
-                        redDanCathectics: [
-                            {
-                                cathectic: "13",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "13",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "13",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "13",
-                                isGuess: "string"
-                            }
-                        ],
-                        redTuoCathectics: [
-                            {
-                                cathectic: "16",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "16",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "16",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "16",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "16",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "16",
-                                isGuess: "string"
-                            },
-                        ],
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        blueCathectics: [
-                            {
-                                cathectic: "10",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "12",
-                                isGuess: "string"
-                            }
-                        ],
-                        redCathectics: [
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                        ],
-                        blueDanCathectics: [
-                            {
-                                cathectic: "23",
-                                isGuess: "string"
-                            }
-                        ],
-                        blueTuoCathectics: [
-                            {
-                                cathectic: "24",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "24",
-                                isGuess: "string"
-                            }
-                        ],
-                        redDanCathectics: [
-                            {
-                                cathectic: "13",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "13",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "13",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "13",
-                                isGuess: "string"
-                            }
-                        ],
-                        redTuoCathectics: [
-                            {
-                                cathectic: "16",
-                                isGuess: "string"
-                            }
-                        ],
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    },
-                    {
-                        blueCathectics: [
-                            {
-                                cathectic: "10",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "12",
-                                isGuess: "string"
-                            }
-                        ],
-                        redCathectics: [
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "01",
-                                isGuess: "string"
-                            },
-                        ],
-                        blueDanCathectics: [
-                            {
-                                cathectic: "23",
-                                isGuess: "string"
-                            }
-                        ],
-                        blueTuoCathectics: [
-                            {
-                                cathectic: "24",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "24",
-                                isGuess: "string"
-                            }
-                        ],
-                        redDanCathectics: [
-                            {
-                                cathectic: "13",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "13",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "13",
-                                isGuess: "string"
-                            },
-                            {
-                                cathectic: "13",
-                                isGuess: "string"
-                            }
-                        ],
-                        redTuoCathectics: [
-                            {
-                                cathectic: "16",
-                                isGuess: "string"
-                            }
-                        ],
-                        amount: "string",
-                        betNum: 0,
-                        cathectic: 0,
-                        isAppend: 0,
-                        multiple: "string",
-                        number: "string",
-                        passType: "string",
-                        playType: 0,
-                        status: 0,
-                        tickeContent: "string",
-                        ticketSn: "string"
-                    }
-                ]
+                kaijiangNum:[],//开奖号码
+                ticketSchemeDetailDTOs:[],
             }
         },
         created(){
@@ -780,12 +376,99 @@
             getLottoOrderDetailFn() {
                 api.getLottoOrderDetail({
                     orderId: this.$route.query.id
-                })
-                    .then(res => {
+                }).then(res => {
                         if (res.code == 0) {
                             this.orderObj = res.data
+                            this.dataHandel(res.data.cathecticResults)
                         }
                     })
+            },
+            //数据处理
+            dataHandel(dataArr){
+                var that = this
+                var arr  = []
+                dataArr.forEach((item,index)=>{
+                    arr.push({
+                        amount:item.amount,
+                        betNum:item.betNum,
+                        cathectic:item.cathectic,
+                        isAppend:item.isAppend,
+                        playType:item.playType,
+                        ballType:'',
+                        ballList:[]
+                    })
+                    if(item.playType!='2'){
+                        arr[index].ballType = 'biaozhun'
+                        item.blueCathectics.forEach(sunItem=>{
+                            arr[index].ballList.push({
+                                num:sunItem.cathectic,
+                                type:'blueBall',
+                                isGuess:sunItem.isGuess
+                            })
+                        })
+                        arr[index].ballList.push({
+                            num:'—',
+                            type:'line',
+                            isGuess:'0'
+                        })
+                        item.redCathectics.forEach(sunItem=>{
+                            arr[index].ballList.push({
+                                num:sunItem.cathectic,
+                                type:'redBall',
+                                isGuess:sunItem.isGuess
+                            })
+                        })
+                    }
+                    else{
+                        arr[index].ballType = 'dantuo'
+                        item.redDanCathectics.forEach(sunItem=>{
+                            arr[index].ballList.push({
+                                num:sunItem.cathectic,
+                                type:'redBall',
+                                isGuess:sunItem.isGuess
+                            })
+                        })
+                        arr[index].ballList.push({
+                            num:'—',
+                            type:'line',
+                            isGuess:'0'
+                        })
+                        item.redTuoCathectics.forEach(sunItem=>{
+                            arr[index].ballList.push({
+                                num:sunItem.cathectic,
+                                type:'redBall',
+                                isGuess:sunItem.isGuess
+                            })
+                        })
+                        if(item.blueDanCathectics.length>0){
+                            arr[index].ballList.push({
+                                num:'—',
+                                type:'line',
+                                isGuess:'0'
+                            })
+                        }
+                        item.blueDanCathectics.forEach(sunItem=>{
+                            arr[index].ballList.push({
+                                num:sunItem.cathectic,
+                                type:'blueBall',
+                                isGuess:sunItem.isGuess
+                            })
+                        })
+                        arr[index].ballList.push({
+                            num:'—',
+                            type:'line',
+                            isGuess:'0'
+                        })
+                        item.blueTuoCathectics.forEach(sunItem=>{
+                            arr[index].ballList.push({
+                                num:sunItem.cathectic,
+                                type:'blueBall',
+                                isGuess:sunItem.isGuess
+                            })
+                        })
+                    }
+                    that.ticketSchemeDetailDTOs = arr
+                })
             },
             //跳转到订单详情
             goSelectNum(){
@@ -794,9 +477,6 @@
                 })
             }
         },
-        computed:{},
-        watch: {},
-        destroyed(){},
         beforeRouteLeave(to, from, next) {
             next()
         }
