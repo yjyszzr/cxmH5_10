@@ -696,25 +696,25 @@ const router = new Router({
       },
       // 大乐方案详情
       {
-          path: '/lottery/daletou/programmeDetails',
+          path: '/daletou/programmeDetails',
           name: 'programmeDetails',
           component: resolve => require(['@/components/daletou/programmeDetails.vue'], resolve)
       },
       // 胆拖介绍
       {
-          path: '/lottery/daletou/whatDantuo',
+          path: '/daletou/whatDantuo',
           name: 'whatDantuo',
           component: resolve => require(['@/components/daletou/whatDantuo.vue'], resolve)
       },
       // 玩法帮助
       {
-          path: '/lottery/daletou/playHelp',
+          path: '/daletou/playHelp',
           name: 'playHelp',
           component: resolve => require(['@/components/daletou/playHelp.vue'], resolve)
       },
       // 出票方案
       {
-          path: '/lottery/daletou/ticketScheme',
+          path: '/daletou/ticketScheme',
           name: 'ticketScheme',
           component: resolve => require(['@/components/daletou/ticketScheme.vue'], resolve)
       },

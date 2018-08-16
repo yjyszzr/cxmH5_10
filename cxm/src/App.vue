@@ -172,6 +172,17 @@
                             return "修改登录密码";
                         case 'joinWeChat':
                             return "彩民交流群";
+                            //大乐透
+                        case 'playHelp':
+                            return '玩法帮助';
+                        case 'ticketScheme':
+                            return '出票方案';
+                        case 'whatDantuo':
+                            return '胆拖介绍';
+                        case 'programmeDetails':
+                            return '方案详情';
+                         case 'touZhuConfirm':
+                            return '投注确认';
                     }
                 } else {
                     if (

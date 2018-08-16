@@ -50,7 +50,7 @@
                 </div>
                 <!--胆拖选号-->
                 <div class="dantuo" v-if="selectedIndex=='1'">
-                    <router-link to="/lottery/daletou/whatDantuo"><p class="what-dantuo">什么是胆拖？</p></router-link>
+                    <router-link to="/daletou/whatDantuo"><p class="what-dantuo">什么是胆拖？</p></router-link>
                     <div class="ball-box">
                         <div class="selection dantuo-selection">
                             <p class="desceibe">胆码-红球，至多选4个，至少选1个</p>
@@ -1114,21 +1114,16 @@
                 }
                 else if (item.name == '玩法帮助') {
                     this.$router.push({
-                        path: '/lottery/daletou/playHelp'
-                    })
-                }
-                if (item.name == '走势图') {
-                    this.$router.push({
-                        path: '/lottery/daletou/runchart'
-                    })
-                }if (item.name == '开奖结果') {
-                    this.$router.push({
-                        path: '/lottery/daletou/programmeDetails'
+                        path: '/daletou/playHelp'
                     })
                 }
                 else if (item.name == '走势图') {
                     this.$router.push({
-                        path:'/lottery/daletou/runchart'
+                        path: '/lottery/daletou/runchart'
+                    })
+                }else if (item.name == '开奖结果') {
+                    this.$router.push({
+                        path: '/daletou/programmeDetails'
                     })
                 }
             },

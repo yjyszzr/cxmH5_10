@@ -1,13 +1,5 @@
 <template>
     <div class="what-dantuo">
-        <!--头部开始-->
-        <div class="head">
-            <span class="back-img" @click="goBack()"><img src="../../assets/img/ret.png" alt=""></span>
-            <div class="head-text">
-                <span>彩小秘·什么是胆拖</span>
-            </div>
-            <div class="memu"></div>
-        </div>
         <!--躯干-->
         <div class="body">
             <div class="body-in">
@@ -27,38 +19,8 @@
     @import "../../assets/css/function.scss";
 
     .what-dantuo {
-        .head {
-            overflow: hidden;
-            height: px2rem(100px);
-            background: #f4f4f4;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            .back-img {
-                display: inline-block;
-                height: px2rem(30px);
-                width: px2rem(30px);
-                margin-left: px2rem(30px);
-                img {
-                    width: 100%;
-                }
-            }
-            .head-text {
-                display: flex;
-                align-items: center;
-                font-size: px2rem(32px);
-                color: #505050;
-
-            }
-            .memu {
-                width: px2rem(30px);
-            }
-        }
         .body {
             width: 100%;
-            position: absolute;
-            top: px2rem(100px);
-            bottom: 0;
             overflow: auto;
             .body-in{
                 background-color: #ffffff;

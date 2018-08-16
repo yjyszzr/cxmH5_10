@@ -97,12 +97,21 @@ export default {
                     if (s == 'ye') {
                         if (res.code == 0) {
                             Toast(res.msg)
-                            this.$router.replace({
-                                path: '/user/order',
-                                query: {
-                                    id: res.data.orderId,
-                                }
-                            })
+                            if(this.payment.lotteryClassifyId=='2'){
+                                this.$router.replace({
+                                    path: '/daletou/programmeDetails',
+                                    query: {
+                                        id: res.data.orderId,
+                                    }
+                                })
+                            }else{
+                                this.$router.replace({
+                                    path: '/user/order',
+                                    query: {
+                                        id: res.data.orderId,
+                                    }
+                                })
+                            }
                         }
                     } else {
                         if (res.code == 0) {
@@ -153,12 +162,21 @@ export default {
                 .then(res => {
                     //console.log(res)
                     if (res.code == 0) {
-                        this.$router.replace({
-                            path: '/user/order',
-                            query: {
-                                id: this.orderId,
-                            }
-                        })
+                        if(this.payment.lotteryClassifyId=='2'){
+                            this.$router.replace({
+                                path: '/daletou/programmeDetails',
+                                query: {
+                                    id: this.orderId,
+                                }
+                            })
+                        }else{
+                            this.$router.replace({
+                                path: '/user/order',
+                                query: {
+                                    id: this.orderId,
+                                }
+                            })
+                        }
                     }else if(res.code=='304036'){
                         MessageBox.confirm('',{
                             message: '暂未查询到您的支付结果，如果您已经确认支付并扣款，可能存在延迟到账的情况，请到账户明细中查看或联系客服查询',

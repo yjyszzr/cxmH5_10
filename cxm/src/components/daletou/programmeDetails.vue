@@ -1,13 +1,5 @@
 <template>
     <div class="programme-details">
-        <!--头部开始-->
-        <div class="head">
-            <span class="back-img" @click="goBack()"><img src="../../assets/img/ret.png" alt=""></span>
-            <div class="head-text">
-                <span>彩小秘·方案详情</span>
-            </div>
-            <div class="memu"></div>
-        </div>
         <!--躯干-->
         <div class="body">
             <div class="body-top">
@@ -62,7 +54,7 @@
                             </li>
                         </ul>
                     </div>
-                    <router-link to="/lottery/daletou/playHelp"> <p class="question"> 奖金如何计算</p></router-link>
+                    <router-link to="/daletou/playHelp"> <p class="question"> 奖金如何计算</p></router-link>
                 </div>
 
                 <div class="touzhu-mes">
@@ -96,37 +88,6 @@
     @import "../../assets/css/function.scss";
 
     .programme-details {
-        /*.clearfix:after {content:"."; display:block; height:0; visibility:hidden; clear:both; }*/
-        /*.clearfix { *zoom:1; }　*/
-        .head {
-            overflow: hidden;
-            height: px2rem(100px);
-            background: #f4f4f4;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            .back-img {
-                display: inline-block;
-                height: px2rem(30px);
-                width: px2rem(30px);
-                margin-left: px2rem(30px);
-                img {
-                    width: 100%;
-                }
-            }
-            .head-text {
-                display: flex;
-                align-items: center;
-                font-size: px2rem(32px);
-                color: #505050;
-
-            }
-            .memu {
-                width: px2rem(30px);
-            }
-        }
-
-
         .spance{
             margin-left: px2rem(30px) !important;
         }
@@ -188,8 +149,7 @@
             box-sizing: border-box;
             position: absolute;
             bottom: px2rem(100px);
-            top: px2rem(100px);
-            position: absolute;
+            top: px2rem(0px);
             overflow: auto;
             .body-top{
                 width: 100%;
@@ -816,17 +776,17 @@
             },
             goProm(){
                 this.$router.push({
-                    path:"/lottery/daletou/ticketScheme"
+                    path:"/daletou/ticketScheme"
                 })
             },
             //获取详情
             getLottoOrderDetailFn() {
                 api.getLottoOrderDetail({
-                    orderId: '31554'
+                    orderId: this.$route.query.id
                 })
                     .then(res => {
                         if (res.code == 0) {
-                            Indicator.close()
+                            
                             console.log(res);
                         }
                     })

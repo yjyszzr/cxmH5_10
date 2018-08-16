@@ -104,7 +104,7 @@
 
             }
             .memu {
-                width: px2rem(30px);
+                width: px2rem(60px);
             }
         }
         .body {
