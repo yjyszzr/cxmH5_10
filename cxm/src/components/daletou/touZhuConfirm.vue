@@ -472,6 +472,7 @@
             goSelect(item) {
                 if (item.ballType == 'biaozhun') {
                     localStorage.setItem('selectedIndex', '0')
+                    // 噗噗噗噗噗
                 } else {
                     localStorage.setItem('selectedIndex', '1')
                 }
