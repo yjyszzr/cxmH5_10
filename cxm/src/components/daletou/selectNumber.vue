@@ -804,7 +804,7 @@
             //标准选号
             biaozhunSelect(item, type) {
                 if (type == 'preList') { //点击前区
-                    if (this.redBallList.length < 18) {
+                    if (this.redBallList.length < 18&&this.canOk) {
                         this.$set(item, 'selected', !item.selected)
                         if (item.selected) {
                             this.redBallList.push(item.num);
@@ -824,6 +824,7 @@
                             Toast('最多只能选择18个红球')
                         }
                     }
+                    this.viewText('preList',item)
                 }
                 if (type == 'postList') { //点后区
                     this.$set(item, 'selected', !item.selected)
@@ -835,22 +836,36 @@
                             this.blueBallList.splice(index, 1);
                         }
                     }
+                    this.viewText('postList',item)
                 }
-                this.viewText()
                 this.setLocalStorageFn('biaoZhun')
             },
+            //判断投注金额是否超20000
+            moreTwoWan(ballType,item){
+                var that = this
+                if (parseInt(this.selectZhu.zhuNum) * 2 > 20000) {
+                    Toast('单次投注最多2万元')
+                    setTimeout(function () {
+                        that.$set(item, 'selected', !item.selected)
+                        if(ballType=='preList'){
+                            that.redBallList.pop()
+                            localStorage.setItem('redBallList',JSON.stringify(that.redBallList))
+                        }
+                        if(ballType=='postList'){
+                            that.blueBallList.pop()
+                            localStorage.setItem('blueBallList',JSON.stringify(that.blueBallList))
+                        }
+                        that.viewText()
+                    },500)
+                }
+            },
             //提示信息
-            viewText() {
+            viewText(ballType,item) {
                 if (this.selectedIndex == '0') {
                     if (this.redBallList.length > 4 && this.blueBallList.length > 1) {
                         this.textType = false
                         this.selectZhu.zhuNum = getCombinationCount(this.redBallList.length, 5) * getCombinationCount(this.blueBallList.length, 2)
-                        if (parseInt(this.selectZhu.zhuNum) * 2 > 20000) {
-                            Toast('单次投注最多2万元')
-                            this.canOk = false
-                            return
-                        }
-                        this.canOk = true
+                        this.moreTwoWan(ballType,item)
                     } else {
                         this.textType = true
                     }
