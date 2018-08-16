@@ -71,7 +71,15 @@
                                     <ul class="num-sun-ul" >
                                         <li class="num-sun-li" :class="sunItem.isGuess=='1'?sunItem.type=='redBall'?'allredBall':sunItem.type=='blueBall'?'allblueBall':'line':sunItem.type=='redBall'?'redBall':sunItem.type=='blueBall'?'blueBall':'line'" v-for="(sunItem,index) in item.ballList" :key=index>{{sunItem.num}}</li>
                                     </ul>
-                                    <p class="num-details">单式 1注 1倍 100.00元 已追加</p>
+                                    <p class="num-details">
+                                        <span v-if="item.playType == '0'">单式</span>
+                                        <span v-if="item.playType == '1'">复式</span>
+                                        <span v-if="item.playType == '2'">胆拖</span>
+                                        <span>{{item.betNum}}注</span>
+                                        <span>{{item.cathectic}}倍</span>
+                                        <span>{{item.amount+'.00'}}元</span>
+                                        <span v-if="item.isAppend == '1'">已追加</span>
+                                    </p>
                                 </template>
                             </li>
                         </ul>
@@ -112,7 +120,7 @@
 
 
         <div class="footer">
-            <p>继续购买此号</p>
+            <p @click="goOnBuy()">继续购买此号</p>
             <p @click="goSelectNum()">继续购买大乐透</p>
         </div>
 
@@ -468,6 +476,37 @@
                         })
                     }
                     that.ticketSchemeDetailDTOs = arr
+                })
+
+                console.log(this.ticketSchemeDetailDTOs);
+            },
+            //继续购买此号
+            goOnBuy(){
+                let conformBallList =  JSON.parse(sessionStorage.getItem('conformBallList'))
+                conformBallList = []
+                this.ticketSchemeDetailDTOs.forEach((item,index)=>{
+                    conformBallList.push({
+                        ballType:item.ballType,
+                        ballList:item.ballList,
+                        msg:{
+                            baseMoney:'2',
+                            bei:item.cathectic,
+                            danFn:item.playType=='0'?'单式':item.playType=='1'?'复式':'',
+                            money:item.betNum*2,
+                            zhuNum:item.betNum,
+                        },
+                    })
+                    sessionStorage.setItem('conformBallList',JSON.stringify(conformBallList))
+                    let adds = JSON.parse(sessionStorage.getItem('adds'))
+                    if(item.isAppend=='0'){
+                        adds.add=false
+                    }else {
+                        adds.add=true
+                    }
+                    sessionStorage.setItem('adds',JSON.stringify(adds))
+                })
+                this.$router.push({
+                    path:'/lottery/daletou/touZhuConfirm'
                 })
             },
             //跳转到订单详情
