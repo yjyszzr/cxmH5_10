@@ -1234,7 +1234,7 @@
                                 num: this.danBlueMaList[i],
                                 type: 'danBlueBall'
                             })
-                        } else {
+                        } else if(this.danBlueMaList.length!=0) {
                             ballList.push({
                                 num: '—',
                                 type: 'line'

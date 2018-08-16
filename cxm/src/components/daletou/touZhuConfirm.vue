@@ -294,6 +294,7 @@
                 }
                 .ok {
                     flex: 1;
+                    /*width: px2rem(250px);*/
                     text-align: center;
                     line-height: px2rem(100px);
                     background-color: #ea5504;
@@ -471,6 +472,7 @@
             goSelect(item) {
                 if (item.ballType == 'biaozhun') {
                     localStorage.setItem('selectedIndex', '0')
+                    // 噗噗噗噗噗
                 } else {
                     localStorage.setItem('selectedIndex', '1')
                 }
