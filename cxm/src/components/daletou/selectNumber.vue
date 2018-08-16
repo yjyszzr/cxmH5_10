@@ -595,7 +595,7 @@
                 popupVisible: false,//历史开奖列表
                 //popdantuo: false,//胆拖介绍
                 historyMiss: true,//显示历史遗漏
-                selectedIndex: JSON.parse(localStorage.getItem('selectedIndex')) ? JSON.parse(localStorage.getItem('selectedIndex')) : '0',//'0'标准选号 '1'胆拖选号
+                selectedIndex: JSON.parse(sessionStorage.getItem('selectedIndex')) ? JSON.parse(sessionStorage.getItem('selectedIndex')) : '0',//'0'标准选号 '1'胆拖选号
                 preList: [],//前区遗漏
                 postList: [],//后区遗漏 ,
                 danRedPreList: [],//胆前区遗漏
@@ -660,7 +660,7 @@
                 var that = this
                 let ballList = this.$route.query.ballList
                 if (ballList != undefined) {
-                    if (localStorage.getItem('selectedIndex') == '0') {
+                    if (sessionStorage.getItem('selectedIndex') == '0') {
                         ballList.forEach(item => {
                             if (item.type == 'redBall') {
                                 that.redBallList.push(item.num)
@@ -671,7 +671,7 @@
                         })
                         this.setSelectBallFn('biaoZhun')
                     }
-                    if (localStorage.getItem('selectedIndex') == '1') {
+                    if (sessionStorage.getItem('selectedIndex') == '1') {
                         ballList.forEach(item => {
                             if (item.type == 'danRedBall') {
                                 that.danRedMaList.push(item.num)
@@ -849,11 +849,11 @@
                         that.$set(item, 'selected', !item.selected)
                         if(ballType=='preList'){
                             that.redBallList.pop()
-                            localStorage.setItem('redBallList',JSON.stringify(that.redBallList))
+                            sessionStorage.setItem('redBallList',JSON.stringify(that.redBallList))
                         }
                         if(ballType=='postList'){
                             that.blueBallList.pop()
-                            localStorage.setItem('blueBallList',JSON.stringify(that.blueBallList))
+                            sessionStorage.setItem('blueBallList',JSON.stringify(that.blueBallList))
                         }
                         that.viewText()
                     },500)
@@ -999,39 +999,39 @@
             //存储 所选号码
             setLocalStorageFn(type) {
                 if (type == 'biaoZhun') {
-                    localStorage.setItem('redBallList', JSON.stringify(this.redBallList))
-                    localStorage.setItem('blueBallList', JSON.stringify(this.blueBallList))
+                    sessionStorage.setItem('redBallList', JSON.stringify(this.redBallList))
+                    sessionStorage.setItem('blueBallList', JSON.stringify(this.blueBallList))
                 } else if (type == 'dantuo') {
-                    localStorage.setItem('danRedMaList', JSON.stringify(this.danRedMaList))
-                    localStorage.setItem('tuoRedMaList', JSON.stringify(this.tuoRedMaList))
-                    localStorage.setItem('danBlueMaList', JSON.stringify(this.danBlueMaList))
-                    localStorage.setItem('tuoBlueMaList', JSON.stringify(this.tuoBlueMaList))
+                    sessionStorage.setItem('danRedMaList', JSON.stringify(this.danRedMaList))
+                    sessionStorage.setItem('tuoRedMaList', JSON.stringify(this.tuoRedMaList))
+                    sessionStorage.setItem('danBlueMaList', JSON.stringify(this.danBlueMaList))
+                    sessionStorage.setItem('tuoBlueMaList', JSON.stringify(this.tuoBlueMaList))
                 }
             },
             //内存中取出所选号码
             getLocalStorageFn(type) {
                 if (type == 'biaoZhun') {
                     var that = this
-                    if (JSON.parse(localStorage.getItem('redBallList')) != null) {
-                        this.redBallList = JSON.parse(localStorage.getItem('redBallList'))
+                    if (JSON.parse(sessionStorage.getItem('redBallList')) != null) {
+                        this.redBallList = JSON.parse(sessionStorage.getItem('redBallList'))
                     }
-                    if (JSON.parse(localStorage.getItem('redBallList')) != null) {
-                        this.blueBallList = JSON.parse(localStorage.getItem('blueBallList'))
+                    if (JSON.parse(sessionStorage.getItem('redBallList')) != null) {
+                        this.blueBallList = JSON.parse(sessionStorage.getItem('blueBallList'))
                     }
                     this.setSelectBallFn('biaoZhun')
 
                 } else if (type == 'dantuo') {
-                    if (JSON.parse(localStorage.getItem('danRedMaList')) != null) {
-                        this.danRedMaList = JSON.parse(localStorage.getItem('danRedMaList'))
+                    if (JSON.parse(sessionStorage.getItem('danRedMaList')) != null) {
+                        this.danRedMaList = JSON.parse(sessionStorage.getItem('danRedMaList'))
                     }
-                    if (JSON.parse(localStorage.getItem('tuoRedMaList')) != null) {
-                        this.tuoRedMaList = JSON.parse(localStorage.getItem('tuoRedMaList'))
+                    if (JSON.parse(sessionStorage.getItem('tuoRedMaList')) != null) {
+                        this.tuoRedMaList = JSON.parse(sessionStorage.getItem('tuoRedMaList'))
                     }
-                    if (JSON.parse(localStorage.getItem('danBlueMaList')) != null) {
-                        this.danBlueMaList = JSON.parse(localStorage.getItem('danBlueMaList'))
+                    if (JSON.parse(sessionStorage.getItem('danBlueMaList')) != null) {
+                        this.danBlueMaList = JSON.parse(sessionStorage.getItem('danBlueMaList'))
                     }
-                    if (JSON.parse(localStorage.getItem('tuoBlueMaList')) != null) {
-                        this.tuoBlueMaList = JSON.parse(localStorage.getItem('tuoBlueMaList'))
+                    if (JSON.parse(sessionStorage.getItem('tuoBlueMaList')) != null) {
+                        this.tuoBlueMaList = JSON.parse(sessionStorage.getItem('tuoBlueMaList'))
                     }
                     this.setSelectBallFn('dantuo')
                 }
@@ -1112,7 +1112,7 @@
             },
             //投注方式选择
             numType(index) {
-                localStorage.setItem('selectedIndex', index)
+                sessionStorage.setItem('selectedIndex', index)
                 this.selectedIndex = index
                 if (index == '1') {
                     this.getLocalStorageFn('dantuo')
@@ -1149,8 +1149,8 @@
                     return
                 }
                 if (key && key2) {
-                    localStorage.setItem('selectedIndex', this.selectedIndex)
-                    JSON.stringify(localStorage.getItem('conformBallList'))
+                    sessionStorage.setItem('selectedIndex', this.selectedIndex)
+                    JSON.stringify(sessionStorage.getItem('conformBallList'))
                     this.dataProcess()
                     this.$router.push({
                         path: '/lottery/daletou/touZhuConfirm'
@@ -1174,9 +1174,9 @@
             // 去投注数据处理
             dataProcess() {
                 let ballList = []
-                if (JSON.parse(localStorage.getItem('conformBallList')) != null) {
-                    var conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
-                    let itemIndex = JSON.parse(localStorage.getItem('adds')).itemEditIndex
+                if (JSON.parse(sessionStorage.getItem('conformBallList')) != null) {
+                    var conformBallList = JSON.parse(sessionStorage.getItem('conformBallList'))
+                    let itemIndex = JSON.parse(sessionStorage.getItem('adds')).itemEditIndex
                     if(itemIndex!= -1&&conformBallList[itemIndex]!=undefined){
                         if(conformBallList[itemIndex].msg.status == 'edit'){
                             conformBallList.splice(itemIndex,1)
@@ -1205,7 +1205,7 @@
                         msg: {
                             zhuNum: this.selectZhu.zhuNum,
                             danFn: ballList.length > 7 ? '复式' : '单式',
-                            bei: JSON.parse(localStorage.getItem('adds')) != null ? JSON.parse(localStorage.getItem('adds')).bei : 1,
+                            bei: JSON.parse(sessionStorage.getItem('adds')) != null ? JSON.parse(sessionStorage.getItem('adds')).bei : 1,
                             money: this.selectZhu.zhuNum * 2,
                             baseMoney: 2,
                         }
@@ -1265,13 +1265,13 @@
                         msg: {
                             zhuNum: this.danTuoZhu.zhuNum,
                             danFn: ballList.length > 7 ? '复式' : '单式',
-                            bei: JSON.parse(localStorage.getItem('adds')) != null ? JSON.parse(localStorage.getItem('adds')).bei : 1,
+                            bei: JSON.parse(sessionStorage.getItem('adds')) != null ? JSON.parse(sessionStorage.getItem('adds')).bei : 1,
                             money: this.danTuoZhu.zhuNum * 2,
                             baseMoney: 2,
                         }
                     })
                 }
-                localStorage.setItem('conformBallList', JSON.stringify(conformBallList))
+                sessionStorage.setItem('conformBallList', JSON.stringify(conformBallList))
             },
             //判断选号是否与原有数据重复
             repeatData() {
@@ -1281,8 +1281,8 @@
                 let c = false
                 let d = false
                 // 判断所选号码是否与已有的重复
-                if (JSON.parse(localStorage.getItem('conformBallList')) != null) {
-                    var conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
+                if (JSON.parse(sessionStorage.getItem('conformBallList')) != null) {
+                    var conformBallList = JSON.parse(sessionStorage.getItem('conformBallList'))
                     if (this.selectedIndex == '0') {
                         conformBallList.forEach(item => {
                             let redBallLength = 0

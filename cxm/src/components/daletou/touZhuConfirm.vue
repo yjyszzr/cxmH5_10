@@ -323,7 +323,7 @@
                     add: false,  //是否追加 默认不追加
                     imgUrl: SelectionBox,
                     zhuNum:0,
-                    bei: JSON.parse(localStorage.getItem('adds'))!=null?JSON.parse(localStorage.getItem('adds')).bei:1,
+                    bei: JSON.parse(sessionStorage.getItem('adds'))!=null?JSON.parse(sessionStorage.getItem('adds')).bei:1,
                     money:0,
                     itemEditIndex:-1,
                 },
@@ -343,7 +343,7 @@
         methods: {
             //在localStor中获取数据
             getBallFn() {
-                this.conformBallList = JSON.parse(localStorage.getItem('conformBallList'))
+                this.conformBallList = JSON.parse(sessionStorage.getItem('conformBallList'))
                 this.adds.zhuNum = 0
                 this.adds.money = 0
                 this.conformBallList.forEach(item => {
@@ -353,8 +353,8 @@
             },
             //追加一注
             addOne(ckick) {
-                if(localStorage.getItem('adds')!=null){
-                    this.adds = JSON.parse(localStorage.getItem('adds'))
+                if(sessionStorage.getItem('adds')!=null){
+                    this.adds = JSON.parse(sessionStorage.getItem('adds'))
                 }
                 if(ckick){
                     this.adds.add = !this.adds.add
@@ -381,18 +381,18 @@
                         })
                     }
                 }
-                localStorage.setItem('adds', JSON.stringify(this.adds))
-                localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
+                sessionStorage.setItem('adds', JSON.stringify(this.adds))
+                sessionStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
                 this.getBallFn()
             },
             // 头部返回
             goBack() {
                 MessageBox.confirm('确定清空所选号码吗?', '温馨提示').then(action => {
-                    localStorage.setItem('conformBallList', JSON.stringify([]))
+                    sessionStorage.setItem('conformBallList', JSON.stringify([]))
                     this.adds.bei=1
                     this.adds.add=false
                     this.adds.imgUrl=SelectionBox
-                    localStorage.setItem('adds', JSON.stringify(this.adds))
+                    sessionStorage.setItem('adds', JSON.stringify(this.adds))
                     this.$router.go(-1);
                 });
 
@@ -457,7 +457,7 @@
                         })
                     }
                 }
-                localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
+                sessionStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
                 this.getBallFn()
                 this.addOne()
             },
@@ -467,18 +467,18 @@
                 if(this.conformBallList.length<1){
                     this.$router.go(-1);
                 }
-                localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
+                sessionStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
                 this.getBallFn()
             },
             goSelect(item,index) {
                 this.adds.itemEditIndex = index
                 this.$set(item.msg,'status','edit',)
-                localStorage.setItem('conformBallList',JSON.stringify(this.conformBallList))
-                localStorage.setItem('adds',JSON.stringify(this.adds))
+                sessionStorage.setItem('conformBallList',JSON.stringify(this.conformBallList))
+                sessionStorage.setItem('adds',JSON.stringify(this.adds))
                 if (item.ballType == 'biaozhun') {
-                    localStorage.setItem('selectedIndex', '0')
+                    sessionStorage.setItem('selectedIndex', '0')
                 } else {
-                    localStorage.setItem('selectedIndex', '1')
+                    sessionStorage.setItem('selectedIndex', '1')
                 }
                 this.$router.push({
                     path: "/lottery/daletou/selectnumber",
@@ -540,9 +540,9 @@
                         item.msg.money = a*item.msg.baseMoney*item.msg.zhuNum
                         this.adds.money = this.adds.money + item.msg.money
                     })
-                    localStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
+                    sessionStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
                     this.adds.bei = a
-                    localStorage.setItem('adds', JSON.stringify(this.adds))
+                    sessionStorage.setItem('adds', JSON.stringify(this.adds))
                 }else {
                     this.num++
                 }
