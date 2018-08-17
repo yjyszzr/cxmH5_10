@@ -477,8 +477,6 @@
                     }
                     that.ticketSchemeDetailDTOs = arr
                 })
-
-                console.log(this.ticketSchemeDetailDTOs);
             },
             //继续购买此号
             goOnBuy(){
