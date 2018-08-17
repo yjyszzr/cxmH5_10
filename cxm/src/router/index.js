@@ -725,7 +725,7 @@ const router = new Router({
       // 大乐投注确认
       {
           path: '/lottery/daletou/touZhuConfirm',
-          name: 'selectNumber',
+          name: 'touZhuConfirm',
           component: resolve => require(['@/components/daletou/touZhuConfirm.vue'], resolve)
       },
       // 大乐方案详情

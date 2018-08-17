@@ -327,6 +327,7 @@
                     money:0,
                     itemEditIndex:-1,
                 },
+                routerOpen:true,
                 redBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'],
                 blueBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
             }
@@ -394,25 +395,18 @@
             },
             // 头部返回
             goBack() {
-                MessageBox.confirm('确定清空所选号码吗?', '温馨提示').then(action => {
-                    sessionStorage.setItem('conformBallList', JSON.stringify([]))
-                    this.adds.bei=1
-                    this.adds.add=false
-                    this.adds.imgUrl=SelectionBox
-                    sessionStorage.setItem('adds', JSON.stringify(this.adds))
-                    this.$router.push({
-                        path:'/lottery/daletou/selectnumber'
-                    })
-                    //this.$router.go(-1);
-                });
-
+                // this.$router.push({
+                //     path:'/lottery/daletou/selectnumber'
+                // })
+                this.$router.go(-1);
             },
             //手动添加
             handAdd() {
+                this.routerOpen = false
                 this.$router.push({
-                    path:"/lottery/daletou/selectnumber"
+                    path:"/lottery/daletou/selectnumber",
                 })
-                // this.$router.go(-1);
+                //this.$router.go(-1);
             },
             //机选
             machineSelection(type) {
@@ -478,12 +472,14 @@
             delItem(index) {
                 this.conformBallList.splice(index, 1)
                 if(this.conformBallList.length<1){
+                    this.routerOpen = false
                     this.$router.go(-1);
                 }
                 sessionStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
                 this.getBallFn()
             },
             goSelect(item,index) {
+                this.routerOpen = false
                 this.adds.itemEditIndex = index
                 this.$set(item.msg,'status','edit',)
                 sessionStorage.setItem('conformBallList',JSON.stringify(this.conformBallList))
@@ -566,7 +562,21 @@
             this.$emit('closeMarkCz')
         },
         beforeRouteLeave(to, from, next) {
-            next()
+            if(to.name == 'selectNumber'&&this.routerOpen){
+                MessageBox.confirm('确定清空所选号码吗?', '温馨提示').then(action => {
+                    sessionStorage.setItem('conformBallList', JSON.stringify([]))
+                    this.adds.bei=1
+                    this.adds.add=false
+                    this.adds.imgUrl=SelectionBox
+                    sessionStorage.setItem('adds', JSON.stringify(this.adds))
+                    next()
+                }).catch(function () {
+                    next(false)
+                });
+            }else {
+                next()
+            }
+
         }
     }
 </script>
