@@ -653,7 +653,10 @@
         methods: {
             // 头部返回
             goBack() {
-                this.$router.go(-1);
+                this.$router.push({
+                    path:'/'
+                })
+                //this.$router.go(-1);
             },
             //通过路由来回填选中号码集合
             setSelectByrouter() {
@@ -798,7 +801,8 @@
                             })
                         }
                         this.setSelectByrouter()
-                        //this.getLocalStorageFn('biaoZhun')
+                        this.getLocalStorageFn('biaoZhun')
+                        this.getLocalStorageFn('dantuo')
                     })
             },
             //标准选号
@@ -1117,6 +1121,9 @@
                 if (index == '1') {
                     this.getLocalStorageFn('dantuo')
                 }
+                if (index == '0') {
+                    this.getLocalStorageFn('biaozhun')
+                }
             },
             goNext(item) {
                 if (item.name == '隐藏遗漏'||item.name == '显示遗漏') {
@@ -1264,7 +1271,7 @@
                         ballType: 'dantuo',
                         msg: {
                             zhuNum: this.danTuoZhu.zhuNum,
-                            danFn: ballList.length > 7 ? '复式' : '单式',
+                            danFn: '胆拖',
                             bei: JSON.parse(sessionStorage.getItem('adds')) != null ? JSON.parse(sessionStorage.getItem('adds')).bei : 1,
                             money: this.danTuoZhu.zhuNum * 2,
                             baseMoney: 2,

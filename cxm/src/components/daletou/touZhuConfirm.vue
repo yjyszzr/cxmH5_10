@@ -320,7 +320,7 @@
                 conformBallList: [],
                 num:1,
                 adds: {
-                    add: false,  //是否追加 默认不追加
+                    add:false,  //是否追加 默认不追加
                     imgUrl: SelectionBox,
                     zhuNum:0,
                     bei: JSON.parse(sessionStorage.getItem('adds'))!=null?JSON.parse(sessionStorage.getItem('adds')).bei:1,
@@ -332,6 +332,13 @@
             }
         },
         created() {
+            if(JSON.parse(sessionStorage.getItem('adds'))){
+                if(JSON.parse(sessionStorage.getItem('adds')).add){
+                    this.adds.add = true
+                }else{
+                    this.adds.add = false
+                }
+            }
             this.$store.state.mark_playObj.mupNum = 1
             this.$emit('closeMarkCz')
             this.getBallFn()
@@ -393,13 +400,19 @@
                     this.adds.add=false
                     this.adds.imgUrl=SelectionBox
                     sessionStorage.setItem('adds', JSON.stringify(this.adds))
-                    this.$router.go(-1);
+                    this.$router.push({
+                        path:'/lottery/daletou/selectnumber'
+                    })
+                    //this.$router.go(-1);
                 });
 
             },
             //手动添加
             handAdd() {
-                this.$router.go(-1);
+                this.$router.push({
+                    path:"/lottery/daletou/selectnumber"
+                })
+                // this.$router.go(-1);
             },
             //机选
             machineSelection(type) {
@@ -502,13 +515,14 @@
                 this.$store.state.mark_playObj.mark_play = '2'
             },
             confirm(){
+                console.log(this.conformBallList);
                 let obj = {
                     betNum: this.adds.zhuNum,
                     bonusId: '',
                     isAppend: this.adds.add?1:0,
                     // lotteryClassifyId: 2,
                     // lotteryPlayClassifyId: this.adds.add?10:9,
-                    times: this.bei,
+                    times: this.adds.bei,
                     orderMoney: this.adds.money,
                     betInfos: saveDtInfo(this.conformBallList)
                 }
