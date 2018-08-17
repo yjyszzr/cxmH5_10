@@ -521,7 +521,7 @@
                     isAppend: this.adds.add?1:0,
                     // lotteryClassifyId: 2,
                     // lotteryPlayClassifyId: this.adds.add?10:9,
-                    times: this.bei,
+                    times: this.adds.bei,
                     orderMoney: this.adds.money,
                     betInfos: saveDtInfo(this.conformBallList)
                 }

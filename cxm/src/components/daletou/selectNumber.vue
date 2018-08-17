@@ -801,7 +801,8 @@
                             })
                         }
                         this.setSelectByrouter()
-                        //this.getLocalStorageFn('biaoZhun')
+                        this.getLocalStorageFn('biaoZhun')
+                        this.getLocalStorageFn('dantuo')
                     })
             },
             //标准选号
@@ -1119,6 +1120,9 @@
                 this.selectedIndex = index
                 if (index == '1') {
                     this.getLocalStorageFn('dantuo')
+                }
+                if (index == '0') {
+                    this.getLocalStorageFn('biaozhun')
                 }
             },
             goNext(item) {
