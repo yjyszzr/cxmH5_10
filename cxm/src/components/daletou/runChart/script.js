@@ -50,7 +50,9 @@ export default {
                 drop: this.runchartfilter.drop,
                 sort: this.runchartfilter.sort
             }
-            this.$store.dispatch("getRunchart",data)
+            this.$store.dispatch("getRunchart",data).then(()=>{
+                $('.box-content').scrollTop($('.box-content')[0].scrollHeight)
+            })
         },
         tabClick(i){
             this.$store.commit('DALETOUACTIVE',i+1)
@@ -200,6 +202,7 @@ export default {
     },
     mounted(){
         this.fetchData()
+        
     },
     watch:{
         posx(a,b){

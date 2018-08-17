@@ -457,23 +457,14 @@
                     }
                     .mint-radiolist-label{
                         padding: 0;
+                        transform: scale(1);
                     }
                     .mint-radio-label{
                         margin: 0;
                     }
-                    .mint-radio-core{
-                        width: px2rem(30px);
-                        height: px2rem(30px);
-                    }
                     .mint-radio-input:checked + .mint-radio-core{
                         border-color: #ea5504;
                         background-color: #ea5504;
-                    }
-                    .mint-radio-core::after{
-                        left: px2rem(6.8px);
-                        top: px2rem(6.8px);
-                        width: px2rem(12px);
-                        height: px2rem(12px);
                     }
                 }
             }

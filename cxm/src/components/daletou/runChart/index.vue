@@ -37,23 +37,25 @@
                     <div class="hql-top">
                         期号
                     </div>
-                    <div ref='hqlist' class="hql-list" v-if="runchartData.preLottoDrop&&daletouActive==2">
-                        <div class="hql-item" v-for="(item,i) in runchartData.preLottoDrop.drop" :key='i'>
-                            {{item.termNum.substr(3)}}
+                    <div ref='hqlist' class="hql-list">
+                        <div v-if="runchartData.preLottoDrop&&daletouActive==2">
+                            <div class="hql-item" v-for="(item,i) in runchartData.preLottoDrop.drop" :key='i'>
+                                {{item.termNum.substr(3)}}
+                            </div>
+                            <div class="hql-item countNum">出现次数</div>
+                            <div class="hql-item averageData">平均遗漏</div>
+                            <div class="hql-item maxData">最大遗漏</div>
+                            <div class="hql-item maxContinue">最大连出</div>
                         </div>
-                        <div class="hql-item countNum">出现次数</div>
-                        <div class="hql-item averageData">平均遗漏</div>
-                        <div class="hql-item maxData">最大遗漏</div>
-                        <div class="hql-item maxContinue">最大连出</div>
-                    </div>
-                    <div ref='hqlist' class="hql-list" v-if="runchartData.postLottoDrop&&daletouActive==3">
-                        <div class="hql-item" v-for="(item,i) in runchartData.postLottoDrop.drop" :key='i'>
-                            {{item.termNum.substr(3)}}
+                        <div v-if="runchartData.postLottoDrop&&daletouActive==3">
+                            <div class="hql-item" v-for="(item,i) in runchartData.postLottoDrop.drop" :key='i'>
+                                {{item.termNum.substr(3)}}
+                            </div>
+                            <div class="hql-item countNum">出现次数</div>
+                            <div class="hql-item averageData">平均遗漏</div>
+                            <div class="hql-item maxData">最大遗漏</div>
+                            <div class="hql-item maxContinue">最大连出</div>
                         </div>
-                        <div class="hql-item countNum">出现次数</div>
-                        <div class="hql-item averageData">平均遗漏</div>
-                        <div class="hql-item maxData">最大遗漏</div>
-                        <div class="hql-item maxContinue">最大连出</div>
                     </div>
                 </div>
                 <div class="hq-right">
@@ -71,7 +73,7 @@
                     </table>
                     <div class="hqr-content" ref='hqrct'>
                         <!-- 红球走势 -->
-                        <table class="hqrctcontent" ref="hqrctcontent" v-if="runchartData.preLottoDrop&&daletouActive==2">
+                        <table class="hqrctcontent" ref="hqrctcontent" v-show="daletouActive==2">
                             <tr v-for="(item,i) in runchartData.preLottoDrop.drop" :key='i'>
                                 <td class="hqrct-item" v-for="(data,index) in item.numList" :key='index'>
                                     <span :class="{ylActive: data=='0'}">{{data=='0'?smjs(index+1):data}}</span>
@@ -99,7 +101,7 @@
                             </tr>
                         </table>
                         <!-- 蓝球走势 -->
-                        <table class="hqrctcontent lqrctcontent" ref="hqrctcontent" v-if="runchartData.postLottoDrop&&daletouActive==3">
+                        <table class="hqrctcontent lqrctcontent" ref="hqrctcontent" v-show="daletouActive==3">
                             <tr v-for="(item,i) in runchartData.postLottoDrop.drop" :key='i'>
                                 <td class="hqrct-item" v-for="(data,index) in item.numList" :key='index'>
                                     <span :class="{dlActive: data=='0'}">{{data=='0'?smjs(index+1):data}}</span>

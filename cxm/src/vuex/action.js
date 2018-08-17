@@ -176,11 +176,16 @@ const actions = {
     getRunchart({
         commit
     }, value) {
-        api.getChartData(value)
-        .then(res => {
-            if (res.code == 0) {
-                commit("RUNCHARTDATA", res.data);
-            }
+        return new Promise((resolve, reject) => {
+            api.getChartData(value)
+            .then(res => {
+                if (res.code == 0) {
+                    commit("RUNCHARTDATA", res.data);
+                    resolve()
+                }else{
+                    reject()
+                }
+            })
         })
     }
 }
