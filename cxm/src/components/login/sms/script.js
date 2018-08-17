@@ -71,7 +71,7 @@ export default {
         
     },
     beforeRouteEnter(to, from, next){
-      if(from.path=='/lotteryResult'||from.path=='/freebuy/payment'||from.path=='/user/recharge'||from.path=='/activity/world/worldenter'||from.path=='/activity/jingcai'){
+      if(from.path=='/lotteryResult'||from.path=='/freebuy/payment'||from.path=='/user/recharge'||from.path=='/activity/world/worldenter'||from.path=='/activity/jingcai'||from.path=='/activity/oldbeltyd'){
           next(vm=>{
                vm.returnGo =  true 
           })

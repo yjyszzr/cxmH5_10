@@ -58,13 +58,14 @@ const state = {
         findActive: '1' //发现选中参数
     },
     xfbanklist: '',   //先锋银行卡列表
-    xfbankSelected: {},   //选中的银行卡信息 
+    xfbankSelected: {},   //选中的银行卡信息
     user_account: {
         timeType: 2,  //账户明细日期
         timeShow: false  //控制actionSheet开关
     },
     timertz: '', //充值送弹窗定时器
     mark_showAc: false, //充值送弹窗
+    mark_shortcut: false, //首页引导弹窗
     pop: '',
     daletouActive: '1',  //大乐透tab
     runchartfilter: {    //走势图筛选条件
@@ -80,6 +81,6 @@ export default new Vuex.Store({
     state,
     actions,
     mutations,
-    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','freebuyId','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','chushihuaObj','findObj','world_cupObj','daletouActive'],storage: window.sessionStorage})]
+    plugins: [createPersistedState({'key':'issue','paths':['userInfo','matchObj','matchSelectedList','freebuyId','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','chushihuaObj','findObj','daletouActive'],storage: window.sessionStorage})]
     //strict: true
 })

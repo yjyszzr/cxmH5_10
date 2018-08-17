@@ -9,6 +9,14 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   routes: [
+    { 
+        path: '*', 
+        name: '404',
+        meta: {
+            title: '404未找到'
+        },
+        component: resolve => require(['@/components/public/notfoundRoute'], resolve), 
+    },
     {
       path: '/',
       name: 'index',
@@ -421,6 +429,32 @@ const router = new Router({
           },
           component: resolve => require(['@/components/activity/tuiguang/success/success.vue'], resolve)
       },
+      //老带新 活动
+      {
+        path: '/activity/oldbeltyd',
+        name: 'oldbeltyd',
+        meta: {
+          title: '老带新引导'
+        },
+        component: resolve => require(['@/components/activity/oldbeltnew/oldbeltyd'], resolve)
+       },
+      {
+        path: '/activity/oldbeltnew',
+        name: 'oldbeltnew',
+        meta: {
+          title: '老带新'
+        },
+        component: resolve => require(['@/components/activity/oldbeltnew/oldbeltyq'], resolve)
+     },
+     //大转盘
+     {
+        path: '/activity/wheel',
+        name: 'wheel',
+        meta: {
+          title: '必中彩'
+        },
+        component: resolve => require(['@/components/activity/wheel'], resolve)
+     },
       //app彩小秘彩票
       //帮助中心：appinfo/help
       //购彩协议：appinfo/protocol
@@ -732,6 +766,10 @@ router.beforeEach(async(to, from, next) => {
 		)
     }
     let toPath = to.path
+    //落地页区分马甲包
+    if(toPath=='/activity/wheel'&&(to.query.fr=='c039'||to.query.fr=='c239')){
+        document.title = '必中彩';
+    }
     // if(to.meta.title&&wxPd()) {
     //     if(toPath=='/freebuy/singleNote'){
     //         let noteTitle = (id) => {

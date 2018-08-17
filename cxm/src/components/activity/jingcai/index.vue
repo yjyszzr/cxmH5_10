@@ -4,9 +4,9 @@
         <div v-if="baseDate.lenth!=0" class="body">
             <p class="active-describe" @click="activeDescribe">活动说明</p>
             <p class="money">{{baseDate.bonusPool}} <span>元</span></p>
-            <p class="describe">奖金滚存</p>
+            <p class="describe">奖池奖金</p>
             <p class="person">{{baseDate.numOfPeople}}人次参加竞猜</p>
-            <p class="memo">备注：每增加一个用户，奖池增加1元</p>
+            <p class="memo">备注：每增加一人参与竞猜，奖池奖金增加1元</p>
             <div class="history">
                 <p @click="lookupRecord">查看上期中奖记录</p>
                 <p v-if="login" @click="lookMyRecord">查看我的竞猜记录</p>
@@ -79,11 +79,11 @@
             <div class="pop">
                 <p class="pop-title">活动说明</p>
                 <div class="pop-body">
-                    <p>1.用户累计购彩满50元即可获得1次竞猜机会，参与竞猜只能提交一次答案，其余竞猜机会将转化为该竞猜答案的获奖次数。例：有3次竞猜机会，提交答案后将视为3次竞猜，若最后全部答对，即可获得3次瓜分奖池的机会。</p>
-                    <p>2.需竞猜该场比赛的所有选项，全部答对即可瓜分奖池内的奖金。</p>
-                    <p>3.每1人次参加竞猜，奖池奖金将增加1元，上不封顶，若8个选项全部答对，将瓜分奖池内的奖金。</p>
-                    <p>4.竞猜所得奖金只可用户购彩不能提现，购彩中奖奖金可以提现。</p>
-                    <p>5.本活动最终解释权归彩小秘所有。</p>
+                    <p>1.用户累计购彩满20元即可获得1次竞猜机会，参与竞猜只能提交一次答案，提交后不能更改，请谨慎选择。</p>
+                    <p>2.需竞猜该场比赛的所有问题，全部答对即可瓜分奖池内的奖金。</p>
+                    <p>3.每次竞猜设置奖池初始奖金，每1人次参加竞猜，奖池奖金将增加1元，上不封顶，若6个选项全部答对，将瓜分奖池内的奖金。</p>
+                    <p>4.竞猜所得奖金直接发放至账户余额，只可用于购彩不能提现，购彩中奖奖金可以提现。</p>
+                    <p>5.本活动最终解释权归平台所有。</p>
                 </div>
             </div>
         </mt-popup>
@@ -301,7 +301,7 @@
                 HaveRightAnswer:false, //是否已经公布正确答案
                 fromeRouter:'',//在哪个路由来
                 token:'',
-                login: false
+                login: false,
             }
         },
         created() {
@@ -410,7 +410,7 @@
                         if(this.baseDate.chance == '1'){
                             this.$set(item, 'isSelected', type)
                         }else {
-                            Toast("消费超过50元才有机会参加呢亲！")
+                            Toast("您还需再消费"+this.baseDate.onceBettingAmount+"元才有机会参加呢亲！")
                         }
                     }
                 }

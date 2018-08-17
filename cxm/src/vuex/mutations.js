@@ -180,6 +180,12 @@ const mutations = {
             case '4': state.runchartfilter.sort = data.value;break;
         }
     },
+    USERACCOUNT(state, data){
+        state.user_account.timeType = data
+    },
+    MARKSHORTCUT(state, data){
+        state.mark_shortcut = data
+    },
     RUNCHARTDATA(state, data){
         state.runchartData = data
     }

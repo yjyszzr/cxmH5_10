@@ -473,7 +473,7 @@ export default {
     getLottoOrderDetail(params) {
         return fetchPost('/order/order/getLottoOrderDetail', params)
     },
-    //支付订单信息 
+    //支付订单信息
     unifiedPayBefore(params) {
         return fetchPost('/payment/payment/unifiedPayBefore', params)
     },
@@ -481,6 +481,23 @@ export default {
     getLottoTicketScheme(params) {
         return fetchPost('/order/order/getLottoTicketScheme', params)
     },
+    },
+    //邀请人数和奖励
+    invitationNumAndReward(params) {
+        return fetchPost('/activity/dlOldBeltNew/invitationNumAndReward', params)
+    },
+    //新人注册（老带新）
+    oldbeltnewregister(params) {
+        return fetchPost('/activity/dlOldBeltNew/register', params)
+    },
+    //验证码(ldx)
+    sendVerificationCode(params) {
+        return fetchPost('/activity/dlOldBeltNew/sendVerificationCode', params)
+    },
+    //分享链接userId
+    shareMyLinks(params) {
+        return fetchPost('/activity/dlOldBeltNew/shareMyLinks', params)
+    }
 }
 
 

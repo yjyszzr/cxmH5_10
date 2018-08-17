@@ -39,7 +39,13 @@ export default {
 				'mobile': this.mobileVal,
 				'smsType': 1
 			}
-			api.SendSmsCode(data)
+			let sendldxType = ''
+			if(this.$route.query.frtype=='ldx'){
+				sendldxType = api.sendVerificationCode(data)
+			}else{
+				sendldxType = api.SendSmsCode(data)
+			}
+			sendldxType
 				.then(res => {
 					if (res.code == 0) {
 						//发短信成功了，再调下面这两句
@@ -104,7 +110,15 @@ export default {
 				'loginSource': '4',
 				'passWord': -1
 			}
-			api.Register(data)
+			let sendldxType = ''
+			if(this.$route.query.frtype=='ldx'){
+				data.invitationUserId = this.$route.query.a_
+				data.loginSource = 'ldx'
+				sendldxType = api.oldbeltnewregister(data)
+			}else{
+				sendldxType = api.Register(data)
+			}
+			sendldxType
 				.then(res => {
 					if (res.code == 0) {
 						if(this.$route.query.type=='isShare'){

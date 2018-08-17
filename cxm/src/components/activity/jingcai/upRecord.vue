@@ -2,13 +2,12 @@
     <div class="Uprecord" :style="{width:'100%'}">
         <div class="main">
             <div v-if="login">
-                {{data}}
                 <!--参与竞猜-->
                 <div v-if="data.participateOrNot=='1'">
                     <div class="title-box">
                         <div class="left-box">
                             <p class="money"><span>{{data.bonusPool}}</span>元</p>
-                            <p class="money-text">奖池累计金额</p>
+                            <p class="money-text">奖池金额</p>
                         </div>
                         <p class="line"></p>
                         <div v-if="data.numOfPeople!='0'" class="right-box">
@@ -42,7 +41,7 @@
                     <div class="title-box">
                         <div class="left-box">
                             <p class="money"><span>{{data.bonusPool}}</span>元</p>
-                            <p class="money-text">奖池累计金额</p>
+                            <p class="money-text">奖池金额</p>
                         </div>
                         <p class="line"></p>
                         <div v-if="data.numOfPeople !='0'" class="right-box">

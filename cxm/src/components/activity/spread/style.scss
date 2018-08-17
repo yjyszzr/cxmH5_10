@@ -15,20 +15,4 @@
         position: relative;
         z-index: 10;
     }
-    .ga,.bne{
-        text-align: center;
-        color: #ccc;
-        position: relative;
-        z-index: 20;
-        a{
-            color: #ccc;
-            img{
-                width: px2rem(30px);
-                display: inline-block;
-            }
-        }
-    }
-    .ga{
-        margin-top: px2rem(20px);
-    }
 }

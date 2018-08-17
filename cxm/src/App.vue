@@ -5,6 +5,9 @@
                      v-show='isShowHeader'></v-headertop>
         <mainSkeleton v-show="!consultinit"></mainSkeleton>
         <transition name="fade">
+            <v-shortcut v-if="this.$store.state.mark_shortcut"></v-shortcut>
+        </transition>
+        <transition name="fade">
             <div id='content' class="content" v-show='consultinit'>
                 <!-- <transition  mode="out-in" enter-active-class='bounce-enter' leave-active-class="bounce-leave">
                     <router-view></router-view>
@@ -36,6 +39,7 @@
     import {wxPd} from './util/common'
     import {getUrlStr} from './util/common'
     import mainSkeleton from './components/public/mainSkeleton/main.skeleton.vue'
+    import shortcut from './components/index/shortcut.vue'
     // import LocalScrollFix from 'Localscrollfix'
     export default {
         name: "App",
@@ -45,6 +49,7 @@
             "v-mark": mark,
             "v-pmark": pmark,
             "v-popup": popup,
+            "v-shortcut": shortcut,
             mainSkeleton
         },
         data() {
@@ -58,7 +63,7 @@
         methods: {
             title() {
                 if (this.$route.path.split("/")[2]) {
-                    if (this.$route.path.split("/")[3] && this.$route.path.split("/")[3] != 'worldwinner' && this.$route.path.split("/")[3] != 'fsplace') {
+                    if ((this.$route.path.split("/")[3] && this.$route.path.split("/")[3] != 'worldwinner' && this.$route.path.split("/")[3] != 'fsplace')||this.$route.path.split("/")[2]=='wheel') {
                         this.isShowHeader = false;
                     } else {
                         this.isShowHeader = true;
@@ -158,6 +163,20 @@
                             return "中奖记录";
                         case 'one':
                             return "注册送红包";
+                        case 'world_cup':
+                            return "世界杯";
+                        case 'world_matchList':
+                            return "世界杯";
+                        case 'world_detail':
+                            return "世界杯";
+                        //老带新
+                        case 'oldbeltyd':
+                            return "邀请好友得红包";
+                        case 'oldbeltnew':
+                            return "邀请好友得红包";
+                        //大转盘
+                        case 'wheel':
+                            return "幸运大转盘";
                         case 'explain':
                             return "胆说明";
                         case 'success':
@@ -230,7 +249,7 @@
                 // } else {
                 //    return true;
                 // }
-                if ((window.location.href.split("?")[1] && getUrlStr('showtitle', location.href) == '1')) {
+                if ((window.location.href.split("?")[1] && getUrlStr('showtitle', location.href) == '1')||this.$route.name=='404' ) {
                     return false;
                 } else {
                     return true;
