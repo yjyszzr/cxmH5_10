@@ -69,7 +69,7 @@
                                 </template>
                                 <template v-else>
                                     <ul class="num-sun-ul" >
-                                        <li class="num-sun-li" :class="sunItem.isGuess=='1'?sunItem.type=='redBall'?'allredBall':sunItem.type=='blueBall'?'allblueBall':'line':sunItem.type=='redBall'?'redBall':sunItem.type=='blueBall'?'blueBall':'line'" v-for="(sunItem,index) in item.ballList" :key=index>{{sunItem.num}}</li>
+                                        <li class="num-sun-li" :class="sunItem.isGuess=='1'?sunItem.type=='danRedBall'||sunItem.type=='tuoRedBall'?'allredBall':sunItem.type=='danBlueBall'||sunItem.type=='tuoBlueBall'?'allblueBall':'line':sunItem.type=='danRedBall'||sunItem.type=='tuoRedBall'?'redBall':sunItem.type=='danBlueBall'||sunItem.type=='tuoBlueBall'?'blueBall':'line'" v-for="(sunItem,index) in item.ballList" :key=index>{{sunItem.num}}</li>
                                     </ul>
                                     <p class="num-details">
                                         <span v-if="item.playType == '0'">单式</span>
@@ -432,7 +432,7 @@
                         item.redDanCathectics.forEach(sunItem=>{
                             arr[index].ballList.push({
                                 num:sunItem.cathectic,
-                                type:'redBall',
+                                type:'danRedBall',
                                 isGuess:sunItem.isGuess
                             })
                         })
@@ -444,7 +444,7 @@
                         item.redTuoCathectics.forEach(sunItem=>{
                             arr[index].ballList.push({
                                 num:sunItem.cathectic,
-                                type:'redBall',
+                                type:'tuoRedBall',
                                 isGuess:sunItem.isGuess
                             })
                         })
@@ -458,7 +458,7 @@
                         item.blueDanCathectics.forEach(sunItem=>{
                             arr[index].ballList.push({
                                 num:sunItem.cathectic,
-                                type:'blueBall',
+                                type:'danBlueBall',
                                 isGuess:sunItem.isGuess
                             })
                         })
@@ -470,7 +470,7 @@
                         item.blueTuoCathectics.forEach(sunItem=>{
                             arr[index].ballList.push({
                                 num:sunItem.cathectic,
-                                type:'blueBall',
+                                type:'tuoBlueBall',
                                 isGuess:sunItem.isGuess
                             })
                         })
