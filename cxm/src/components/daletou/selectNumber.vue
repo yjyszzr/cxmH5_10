@@ -801,8 +801,8 @@
                             })
                         }
                         this.setSelectByrouter()
-                        this.getLocalStorageFn('biaoZhun')
-                        this.getLocalStorageFn('dantuo')
+                        // this.getLocalStorageFn('biaoZhun')
+                        // this.getLocalStorageFn('dantuo')
                     })
             },
             //标准选号

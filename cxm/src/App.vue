@@ -163,12 +163,6 @@
                             return "中奖记录";
                         case 'one':
                             return "注册送红包";
-                        case 'world_cup':
-                            return "世界杯";
-                        case 'world_matchList':
-                            return "世界杯";
-                        case 'world_detail':
-                            return "世界杯";
                         //老带新
                         case 'oldbeltyd':
                             return "邀请好友得红包";

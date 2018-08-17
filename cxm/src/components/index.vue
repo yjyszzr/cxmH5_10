@@ -297,7 +297,7 @@ export default {
     shortClick(){
       this.$store.commit('MARKSHORTCUT',true)
     },
-    goFreebuy(c) {
+    goFreebuy(url) {
       this.$store.state.matchObj = {};
       this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
       this.$store.state.mark_playObj.bfIdSaveMap = {};

@@ -481,7 +481,6 @@ export default {
     getLottoTicketScheme(params) {
         return fetchPost('/order/order/getLottoTicketScheme', params)
     },
-    },
     //邀请人数和奖励
     invitationNumAndReward(params) {
         return fetchPost('/activity/dlOldBeltNew/invitationNumAndReward', params)
