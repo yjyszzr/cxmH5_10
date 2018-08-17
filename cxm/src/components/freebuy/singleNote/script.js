@@ -103,6 +103,9 @@ export default {
       },
       stntab(c){
         Indicator.open()
+        this.$store.state.matchObj = {};
+        this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
+        this.$store.state.mark_playObj.bfIdSaveMap = {};
         this.clear_match()
         this.$store.commit('FREEBUYID',c.id)
         this.fetchData()
