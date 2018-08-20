@@ -28,7 +28,7 @@
                     location.href = 'https://caixiaomi.net?cxmxc=scm&type=3&id=1&subid=6'
                 }else{
                     this.$router.push({
-                        path: "/freebuy/singleNote?id=6"
+                        path: "/lottery/freebuy/singleNote"
                     })
                 }
             }

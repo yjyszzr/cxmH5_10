@@ -95,20 +95,22 @@
         </div>
         <!--底部-->
         <div class="footer">
-            <div class="dele" @click="deleFn()">
-                <i class="iconfont icon-icon-26"></i>
-            </div>
-            <div class="text">
-                <template v-if="selectedIndex == '0'">
-                    <p v-if="textType">请至少选择 <span class="red">5</span>个红球，<span class="blue">2</span>个篮球</p>
-                    <p v-if="!textType">共<span class="red">{{selectZhu.zhuNum}}</span>注，合计<span class="blue">{{selectZhu.zhuNum*2}}</span>元
-                    </p>
-                </template>
-                <template v-if="selectedIndex =='1'">
-                    <p v-if="danTuotextType">请至少选择 <span class="red">6</span>个红球，<span class="blue">2</span>个篮球</p>
-                    <p v-if="!danTuotextType">共<span class="red">{{danTuoZhu.zhuNum}}</span>注，合计<span class="blue">{{danTuoZhu.zhuNum*2}}</span>元
-                    </p>
-                </template>
+            <div class="flet">
+                <div class="dele" @click="deleFn()">
+                    <i class="iconfont icon-icon-26"></i>
+                </div>
+                <div class="text">
+                    <template v-if="selectedIndex == '0'">
+                        <p v-if="textType">请至少选择 <span class="red">5</span>个红球，<span class="blue">2</span>个篮球</p>
+                        <p v-if="!textType">共<span class="red">{{selectZhu.zhuNum}}</span>注，合计<span class="red">{{selectZhu.zhuNum*2}}</span>元
+                        </p>
+                    </template>
+                    <template v-if="selectedIndex =='1'">
+                        <p v-if="danTuotextType">请至少选择 <span class="red">6</span>个红球，<span class="blue">2</span>个篮球</p>
+                        <p v-if="!danTuotextType">共<span class="red">{{danTuoZhu.zhuNum}}</span>注，合计<span class="blue">{{danTuoZhu.zhuNum*2}}</span>元
+                        </p>
+                    </template>
+                </div>
             </div>
             <template v-if="selectedIndex=='0'">
                 <div class="ok" :class="canOk&&!textType?'okcur':''" @click='goTouZhuConfirm(!textType,canOk)'>
@@ -135,12 +137,12 @@
                 </div>
             </transition>
             <transition name="ceng">
-                <div class="meng-cheng" @click="openOrclose()" v-if="collapseShow"></div>
+                <div @touchmove.prevent class="meng-cheng" @click="openOrclose()" v-if="collapseShow"></div>
             </transition>
         </div>
         <!--菜单弹窗-->
         <transition name="fade">
-            <div class="pop" @click="popShow = !popShow" v-if="popShow">
+            <div @touchmove.prevent class="pop" @click="popShow = !popShow" v-if="popShow">
                 <div class="pop-body">
                     <ul class="memu-ul">
                         <li v-for="(item,index) in memu" @click="goNext(item)" :key="index"><i><img :src="item.imgSrc"
@@ -296,7 +298,7 @@
                 width: px2rem(180px);
                 text-align: center;
                 font-size: px2rem(26px);
-                color: #c7c7c7;
+                color: #505050;
                 border: 1px solid #c7c7c7;
                 position: relative;
                 margin: 0 px2rem(30px);
@@ -319,7 +321,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.2);
             .pop-body {
                 position: absolute;
                 /*height: px2rem(200px);*/
@@ -327,6 +329,8 @@
                 background-color: #ffffff;
                 right: px2rem(20px);
                 top: px2rem(100px);
+                border-radius: px2rem(10px);
+                box-shadow: 0 px2rem(5px) px2rem(20px) #505050;
             }
             .pop-body::before {
                 width: 0;
@@ -335,7 +339,7 @@
                 border-style: solid;
                 border-color: transparent transparent #ffffff; /*透明 透明  灰*/
                 top: px2rem(-19px);
-                right: 0px;
+                right: 5px;
                 position: absolute;
                 content: "";
             }
@@ -352,11 +356,15 @@
                     height: px2rem(30px);
                     width: px2rem(30px);
                     display: inline-block;
-                    margin: 0 px2rem(10px);
+                    margin-right: px2rem(10px);
+                    margin-left: px2rem(20px);
                     img {
                         width: 100%;
                     }
                 }
+            }
+            li:last-of-type{
+                border: none;
             }
         }
         .history {
@@ -365,7 +373,7 @@
                 width: 100%;
             }
             .history-box {
-                height: px2rem(500px);
+                height: px2rem(700px);
                 overflow: auto;
                 .history-ul {
                     padding: 0 px2rem(15px);
@@ -416,7 +424,7 @@
                 height: px2rem(80px);
                 color: #9f9f9f;
                 font-size: px2rem(26px);
-                border-bottom: 1px solid #c7c7c7;
+                border-bottom: 1px solid #f0f0f0;
                 padding: 0 px2rem(15px);
             }
             .dantuo {
@@ -452,13 +460,13 @@
                     justify-content: center;
                     align-items: center;
                     height: px2rem(60px);
-                    width: px2rem(168px);
+                    width: px2rem(148px);
                     background: rgba(245, 145, 30, .2);
                     border-radius: px2rem(20px);
                     font-size: px2rem(26px);
                     color: #f5911e;
                     .phone-img-box {
-                        padding-right: px2rem(20px);
+                        padding-right: px2rem(10px);
                         display: inline-block;
                         height: px2rem(36px);
                         width: px2rem(36px);
@@ -482,7 +490,7 @@
                     margin-bottom: px2rem(20px);
                 }
                 .red-ball-ul {
-                    border-bottom: 1px solid #c7c7c7;
+                    border-bottom: 1px solid #f0f0f0;
                     .red-ball {
                         color: #eb1c24;
                     }
@@ -526,6 +534,7 @@
             }
         }
         .footer {
+            border-top: 1px solid #f0f0f0;
             box-sizing: border-box;
             width: 100%;
             background-color: #ffffff;
@@ -535,17 +544,26 @@
             height: px2rem(100px);
             justify-content: space-between;
             align-items: center;
+            .flet{
+                display: flex;
+                align-items: center;
+            }
             .dele {
                 width: px2rem(100px);
-                border-right: 1px solid #c7c7c7;
+                border-right: 1px solid #f0f0f0;
                 text-align: center;
                 line-height: px2rem(70px);
+                color: #505050;
                 i {
                     font-size: px2rem(40px);
                 }
             }
             .text {
+                margin-left: px2rem(20px);
                 color: #787878;
+                p{
+                    font-size: px2rem(26px);
+                }
                 .red {
                     color: #EA5504;
                 }
@@ -1051,11 +1069,7 @@
             deleFn() {
                 if (this.selectedIndex == '0') {
                     if (this.lottoMes.redBallList.length > 0 || this.lottoMes.blueBallList.length > 0) {
-                        MessageBox({
-                            title: '温馨提示',
-                            message: '确定删除所选号码吗?',
-                            showCancelButton: true
-                        }).then(action => {
+                        MessageBox.confirm('确定清空所选号码吗?', '温馨提示').then(action => {
                             if (this.lottoMes.redBallList.length > 0) {
                                 this.preList.forEach(sunItem => {
                                     sunItem.selected = false
@@ -1070,16 +1084,14 @@
                             this.lottoMes.blueBallList = []
                             this.setLocalStorageFn('biaoZhun')
                             this.viewText()
+                        }).catch(function () {
+                           
                         });
                     }
                 }
                 if (this.selectedIndex == '1') {
                     if (this.lottoMes.danRedMaList.length > 0 || this.lottoMes.tuoRedMaList.length > 0 || this.lottoMes.danBlueMaList.length > 0 || this.lottoMes.tuoBlueMaList.length > 0) {
-                        MessageBox({
-                            title: '温馨提示',
-                            message: '确定删除所选号码吗?',
-                            showCancelButton: true
-                        }).then(action => {
+                        MessageBox.confirm('确定清空所选号码吗?', '温馨提示').then(action => {
                             if (this.lottoMes.danRedMaList.length > 0) {
                                 this.danRedPreList.forEach(sunItem => {
                                     sunItem.selected = false
@@ -1106,6 +1118,8 @@
                                 this.lottoMes.tuoBlueMaList = [],//托码选号蓝求集合
                                 this.setLocalStorageFn('dantuo')
                             this.viewText()
+                        }).catch(function () {
+                           
                         });
                     }
                 }
@@ -1152,9 +1166,10 @@
                         path: '/lottery/daletou/runchart'
                     })
                 }else if (item.name == '开奖结果') {
-                    this.$router.push({
-                        path: '/daletou/programmeDetails'
-                    })
+                    // this.$router.push({
+                    //     path: '/daletou/programmeDetails'
+                    // })
+                    Toast('暂未开放此功能')
                 }
             },
             // 投注确认
@@ -1387,7 +1402,17 @@
             },
         },
         beforeRouteLeave(to, from, next) {
-            next()
+            if(to.path=='/lottery/daletou/touZhuConfirm'){
+                if(!sessionStorage.getItem('conformBallList')||JSON.parse(sessionStorage.getItem('conformBallList')).length<=0){
+                    next({
+                        path: '/'
+                    })
+                }else{
+                    next()
+                }
+            }else{
+                next()
+            }
         }
     }
 </script>

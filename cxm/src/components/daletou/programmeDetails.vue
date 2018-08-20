@@ -84,7 +84,7 @@
                             </li>
                         </ul>
                     </div>
-                    <router-link to="/daletou/playHelp"> <p class="question"> 奖金如何计算</p></router-link>
+                    <router-link to="/daletou/playHelp"> <p class="question"> 奖金如何计算?</p></router-link>
                 </div>
 
                 <div class="touzhu-mes">
@@ -202,7 +202,7 @@
                     .title-one{
                         box-sizing: border-box;
                         padding: 0 px2rem(15px) px2rem(20px) px2rem(15px);
-                        border-bottom: 1px solid #c7c7c7;
+                        border-bottom: 1px solid #f0f0f0;
                         display: flex;
                         justify-content: space-between;
                         .ltto-log{
@@ -264,7 +264,7 @@
                     padding: px2rem(15px);
                     margin: 0 px2rem(15px);
                     color: #9f9f9f;
-                    border-bottom: 1px solid #c7c7c7;
+                    border-bottom: 1px solid #f0f0f0;
                     display: flex;
                     font-size: px2rem(26px);
                     justify-content: space-between;
@@ -410,10 +410,10 @@
                     })
                     if(item.playType!='2'){
                         arr[index].ballType = 'biaozhun'
-                        item.blueCathectics.forEach(sunItem=>{
+                        item.redCathectics.forEach(sunItem=>{
                             arr[index].ballList.push({
                                 num:sunItem.cathectic,
-                                type:'blueBall',
+                                type:'redBall',
                                 isGuess:sunItem.isGuess
                             })
                         })
@@ -422,10 +422,10 @@
                             type:'line',
                             isGuess:'0'
                         })
-                        item.redCathectics.forEach(sunItem=>{
+                        item.blueCathectics.forEach(sunItem=>{
                             arr[index].ballList.push({
                                 num:sunItem.cathectic,
-                                type:'redBall',
+                                type:'blueBall',
                                 isGuess:sunItem.isGuess
                             })
                         })

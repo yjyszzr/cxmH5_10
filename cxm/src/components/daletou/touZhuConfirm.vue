@@ -142,9 +142,10 @@
                         height: px2rem(40px);
                         width: px2rem(40px);
                         overflow: hidden;
-                        margin-right: px2rem(20px);
                         img {
-                            width: 100%;
+                            width: 86%;
+                            display: block;
+                            margin-top: 1px;
                         }
                     }
                 }
@@ -259,7 +260,7 @@
                     align-items: center;
                     justify-content: center;
                     flex: 1;
-                    border-left: 1px solid #c7c7c7;
+                    border-left: 1px solid #f0f0f0;
                     position: relative;
                     font-size: px2rem(26px);
                     color: #505050;
@@ -284,7 +285,7 @@
                 color: #9f9f9f;
                 .p1 {
                     line-height: px2rem(100px);
-                    border-top: 1px solid #c7c7c7;
+                    border-top: 1px solid #f0f0f0;
                     padding-left: px2rem(30px);
                     font-size: px2rem(28px);
                     flex: 2;
@@ -563,7 +564,11 @@
         },
         beforeRouteLeave(to, from, next) {
             if(to.name == 'selectNumber'&&this.routerOpen){
-                MessageBox.confirm('确定清空所选号码吗?', '温馨提示').then(action => {
+                MessageBox.confirm('',{
+                    title: '温馨提示',
+                    message: '确定清空所选号码吗?',
+                    closeOnClickModal: false
+                }).then(action => {
                     sessionStorage.setItem('conformBallList', JSON.stringify([]))
                     this.adds.bei=1
                     this.adds.add=false
