@@ -594,7 +594,7 @@
                 collapseShow: false, //折叠选号方式
                 popupVisible: false,//历史开奖列表
                 //popdantuo: false,//胆拖介绍
-                historyMiss: true,//显示历史遗漏
+                historyMiss: false,//显示历史遗漏
                 selectedIndex: JSON.parse(sessionStorage.getItem('selectedIndex')) ? JSON.parse(sessionStorage.getItem('selectedIndex')) : '0',//'0'标准选号 '1'胆拖选号
                 preList: [],//前区遗漏
                 postList: [],//后区遗漏 ,
@@ -637,7 +637,7 @@
                         imgSrc: LotteryResult
                     },
                     {
-                        name: '隐藏遗漏',
+                        name: '显示遗漏',
                         imgSrc: Missing
                     }
                 ]

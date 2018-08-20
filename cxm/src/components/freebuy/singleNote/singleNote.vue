@@ -13,7 +13,7 @@
                 <span @click="goInToplay()">帮助</span>
             </div>
         </div>
-        <!--选号方式-->
+        <!--选玩法-->
         <div class="collspce">
             <transition name="mybox">
                 <div class="title-collspce" v-if="collapseShow">

@@ -377,7 +377,10 @@
         methods:{
             goProm(){
                 this.$router.push({
-                    path:"/daletou/ticketScheme"
+                    path:"/daletou/ticketScheme",
+                    query:{
+                        orderSn: this.orderObj.orderSn
+                    }
                 })
             },
             //获取详情

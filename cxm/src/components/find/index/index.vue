@@ -15,10 +15,6 @@
 					</div>
 				</ul>
 			</div>
-			<div class="nullstatus" v-if="cxLoadFlag==false&&zxList.length==0">
-                    <img src="../../../assets/img/juan.png" alt="">
-                    <span>暂无数据</span>
-            </div>
 	</div>
 </template>
 

@@ -109,7 +109,7 @@ export default {
         this.clear_match()
         this.$store.commit('FREEBUYID',c.id)
         this.fetchData()
-        this.collapseShow = !this.collapseShow
+        this.openOrclose()
       },
       halt(){
           MessageBox.alert('', {
