@@ -73,7 +73,7 @@
                                 <span class="miss" v-if="historyMiss">{{item.missNum}}</span>
                             </li>
                         </ul>
-                        <p class="name-ball">胆码-篮球，至多选1个</p>
+                        <p class="name-ball">胆码-蓝球，至多选1个</p>
                         <ul class="blue-ball-ul ball-ul">
                             <li class="ball-li" v-for="(item,index) in danBluePostList" :key=index
                                 @click="danTuoSelect(item,index,'blueBall','dan')">
@@ -81,7 +81,7 @@
                                 <span class="miss" v-if="historyMiss">{{item.missNum}}</span>
                             </li>
                         </ul>
-                        <p class="name-ball">拖码-篮球，至少选2个</p>
+                        <p class="name-ball">拖码-蓝球，至少选2个</p>
                         <ul class="blue-ball-ul ball-ul">
                             <li class="ball-li" v-for="(item,index) in tuoBluePostList" :key=index
                                 @click="danTuoSelect(item,index,'blueBall','tuo')">
@@ -603,12 +603,14 @@
                 danBluePostList: [],//胆后区遗漏 ,
                 tuoBluePostList: [],//拖后区遗漏 ,
                 prizeList: [],//历史中奖，
-                redBallList: [],//标准选号选中红球集合
-                blueBallList: [],//标准选号选中篮球集合,
-                danRedMaList: [],//胆码选号红球集合
-                tuoRedMaList: [],//托码选号红求集合
-                danBlueMaList: [],//胆码选号蓝球集合
-                tuoBlueMaList: [],//托码选号蓝求集合
+                lottoMes:{
+                    redBallList: [],//标准选号选中红球集合
+                    blueBallList: [],//标准选号选中篮球集合,
+                    danRedMaList: [],//胆码选号红球集合
+                    tuoRedMaList: [],//托码选号红求集合
+                    danBlueMaList: [],//胆码选号蓝球集合
+                    tuoBlueMaList: [],//托码选号蓝求集合
+                },
                 redBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'],
                 blueBallBox: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
                 textType: true, //标准选号提示文字
@@ -653,10 +655,10 @@
         methods: {
             // 头部返回
             goBack() {
-                this.$router.push({
-                    path:'/'
-                })
-                //this.$router.go(-1);
+                // this.$router.push({
+                //     path:'/'
+                // })
+                this.$router.go(-1);
             },
             //通过路由来回填选中号码集合
             setSelectByrouter() {
@@ -666,10 +668,10 @@
                     if (sessionStorage.getItem('selectedIndex') == '0') {
                         ballList.forEach(item => {
                             if (item.type == 'redBall') {
-                                that.redBallList.push(item.num)
+                                that.lottoMes.redBallList.push(item.num)
                             }
                             if (item.type == 'blueBall') {
-                                that.blueBallList.push(item.num)
+                                that.lottoMes.blueBallList.push(item.num)
                             }
                         })
                         this.setSelectBallFn('biaoZhun')
@@ -677,16 +679,16 @@
                     if (sessionStorage.getItem('selectedIndex') == '1') {
                         ballList.forEach(item => {
                             if (item.type == 'danRedBall') {
-                                that.danRedMaList.push(item.num)
+                                that.lottoMes.danRedMaList.push(item.num)
                             }
                             if (item.type == 'tuoRedBall') {
-                                that.tuoRedMaList.push(item.num)
+                                that.lottoMes.tuoRedMaList.push(item.num)
                             }
                             if (item.type == 'danBlueBall') {
-                                that.danBlueMaList.push(item.num)
+                                that.lottoMes.danBlueMaList.push(item.num)
                             }
                             if (item.type == 'tuoBlueBall') {
-                                that.tuoBlueMaList.push(item.num)
+                                that.lottoMes.tuoBlueMaList.push(item.num)
                             }
                         })
                         this.setSelectBallFn('dantuo')
@@ -698,14 +700,14 @@
                 if (type == 'biaoZhun') {
                     var that = this
                     this.preList.forEach(item => {
-                        that.redBallList.forEach(sunItem => {
+                        that.lottoMes.redBallList.forEach(sunItem => {
                             if (item.num == sunItem) {
                                 item.selected = true
                             }
                         })
                     })
                     this.postList.forEach(item => {
-                        this.blueBallList.forEach(sunItem => {
+                        this.lottoMes.blueBallList.forEach(sunItem => {
                             if (item.num == sunItem) {
                                 item.selected = true
                             }
@@ -714,28 +716,28 @@
 
                 } else if (type == 'dantuo') {
                     this.danRedPreList.forEach(item => {
-                        this.danRedMaList.forEach(sunItem => {
+                        this.lottoMes.danRedMaList.forEach(sunItem => {
                             if (item.num == sunItem) {
                                 item.selected = true
                             }
                         })
                     })
                     this.tuoRedPreList.forEach(item => {
-                        this.tuoRedMaList.forEach(sunItem => {
+                        this.lottoMes.tuoRedMaList.forEach(sunItem => {
                             if (item.num == sunItem) {
                                 item.selected = true
                             }
                         })
                     })
                     this.danBluePostList.forEach(item => {
-                        this.danBlueMaList.forEach(sunItem => {
+                        this.lottoMes.danBlueMaList.forEach(sunItem => {
                             if (item.num == sunItem) {
                                 item.selected = true
                             }
                         })
                     })
                     this.tuoBluePostList.forEach(item => {
-                        this.tuoBlueMaList.forEach(sunItem => {
+                        this.lottoMes.tuoBlueMaList.forEach(sunItem => {
                             if (item.num == sunItem) {
                                 item.selected = true
                             }
@@ -808,23 +810,23 @@
             //标准选号
             biaozhunSelect(item, type) {
                 if (type == 'preList') { //点击前区
-                    if (this.redBallList.length < 18&&this.canOk) {
+                    if (this.lottoMes.redBallList.length < 18&&this.canOk) {
                         this.$set(item, 'selected', !item.selected)
                         if (item.selected) {
-                            this.redBallList.push(item.num);
+                            this.lottoMes.redBallList.push(item.num);
                         } else {
-                            var index = this.redBallList.indexOf(item.num);
+                            var index = this.lottoMes.redBallList.indexOf(item.num);
                             if (index > -1) {
-                                this.redBallList.splice(index, 1);
+                                this.lottoMes.redBallList.splice(index, 1);
                             }
                         }
                     } else {
                         this.$set(item, 'selected', false)
-                        var index = this.redBallList.indexOf(item.num);
+                        var index = this.lottoMes.redBallList.indexOf(item.num);
                         if (index > -1) {
-                            this.redBallList.splice(index, 1);
+                            this.lottoMes.redBallList.splice(index, 1);
                         }
-                        if (this.redBallList.length >= 18) {
+                        if (this.lottoMes.redBallList.length >= 18) {
                             Toast('最多只能选择18个红球')
                         }
                     }
@@ -833,11 +835,11 @@
                 if (type == 'postList') { //点后区
                     this.$set(item, 'selected', !item.selected)
                     if (item.selected) {
-                        this.blueBallList.push(item.num)
+                        this.lottoMes.blueBallList.push(item.num)
                     } else {
-                        var index = this.blueBallList.indexOf(item.num);
+                        var index = this.lottoMes.blueBallList.indexOf(item.num);
                         if (index > -1) {
-                            this.blueBallList.splice(index, 1);
+                            this.lottoMes.blueBallList.splice(index, 1);
                         }
                     }
                     this.viewText('postList',item)
@@ -852,12 +854,12 @@
                     setTimeout(function () {
                         that.$set(item, 'selected', !item.selected)
                         if(ballType=='preList'){
-                            that.redBallList.pop()
-                            sessionStorage.setItem('redBallList',JSON.stringify(that.redBallList))
+                            that.lottoMes.redBallList.pop()
+                            sessionStorage.setItem('lottoMes',JSON.stringify(that.lottoMes.redBallList))
                         }
                         if(ballType=='postList'){
-                            that.blueBallList.pop()
-                            sessionStorage.setItem('blueBallList',JSON.stringify(that.blueBallList))
+                            that.lottoMes.blueBallList.pop()
+                            sessionStorage.setItem('lottoMes',JSON.stringify(that.lottoMes.blueBallList))
                         }
                         that.viewText()
                     },500)
@@ -866,18 +868,18 @@
             //提示信息
             viewText(ballType,item) {
                 if (this.selectedIndex == '0') {
-                    if (this.redBallList.length > 4 && this.blueBallList.length > 1) {
+                    if (this.lottoMes.redBallList.length > 4 && this.lottoMes.blueBallList.length > 1) {
                         this.textType = false
-                        this.selectZhu.zhuNum = getCombinationCount(this.redBallList.length, 5) * getCombinationCount(this.blueBallList.length, 2)
+                        this.selectZhu.zhuNum = getCombinationCount(this.lottoMes.redBallList.length, 5) * getCombinationCount(this.lottoMes.blueBallList.length, 2)
                         this.moreTwoWan(ballType,item)
                     } else {
                         this.textType = true
                     }
                 }
                 if (this.selectedIndex == '1') {
-                    if (this.danRedMaList.length > 0 && this.tuoRedMaList.length > 1 && this.tuoBlueMaList.length > 1 && (this.danRedMaList.length + this.tuoRedMaList.length) > 5 && (this.danBlueMaList.length + this.tuoBlueMaList.length) > 1) {
+                    if (this.lottoMes.danRedMaList.length > 0 && this.lottoMes.tuoRedMaList.length > 1 && this.lottoMes.tuoBlueMaList.length > 1 && (this.lottoMes.danRedMaList.length + this.lottoMes.tuoRedMaList.length) > 5 && (this.lottoMes.danBlueMaList.length + this.lottoMes.tuoBlueMaList.length) > 1) {
                         this.danTuotextType = false
-                        this.danTuoZhu.zhuNum = danTuoCount(this.danRedMaList.length, this.tuoRedMaList.length, this.danBlueMaList.length, this.tuoBlueMaList.length)
+                        this.danTuoZhu.zhuNum = danTuoCount(this.lottoMes.danRedMaList.length, this.lottoMes.tuoRedMaList.length, this.lottoMes.danBlueMaList.length, this.lottoMes.tuoBlueMaList.length)
                     } else {
                         this.danTuotextType = true
                     }
@@ -924,10 +926,10 @@
                 this.postList.forEach(sunItem => {
                     sunItem.selected = false
                 })
-                this.redBallList = []
-                this.blueBallList = []
-                this.redBallList = this.redBallList.concat(getArrayItems(this.redBallBox, 5))
-                this.blueBallList = this.blueBallList.concat(getArrayItems(this.blueBallBox, 2))
+                this.lottoMes.redBallList = []
+                this.lottoMes.blueBallList = []
+                this.lottoMes.redBallList = this.lottoMes.redBallList.concat(getArrayItems(this.redBallBox, 5))
+                this.lottoMes.blueBallList = this.lottoMes.blueBallList.concat(getArrayItems(this.blueBallBox, 2))
                 this.setSelectBallFn('biaoZhun')
                 this.setLocalStorageFn('biaoZhun')
             },
@@ -935,64 +937,64 @@
             danTuoSelect(item, index, ballType, type) {
                 if (ballType == 'redBall') {
                     if (type == 'dan') {
-                        let danRedIndex = this.danRedMaList.indexOf(item.num)
+                        let danRedIndex = this.lottoMes.danRedMaList.indexOf(item.num)
                         if (danRedIndex > -1) {
                             this.$set(item, 'selected', !item.selected)
-                            this.danRedMaList.splice(danRedIndex, 1);
-                        } else if (this.danRedMaList.length < 4) {
+                            this.lottoMes.danRedMaList.splice(danRedIndex, 1);
+                        } else if (this.lottoMes.danRedMaList.length < 4) {
                             this.$set(item, 'selected', !item.selected)
-                            this.danRedMaList.push(item.num);
-                            this.tuoRedPreList[index].selected = false
-                            let tuoIndex = this.tuoRedMaList.indexOf(item.num)
+                            this.lottoMes.danRedMaList.push(item.num);
+                            this.lottoMes.tuoRedPreList[index].selected = false
+                            let tuoIndex = this.lottoMes.tuoRedMaList.indexOf(item.num)
                             if (tuoIndex != -1) {
-                                this.tuoRedMaList.splice(tuoIndex, 1);
+                                this.lottoMes.tuoRedMaList.splice(tuoIndex, 1);
                             }
                         }
                     }
                     if (type == 'tuo') {
-                        let tuoRedIndex = this.tuoRedMaList.indexOf(item.num)
+                        let tuoRedIndex = this.lottoMes.tuoRedMaList.indexOf(item.num)
                         if (tuoRedIndex > -1) {
                             this.$set(item, 'selected', !item.selected)
-                            this.tuoRedMaList.splice(tuoRedIndex, 1);
+                            this.lottoMes.tuoRedMaList.splice(tuoRedIndex, 1);
                         } else {
                             this.$set(item, 'selected', !item.selected)
-                            this.tuoRedMaList.push(item.num);
+                            this.lottoMes.tuoRedMaList.push(item.num);
                             this.danRedPreList[index].selected = false
-                            let danindex = this.danRedMaList.indexOf(item.num)
+                            let danindex = this.lottoMes.danRedMaList.indexOf(item.num)
                             if (danindex != -1) {
-                                this.danRedMaList.splice(danindex, 1);
+                                this.lottoMes.danRedMaList.splice(danindex, 1);
                             }
                         }
                     }
                 }
                 if (ballType == 'blueBall') {
                     if (type == 'dan') {
-                        let danBlueIndex = this.danBlueMaList.indexOf(item.num)
+                        let danBlueIndex = this.lottoMes.danBlueMaList.indexOf(item.num)
                         if (danBlueIndex > -1) {
                             this.$set(item, 'selected', !item.selected)
-                            this.danBlueMaList.splice(danBlueIndex, 1);
-                        } else if (this.danBlueMaList.length < 1) {
+                            this.lottoMes.danBlueMaList.splice(danBlueIndex, 1);
+                        } else if (this.lottoMes.danBlueMaList.length < 1) {
                             this.$set(item, 'selected', !item.selected)
-                            this.danBlueMaList.push(item.num);
+                            this.lottoMes.danBlueMaList.push(item.num);
                             this.tuoBluePostList[index].selected = false
-                            let tuoIndex = this.tuoBlueMaList.indexOf(item.num)
+                            let tuoIndex = this.lottoMes.tuoBlueMaList.indexOf(item.num)
                             if (tuoIndex != -1) {
-                                this.tuoBlueMaList.splice(tuoIndex, 1);
+                                this.lottoMes.tuoBlueMaList.splice(tuoIndex, 1);
                             }
                         }
                     }
                     if (type == 'tuo') {
-                        let tuoBlueIndex = this.tuoBlueMaList.indexOf(item.num)
+                        let tuoBlueIndex = this.lottoMes.tuoBlueMaList.indexOf(item.num)
                         if (tuoBlueIndex > -1) {
                             this.$set(item, 'selected', !item.selected)
-                            this.tuoBlueMaList.splice(tuoBlueIndex, 1)
+                            this.lottoMes.tuoBlueMaList.splice(tuoBlueIndex, 1)
                         } else {
                             this.$set(item, 'selected', !item.selected)
-                            this.tuoBlueMaList.push(item.num);
+                            this.lottoMes.tuoBlueMaList.push(item.num);
                             this.danBluePostList[index].selected = false
-                            let danIndex = this.danBlueMaList.indexOf(item.num)
+                            let danIndex = this.lottoMes.danBlueMaList.indexOf(item.num)
                             if (danIndex != -1) {
-                                this.danBlueMaList.splice(danIndex, 1);
+                                this.lottoMes.danBlueMaList.splice(danIndex, 1);
                             }
                         }
                     }
@@ -1002,102 +1004,106 @@
             },
             //存储 所选号码
             setLocalStorageFn(type) {
-                if (type == 'biaoZhun') {
-                    sessionStorage.setItem('redBallList', JSON.stringify(this.redBallList))
-                    sessionStorage.setItem('blueBallList', JSON.stringify(this.blueBallList))
-                } else if (type == 'dantuo') {
-                    sessionStorage.setItem('danRedMaList', JSON.stringify(this.danRedMaList))
-                    sessionStorage.setItem('tuoRedMaList', JSON.stringify(this.tuoRedMaList))
-                    sessionStorage.setItem('danBlueMaList', JSON.stringify(this.danBlueMaList))
-                    sessionStorage.setItem('tuoBlueMaList', JSON.stringify(this.tuoBlueMaList))
-                }
+                sessionStorage.setItem('lottoMes', JSON.stringify(this.lottoMes))
+                // if (type == 'biaoZhun') {
+                //     sessionStorage.setItem('redBallList', JSON.stringify(this.redBallList))
+                //     sessionStorage.setItem('blueBallList', JSON.stringify(this.blueBallList))
+                // } else if (type == 'dantuo') {
+                //     sessionStorage.setItem('danRedMaList', JSON.stringify(this.danRedMaList))
+                //     sessionStorage.setItem('tuoRedMaList', JSON.stringify(this.tuoRedMaList))
+                //     sessionStorage.setItem('danBlueMaList', JSON.stringify(this.danBlueMaList))
+                //     sessionStorage.setItem('tuoBlueMaList', JSON.stringify(this.tuoBlueMaList))
+                // }
             },
             //内存中取出所选号码
             getLocalStorageFn(type) {
-                if (type == 'biaoZhun') {
-                    var that = this
-                    if (JSON.parse(sessionStorage.getItem('redBallList')) != null) {
-                        this.redBallList = JSON.parse(sessionStorage.getItem('redBallList'))
-                    }
-                    if (JSON.parse(sessionStorage.getItem('redBallList')) != null) {
-                        this.blueBallList = JSON.parse(sessionStorage.getItem('blueBallList'))
-                    }
-                    this.setSelectBallFn('biaoZhun')
-
-                } else if (type == 'dantuo') {
-                    if (JSON.parse(sessionStorage.getItem('danRedMaList')) != null) {
-                        this.danRedMaList = JSON.parse(sessionStorage.getItem('danRedMaList'))
-                    }
-                    if (JSON.parse(sessionStorage.getItem('tuoRedMaList')) != null) {
-                        this.tuoRedMaList = JSON.parse(sessionStorage.getItem('tuoRedMaList'))
-                    }
-                    if (JSON.parse(sessionStorage.getItem('danBlueMaList')) != null) {
-                        this.danBlueMaList = JSON.parse(sessionStorage.getItem('danBlueMaList'))
-                    }
-                    if (JSON.parse(sessionStorage.getItem('tuoBlueMaList')) != null) {
-                        this.tuoBlueMaList = JSON.parse(sessionStorage.getItem('tuoBlueMaList'))
-                    }
-                    this.setSelectBallFn('dantuo')
+                if(JSON.parse(sessionStorage.getItem('lottoMes')) != null){
+                    this.lottoMes = JSON.parse(sessionStorage.getItem('lottoMes'))
                 }
+                // if (type == 'biaoZhun') {
+                //     var that = this
+                //     if (JSON.parse(sessionStorage.getItem('redBallList')) != null) {
+                //         this.redBallList = JSON.parse(sessionStorage.getItem('redBallList'))
+                //     }
+                //     if (JSON.parse(sessionStorage.getItem('redBallList')) != null) {
+                //         this.blueBallList = JSON.parse(sessionStorage.getItem('blueBallList'))
+                //     }
+                //     this.setSelectBallFn('biaoZhun')
+                //
+                // } else if (type == 'dantuo') {
+                //     if (JSON.parse(sessionStorage.getItem('danRedMaList')) != null) {
+                //         this.danRedMaList = JSON.parse(sessionStorage.getItem('danRedMaList'))
+                //     }
+                //     if (JSON.parse(sessionStorage.getItem('tuoRedMaList')) != null) {
+                //         this.tuoRedMaList = JSON.parse(sessionStorage.getItem('tuoRedMaList'))
+                //     }
+                //     if (JSON.parse(sessionStorage.getItem('danBlueMaList')) != null) {
+                //         this.danBlueMaList = JSON.parse(sessionStorage.getItem('danBlueMaList'))
+                //     }
+                //     if (JSON.parse(sessionStorage.getItem('tuoBlueMaList')) != null) {
+                //         this.tuoBlueMaList = JSON.parse(sessionStorage.getItem('tuoBlueMaList'))
+                //     }
+                //     this.setSelectBallFn('dantuo')
+                // }
                 this.viewText()
             },
             //删除所选号
             deleFn() {
                 if (this.selectedIndex == '0') {
-                    if (this.redBallList.length > 0 || this.blueBallList.length > 0) {
+                    if (this.lottoMes.redBallList.length > 0 || this.lottoMes.blueBallList.length > 0) {
                         MessageBox({
                             title: '温馨提示',
                             message: '确定删除所选号码吗?',
                             showCancelButton: true
                         }).then(action => {
-                            if (this.redBallList.length > 0) {
+                            if (this.lottoMes.redBallList.length > 0) {
                                 this.preList.forEach(sunItem => {
                                     sunItem.selected = false
                                 })
                             }
-                            if (this.blueBallList.length > 0) {
+                            if (this.lottoMes.blueBallList.length > 0) {
                                 this.postList.forEach(sunItem => {
                                     sunItem.selected = false
                                 })
                             }
-                            this.redBallList = []
-                            this.blueBallList = []
+                            this.lottoMes.redBallList = []
+                            this.lottoMes.blueBallList = []
                             this.setLocalStorageFn('biaoZhun')
                             this.viewText()
                         });
                     }
                 }
                 if (this.selectedIndex == '1') {
-                    if (this.danRedMaList.length > 0 || this.tuoRedMaList.length > 0 || this.danBlueMaList.length > 0 || this.tuoBlueMaList.length > 0) {
+                    if (this.lottoMes.danRedMaList.length > 0 || this.lottoMes.tuoRedMaList.length > 0 || this.lottoMes.danBlueMaList.length > 0 || this.lottoMes.tuoBlueMaList.length > 0) {
                         MessageBox({
                             title: '温馨提示',
                             message: '确定删除所选号码吗?',
                             showCancelButton: true
                         }).then(action => {
-                            if (this.danRedMaList.length > 0) {
+                            if (this.lottoMes.danRedMaList.length > 0) {
                                 this.danRedPreList.forEach(sunItem => {
                                     sunItem.selected = false
                                 })
                             }
-                            if (this.tuoRedMaList.length > 0) {
+                            if (this.lottoMes.tuoRedMaList.length > 0) {
                                 this.tuoRedPreList.forEach(sunItem => {
                                     sunItem.selected = false
                                 })
                             }
-                            if (this.danBlueMaList.length > 0) {
+                            if (this.lottoMes.danBlueMaList.length > 0) {
                                 this.danBluePostList.forEach(sunItem => {
                                     sunItem.selected = false
                                 })
                             }
-                            if (this.tuoBlueMaList.length > 0) {
+                            if (this.lottoMes.tuoBlueMaList.length > 0) {
                                 this.tuoBluePostList.forEach(sunItem => {
                                     sunItem.selected = false
                                 })
                             }
-                            this.danRedMaList = [],//胆码选号红球集合
-                                this.tuoRedMaList = [],//托码选号红求集合
-                                this.danBlueMaList = [],//胆码选号蓝球集合
-                                this.tuoBlueMaList = [],//托码选号蓝求集合
+                            this.lottoMes.danRedMaList = [],//胆码选号红球集合
+                                this.lottoMes.tuoRedMaList = [],//托码选号红求集合
+                                this.lottoMes.danBlueMaList = [],//胆码选号蓝球集合
+                                this.lottoMes.tuoBlueMaList = [],//托码选号蓝求集合
                                 this.setLocalStorageFn('dantuo')
                             this.viewText()
                         });
@@ -1106,7 +1112,7 @@
 
             },
             //大乐透选号头部是否展开
-            openOrclose(event) {
+            openOrclose() {
                 if ($('#downImg').hasClass('tranform180')) {
                     $('#downImg').removeClass('tranform180')
                 } else {
@@ -1116,6 +1122,7 @@
             },
             //投注方式选择
             numType(index) {
+                var that = this
                 sessionStorage.setItem('selectedIndex', index)
                 this.selectedIndex = index
                 if (index == '1') {
@@ -1124,6 +1131,7 @@
                 if (index == '0') {
                     this.getLocalStorageFn('biaozhun')
                 }
+                that.openOrclose()
             },
             goNext(item) {
                 if (item.name == '隐藏遗漏'||item.name == '显示遗漏') {
@@ -1194,13 +1202,13 @@
                 }
                 // 将数据整理
                 if (this.selectedIndex == '0') {
-                    this.sortFn(this.redBallList).forEach(item => {
+                    this.sortFn(this.lottoMes.redBallList).forEach(item => {
                         ballList.push({
                             num: item,
                             type: 'redBall'
                         })
                     })
-                    this.sortFn(this.blueBallList).forEach(item => {
+                    this.sortFn(this.lottoMes.blueBallList).forEach(item => {
                         ballList.push({
                             num: item,
                             type: 'blueBall'
@@ -1219,10 +1227,10 @@
                     })
                 }
                 if (this.selectedIndex == '1') {
-                    for (let i = 0; i < this.sortFn(this.danRedMaList).length + 1; i++) {
-                        if (i < this.danRedMaList.length) {
+                    for (let i = 0; i < this.sortFn(this.lottoMes.danRedMaList).length + 1; i++) {
+                        if (i < this.lottoMes.danRedMaList.length) {
                             ballList.push({
-                                num: this.danRedMaList[i],
+                                num: this.lottoMes.danRedMaList[i],
                                 type: 'danRedBall'
                             })
                         } else {
@@ -1232,10 +1240,10 @@
                             })
                         }
                     }
-                    for (let i = 0; i < this.sortFn(this.tuoRedMaList).length + 1; i++) {
-                        if (i < this.tuoRedMaList.length) {
+                    for (let i = 0; i < this.sortFn(this.lottoMes.tuoRedMaList).length + 1; i++) {
+                        if (i < this.lottoMes.tuoRedMaList.length) {
                             ballList.push({
-                                num: this.tuoRedMaList[i],
+                                num: this.lottoMes.tuoRedMaList[i],
                                 type: 'tuoRedBall'
                             })
                         } else {
@@ -1245,23 +1253,23 @@
                             })
                         }
                     }
-                    for (let i = 0; i < this.sortFn(this.danBlueMaList).length + 1; i++) {
-                        if (i < this.danBlueMaList.length) {
+                    for (let i = 0; i < this.sortFn(this.lottoMes.danBlueMaList).length + 1; i++) {
+                        if (i < this.lottoMes.danBlueMaList.length) {
                             ballList.push({
-                                num: this.danBlueMaList[i],
+                                num: this.lottoMes.danBlueMaList[i],
                                 type: 'danBlueBall'
                             })
-                        } else if(this.danBlueMaList.length!=0) {
+                        } else if(this.lottoMes.danBlueMaList.length!=0) {
                             ballList.push({
                                 num: '—',
                                 type: 'line'
                             })
                         }
                     }
-                    for (let i = 0; i < this.sortFn(this.tuoBlueMaList).length + 1; i++) {
-                        if (i < this.tuoBlueMaList.length) {
+                    for (let i = 0; i < this.sortFn(this.lottoMes.tuoBlueMaList).length + 1; i++) {
+                        if (i < this.lottoMes.tuoBlueMaList.length) {
                             ballList.push({
-                                num: this.tuoBlueMaList[i],
+                                num: this.lottoMes.tuoBlueMaList[i],
                                 type: 'tuoBlueBall'
                             })
                         }
@@ -1297,9 +1305,9 @@
                             item.ballList.forEach(sunItem => {
                                 if (sunItem.type == 'redBall') {
                                     redBallLength++
-                                    that.redBallList.forEach(redItem => {
+                                    that.lottoMes.redBallList.forEach(redItem => {
                                         if (sunItem.num == redItem) {
-                                            if (that.redBallList.length == redBallLength) {
+                                            if (that.lottoMes.redBallList.length == redBallLength) {
                                                 a = true
                                             }
                                         }
@@ -1307,9 +1315,9 @@
                                 }
                                 if (sunItem.type == 'blueBall') {
                                     blueBallLength++
-                                    that.blueBallList.forEach(blueItem => {
+                                    that.lottoMes.blueBallList.forEach(blueItem => {
                                         if (sunItem.num == blueItem) {
-                                            if (that.blueBallList.length == blueBallLength) {
+                                            if (that.lottoMes.blueBallList.length == blueBallLength) {
                                                 b = true
                                             }
                                         }
@@ -1330,9 +1338,9 @@
                             item.ballList.forEach(sunItem => {
                                 if (sunItem.type == 'danRedBall') {
                                     danRedBallLength++
-                                    that.danRedMaList.forEach(redItem => {
+                                    that.lottoMes.danRedMaList.forEach(redItem => {
                                         if (sunItem.num == redItem) {
-                                            if (that.danRedMaList.length == danRedBallLength) {
+                                            if (that.lottoMes.danRedMaList.length == danRedBallLength) {
                                                 a = true
                                             }
                                         }
@@ -1340,9 +1348,9 @@
                                 }
                                 if (sunItem.type == 'tuoRedBall') {
                                     tuoRedBallLength++
-                                    that.tuoRedMaList.forEach(redItem => {
+                                    that.lottoMes.tuoRedMaList.forEach(redItem => {
                                         if (sunItem.num == redItem) {
-                                            if (that.tuoRedMaList.length == tuoRedBallLength) {
+                                            if (that.lottoMes.tuoRedMaList.length == tuoRedBallLength) {
                                                 b = true
                                             }
                                         }
@@ -1350,9 +1358,9 @@
                                 }
                                 if (sunItem.type == 'danBlueBall') {
                                     danBlueBallLength++
-                                    that.danBlueMaList.forEach(redItem => {
+                                    that.lottoMes.danBlueMaList.forEach(redItem => {
                                         if (sunItem.num == redItem) {
-                                            if (that.danBlueMaList.length == danBlueBallLength) {
+                                            if (that.lottoMes.danBlueMaList.length == danBlueBallLength) {
                                                 c = true
                                             }
                                         }
@@ -1360,9 +1368,9 @@
                                 }
                                 if (sunItem.type == 'tuoBlueBall') {
                                     tuoBlueBallLength++
-                                    that.tuoBlueMaList.forEach(redItem => {
+                                    that.lottoMes.tuoBlueMaList.forEach(redItem => {
                                         if (sunItem.num == redItem) {
-                                            if (that.tuoBlueMaList.length == tuoBlueBallLength) {
+                                            if (that.lottoMes.tuoBlueMaList.length == tuoBlueBallLength) {
                                                 d = true
                                             }
                                         }
