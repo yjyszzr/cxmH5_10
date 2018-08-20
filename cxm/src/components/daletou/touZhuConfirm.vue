@@ -564,7 +564,6 @@
         },
         beforeRouteLeave(to, from, next) {
             if(to.name == 'selectNumber'&&this.routerOpen){
-                console.log(to)
                 MessageBox.confirm('',{
                     title: '温馨提示',
                     message: '确定清空所选号码吗?',

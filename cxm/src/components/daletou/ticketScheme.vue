@@ -101,6 +101,9 @@
                         align-items: center;
                         border-bottom: 1px dotted #c7c7c7;
                         padding: px2rem(15px);
+                        .num-box{
+                            flex: 3;
+                        }
                         .num-sun-ul{
                             display: flex;
                             flex-wrap: wrap;
@@ -125,6 +128,7 @@
                         .tickt-status{
                             min-width: px2rem(110px);
                             color: #ea5504;
+                            flex: 1;
                         }
                     }
                 }
