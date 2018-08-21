@@ -20,6 +20,7 @@
     "moment": "^2.22.2",
     "node-sass": "^4.8.3",
     "nprogress": "^0.2.0",
+    "peer": "^0.2.10",
     "prerender-spa-plugin": "^3.2.1",
     "qrcode": "^1.2.0",
     "sass-loader": "^6.0.7",

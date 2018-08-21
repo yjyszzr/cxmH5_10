@@ -309,7 +309,7 @@
 </style>
 <script>
     import {getArrayItems,saveDtInfo} from '../../util/common'
-    import {MessageBox, Popup,Indicator} from 'mint-ui';
+    import {MessageBox, Popup,Indicator,Toast} from 'mint-ui';
     import SelectionBox from "./images/SelectionBox1@3x.png"
     import Selected from "./images/Selected1@3x.png"
     import api from '../../fetch/api'
@@ -515,28 +515,32 @@
                 this.$store.state.mark_playObj.mark_play = '2'
             },
             confirm(){
-                Indicator.open()
-                let obj = {
-                    betNum: this.adds.zhuNum,
-                    bonusId: '',
-                    isAppend: this.adds.add?1:0,
-                    // lotteryClassifyId: 2,
-                    // lotteryPlayClassifyId: this.adds.add?10:9,
-                    times: this.adds.bei,
-                    orderMoney: this.adds.money,
-                    betInfos: saveDtInfo(this.conformBallList)
+                if(this.canPay){
+                    Indicator.open()
+                    let obj = {
+                        betNum: this.adds.zhuNum,
+                        bonusId: '',
+                        isAppend: this.adds.add?1:0,
+                        // lotteryClassifyId: 2,
+                        // lotteryPlayClassifyId: this.adds.add?10:9,
+                        times: this.adds.bei,
+                        orderMoney: this.adds.money,
+                        betInfos: saveDtInfo(this.conformBallList)
+                    }
+                    api.saveBetInfoDlt(obj)
+                        .then(res => {
+                            if (res.code == 0) {
+                                this.$router.push({
+                                    path: '/freebuy/payment',
+                                    query:{
+                                        ptk: res.data
+                                    }
+                                })
+                            }
+                        })
+                }else {
+                    Toast('请勾选协议！')
                 }
-                api.saveBetInfoDlt(obj)
-                .then(res => {
-                        if (res.code == 0) {
-                            this.$router.push({
-                                path: '/freebuy/payment',
-                                query:{
-                                    ptk: res.data
-                                }
-                            })
-                        }
-                })
             }
         },
         computed:{
