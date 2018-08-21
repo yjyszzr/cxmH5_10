@@ -38,7 +38,7 @@
                     <template v-if="orderObj.prizeNum.length>0">
                         <p>开奖号码</p>
                         <ul class="num-ul">
-                            <li :class="[index==4||index==5?'allblueBall':'allredBall',index==4?'spance':'']" v-for="(item,index) in orderObj.prizeNum" :key=index >{{item}}</li>
+                            <li :class="[index==5||index==6?'allblueBall':'allredBall',index==5?'spance':'']" v-for="(item,index) in orderObj.prizeNum" :key=index >{{item}}</li>
                         </ul>
                     </template>
                     <template v-if="orderObj.prizeNum.length<=0">
