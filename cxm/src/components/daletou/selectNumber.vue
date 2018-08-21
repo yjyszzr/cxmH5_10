@@ -1151,26 +1151,11 @@
                 }
                 if (key && key2) {
                     sessionStorage.setItem('selectedIndex', this.selectedIndex)
-                    //JSON.stringify(sessionStorage.getItem('conformBallList'))
                     this.dataProcess()
                     this.$router.push({
                         path: '/lottery/daletou/touZhuConfirm'
                     })
                 }
-            },
-            // 所选球大小排序
-            sortFn(Arr) {
-                let min;
-                for (var i = 0; i < Arr.length; i++) {
-                    for (var j = i; j < Arr.length; j++) {
-                        if (Arr[i] > Arr[j]) {
-                            min = Arr[j];
-                            Arr[j] = Arr[i];
-                            Arr[i] = min;
-                        }
-                    }
-                }
-                return Arr
             },
             // 去投注数据处理
             dataProcess() {
@@ -1178,10 +1163,12 @@
                 var ballList = []
                 if (sessionStorage.getItem('conformBallList') != null) {
                     var conformBallList = JSON.parse(sessionStorage.getItem('conformBallList'))
-                    let itemIndex = JSON.parse(sessionStorage.getItem('adds')).itemEditIndex
-                    if (itemIndex != -1 && conformBallList[itemIndex] != undefined) {
-                        if (conformBallList[itemIndex].msg.status == 'edit') {
-                            conformBallList.splice(itemIndex, 1)
+                    if(sessionStorage.getItem('adds')){
+                        let itemIndex = JSON.parse(sessionStorage.getItem('adds')).itemEditIndex
+                        if (itemIndex != -1 && conformBallList[itemIndex] != undefined) {
+                            if (conformBallList[itemIndex].msg.status == 'edit') {
+                                conformBallList.splice(itemIndex, 1)
+                            }
                         }
                     }
                 } else {
@@ -1189,13 +1176,13 @@
                 }
                 // 将数据整理
                 if (this.selectedIndex == '0') {
-                    this.sortFn(this.lottoMes.redBallList).forEach(item => {
+                    this.lottoMes.redBallList.forEach(item => {
                         ballList.push({
                             num: item,
                             type: 'redBall'
                         })
                     })
-                    this.sortFn(this.lottoMes.blueBallList).forEach(item => {
+                    this.lottoMes.blueBallList.forEach(item => {
                         ballList.push({
                             num: item,
                             type: 'blueBall'
@@ -1214,7 +1201,7 @@
                     })
                 }
                 if (this.selectedIndex == '1') {
-                    for (let i = 0; i < this.sortFn(this.lottoMes.danRedMaList).length + 1; i++) {
+                    for (let i = 0; i < this.lottoMes.danRedMaList.length + 1; i++) {
                         if (i < this.lottoMes.danRedMaList.length) {
                             ballList.push({
                                 num: this.lottoMes.danRedMaList[i],
@@ -1227,7 +1214,7 @@
                             })
                         }
                     }
-                    for (let i = 0; i < this.sortFn(this.lottoMes.tuoRedMaList).length + 1; i++) {
+                    for (let i = 0; i < this.lottoMes.tuoRedMaList.length + 1; i++) {
                         if (i < this.lottoMes.tuoRedMaList.length) {
                             ballList.push({
                                 num: this.lottoMes.tuoRedMaList[i],
@@ -1240,7 +1227,7 @@
                             })
                         }
                     }
-                    for (let i = 0; i < this.sortFn(this.lottoMes.danBlueMaList).length + 1; i++) {
+                    for (let i = 0; i < this.lottoMes.danBlueMaList.length + 1; i++) {
                         if (i < this.lottoMes.danBlueMaList.length) {
                             ballList.push({
                                 num: this.lottoMes.danBlueMaList[i],
@@ -1253,7 +1240,7 @@
                             })
                         }
                     }
-                    for (let i = 0; i < this.sortFn(this.lottoMes.tuoBlueMaList).length + 1; i++) {
+                    for (let i = 0; i < this.lottoMes.tuoBlueMaList.length + 1; i++) {
                         if (i < this.lottoMes.tuoBlueMaList.length) {
                             ballList.push({
                                 num: this.lottoMes.tuoBlueMaList[i],
@@ -1274,103 +1261,6 @@
                     })
                 }
                 sessionStorage.setItem('conformBallList', JSON.stringify(conformBallList))
-            },
-            //判断选号是否与原有数据重复
-            repeatData() {
-                var that = this
-                let a = false
-                let b = false
-                let c = false
-                let d = false
-                // 判断所选号码是否与已有的重复
-                if (JSON.parse(sessionStorage.getItem('conformBallList')) != null) {
-                    var conformBallList = JSON.parse(sessionStorage.getItem('conformBallList'))
-                    if (this.selectedIndex == '0') {
-                        conformBallList.forEach(item => {
-                            let redBallLength = 0
-                            let blueBallLength = 0
-                            item.ballList.forEach(sunItem => {
-                                if (sunItem.type == 'redBall') {
-                                    redBallLength++
-                                    that.lottoMes.redBallList.forEach(redItem => {
-                                        if (sunItem.num == redItem) {
-                                            if (that.lottoMes.redBallList.length == redBallLength) {
-                                                a = true
-                                            }
-                                        }
-                                    })
-                                }
-                                if (sunItem.type == 'blueBall') {
-                                    blueBallLength++
-                                    that.lottoMes.blueBallList.forEach(blueItem => {
-                                        if (sunItem.num == blueItem) {
-                                            if (that.lottoMes.blueBallList.length == blueBallLength) {
-                                                b = true
-                                            }
-                                        }
-                                    })
-                                }
-                            })
-                        })
-                        if (a && b) {
-                            return
-                        }
-                    }
-                    if (this.selectedIndex == '1') {
-                        conformBallList.forEach(item => {
-                            let danRedBallLength = 0
-                            let tuoRedBallLength = 0
-                            let danBlueBallLength = 0
-                            let tuoBlueBallLength = 0
-                            item.ballList.forEach(sunItem => {
-                                if (sunItem.type == 'danRedBall') {
-                                    danRedBallLength++
-                                    that.lottoMes.danRedMaList.forEach(redItem => {
-                                        if (sunItem.num == redItem) {
-                                            if (that.lottoMes.danRedMaList.length == danRedBallLength) {
-                                                a = true
-                                            }
-                                        }
-                                    })
-                                }
-                                if (sunItem.type == 'tuoRedBall') {
-                                    tuoRedBallLength++
-                                    that.lottoMes.tuoRedMaList.forEach(redItem => {
-                                        if (sunItem.num == redItem) {
-                                            if (that.lottoMes.tuoRedMaList.length == tuoRedBallLength) {
-                                                b = true
-                                            }
-                                        }
-                                    })
-                                }
-                                if (sunItem.type == 'danBlueBall') {
-                                    danBlueBallLength++
-                                    that.lottoMes.danBlueMaList.forEach(redItem => {
-                                        if (sunItem.num == redItem) {
-                                            if (that.lottoMes.danBlueMaList.length == danBlueBallLength) {
-                                                c = true
-                                            }
-                                        }
-                                    })
-                                }
-                                if (sunItem.type == 'tuoBlueBall') {
-                                    tuoBlueBallLength++
-                                    that.lottoMes.tuoBlueMaList.forEach(redItem => {
-                                        if (sunItem.num == redItem) {
-                                            if (that.lottoMes.tuoBlueMaList.length == tuoBlueBallLength) {
-                                                d = true
-                                            }
-                                        }
-                                    })
-                                }
-                            })
-                        })
-                        if (a && b && c && d) {
-                            return
-                        }
-                    }
-                }
-                //this.dataProcess()
             },
         },
         beforeRouteEnter(to, from, next){
@@ -1394,3 +1284,4 @@
         }
     }
 </script>
+
