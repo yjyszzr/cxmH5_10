@@ -42,19 +42,19 @@
                             <div class="hql-item" v-for="(item,i) in runchartData.preLottoDrop.drop" :key='i'>
                                 {{item.termNum.substr(3)}}
                             </div>
-                            <div class="hql-item countNum">出现次数</div>
-                            <div class="hql-item averageData">平均遗漏</div>
-                            <div class="hql-item maxData">最大遗漏</div>
-                            <div class="hql-item maxContinue">最大连出</div>
+                            <div class="hql-item countNum" v-show="runchartData.preLottoDrop.countNum.length>0">出现次数</div>
+                            <div class="hql-item averageData" v-show="runchartData.preLottoDrop.averageData.length>0">平均遗漏</div>
+                            <div class="hql-item maxData" v-show="runchartData.preLottoDrop.maxData.length>0">最大遗漏</div>
+                            <div class="hql-item maxContinue" v-show="runchartData.preLottoDrop.maxContinue.length>0">最大连出</div>
                         </div>
                         <div v-if="runchartData.postLottoDrop&&daletouActive==3">
                             <div class="hql-item" v-for="(item,i) in runchartData.postLottoDrop.drop" :key='i'>
                                 {{item.termNum.substr(3)}}
                             </div>
-                            <div class="hql-item countNum">出现次数</div>
-                            <div class="hql-item averageData">平均遗漏</div>
-                            <div class="hql-item maxData">最大遗漏</div>
-                            <div class="hql-item maxContinue">最大连出</div>
+                            <div class="hql-item countNum" v-show="runchartData.postLottoDrop.countNum.length>0">出现次数</div>
+                            <div class="hql-item averageData" v-show="runchartData.postLottoDrop.countNum.length>0">平均遗漏</div>
+                            <div class="hql-item maxData" v-show="runchartData.postLottoDrop.countNum.length>0">最大遗漏</div>
+                            <div class="hql-item maxContinue" v-show="runchartData.postLottoDrop.countNum.length>0">最大连出</div>
                         </div>
                     </div>
                 </div>

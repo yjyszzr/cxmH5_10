@@ -123,15 +123,17 @@ export default {
             }
         },
         clearNums(){
-            MessageBox.confirm('确定清空所选号码吗?', '温馨提示').then(action => {
-                $('.tab-active').removeClass('tab-active')
-                this.h_nums = []
-                this.l_nums = []
-                this.disabled = true
-                this.text = `请至少选择<span>5</span>个红球&nbsp;<span>2</span>个蓝球`
-            }).catch(function () {
-               
-            });
+            if(this.h_nums.length>0||this.l_nums.length>0){
+                MessageBox.confirm('确定清空所选号码吗?', '温馨提示').then(action => {
+                    $('.tab-active').removeClass('tab-active')
+                    this.h_nums = []
+                    this.l_nums = []
+                    this.disabled = true
+                    this.text = `请至少选择<span>5</span>个红球&nbsp;<span>2</span>个蓝球`
+                }).catch(function () {
+                   
+                });
+            }
         },
         confirmClick(){
             this.$store.commit('RUNCHARTFILTER',{type: '2',value: this.confirmObj.count})

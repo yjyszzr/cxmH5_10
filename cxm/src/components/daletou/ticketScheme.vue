@@ -24,15 +24,15 @@
                                     <div class="left">
                                         <li class="num-sun-li redBall" v-for="(sunItem,i) in item.redDanCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
-                                    <li style="line-height:1.1rem;color:#c7c7c7;float:left;">—</li>
+                                    <li class="dan-line">—</li>
                                     <div class="left">
                                         <li class="num-sun-li redBall" v-for="(sunItem,i) in item.redTuoCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
-                                    <li style="line-height:1.1rem;color:#c7c7c7;float:left;">—</li>
-                                    <div class="right">
+                                    <li class="dan-line">—</li>
+                                    <div class="right" v-show="item.blueDanCathectics.length>0">
                                         <li class="num-sun-li blueBall" v-for="(sunItem,i) in item.blueDanCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
-                                    <li style="line-height:1.1rem;color:#c7c7c7;float:left;" v-show="item.blueDanCathectics.length>0">—</li>
+                                    <li class="dan-line" v-show="item.blueDanCathectics.length>0">—</li>
                                     <div class="right">
                                         <li class="num-sun-li blueBall" v-for="(sunItem,i) in item.blueTuoCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
@@ -41,7 +41,7 @@
                                     <div class="left">
                                         <li class="num-sun-li redBall" v-for="(sunItem,i) in item.redCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
-                                    <li style="line-height:1.1rem;color:#c7c7c7;float:left;">—</li>
+                                    <li class="dan-line">—</li>
                                     <div class="right">
                                         <li class="num-sun-li blueBall" v-for="(sunItem,i) in item.blueCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
@@ -112,7 +112,7 @@
                         padding: px2rem(15px);
                         .num-box{
                             overflow: hidden;
-                            width: 80%;
+                            min-width: 75%;
                         }
                         .num-sun-ul{
                             overflow: hidden;
@@ -120,6 +120,12 @@
                                 li{
                                     float: left;
                                 }
+                            }
+                            .dan-line{
+                                float: left;
+                                line-height:1.1rem;
+                                color:#c7c7c7;
+                                display:inline-block;
                             }
                             .num-sun-li{
                                 line-height: px2rem(60px);
@@ -136,6 +142,7 @@
                             padding-left: px2rem(15px);
                         }
                         .tickt-status{
+                            width: 20%;
                             min-width: px2rem(110px);
                             color: #ea5504;
                             text-align: right;
@@ -154,7 +161,7 @@
         data() {
             return {
                 orderSn: this.$route.query.orderSn,
-                ticketList:[]
+                ticketList:[],
             }
         },
         mounted(){
