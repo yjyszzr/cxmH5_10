@@ -12,25 +12,20 @@
                                 <p>￥ {{orderObj.ticketAmount}}</p>
                             </div>
                         </div>
-                        <img v-if="orderObj.orderStatus=='5'" class="ltto-log" src="./images/Prize@3x.png" alt="">
+                        <img v-if="orderObj.orderStatus=='5'||orderObj.orderStatus=='6'||orderObj.orderStatus=='7'" class="ltto-log" src="./images/Prize@3x.png" alt="">
                         <img v-if="orderObj.orderStatus=='4'" class="ltto-log" src="./images/NoPrize@3x.png" alt="">
                     </div>
                     <div class="programme">
                         <div class="programme-type">
                             <p>方案状态</p>
-                            <p v-show="orderObj.orderStatus=='5'">中奖金额</p>
+                            <p v-show="orderObj.orderStatus=='5'||orderObj.orderStatus=='6'||orderObj.orderStatus=='7'">中奖金额</p>
+                            <p style="color:#9f9f9f;" v-show="orderObj.orderStatus=='4'">感谢您助力</p>
                         </div>
                         <div class="programme-money">
-                            <p v-if="orderObj.orderStatus=='0'">待付款</p>
-                            <p v-if="orderObj.orderStatus=='1'">待出票</p>
-                            <p v-if="orderObj.orderStatus=='2'">出票失败</p>
-                            <p v-if="orderObj.orderStatus=='3'">待开奖</p>
-                            <p v-if="orderObj.orderStatus=='4'">未中奖</p>
-                            <p v-if="orderObj.orderStatus=='5'">已中奖</p>
-                            <p v-if="orderObj.orderStatus=='6'">派奖中</p>
-                            <p v-if="orderObj.orderStatus=='7'">审核中</p>
-                            <p v-if="orderObj.orderStatus=='8'">支付失败</p>
-                            <p v-show="orderObj.orderStatus=='5'">￥{{orderObj.winningMoney}}</p>
+                            <p>{{orderObj.orderStatusDesc}}</p>
+                            <p v-if="orderObj.orderStatus=='2'" style="color:#505050;">资金已退回</p>
+                            <p v-if="orderObj.orderStatus=='4'" style="color:#9f9f9f;">公益事业</p>
+                            <p v-if="orderObj.orderStatus=='5'||orderObj.orderStatus=='6'||orderObj.orderStatus=='7'">￥{{orderObj.winningMoney}}</p>
                         </div>
                     </div>
                 </div>
@@ -248,6 +243,7 @@
                         }
                         .programme-money{
                             margin-top: px2rem(5px);
+                            font-size: px2rem(28px);
                             p:nth-child(1){
                                 color: #505050;
                             }

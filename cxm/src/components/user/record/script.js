@@ -64,7 +64,7 @@ export default {
         })
       },
       goDetail(c){
-        if(c.lotteryPlayClassifyId=='8'){
+        if(c.lotteryClassifyId=='2'){
           this.$router.push({
               path: '/daletou/programmeDetails',
               query: {
