@@ -38,7 +38,7 @@
                     <template v-if="orderObj.prizeNum.length>0">
                         <p>开奖号码</p>
                         <ul class="num-ul">
-                            <li :class="[index==4||index==5?'allblueBall':'allredBall',index==4?'spance':'']" v-for="(item,index) in orderObj.prizeNum" :key=index >{{item}}</li>
+                            <li :class="[index==5||index==6?'allblueBall':'allredBall',index==5?'spance':'']" v-for="(item,index) in orderObj.prizeNum" :key=index >{{item}}</li>
                         </ul>
                     </template>
                     <template v-if="orderObj.prizeNum.length<=0">
@@ -368,6 +368,14 @@
                 orderObj: {},
                 kaijiangNum:[],//开奖号码
                 ticketSchemeDetailDTOs:[],
+                adds: {
+                    add:false,  //是否追加 默认不追加
+                    imgUrl: '',
+                    zhuNum:0,
+                    bei: 1,
+                    money:0,
+                    itemEditIndex:-1,
+                },
             }
         },
         created(){
@@ -399,6 +407,17 @@
                 var that = this
                 var arr  = []
                 dataArr.forEach((item,index)=>{
+                    if(item.isAppend == '0'){
+                        that.isAppend = false
+                        that.imgUrl = 'SelectionBox'
+                    }
+                    if(item.isAppend == '1'){
+                        that.isAppend = true
+                        that.imgUrl = 'Selected'
+                    }
+                    that.adds.money = that.adds.money+item.amount
+                    that.adds.zhuNum = that.adds.zhuNum+item.betNum
+                    that.adds.bei = item.cathectic
                     arr.push({
                         amount:item.amount,
                         betNum:item.betNum,
@@ -483,8 +502,9 @@
             },
             //继续购买此号
             goOnBuy(){
-                let conformBallList =  JSON.parse(sessionStorage.getItem('conformBallList'))
-                conformBallList = []
+                var that = this
+                //let conformBallList =  JSON.parse(sessionStorage.getItem('conformBallList'))
+                let conformBallList = []
                 this.ticketSchemeDetailDTOs.forEach((item,index)=>{
                     conformBallList.push({
                         ballType:item.ballType,
@@ -497,15 +517,9 @@
                             zhuNum:item.betNum,
                         },
                     })
-                    sessionStorage.setItem('conformBallList',JSON.stringify(conformBallList))
-                    let adds = JSON.parse(sessionStorage.getItem('adds'))
-                    if(item.isAppend=='0'){
-                        adds.add=false
-                    }else {
-                        adds.add=true
-                    }
-                    sessionStorage.setItem('adds',JSON.stringify(adds))
                 })
+                sessionStorage.setItem('conformBallList',JSON.stringify(conformBallList))
+                sessionStorage.setItem('adds',JSON.stringify(that.adds))
                 this.$router.push({
                     path:'/lottery/daletou/touZhuConfirm'
                 })
