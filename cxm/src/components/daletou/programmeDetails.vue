@@ -56,7 +56,7 @@
                             <li class="my-num-li" v-for="(item,index) in ticketSchemeDetailDTOs" :key=index>
                                 <template v-if="item.ballType == 'biaozhun'">
                                     <ul class="num-sun-ul" >
-                                        <li class="num-sun-li" :class="sunItem.isGuess=='1'?sunItem.type=='redBall'?'allredBall':sunItem.type=='blueBall'?'allblueBall':'line':sunItem.type=='redBall'?'redBall':sunItem.type=='blueBall'?'blueBall':'line'" v-for="(sunItem,index) in item.ballList" :key=index>{{sunItem.num}}</li>
+                                        <li class="num-sun-li" :class="sunItem.isGuess=='1'?sunItem.type=='redBall'?'allredBall':sunItem.type=='blueBall'?'allblueBall':'space':sunItem.type=='redBall'?'redBall':sunItem.type=='blueBall'?'blueBall':'space'" v-for="(sunItem,index) in item.ballList" :key=index>{{sunItem.num}}</li>
                                     </ul>
                                     <p class="num-details">
                                         <span v-if="item.playType == '0'">单式</span>
@@ -157,6 +157,13 @@
             color: #c7c7c7;
             text-align: center;
             overflow: hidden;
+        }
+        .space{
+            width: 8px!important;
+            color: #c7c7c7;
+            text-align: center;
+            overflow: hidden;
+            visibility: hidden;
         }
 
         .num {
@@ -360,6 +367,8 @@
 <script>
     import api from '../../fetch/api'
     import {Indicator} from 'mint-ui';
+    import SelectionBox from "./images/SelectionBox1@3x.png"
+    import Selected from "./images/Selected1@3x.png"
 
     export default {
         name: "programmeDetails",
@@ -369,7 +378,7 @@
                 kaijiangNum:[],//开奖号码
                 ticketSchemeDetailDTOs:[],
                 adds: {
-                    add:false,  //是否追加 默认不追加
+                    add:'',  //是否追加 默认不追加
                     imgUrl: '',
                     zhuNum:0,
                     bei: 1,
@@ -408,12 +417,12 @@
                 var arr  = []
                 dataArr.forEach((item,index)=>{
                     if(item.isAppend == '0'){
-                        that.isAppend = false
-                        that.imgUrl = 'SelectionBox'
+                        that.adds.isAppend = false
+                        that.adds.imgUrl = SelectionBox
                     }
                     if(item.isAppend == '1'){
-                        that.isAppend = true
-                        that.imgUrl = 'Selected'
+                        that.adds.isAppend = true
+                        that.adds.imgUrl = Selected
                     }
                     that.adds.money = that.adds.money+item.amount
                     that.adds.zhuNum = that.adds.zhuNum+item.betNum
