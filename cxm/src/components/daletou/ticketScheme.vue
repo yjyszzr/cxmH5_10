@@ -17,15 +17,15 @@
                                     <div class="left">
                                         <li class="num-sun-li redBall" v-for="(sunItem,i) in item.redDanCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
-                                    <li style="line-height:1.1rem;color:#c7c7c7;">—</li>
+                                    <li style="line-height:1.1rem;color:#c7c7c7;float:left;">—</li>
                                     <div class="left">
                                         <li class="num-sun-li redBall" v-for="(sunItem,i) in item.redTuoCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
-                                    <li style="line-height:1.1rem;color:#c7c7c7;">—</li>
+                                    <li style="line-height:1.1rem;color:#c7c7c7;float:left;">—</li>
                                     <div class="right">
                                         <li class="num-sun-li blueBall" v-for="(sunItem,i) in item.blueDanCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
-                                    <li style="line-height:1.1rem;color:#c7c7c7;" v-show="item.blueDanCathectics.length>0">—</li>
+                                    <li style="line-height:1.1rem;color:#c7c7c7;float:left;" v-show="item.blueDanCathectics.length>0">—</li>
                                     <div class="right">
                                         <li class="num-sun-li blueBall" v-for="(sunItem,i) in item.blueTuoCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
@@ -34,7 +34,7 @@
                                     <div class="left">
                                         <li class="num-sun-li redBall" v-for="(sunItem,i) in item.redCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
-                                    <li style="line-height:1.1rem;color:#c7c7c7;">—</li>
+                                    <li style="line-height:1.1rem;color:#c7c7c7;float:left;">—</li>
                                     <div class="right">
                                         <li class="num-sun-li blueBall" v-for="(sunItem,i) in item.blueCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
@@ -72,7 +72,7 @@
                 }
                 .body-in-title{
 
-                    border-bottom: 1px solid #c7c7c7;
+                    border-bottom: 1px solid #f0f0f0;
                     padding-bottom: px2rem(20px);
                     padding-left: px2rem(15px);
                     color: #9f9f9f;
@@ -87,7 +87,7 @@
                     font-size: px2rem(28px);
                 }
                 .redBall {
-                    color: #ea5504 !important;
+                    color: #eb1c24 !important;
                     border: 1px solid #c7c7c7;
                 }
                 .blueBall {
@@ -95,6 +95,8 @@
                     border: 1px solid #c7c7c7;
                 }
                 .my-num-ul{
+                    width: 100%;
+                    overflow: hidden;
                     .my-num-li{
                         display: flex;
                         justify-content: space-between;
@@ -102,14 +104,15 @@
                         border-bottom: 1px dotted #c7c7c7;
                         padding: px2rem(15px);
                         .num-box{
-                            flex: 3;
+                            overflow: hidden;
+                            width: 80%;
                         }
                         .num-sun-ul{
-                            display: flex;
-                            flex-wrap: wrap;
+                            overflow: hidden;
                             .left,.right{
-                                display: flex;
-                                flex-direction: row;  
+                                li{
+                                    float: left;
+                                }
                             }
                             .num-sun-li{
                                 line-height: px2rem(60px);
@@ -128,7 +131,6 @@
                         .tickt-status{
                             min-width: px2rem(110px);
                             color: #ea5504;
-                            flex: 1;
                         }
                     }
                 }

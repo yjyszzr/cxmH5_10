@@ -512,6 +512,7 @@
                 this.$store.state.mark_playObj.mark_play = '2'
             },
             confirm(){
+                Indicator.open()
                 let obj = {
                     betNum: this.adds.zhuNum,
                     bonusId: '',

@@ -575,6 +575,7 @@ export default {
 				Toast(this.maxButNumMsg)
 				return
 			}
+			Indicator.open()
             api.nSaveBetInfo(this.matchSave)
                 .then(res => {
                         // console.log(res)

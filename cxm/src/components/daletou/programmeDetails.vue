@@ -135,8 +135,8 @@
             margin-left: px2rem(30px) !important;
         }
         .allredBall{
-            background-color: #ea5504 !important;
-            border: 1px solid #ea5504 !important;
+            background-color: #eb1c24 !important;
+            border: 1px solid #eb1c24 !important;
             color: #ffffff;
         }
         .allblueBall{
@@ -145,7 +145,7 @@
             color: #ffffff;
         }
         .redBall {
-            color: #ea5504 !important;
+            color: #eb1c24 !important;
             border: 1px solid #c7c7c7;
         }
         .blueBall {
@@ -350,7 +350,7 @@
                line-height: px2rem(100px);
                 text-align: center;
                 color: #ffffff;
-                width: 49%;
+                width: 49.5%;
                 background-color: #EA5504;
                 font-size: px2rem(28px);
             }

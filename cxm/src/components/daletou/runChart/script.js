@@ -1,7 +1,7 @@
 import api from '../../../fetch/api'
 import {mapState} from 'vuex'
 import BScroll from 'better-scroll'
-import {Indicator,Toast} from 'mint-ui'
+import {Indicator,Toast,MessageBox} from 'mint-ui'
 import {getCombinationCount,saveDtInfo} from '../../../util/common'
 export default {
     name: 'runchart',
@@ -86,11 +86,11 @@ export default {
         },
         fScroll(){
             this.$nextTick(()=>{
-                if(this.daletouActive==2){
-                    this.$refs.hqrctcontent.style.width='31.95rem'
-                }else if(this.daletouActive==3){
-                    this.$refs.hqrctcontent.style.width='11.95rem'
-                }
+                // if(this.daletouActive==2){
+                //     this.$refs.hqrctcontent.style.width='31.95rem'
+                // }else if(this.daletouActive==3){
+                //     this.$refs.hqrctcontent.style.width='11.95rem'
+                // }
                 document.querySelector('.hqr-content').onscroll=(pos)=>{
                     this.posx = Math.abs(pos.target.scrollLeft)
                     this.posy = Math.abs(pos.target.scrollTop)
@@ -123,11 +123,15 @@ export default {
             }
         },
         clearNums(){
-            $('.tab-active').removeClass('tab-active')
-            this.h_nums = []
-            this.l_nums = []
-            this.disabled = true
-            this.text = `请至少选择<span>5</span>个红球&nbsp;<span>2</span>个蓝球`
+            MessageBox.confirm('确定清空所选号码吗?', '温馨提示').then(action => {
+                $('.tab-active').removeClass('tab-active')
+                this.h_nums = []
+                this.l_nums = []
+                this.disabled = true
+                this.text = `请至少选择<span>5</span>个红球&nbsp;<span>2</span>个蓝球`
+            }).catch(function () {
+               
+            });
         },
         confirmClick(){
             this.$store.commit('RUNCHARTFILTER',{type: '2',value: this.confirmObj.count})
@@ -147,6 +151,7 @@ export default {
                 Toast('单次投注最多2万元')
                 return false;
             }
+            Indicator.open()
             let obj={},list=[],msg={}
             this.h_nums.forEach(item => {
                 let obj1={}
