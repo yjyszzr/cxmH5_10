@@ -308,7 +308,7 @@
     }
 </style>
 <script>
-    import {getArrayItems,saveDtInfo} from '../../util/common'
+    import {getArrayItems,saveDtInfo,sortFn} from '../../util/common'
     import {MessageBox, Popup,Indicator,Toast} from 'mint-ui';
     import SelectionBox from "./images/SelectionBox1@3x.png"
     import Selected from "./images/Selected1@3x.png"
@@ -343,25 +343,118 @@
             }
             this.$store.state.mark_playObj.mupNum = 1
             this.$emit('closeMarkCz')
-            this.getBallFn()
+            //this.getBallFn()
             this.addOne()
         },
         mounted(){
 
         },
         methods: {
+            //大小排序
+            sorts(Arr,type) {
+                let biaozhunballList = []
+                let dantuoballList = []
+                let ballList = []
+                if(type == 'dantuo'){
+                    let danRedBallList = []
+                    let tuoRedBallList = []
+                    let danBlueBallList = []
+                    let tuoBlueBallList = []
+                    Arr.forEach(item=>{
+                        if(item.type=='danRedBall'){
+                            danRedBallList.push(item.num)
+                        }
+                        if(item.type=='tuoRedBall'){
+                            tuoRedBallList.push(item.num)
+                        }
+                        if(item.type=='danBlueBall'){
+                            danBlueBallList.push(item.num)
+                        }
+                        if(item.type=='tuoBlueBall'){
+                            tuoBlueBallList.push(item.num)
+                        }
+                    })
+                    sortFn(danRedBallList).forEach(item=>{
+                        dantuoballList.push({
+                            num:item,
+                            type:'danRedBall'
+                        })
+                    })
+                    dantuoballList.push({
+                        num:'—',
+                        type:'line'
+                    })
+                    sortFn(tuoRedBallList).forEach(item=>{
+                        dantuoballList.push({
+                            num:item,
+                            type:'tuoRedBall'
+                        })
+                    })
+                    dantuoballList.push({
+                        num:'—',
+                        type:'line'
+                    })
+                    sortFn(danBlueBallList).forEach(item=>{
+                        dantuoballList.push({
+                            num:item,
+                            type:'danBlueBall'
+                        })
+                    })
+                    if(danBlueBallList>0){
+                        dantuoballList.push({
+                            num:'—',
+                            type:'line'
+                        })
+                    }
+                    sortFn(tuoBlueBallList).forEach(item=>{
+                        dantuoballList.push({
+                            num:item,
+                            type:'tuoBlueBall'
+                        })
+                    })
+                    ballList = ballList.concat(dantuoballList)
+                }
+                if(type == 'biaozhun'){
+                    let redBallList = []
+                    let blueBallList = []
+                    Arr.forEach(item=>{
+                        if(item.type=='blueBall'){
+                            blueBallList.push(item.num)
+                        }
+                        if(item.type=='redBall'){
+                            redBallList.push(item.num)
+                        }
+                    })
+                    sortFn(redBallList).forEach(item=>{
+                        biaozhunballList.push({
+                            num:item,
+                            type:'redBall'
+                        })
+                    })
+                    sortFn(blueBallList).forEach(item=>{
+                        biaozhunballList.push({
+                            num:item,
+                            type:'blueBall'
+                        })
+                    })
+                    ballList = ballList.concat(biaozhunballList)
+                }
+                return ballList
+            },
             //在localStor中获取数据
             getBallFn() {
-                this.conformBallList = JSON.parse(sessionStorage.getItem('conformBallList'))
+                var that = this
                 this.adds.zhuNum = 0
                 this.adds.money = 0
                 this.conformBallList.forEach(item => {
+                    item.ballList = that.sorts(item.ballList,item.ballType)
                     this.adds.zhuNum = this.adds.zhuNum + parseInt(item.msg.zhuNum)
                     this.adds.money = this.adds.money + parseInt(item.msg.money)
                 })
             },
             //追加一注
             addOne(ckick) {
+                this.conformBallList = JSON.parse(sessionStorage.getItem('conformBallList'))
                 if(sessionStorage.getItem('adds')!=null){
                     this.adds = JSON.parse(sessionStorage.getItem('adds'))
                 }
@@ -466,7 +559,6 @@
                     }
                 }
                 sessionStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
-                this.getBallFn()
                 this.addOne()
             },
             //删除

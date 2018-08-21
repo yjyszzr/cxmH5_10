@@ -165,6 +165,21 @@ export let getArrayItems = (arr, num) => {
     }
     return return_array;
 }
+
+//大小排序
+export let sortFn = (Arr) => {
+    let min;
+    for (var i = 0; i < Arr.length; i++) {
+        for (var j = i; j < Arr.length; j++) {
+            if (Arr[i] > Arr[j]) {
+                min = Arr[j];
+                Arr[j] = Arr[i];
+                Arr[i] = min;
+            }
+        }
+    }
+    return Arr
+}
 //大乐透投注信息处理
 export let saveDtInfo = (list) => {
     let arr = []
