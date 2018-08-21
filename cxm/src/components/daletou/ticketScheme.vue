@@ -8,8 +8,15 @@
                     <p>投注信息</p>
                     <p>状态</p>
                 </div>
-
-                <ul class="my-num-ul" >
+                <ul class="my-num-ul" v-if="ticketList.length<=0">
+                    <li class="my-num-li" style="border:none;">
+                        <div class="num-box">
+                            —
+                        </div>
+                        <p class="tickt-status">待出票</p>
+                    </li>
+                </ul>
+                <ul class="my-num-ul" v-else>
                     <li class="my-num-li" v-for="(item,index) in ticketList" :key=index :class="ticketList.length-1==index?'border-none':''">
                         <div class="num-box">
                             <template>
@@ -131,6 +138,7 @@
                         .tickt-status{
                             min-width: px2rem(110px);
                             color: #ea5504;
+                            text-align: right;
                         }
                     }
                 }
