@@ -474,7 +474,10 @@
                 this.conformBallList.splice(index, 1)
                 if(this.conformBallList.length<1){
                     this.routerOpen = false
-                    this.$router.go(-1);
+                    // this.$router.go(-1);
+                    this.$router.push({
+                        path:"/lottery/daletou/selectnumber"
+                    })
                 }
                 sessionStorage.setItem('conformBallList', JSON.stringify(this.conformBallList))
                 this.getBallFn()
