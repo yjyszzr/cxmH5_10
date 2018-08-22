@@ -710,6 +710,31 @@ const router = new Router({
           name: 'insurancemjbk',
           component: resolve => require(['@/components/mjb/sky/insurance/insurance.vue'], resolve)
       },
+      //乐得体育 
+      {
+            path: '/appld/help',
+            component: resolve => require(['@/components/mjb/appld/help/index.vue'], resolve)
+        },
+        {
+            path: '/appld/protocol',
+            component: resolve => require(['@/components/mjb/appld/protocol/index.vue'], resolve)
+        },
+        {
+            path: '/appld/service',
+            component: resolve => require(['@/components/mjb/appld/service/index.vue'], resolve)
+        },
+        {
+            path: '/appld/inToplay',
+            component: resolve => require(['@/components/mjb/appld/intoplay/index.vue'], resolve)
+        },
+        {
+            path: '/appld/explain',
+            component: resolve => require(['@/components/mjb/appld/explain/explain.vue'], resolve)
+        },
+        {
+            path: '/appld/insurance',
+            component: resolve => require(['@/components/mjb/appld/insurance/insurance.vue'], resolve)
+        },
       // 大乐透选号
       {
           path: '/lottery/daletou/selectnumber',
