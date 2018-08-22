@@ -25,6 +25,10 @@
             font-size: px2rem(28px);
             border-bottom: 1px solid #f0f0f0;
             padding-left: px2rem(30px);
+            justify-content: space-between;
+            span:last-of-type{
+                margin-right: px2rem(30px);
+            }
         }
         .tjxk{
             display: flex;

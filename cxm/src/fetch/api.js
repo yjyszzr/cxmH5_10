@@ -349,6 +349,10 @@ export default {
     appBankListPay(params) {
         return fetchPost('payment/payment/xianfeng/appBankListPay', params)
     },
+    //先锋支付删除银行卡
+    bankremove(params) {
+        return fetchPost('payment/payment/xianfeng/bank/remove', params)
+    },
     //轮回查询
     query(params) {
         return fetchPost('payment/payment/query', params)

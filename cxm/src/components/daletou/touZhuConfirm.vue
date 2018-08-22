@@ -58,7 +58,9 @@
                 <p class="multiple" @click='mupClick()'>倍数 {{adds.bei}} 倍 <i></i></p>
             </div>
             <div class="two">
-                <p class="p1">{{adds.zhuNum}}注 {{adds.bei}}倍 共需：<span>￥{{adds.money+'.00'}}</span> 元</p>
+                <div class="p1">
+                    <p>{{adds.zhuNum}}注 {{adds.bei}}倍 共需：<span>￥{{adds.money+'.00'}}</span> 元</p>
+                </div>
                 <p class="ok" :class="canPay?'canpay':'nopay'" @click="confirm()">确定</p>
             </div>
         </div>
@@ -291,6 +293,12 @@
                     flex: 2;
                     span {
                         color: #ea5504;
+                    }
+                    p{
+                        width: 95%;
+                        overflow: hidden;
+                        text-overflow:ellipsis;
+                        white-space: nowrap;
                     }
                 }
                 .ok {

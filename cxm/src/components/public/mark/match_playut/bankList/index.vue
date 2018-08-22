@@ -6,7 +6,10 @@
             选择支付方式
         </div>
         <ul class="bkList">
-            <li @click="bkClick(item)" v-for="(item,i) in xfbklist" :key='i'>{{item.message}}</li>
+            <li v-for="(item,i) in xfbklist" :key='i'>
+                <span @click="bkClick(item)">{{item.message}}</span>
+                <span @click="deletelist(item.recordId)">删除</span>
+            </li>
             <div class="tjxk" @click="tjxkClick()">
                 <span>使用新卡支付</span>
                 <img src="../../../../../assets/img/add.png" alt="">
