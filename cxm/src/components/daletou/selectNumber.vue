@@ -28,7 +28,7 @@
                             <span>机选</span>
                         </div>
                         <div class="bonus-box">
-                            奖池： <span>{{data.prizes}}</span> 元
+                            奖池： <span>{{data.prizes}}</span>
                         </div>
                     </div>
                     <div class="ball-box">
@@ -642,7 +642,7 @@
                     zhuNum: '', //胆拖选号注数
                     zhuHe: []  // 标准选号组合
                 },
-                temporaryStorageItem: '',//暂存item
+
                 data: {},
                 memu: [
                     {
@@ -998,18 +998,17 @@
                             this.$set(item, 'selected', !item.selected)
                             this.lottoMes.danBlueMaList.splice(danBlueIndex, 1);
                         } else {
+                            var that = this
+                            this.danBluePostList.forEach(items=>{
+                                that.$set(items, 'selected', false)
+                            })
                             this.$set(item, 'selected', !item.selected)
-                            this.lottoMes.danBlueMaList.push(item.num);
+                            this.lottoMes.danBlueMaList=new Array(item.num);
                             let tuoIndex = this.lottoMes.tuoBlueMaList.indexOf(item.num)
                             if (tuoIndex != -1) {
                                 this.tuoBluePostList[index].selected = false
                                 this.lottoMes.tuoBlueMaList.splice(tuoIndex, 1);
                             }
-                            if(this.lottoMes.danBlueMaList.length>1){
-                                this.$set(this.temporaryStorageItem, 'selected', false)
-                                this.lottoMes.danBlueMaList.splice(this.lottoMes.danBlueMaList.length-2,1)
-                            }
-                            this.temporaryStorageItem = item
                         }
                     }
                     if (type == 'tuo') {

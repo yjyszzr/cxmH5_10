@@ -15,8 +15,8 @@
                 </ul>
                 <!--比赛模块 头-->
                 <div class="lottery-select" v-if="$route.path.split('/')[1]=='lotteryResult'" >
-                    <span @click='data_time()'><i class="iconfont icon-icon-21"></i></span>
-                    <span @click='more()'>筛选</span>
+                    <span @click='data_time()' class="data-img" ><img src="./images/date@3x.png" alt=""></span>
+                    <span @click='more()'><i class="iconfont icon-icon-21"></i></span>
                 </div>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
@@ -471,6 +471,12 @@
                 .lottery-select{
                     display: flex;
                     justify-content: center;
+                    .data-img{
+                        img{
+                            height: px2rem(30px);
+                            width: px2rem(30px);
+                        }
+                    }
                 }
                 .daletou-menu{
                     margin-left: 60%;
