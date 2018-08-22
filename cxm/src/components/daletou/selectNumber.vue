@@ -1270,7 +1270,7 @@
             },
         },
         beforeRouteEnter(to, from, next){
-            if(from.name=='index'){
+            if(from.name=='index'||from.path=='/daletou/programmeDetails'){
                 sessionStorage.setItem('conformBallList',JSON.stringify([]))
             }
             next()

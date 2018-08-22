@@ -31,13 +31,13 @@ export default {
         }).then(action => {
             Indicator.open()
             let data = {
-              'recordId': c
+              'recordId': c.recordId
             }
             api.bankremove(data)
                 .then(res => {
                   if(res.code==0){
-                    this.$store.commit('XFBANKLIST',_.difference(this.xfbklist,c))
-                    console.log(res)
+                    this.$store.commit('XFBANKLIST',_.differenceWith(this.xfbklist,[c], _.isEqual))
+                    this.$emit('closeMarkCz')
                   }
                 })
         },action => {

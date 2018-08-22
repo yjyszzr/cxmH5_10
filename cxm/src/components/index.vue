@@ -299,7 +299,7 @@ export default {
     },
     goFreebuy(url,s) {
       if(s=='1'){
-        Toast('停售')
+        Toast(s.statusReason)
         return false;
       }
       this.$store.state.matchObj = {};
@@ -315,8 +315,6 @@ export default {
         this.$router.push({
             path: "/lottery/daletou/selectnumber"
         });
-      }else{
-        Toast('敬请期待')
       }
     },
     fetchData() {

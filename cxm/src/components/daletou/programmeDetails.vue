@@ -537,7 +537,12 @@
             }
         },
         beforeRouteLeave(to, from, next) {
-            next()
+            if(to.path!='/lottery/daletou/touZhuConfirm'){
+                next()
+            }else{
+                this.$router.push({path: '/'})
+                next()
+            }
         }
     }
 </script>

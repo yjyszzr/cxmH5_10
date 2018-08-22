@@ -8,7 +8,7 @@
         <ul class="bkList">
             <li v-for="(item,i) in xfbklist" :key='i'>
                 <span @click="bkClick(item)">{{item.message}}</span>
-                <span @click="deletelist(item.recordId)">删除</span>
+                <span @click="deletelist(item)">删除</span>
             </li>
             <div class="tjxk" @click="tjxkClick()">
                 <span>使用新卡支付</span>
