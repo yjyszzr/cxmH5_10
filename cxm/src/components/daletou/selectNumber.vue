@@ -28,7 +28,7 @@
                             <span>机选</span>
                         </div>
                         <div class="bonus-box">
-                            奖池： <span>{{data.prizes}}</span> 元
+                            奖池 <span>{{data.prizes}}</span>
                         </div>
                     </div>
                     <div class="ball-box">
