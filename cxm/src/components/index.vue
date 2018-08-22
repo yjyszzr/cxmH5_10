@@ -184,10 +184,10 @@
       <!-- <router-link to='/activity/world/thirtytwo'>啦啦啦啦啦</router-link> -->
 			<div class="section center">
 				<ul>
-					<li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.redirectUrl)">
-						<img :src="item.playClassifyImg" class="entry_icon">
-						<p>{{item.playClassifyName}}</p>
-            <div class="subTitle" :style="{'color':item.subTitle=='敬请期待'?'#9f9f9f':'#ea5504'}">{{item.subTitle}}</div>
+					<li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.redirectUrl,item.status)">
+						<img :src="item.lotteryImg" class="entry_icon">
+						<p>{{item.lotteryName}}</p>
+            <div class="subTitle" :style="{'color':item.status=='0'?'#ea5504':'#9f9f9f'}">{{item.subTitle}}</div>
 					</li>
 				</ul>
 			</div>
@@ -297,7 +297,11 @@ export default {
     shortClick(){
       this.$store.commit('MARKSHORTCUT',true)
     },
-    goFreebuy(url) {
+    goFreebuy(url,s) {
+      if(s=='1'){
+        Toast('停售')
+        return false;
+      }
       this.$store.state.matchObj = {};
       this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
       this.$store.state.mark_playObj.bfIdSaveMap = {};
@@ -395,7 +399,7 @@ export default {
         this.bannerList = res.data.dlHallDTO.navBanners;
         this.activity = res.data.dlHallDTO.activity;
         this.y_Carousel = res.data.dlHallDTO.winningMsgs;
-        this.dlPlay = res.data.dlHallDTO.dlPlayClassifyDetailDTOs;
+        this.dlPlay = res.data.dlHallDTO.lotteryClassifys;
         if (this.y_Carousel.length == 0) {
           this.show = true;
           this.hide = false;

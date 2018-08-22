@@ -147,6 +147,7 @@ export default {
         if(to.path!='/lottery/teamDetail'){
             this.$store.dispatch("getMarkShow",false)
             this.$store.dispatch("getMarkShowType",'')
+            this.$store.dispatch("getLeagueIds",'')
         }
     }
 }

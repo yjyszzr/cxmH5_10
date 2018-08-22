@@ -14,7 +14,6 @@ export default {
   data() {
     return {
       activeName: ['1', '2', '3', '4', '5', '6'],
-      leagueId: '',
       matchObj: {},
       flag: true,
       classFlag: true,
@@ -512,7 +511,10 @@ export default {
     },
     playType(){
       return this.$store.state.freebuyId;
-    }
+    },
+    leagueId(){
+      return this.$store.state.mark_showObj.leagueIds;
+    },
   },
   watch: {
     status(a, b) {

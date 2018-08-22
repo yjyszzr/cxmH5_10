@@ -2,12 +2,12 @@ import api from '../../../../fetch/api.js'
 import time from '../data/data.vue'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
+import {mapState} from 'vuex'
 export default {
   name: "match_filter",
   data() {
     return {
-        matchFilterList: [],
-        playType: this.$route.query.id
+        matchFilterList: []
     };
   },
     components:{
@@ -116,5 +116,10 @@ export default {
             }
         })
       }
-  }
+  },
+  computed: {
+    ...mapState({
+         playType: state => state.freebuyId
+    })
+  },
 };
