@@ -642,6 +642,7 @@
                     zhuNum: '', //胆拖选号注数
                     zhuHe: []  // 标准选号组合
                 },
+                temporaryStorageItem: '',//暂存item
                 data: {},
                 memu: [
                     {
@@ -996,15 +997,21 @@
                         if (danBlueIndex > -1) {
                             this.$set(item, 'selected', !item.selected)
                             this.lottoMes.danBlueMaList.splice(danBlueIndex, 1);
-                        } else if (this.lottoMes.danBlueMaList.length < 1) {
+                        } else {
                             this.$set(item, 'selected', !item.selected)
                             this.lottoMes.danBlueMaList.push(item.num);
-                            this.tuoBluePostList[index].selected = false
                             let tuoIndex = this.lottoMes.tuoBlueMaList.indexOf(item.num)
                             if (tuoIndex != -1) {
+                                this.tuoBluePostList[index].selected = false
                                 this.lottoMes.tuoBlueMaList.splice(tuoIndex, 1);
                             }
+                            if(this.lottoMes.danBlueMaList.length>1){
+                                this.$set(this.temporaryStorageItem, 'selected', false)
+                                this.lottoMes.danBlueMaList.splice(this.lottoMes.danBlueMaList.length-2,1)
+                            }
+                            this.temporaryStorageItem = item
                         }
+                        console.log(this.lottoMes.danBlueMaList);
                     }
                     if (type == 'tuo') {
                         let tuoBlueIndex = this.lottoMes.tuoBlueMaList.indexOf(item.num)
