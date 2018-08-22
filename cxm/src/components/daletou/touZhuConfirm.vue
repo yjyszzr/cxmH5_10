@@ -449,7 +449,7 @@
                 }
                 return ballList
             },
-            //在localStor中获取数据
+            //计算总钱
             getBallFn() {
                 var that = this
                 this.adds.zhuNum = 0
@@ -460,7 +460,7 @@
                     this.adds.money = this.adds.money + parseInt(item.msg.money)
                 })
             },
-            //追加一注/获取adds信息
+            //更新每注信息
             addOne(ckick) {
                 this.conformBallList = JSON.parse(sessionStorage.getItem('conformBallList'))
                 if(sessionStorage.getItem('adds')!=null){
