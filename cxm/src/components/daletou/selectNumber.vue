@@ -1011,7 +1011,6 @@
                             }
                             this.temporaryStorageItem = item
                         }
-                        console.log(this.lottoMes.danBlueMaList);
                     }
                     if (type == 'tuo') {
                         let tuoBlueIndex = this.lottoMes.tuoBlueMaList.indexOf(item.num)
