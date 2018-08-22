@@ -41,7 +41,6 @@
                                     <div class="left">
                                         <li class="num-sun-li redBall" v-for="(sunItem,i) in item.redCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
-                                    <li class="dan-line">—</li>
                                     <div class="right">
                                         <li class="num-sun-li blueBall" v-for="(sunItem,i) in item.blueCathectics" :key='i'>{{sunItem.cathectic}}</li>
                                     </div>
