@@ -343,7 +343,7 @@
             }
             this.$store.state.mark_playObj.mupNum = 1
             this.$emit('closeMarkCz')
-            //this.getBallFn()
+            // this.getBallFn()
             this.addOne()
         },
         mounted(){
@@ -452,7 +452,7 @@
                     this.adds.money = this.adds.money + parseInt(item.msg.money)
                 })
             },
-            //追加一注
+            //追加一注/获取adds信息
             addOne(ckick) {
                 this.conformBallList = JSON.parse(sessionStorage.getItem('conformBallList'))
                 if(sessionStorage.getItem('adds')!=null){
@@ -480,6 +480,10 @@
                                 this.$set(item.msg, 'baseMoney', (parseInt(item.msg.baseMoney) + 1))
                                 this.$set(item.msg, 'money', 3*item.msg.zhuNum*item.msg.bei)
                             }
+                        })
+                    }else {
+                        this.conformBallList.forEach(item => {
+                            this.$set(item.msg, 'money', 2*item.msg.zhuNum*item.msg.bei)
                         })
                     }
                 }
