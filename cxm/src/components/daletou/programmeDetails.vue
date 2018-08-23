@@ -381,6 +381,7 @@
                     money:0,
                     itemEditIndex:-1,
                 },
+                goOn:false
             }
         },
         created(){
@@ -507,6 +508,7 @@
             },
             //继续购买此号
             goOnBuy(){
+                this.goOn = true
                 var that = this
                 //let conformBallList =  JSON.parse(sessionStorage.getItem('conformBallList'))
                 let conformBallList = []
@@ -540,7 +542,9 @@
             if(to.path!='/lottery/daletou/touZhuConfirm'){
                 next()
             }else{
-                this.$router.push({path: '/'})
+                if(!this.goOn){
+                    this.$router.push({path: '/'})
+                }
                 next()
             }
         }
