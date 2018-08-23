@@ -28,10 +28,10 @@
             <a class="determine">短信登录</a>
         </section>
         <section class="buttonZc">
-            <router-link to='/user/register' class="mine">新用户注册</router-link>
+            <router-link :to='{path:"/user/register",query:{"fr":$route.query.fr}}' class="mine">新用户注册</router-link>
         </section>
         <section class="forgetM">
-            <router-link :to='{path:"/user/pwd",query:{"returnGo":returnGo}}' class="x_in">密码登录</router-link>
+            <router-link :to='{path:"/user/pwd",query:{"returnGo":returnGo,"fr":$route.query.fr}}' class="x_in">密码登录</router-link>
         </section>
         <div class="prompt"></div>
     </div>
