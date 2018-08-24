@@ -925,7 +925,7 @@
                 function deviceMotionHandler(eventData) {
                     var acceleration = eventData.accelerationIncludingGravity;
                     var curTime = new Date().getTime();
-                    if ((curTime - last_update) > 20) {
+                    if ((curTime - last_update) > 10) {
                         var diffTime = curTime - last_update;
                         last_update = curTime;
                         x = acceleration.x;
