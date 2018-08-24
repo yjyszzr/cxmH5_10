@@ -688,4 +688,7 @@
         color: #c7c7c7;
         font-size: px2rem(22px);
     }
+    .mint-indicator-wrapper{
+        z-index: 999;
+    }
 </style>

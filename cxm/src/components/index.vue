@@ -184,7 +184,7 @@
       <!-- <router-link to='/activity/world/thirtytwo'>啦啦啦啦啦</router-link> -->
 			<div class="section center">
 				<ul>
-					<li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.redirectUrl,item.status)">
+					<li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.redirectUrl,item)">
 						<img :src="item.lotteryImg" class="entry_icon">
 						<p>{{item.lotteryName}}</p>
             <div class="subTitle" :style="{'color':item.status=='0'?'#ea5504':'#9f9f9f'}">{{item.subTitle}}</div>
@@ -213,7 +213,7 @@
 // import http from '../api/http'
 import api from "../fetch/api";
 import { Toast,Indicator } from "mint-ui";
-import {getUrlStr} from '../util/common'
+import {getUrlStr,nativeApp} from '../util/common'
 import silder from "./index/lunbo";
 import activity from "./index/activity";
 import informal from "./public/informal/informalList";
@@ -298,7 +298,7 @@ export default {
       this.$store.commit('MARKSHORTCUT',true)
     },
     goFreebuy(url,s) {
-      if(s=='1'){
+      if(s.status=='1'){
         Toast(s.statusReason)
         return false;
       }
@@ -382,7 +382,9 @@ export default {
       });
     }
   },
-  created: function() {},
+  created: function() {
+    
+  },
   mounted() {
     this.detect = detect()
     // location.href = 'caixm://caixiaomi.net'

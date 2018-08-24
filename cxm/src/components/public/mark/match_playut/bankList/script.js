@@ -37,6 +37,7 @@ export default {
                 .then(res => {
                   if(res.code==0){
                     this.$store.commit('XFBANKLIST',_.differenceWith(this.xfbklist,[c], _.isEqual))
+                    this.$store.commit('XFBANKSELCTED',this.xfbklist[0])
                     this.$emit('closeMarkCz')
                   }
                 })

@@ -18,6 +18,12 @@ export let isShare = (arg, text, url, thumbUrl) => {
         return obj
     }
 }
+//调用app方法
+export let nativeApp = (obj)=>{
+    if(window.webkit){
+        return window.webkit.messageHandlers.appNative.postMessage(obj);
+    }
+}
 //app h5方法
 export let means = (arg) => {
     const appMeans = {

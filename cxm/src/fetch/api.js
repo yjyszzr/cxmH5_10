@@ -12,6 +12,7 @@ import {getUrlStr} from '../util/common'
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 // axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
+// axios.defaults.baseURL = 'http://yf.caixiaomi.net/api';
 axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 
 //拦截 token

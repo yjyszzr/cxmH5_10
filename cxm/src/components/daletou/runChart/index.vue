@@ -40,7 +40,7 @@
                     <div ref='hqlist' class="hql-list">
                         <div v-if="runchartData.preLottoDrop&&daletouActive==2">
                             <div class="hql-item" v-for="(item,i) in runchartData.preLottoDrop.drop" :key='i'>
-                                {{item.termNum.substr(3)}}
+                                {{item.termNum}}
                             </div>
                             <div class="hql-item countNum" v-show="runchartData.preLottoDrop.countNum.length>0">出现次数</div>
                             <div class="hql-item averageData" v-show="runchartData.preLottoDrop.averageData.length>0">平均遗漏</div>
@@ -49,7 +49,7 @@
                         </div>
                         <div v-if="runchartData.postLottoDrop&&daletouActive==3">
                             <div class="hql-item" v-for="(item,i) in runchartData.postLottoDrop.drop" :key='i'>
-                                {{item.termNum.substr(3)}}
+                                {{item.termNum}}
                             </div>
                             <div class="hql-item countNum" v-show="runchartData.postLottoDrop.countNum.length>0">出现次数</div>
                             <div class="hql-item averageData" v-show="runchartData.postLottoDrop.countNum.length>0">平均遗漏</div>
