@@ -3,8 +3,10 @@
         <div class="img-box" id="qrcode">
             <img :src='imgUrl' alt="">
         </div>
+        <p class="p1">请将二维码保存到相册,然后打开微信扫描二维码进行支付</p>
+        <p class="p2">*支付时请注意收款方为cxm</p>
         <div class="help">
-            <img src="./img/4321_02.jpg" alt="">
+            <img src="./img/4321_02.jpeg" alt="">
         </div>
     </div>
 </template>
@@ -38,13 +40,6 @@
                            this.imgUrl =  res.data.base64Url
                         }
                     })
-                // //console.log(this.imgUrl)
-                // function getQueryString(name) {
-                //     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-                //     var r = window.location.search.substr(1).match(reg);
-                //     if (r != null) return unescape(r[2]);
-                //     return null;
-                // }
             },
         }
     }
@@ -73,6 +68,18 @@
                 width: 100%;
             }
         }
+        .p1{
+            width: 90%;
+            text-align: center;
+            font-size: 12px;
+        }
+        .p2{
+            width: 80%;
+            text-align: center;
+            color: #8C1B01;
+            font-size: 16px;
+        }
+
 
     }
 </style>
