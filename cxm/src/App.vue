@@ -111,6 +111,8 @@
                             return "出票方案";
                         case "payment":
                             return "支付订单";
+                        case "ewmPay":
+                            return "二维码支付";
                         case "singleNote":
                             if (this.$store.state.freebuyId == "2") {
                                 return "胜平负";

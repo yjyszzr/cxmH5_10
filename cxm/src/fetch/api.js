@@ -11,8 +11,8 @@ import {getUrlStr} from '../util/common'
 // axios 配置
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
-// axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
+ axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
+//axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 
 //拦截 token
 axios.interceptors.request.use(
@@ -516,6 +516,10 @@ export default {
     //分享链接userId
     shareMyLinks(params) {
         return fetchPost('/activity/dlOldBeltNew/shareMyLinks', params)
+    },
+    //微信扫码支付
+    base64Id(params) {
+        return fetchPost('/payment/payment/urlBase64', params)
     }
 }
 
