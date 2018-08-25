@@ -137,7 +137,8 @@ export default {
                                 let url =  location.href+'?orderStatus=1'
                                 location.href = res.data.payUrl+ '&h5ck=' + encodeURIComponent(url)
                             }else if(s=='wx'){
-                                location.href = res.data.payUrl
+                                //location.href = res.data.payUrl
+                                location.replace(encodeURIComponent(res.data.payUrl))
                             }else if(s=='xf'){
                                //Toast('功能暂未开放')
                                 this.$router.push({

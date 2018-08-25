@@ -250,10 +250,20 @@ const router = new Router({
           name: 'payment',
           cname:'支付订单',
           meta: {
-            requireAuth: true,
-            title: '支付订单'
+              requireAuth: true,
+              title: '支付订单'
           },
           component: resolve => require(['@/components/freebuy/payment/index.vue'], resolve)
+      },
+      {
+          path: '/freebuy/ewmPay',
+          name: 'payment',
+          cname:'二维码支付',
+          meta: {
+              requireAuth: true,
+              title: '二维码支付'
+          },
+          component: resolve => require(['@/components/freebuy/ewmPay.vue'], resolve)
       },
       {
           path: '/lotteryResult',

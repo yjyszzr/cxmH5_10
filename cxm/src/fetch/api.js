@@ -501,6 +501,10 @@ export default {
     //分享链接userId
     shareMyLinks(params) {
         return fetchPost('/activity/dlOldBeltNew/shareMyLinks', params)
+    },
+    //微信支付
+    base64Id(params) {
+        return fetchPost('/payment/payment/urlBase64', params)
     }
 }
 
