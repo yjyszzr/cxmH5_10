@@ -138,7 +138,7 @@ export default {
                                 location.href = res.data.payUrl+ '&h5ck=' + encodeURIComponent(url)
                             }else if(s=='wx'){
                                 //location.href = res.data.payUrl
-                                location.replace(encodeURIComponent(res.data.payUrl))
+                                location.replace(res.data.payUrl)
                             }else if(s=='xf'){
                                //Toast('功能暂未开放')
                                 this.$router.push({

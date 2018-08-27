@@ -256,8 +256,8 @@ const router = new Router({
           component: resolve => require(['@/components/freebuy/payment/index.vue'], resolve)
       },
       {
-          path: '/freebuy/ewmPay',
-          name: 'payment',
+          path: '/users/freebuy/ewmPay',
+          name: 'ewmPay',
           cname:'二维码支付',
           meta: {
               requireAuth: true,
@@ -720,7 +720,7 @@ const router = new Router({
           name: 'insurancemjbk',
           component: resolve => require(['@/components/mjb/sky/insurance/insurance.vue'], resolve)
       },
-      //乐得体育 
+      //乐得体育
       {
             path: '/appld/help',
             component: resolve => require(['@/components/mjb/appld/help/index.vue'], resolve)
