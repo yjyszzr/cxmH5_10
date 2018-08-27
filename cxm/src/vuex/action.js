@@ -53,6 +53,11 @@ const actions = {
                     }, value) {
         commit("RECORDTAB", value);
     },
+    changeTimeType({
+            commit
+        }, value) {
+    commit("USERACCOUNT", value);
+    },
     getMarkDateVal({
                        commit
                    }, value) {
