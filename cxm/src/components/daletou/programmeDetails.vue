@@ -414,11 +414,11 @@
                 var arr  = []
                 dataArr.forEach((item,index)=>{
                     if(item.isAppend == '0'){
-                        that.adds.isAppend = false
+                        that.adds.add = false
                         that.adds.imgUrl = SelectionBox
                     }
                     if(item.isAppend == '1'){
-                        that.adds.isAppend = true
+                        that.adds.add = true
                         that.adds.imgUrl = Selected
                     }
                     that.adds.money = that.adds.money+item.amount
