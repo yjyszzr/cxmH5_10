@@ -14,7 +14,7 @@ if (getUrlStr('fr', location.href)) {
 var device = {
 	plat: 'h5',
 	apiv: 1,
-	appv: '2.1.0',
+	appv: '2.1.1',
 	appid: '',
 	mac: '',
 	w: window.screen.availWidth,

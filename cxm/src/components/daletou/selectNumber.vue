@@ -101,12 +101,12 @@
                 </div>
                 <div class="text">
                     <template v-if="selectedIndex == '0'">
-                        <p v-if="textType">请至少选择 <span class="red">5</span>个红球，<span class="blue">2</span>个篮球</p>
+                        <p v-if="textType">请至少选择 <span class="red">5</span>个红球，<span class="blue">2</span>个蓝球</p>
                         <p v-if="!textType">共<span class="red">{{selectZhu.zhuNum}}</span>注，合计<span class="red">{{selectZhu.zhuNum*2}}</span>元
                         </p>
                     </template>
                     <template v-if="selectedIndex =='1'">
-                        <p v-if="danTuotextType">请至少选择 <span class="red">6</span>个红球，<span class="blue">2</span>个篮球</p>
+                        <p v-if="danTuotextType">请至少选择 <span class="red">6</span>个红球，<span class="blue">2</span>个蓝球</p>
                         <p v-if="!danTuotextType">共<span class="red">{{danTuoZhu.zhuNum}}</span>注，合计<span class="blue">{{danTuoZhu.zhuNum*2}}</span>元
                         </p>
                     </template>

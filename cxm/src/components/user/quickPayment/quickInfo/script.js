@@ -166,9 +166,13 @@ export default {
                 .then(res => {
                     if(res.code==0) {
                         Toast(res.msg)
-                        this.$router.replace({
-                            path: '/'
-                        })
+                        if(this.$route.query.from=='h5'){
+                            this.$router.replace({
+                                path: '/'
+                            })
+                        }else{
+                            location.href = 'caixm://caixiaomi.net'
+                        }
                     }
                 })
         }
