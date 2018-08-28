@@ -4,7 +4,7 @@
         <div class="body">
             <div class="body-in">
                 <p class="body-in-title">投注截止时间</p>
-                <p class="p">每周一、三、六19：40截止投注</p>
+                <p class="p">每周一、三、六19：30截止投注</p>
                 <p class="body-in-title">开奖时间</p>
                 <p class="p">每周一、三、六20：30开奖</p>
                 <p class="body-in-title">玩法规则</p>
