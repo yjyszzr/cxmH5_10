@@ -418,9 +418,17 @@ const router = new Router({
           path: '/activity/red_packet',
           name: 'red_packet',
           meta: {
-            title: '充值送壕礼'
+              title: '充值送壕礼'
           },
           component: resolve => require(['@/components/activity/red_packet/index/index.vue'], resolve),
+      },
+      {
+          path: '/activity/rechangeActivity',
+          name: 'rechangeActivity',
+          meta: {
+              title: '充值送壕礼'
+          },
+          component: resolve => require(['@/components/activity/red_packet/rechangeActivity.vue'], resolve),
       },
       {
           path: '/activity/tuiguang/registration',
