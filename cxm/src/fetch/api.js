@@ -11,8 +11,8 @@ import {getUrlStr} from '../util/common'
 // axios 配置
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-// axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
-axios.defaults.baseURL = 'http://yf.caixiaomi.net/api';
+axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
+// axios.defaults.baseURL = 'http://yf.caixiaomi.net/api';
 // axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 
 //拦截 token
@@ -129,7 +129,7 @@ axios.interceptors.response.use((res) => {
 const device = {
     plat: 'h5',
     apiv: 1,
-    appv: '2.1.0',
+    appv: '2.1.1',
     appid: '',
     mac: '',
     w: window.screen.availWidth,
