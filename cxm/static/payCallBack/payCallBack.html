@@ -57,7 +57,7 @@
 		}
 		return undefined
 	}
-	toUrl = 'http://m.caixiaomi.net'
+	toUrl = 'https://m.caixiaomi.net'
 
 	function payStaus() {
 		var obj = {}
@@ -67,7 +67,7 @@
 		obj.device = {
 			plat: 'h5',
 			apiv: 1,
-			appv: '1.0.4',
+			appv: '2.1.1',
 			appid: '',
 			mac: '',
 			w: window.screen.availWidth,
@@ -82,7 +82,7 @@
 		}
 		$.ajax({
 			type: 'post',
-			url: 'http://api.caixiaomi.net/api/payment/payment/query',
+			url: 'https://api.caixiaomi.net/api/payment/payment/query',
 			contentType: 'application/json;charset=UTF-8',
 			data: JSON.stringify(obj),
 			beforeSend: function (request) {
@@ -116,7 +116,7 @@
 						if (num >= 2) {
 							$.hidePreloader();
 							$.modal({
-								title: '支付失败',
+								title: '支付查询',
 								text: '暂未查询到您的支付结果，如果您已经确认支付并扣款，可能存在延迟到账的情况，请到账户明细中查看或联系客服查询',
 								buttons: [{
 										text: '关闭',

@@ -23,13 +23,14 @@ export default{
                 location.href = 'https://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
             }else{
                 if(getUrlStr('ct',location.href)=='2'){
-                    alert(1)
                     location.href = 'https://m.caixiaomi.net/down/cxm106_jc035.apk'
                 }else{
-                    alert(2)
                     location.href = 'https://m.caixiaomi.net/down/cxm106_zc037.apk'
                 }
             }
+        },
+        iosClick(){
+            location.href="https://itunes.apple.com/cn/app/id1402481777?mt=8"
         }
     }
 }

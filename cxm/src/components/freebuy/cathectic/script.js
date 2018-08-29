@@ -25,8 +25,8 @@ export default {
 		}
 	},
 	beforeCreate() {
-		Indicator.open()
-	},
+        Indicator.open()
+    },
 	created() {
 
 	},
@@ -523,12 +523,18 @@ export default {
 				.getBetInfo(data)
 				.then(res => {
 					if(res.code == 0) {
-						if(res.data.maxLotteryMoney>20000||res.data.betNum>10000||res.data.betNum<0){
+						if(res.msg===''){
+							if(res.data.maxLotteryMoney>20000||res.data.betNum>10000||res.data.betNum<0){
+								this.maxButNum = true
+								this.maxButNumMsg = res.msg
+								Toast(res.msg)
+							}else{
+								this.maxButNum = false
+							}
+						}else{
 							this.maxButNum = true
 							this.maxButNumMsg = res.msg
 							Toast(res.msg)
-						}else{
-							this.maxButNum = false
 						}
 						this.betObj = res.data
 					}else{
@@ -569,11 +575,19 @@ export default {
 				Toast(this.maxButNumMsg)
 				return
 			}
-			this.$store.state.matchSaveInfo = this.matchSave
-			this.$router.push({
-				path: '/freebuy/payment',
-				replace: false
-			})
+			Indicator.open()
+            api.nSaveBetInfo(this.matchSave)
+                .then(res => {
+                        // console.log(res)
+                    if (res.code == 0) {
+                        this.$router.push({
+							path: '/freebuy/payment',
+							query:{
+								ptk: res.data
+							}
+						})
+                    }
+                })
 		},
 		bfClick(c) {
 			this.$store.state.mark_playObj.mark_playBox = true

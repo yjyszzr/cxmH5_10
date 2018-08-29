@@ -28,13 +28,12 @@ const actions = {
                 }
             })
     },
-    getResultList({
+    getResultList({//赛事
                       commit
                   }, value) {
         api.queryMatchResult(value)
             .then(res => {
                 if (res.code == 0) {
-                    //console.log(res)
                     commit("RESULT", res.data);
                 }
             })
@@ -53,6 +52,11 @@ const actions = {
                         commit
                     }, value) {
         commit("RECORDTAB", value);
+    },
+    changeTimeType({
+            commit
+        }, value) {
+    commit("USERACCOUNT", value);
     },
     getMarkDateVal({
                        commit
@@ -74,25 +78,10 @@ const actions = {
                     }, value) {
         commit("MARKSHOWTYPE", value);
     },
-    getMatchFinish({
-                       commit
-                   }, value) {
-        commit("MATCHFINISH", value);
-    },
     getLeagueIds({
                      commit
                  }, value) {
         commit("LEAGUEIDS", value);
-    },
-    getisAlreadyBuyMatch({
-                             commit
-                         }, value) {
-        commit("ISAlREADYBUYMATCH", value);
-    },
-    getFreebuyId({
-                     commit
-                 }, value) {
-        commit("FREEBUYID", value);
     },
     getmatchobj({
                     commit
@@ -103,11 +92,6 @@ const actions = {
                              commit
                          }, value) {
         commit("MATCHSELECTEDLIST", value);
-    },
-    getmatchSaveInfo({
-                         commit
-                     }, value) {
-        commit("MATCHSAVEINFO", value);
     },
     getMarkplayBox({
                        commit
@@ -193,19 +177,22 @@ const actions = {
     changeFinActive({commit},value){
         commit("FINACTIVE", value)
     },
-    //世界杯
-    changefsNum({commit},value){
-        commit("FSNUM", value)
-    },
-    changeTimeType({commit}, value){
-        commit("USERACCOUNT", value)
-    },
-    changefirstList({commit},value){
-        commit("FIRSTLIST", value)
-    },
-    changefsList({commit},value){
-        commit("FSLIST", value)
-    },
+    //走势图
+    getRunchart({
+        commit
+    }, value) {
+        return new Promise((resolve, reject) => {
+            api.getChartData(value)
+            .then(res => {
+                if (res.code == 0) {
+                    commit("RUNCHARTDATA", res.data);
+                    resolve()
+                }else{
+                    reject()
+                }
+            })
+        })
+    }
 }
 
 export default actions

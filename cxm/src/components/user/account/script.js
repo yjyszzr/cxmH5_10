@@ -16,8 +16,7 @@ export default {
             bottomStatus: '',
             allLoaded: false,
             totalNum: {}, //合计对象
-            loadText: '上拉加载更多...',
-            timeType:2
+            loadText: '上拉加载更多...'
         }
     },
     beforeCreate() {
@@ -31,7 +30,7 @@ export default {
         mxfetch() {
             let data = {
                 'amountType': this.amountType,
-                'timeType': this.timeType,
+                'timeType': this.timeTypeStatus,
                 'pageSize': 20,
                 'pageNum': this.pageNum
             }
@@ -114,7 +113,7 @@ export default {
             this.mxfetch()
         },
         timeTypeStatus(a){
-            this.timeType = a;
+            this.$store.dispatch("changeTimeType", a);
             this.mxfetch();
             Indicator.open()
             this.mxList = []
@@ -130,7 +129,9 @@ export default {
         this.mxfetch()
     },
     beforeRouteLeave(to,from,next){
-        this.$store.dispatch("changeTimeType", 2);
+        if(to.path!='/user/give_details'){
+            this.$store.dispatch("changeTimeType", 2);
+        }
         next()
     }
 }

@@ -11,9 +11,9 @@ import {getUrlStr} from '../util/common'
 // axios 配置
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-//axios.defaults.baseURL = 'http://api.caixiaomi.net/api';
 //axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
-axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
+// axios.defaults.baseURL = 'http://yf.caixiaomi.net/api';
+ axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 
 //拦截 token
 axios.interceptors.request.use(
@@ -41,13 +41,15 @@ axios.interceptors.request.use(
 axios.interceptors.response.use((res) => {
     if (res.config.url.indexOf('payment/query') == -1) {
         if (res.data.code >= 30000 && res.data.code <= 310000) {
-            Toast(res.data.msg)
+            if(router.history.current.path!='/activity/one'){
+                Toast(res.data.msg)
+            }
         } else if (res.data.code == 600) {
             if(getUrlStr('from',location.href)=='app'){
                 location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5'
             }else{
                 localStorage.clear()
-                if(res.config.url.indexOf('recharge/countUserRecharge') != -1||res.config.url.indexOf('collect/add') != -1){
+                if(res.config.url.indexOf('match/queryMatchResultNew') != -1||res.config.url.indexOf('recharge/countUserRecharge') != -1||res.config.url.indexOf('collect/add') != -1||res.config.url.indexOf('match/nSaveBetInfo') != -1||res.config.url.indexOf('lotto/saveBetInfo') != -1){
                     router.push({
                         path: '/user/sms',
                     })
@@ -127,7 +129,7 @@ axios.interceptors.response.use((res) => {
 const device = {
     plat: 'h5',
     apiv: 1,
-    appv: '1.0.6',
+    appv: '2.1.1',
     appid: '',
     mac: '',
     w: window.screen.availWidth,
@@ -141,6 +143,11 @@ const device = {
     token: ''
 }
 export function fetchPost(url, body) {
+    if(getUrlStr('fr', location.href)){
+        device.channel = getUrlStr('fr', location.href)
+    }else{
+        device.channel = 'h5'
+    }
     return new Promise((resolve, reject) => {
         axios.post(url, {
                 device,
@@ -237,7 +244,7 @@ export default {
     },
     //查询订单列表状态
     getOrderInfoList(params) {
-        return fetchPost('order/order/getOrderInfoList', params)
+        return fetchPost('order/order/ngetOrderInfoList', params)
     },
     //查询订单详情
     getOrderDetail(params) {
@@ -249,7 +256,7 @@ export default {
     },
     //获取大厅数据
     getHallData(params) {
-        return fetchPost('lottery/lottery/hall/getHallData', params)
+        return fetchPost('lottery/lottery/hall/getAllLotteryInHallMixData', params)
     },
     //获取比赛列表
     getMatchList(params) {
@@ -260,20 +267,24 @@ export default {
         return fetchPost('lottery/lottery/match/filterConditions', params)
     },
     //支付订单
-    saveBetInfo(params) {
-        return fetchPost('lottery/lottery/match/saveBetInfo', params)
+    nSaveBetInfo(params) {
+        return fetchPost('lottery/lottery/match/nSaveBetInfo', params)
     },
     //计算投注信息
     getBetInfo(params) {
         return fetchPost('lottery/lottery/match/getBetInfo', params)
     },
     //下单
-    app(params) {
-        return fetchPost('payment/payment/app', params)
+    nUnifiedOrder(params) {
+        return fetchPost('payment/payment/nUnifiedOrder', params)
     },
     //比赛结果
     queryMatchResult(params) {
-        return fetchPost('lottery/lottery/match/queryMatchResult', params)
+        return fetchPost('lottery/lottery/match/queryMatchResultNew', params)
+    },
+    //比赛阵容
+    lineupinfo(params) {
+        return fetchPost('lottery/match/lineup/info', params)
     },
     //赛事详情分析弹窗
     matchTeamInfosSum(params) {
@@ -339,6 +350,10 @@ export default {
     appBankListPay(params) {
         return fetchPost('payment/payment/xianfeng/appBankListPay', params)
     },
+    //先锋支付删除银行卡
+    bankremove(params) {
+        return fetchPost('payment/payment/xianfeng/bank/remove', params)
+    },
     //轮回查询
     query(params) {
         return fetchPost('payment/payment/query', params)
@@ -380,34 +395,6 @@ export default {
     incomedetail(params) {
         return fetchPost('/member/dl/channelConsumer/incomeDetails', params)
     },
-    //代金券列表
-    cashCouponList(params) {
-        return fetchPost('/member/dl/cashCoupon/cashCouponList', params)
-    },
-    //已兑换代金券列表
-    userCashCouponUserList(params) {
-        return fetchPost('/member/dl/cashCoupon/userCashCouponUserList', params)
-    },
-    //活动 订单
-    toCreateOrder(params) {
-        return fetchPost('/member/dl/cashCoupon/toCreateOrder', params)
-    },
-    //支付页面
-    toPaymentPage(params) {
-        return fetchPost('/member/dl/cashCoupon/toPaymentPage', params)
-    },
-    //冠军竞猜列表
-    gjs(params) {
-        return fetchPost('/lottery/dl/wc/gjs', params)
-    },
-    //冠亚军竞猜列表
-    gyjs(params) {
-        return fetchPost('/lottery/dl/wc/gyjs', params)
-    },
-    //下单
-    saveBetInfoWd(params) {
-        return fetchPost('/lottery/dl/wc/saveBetInfo', params)
-    },
     //充值送红包
     toRechange(params) {
         return fetchPost('/member/donation/rechargeCard/list', params)
@@ -439,24 +426,94 @@ export default {
     registSms(params){
         return fetchPost('/member/dl/channelConsumer/smsCodeForDistributor', params)
     },
-    //世界杯推演 竞猜
-    guessingCompetition(params){
-        return fetchPost('/activity/worldCupPlan/guessingCompetition', params)
-    },
-    //提交推演方案
-    worldCupPlanadd(params){
-        return fetchPost('/activity/worldCupPlan/add', params)
-    },
-    //推演订单 
-    worldCupPlanlist(params){
-        return fetchPost('/activity/worldCupPlan/list', params)
-    },
     //设置用户登录密码
     setinglogin(params){
         return fetchPost('/member/user/setLoginPass', params)
     },
-    // //账户明细title
-    // detailsTitle(params){
-    //     return fetchPost('/member/user/account/getUserAccountListAndCountTotal', params)
-    // },
+    //添加收藏比赛
+    collectMatchId(params) {
+        return fetchPost('/member/user/matchCollect/collectMatchId', params)
+    },
+    //取消收藏比赛
+    cancle(params) {
+        return fetchPost('/member/user/matchCollect/cancle', params)
+    },
+    //赛事比分的日期筛选条件调用接口
+    giveMatchChooseDate(params) {
+        return fetchPost('/lottery/lottery/match/giveMatchChooseDate', params)
+    },
+    //比赛赛况接口
+    info(params) {
+        return fetchPost('/lottery/match/live/info', params)
+    },
+    //答题竞猜体育
+    guessingCompetitionDetails(params) {
+        return fetchPost('/activity/dlQuestionsAndAnswersUser/guessingCompetitionDetails', params)
+    },
+    //答题竞猜提交答案
+    add(params) {
+        return fetchPost('/activity/dlQuestionsAndAnswersUser/add', params)
+    },
+    //我的竞猜纪录历史列表
+    userAnswersList(params) {
+        return fetchPost('/activity/dlQuestionsAndAnswersUser/userAnswersList', params)
+    },
+    //上期竞猜详情
+    beforePeriodNote(params) {
+        return fetchPost('/activity/dlQuestionsAndAnswersUser/beforePeriodNote', params)
+    },
+    //选号投注
+    getTicketInfo(params) {
+        return fetchPost('/lotto/lotto/getTicketInfo', params)
+    },
+    //保存投注信息
+    saveBetInfoDlt(params) {
+        return fetchPost('/lotto/lotto/saveBetInfo', params)
+    },
+    //走势图数据
+    getChartData(params) {
+        return fetchPost('/lotto/lotto/getChartData', params)
+    },
+    //方案详情
+    getLottoOrderDetail(params) {
+        return fetchPost('/order/order/getLottoOrderDetail', params)
+    },
+    //支付订单信息
+    unifiedPayBefore(params) {
+        return fetchPost('/payment/payment/unifiedPayBefore', params)
+    },
+    //出票方案
+    getLottoTicketScheme(params) {
+        return fetchPost('/order/order/getLottoTicketScheme', params)
+    },
+    //邀请人数和奖励
+    invitationNumAndReward(params) {
+        return fetchPost('/activity/dlOldBeltNew/invitationNumAndReward', params)
+    },
+    //新人注册（老带新）
+    oldbeltnewregister(params) {
+        return fetchPost('/activity/dlOldBeltNew/register', params)
+    },
+    //验证码(ldx)
+    sendVerificationCode(params) {
+        return fetchPost('/activity/dlOldBeltNew/sendVerificationCode', params)
+    },
+    //分享链接userId
+    shareMyLinks(params) {
+        return fetchPost('/activity/dlOldBeltNew/shareMyLinks', params)
+    },
+    //微信支付
+    base64Id(params) {
+        return fetchPost('/payment/payment/urlBase64', params)
+    },
+    //查询活动资格
+    queryActQF(params) {
+        return fetchPost('/member/user/qualification/queryActQF', params)
+    },
+    //领取活动资格
+    reaceiveActQF(params) {
+        return fetchPost('/member/user/qualification/reaceiveActQF', params)
+    }
 }
+
+

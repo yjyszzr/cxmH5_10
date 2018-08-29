@@ -33,7 +33,6 @@ export default {
             'smsCode': this.telVal,
             'loginSource': '4'
         }
-        // console.log(JSON.parse(data))
         api.loginBySms(data)
         .then(res => {
             if(res.code==0) {
@@ -72,12 +71,10 @@ export default {
         
     },
     beforeRouteEnter(to, from, next){
-      if(from.path=='/freebuy/cathectic'||from.path=='/activity/world_detail'||from.path=='/user/recharge'||from.path=='/activity/world/worldenter'){
+      if(from.path=='/lotteryResult'||from.path=='/freebuy/cathectic'||from.path=='/lottery/daletou/touZhuConfirm'||from.path=='/lottery/daletou/runchart'||from.path=='/user/recharge'||from.path=='/activity/jingcai'||from.path=='/activity/oldbeltyd'){
           next(vm=>{
                vm.returnGo =  true 
-               //console.log(vm.returnGo)
           })
-          //localStorage.removeItem('matchSaveInfo')
       }else{
           next(vm=>{
             vm.returnGo =  false 

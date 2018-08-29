@@ -5,14 +5,16 @@
 <template>
     <div class="packetindex">
         <div class="pack_center">
-            <img src="../image/img1.png" class="imgTop" @click.prevent>
+            <img src="../image/xin_banner.jpg" class="imgTop" @click.prevent>
             <div class="time">
+                <h5>活动倒计时</h5>
                 <v-countDown :endTime="packet.endTime" :callback="callback"></v-countDown>
             </div>
             <!--首页-->
 			<div class="carousel">
 				<div class="scroll-wrap">
-					<!-- <p v-if='show'>温馨提示:理性投注,长跟长红</p> -->
+                    <i></i>
+                    <em></em>
 					<ul class="scroll-content" :style="{top}">
 						<li v-for="(data,item) in y_Carousel" :key='item' v-html="data.winningMsg+''+data.winningMoney+'元'">
 						</li>
@@ -22,31 +24,25 @@
             <div class="box">
                 <ul>
                     <li v-for='(item,i) in packet.rechargeCardList' :key='i'>
-                        <div>
-                            <i v-bind:class="{'img3':item.type == 0,'img5':item.type == 1}"></i>
-                            <p><b>￥</b><span>{{item.realValue}}</span>
+                        <div v-bind:class="{'img3':item.type == 0,'img5':item.type == 1}">
+                            <!--<i ></i>-->
+                            <p v-bind:class="{'disnone':item.type == 0}">
+                                <b>￥</b><span>{{item.realValue}}</span>
                                 <span>元</span>
                             </p>
-                            <p>{{item.description}}</p>
+                            <p v-bind:class="{'mtop':item.type == 0}">{{item.description}}</p>
                         </div>
-                        <div @click="btn(item.realValue, item.type)" class="btn">火速充值</div>
+                        <div @click="btn(item.realValue, item.type)" class="btn"></div>
                     </li>
                 </ul>
                 <div class="rule">
                     <h5>注意事项</h5>
                     <div>
-                        <span>1、</span>
-                        <p>本次活动时间为即日起至7月15日23:59:59，活动时间截止则默认本次活动自动结束。具体使用范围以红包券显示为准。请在个人中心“我的卡券”中查看。</p>
-                        <span>2、</span>
-                        <p>用户参加本次活动充值的金额，仅限用户支付购彩使用，不可提现。</p>
-                        <span>3、</span>
-                        <p>活动期间，如有玩家通过恶意、重复注册等方式参与本次活动，网站有权冻结其账户并保留追责权利，对已赠送的卡券，网站有权要求用户返还。</p>
-                        <span>4、</span>
-                        <p>如遇不可抗力因素，网站有权在活动期间更改活动规则，用户应随时关注网站公告。</p>
-                        <span>5、</span>
-                        <p>如有问题，请拨打客服电话咨询：400-012-6600。</p>
-                        <span>6、</span>
-                        <p>本活动最终解释权归彩小秘彩票所有。</p>
+                        <p>1、本活动时间为即日起至X月X日X时，具体使用范围以红包券显示为准，请至个人中心“我的卡券”中查看。</p>
+                        <p>2、只有通过活动页面充值对应金额，才能参与充值送红包活动。</p>
+                        <p>3、用户只能在活动页面领取活动资格后，才能参与充值活动。</p>
+                        <p>4、参与活动的充值金额，仅限购彩使用，不可提现，中奖奖金可以提现。</p>
+                        <p>5、本活动最终解释权归平台所有，如有疑问请拨打客服电话：400-012-6600。</p>
                     </div>
                 </div>
                 <div class="heit"></div>

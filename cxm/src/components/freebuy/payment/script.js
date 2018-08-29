@@ -31,28 +31,20 @@ export default {
             this.$store.state.mark_playObj.mark_playBox = true
             this.$store.state.mark_playObj.mark_play = '3'
         },
-        fetchData(c) {
-            if(c.betIds){
-                api.saveBetInfoWd(c)
-                .then(res => {
-                    //console.log(res)
-                    if (res.code == 0) {
-                        this.payment = res.data
-                        this.$store.state.mark_playObj.yhList = res.data.bonusList
-                        this.$store.state.mark_playObj.bounsId = res.data.bonusId
-                    }
-                })
-            }else{
-                api.saveBetInfo(c)
-                .then(res => {
-                    //console.log(res)
-                    if (res.code == 0) {
-                        this.payment = res.data
-                        this.$store.state.mark_playObj.yhList = res.data.bonusList
-                        this.$store.state.mark_playObj.bounsId = res.data.bonusId
-                    }
-                })
+        fetchData(c,s) {
+            let data = {
+                bonusId: c,
+                payToken: s
             }
+            api.unifiedPayBefore(data)
+                .then(res => {
+                        //console.log(res)
+                        if (res.code == 0) {
+                            this.payment = res.data
+                            this.$store.state.mark_playObj.yhList = res.data.bonusList
+                            this.$store.state.mark_playObj.bounsId = res.data.bonusId
+                        }
+                })
             api.allPayment({})
                 .then(res => {
                     if (res.code == 0) {
@@ -99,18 +91,27 @@ export default {
             }
         },
         payFlag(c,s){
-            api.app(c)
+            api.nUnifiedOrder(c)
                 .then(res => {
                     //console.log(res)
                     if (s == 'ye') {
                         if (res.code == 0) {
                             Toast(res.msg)
-                            this.$router.replace({
-                                path: '/user/order',
-                                query: {
-                                    id: res.data.orderId,
-                                }
-                            })
+                            if(this.payment.lotteryClassifyId=='2'){
+                                this.$router.replace({
+                                    path: '/daletou/programmeDetails',
+                                    query: {
+                                        id: res.data.orderId,
+                                    }
+                                })
+                            }else{
+                                this.$router.replace({
+                                    path: '/user/order',
+                                    query: {
+                                        id: res.data.orderId,
+                                    }
+                                })
+                            }
                         }
                     } else {
                         if (res.code == 0) {
@@ -136,12 +137,15 @@ export default {
                                 let url =  location.href+'?orderStatus=1'
                                 location.href = res.data.payUrl+ '&h5ck=' + encodeURIComponent(url)
                             }else if(s=='wx'){
-                                location.href = res.data.payUrl
+                                //location.href = res.data.payUrl
+                                location.replace(res.data.payUrl)
                             }else if(s=='xf'){
+                               //Toast('功能暂未开放')
                                 this.$router.push({
                                     path: '/user/quickinfo',
                                     query:{
-                                        id: res.data.payLogId
+                                        id: res.data.payLogId,
+                                        from: 'h5'
                                     }
                                 })
                             }
@@ -159,12 +163,21 @@ export default {
                 .then(res => {
                     //console.log(res)
                     if (res.code == 0) {
-                        this.$router.replace({
-                            path: '/user/order',
-                            query: {
-                                id: this.orderId,
-                            }
-                        })
+                        if(this.payment.lotteryClassifyId=='2'){
+                            this.$router.replace({
+                                path: '/daletou/programmeDetails',
+                                query: {
+                                    id: this.orderId,
+                                }
+                            })
+                        }else{
+                            this.$router.replace({
+                                path: '/user/order',
+                                query: {
+                                    id: this.orderId,
+                                }
+                            })
+                        }
                     }else if(res.code=='304036'){
                         MessageBox.confirm('',{
                             message: '暂未查询到您的支付结果，如果您已经确认支付并扣款，可能存在延迟到账的情况，请到账户明细中查看或联系客服查询',
@@ -244,13 +257,8 @@ export default {
     },
     watch: {
         cc(a, b) {
-            this.$store.state.matchSaveInfo.bonusId = a
             Indicator.open()
-            this.fetchData(this.$store.state.matchSaveInfo)
-            // if(b!==''){
-            //     this.$store.state.matchSaveInfo.bonusId = a
-            //     this.fetchData()
-            // }
+            this.fetchData(a,this.payment.payToken)
         }
     },
     beforeRouteEnter(to, from, next){
@@ -300,7 +308,7 @@ export default {
         }else{
             next(vm=>{
             	Indicator.open()
-                vm.fetchData(vm.$store.state.matchSaveInfo)
+                vm.fetchData('',vm.$route.query.ptk)
             })
         }
     },

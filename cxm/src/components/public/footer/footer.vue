@@ -1,12 +1,12 @@
 <template>
-    <div class="foot fixBottom" @touchmove.prevent v-show="isShowTabbar()">
+    <div class="foot fixBottom" @touchmove.prevent v-if="isShowTabbar()">
             <router-link to='/' :style="{'color': $route.path.split('/')[1] == ''?'#ea5504':'#505050'}">
                 <i class="iconfont icon-dibucaidan_svg_huaban"></i>
                 <span>大厅</span>
             </router-link>
             <router-link to='/lotteryResult' :style="{'color': $route.path.split('/')[1] == 'lotteryResult'?'#ea5504':'#505050'}">
                 <i class="iconfont icon-dibucaidan_svg_huabanfuben"></i>
-                <span>开奖</span>
+                <span>比赛</span>
             </router-link>
             <router-link :to='{path:"/find",query:{"from":"h5_find"}}' :style="{'color': $route.path.split('/')[1] == 'find'?'#ea5504':'#505050'}">
                 <i class="iconfont icon-icon-test"></i>
@@ -23,13 +23,13 @@
 export default {
 	data() {
 		return {
-
+            
 		}
 	},
 	methods: {
 		isShowTabbar () {
             let routeLength = this.$route.path.split('/').length
-			return routeLength > 2 ? false : true
+			return routeLength > 2||this.$route.name=='404' ? false : true
 		}
 	}
 }

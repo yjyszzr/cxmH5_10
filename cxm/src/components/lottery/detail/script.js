@@ -7,7 +7,7 @@ export default {
       }
     },
     props:[
-    	'leagueMatchAsias','leagueMatchEuropes'
+    	'leagueMatchAsias','leagueMatchEuropes','leagueMatchDaoxiaos'
     ],
     created(){
       

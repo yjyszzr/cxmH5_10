@@ -67,15 +67,20 @@ export default {
                 //验证码信息
                 let data = {
                     'code': this.numbers,
-                    'payLogId': this.$route.query.id
+                    'payLogId': this.$route.query.id,
+                    'token': this.token
                 }
                 api.xfappConfirm(data)
                     .then(res => {
                         if(res.code==0) {
-                            Toast('支付成功')
-                            this.$router.replace({
-                                path: '/'
-                            })
+                            Toast(res.msg)
+                            if(this.$route.query.from=='h5'){
+                                this.$router.replace({
+                                    path: '/'
+                                })
+                            }else{
+                                location.href = 'caixm://caixiaomi.net'
+                            }
                         }
                     })
             }

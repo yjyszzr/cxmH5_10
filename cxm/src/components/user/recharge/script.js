@@ -23,7 +23,9 @@ export default {
             payCode: 'app_weixin',
             cznum: 10,
             czobj: {},
-            activefrom: '0'
+            activefrom: '0',
+            inputDisabled:false,//input 禁止输入
+            activityDescribe:this.$route.query.description?this.$route.query.description:'',
             // testUrl: 'http://www.baidu.com/',
             // testUrlDisplay: 'none',
         }
@@ -40,7 +42,11 @@ export default {
         //     this.testUrlDisplay = 'block';
         // },
         changenum(c) {
-            this.recharge_val = c
+            if(!this.inputDisabled){
+                this.recharge_val = c
+            }else {
+                Toast('活动金额不可改动！')
+            }
         },
         determine() {
             let regex = /^[1-9]\d*$/;
@@ -101,14 +107,16 @@ export default {
                                 localStorage.setItem('payLogId', res.data.payLogId)
                                 localStorage.setItem('activefrom',this.activefrom)
                             }
-                            location.href = res.data.payUrl
+                            //location.href = res.data.payUrl
                             // console.log(res.data.payUrl)
+                            location.replace(res.data.payUrl)
                         }else if(s=='xf'){
                             //Toast('功能暂未开放')
                             this.$router.push({
                                 path: '/user/quickinfo',
                                 query:{
-                                    id: res.data.payLogId
+                                    id: res.data.payLogId,
+                                    from: 'h5'
                                 }
                             })
                         }
@@ -245,7 +253,6 @@ export default {
                 }
             })
         this.rbCallback()
-        
     },
     watch:{
         recharge_val(a,b){
@@ -253,6 +260,12 @@ export default {
         }
     },
     beforeRouteEnter(to, from, next) {
+        if(from.path == '/activity/rechangeActivity'){
+            next(vm=>{
+                vm.inputDisabled = true
+            })
+
+        }
         if (from.path == '/'&&localStorage.getItem('payCode')) {
             next(vm => {
                 //vm.$store.state.matchSaveInfo = JSON.parse(localStorage.getItem('matchSaveInfo'))

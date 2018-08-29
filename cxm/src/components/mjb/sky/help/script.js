@@ -1,19 +1,12 @@
+import helpTable from '../../../public/help'
 export default {
     name: 'help',
-    data () {
-      return {
-        
-      }
-    },
-    created(){
-      
-    },
-    methods:{
-     
+    components: {
+      "v-table": helpTable
     },
     mounted(){
       window.getCxmTitle = function(){
-          return '天天体育·帮助中心'
+          return '天空体育·帮助中心'
       }
     }
 }

@@ -31,13 +31,9 @@
 						this.$store.state.matchObj = {};
 						this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
 						this.$store.state.mark_playObj.bfIdSaveMap = new Map();
-						this.$store.state.freebuyId = getUrlStr('subid',url);
+						this.$store.commit('FREEBUYID',getUrlStr('subid',url))
 						this.$router.push({
-							path: "/freebuy/singleNote",
-							query: {
-								id: getUrlStr('subid',url)
-							},
-							replace: false
+							path: "/lottery/freebuy/singleNote"
 						});
 					}else if(getUrlStr('type',url)=='4'){
 						this.$router.push({
@@ -60,10 +56,23 @@
 							this.$router.push({
 								path: '/activity/red_packet'
 							})
-						}else if(url.indexOf('activity/world/worldenter')!=-1){
-							this.$router.push({
-								path: '/activity/world/worldenter'
+						}
+						else if(url.indexOf('activity/jingcai')!=-1){
+                            this.$router.push({
+                                path: '/activity/jingcai',
+                                // query:{matchId:url.split('=')[1].split('&')[0],showtitle:'1'},
+                                query:{matchId:getUrlStr('matchId',url),showtitle:'1'}
+                            })
+                            //小白课堂轮播图
+                        }else if(url.indexOf('activity/oldwithnew')!=-1){
+                            this.$router.push({
+                                path: '/activity/oldwithnew'
 							})
+							//老带新轮播图
+						}else if(url.indexOf('activity/oldbeltyd')!=-1){
+                            this.$router.push({
+                                path: '/activity/oldbeltyd'
+                            })
 						}else{
 							location.href=url
 						}

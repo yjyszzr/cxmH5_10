@@ -1,10 +1,103 @@
 @import '../../../assets/css/function.scss';
 .singleNote{
+    .head {
+        overflow: hidden;
+        height: px2rem(100px);
+        background: #f4f4f4;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .back-img {
+            display: flex;
+            height: px2rem(100px);
+            width: px2rem(110px);
+            padding-left: px2rem(30px);
+            align-items: center;
+            img {
+                width: 25%;
+            }
+        }
+        .head-text {
+            display: flex;
+            align-items: center;
+            font-size: px2rem(32px);
+            color: #505050;
+            .header-down {
+                display: inline-block;
+                margin-left: px2rem(10px);
+                height: px2rem(30px);
+                width: px2rem(30px);
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        .snt-filter {
+            height: px2rem(100px);
+            margin-right: px2rem(30px);
+            display: flex;
+            align-items: center;
+            font-size: px2rem(30px);
+            color: #505050;
+            .iconfont{
+                margin-right: px2rem(20px);
+            }
+        }
+    }
+    .meng-cheng {
+        z-index: 30;
+        position: absolute;
+        top: px2rem(100px);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .5);
+    }
+    /*top:px2rem(100px);*/
+    .title-collspce {
+        z-index: 31;
+        position: absolute;
+        width: 100%;
+        height: px2rem(205px);
+        border-top: 1px solid #9f9f9f;
+        overflow: hidden;
+        background: #f4f4f4;
+        .btn-box {
+            line-height: px2rem(50px);
+            width: px2rem(200px);
+            text-align: center;
+            font-size: px2rem(26px);
+            color: #505050;
+            border: 1px solid #c7c7c7;
+            position: relative;
+            margin: 0 px2rem(23px);
+            float: left;
+            margin-top: px2rem(10px);
+            .img-box {
+                display: inline-block;
+                height: px2rem(36px);
+                width: px2rem(36px);
+                position: absolute;
+                bottom: -1px;
+                right: -1px;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        .btn-box:nth-child(3n){
+            margin-right: 0;
+        }
+        .cur {
+            color: #ea5504 !important;
+            border: 1px solid #ea5504 !important;
+        }
+    }
     .el-collapse{
         position: absolute;
         overflow: scroll;
         width: 100%;
-        top: px2rem(72px);
+        top: px2rem(172px);
         bottom:px2rem(88px);
         padding-top: px2rem(10px);
         z-index: 1;

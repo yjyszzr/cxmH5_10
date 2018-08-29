@@ -2,12 +2,12 @@ import api from '../../../../fetch/api.js'
 import time from '../data/data.vue'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
+import {mapState} from 'vuex'
 export default {
   name: "match_filter",
   data() {
     return {
-        matchFilterList: [],
-        playType: this.$route.query.id
+        matchFilterList: []
     };
   },
     components:{
@@ -24,14 +24,12 @@ export default {
         } else {
             this.$refs.match_name[index].className = 'filterActive'
         }
-        this.$refs.lookac.className = ''
     },
     allFilter() {
         let arr = this.$refs.match_name
         for(let i = 0; i < arr.length; i++) {
             this.$refs.match_name[i].className = 'filterActive'
         }
-        this.$refs.lookac.className = ''
     },
     reserveFilter() {
         let arr = this.$refs.match_name
@@ -42,7 +40,6 @@ export default {
                 this.$refs.match_name[i].className = 'filterActive'
             }
         }
-        this.$refs.lookac.className = ''
     },
     hotFilter() {
         let arr = this.$refs.match_name
@@ -50,18 +47,6 @@ export default {
             this.$refs.match_name[i].className = ''
             if(arr[i].innerText == '德甲' || arr[i].innerText == '法甲' || arr[i].innerText == '西甲' || arr[i].innerText == '意甲' || arr[i].innerText == '英超') {
                 this.$refs.match_name[i].className = 'filterActive'
-            }
-        }
-        this.$refs.lookac.className = ''
-    },
-    lookClick(){
-        if(this.$refs.lookac.className == 'lookactive') {
-            this.$refs.lookac.className = ''
-        } else {
-            this.$refs.lookac.className = 'lookactive'
-            let arr = this.$refs.match_name
-            for(let i = 0; i < arr.length; i++) {
-                this.$refs.match_name[i].className = ''
             }
         }
     },
@@ -79,17 +64,11 @@ export default {
         })
         Indicator.open()
         if(this.$route.path.split('/')[1]=='lotteryResult'){
-            if(this.$refs.lookac.className == 'lookactive'){
-                this.$store.dispatch("getisAlreadyBuyMatch",'1')
-            }else{
-                this.$store.dispatch("getisAlreadyBuyMatch",'')
-            }
             this.$store.dispatch("getLeagueIds",arrTeam.join(','))
             let data={
                 dateStr: this.$store.state.mark_showObj.mark_dateVal,
-                isAlreadyBuyMatch: this.$store.state.mark_showObj.isAlreadyBuyMatch,
                 leagueIds: this.$store.state.mark_showObj.leagueIds,
-                matchFinish: this.$store.state.mark_showObj.matchFinish
+                type: this.$store.state.mark_showObj.lotteryResultTableIndex
             }
             this.$store.dispatch("getResultList",data)
         }else{
@@ -137,5 +116,10 @@ export default {
             }
         })
       }
-  }
+  },
+  computed: {
+    ...mapState({
+         playType: state => state.freebuyId
+    })
+  },
 };

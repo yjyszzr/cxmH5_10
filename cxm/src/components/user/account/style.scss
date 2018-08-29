@@ -14,7 +14,7 @@
      overflow: scroll;
      width: 100%;
      top: 0;
-     bottom:px2rem(124px);
+     bottom:0;
    }
    .zhmxlist{
     .list{
@@ -84,7 +84,8 @@
    bottom: 0;
    width: 100%;
    margin-top: 0;
-   padding: px2rem(28px) 0 px2rem(28px) px2rem(30px);
+   height: px2rem(120px);
+   padding: px2rem(15px) 0 px2rem(15px) px2rem(28px);
    box-sizing: border-box;
    p{
      color:#505050;
@@ -101,9 +102,9 @@
    }
    P:last-of-type{
      width: px2rem(700px);
-     overflow: hidden;
-     white-space: nowrap;
-    text-overflow: ellipsis;
+    // overflow: hidden;
+    // white-space: nowrap;
+    //text-overflow: ellipsis;
    }
  }
  

@@ -15,7 +15,7 @@
         },
         mounted(){
             window.getCxmTitle = function(){
-                return '天天体育·胆说明'
+                return '天空体育·胆说明'
             }
         }
     }

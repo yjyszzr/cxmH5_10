@@ -20,14 +20,14 @@
                     <a>
                         <div>
                             <span class="arrow_kefu float_right">{{userInfo.mobile}}</span>
-                            <span class="message">2323手机认证111</span>
+                            <span class="message">手机认证</span>
                         </div>
 
                     </a>
                     <a>
                         <div>
                             <router-link to="/user/certification" v-if="userInfo.isReal ==0" class="arrow_kefu float_right" :style="{'color':'#ea5504'}">待认证</router-link>
-                            <router-link to='/user/setchange' v-if="userInfo.isReal ==1 " class="arrow_kefu float_right">{{userInfo.realInfo}}</router-link>
+                            <a v-if="userInfo.isReal ==1 " class="arrow_kefu float_right">{{userInfo.realInfo}}</a>
                             <span class="message">身份认证</span>
                         </div>
                     </a>

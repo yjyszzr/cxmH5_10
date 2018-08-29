@@ -1,11 +1,13 @@
 <template>
-    <div class="data1" @touchmove.prevent >
+    <div class="data1" >
         <div class="dt_title">
             日期
         </div>
-        <ul >
-            <li :class="$store.state.mark_showObj.mark_dateVal==list?'cur':''" v-for="(list,i) in data_list" :key='i' ref='match_name' @click="list_li(list,i)">{{list}}</li>
-        </ul>
+        <div class="data-box">
+            <ul id="sroll-height">
+                <li :class="$store.state.mark_showObj.mark_dateVal==list.strDate?'cur':''" v-for="(list,i) in dataList" :key='i' ref='match_name' @click="list_li(list,i)">{{list.strDate}}</li>
+            </ul>
+        </div>
         <div class="dt_btn">
             <p @click="cancel()">返回</p>
         </div>

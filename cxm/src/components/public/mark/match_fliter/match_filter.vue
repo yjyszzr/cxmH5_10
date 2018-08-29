@@ -5,9 +5,6 @@
                     <div class="ft_title">
                         赛事筛选
                     </div>
-                    <div class="look" v-show="$store.state.mark_showObj.mark_show_type == 2&&$route.path.split('/')[1]=='lotteryResult'">
-                        方案筛选<p :class="$store.state.mark_showObj.isAlreadyBuyMatch=='1'?'lookactive':''" ref="lookac" @click="lookClick()">只看已购对阵</p>选择赛事
-                    </div>
                     <ul class="ft_selected">
                         <li @click="allFilter()">全选</li>
                         <li @click="reserveFilter()">反选</li>
@@ -17,7 +14,7 @@
                         <div class="nullStatus" v-if="matchFilterList.length<=0">
                                 <mt-spinner type="snake" color="#ea5504"></mt-spinner>
                         </div>
-                        <li :class="$store.state.mark_showObj.leagueIds.indexOf(item.leagueId)!=-1?'filterActive':''" v-for='(item,i) in matchFilterList' :key='i' ref='match_name' @click="team(i)">{{item.leagueAddr}}</li>
+                        <li :class="$store.state.mark_showObj.leagueIds.split(',').indexOf(item.leagueId)!=-1?'filterActive':''" v-for='(item,i) in matchFilterList' :key='i' ref='match_name' @click="team(i)">{{item.leagueAddr}}</li>
                     </ul>
                     <div class="confim_btn">
                         <p @click='confim()'>确定</p>

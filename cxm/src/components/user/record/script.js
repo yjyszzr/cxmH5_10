@@ -35,7 +35,7 @@ export default {
         }, 700)
       },
       color(c){
-        if(c=='5'){
+        if(c=='5'||c=='6'){
           return '#ea5504'
         }else if(c=='2'||c=='4'){
           return '#c7c7c7'
@@ -64,13 +64,22 @@ export default {
         })
       },
       goDetail(c){
-        this.$router.push({
-          path: '/user/order',
-          query: {
-            id: c
-          },
-          replace: false
-        })
+        if(c.lotteryClassifyId=='2'){
+          this.$router.push({
+              path: '/daletou/programmeDetails',
+              query: {
+                  id: c.orderId,
+              }
+          })
+        }else{
+          this.$router.push({
+            path: '/user/order',
+            query: {
+              id: c.orderId
+            },
+            replace: false
+          })
+        }
       }
     },
     computed: {  

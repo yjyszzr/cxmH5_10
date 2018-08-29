@@ -13,6 +13,7 @@ const state = {
     skeletion: {
         consultInit: true,  //初始化骨架屏
     },
+    freebuyId: '6',
     //验证码初始化
     smsCode: {
         changeNumber: 60,
@@ -22,21 +23,18 @@ const state = {
     },
     findphone: '', //找回密码手机号
     userInfo: {}, //个人信息
-    freebuyId: '', //玩法页面区分
     mark_show: false, //控制遮罩
     mark_Reset: 0, //重制赛事数据
-    resultList: [], //赛果列表
+    resultList: {}, //赛果列表
     arrTime: [], //赛事截止时间
     mark_showObj: { //赛果遮罩
         mark_show_type: 1, //遮罩显示类型
         mark_dateVal: '', //选中日期值
-        matchFinish: '', //全部
         leagueIds: '', //更多条件
-        isAlreadyBuyMatch: '', //已购
+        lotteryResultTableIndex:'0', //tableIndex
     },
     matchObj: {}, //赛事列表
     matchSelectedList: [], //选中赛事处理
-    matchSaveInfo: {}, //付款接口数据保存
     mark_playObj: { //控制上啦遮罩
         mark_playBox: false,
         mark_play: '',
@@ -60,29 +58,36 @@ const state = {
         findActive: '1' //发现选中参数
     },
     xfbanklist: '',   //先锋银行卡列表
-    xfbankSelected: {},   //选中的银行卡信息 
-    //世界杯活动
-    world_cupObj: {
-        firstList: [],   //冠军竞猜
-        fsList: [],  //冠亚军竞猜
-        fsNum: 0,   //选中值计数
-        worldfliter: [],   //筛选选中值
-        fsplaceObj: {},  //初始化信息
-        world_tab: false
-    },
+    xfbankSelected: {},   //选中的银行卡信息
     user_account: {
         timeType: 2,  //账户明细日期
         timeShow: false  //控制actionSheet开关
     },
     timertz: '', //充值送弹窗定时器
     mark_showAc: false, //充值送弹窗
+    mark_shortcut: false, //首页引导弹窗
     pop: '',
+    daletouActive: '1',  //大乐透tab
+    runchartfilter: {    //走势图筛选条件
+        compute: 1,   //是否计算统计
+        count: 100,  //期数
+        drop: 1,  //是否显示遗漏
+        sort: 0    //排序方式
+    },
+    runchartData: {},  //走势图数据
 }
-
+let storageArr = []
+if (typeof localStorage === 'object') {
+    try{
+        storageArr = [createPersistedState({'key':'issue','paths':['userInfo','matchObj','matchSelectedList','freebuyId','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','chushihuaObj','findObj','daletouActive'],storage: window.sessionStorage})]
+    }catch(e){
+        
+    };
+}
 export default new Vuex.Store({
     state,
     actions,
     mutations,
-    plugins: [createPersistedState({'key':'issue','paths':['matchObj','matchSelectedList','freebuyId','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','chushihuaObj','findObj','world_cupObj'],storage: window.sessionStorage})]
+    plugins: storageArr
     //strict: true
 })

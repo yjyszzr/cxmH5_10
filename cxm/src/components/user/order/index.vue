@@ -10,7 +10,7 @@
             <div class="order_center">
                 <div class="subnav">
                     <div class="box1">
-                        <img src="../../../assets/img/img1.png" alt="">
+                        <img :src="orderObj.lotteryClassifyImg" alt="">
                         <!-- <img :src="orderObj.lotteryClassifyImg"> -->
                         <div>
                             <p>{{orderObj.lotteryClassifyName}}<span :style="{'color':orderObj.orderStatus=='5'?'#e95504':'#505050'}">{{orderObj.processResult}}</span></p>

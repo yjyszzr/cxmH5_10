@@ -4,11 +4,11 @@
 
 <template>
   <div class="inToplay">
-        <b>投注截止时间</b><br />
-        投注截止时间为赛前10分钟<br />
-周一至周五 开售时间：09:00 停售时间：23:47<br />
-周六至周日 开售时间：09:00 停售时间：次日00:50<br />
-<span style="color:#ea5504;">*世界杯期间投注的截止时间会随时变动</span><br />
+        <b>本平台投注截止时间</b><br />
+        本平台投注截止时间为赛前1小时<br />
+本平台周一至周五 开售时间：09:00 停售时间：23:00<br />
+本平台周六至周日 开售时间：09:00 停售时间：次日00:00<br />
+<span style="color:#ea5504;">*如遇重大国际赛事，投注截止时间会有所调整</span><br />
 <b style="margin-top:0.2em;display:block;">一、玩法说明</b>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;竞彩足球游戏（简称竞彩）是由国家体育总局彩票管理中心发行组织和销售，竞猜的比赛由国家体育总局彩票管理中心选定并向社会公布，竞彩足球比赛对阵主队在前，客队在后。<br />
 <table>
@@ -77,7 +77,7 @@ export default {
     },
     mounted(){
         window.getCxmTitle = function(){
-            return '天天体育·玩法帮助'
+            return '天空体育·玩法帮助'
         }
         this.$store.state.matchObj = {};
     }

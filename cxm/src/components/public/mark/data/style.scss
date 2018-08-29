@@ -11,6 +11,8 @@
     border-bottom: 1px solid #f0f0f0;
   }
   ul{
+    height: px2rem(800px);
+    overflow: auto;
     li{
       border-bottom: 1px dashed #f0f0f0;
       text-align: center;

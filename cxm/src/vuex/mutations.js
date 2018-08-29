@@ -81,17 +81,11 @@ const mutations = {
     MARKSHOWTYPE(state, data) {
         state.mark_showObj.mark_show_type = data
     },
-    MATCHFINISH(state, data) {
-        state.mark_showObj.matchFinish = data
-    },
     LEAGUEIDS(state, data) {
         state.mark_showObj.leagueIds = data
     },
-    ISAlREADYBUYMATCH(state, data) {
-        state.mark_showObj.isAlreadyBuyMatch = data
-    },
-    FREEBUYID(state, data) {
-        state.freebuyId = data
+    LOTTERYRESULTTABLEINDEX(state, data) {
+        state.mark_showObj.lotteryResultTableIndex = data
     },
     MATCHOBJ(state, data) {
         state.matchObj = data
@@ -103,8 +97,8 @@ const mutations = {
             state.matchSelectedList.push(data)
         }
     },
-    MATCHSAVEINFO(state, data) {
-        state.matchSaveInfo = data
+    FREEBUYID(state, data){
+        state.freebuyId = data
     },
     MARKPLAYBOX(state, data) {
         state.mark_playObj.mark_playBox = data
@@ -174,25 +168,27 @@ const mutations = {
     TIMESHOW(state, data){
         state.user_account.timeShow = data
     },
-    //世界杯
-    FSNUM(state, data){
-        if(data=='1'){
-            state.world_cupObj.fsNum ++
-        }else if(data=='0'){
-            state.world_cupObj.fsNum --
-        }else if(data=='2'){
-            state.world_cupObj.fsNum = 0
+    //大乐透tab切换
+    DALETOUACTIVE(state, data){
+        state.daletouActive = data
+    },
+    RUNCHARTFILTER(state, data){
+        switch(data.type){
+            case '1': state.runchartfilter.compute = data.value;break;
+            case '2': state.runchartfilter.count = data.value;break;
+            case '3': state.runchartfilter.drop = data.value;break;
+            case '4': state.runchartfilter.sort = data.value;break;
         }
     },
     USERACCOUNT(state, data){
         state.user_account.timeType = data
     },
-    FIRSTLIST(state, data){
-        state.world_cupObj.firstList = data
+    MARKSHORTCUT(state, data){
+        state.mark_shortcut = data
     },
-    FSLIST(state, data){
-        state.world_cupObj.fsList = data
-    },
+    RUNCHARTDATA(state, data){
+        state.runchartData = data
+    }
 }
 
 export default mutations

@@ -1,22 +1,27 @@
 <template>
     <div class="Header" @touchmove.prevent>
+        <!--头部-->
         <div class="headerTop" v-show="showTitle">
             <a @click="return_back()" class="go_return"></a>
-            <p class="headerText">彩小秘·{{title}}</p>
+            <p class="headerText"><span v-if="!$route.path.split('/')[2]">彩小秘·</span>{{title}}</p>
             <div class="filter" v-show="menuDisplay==true">
-                <span @click='filter()' v-if="$route.path.split('/')[2]=='singleNote'" class="iconfont icon-icon-21"></span>
-                <span v-if="$route.path.split('/')[2]=='singleNote'" @click="goInToplay()">帮助</span>
                 <span v-if="$route.path.split('/')[2]=='consult'" style="opacity:0;">分享</span>
                 <span v-if="$route.path.split('/')[2]=='consult'&&getUrl()" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
-                <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="djs">胆</span>
-                <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="djs">设置</span>
+                <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="danxm">胆</span>
+                <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="setting">设置</span>
                 <ul class="djs" @click="actionSheet()"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
-                    <li>{{timeTypeShow(this.timeTypeStatus)}}</li>
+                    <li class="tas">{{timeTypeShow(this.timeTypeStatus)}}<i style="font-size: 0.3rem;" class="iconfont icon-icon-22"></i></li>
                 </ul>
+                <!--比赛模块 头-->
+                <div class="lottery-select" v-if="$route.path.split('/')[1]=='lotteryResult'" >
+                    <span @click='data_time()' class="data-img" ><img src="./images/date@3x.png" alt=""></span>
+                    <span @click='more()'><i class="iconfont icon-icon-21"></i></span>
+                </div>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
         </div>
+        <!--头部tab-->
         <ul class="send" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='record'">
             <li :class="$store.state.recordTab==''||$store.state.recordTab=='1'?'cur':''"><p @click='curClick($event)'>全部</p></li>
             <li :class="$store.state.recordTab=='2'?'cur':''"><p @click='curClick($event)'>中奖</p></li>
@@ -48,14 +53,16 @@
                 <li><a href="" @click.prevent="custormAnchor('a3')">提现问题</a></li>
                 <li><a href="" @click.prevent="custormAnchor('a4')">购彩问题</a></li>
                 <li><a href="" @click.prevent="custormAnchor('a5')">中奖派奖问题</a></li>
+                <li><a href="" @click.prevent="custormAnchor('a6')">玩法帮助</a></li>
             </ul>
             <div v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'" style="height: 10px; background: #f1f1f1;width: 100%"></div>
         </div>
+        <!--比赛结果 未结束、已结束、我的比赛-->
         <ul class="list" v-if="$route.path.split('/')[1]=='lotteryResult'">
-            <li @click='data_time()'>{{$store.state.mark_showObj.mark_dateVal}}<i class="iconfont icon-icon-31"></i></li>
-            <li @click='more()'>更多条件<i class="iconfont icon-icon-31"></i></li>
-            <li @click='all($event)' v-if="flag==true">全部<i class="iconfont icon-icon-31"></i></li>
-            <li @click='all($event)' v-if="flag==false">已结束<i class="iconfont icon-icon-31"></i></li>
+            <li v-for="item in lotteryResultTable" @click="lotteryTable($event,item.key)" :key='item.key' :class="item.key==activeIndex?'findactive':''">
+                <p>{{item.name}}</p>
+                <!--<span class="iconNum">{{item.cont}}</span>-->
+            </li>
         </ul>
         <div class="swiper-container findTab" v-if="$route.path.split('/')[1]=='find'">
             <div class="swiper-wrapper">
@@ -64,17 +71,13 @@
                 </div>
             </div>
         </div>
-        <!-- //世界杯头部 -->
-        <ul class="world_top" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='world_matchList'">
-            <li><p @click="tabSilde(1,$event)" :class="!$route.path.split('/')[3]||$route.path.split('/')[3]=='worldwinner'?'worldActive':''">冠军竞猜</p></li>
-            <li><p @click="tabSilde(2,$event)" :class="$route.path.split('/')[3]&&$route.path.split('/')[3]=='fsplace'?'worldActive':''">冠亚军竞猜</p></li>
-        </ul>
-        <p class="wd_nav" v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='world_detail'">已选{{$store.state.world_cupObj.fsNum}}场比赛</p>
         <mt-actionsheet
                 :actions= "action"
                 cancelText=""
                 v-model="sheetVisible">
         </mt-actionsheet>
+
+
     </div>
 
 </template>
@@ -93,6 +96,8 @@
         },
         data() {
             return {
+
+                activeNames: ['1'],//默认转开第一个
                 flag: true,
                 action:[
                     {
@@ -116,10 +121,31 @@
                         method:this.recentMarchs
                     }
                 ],
-                sheetVisible: false
+                sheetVisible: false,
+                lotteryResultTable:[
+                    {
+                        name:"未结束",
+                        cont:0,
+                        key:'0'
+                    },
+                    {
+                        name:"已结束",
+                        cont:0,
+                        key:'1'
+                    },
+                    {
+                        name:"我的比赛",
+                        cont:0,
+                        key:'2'
+                    }
+                ],
+                resultBage:{}
             };
         },
         methods: {
+            handleChange(val) {
+                console.log(val);
+            },
             timeTypeShow(c){
                 switch (c){
                     case 0 : return '全部'
@@ -131,6 +157,13 @@
             },
             actionSheet:function () {
                 this.sheetVisible = true
+                let liList = $('.mint-actionsheet-listitem')
+                liList.forEach(item => {
+                    item.className='mint-actionsheet-listitem'
+                    if(item.innerText==$('.tas')[0].innerText){
+                        item.className='mint-actionsheet-listitem liActive'
+                    }
+                });
             },
             whole:function () {
                 this.$store.dispatch("changeTimeType", 0);
@@ -149,9 +182,11 @@
             },
             return_back() {
                 if (this.$route.path.split("/")[2]) {
-                    if (this.$route.path.split("/")[2] == "singleNote") {
-                        this.$store.dispatch("getmatchSelectedList", []);
-                    } else if (
+                    if(this.$route.path.split("/")[2] == "quickinfo"&&!this.$route.query.from){
+                        location.href = 'caixm://caixiaomi.net'
+                        return false;
+                    }
+                    if (
                         location.href.split("?")[1] &&
                         location.href.split("?")[1].split("=")[0] == "orderStatus"
                     ) {
@@ -166,12 +201,6 @@
             },
             datePd(c) {
                 return datefilter(Number(c * 1000), 3);
-            },
-            goInToplay() {
-                this.$router.push({
-                    path: "/freebuy/inToplay",
-                    replace: false
-                });
             },
             onGal(){
                 this.$router.push({
@@ -192,10 +221,6 @@
                 if (anchorElement) {
                     anchorElement.scrollIntoView();
                 }
-            },
-            filter() {
-                this.$store.dispatch("getMarkShow", true);
-                this.$store.dispatch("getMarkShowType", "2");
             },
             colMenu(c) {
                 if (this.deleteFlag == false) {
@@ -267,27 +292,11 @@
             data_time() {
                 this.$store.dispatch("getMarkShow", true);
                 this.$store.dispatch("getMarkShowType", 1);
+                // this.router.push({path:'/lotteryResult'})
             },
             more() {
                 this.$store.dispatch("getMarkShow", true);
                 this.$store.dispatch("getMarkShowType", 2);
-            },
-            all(c) {
-                if (c.target.innerText == "全部") {
-                    this.flag = false;
-                    this.$store.dispatch("getMatchFinish", "1");
-                } else {
-                    this.flag = true;
-                    this.$store.dispatch("getMatchFinish", "");
-                }
-                Indicator.open();
-                let data = {
-                    dateStr: this.$store.state.mark_showObj.mark_dateVal,
-                    isAlreadyBuyMatch: this.$store.state.mark_showObj.isAlreadyBuyMatch,
-                    leagueIds: this.$store.state.mark_showObj.leagueIds,
-                    matchFinish: this.$store.state.mark_showObj.matchFinish
-                };
-                this.$store.dispatch("getResultList", data);
             },
             getUrl() {
                 if (getUrlStr("frz", location.href) == undefined) {
@@ -308,39 +317,16 @@
                     this.$store.dispatch("changeFinActive",s)
                 }
             },
-            tabSilde(c,s){
-                $('.worldActive').removeClass('worldActive')
-                s.target.className= 'worldActive'
-                this.$store.state.world_cupObj.world_tab = false
-                if(c==1){
-                    this.$store.dispatch("changefsNum", '2');
-                    if(getUrlStr('showtitle',location.href)=='1'){
-                        this.$router.replace({
-                            path: '/activity/world_matchList/worldwinner',
-                            query:{
-                                'showtitle': '1'
-                            }
-                        })
-                    }else{
-                        this.$router.replace({
-                            path: '/activity/world_matchList/worldwinner'
-                        })
-                    }
-                }else{
-                    this.$store.dispatch("changefsNum", '2');
-                    if(getUrlStr('showtitle',location.href)=='1'){
-                        this.$router.replace({
-                            path: '/activity/world_matchList/fsplace',
-                            query:{
-                                'showtitle': '1'
-                            }
-                        })
-                    }else{
-                        this.$router.replace({
-                            path: '/activity/world_matchList/fsplace'
-                        })
-                    }
+            lotteryTable(c,s){
+                Indicator.open()
+                this.$store.commit("LOTTERYRESULTTABLEINDEX",s)
+                let data={
+                    dateStr: this.$store.state.mark_showObj.mark_dateVal,
+                    leagueIds: this.$store.state.mark_showObj.leagueIds,
+                    type:this.$store.state.mark_showObj.lotteryResultTableIndex,
                 }
+                Indicator.open();
+                this.$store.dispatch("getResultList", data);
             }
         },
         computed: {
@@ -350,6 +336,9 @@
             zxCollectionFlag() {
                 return this.$store.state.zxCollectionFlag;
             },
+            activeIndex(){
+                return this.$store.state.mark_showObj.lotteryResultTableIndex;
+            },
             findTab() {
                 return this.$store.state.findObj.findTab;
             },
@@ -358,6 +347,9 @@
             },
             timeTypeStatus(){
                 return this.$store.state.user_account.timeType;
+            },
+            resultList(){
+                return this.$store.state.resultList;
             }
         },
         watch:{
@@ -365,6 +357,19 @@
                 if(from.path=='/user/account'){
                     this.sheetVisible = false
                 }
+            },
+            resultList(a,b){
+                this.lotteryResultTable.forEach(item => {
+                      if(item.name=='未结束'){
+                          item.cont =  a.notfinishCount
+                      }
+                      else if(item.name=='已结束'){
+                          item.cont =  a.finishCount
+                      }
+                      else if(item.name=='我的比赛'){
+                          item.cont =  a.matchCollectCount
+                      }
+                });
             }
         }
     };
@@ -448,7 +453,34 @@
                     flex: 1;
                     display: flex;
                     justify-content: flex-end;
+                    margin-left: px2rem(-30px);
+                    .tas{
+                        padding-right: px2rem(30px);
+                        .icon-icon-22{
+                            margin-left: px2rem(4px);
+                        }
+                    }
+                }
+                .setting,.danxm{
+                    padding: 0;
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-end;
                     padding-right: px2rem(30px);
+                }
+                .lottery-select{
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    .data-img{
+                        img{
+                            height: px2rem(30px);
+                            width: px2rem(30px);
+                        }
+                    }
+                }
+                .daletou-menu{
+                    margin-left: 60%;
                 }
             }
             .headerText {
@@ -541,7 +573,7 @@
                 text-align: center;
                 line-height: px2rem(57px);
                 margin-top: px2rem(36px);
-                margin-right: px2rem(25px);
+                margin-right: px2rem(20px);
                 a {
                     color: #fff;
                 }
@@ -564,7 +596,7 @@
                 justify-content: center;
                 align-items: center;
                 flex: 1;
-                height: px2rem(88px);
+                line-height: px2rem(88px);
                 text-align: center;
                 border-right: 1px solid #f1f1f1;
                 color: #9f9f9f;
@@ -576,6 +608,11 @@
                     right: 0;
                     position: absolute;
                     bottom: 0;
+                }
+                p{
+                    box-sizing: border-box;
+                    height: px2rem(84px);
+                    font-size: px2rem(26px);
                 }
             }
         }
@@ -598,39 +635,35 @@
             }
         }
         .findactive {
-            color: #ea5504;
+            color: #ea5504!important;
             p {
                 border-bottom: px2rem(4px) solid #ea5504;
+            }
+            span {
+                background-color: rgba(200,85,4,.6);
             }
         }
         .swiper-slide:last-of-type {
             background: none;
         }
-        .world_top{
-            display: flex;
-            background: white;
-            height: px2rem(88px);
-            li{
-                flex: 1;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                p{
-                    height: 100%;
-                    font-size: px2rem(28px);
-                    color: #505050;
-                    line-height: px2rem(88px);
-                    box-sizing: border-box;
-                }
-                .worldActive{
-                    color: #ea5504;
-                    border-bottom: 2px solid #ea5504;
-                }
-            }
-            li:first-of-type{
-                background: url('../../../assets/img/freebuy_img/line3.png') no-repeat right center;
-                background-size: 1px px2rem(50px);
-            }
+
+        .icon-img{
+            display: inline-block;
+            height: px2rem(30px);
+            width: px2rem(30px);
+            background: url('./images/date@3x.png') no-repeat center;
+            background-size: 100%;
+        }
+        .iconNum{
+            margin-left: px2rem(8px);
+            display: inline-block;
+            font-size: px2rem(16px);
+            background-color: #9f9f9f;
+            color: #ffffff;
+            line-height: px2rem(30px);
+            width: px2rem(30px);
+            text-align: center;
+            border-radius: px2rem(5px);
         }
     }
 </style>

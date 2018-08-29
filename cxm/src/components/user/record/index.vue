@@ -7,10 +7,9 @@
     <div class="wrap">
         <section>
             <!-- <v-userHeader :title='"投注明细"'></v-userHeader> -->
-
             <mt-loadmore :bottom-method="loadBottom" :bottom-distance='60' :auto-fill="false" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleTopChange" @scroll='handleScroll($event)'>
                 <div class="section cont" v-for="(item,i) in recordList" :key='i'>
-                    <a @click="goDetail(item.orderId)">
+                    <a @click="goDetail(item)">
                         <p class="picker_p1">{{item.lotteryName}}<span :style="{'color':color(item.orderStatus)}">{{item.orderStatusDesc}}<i class="iconfont icon-icon-14"></i></span></p>
                         <p class="picker_p2">¥ {{item.ticketAmount}}</p>
                         <p class="picker_p3">{{item.payTime}}<span :style="{'color':color(item.orderStatus)}">{{item.orderStatusInfo}}</span></p>
