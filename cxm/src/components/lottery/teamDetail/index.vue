@@ -202,12 +202,12 @@
                             未来赛事<span>{{ckxqObj.matchInfo.homeTeamAbbr}}</span>
                         </div>
                         <table>
-                            <th>
+                            <tr>
                                 <td>赛事</td>
                                 <td>日期</td>
                                 <td>主队</td>
                                 <td>客队</td>
-                            </th>
+                            </tr>
                             <tr v-for="(item,i) in ckxqObj.hFutureMatchInfos" :key='i'>
                                 <td>{{item.leagueAbbr}}</td>
                                 <td>{{item.matchDate}}</td>
@@ -224,12 +224,12 @@
                             未来赛事<span>{{ckxqObj.matchInfo.visitingTeamAbbr}}</span>
                         </div>
                         <table>
-                            <th>
+                            <tr>
                                 <td>赛事</td>
                                 <td>日期</td>
                                 <td>主队</td>
                                 <td>客队</td>
-                            </th>
+                            </tr>
                             <tr v-for="(item,i) in ckxqObj.vFutureMatchInfos" :key='i'>
                                 <td>{{item.leagueAbbr}}</td>
                                 <td>{{item.matchDate}}</td>

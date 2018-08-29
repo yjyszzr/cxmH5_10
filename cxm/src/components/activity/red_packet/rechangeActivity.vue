@@ -50,7 +50,8 @@
             }
         },
         created(){
-
+            this.getList()
+            this.searchActivity()
         },
         methods:{
             //获取列表
@@ -61,6 +62,7 @@
                 }
                 api.toRechange(data)
                     .then(res => {
+                        console.log(res);
                         if (res.code == 0) {
                             this.packet = res.data
                             this.rechargeCardList = res.data.rechargeCardList
@@ -118,8 +120,7 @@
             }
         },
         mounted(){
-            this.getList()
-            this.searchActivity()
+
         },
     }
 </script>
