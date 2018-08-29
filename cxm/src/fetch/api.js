@@ -7,7 +7,7 @@ import {
     Indicator
 } from 'mint-ui'
 import router from '../router/index'
-import {getUrlStr} from '../util/common'
+import {getUrlStr,nativeApp} from '../util/common'
 // axios 配置
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
@@ -45,20 +45,8 @@ axios.interceptors.response.use((res) => {
                 Toast(res.data.msg)
             }
         } else if (res.data.code == 600) {
-            if(getUrlStr('from',location.href)=='app'){
-                location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5'
-            }else{
-                localStorage.clear()
-                if(res.config.url.indexOf('match/queryMatchResultNew') != -1||res.config.url.indexOf('recharge/countUserRecharge') != -1||res.config.url.indexOf('collect/add') != -1||res.config.url.indexOf('match/nSaveBetInfo') != -1||res.config.url.indexOf('lotto/saveBetInfo') != -1){
-                    router.push({
-                        path: '/user/sms',
-                    })
-                }else{
-                    router.replace({
-                        path: '/user/sms',
-                    })
-                }
-            }
+            localStorage.clear()
+            nativeApp({'methodName':'login'})
         }
         Indicator.close()
     }

@@ -1,7 +1,7 @@
 <template>
     <!--2018.7.18-->
     <div id="app">
-        <v-headertop :title='title()' :showTitle='showTitle()' :menu-display="menuDisplay()"
+        <v-headertop :title='title()' :menu-display="menuDisplay()"
                      v-show='isShowHeader'></v-headertop>
         <mainSkeleton v-show="!consultinit"></mainSkeleton>
         <transition name="fade">
@@ -9,16 +9,12 @@
         </transition>
         <transition name="fade">
             <div id='content' class="content" v-show='consultinit'>
-                <!-- <transition  mode="out-in" enter-active-class='bounce-enter' leave-active-class="bounce-leave">
-                    <router-view></router-view>
-                </transition>   -->
                 <keep-alive>
                     <router-view v-if="$route.meta.keepAlive"></router-view>
                 </keep-alive>
                 <router-view v-if="!$route.meta.keepAlive"></router-view>
             </div>
         </transition>
-        <v-footer v-show='showBar()'></v-footer>
         <transition name="fade">
             <v-mark v-if="this.$store.state.mark_show"></v-mark>
         </transition>
@@ -31,7 +27,6 @@
 
 <script>
     import HeaderTop from "./components/public/header/Header";
-    import footer from "./components/public/footer/footer";
     import mark from "./components/public/mark/mark";
     import pmark from "./components/public/mark/match_playut/mark_playut";
     import popup from "./components/activity/red_packet/popup/index"
@@ -40,12 +35,10 @@
     import {getUrlStr} from './util/common'
     import mainSkeleton from './components/public/mainSkeleton/main.skeleton.vue'
     import shortcut from './components/index/shortcut.vue'
-    // import LocalScrollFix from 'Localscrollfix'
     export default {
         name: "App",
         components: {
             "v-headertop": HeaderTop,
-            "v-footer": footer,
             "v-mark": mark,
             "v-pmark": pmark,
             "v-popup": popup,
@@ -237,25 +230,6 @@
                     return true;
                 } else {
                     return false;
-                }
-            },
-            showTitle() {
-                // if ((window.location.href.split("?")[1]&&getUrlStr('showtitle',location.href)=='1')||wxPd()) {
-                //    return false;
-                // } else {
-                //    return true;
-                // }
-                if ((window.location.href.split("?")[1] && getUrlStr('showtitle', location.href) == '1')||this.$route.name=='404' ) {
-                    return false;
-                } else {
-                    return true;
-                }
-            },
-            showBar() {
-                if (getUrlStr('showBar', location.href) == '1') {
-                    return false;
-                } else {
-                    return true;
                 }
             }
         },

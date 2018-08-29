@@ -1,6 +1,7 @@
 import api from '../../../fetch/api'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
+import {nativeApp,getCsUrl} from '../../../util/common.js'
 export default {
     name: 'record',
     data () {
@@ -20,7 +21,12 @@ export default {
 			Indicator.open()
     },
     created(){
-      
+      window.actionMessage = (arg)=> {
+          localStorage.setItem('token', JSON.parse(arg).token)
+          this.recordFetch()
+      }
+      nativeApp({'methodName':'showTitle','title':'投注记录'})
+      nativeApp({'methodName':'getToken'})
     },
     methods:{
       handleTopChange(status) {
@@ -65,20 +71,9 @@ export default {
       },
       goDetail(c){
         if(c.lotteryClassifyId=='2'){
-          this.$router.push({
-              path: '/daletou/programmeDetails',
-              query: {
-                  id: c.orderId,
-              }
-          })
+          nativeApp({'methodName':'pushUrl','url':getCsUrl()+'/daletou/programmeDetails?cxmxc=scm&type=1&id='+c.orderId})
         }else{
-          this.$router.push({
-            path: '/user/order',
-            query: {
-              id: c.orderId
-            },
-            replace: false
-          })
+          nativeApp({'methodName':'pushUrl','url':getCsUrl()+'/user/order?cxmxc=scm&type=1&id='+c.orderId})
         }
       }
     },
@@ -116,38 +111,5 @@ export default {
           this.orderStatus = this.$store.state.recordTab
         }
       }
-      this.recordFetch()
-    },
-    // activated(){
-    //   document.getElementById('content').scrollTop = this.$root.orderScrolltop
-    //   //sessionStorage.removeItem('orderScrolltop')
-    //   if(sessionStorage.getItem('firstIn')==1){
-    //     this.firstIn = true
-    //   }else{
-    //     this.firstIn = false
-    //   }
-    //   if(this.firstIn){
-    //    // console.log(this.recordList)
-    //     Indicator.open();
-    //     //console.log(this.firstIn)
-    //     setTimeout(()=>{
-    //     sessionStorage.removeItem('firstIn')
-    //     this.recordList = []
-    //     this.orderStatus = '-1'
-    //     this.pageNum = 1
-    //     this.loadText = '上拉加载更多...'
-    //     this.allLoaded = false
-    //     this.recordFetch()
-    //     },50)
-    //   }
-    // },
-    // beforeRouteEnter(to, from, next) {
-    //   if(from.path=='/user'){
-    //     next(vm=>{
-    //       vm.recordList = []
-    //     }) 
-    //   }else{
-    //     next()
-    //   }
-    // }
+    }
 }
