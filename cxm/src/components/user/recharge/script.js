@@ -82,7 +82,6 @@ export default {
             api.recharge(data)
                 .then(res => {
                     if (res.code == 0) {
-                        //console.log(res)
                         localStorage.setItem('rval', this.recharge_val)
                         if(s=='rb'){
                             localStorage.setItem('payLogId', res.data.payLogId)
@@ -112,6 +111,10 @@ export default {
                             location.replace(res.data.payUrl)
                         }else if(s=='xf'){
                             //Toast('功能暂未开放')
+                            if(this.czobj.isHaveRechargeAct=='1'&&this.recharge_val>=10){
+                                localStorage.setItem('payLogId', res.data.payLogId)
+                                localStorage.setItem('activefrom',this.activefrom)
+                            }
                             this.$router.push({
                                 path: '/user/quickinfo',
                                 query:{

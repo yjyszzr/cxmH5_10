@@ -38,7 +38,7 @@
 
 <script>
     import api from '../../../fetch/api'
-    import { Popup,Toast} from 'mint-ui';
+    import { Popup,Toast,Indicator} from 'mint-ui';
     export default {
         name: "rechange-activity",
         data(){
@@ -49,7 +49,10 @@
                 activityOwn:'',//活动资格 是否有资格:0-代表无资格 1-代表有资格
             }
         },
-        created(){
+        created() {
+            window.actionMessage = function (arg) {
+                localStorage.setItem('token', JSON.parse(arg).token)
+            }
             this.getList()
         },
         methods:{
@@ -69,6 +72,7 @@
             },
             //查询活动资格
             searchActivity(item){
+                Indicator.open()
                 var that = this
                 let data = {
                     act_id: "3",

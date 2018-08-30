@@ -45,7 +45,7 @@ axios.interceptors.response.use((res) => {
                 Toast(res.data.msg)
             }
         } else if (res.data.code == 600) {
-            if(getUrlStr('from',location.href)=='app'){
+            if(getUrlStr('from',location.href)=='app'||getUrlStr('cfrom',location.href)=='app'){
                 location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5'
             }else{
                 localStorage.clear()
