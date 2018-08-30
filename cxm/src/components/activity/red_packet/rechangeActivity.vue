@@ -13,7 +13,7 @@
                             <p>{{item.realValue}}元</p>
                         </div>
                         <p class="center-mes">{{item.description}}</p>
-                        <p class="reChang-btn" @click="rechangeBtn(item)"><img src="./image/nowbtn.png" alt="立即充值"></p>
+                        <p class="reChang-btn" @click="searchActivity(item)"><img src="./image/nowbtn.png" alt="立即充值"></p>
                     </li>
                 </ul>
             </div>
@@ -51,7 +51,6 @@
         },
         created(){
             this.getList()
-            this.searchActivity()
         },
         methods:{
             //获取列表
@@ -62,7 +61,6 @@
                 }
                 api.toRechange(data)
                     .then(res => {
-                        console.log(res);
                         if (res.code == 0) {
                             this.packet = res.data
                             this.rechargeCardList = res.data.rechargeCardList
@@ -70,7 +68,7 @@
                     })
             },
             //查询活动资格
-            searchActivity(){
+            searchActivity(item){
                 var that = this
                 let data = {
                     act_id: "3",
@@ -80,6 +78,18 @@
                     .then(res => {
                         if (res.code == 0) {
                            that.activityOwn = res.data.qfRst
+                            if(res.data.qfRst=='1'){
+                                this.$router.push({
+                                    path: '/user/recharge',
+                                    query: {
+                                        'price': item.realValue,
+                                        'description': item.description
+                                    },
+                                    replace: false
+                                })
+                            }else {
+                                Toast('请先领取资格后在充值！')
+                            }
                         }
                     })
             },
@@ -95,29 +105,13 @@
                     }
                     api.reaceiveActQF(data)
                         .then(res => {
-                            console.log(res);
-                            if (res.code == 0) {
-                                that.activityOwn=='1'
+                            if (res.code == '301034') {
+                                that.activityOwn='1'
                             }
                         })
                 }
 
             },
-            rechangeBtn(item){
-                if(this.activityOwn=='1'){
-                    this.$router.push({
-                        path: '/user/recharge',
-                        query: {
-                            'price': item.realValue,
-                            'description': item.description
-                        },
-                        replace: false
-                    })
-                }else {
-                    Toast('请先领取资格后在充值！')
-                }
-
-            }
         },
         mounted(){
 

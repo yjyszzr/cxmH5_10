@@ -71,7 +71,7 @@ export default {
         
     },
     beforeRouteEnter(to, from, next){
-      if(from.path=='/lotteryResult'||from.path=='/freebuy/cathectic'||from.path=='/lottery/daletou/touZhuConfirm'||from.path=='/lottery/daletou/runchart'||from.path=='/user/recharge'||from.path=='/activity/jingcai'||from.path=='/activity/oldbeltyd'){
+      if(from.path=='/lotteryResult'||from.path=='/freebuy/cathectic'||from.path=='/lottery/daletou/touZhuConfirm'||from.path=='/lottery/daletou/runchart'||from.path=='/user/recharge'||from.path=='/activity/jingcai'||from.path=='/activity/oldbeltyd'||from.path=='/activity/rechangeActivity'){
           next(vm=>{
                vm.returnGo =  true 
           })
