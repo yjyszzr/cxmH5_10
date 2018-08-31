@@ -184,7 +184,7 @@
                 </div>
             </div>
             <v-activity :activity='activity'></v-activity>
-            <!--<router-link to='/activity/rechangeActivity'>啦啦啦啦啦(测试入口)</router-link>-->
+            <!--<router-link to='http://localhost:3000/daletou/selectnum/selectnumber'>啦啦啦啦啦(测试入口)</router-link>-->
             <div class="section center">
                 <ul>
                     <li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.redirectUrl,item)">

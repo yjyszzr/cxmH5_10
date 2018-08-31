@@ -4,7 +4,7 @@
         <div class="head">
             <span class="back-img" @click="goBack()"><img src="../../assets/img/ret.png" alt=""></span>
             <div class="head-text">
-                <span>微信支付</span>
+                <span>支付宝支付</span>
             </div>
             <div>
                 <span></span>
@@ -14,13 +14,13 @@
             <div class="img-box" id="qrcode">
                 <img :src='imgUrl' alt="">
             </div>
-            <p class="p1">请将二维码保存到相册,然后打开微信扫描二维码进行支付</p>
+            <p class="p1">请将二维码保存到相册,然后打开支付宝扫描二维码进行支付</p>
             <p class="p2">*支付时请注意收款方为cxm</p>
             <div class="help">
                 <img src="./img/ali_06.png" alt="">
-                <img src="./img/WechatIMG279_03.jpg" alt="">
-                <img src="./img/WechatIMG279_06.jpg" alt="">
-                <img src="./img/WechatIMG279_08.jpg" alt="">
+                <img src="./img/ali_03.jpg" alt="">
+                <img src="./img/ali_06.jpg" alt="">
+                <img src="./img/ali_08.jpg" alt="">
             </div>
         </div>
 
@@ -53,7 +53,7 @@
                 api.base64Id(data)
                     .then(res => {
                         if (res.code == 0) {
-                           this.imgUrl =  res.data.base64Url
+                            this.imgUrl =  res.data.base64Url
                         }
                     })
             },

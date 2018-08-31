@@ -502,7 +502,7 @@ export default {
     shareMyLinks(params) {
         return fetchPost('/activity/dlOldBeltNew/shareMyLinks', params)
     },
-    //微信支付
+    //微信支付获取二维码
     base64Id(params) {
         return fetchPost('/payment/payment/urlBase64', params)
     },

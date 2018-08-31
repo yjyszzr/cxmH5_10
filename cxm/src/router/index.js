@@ -261,9 +261,19 @@ const router = new Router({
           cname:'二维码支付',
           meta: {
               requireAuth: true,
-              title: '二维码支付'
+              title: '微信支付'
           },
           component: resolve => require(['@/components/freebuy/ewmPay.vue'], resolve)
+      },
+      {
+          path: '/users/freebuy/ewmAliPay',
+          name: 'ewmAliPay',
+          cname:'二维码支付',
+          meta: {
+              requireAuth: true,
+              title: '支付宝支付'
+          },
+          component: resolve => require(['@/components/freebuy/ewmAliPay.vue'], resolve)
       },
       {
           path: '/lotteryResult',
