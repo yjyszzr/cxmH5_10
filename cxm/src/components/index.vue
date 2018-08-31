@@ -301,7 +301,8 @@
         },
         methods: {
             shortClick() {
-                this.$store.commit('MARKSHORTCUT', true)
+                location.href = 'http://www.baidu.com'
+                //this.$store.commit('MARKSHORTCUT', true)
             },
             goFreebuy(url, s) {
                 if (s.status == '1') {
@@ -392,37 +393,39 @@
 
         },
         mounted() {
-            this.detect = detect()
-            // location.href = 'caixm://caixiaomi.net'
-            localStorage.removeItem("tab");
-            document
-                .querySelector("#content")
-                .addEventListener("scroll", this.handleScroll);
-            let data = {};
-            api.getHallData(data).then(res => {
-                //console.log(res)
-                if (res.code == 0) {
-                    this.bannerList = res.data.dlHallDTO.navBanners;
-                    this.activity = res.data.dlHallDTO.activity;
-                    this.y_Carousel = res.data.dlHallDTO.winningMsgs;
-                    this.dlPlay = res.data.dlHallDTO.lotteryClassifys;
-                    if (this.y_Carousel.length == 0) {
-                        this.show = true;
-                        this.hide = false;
-                    } else {
-                        this.show = false;
-                        this.hide = true;
-                        setInterval(_ => {
-                            if (this.activeIndex < this.y_Carousel.length - 1) {
-                                this.activeIndex += 1;
-                            } else {
-                                this.activeIndex = 0;
-                            }
-                        }, 3000);
+            window.addEventListener('pageshow', ()=> {
+                this.detect = detect()
+                // location.href = 'caixm://caixiaomi.net'
+                localStorage.removeItem("tab");
+                document
+                    .querySelector("#content")
+                    .addEventListener("scroll", this.handleScroll);
+                let data = {};
+                api.getHallData(data).then(res => {
+                    //console.log(res)
+                    if (res.code == 0) {
+                        this.bannerList = res.data.dlHallDTO.navBanners;
+                        this.activity = res.data.dlHallDTO.activity;
+                        this.y_Carousel = res.data.dlHallDTO.winningMsgs;
+                        this.dlPlay = res.data.dlHallDTO.lotteryClassifys;
+                        if (this.y_Carousel.length == 0) {
+                            this.show = true;
+                            this.hide = false;
+                        } else {
+                            this.show = false;
+                            this.hide = true;
+                            setInterval(_ => {
+                                if (this.activeIndex < this.y_Carousel.length - 1) {
+                                    this.activeIndex += 1;
+                                } else {
+                                    this.activeIndex = 0;
+                                }
+                            }, 3000);
+                        }
                     }
-                }
-            });
-            this.fetchData();
+                });
+                this.fetchData();
+            })
         },
         activated() {
             document.getElementById("content").scrollTop = this.$root.consultScrolltop;
