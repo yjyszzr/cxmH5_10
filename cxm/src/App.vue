@@ -23,9 +23,6 @@
             <v-mark v-if="this.$store.state.mark_show"></v-mark>
         </transition>
         <v-pmark v-show="this.$store.state.mark_playObj.mark_playBox"></v-pmark>
-        <transition name="fade">
-            <v-popup v-if="this.$store.state.mark_showAc"></v-popup>
-        </transition>
     </div>
 </template>
 
@@ -34,12 +31,12 @@
     import footer from "./components/public/footer/footer";
     import mark from "./components/public/mark/mark";
     import pmark from "./components/public/mark/match_playut/mark_playut";
-    import popup from "./components/activity/red_packet/popup/index"
     import {ScrollFix} from './util/common'
     import {wxPd} from './util/common'
-    import {getUrlStr} from './util/common'
+    import {getUrlStr,isWebview} from './util/common'
     import mainSkeleton from './components/public/mainSkeleton/main.skeleton.vue'
     import shortcut from './components/index/shortcut.vue'
+    import { Toast } from 'mint-ui'
     // import LocalScrollFix from 'Localscrollfix'
     export default {
         name: "App",
@@ -48,7 +45,6 @@
             "v-footer": footer,
             "v-mark": mark,
             "v-pmark": pmark,
-            "v-popup": popup,
             "v-shortcut": shortcut,
             mainSkeleton
         },
@@ -187,6 +183,8 @@
                             return "修改登录密码";
                         case 'joinWeChat':
                             return "彩民交流群";
+                        case 'rechangeActivity':
+                            return "充值送红包";
                             //大乐透
                         case 'playHelp':
                             return '玩法帮助';
@@ -245,7 +243,7 @@
                 // } else {
                 //    return true;
                 // }
-                if ((window.location.href.split("?")[1] && getUrlStr('showtitle', location.href) == '1')||this.$route.name=='404' ) {
+                if (isWebview()||this.$route.name=='404') {
                     return false;
                 } else {
                     return true;

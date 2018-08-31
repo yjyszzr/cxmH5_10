@@ -1,6 +1,7 @@
 import api from '../../../fetch/api'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
+import {nativeApp,getCsUrl,isWebview} from '../../../util/common.js'
 export default {
     name: 'record',
     data () {
@@ -64,21 +65,29 @@ export default {
         })
       },
       goDetail(c){
-        if(c.lotteryClassifyId=='2'){
-          this.$router.push({
-              path: '/daletou/programmeDetails',
+        if(!isWebview()){
+          if(c.lotteryClassifyId=='2'){
+            this.$router.push({
+                path: '/daletou/programmeDetails',
+                query: {
+                    id: c.orderId,
+                }
+            })
+          }else{
+            this.$router.push({
+              path: '/user/order',
               query: {
-                  id: c.orderId,
-              }
-          })
+                id: c.orderId
+              },
+              replace: false
+            })
+          }
         }else{
-          this.$router.push({
-            path: '/user/order',
-            query: {
-              id: c.orderId
-            },
-            replace: false
-          })
+          if(c.lotteryClassifyId=='2'){
+            nativeApp({'methodName':'pushUrl','url':getCsUrl()+'/daletou/programmeDetails?cxmxc=scm&type=1&id='+c.orderId})
+          }else{
+            nativeApp({'methodName':'pushUrl','url':getCsUrl()+'/user/order?cxmxc=scm&type=1&id='+c.orderId})
+          }
         }
       }
     },
@@ -109,6 +118,16 @@ export default {
       }
     },
     mounted(){
+      if(!isWebview()){
+        this.recordFetch()
+      }else{
+        window.actionMessage = (arg)=> {
+            localStorage.setItem('token', JSON.parse(arg).token)
+            this.recordFetch()
+        }
+        nativeApp({'methodName':'showTitle','title':'投注记录'})
+        nativeApp({'methodName':'getToken'})
+      }
       if(this.$store.state.recordTab!=''&&this.$store.state.recordTab!='1'){
         if(this.$store.state.recordTab=='2'){
           this.orderStatus = '5'
@@ -116,7 +135,6 @@ export default {
           this.orderStatus = this.$store.state.recordTab
         }
       }
-      this.recordFetch()
     },
     // activated(){
     //   document.getElementById('content').scrollTop = this.$root.orderScrolltop

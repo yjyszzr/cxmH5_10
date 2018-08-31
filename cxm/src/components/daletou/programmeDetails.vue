@@ -365,7 +365,7 @@
     import {Indicator} from 'mint-ui';
     import SelectionBox from "./images/SelectionBox1@3x.png"
     import Selected from "./images/Selected1@3x.png"
-
+    import {nativeApp,isWebview} from '../../util/common.js'
     export default {
         name: "programmeDetails",
         data() {
@@ -385,6 +385,7 @@
             }
         },
         created(){
+            nativeApp({'methodName':'showTitle','title':'方案详情'})
             this.getLottoOrderDetailFn()
         },
         mounted(){},
@@ -533,9 +534,13 @@
             },
             //跳转到订单详情
             goSelectNum(){
-                this.$router.push({
-                    path:'/lottery/daletou/selectnumber'
-                })
+                if(isWebview()){
+                    nativeApp({'methodName':'pushUrl','url':'http://caixiaomi.net?cxmxc=scm&type=3&id='+this.orderObj.lotteryClassifyId})
+                }else{
+                    this.$router.push({
+                        path:'/lottery/daletou/selectnumber'
+                    })
+                }
             }
         },
         beforeRouteLeave(to, from, next) {

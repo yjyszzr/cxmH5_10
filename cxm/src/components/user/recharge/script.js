@@ -102,19 +102,11 @@ export default {
                             location.href = res.data.payUrl + '&h5ck=' + encodeURIComponent(url)
                         }else if(s=='wx'){
                             //location.href = './static/payCallBack/payCallBack.html?logid='+res.data.payLogId
-                            if(this.czobj.isHaveRechargeAct=='1'&&this.recharge_val>=10){
-                                localStorage.setItem('payLogId', res.data.payLogId)
-                                localStorage.setItem('activefrom',this.activefrom)
-                            }
                             //location.href = res.data.payUrl
                             // console.log(res.data.payUrl)
                             location.replace(res.data.payUrl)
                         }else if(s=='xf'){
                             //Toast('功能暂未开放')
-                            if(this.czobj.isHaveRechargeAct=='1'&&this.recharge_val>=10){
-                                localStorage.setItem('payLogId', res.data.payLogId)
-                                localStorage.setItem('activefrom',this.activefrom)
-                            }
                             this.$router.push({
                                 path: '/user/quickinfo',
                                 query:{
@@ -122,6 +114,8 @@ export default {
                                     from: 'h5'
                                 }
                             })
+                        }else{
+                            location.replace(res.data.payUrl)
                         }
                     }
             })

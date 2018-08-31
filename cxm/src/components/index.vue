@@ -247,46 +247,6 @@
         },
         beforeCreate() {
             Indicator.open();
-            if (
-                localStorage.getItem("activefrom") &&
-                localStorage.getItem("payLogId") != ""
-            ) {
-                api
-                    .query({
-                        payLogId: localStorage.getItem("payLogId")
-                    })
-                    .then(res => {
-                        if (res.code == 0) {
-                            this.$store.state.mark_showAc = true;
-                        } else {
-                            let num = 0;
-                            this.$store.state.timertz = setInterval(() => {
-                                num++;
-                                api
-                                    .query({
-                                        payLogId: localStorage.getItem("payLogId")
-                                    })
-                                    .then(res => {
-                                        if (res.code == 0) {
-                                            this.$store.state.mark_showAc = true;
-                                            //Toast('成功')
-                                            clearInterval(this.$store.state.timertz);
-                                        } else if (res.code == '304036') {
-                                            if (num >= 3) {
-                                                localStorage.removeItem("payLogId");
-                                                localStorage.removeItem("activefrom");
-                                                clearInterval(this.$store.state.timertz);
-                                            }
-                                        } else {
-                                            localStorage.removeItem("payLogId");
-                                            localStorage.removeItem("activefrom");
-                                            clearInterval(this.$store.state.timertz);
-                                        }
-                                    });
-                            }, 3000);
-                        }
-                    });
-            }
         },
         components: {
             "v-slider": silder,
@@ -389,11 +349,7 @@
                 });
             }
         },
-        created: function () {
-
-        },
         mounted() {
-            window.addEventListener('pageshow', ()=> {
                 this.detect = detect()
                 // location.href = 'caixm://caixiaomi.net'
                 localStorage.removeItem("tab");
@@ -425,7 +381,6 @@
                     }
                 });
                 this.fetchData();
-            })
         },
         activated() {
             document.getElementById("content").scrollTop = this.$root.consultScrolltop;

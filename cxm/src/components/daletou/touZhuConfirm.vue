@@ -1,7 +1,7 @@
 <template>
     <div class="touzhu-confirm">
         <!--头部开始-->
-        <div class="head">
+        <div class="head" v-show="isWeb()">
             <span class="back-img" @click="goBack()"><img src="../../assets/img/ret.png" alt=""></span>
             <div class="head-text">
                 <span>彩小秘·投注确认</span>
@@ -24,7 +24,7 @@
                     <p>机选5注</p>
                 </div>
             </div>
-            <div class="zhu-box">
+            <div class="zhu-box" :style="{'top':isWeb()?'':'1.35rem'}">
                 <ul class="item-ul">
                     <li class="item-li" v-for='(item,index) in conformBallList' :key=index>
                         <span class="delimg" @click="delItem(index)"><img src="../../assets/img/sut.png" alt=""></span>
@@ -316,7 +316,7 @@
     }
 </style>
 <script>
-    import {getArrayItems,saveDtInfo,sortFn} from '../../util/common'
+    import {getArrayItems,saveDtInfo,sortFn,nativeApp,getCsUrl,isWebview} from '../../util/common'
     import {MessageBox, Popup,Indicator,Toast} from 'mint-ui';
     import SelectionBox from "./images/SelectionBox1@3x.png"
     import Selected from "./images/Selected1@3x.png"
@@ -355,9 +355,12 @@
             this.addOne()
         },
         mounted(){
-
+            nativeApp({'methodName':'showTitle','title':'投注确认'})
         },
         methods: {
+            isWeb(){
+                return !isWebview()
+            },
             //大小排序
             sorts(Arr,type) {
                 let biaozhunballList = []
@@ -634,12 +637,16 @@
                     api.saveBetInfoDlt(obj)
                         .then(res => {
                             if (res.code == 0) {
-                                this.$router.push({
-                                    path: '/freebuy/payment',
-                                    query:{
-                                        ptk: res.data
-                                    }
-                                })
+                                if(isWebview()){
+                                    nativeApp({'methodName':'pushPayment','payToken':res.data,'pushUrl':getCsUrl()+'/daletou/programmeDetails'})
+                                }else{
+                                    this.$router.push({
+                                        path: '/freebuy/payment',
+                                        query:{
+                                            ptk: res.data
+                                        }
+                                    })
+                                }
                             }
                         })
                 }else {

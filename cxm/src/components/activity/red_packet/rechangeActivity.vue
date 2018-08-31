@@ -37,6 +37,7 @@
 </template>
 
 <script>
+    import {means} from '../../../util/common'
     import api from '../../../fetch/api'
     import { Popup,Toast,Indicator} from 'mint-ui';
     export default {
@@ -47,11 +48,17 @@
                 packet:{},
                 rechargeCardList:[],
                 activityOwn:'',//活动资格 是否有资格:0-代表无资格 1-代表有资格
+                token: '',
+                login: this.$route.query.isLogin,
             }
         },
         created() {
-            window.actionMessage = function (arg) {
-                localStorage.setItem('token', JSON.parse(arg).token)
+            let that = this
+            window.actionMessage = (arg) => {
+                if(JSON.parse(arg).token!==''){
+                    that.token = JSON.parse(arg).token
+                    localStorage.setItem('token', JSON.parse(arg).token)
+                }
             }
             this.getList()
         },
@@ -83,14 +90,20 @@
                         if (res.code == 0) {
                            that.activityOwn = res.data.qfRst
                             if(res.data.qfRst=='1'){
-                                this.$router.push({
-                                    path: '/user/recharge',
-                                    query: {
-                                        'price': item.realValue,
-                                        'description': item.description
-                                    },
-                                    replace: false
-                                })
+                                if(this.$route.query.cfrom == 'app'){
+                                    let price = {"price":item.realValue}
+                                    means(price).paydata
+                                    location.href="/user/recharge?cxmxc=scm&type=11&extparam=paydata"
+                                }else{
+                                    this.$router.push({
+                                        path: '/user/recharge',
+                                        query: {
+                                            'price': item.realValue,
+                                            'description': item.description
+                                        },
+                                        replace: false
+                                    })
+                                }
                             }else {
                                 Toast('请先领取资格后在充值！')
                             }
@@ -99,26 +112,58 @@
             },
             //领取活动资格get
             getActivity(){
-                var that = this
-                if(this.activityOwn=='1'){
-                    Toast('您已有资格享受活动，快去充值吧！')
-                }else {
-                    let data = {
-                        act_id: "3",
-                        act_type: "1"
-                    }
-                    api.reaceiveActQF(data)
-                        .then(res => {
-                            if (res.code == '301034') {
-                                that.activityOwn='1'
+                if(this.$route.query.cfrom=='app'){
+                    if(this.login=='0'&&this.token==''){
+                        location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5&usinfo=1'
+                    }else{
+                        var that = this
+                        if(this.activityOwn=='1'){
+                            Toast('您已有资格享受活动，快去充值吧！')
+                        }else {
+                            let data = {
+                                act_id: "3",
+                                act_type: "1"
                             }
+                            api.reaceiveActQF(data)
+                                .then(res => {
+                                    if (res.code == '301034') {
+                                        that.activityOwn='1'
+                                    }else if(res.code == '0'){
+                                        Toast(res.msg)
+                                    }
+                                })
+                        }
+                    }
+                }else{
+                    if(localStorage.getItem('token')){
+                        var that = this
+                        if(this.activityOwn=='1'){
+                            Toast('您已有资格享受活动，快去充值吧！')
+                        }else {
+                            let data = {
+                                act_id: "3",
+                                act_type: "1"
+                            }
+                            api.reaceiveActQF(data)
+                                .then(res => {
+                                    if (res.code == '301034') {
+                                        that.activityOwn='1'
+                                    }else if(res.code == '0'){
+                                        Toast(res.msg)
+                                    }
+                                })
+                        }
+                    }else{
+                        this.$router.push({
+                            path: '/user/sms'
                         })
+                    }
                 }
 
             },
         },
         mounted(){
-
+            means('充值送红包').isTitle
         },
     }
 </script>

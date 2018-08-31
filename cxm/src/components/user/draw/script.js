@@ -1,6 +1,7 @@
 import api from '../../../fetch/api'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
+import {nativeApp} from '../../../util/common.js'
 export default {
     name: 'draw',
     beforeCreate() {
@@ -13,7 +14,7 @@ export default {
       }
     },
     created(){
-      
+      nativeApp({'methodName':'showTitle','title':'出票方案'})
     },
     methods:{
       statusZt(c){

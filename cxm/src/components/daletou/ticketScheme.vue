@@ -155,6 +155,7 @@
 <script>
     import {Indicator} from 'mint-ui';
     import api from '../../fetch/api.js'
+    import {nativeApp} from '../../util/common.js'
     export default {
         name: "ticktScheme",
         data() {
@@ -164,6 +165,7 @@
             }
         },
         mounted(){
+            nativeApp({'methodName':'showTitle','title':'出票方案'})
             this.fetchData()
         },
         methods:{

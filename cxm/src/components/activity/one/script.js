@@ -133,12 +133,15 @@ export default {
 										path: '/'
 									})
 								}else{
+									// this.$router.push({
+									// 	path: '/activity/down/cxm',
+									// 	query:{
+									// 		ct: '2',
+									// 		fr: 'cxm_h5home'
+									// 	}
+									// })
 									this.$router.push({
-										path: '/activity/down/cxm',
-										query:{
-											ct: '2',
-											fr: 'cxm_h5home'
-										}
+										path: '/'
 									})
 								}
 							});

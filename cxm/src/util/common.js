@@ -1,11 +1,11 @@
-// const expUrl = 'http://192.168.31.205:8080'
+const expUrl = 'http://192.168.31.205:8080'
 //const expUrl = 'http://39.106.18.39:9805'
-var expUrl = ''
-if(location.href.indexOf('.cn')!=-1){
-    expUrl = 'http://a1.caixiaomi.cn'
-}else{
-    expUrl = 'https://m.caixiaomi.net'
-}
+// var expUrl = ''
+// if(location.href.indexOf('.cn')!=-1){
+//     expUrl = 'http://a1.caixiaomi.cn'
+// }else{
+//     expUrl = 'https://m.caixiaomi.net'
+// }
 var moment = require('moment');
 //app h5页面分享
 export let isShare = (arg, text, url, thumbUrl) => {
@@ -23,6 +23,9 @@ export let nativeApp = (obj)=>{
     if(window.webkit){
         return window.webkit.messageHandlers.appNative.postMessage(obj);
     }
+	if(typeof test==='object'){
+		test.appNative(JSON.stringify(obj))
+	}
 }
 //app h5方法
 export let means = (arg) => {
@@ -57,6 +60,15 @@ export let detect = () => {
         equipmentType = "ios";
     }
     return equipmentType;
+}
+//判断是否在webview打开h5
+export let isWebview = () => {
+    var agent = navigator.userAgent.toLowerCase();
+    if(agent.indexOf('ios&')==-1&&agent.indexOf('android&')==-1){
+        return false;
+    }else{
+        return true;
+    }
 }
 //获取url key
 export let getUrlStr = function (name, url) {

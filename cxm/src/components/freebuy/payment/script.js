@@ -148,6 +148,8 @@ export default {
                                         from: 'h5'
                                     }
                                 })
+                            }else{
+                                location.replace(res.data.payUrl)
                             }
                         }
                     }

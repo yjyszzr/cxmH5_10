@@ -63,8 +63,6 @@ const state = {
         timeType: 2,  //账户明细日期
         timeShow: false  //控制actionSheet开关
     },
-    timertz: '', //充值送弹窗定时器
-    mark_showAc: false, //充值送弹窗
     mark_shortcut: false, //首页引导弹窗
     pop: '',
     daletouActive: '1',  //大乐透tab
