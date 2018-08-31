@@ -353,7 +353,7 @@
                line-height: px2rem(100px);
                 text-align: center;
                 color: #ffffff;
-                width: 49.7%;
+                width: 49.5%;
                 background-color: #EA5504;
                 font-size: px2rem(28px);
             }
