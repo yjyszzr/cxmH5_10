@@ -243,7 +243,7 @@
                 // } else {
                 //    return true;
                 // }
-                if (isWebview()||this.$route.name=='404') {
+                if (isWebview()||this.$route.name=='404'||this.$route.query.showtitle==1) {
                     return false;
                 } else {
                     return true;
