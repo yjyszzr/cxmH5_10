@@ -261,8 +261,8 @@
         },
         methods: {
             shortClick() {
-                location.href = 'http://www.baidu.com'
-                //this.$store.commit('MARKSHORTCUT', true)
+                //location.href = 'http://www.baidu.com'
+                this.$store.commit('MARKSHORTCUT', true)
             },
             goFreebuy(url, s) {
                 if (s.status == '1') {
