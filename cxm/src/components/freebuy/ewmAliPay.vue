@@ -18,6 +18,7 @@
             <p class="p2">*支付时请注意收款方为cxm</p>
             <div class="help">
                 <img src="./img/ali_06.png" alt="">
+                <p class="pay-yindao">支付步骤引导</p>
                 <img src="./img/ali_03.jpg" alt="">
                 <img src="./img/ali_06.jpg" alt="">
                 <img src="./img/ali_08.jpg" alt="">
@@ -122,6 +123,10 @@
                     padding: px2rem(30px) 0;
                     height: px2rem(60px);
                     width: px2rem(60px);
+                }
+                .pay-yindao{
+                    color:#787878;
+                    padding-bottom: px2rem(30px);
                 }
             }
             .downImg{
