@@ -138,13 +138,14 @@
     </div>
 </template>
 <script>
-import {means} from '../../../util/common'
+import {means,nativeApp} from '../../../util/common'
 export default {
   name: 'service',
   data(){
       return {}
   },
   mounted(){
+      nativeApp({'methodName':'showTitle','title':'注册服务协议'})
       means('注册服务协议').isTitle
   }
 }

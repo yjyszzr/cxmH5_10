@@ -46,13 +46,14 @@
 </template>
 
 <script>
-import {means} from '../../../util/common'
+import {means,nativeApp} from '../../../util/common'
 export default {
   name: 'insurance',
   data(){
       return {}
   },
   mounted(){
+      nativeApp({'methodName':'showTitle','title':'安全保障'})
       means('安全保障').isTitle
   }
 }

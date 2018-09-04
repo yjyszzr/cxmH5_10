@@ -1,5 +1,5 @@
 import {
-	means
+	means,nativeApp
 } from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {
@@ -65,6 +65,7 @@ export default {
         }
     },
     mounted(){
+        nativeApp({'methodName':'showTitle','title':'邀请好友得红包'})
         means('邀请好友得红包').isTitle
     }
 }

@@ -1,7 +1,8 @@
 import {
 	means,
     isShare,
-    getCsUrl
+    getCsUrl,
+    nativeApp
 } from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {
@@ -106,6 +107,7 @@ export default {
     mounted(){
         this.fetchData()
         isShare('新人注册送好礼，100元红包等你来领', '注册就送100元新人大礼包', '/activity/one?type=isShare&frtype=ldx&a_='+this.uid, '/static/activity_Back/newComerReg/img/logozc.jpg')
+        nativeApp({'methodName':'showTitle','title':'邀请好友得红包'})
         means('邀请好友得红包').isTitle
     }
 }

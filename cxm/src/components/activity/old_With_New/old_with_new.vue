@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import {means,detect} from '../../../util/common'
+    import {means,detect,nativeApp} from '../../../util/common'
 
     export default {
         name: "old_with_new",
@@ -35,6 +35,7 @@
         },
         mounted() {
             this.detect = detect()
+            nativeApp({'methodName':'showTitle','title':'小白课堂'})
             means('小白课堂').isTitle
         },
     }

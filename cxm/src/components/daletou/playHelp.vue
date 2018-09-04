@@ -226,7 +226,7 @@
     }
 </style>
 <script>
-    import {means} from '../../util/common'
+    import {means,nativeApp} from '../../util/common'
     export default {
         name: "playHelp",
         data() {
@@ -234,6 +234,7 @@
         },
         created(){},
         mounted(){
+            nativeApp({'methodName':'showTitle','title':'玩法帮助'})
             means('玩法帮助').isTitle
         },
         methods:{

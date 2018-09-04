@@ -37,7 +37,7 @@
 </template>
 
 <script>
-    import {means} from '../../../util/common'
+    import {means,nativeApp} from '../../../util/common'
     import api from '../../../fetch/api'
     import { Popup,Toast,Indicator} from 'mint-ui';
     export default {
@@ -163,6 +163,7 @@
             },
         },
         mounted(){
+            nativeApp({'methodName':'showTitle','title':'充值送红包'})
             means('充值送红包').isTitle
         },
     }

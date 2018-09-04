@@ -12,7 +12,7 @@
     </div>
 </template>
 <script>
-    import {means,detect} from '../../../util/common'
+    import {means,detect,nativeApp} from '../../../util/common'
     import {Toast} from 'mint-ui';
     export default {
         name: "old_with_new",
@@ -42,6 +42,7 @@
         },
         mounted() {
             this.detect = detect()
+            nativeApp({'methodName':'showTitle','title':'彩民交流群'})
             means('彩民交流群').isTitle
         },
     }

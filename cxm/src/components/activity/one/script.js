@@ -1,6 +1,6 @@
 import {
 	means,
-	isShare,detect
+	isShare,detect,nativeApp
 } from '../../../util/common'
 import api from '../../../fetch/api'
 import {
@@ -28,6 +28,7 @@ export default {
 				$('body').css('height', '100%');
 			}
 		})
+		nativeApp({'methodName':'showTitle','title':'注册送红包'})
 		means('注册送红包').isTitle
 		isShare(' 新人注册送好礼，100元红包等你来领', '注册就送100元新人大礼包', '/activity/one?type=isShare', '/static/activity_Back/newComerReg/img/logozc.jpg')
 	},

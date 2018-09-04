@@ -1,4 +1,4 @@
-import {means,isShare} from '../../../../util/common'
+import {means,isShare,nativeApp} from '../../../../util/common'
 import api from '../../../../fetch/api'
 import {Indicator, Toast} from 'mint-ui'
 import countDown from '../count_down/count_down'
@@ -54,6 +54,7 @@ export default {
                       }, 3000);
                 }
             })
+        nativeApp({'methodName':'showTitle','title':'活动详情'})
         means('活动详情').isTitle
     },
     computed: {

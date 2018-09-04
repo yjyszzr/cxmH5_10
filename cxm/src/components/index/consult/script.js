@@ -8,7 +8,7 @@ import {
 } from "mint-ui";
 import dateFailter from '../../../util/datefilter'
 import {getUrlStr} from '../../../util/common'
-import {means } from '../../../util/common'
+import {means,nativeApp } from '../../../util/common'
 export default {
     name: "consult",
     data() {
@@ -26,6 +26,7 @@ export default {
         "v-informal": informal
     },
     mounted() {
+        nativeApp({'methodName':'showTitle','title':'资讯详情'})
         means('资讯详情').isTitle
         this.fetchData()
     },

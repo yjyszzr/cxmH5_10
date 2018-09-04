@@ -6,7 +6,7 @@
             <div class="head-text">
                 <span>微信支付</span>
             </div>
-            <div>
+            <div style="width: 0.3rem;">
                 <span></span>
             </div>
         </div>
@@ -15,7 +15,7 @@
                 <img :src='imgUrl' alt="">
             </div>
             <p class="p1">请将二维码保存到相册,然后打开微信扫描二维码进行支付</p>
-            <p class="p2">*支付时请注意收款方为cxm</p>
+            <p class="p2">*支付时请注意收款方为数动科技</p>
             <div class="help">
                 <img src="./img/ali_06.png" alt="">
                 <p class="pay-yindao">支付步骤引导</p>

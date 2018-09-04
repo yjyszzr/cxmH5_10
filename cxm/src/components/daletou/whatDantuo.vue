@@ -48,7 +48,7 @@
     }
 </style>
 <script>
-    import {means} from '../../util/common'
+    import {means,nativeApp} from '../../util/common'
     export default {
         name: "whatDantuo",
         data() {
@@ -56,6 +56,7 @@
         },
         created(){},
         mounted(){
+            nativeApp({'methodName':'showTitle','title':'胆拖介绍'})
             means('胆拖介绍').isTitle
         },
         methods:{

@@ -8,14 +8,15 @@
     </div>
 </template>
 <script>
-    import {means} from '../../../util/common'
+    import {means,nativeApp} from '../../../util/common'
     export default {
         name: 'explain',
         data(){
             return {}
         },
         mounted(){
-            means('胆 说明').isTitle
+            nativeApp({'methodName':'showTitle','title':'胆说明'})
+            means('胆说明').isTitle
         }
     }
 </script>

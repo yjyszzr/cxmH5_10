@@ -279,7 +279,7 @@
     }
 </style>
 <script>
-    import {means} from '../../../util/common'
+    import {means,nativeApp} from '../../../util/common'
     import {Toast,Popup,Indicator} from 'mint-ui'
     import api from '../../../fetch/api'
 
@@ -339,6 +339,7 @@
         },
         computed: {},
         mounted(){
+            nativeApp({'methodName':'showTitle','title':'竞猜'})
             means('竞猜').isTitle
         },
         methods: {
