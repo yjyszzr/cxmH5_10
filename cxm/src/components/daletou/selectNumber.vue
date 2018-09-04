@@ -286,7 +286,7 @@
             position: absolute;
             width: 100%;
             height: px2rem(100px);
-            border-top: 1px solid #9f9f9f;
+            border-top: 1px solid #c7c7c7;
             display: flex;
             justify-content: center;
             flex-direction: row;

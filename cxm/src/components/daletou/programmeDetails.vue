@@ -115,8 +115,8 @@
 
 
         <div class="footer">
-            <p @click="goOnBuy()">继续购买此号</p>
-            <p @click="goSelectNum()">继续购买大乐透</p>
+            <p :style="{'background':color()}" @click="goOnBuy()">继续购买此号</p>
+            <p :style="{'background':color()}" @click="goSelectNum()">继续购买大乐透</p>
         </div>
 
 
@@ -353,7 +353,7 @@
                line-height: px2rem(100px);
                 text-align: center;
                 color: #ffffff;
-                width: 49.5%;
+                width: 49.7%;
                 background-color: #EA5504;
                 font-size: px2rem(28px);
             }
@@ -366,6 +366,7 @@
     import SelectionBox from "./images/SelectionBox1@3x.png"
     import Selected from "./images/Selected1@3x.png"
     import {nativeApp,isWebview} from '../../util/common.js'
+    import {mapState} from 'vuex'
     export default {
         name: "programmeDetails",
         data() {
@@ -541,7 +542,19 @@
                         path:'/lottery/daletou/selectnumber'
                     })
                 }
+            },
+            color(){
+                let channelcolor = "#ea5504"
+                if(isWebview()){
+                channelcolor = this.channelObj.color
+                }
+                return channelcolor;
             }
+        },
+        computed: {
+            ...mapState({
+                channelObj: state => state.channelObj
+            })
         },
         beforeRouteLeave(to, from, next) {
             if(to.path!='/lottery/daletou/touZhuConfirm'){

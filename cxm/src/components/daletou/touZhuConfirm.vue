@@ -61,7 +61,7 @@
                 <div class="p1">
                     <p>{{adds.zhuNum}}注 {{adds.bei}}倍 共需：<span>￥{{adds.money+'.00'}}</span> 元</p>
                 </div>
-                <p class="ok" :class="canPay?'canpay':'nopay'" @click="confirm()">确定</p>
+                <p :style="{'background':color(canPay),'borderColor':color(canPay)}" class="ok" :class="canPay?'canpay':'nopay'" @click="confirm()">确定</p>
             </div>
         </div>
 
@@ -74,14 +74,6 @@
     .touzhu-confirm {
         /*.clearfix:after {content:"."; display:block; height:0; visibility:hidden; clear:both; }*/
         /*.clearfix { *zoom:1; }　*/
-        .canpay{
-            background-color: #EA5504!important;
-            border: 1px solid #EA5504!important;
-        }
-        .nopay{
-            border: 1px solid #c7c7c7!important;
-            background-color: #c7c7c7!important;
-        }
         .head {
             overflow: hidden;
             height: px2rem(100px);
@@ -321,6 +313,7 @@
     import SelectionBox from "./images/SelectionBox1@3x.png"
     import Selected from "./images/Selected1@3x.png"
     import api from '../../fetch/api'
+    import {mapState} from 'vuex'
     export default {
         name: "touZhuConfirm",
         data() {
@@ -652,11 +645,25 @@
                 }else {
                     Toast('请勾选协议！')
                 }
+            },
+            color(c){
+                let channelcolor = "#ea5504"
+                if(c){
+                    if(isWebview()){
+                        channelcolor = this.channelObj.color
+                    }
+                }else{
+                    channelcolor = "#c7c7c7"
+                }
+                return channelcolor;
             }
         },
         computed:{
             bei(){
                 return this.$store.state.mark_playObj.mupNum
+            },
+            channelObj(){
+                return this.$store.state.channelObj
             }
         },
         watch: {

@@ -32,8 +32,8 @@
     import mark from "./components/public/mark/mark";
     import pmark from "./components/public/mark/match_playut/mark_playut";
     import {ScrollFix} from './util/common'
-    import {wxPd} from './util/common'
-    import {getUrlStr,isWebview} from './util/common'
+    import {wxPd,channel} from './util/common'
+    import {getUrlStr,isWebview,nativeApp} from './util/common'
     import mainSkeleton from './components/public/mainSkeleton/main.skeleton.vue'
     import shortcut from './components/index/shortcut.vue'
     import { Toast } from 'mint-ui'
@@ -258,11 +258,21 @@
             }
         },
         mounted() {
-
+            if(getUrlStr('qd',location.href)){
+                this.$store.commit('CHANNELOBJ',channel(getUrlStr('qd',location.href)))
+            }
+            document.title = this.channelObj.channelNmae
+            window.getChannel = (str)=> {
+                this.$store.commit('CHANNELOBJ',channel(str))
+            }
+            nativeApp({'methodName':'channel'})
         },
         computed: {
             consultinit() {
                 return this.$store.state.skeletion.consultInit;
+            },
+            channelObj(){
+                return this.$store.state.channelObj;
             }
         },
     };

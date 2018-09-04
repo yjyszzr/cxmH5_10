@@ -1,11 +1,11 @@
-//const expUrl = 'http://192.168.31.205:8080'
-// const expUrl = 'http://t1.caixiaomi.net:9805'
- var expUrl = ''
-if(location.href.indexOf('.cn')!=-1){
-    expUrl = 'http://a1.caixiaomi.cn'
-}else{
-    expUrl = 'https://m.caixiaomi.net'
-}
+// const expUrl = 'http://192.168.31.205:8080'
+const expUrl = 'http://t1.caixiaomi.net:9805'
+//  var expUrl = ''
+// if(location.href.indexOf('.cn')!=-1){
+//     expUrl = 'http://a1.caixiaomi.cn'
+// }else{
+//     expUrl = 'https://m.caixiaomi.net'
+// }
 var moment = require('moment');
 //app h5页面分享
 export let isShare = (arg, text, url, thumbUrl) => {
@@ -26,6 +26,18 @@ export let nativeApp = (obj)=>{
 	if(typeof test==='object'){
 		test.appNative(JSON.stringify(obj))
 	}
+}
+//app mjb渠道区分
+export let channel = (str,s)=>{
+    let channelObj = {
+        channelNmae: '彩小秘',
+        color: '#ea5504'
+    }
+    if(str=='c26013'){
+        channelObj.channelNmae='乐得体育'
+        channelObj.color='#f78f14'
+    }
+    return channelObj;
 }
 //app h5方法
 export let means = (arg) => {

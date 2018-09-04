@@ -73,6 +73,10 @@ const state = {
         sort: 0    //排序方式
     },
     runchartData: {},  //走势图数据
+    channelObj: {
+        color: '#ea5504',
+        channelNmae: '彩小秘'
+    }
 }
 let storageArr = []
 if (typeof localStorage === 'object') {

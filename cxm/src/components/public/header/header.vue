@@ -85,7 +85,7 @@
 <script>
     import datefilter from "../../../util/datefilter";
     import { Indicator,Actionsheet } from "mint-ui";
-    import { getUrlStr } from "../../../util/common";
+    import { getUrlStr, isWebview } from "../../../util/common";
     export default {
         name: "Header",
         props: {
@@ -350,6 +350,9 @@
             },
             resultList(){
                 return this.$store.state.resultList;
+            },
+            channelObj(){
+                return this.$store.state.channelObj;
             }
         },
         watch:{

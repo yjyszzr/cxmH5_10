@@ -2,6 +2,7 @@ import api from '../../../fetch/api'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 import {nativeApp,getCsUrl,isWebview} from '../../../util/common.js'
+import {mapState} from 'vuex'
 export default {
     name: 'record',
     data () {
@@ -13,7 +14,7 @@ export default {
         bottomStatus: '',
         allLoaded: false,
         searchBarFixed: false,
-        loadText: '上拉加载更多...',
+        loadText: '上拉加载更多...'
         // firstIn: ''
       }
     },
@@ -90,12 +91,7 @@ export default {
           }
         }
       }
-    },
-    computed: {  
-      tabstatus() {  
-          return this.$store.state.recordTab; 
-      }
-    },  
+    }, 
     watch: {
       tabstatus(a,b){
         //console.log(a)
@@ -116,6 +112,12 @@ export default {
         this.allLoaded = false
         this.recordFetch()
       }
+    },
+    computed: {
+      ...mapState({
+           channelObj: state => state.channelObj,
+           tabstatus:  state => state.recordTab
+      })
     },
     mounted(){
       if(!isWebview()){

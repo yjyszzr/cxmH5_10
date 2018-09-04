@@ -188,6 +188,9 @@ const mutations = {
     },
     RUNCHARTDATA(state, data){
         state.runchartData = data
+    },
+    CHANNELOBJ(state, data){
+        state.channelObj = data
     }
 }
 

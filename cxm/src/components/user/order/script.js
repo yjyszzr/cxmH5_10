@@ -2,6 +2,7 @@ import api from '../../../fetch/api'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 import {nativeApp,isWebview} from '../../../util/common.js'
+import {mapState} from 'vuex'
 export default {
     name: 'order',
     beforeCreate() {
@@ -37,6 +38,13 @@ export default {
         }else{
           nativeApp({'methodName':'pushUrl','url':'http://caixiaomi.net?cxmxc=scm&type=3&id='+this.orderObj.lotteryClassifyId})
         }
+      },
+      color(){
+        let channelcolor = "#ea5504"
+        if(isWebview()){
+          channelcolor = this.channelObj.color
+        }
+        return channelcolor;
       }
     },
     mounted(){
@@ -50,7 +58,11 @@ export default {
             }
         })
     },
-
+    computed: {
+      ...mapState({
+           channelObj: state => state.channelObj
+      })
+    },
     beforeRouteLeave(to, from, next) {
       if(to.path!='/freebuy/cathectic'){
         next()

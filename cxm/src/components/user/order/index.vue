@@ -106,7 +106,7 @@
                 </div>
             </div>
         </div>
-        <button class="jxtz" :class="orderObj!=''?'Fixed':''" @click="jxtz()">
+        <button :style="{'background':color()}" class="jxtz" :class="orderObj!=''?'Fixed':''" @click="jxtz()">
             继续投注
         </button>
     </div>
