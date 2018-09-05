@@ -46,12 +46,14 @@
 </template>
 
 <script>
+	import {nativeApp} from '../../../../util/common'
 export default {
   name: 'insurance',
   data(){
       return {}
   },
   mounted(){
+		nativeApp({'methodName':'showTitle','title':'安全保障'})
       window.getCxmTitle = function(){
           return '天天体育·安全保障'
       }

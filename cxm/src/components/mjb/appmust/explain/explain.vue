@@ -8,12 +8,14 @@
     </div>
 </template>
 <script>
+	import {nativeApp} from '../../../../util/common'
     export default {
         name: 'explain',
         data(){
             return {}
         },
         mounted(){
+			nativeApp({'methodName':'showTitle','title':'胆说明'})
             window.getCxmTitle = function(){
                 return '必中彩·胆说明'
             }

@@ -140,12 +140,14 @@
     </div>
 </template>
 <script>
+	import {nativeApp} from '../../../../util/common'
 export default {
     name: 'protocol',
     data(){
         return {}
     },
     mounted(){
+			nativeApp({'methodName':'showTitle','title':'投注服务协议'})
         window.getCxmTitle = function(){
           return '天天体育·投注服务协议'
         }

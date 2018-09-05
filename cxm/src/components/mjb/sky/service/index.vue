@@ -138,6 +138,7 @@
     </div>
 </template>
 <script>
+	import {nativeApp} from '../../../../util/common'
     export default {
         name: 'service',
         data() {
@@ -145,6 +146,7 @@
             }
         },
         mounted() {
+			nativeApp({'methodName':'showTitle','title':'注册服务协议'})
             window.getCxmTitle = function(){
                 return '天空体育·注册服务协议'
             }

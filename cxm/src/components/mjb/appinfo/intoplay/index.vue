@@ -70,12 +70,14 @@
 </template>
 
 <script>
+	import {nativeApp} from '../../../../util/common'
 export default {
     name: 'inToplay',
     data(){
         return {}
     },
     mounted(){
+			nativeApp({'methodName':'showTitle','title':'玩法帮助'})
         window.getCxmTitle = function(){
             return '彩小秘彩票·玩法帮助'
         }
