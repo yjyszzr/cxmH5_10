@@ -763,6 +763,31 @@ const router = new Router({
             path: '/appld/insurance',
             component: resolve => require(['@/components/mjb/appld/insurance/insurance.vue'], resolve)
         },
+			//公用
+			{
+						path: '/mjpublic/help',
+						component: resolve => require(['@/components/mjb/mjpublic/help/index.vue'], resolve)
+				},
+				{
+						path: '/mjpublic/protocol',
+						component: resolve => require(['@/components/mjb/mjpublic/protocol/index.vue'], resolve)
+				},
+				{
+						path: '/mjpublic/service',
+						component: resolve => require(['@/components/mjb/mjpublic/service/index.vue'], resolve)
+				},
+				{
+						path: '/mjpublic/inToplay',
+						component: resolve => require(['@/components/mjb/mjpublic/intoplay/index.vue'], resolve)
+				},
+				{
+						path: '/mjpublic/explain',
+						component: resolve => require(['@/components/mjb/mjpublic/explain/explain.vue'], resolve)
+				},
+				{
+						path: '/mjpublic/insurance',
+						component: resolve => require(['@/components/mjb/mjpublic/insurance/insurance.vue'], resolve)
+				},
       // 大乐透选号
       {
           path: '/lottery/daletou/selectnumber',
