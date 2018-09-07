@@ -20,11 +20,13 @@ export let isShare = (arg, text, url, thumbUrl) => {
 }
 //调用app方法
 export let nativeApp = (obj)=>{
-    if(window.webkit){
-        return window.webkit.messageHandlers.appNative.postMessage(obj);
-    }
-	if(typeof test==='object'){
-		test.appNative(JSON.stringify(obj))
+	if(isWebview()){
+		if(window.webkit){
+			return window.webkit.messageHandlers.appNative.postMessage(obj);
+		}
+		if(typeof test==='object'){
+			test.appNative(JSON.stringify(obj))
+		}
 	}
 }
 //app mjb渠道区分

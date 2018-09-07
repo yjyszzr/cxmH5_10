@@ -237,6 +237,7 @@ export default {
             .then(res => {
                 if (res.code == 0) {
                     this.allPaymentList = res.data
+                    this.payCode = res.data[0].payCode
                 }
             })
         api.allPaymentWithRecharge({})
