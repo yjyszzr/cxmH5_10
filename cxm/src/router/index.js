@@ -276,6 +276,16 @@ const router = new Router({
           component: resolve => require(['@/components/freebuy/ewmAliPay.vue'], resolve)
       },
       {
+          path: '/users/freebuy/ewmYinLianPay',
+          name: 'ewmYinLianPay',
+          cname:'二维码支付',
+          meta: {
+              requireAuth: true,
+              title: '银联支付'
+          },
+          component: resolve => require(['@/components/freebuy/ewmYinLianPay.vue'], resolve)
+      },
+      {
           path: '/lotteryResult',
           name: 'result',
           meta: {
