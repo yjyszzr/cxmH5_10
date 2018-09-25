@@ -14,8 +14,8 @@
             <div class="img-box" id="qrcode">
                 <img :src='imgUrl' alt="">
             </div>
-            <p class="p1">适用已安装手机银行，云闪付或其他银联二维码支付的APP用户</p>
-            <p class="p2">*支付时请注意收款方为数动科技</p>
+            <p class="p1">适用已安装手机银行，云闪付或其他银联二维码支付的APP用户（如二维码识别失败可重试几次或更换其他银行app进行扫码支付）</p>
+            <!--<p class="p2">*支付时请注意收款方为数动科技</p>-->
             <div class="help">
                 <img src="./img/ali_06.png" alt="">
                 <p class="pay-yindao">支付步骤引导</p>

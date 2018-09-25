@@ -194,7 +194,7 @@
                             return '胆拖介绍';
                         case 'programmeDetails':
                             return '方案详情';
-                         case 'touZhuConfirm':
+                        case 'touZhuConfirm':
                             return '投注确认';
                     }
                 } else {

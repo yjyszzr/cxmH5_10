@@ -11,10 +11,9 @@ import {getUrlStr} from '../util/common'
 // axios 配置
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
+// axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
 // axios.defaults.baseURL = 'http://yf.caixiaomi.net/api';
-//  axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
-// 
+axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 //拦截 token
 axios.interceptors.request.use(
     config => {
@@ -513,6 +512,10 @@ export default {
     //领取活动资格
     reaceiveActQF(params) {
         return fetchPost('/member/user/qualification/reaceiveActQF', params)
+    },
+    // //获取银行信息
+    nUnifiedOrderUbey(params) {
+        return fetchPost('/payment/payment/Ubey/nUnifiedOrderUbey', params)
     }
 }
 
