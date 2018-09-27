@@ -359,11 +359,6 @@ export default {
 					} else {
 						item.isDan = false
 					}
-					if(item.selectedDan == false) {
-						obj.isDan = 0
-					} else {
-						obj.isDan = 1
-					}
 				}
 				if(c == 'watch') {
 					if(this.$store.state.mark_playObj.playutText.indexOf('1&1')!=-1||this.$store.state.matchSelectedList.length == Number(this.$store.state.mark_playObj.playutText[this.$store.state.mark_playObj.playutText.length - 1].split('&')[0])) {
@@ -372,6 +367,11 @@ export default {
 						item.isDan = false
 					}
 					item.selectedDan = false
+				}
+				if(!item.selectedDan) {
+					obj.isDan = 0
+				} else {
+					obj.isDan = 1
 				}
 				obj.changci = item.changci
 				obj.matchId = item.matchId
