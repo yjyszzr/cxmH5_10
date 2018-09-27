@@ -1,11 +1,11 @@
 // const expUrl = 'http://192.168.31.205:8080'
-// const expUrl = 'http://t1.caixiaomi.net:9805'
- var expUrl = ''
-if(location.href.indexOf('.cn')!=-1){
-    expUrl = 'http://a1.caixiaomi.cn'
-}else{
-    expUrl = 'https://m.caixiaomi.net'
-}
+const expUrl = 'http://t1.caixiaomi.net:9805'
+//  var expUrl = ''
+// if(location.href.indexOf('.cn')!=-1){
+//     expUrl = 'http://a1.caixiaomi.cn'
+// }else{
+//     expUrl = 'https://m.caixiaomi.net'
+// }
 var moment = require('moment');
 //app h5页面分享
 export let isShare = (arg, text, url, thumbUrl) => {
@@ -38,10 +38,21 @@ export let channel = (str,s)=>{
     if(str=='c26013'){
         channelObj.channelNmae='乐得体育'
         channelObj.color='#f78f14'
-    }else if(str.indexOf('c25')!=-1){
+    }else if(str=='c26014'){
+        channelObj.channelNmae='多多体育'
+        channelObj.color='#da5f55'
+	}else if(str.indexOf('c25')!=-1){
 		channelObj.channelNmae='多多体育'
 	}else if(str.indexOf('c27')!=-1){
 		channelObj.channelNmae='人人体育'
+	}else if(str.indexOf('c10')!=-1){
+		channelObj.channelNmae='彩小秘'
+	}else if(str.indexOf('c20')!=-1){
+		channelObj.channelNmae='必中彩'
+	}else if(str.indexOf('c22')!=-1){
+		channelObj.channelNmae='天天体育'
+	}else if(str.indexOf('c23')!=-1){
+		channelObj.channelNmae='天空体育'
 	}
     return channelObj;
 }
