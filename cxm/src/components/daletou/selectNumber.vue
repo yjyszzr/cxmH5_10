@@ -14,7 +14,7 @@
         </div>
         <!--躯干-->
         <div class="body">
-            <div class="body-main">
+            <div v-if="myCode=='0'" class="body-main">
                 <div class="body-title" @click="popupVisible = !popupVisible">
                     <p>{{data.term_num}}期 截止时间 {{data.endDate}}</p>
                     <p class="history-p">历史开奖 <span class="arrow_right"><img src="../../assets/img/arange.png"
@@ -91,6 +91,9 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+            <div v-if="myCode!='0'">
+                <!--<p>暂停售卖</p>-->
             </div>
         </div>
         <!--底部-->
@@ -642,7 +645,7 @@
                     zhuNum: '', //胆拖选号注数
                     zhuHe: []  // 标准选号组合
                 },
-
+                myCode:'0',
                 data: {},
                 memu: [
                     {
@@ -668,6 +671,7 @@
             Indicator.open()
         },
         created() {
+
             this.getTicketInfoFn()
             this.yaoyiyao()
         },
@@ -766,6 +770,7 @@
             getTicketInfoFn() {
                 api.getTicketInfo('')
                     .then(res => {
+                        this.myCode = res.code
                         if (res.code == 0) {
                             Indicator.close()
                             this.data = res.data
@@ -932,7 +937,7 @@
                         y = acceleration.y;
                         z = acceleration.z;
                         var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
-                        if (speed > SHAKE_THRESHOLD) {
+                        if (speed > SHAKE_THRESHOLD && this.code == '0') {
                             that.machineSelection()
                         }
                         last_x = x;

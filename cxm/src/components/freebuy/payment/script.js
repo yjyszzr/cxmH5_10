@@ -56,7 +56,7 @@ export default {
         payBtn() {
             if (Number(this.payment.thirdPartyPaid) > 0) {
                 Indicator.open()
-                let innerWechat = '',payTypePd=''
+                let innerWechat = '0',payTypePd=''
                 if(this.payCode == 'app_weixin'){  //wx支付逻辑
                     if (wxPd()) {
                         innerWechat = '1'
@@ -67,7 +67,7 @@ export default {
                 }else if(this.payCode == 'app_rongbao'){  //rongbao支付逻辑
                     innerWechat = '0'
                     payTypePd = 'rb'
-                }else if(this.payCode == 'app_xianfeng'){  //rongbao支付逻辑
+                }else if(this.payCode == 'app_xianfeng'){  //先锋支付逻辑
                     innerWechat = '0'
                     payTypePd = 'xf'
                 }
@@ -78,10 +78,6 @@ export default {
                     'isH5': '1'
                 }
                 this.payFlag(data,payTypePd)
-                // var data = {
-                //     'payCode': this.payCode,
-                //     'payToken': this.payment.payToken
-                // }
             } else {
                 Indicator.open()
                 var data = {
