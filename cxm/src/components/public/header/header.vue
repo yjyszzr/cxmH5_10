@@ -18,6 +18,11 @@
                     <span @click='data_time()' class="data-img" ><img src="./images/date@3x.png" alt=""></span>
                     <span @click='more()'><i class="iconfont icon-icon-21"></i></span>
                 </div>
+                <!--订单详情 头-->
+                <div class="lottery-select" v-if="$route.path.split('/')[2]=='order'" >
+                    <span @click='oder()' class="data-img" ><img src="./images/fenxing@3x.png" alt=""></span>
+                    <span @click='ewm()' class="data-img" ><img src="./images/ewm@3x.png" alt=""></span>
+                </div>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
         </div>
@@ -297,6 +302,14 @@
             more() {
                 this.$store.dispatch("getMarkShow", true);
                 this.$store.dispatch("getMarkShowType", 2);
+            },
+            ewm() {
+                this.$store.dispatch("getMarkShow", true);
+                this.$store.dispatch("getMarkShowType", 3);
+            },
+            oder() {
+                this.$store.dispatch("getMarkShow", true);
+                this.$store.dispatch("getMarkShowType", 4);
             },
             getUrl() {
                 if (getUrlStr("frz", location.href) == undefined) {

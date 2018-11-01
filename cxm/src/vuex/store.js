@@ -76,7 +76,10 @@ const state = {
     channelObj: {
         color: '#ea5504',
         channelNmae: '彩小秘'
-    }
+    },
+    order:{
+        orderNum:'',//订单号
+    },
 }
 let storageArr = []
 if (typeof localStorage === 'object') {
