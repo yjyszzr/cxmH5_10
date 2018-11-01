@@ -20,7 +20,7 @@
                 </div>
                 <!--订单详情 头-->
                 <div class="lottery-select" v-if="$route.path.split('/')[2]=='order'" >
-                    <span @click='oder()' class="data-img" ><img src="./images/fenxing@3x.png" alt=""></span>
+                    <span @click='oder()' v-show="!$route.query.cxmxc" class="data-img" ><img src="./images/fenxing@3x.png" alt=""></span>
                     <span @click='ewm()' class="data-img" ><img src="./images/ewm@3x.png" alt=""></span>
                 </div>
             </div>
@@ -487,12 +487,16 @@
                 .lottery-select{
                     height: 100%;
                     display: flex;
-                    justify-content: center;
+                    justify-content: flex-end;
+                    width: 100%;
                     .data-img{
                         img{
                             height: px2rem(30px);
                             width: px2rem(30px);
                         }
+                    }
+                    .data-img:last-of-type{
+                        margin-right: px2rem(20px);
                     }
                 }
                 .daletou-menu{

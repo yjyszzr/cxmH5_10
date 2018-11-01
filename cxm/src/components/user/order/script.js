@@ -1,7 +1,7 @@
 import api from '../../../fetch/api'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
-import {nativeApp,isWebview} from '../../../util/common.js'
+import {nativeApp,isWebview,isShare} from '../../../util/common.js'
 import {mapState} from 'vuex'
 export default {
     name: 'order',
@@ -15,7 +15,7 @@ export default {
       }
     },
     created(){
-      isShare(this.$route.query.orderSn, '', '/order/analogOrder?id='+this.$route.query.orderSn, '/static/activity_Back/newComerReg/img/ttlogo.png')
+      isShare(this.$route.query.orderSn, '', '/user/analogOrder?id='+this.$route.query.orderSn, '/static/activity_Back/newComerReg/img/ttlogo.png')
       nativeApp({'methodName':'showTitle','title':'方案详情'})
     },
     methods: {
