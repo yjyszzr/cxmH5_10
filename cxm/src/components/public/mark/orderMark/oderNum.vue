@@ -55,6 +55,7 @@
             }
             .order-nun{
                 color:RGBA(234, 85, 4, 1) ;
+                font-size: px2rem(28px);
             }
         }
         .body{
@@ -71,10 +72,10 @@
         .ok{
             text-align: center;
             width: 100%;
-            padding-bottom: px2rem(30px);
-            padding-top: px2rem(30px);
-            color:RGBA(234, 85, 4, 1)
-
+            padding-bottom: px2rem(20px);
+            padding-top: px2rem(20px);
+            color:RGBA(234, 85, 4, 1);
+            font-size: px2rem(35px);
         }
     }
 </style>
