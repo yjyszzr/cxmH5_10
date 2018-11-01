@@ -115,7 +115,7 @@
                             <i @click="halt()" class="halt_p">本场停售&nbsp;&nbsp;详情>></i>
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" :style="{'opacity':item.isShutDown == 1?'0.3':'1'}" @click="bfBtn(item)">
-                            点击进行比分投注
+                            点击进行比分模拟投注
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item)">
                             <span v-for="(data,index) in matchSelectObj.get(item.matchId)?matchSelectObj.get(item.matchId):[]" :key='index'>
@@ -133,7 +133,7 @@
                             <i @click="halt()" class="halt_p">本场停售&nbsp;&nbsp;详情>></i>
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)==-1" class="matchRightbfBox" :style="{'opacity':item.isShutDown == 1?'0.3':'1'}" @click="bfBtn(item)">
-                            点击进行半全场投注
+                            点击进行半全场模拟投注
                         </div>
                         <div v-if="mapKey.indexOf(item.matchId)!=-1" class="matchRightbfBox selectedBf" @click="bfBtn(item)">
                             <span v-for="(data,index) in matchSelectObj.get(item.matchId)?matchSelectObj.get(item.matchId):[]" :key='index'>

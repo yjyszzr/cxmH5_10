@@ -1,5 +1,5 @@
-const expUrl = 'http://192.168.31.205:8080'
-// const expUrl = 'http://t1.caixiaomi.net:9805'
+// const expUrl = 'http://192.168.31.205:8080'
+const expUrl = 'http://t1.caixiaomi.net:9805'
 //  var expUrl = ''
 // if(location.href.indexOf('.cn')!=-1){
 //     expUrl = 'http://a1.caixiaomi.cn'

@@ -11,7 +11,7 @@
                 <div class="section cont" v-for="(item,i) in recordList" :key='i'>
                     <a @click="goDetail(item)">
                         <p class="picker_p1">{{item.lotteryName}}<span :style="{'color':color(item.orderStatus)}">{{item.orderStatusDesc}}<i class="iconfont icon-icon-14"></i></span></p>
-                        <p class="picker_p2">¥ {{item.ticketAmount}}</p>
+                        <p class="picker_p2">{{item.ticketAmount}}</p>
                         <p class="picker_p3">{{item.payTime}}<span :style="{'color':color(item.orderStatus)}">{{item.orderStatusInfo}}</span></p>
                     </a>
                 </div>

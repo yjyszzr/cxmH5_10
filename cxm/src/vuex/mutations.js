@@ -91,7 +91,7 @@ const mutations = {
         state.matchObj = data
     },
     MATCHSELECTEDLIST(state, data) {
-        if (data == []) {
+        if (data.length==0) {
             state.matchSelectedList = []
         } else {
             state.matchSelectedList.push(data)

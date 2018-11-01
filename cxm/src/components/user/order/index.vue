@@ -15,7 +15,7 @@
                         <div>
                             <p>{{orderObj.lotteryClassifyName}}<span :style="{'color':orderObj.orderStatus=='5'?'#e95504':'#505050'}">{{orderObj.processResult}}</span></p>
                             <p>
-                                <span>￥{{orderObj.ticketAmount}}</span>
+                                <span>{{orderObj.ticketAmount}}</span>
                                 <span style="color:#ea5504;">{{orderObj.forecastMoney}}</span>
                             </p>
 
@@ -82,8 +82,8 @@
                         </li>
                     </ul>
                     <div class="menu">
-                        <p v-if="orderObj.passType!=='null'">过关方式：<span>{{orderObj.passType}}</span></p>
-                        <p>投注倍数：<span v-if="orderObj.passType==='null'">{{orderObj.betNum}}注{{orderObj.cathectic}}倍</span><span v-else>{{orderObj.cathectic}}倍</span></p>
+                        <p v-if="orderObj.passType!=='null'">模拟过关方式：<span>{{orderObj.passType}}</span></p>
+                        <p>模拟投注倍数：<span v-if="orderObj.passType==='null'">{{orderObj.betNum}}注{{orderObj.cathectic}}倍</span><span v-else>{{orderObj.cathectic}}倍</span></p>
                     </div>
                     <!--<div class="yue">-->
                         <!--<p>支付方式：</p>-->
@@ -95,19 +95,21 @@
                     <!--</div>-->
                 </div>
             </div>
-            <!--<div class="section plan">-->
-                <!--<div class="solecd" >方案内容<span @click='goDraw(orderObj.programmeSn)'>查看出票方案<i class="iconfont icon-icon-14"></i></span></div>-->
-                <!--<div>-->
-                    <!--<p>方案编号：<span>{{orderObj.programmeSn}}</span></p>-->
-                    <!--<p>创建时间：<span>{{orderObj.createTime}}</span></p>-->
-                    <!--<p>店主接单：<span>{{orderObj.acceptTime}}</span></p>-->
-                    <!--<p>店主出票：<span>{{orderObj.ticketTime}}</span></p>-->
-                <!--</div>-->
-            <!--</div>-->
+            <!-- <div class="section plan">
+                <div class="solecd" >方案内容
+                    <span @click='goDraw(orderObj.programmeSn)'>查看出票方案<i class="iconfont icon-icon-14"></i></span>
+                </div>
+                <div>
+                    <p>方案编号：<span>{{orderObj.programmeSn}}</span></p>
+                    <p>创建时间：<span>{{orderObj.createTime}}</span></p>
+                    <p>店主接单：<span>{{orderObj.acceptTime}}</span></p>
+                    <p>店主出票：<span>{{orderObj.ticketTime}}</span></p>
+                </div>
+            </div> -->
         </div>
-        <button :style="{'background':color()}" class="jxtz" :class="orderObj!=''?'Fixed':''" @click="jxtz()">
+        <!-- <button :style="{'background':color()}" class="jxtz" :class="orderObj!=''?'Fixed':''" @click="jxtz()">
             继续模拟投注
-        </button>
+        </button> -->
     </div>
 </template>
 
