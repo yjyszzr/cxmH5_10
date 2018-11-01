@@ -169,6 +169,14 @@ const router = new Router({
           component: resolve => require(['@/components/user/order/index.vue'], resolve)
       },
       {
+        path: '/user/analogOrder',
+        name: 'analogOrder',
+        meta: {
+          title: '模拟订单详情'
+        },
+        component: resolve => require(['@/components/user/analogOrder/index.vue'], resolve)
+      },
+      {
           path: '/user/certification',
           name: 'certification',
           meta: {

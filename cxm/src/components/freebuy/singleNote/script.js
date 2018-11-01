@@ -29,31 +29,31 @@ export default {
       collapseShow: false,
       login: this.$route.query.isLogin, //app是否登录
       playList: [{
-          name: '混合投注',
+          name: '模拟混合投注',
           id: '6'
         },
         {
-          name: '胜平负',
+          name: '模拟胜平负',
           id: '2'
         },
         {
-          name: '让球胜平负',
+          name: '模拟让球胜平负',
           id: '1'
         },
         {
-          name: '总进球',
+          name: '模拟总进球',
           id: '4'
         },
         {
-          name: '半全场',
+          name: '模拟半全场',
           id: '5'
         },
         {
-          name: '比分',
+          name: '模拟比分',
           id: '3'
         },
         {
-          name: '2选1',
+          name: '模拟2选1',
           id: '7'
         }
       ]
@@ -65,17 +65,16 @@ export default {
     }
   },
   created() {
-    localStorage.setItem('token', '')
-    // if(this.login==='0'){
-    //   localStorage.setItem('token', '')
-    // }else{
-    //   let that = this
-    //   window.actionMessage = (arg) => {
-    //     if (JSON.parse(arg).token !== '') {
-    //       localStorage.setItem('token', JSON.parse(arg).token)
-    //     }
-    //   }
-    // }
+    if(this.login==='0'){
+      localStorage.setItem('token', '')
+    }else{
+      let that = this
+      window.actionMessage = (arg) => {
+        if (JSON.parse(arg).token !== '') {
+          localStorage.setItem('token', JSON.parse(arg).token)
+        }
+      }
+    }
   },
   components: {
 
@@ -84,19 +83,19 @@ export default {
     sntTitle(c) {
       switch (Number(c)) {
         case 2:
-          return "胜平负";
+          return "模拟胜平负";
         case 1:
-          return "让球胜平负";
+          return "模拟让球胜平负";
         case 4:
-          return "总进球";
+          return "模拟总进球";
         case 5:
-          return "半全场";
+          return "模拟半全场";
         case 3:
-          return "比分";
+          return "模拟比分";
         case 7:
-          return "2选1";
+          return "模拟2选1";
         case 6:
-          return "混合投注";
+          return "模拟混合投注";
       }
     },
     // 头部返回

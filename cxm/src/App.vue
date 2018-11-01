@@ -92,7 +92,7 @@
                         case "withdraw":
                             return "提现";
                         case "record":
-                            return "投注记录";
+                            return "模拟投注记录";
                         case "add_card":
                             return "添加银行卡";
                         case "credit_card":
@@ -103,6 +103,8 @@
                             return "消息中心";
                         case "order":
                             return "订单详情";
+                        case "analogOrder":
+                            return "模拟订单详情";
                         case "draw":
                             return "出票方案";
                         case "payment":
@@ -110,7 +112,7 @@
                         case "ewmPay":
                             return "二维码支付";
                         case "cathectic":
-                            return "投注确认";
+                            return "模拟投注确认";
                         case "teamDetail":
                             return "查看详情";
                         case "consult":
@@ -126,7 +128,7 @@
                         case 'inToplay':
                             return "玩法帮助";
                         case 'protocol':
-                            return "投注服务协议";
+                            return "模拟投注服务协议";
                         case 'activity':
                             return "活动详情";
                         case 'give_details':
@@ -174,7 +176,7 @@
                         case 'success':
                             return "注册推广员";
                         case 'world_explain':
-                            return "投注服务协议";
+                            return "模拟投注服务协议";
                         case 'setup':
                             return "个人信息";
                         case 'setlogin':
@@ -195,7 +197,7 @@
                         case 'programmeDetails':
                             return '方案详情';
                         case 'touZhuConfirm':
-                            return '投注确认';
+                            return '模拟投注确认';
                     }
                 } else {
                     if (

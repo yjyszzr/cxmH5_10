@@ -249,6 +249,10 @@ export default {
     getOrderDetail(params) {
         return fetchPost('order/order/getOrderDetail', params)
     },
+    //查询模拟订单详情
+    getOrderDetailByOrderSn(params) {
+        return fetchPost('order/order/getOrderDetailByOrderSn', params)
+    },
     //查询出票方案
     getTicketScheme(params) {
         return fetchPost('order/order/getTicketScheme', params)

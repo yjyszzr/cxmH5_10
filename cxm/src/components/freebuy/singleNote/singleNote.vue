@@ -2,9 +2,10 @@
     <div class="singleNote">
         <!--头部开始-->
         <div class="head">
-            <span class="back-img" @click="goBack()"><img src="../../../assets/img/ret.png" alt=""></span>
+            <span class="back-img" @click="goBack()" v-show="$route.query.cfrom!='app'"><img src="../../../assets/img/ret.png" alt=""></span>
+            <span class="back-img" @click="goBack()" v-show="$route.query.cfrom=='app'"></span>
             <div class="head-text" @click="openOrclose()">
-                <span>彩小秘·<span>{{sntTitle(playType)}}</span></span>
+                <span>{{sntTitle(playType)}}</span>
                 <span class="header-down"><img id="downImg" src="../../../assets/img/freebuy_img/Collapse@3x.png"
                                                alt=""></span>
             </div>
@@ -31,7 +32,7 @@
             </transition>
         </div>
         <div class="matchTitle">
-            共有{{$store.state.matchObj.allMatchCount}}场比赛可投
+            共有{{$store.state.matchObj.allMatchCount}}场比赛可模拟投注
         </div>
        <el-collapse v-model="activeName">
         <el-collapse-item :name="activeNameNum(i)" v-for="(data,i) in $store.state.matchObj.playList" :key='i' v-if="$store.state.matchObj.playList">
@@ -40,7 +41,7 @@
                 <span class="hotMatch">热门比赛</span>
             </template>
             <template slot="title" v-else>
-                <span class="spfList">{{data.matchDay}}&nbsp;&nbsp;共有<b style="font-weight:400;color:#505050;">{{data.playList.length}}场</b>比赛可投</span>
+                <span class="spfList">{{data.matchDay}}&nbsp;&nbsp;共有<b style="font-weight:400;color:#505050;">{{data.playList.length}}场</b>比赛可模拟投注</span>
             </template>
             <ul class="hotMatchList">
                 <li v-for="(item,index) in data.playList" :key='index' :id='item.matchId' :class="item.matchPlays[0].single=='1'?'single':''">

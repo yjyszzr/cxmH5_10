@@ -550,6 +550,7 @@ export default {
 		},
 		danClick(c, s) {
 			//console.log(c)
+			Indicator.open()
 			if(s.target.id == 'isDan') {
 				s.target.id = ''
 				c.selectedDan = false
@@ -563,7 +564,7 @@ export default {
 		},
 		saveGo() {
 			if(this.$refs.xySelected.className == 'icon-icon-29 iconfont'){
-				Toast('尊敬的用户,购彩需同意并接受《彩小秘投注服务协议》')
+				Toast('尊敬的用户,购彩需同意并接受《模拟投注服务协议》')
 				return
 			}else if(this.disable==true){
 				Toast('请至少选择2场比赛')
@@ -574,7 +575,7 @@ export default {
 			// 	return
 			// }
 			else if(this.arrTime[0]*1000<new Date().getTime()){
-				Toast('部分比赛投注截止')
+				Toast('部分比赛模拟投注截止')
 				return
 			}else if(this.maxButNum == true){
 				Toast(this.maxButNumMsg)
@@ -584,12 +585,16 @@ export default {
             api.nSaveBetInfo(this.matchSave)
                 .then(res => {
                     if (res.code == 0) {
-                        this.$router.push({
-							path: '/user/order',
-                            query: {
-                            	id: res.data.orderId,
-                            }
-						})
+						if(this.$route.query.cfrom=='app'){
+							location.href = `/user/order?id=${res.data.orderId}&cmshare=1&cxmcx=scm`
+						}else{
+							this.$router.push({
+								path: '/user/order',
+								query: {
+									id: res.data.orderId,
+								}
+							})
+						}
                     }
                 })
 		},

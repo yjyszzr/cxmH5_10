@@ -15,6 +15,7 @@ export default {
       }
     },
     created(){
+      isShare(this.$route.query.orderSn, '', '/order/analogOrder?id='+this.$route.query.orderSn, '/static/activity_Back/newComerReg/img/ttlogo.png')
       nativeApp({'methodName':'showTitle','title':'方案详情'})
     },
     methods: {
