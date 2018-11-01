@@ -1,20 +1,20 @@
 @import '../../../assets/css/function.scss';
-.sms{
-  .iconfont{
+.sms {
+  .iconfont {
     color: #9f9f9f;
-}
-.forgetM{
-  margin: px2rem(20px) px2rem(36px);
-  .x_in{
-    font-size: px2rem(26px);
-    color: #787878;
   }
-}
-  .buttonZc{
+  .forgetM {
+    margin: px2rem(20px) px2rem(36px);
+    .x_in {
+      font-size: px2rem(26px);
+      color: #787878;
+    }
+  }
+  .buttonZc {
     display: block;
     width: 90%;
     margin: px2rem(30px) auto;
-    a{
+    a {
       border-radius: px2rem(10px);
       display: block;
       height: 1.187rem;
@@ -25,7 +25,7 @@
       font-size: px2rem(28px);
     }
   }
-  .iconfont{
+  .iconfont {
     color: #9f9f9f;
   }
 }

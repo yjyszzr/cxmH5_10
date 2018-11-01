@@ -24,7 +24,6 @@
                 <img src="./img/yinlian.jpg" alt="">
             </div>
         </div>
-
     </div>
 </template>
 

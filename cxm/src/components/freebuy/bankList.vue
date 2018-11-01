@@ -6,7 +6,6 @@
         </form>
     </div>
 </template>
-
 <script>
     import api from '../../fetch/api'
     import {Indicator} from 'mint-ui'
@@ -33,9 +32,6 @@
                 }
                 api.nUnifiedOrderUbey(data).then(res=>{
                     if(res.code == '0'){
-                        // that.data = res.data.data
-                        // that.signature = res.data.signature
-                        // that.payUrl = res.data.payUrl
                         $('.da').val(res.data.data)
                         $('.sig').val(res.data.signature)
                         $('#myform').submit()
@@ -46,6 +42,3 @@
 
     }
 </script>
-<style scoped lang=scss>
-    @import '../../assets/css/function.scss';
-</style>
