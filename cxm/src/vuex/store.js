@@ -79,6 +79,7 @@ const state = {
     },
     order:{
         orderNum:'',//订单号
+        addFriendsQRBarUrl:'',//微信好友二维码
     },
 }
 let storageArr = []
