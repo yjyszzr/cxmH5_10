@@ -267,7 +267,7 @@ export default {
     },
     //支付订单
     nSaveBetInfo(params) {
-        return fetchPost('lottery/lottery/match/nSaveBetInfo', params)
+        return fetchPost('lottery/lottery/match/createOrderBySimulate', params)
     },
     //计算投注信息
     getBetInfo(params) {

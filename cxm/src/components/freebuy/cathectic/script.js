@@ -28,7 +28,12 @@ export default {
         Indicator.open()
     },
 	created() {
-
+		let that = this
+		window.actionMessage = (arg) => {
+			if (JSON.parse(arg).token !== '') {
+			localStorage.setItem('token', JSON.parse(arg).token)
+			}
+		}
 	},
 	methods: {
 		datePd(c) {
@@ -578,13 +583,12 @@ export default {
 			Indicator.open()
             api.nSaveBetInfo(this.matchSave)
                 .then(res => {
-                        // console.log(res)
                     if (res.code == 0) {
                         this.$router.push({
-							path: '/freebuy/payment',
-							query:{
-								ptk: res.data
-							}
+							path: '/user/order',
+                            query: {
+                            	id: res.data.orderId,
+                            }
 						})
                     }
                 })

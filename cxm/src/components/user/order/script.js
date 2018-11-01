@@ -62,14 +62,5 @@ export default {
       ...mapState({
            channelObj: state => state.channelObj
       })
-    },
-    beforeRouteLeave(to, from, next) {
-      if(to.path!='/freebuy/cathectic'){
-        next()
-      }else{
-        this.$store.state.matchSelectedList = []
-        localStorage.removeItem('tab')
-        this.$router.push({path: '/'})
-      }
     }
 }

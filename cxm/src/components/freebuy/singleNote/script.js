@@ -1,6 +1,9 @@
 import api from '../../../fetch/api'
 import datefilter from '../../../util/datefilter'
 import {
+  isShare
+} from '../../../util/common'
+import {
   MessageBox
 } from 'mint-ui';
 import {
@@ -24,8 +27,8 @@ export default {
       mapKey: [],
       arrNum: 0,
       collapseShow: false,
-      playList:[
-        {
+      login: this.$route.query.isLogin, //app是否登录
+      playList: [{
           name: '混合投注',
           id: '6'
         },
@@ -61,65 +64,85 @@ export default {
       Indicator.open()
     }
   },
+  created() {
+    localStorage.setItem('token', '')
+    // if(this.login==='0'){
+    //   localStorage.setItem('token', '')
+    // }else{
+    //   let that = this
+    //   window.actionMessage = (arg) => {
+    //     if (JSON.parse(arg).token !== '') {
+    //       localStorage.setItem('token', JSON.parse(arg).token)
+    //     }
+    //   }
+    // }
+  },
   components: {
 
   },
   methods: {
-      sntTitle(c){
-        switch(Number(c)){
-          case 2: return "胜平负";
-          case 1: return "让球胜平负";
-          case 4: return "总进球";
-          case 5: return "半全场";
-          case 3: return "比分";
-          case 7: return "2选1";
-          case 6: return "混合投注";
-        }
-      },
-      // 头部返回
-      goBack() {
-        this.$store.dispatch("getmatchSelectedList", []);
-        this.$router.go(-1);
-      },
-      //是否展开
-      openOrclose(event) {
-        if ($('#downImg').hasClass('rotate')) {
-            $('#downImg').removeClass('rotate')
-        } else {
-            $('#downImg').addClass('rotate')
-        }
-        this.collapseShow = !this.collapseShow
-      },
-      filter() {
-          this.$store.dispatch("getMarkShow", true);
-          this.$store.dispatch("getMarkShowType", "2");
-      },
-      goInToplay() {
-          this.$router.push({
-              path: "/freebuy/inToplay",
-              replace: false
-          });
-      },
-      stntab(c){
-        Indicator.open()
-        this.$store.state.matchObj = {};
-        this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
-        this.$store.state.mark_playObj.bfIdSaveMap = {};
-        this.clear_match()
-        this.$store.commit('FREEBUYID',c.id)
-        this.fetchData()
-        this.openOrclose()
-      },
-      halt(){
-          MessageBox.alert('', {
-              message: '因出票限制，暂停销售',
-              title: '停售原因',
-              confirmButtonText: '我知道了',
-              closeOnClickModal: false
-          }).then(action => {
+    sntTitle(c) {
+      switch (Number(c)) {
+        case 2:
+          return "胜平负";
+        case 1:
+          return "让球胜平负";
+        case 4:
+          return "总进球";
+        case 5:
+          return "半全场";
+        case 3:
+          return "比分";
+        case 7:
+          return "2选1";
+        case 6:
+          return "混合投注";
+      }
+    },
+    // 头部返回
+    goBack() {
+      this.$store.dispatch("getmatchSelectedList", []);
+      this.$router.go(-1);
+    },
+    //是否展开
+    openOrclose(event) {
+      if ($('#downImg').hasClass('rotate')) {
+        $('#downImg').removeClass('rotate')
+      } else {
+        $('#downImg').addClass('rotate')
+      }
+      this.collapseShow = !this.collapseShow
+    },
+    filter() {
+      this.$store.dispatch("getMarkShow", true);
+      this.$store.dispatch("getMarkShowType", "2");
+    },
+    goInToplay() {
+      this.$router.push({
+        path: "/freebuy/inToplay",
+        replace: false
+      });
+    },
+    stntab(c) {
+      Indicator.open()
+      this.$store.state.matchObj = {};
+      this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
+      this.$store.state.mark_playObj.bfIdSaveMap = {};
+      this.clear_match()
+      this.$store.commit('FREEBUYID', c.id)
+      this.fetchData()
+      this.openOrclose()
+    },
+    halt() {
+      MessageBox.alert('', {
+        message: '因出票限制，暂停销售',
+        title: '停售原因',
+        confirmButtonText: '我知道了',
+        closeOnClickModal: false
+      }).then(action => {
 
-          });
-      },
+      });
+    },
     fetchData() {
       let data = {
         'leagueId': this.leagueId,
@@ -209,7 +232,7 @@ export default {
         for (let i = 0; i < item.playList.length; i++) {
           if (item.playList[i].selectedNum && item.playList[i].selectedNum > 0) {
             this.arrNum++
-              obj = item.playList[i]
+            obj = item.playList[i]
           }
         }
       });
@@ -228,7 +251,7 @@ export default {
             this.flag = false
             this.classFlag = false
           }
-        }else if (obj.matchPlays[0].single == '1') {
+        } else if (obj.matchPlays[0].single == '1') {
           if (obj.matchPlays[1].homeCell.isSelected || obj.matchPlays[1].flatCell.isSelected || obj.matchPlays[1].visitingCell.isSelected) {
             this.text = `<p>已选择<span style='color:#ea5504;'>1场</span>非单关比赛</p><p>还差<span style='color:#ea5504;'>1场</span>比赛</p>`
             this.flag = true
@@ -238,7 +261,7 @@ export default {
             this.flag = false
             this.classFlag = false
           }
-        }else {
+        } else {
           this.text = `<p>已选择<span style='color:#ea5504;'>1场</span>非单关比赛</p><p>还差<span style='color:#ea5504;'>1场</span>比赛</p>`
           this.flag = true
           this.classFlag = true
@@ -335,7 +358,7 @@ export default {
       this.confirm_disable()
     },
     //混合过关逻辑
-    isSelectedTy(s, c, status,sig,fixodds) {
+    isSelectedTy(s, c, status, sig, fixodds) {
       let arr = new Set(c.selectedList),
         obj2 = {}
       let obj = {},
@@ -364,16 +387,16 @@ export default {
       obj.cellSons = s.cellSons
       // console.log(c)
       this.$store.state.mark_playObj.bfIdSaveMapFlag++
-        if (s.isSelected == 'sld') {
-          s.isSelected = false
-          c.selectedNum--
-            betCells.delete(JSON.stringify(obj))
-        } else {
-          s.isSelected = 'sld'
-          c.selectedNum++
-            betCells.add(JSON.stringify(obj))
-          //betCells.delete(obj)
-        }
+      if (s.isSelected == 'sld') {
+        s.isSelected = false
+        c.selectedNum--
+        betCells.delete(JSON.stringify(obj))
+      } else {
+        s.isSelected = 'sld'
+        c.selectedNum++
+        betCells.add(JSON.stringify(obj))
+        //betCells.delete(obj)
+      }
       obj2.betCells = []
       betCells.forEach(item => {
         obj2.betCells.push(JSON.parse(item))
@@ -411,20 +434,20 @@ export default {
     },
     unSelectedClickspf(c, s) {
       if (c.target.innerText.split(' ')[0] == s.matchPlays[1].homeCell.cellName) {
-        this.isSelectedTy(s.matchPlays[1].homeCell, s, '2',s.matchPlays[1].single,s.matchPlays[1].fixedOdds)
+        this.isSelectedTy(s.matchPlays[1].homeCell, s, '2', s.matchPlays[1].single, s.matchPlays[1].fixedOdds)
       } else if (c.target.innerText.split(' ')[0] == s.matchPlays[1].flatCell.cellName) {
-        this.isSelectedTy(s.matchPlays[1].flatCell, s, '2',s.matchPlays[1].single,s.matchPlays[1].fixedOdds)
+        this.isSelectedTy(s.matchPlays[1].flatCell, s, '2', s.matchPlays[1].single, s.matchPlays[1].fixedOdds)
       } else if (c.target.innerText.split(' ')[0] == s.matchPlays[1].visitingCell.cellName) {
-        this.isSelectedTy(s.matchPlays[1].visitingCell, s, '2',s.matchPlays[1].single,s.matchPlays[1].fixedOdds)
+        this.isSelectedTy(s.matchPlays[1].visitingCell, s, '2', s.matchPlays[1].single, s.matchPlays[1].fixedOdds)
       }
     },
     unSelectedClickrq(c, s) {
       if (c.target.innerText.split(' ')[0] == s.matchPlays[0].homeCell.cellName) {
-        this.isSelectedTy(s.matchPlays[0].homeCell, s, '1',s.matchPlays[0].single,s.matchPlays[0].fixedOdds)
+        this.isSelectedTy(s.matchPlays[0].homeCell, s, '1', s.matchPlays[0].single, s.matchPlays[0].fixedOdds)
       } else if (c.target.innerText.split(' ')[0] == s.matchPlays[0].flatCell.cellName) {
-        this.isSelectedTy(s.matchPlays[0].flatCell, s, '1',s.matchPlays[0].single,s.matchPlays[0].fixedOdds)
+        this.isSelectedTy(s.matchPlays[0].flatCell, s, '1', s.matchPlays[0].single, s.matchPlays[0].fixedOdds)
       } else if (c.target.innerText.split(' ')[0] == s.matchPlays[0].visitingCell.cellName) {
-        this.isSelectedTy(s.matchPlays[0].visitingCell, s, '1',s.matchPlays[0].single,s.matchPlays[0].fixedOdds)
+        this.isSelectedTy(s.matchPlays[0].visitingCell, s, '1', s.matchPlays[0].single, s.matchPlays[0].fixedOdds)
       }
     },
     clear_matchClick() {
@@ -483,7 +506,10 @@ export default {
         query: {
           playType: this.playType,
           lottoyId: this.$store.state.matchObj.lotteryClassifyId,
-          classlootoyId: this.$store.state.matchObj.lotteryPlayClassifyId
+          classlootoyId: this.$store.state.matchObj.lotteryPlayClassifyId,
+          cfrom: this.$route.query.cfrom,
+          usinfo: this.$route.query.usinfo,
+          cxmxc: this.$route.query.cxmxc
         },
         replace: false
       })
@@ -509,10 +535,10 @@ export default {
     matchDetailMark() {
       return this.$store.state.mark_playObj.matchDetailFlag;
     },
-    playType(){
+    playType() {
       return this.$store.state.freebuyId;
     },
-    leagueId(){
+    leagueId() {
       return this.$store.state.mark_showObj.leagueIds;
     },
   },
@@ -555,7 +581,7 @@ export default {
         this.matchSelectObj = new Map()
         _.forIn(this.$store.state.mark_playObj.bfIdSaveMap, (value, key) => {
           this.mapKey.push(key)
-          this.matchSelectObj.set(key,value)
+          this.matchSelectObj.set(key, value)
         });
         // for (let [key, value] of this.matchSelectObj) {
         //   this.mapKey.push(key)
@@ -563,7 +589,7 @@ export default {
         this.confirm_bf()
       } else if (this.playType == '6') {
         this.$store.state.mark_playObj.bfIdSaveMapFlag++
-          this.confirm_mix()
+        this.confirm_mix()
       } else {
         this.$store.state.matchSelectedList.forEach(item => {
           this.matchSelectObj.set(item.matchId, new Set(item.myspf))
@@ -596,6 +622,10 @@ export default {
       next(vm => {
         vm.$store.state.mark_Reset++
       })
+    }
+    if (from.path == '/' && to.query.cfrom &&to.query.cfrom.indexOf('app') != -1) {
+      localStorage.removeItem('tab')
+      next()
     } else {
       next()
     }
@@ -609,8 +639,8 @@ export default {
     this.$store.state.mark_playObj.bfIdSaveMapFlag = 0
     this.$store.state.mark_showObj.mark_show_type = ''
     this.$store.state.mark_playObj.mupNum = '5'
-    if(to.path!='/freebuy/cathectic'){
-      this.$store.dispatch("getLeagueIds",'')
+    if (to.path != '/freebuy/cathectic') {
+      this.$store.dispatch("getLeagueIds", '')
     }
     localStorage.removeItem('tab')
   }
