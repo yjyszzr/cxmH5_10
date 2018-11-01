@@ -22,6 +22,8 @@
                     </div>
                 </div>
                 <v-time v-if="$store.state.mark_showObj.mark_show_type == 1"></v-time>
+                <v-ewm v-if="$store.state.mark_showObj.mark_show_type == 3"></v-ewm>
+                <v-olderNum v-if="$store.state.mark_showObj.mark_show_type == 4"></v-olderNum>
             </div>
 </template>
 

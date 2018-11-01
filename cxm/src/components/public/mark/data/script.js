@@ -84,7 +84,4 @@ export default {
             this.$store.dispatch("getMarkDateVal",c.strDate)
         }
     },
-    mounted(){
-    
-    }
 }

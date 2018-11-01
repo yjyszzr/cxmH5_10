@@ -1,5 +1,7 @@
 import api from '../../../../fetch/api.js'
 import time from '../data/data.vue'
+import ewm from '../orderMark/ewm.vue'
+import olderNum from '../orderMark/oderNum.vue'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 import {mapState} from 'vuex'
@@ -11,7 +13,9 @@ export default {
     };
   },
     components:{
-      'v-time': time
+      'v-time': time,
+       'v-ewm' :ewm,
+       'v-olderNum':olderNum
     },
   methods: {
     cancel() {

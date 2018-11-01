@@ -56,6 +56,8 @@ export default {
         .then(res => {
             if(res.code==0) {
               this.orderObj = res.data
+                this.$store.state.order.orderNum = res.data.orderSn
+                this.$store.state.order.addFriendsQRBarUrl = res.data.addFriendsQRBarUrl
             }
         })
     },

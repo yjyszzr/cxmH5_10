@@ -102,7 +102,7 @@
                         case "message":
                             return "消息中心";
                         case "order":
-                            return "订单详情";
+                            return "模拟订单详情";
                         case "analogOrder":
                             return "模拟订单详情";
                         case "draw":

@@ -21,17 +21,17 @@
 
                         </div>
                     </div>
-                    <div class="box2">
-                        <p>
-                            <span style="color: #999;">方案状态</span>
-                            <span :style="{'color':orderObj.orderStatus=='2'?'#f7931e':'#505050'}">{{orderObj.orderStatusDesc}}</span>
-                        </p>
-                        <p>
-                            <span v-if="orderObj.orderStatus=='5'">中奖金额</span>
-                            <span :style="{'color':orderObj.orderStatus=='5'?'#ea5504':'#505050'}" v-if="orderObj.orderStatus=='5'">￥{{orderObj.processStatusDesc}}</span>
+                    <!--<div class="box2">-->
+                        <!--<p>-->
+                            <!--<span style="color: #999;">方案状态</span>-->
+                            <!--<span :style="{'color':orderObj.orderStatus=='2'?'#f7931e':'#505050'}">{{orderObj.orderStatusDesc}}</span>-->
+                        <!--</p>-->
+                        <!--<p>-->
+                            <!--<span v-if="orderObj.orderStatus=='5'">中奖金额</span>-->
+                            <!--<span :style="{'color':orderObj.orderStatus=='5'?'#ea5504':'#505050'}" v-if="orderObj.orderStatus=='5'">￥{{orderObj.processStatusDesc}}</span>-->
 
-                        </p>
-                    </div>
+                        <!--</p>-->
+                    <!--</div>-->
                 </div>
                 <div class="section table">
                     <h5>方案内容</h5>
@@ -85,29 +85,28 @@
                         <p v-if="orderObj.passType!=='null'">过关方式：<span>{{orderObj.passType}}</span></p>
                         <p>投注倍数：<span v-if="orderObj.passType==='null'">{{orderObj.betNum}}注{{orderObj.cathectic}}倍</span><span v-else>{{orderObj.cathectic}}倍</span></p>
                     </div>
-                    <div class="yue">
-                        <p>支付方式：</p>
-                        <div class="sele">
-                            <div v-if="orderObj.surplus > 0">余额支付<span>{{orderObj.surplus}}元</span></div>
-                            <div v-if="orderObj.bonus > 0">优惠券抵现<span>{{orderObj.bonus}} 元</span></div>
-                            <div v-if="orderObj.thirdPartyPaid > 0">{{orderObj.payName}}<span>{{orderObj.thirdPartyPaid}}元</span></div>
-                        </div>
-
-                    </div>
+                    <!--<div class="yue">-->
+                        <!--<p>支付方式：</p>-->
+                        <!--<div class="sele">-->
+                            <!--<div v-if="orderObj.surplus > 0">余额支付<span>{{orderObj.surplus}}元</span></div>-->
+                            <!--<div v-if="orderObj.bonus > 0">优惠券抵现<span>{{orderObj.bonus}} 元</span></div>-->
+                            <!--<div v-if="orderObj.thirdPartyPaid > 0">{{orderObj.payName}}<span>{{orderObj.thirdPartyPaid}}元</span></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
                 </div>
             </div>
-            <div class="section plan">
-                <div class="solecd" >方案内容<span @click='goDraw(orderObj.programmeSn)'>查看出票方案<i class="iconfont icon-icon-14"></i></span></div>
-                <div>
-                    <p>方案编号：<span>{{orderObj.programmeSn}}</span></p>
-                    <p>创建时间：<span>{{orderObj.createTime}}</span></p>
-                    <p>店主接单：<span>{{orderObj.acceptTime}}</span></p>
-                    <p>店主出票：<span>{{orderObj.ticketTime}}</span></p>
-                </div>
-            </div>
+            <!--<div class="section plan">-->
+                <!--<div class="solecd" >方案内容<span @click='goDraw(orderObj.programmeSn)'>查看出票方案<i class="iconfont icon-icon-14"></i></span></div>-->
+                <!--<div>-->
+                    <!--<p>方案编号：<span>{{orderObj.programmeSn}}</span></p>-->
+                    <!--<p>创建时间：<span>{{orderObj.createTime}}</span></p>-->
+                    <!--<p>店主接单：<span>{{orderObj.acceptTime}}</span></p>-->
+                    <!--<p>店主出票：<span>{{orderObj.ticketTime}}</span></p>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
         <button :style="{'background':color()}" class="jxtz" :class="orderObj!=''?'Fixed':''" @click="jxtz()">
-            继续投注
+            继续模拟投注
         </button>
     </div>
 </template>
