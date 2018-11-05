@@ -586,7 +586,7 @@ export default {
                 .then(res => {
                     if (res.code == 0) {
 						if(this.$route.query.cfrom=='app'){
-							location.href = `/user/order?id=${res.data.orderId}&cmshare=1&cxmxc=scm&orderSn=${res.data.orderSn}`
+							location.href = `/user/order?id=${res.data.orderId}&cmshare=1&cxmxc=scm&orderSn=${res.data.orderSn}&qd=${this.$route.query.qd}`
 						}else{
 							this.$router.push({
 								path: '/user/order',

@@ -621,8 +621,7 @@ export default {
       next(vm => {
         vm.$store.state.mark_Reset++
       })
-    }
-    if (from.path == '/' && to.query.cfrom &&to.query.cfrom.indexOf('app') != -1) {
+    }else if (from.path == '/' && to.query.cfrom &&to.query.cfrom.indexOf('app') != -1) {
       localStorage.removeItem('tab')
       next()
     } else {

@@ -95,17 +95,17 @@
                     <!--</div>-->
                 </div>
             </div>
-            <!-- <div class="section plan">
+            <div class="section plan">
                 <div class="solecd" >方案内容
-                    <span @click='goDraw(orderObj.programmeSn)'>查看出票方案<i class="iconfont icon-icon-14"></i></span>
+                    <span @click='goDraw(orderObj.programmeSn)'>模拟方案<i class="iconfont icon-icon-14"></i></span>
                 </div>
                 <div>
-                    <p>方案编号：<span>{{orderObj.programmeSn}}</span></p>
+                    <p>模拟编号：<span>{{orderObj.programmeSn}}</span></p>
                     <p>创建时间：<span>{{orderObj.createTime}}</span></p>
-                    <p>店主接单：<span>{{orderObj.acceptTime}}</span></p>
-                    <p>店主出票：<span>{{orderObj.ticketTime}}</span></p>
+                    <!-- <p>店主接单：<span>{{orderObj.acceptTime}}</span></p>
+                    <p>店主出票：<span>{{orderObj.ticketTime}}</span></p> -->
                 </div>
-            </div> -->
+            </div>
         </div>
         <!-- <button :style="{'background':color()}" class="jxtz" :class="orderObj!=''?'Fixed':''" @click="jxtz()">
             继续模拟投注

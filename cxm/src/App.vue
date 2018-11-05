@@ -106,13 +106,13 @@
                         case "analogOrder":
                             return "模拟订单详情";
                         case "draw":
-                            return "出票方案";
+                            return "模拟方案";
                         case "payment":
                             return "支付订单";
                         case "ewmPay":
                             return "二维码支付";
                         case "cathectic":
-                            return "模拟投注确认";
+                            return "模拟投注";
                         case "teamDetail":
                             return "查看详情";
                         case "consult":
