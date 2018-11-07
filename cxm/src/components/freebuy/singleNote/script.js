@@ -508,7 +508,8 @@ export default {
           classlootoyId: this.$store.state.matchObj.lotteryPlayClassifyId,
           cfrom: this.$route.query.cfrom,
           usinfo: this.$route.query.usinfo,
-          cxmxc: this.$route.query.cxmxc
+          cxmxc: this.$route.query.cxmxc,
+          qd: this.$route.query.qd
         },
         replace: false
       })
