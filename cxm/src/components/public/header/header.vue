@@ -20,7 +20,7 @@
                 </div>
                 <!--订单详情 头-->
                 <div class="lottery-select" v-if="$route.path.split('/')[2]=='order'" >
-                    <span @click='oder()' v-show="!$route.query.cxmxc" class="data-img" ><img src="./images/fenxing@3x.png" alt=""></span>
+                    <!--<span @click='oder()' v-show="!$route.query.cxmxc" class="data-img" ><img src="./images/fenxing@3x.png" alt=""></span>-->
                     <span @click='ewm()' class="data-img" ><img src="./images/ewm@3x.png" alt=""></span>
                 </div>
             </div>
@@ -307,10 +307,10 @@
                 this.$store.dispatch("getMarkShow", true);
                 this.$store.dispatch("getMarkShowType", 3);
             },
-            oder() {
-                this.$store.dispatch("getMarkShow", true);
-                this.$store.dispatch("getMarkShowType", 4);
-            },
+            // oder() {
+            //     this.$store.dispatch("getMarkShow", true);
+            //     this.$store.dispatch("getMarkShowType", 4);
+            // },
             getUrl() {
                 if (getUrlStr("frz", location.href) == undefined) {
                     return true;

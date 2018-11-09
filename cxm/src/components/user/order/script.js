@@ -46,7 +46,11 @@ export default {
           channelcolor = this.channelObj.color
         }
         return channelcolor;
-      }
+      },
+        sharOder(){
+            this.$store.dispatch("getMarkShow", true);
+            this.$store.dispatch("getMarkShowType", 4);
+        }
     },
     mounted(){
         let data = {
