@@ -3,7 +3,7 @@
         <!--头部-->
         <div class="headerTop" v-show="showTitle">
             <a @click="return_back()" class="go_return"></a>
-            <p class="headerText"><span v-if="!$route.path.split('/')[2]">彩小秘·</span>{{title}}</p>
+            <p class="headerText"><span v-if="!$route.path.split('/')[2]">天天体育·</span>{{title}}</p>
             <div class="filter" v-show="menuDisplay==true">
                 <span v-if="$route.path.split('/')[2]=='consult'" style="opacity:0;">分享</span>
                 <span v-if="$route.path.split('/')[2]=='consult'&&getUrl()" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
