@@ -14,11 +14,11 @@
                 </div>
                 <div class="por-right">
                     <span>{{userInfo.mobile}}</span>
-                    <b class="certified" v-if='userInfo.isReal=="1"'></b>
-                    <p v-if='userInfo.isReal=="0"' @click='gorz()'>您还未实名认证，尽快实名认证</p>
+                    <b v-show="$store.state.turnOn!=0" class="certified" v-if='userInfo.isReal=="1"'></b>
+                    <p v-show="$store.state.turnOn!=0" v-if='userInfo.isReal=="0"' @click='gorz()'>您还未实名认证，尽快实名认证</p>
                 </div>
             </div>
-            <div class="money clearfix">
+            <div class="money clearfix" v-show="$store.state.turnOn!=0">
                 <div class="left">
                     <span><b>{{userInfo.totalMoney}}</b><i>元</i></span>
                     <p>账户余额</p>
@@ -28,12 +28,12 @@
                     <p>可提现余额</p>
                 </div>
             </div>
-            <div class="nav">
+            <div class="nav" v-show="$store.state.turnOn!=0">
                 <a @click="goRecharge()">充值</a>
                 <a @click="goWithdraw(userInfo.isReal)">提现</a>
             </div>
         </div>
-        <div class="section">
+        <div class="section" v-show="$store.state.turnOn!=0">
             <ul class="msg_list">
                 <li>
                     <router-link to="/user/record">
@@ -78,7 +78,7 @@
         <div class="section">
             <ul class="msg_list">
                 <li>
-                    <router-link to='/user/message'>
+                    <router-link to='/user/message' v-show="$store.state.turnOn!=0">
                         <div>
                             <i class="iconfont icon-icon-36"></i>
                             <span class="arrow_right float_right"></span>
