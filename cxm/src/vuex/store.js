@@ -13,6 +13,7 @@ const state = {
     skeletion: {
         consultInit: true,  //初始化骨架屏
     },
+    turnOn: '0', // 默认资讯版
     freebuyId: '6',
     //验证码初始化
     smsCode: {

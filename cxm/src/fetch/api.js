@@ -520,6 +520,10 @@ export default {
     // //获取银行信息
     nUnifiedOrderUbey(params) {
         return fetchPost('/payment/payment/Ubey/nUnifiedOrderUbey', params)
+    },
+    //切换版本
+    dealQuery(params){
+        return fetchPost('/member/switch/config/query', params)
     }
 }
 

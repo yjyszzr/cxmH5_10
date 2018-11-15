@@ -7,6 +7,10 @@ const mutations = {
     COSULTINIT(state, data){
         state.skeletion.consultInit = data
     },
+    //版本切换状态
+    TURNON(state, data){
+        state.turnOn = data
+    },
     GETSMSCODE(state, data) {
         //获取验证码  
         api.SendSmsCode(data)

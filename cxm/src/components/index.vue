@@ -172,7 +172,7 @@
         </div>
         <v-slider :bannerList='bannerList'></v-slider>
         <!--首页-->
-        <div class="index_center">
+        <div class="index_center" v-show="$store.state.turnOn!=0">
             <div class="carousel" style="margin-top: 0.24rem;">
                 <div class="scroll-wrap">
                     <i class="iconfont icon-icon-"></i>

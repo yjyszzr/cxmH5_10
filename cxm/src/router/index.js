@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import { Toast,MessageBox } from 'mint-ui'
-import {wxPd} from '../util/common'
+import {wxPd,isdeal} from '../util/common'
 import NProgress from 'nprogress'; // Progress 进度条
 import 'nprogress/nprogress.css'; // Progress 进度条 样式
 Vue.use(Router)
@@ -864,8 +864,9 @@ const router = new Router({
 NProgress.configure({ showSpinner: false });
 
 router.beforeEach(async(to, from, next) => {
+    isdeal();
 	if(to.fullPath.indexOf('#')!=-1){
-		next(
+		await next(
 			{
 				path: to.fullPath.replace('/#','')
 			}
@@ -876,24 +877,6 @@ router.beforeEach(async(to, from, next) => {
     if(toPath=='/activity/wheel'&&(to.query.fr=='c039'||to.query.fr=='c239')){
         document.title = '必中彩';
     }
-    // if(to.meta.title&&wxPd()) {
-    //     if(toPath=='/freebuy/singleNote'){
-    //         let noteTitle = (id) => {
-    //             switch (id){
-    //                 case '2' : return "胜平负";
-    //                 case '1' : return "让球胜平负";
-    //                 case '4' : return "总进球";
-    //                 case '5' : return "半全场";
-    //                 case '3' : return "比分";
-    //                 case '7' : return "2选1";
-    //                 case '6' : return "混合投注";
-    //             }
-    //         }
-    //         document.title = '彩小秘·'+noteTitle(to.query.id);
-    //     }else{
-    //         document.title = '彩小秘·'+to.meta.title;
-    //     }
-    // }
     NProgress.start(); // 开启Progress
     // 进入详情页时需要记录滚动条距离头部距离
     if(toPath === '/index/consult'&&(from.path==='/'||from.path==='/find')){
@@ -904,7 +887,7 @@ router.beforeEach(async(to, from, next) => {
             from.meta.keepAlive = false
         }
     }
-	next()
+	await next()
 })
 
 router.afterEach(async(to, from) => {
