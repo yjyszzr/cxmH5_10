@@ -76,7 +76,7 @@ const state = {
     runchartData: {},  //走势图数据
     channelObj: {
         color: '#ea5504',
-        channelNmae: '彩小秘'
+        channelNmae: '天天体育'
     },
     order:{
         orderNum:'',//订单号

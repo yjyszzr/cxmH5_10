@@ -156,15 +156,15 @@
 <!--首页-->
 <template>
     <div class="wrap">
-        <div class="downDrop" @click="goDownLoad()">
+        <!--<div class="downDrop" @click="goDownLoad()">
             <div class="downLeft">
                 <img src="../assets/img/downIocn.png" alt="">
-                <span>下载彩小秘APP 购彩更轻松</span>
+                <span>下载天天体育APP 购彩更轻松</span>
             </div>
             <div class="downRight">
                 <span>立即打开</span>
             </div>
-        </div>
+        </div> -->
         <!-- 桌面引导 -->
         <div v-if='detect=="ios"' class="fixedRight" @click="shortClick()">
             <p>放到</p>

@@ -4,7 +4,7 @@
 <template>
     <div class="registration">
         <div class="banner">
-            <img onclick="return false" src="../tuiguang/img7.png" alt="注册彩小秘推广员佣金奖励赚不停">
+            <img onclick="return false" src="../tuiguang/img7.png" alt="注册天天体育推广员佣金奖励赚不停">
         </div>
         <div class="section">
             <ul class="msg_list">

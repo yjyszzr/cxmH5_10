@@ -107,9 +107,12 @@
                 </div>
             </div>
         </div>
-        <!-- <button :style="{'background':color()}" class="jxtz" :class="orderObj!=''?'Fixed':''" @click="jxtz()">
-            继续模拟投注
-        </button> -->
+        <!--<button :style="{'background':color()}" class="jxtz" :class="orderObj!=''?'Fixed':''" @click="jxtz()">-->
+            <!--继续模拟投注-->
+        <!--</button>-->
+        <button v-show="!$route.query.cxmxc" :style="{'background':color()}" class="jxtz" :class="orderObj!=''?'Fixed':''" @click="sharOder()">
+            分享模拟订单
+        </button>
     </div>
 </template>
 

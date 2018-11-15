@@ -511,7 +511,7 @@ const router = new Router({
         },
         component: resolve => require(['@/components/activity/wheel'], resolve)
      },
-      //app彩小秘彩票
+      //app天天体育彩票
       //帮助中心：appinfo/help
       //购彩协议：appinfo/protocol
       //服务协议：appinfo/service

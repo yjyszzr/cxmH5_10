@@ -55,7 +55,7 @@ export default {
   mounted(){
 		nativeApp({'methodName':'showTitle','title':'安全保障'})
       window.getCxmTitle = function(){
-          return '彩小秘彩票·安全保障'
+          return '天天体育彩票·安全保障'
       }
   }
 }
