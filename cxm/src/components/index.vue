@@ -32,6 +32,7 @@
     /*.mation p*/
 
     .center {
+        margin-bottom: px2rem(20px);
         width: 100%;
         background: #fff;
         ul {
@@ -112,7 +113,6 @@
     }
 
     .information {
-        margin-top: px2rem(20px);
         background: #fff;
         padding: 0 px2rem(20px);
         ul {
@@ -170,7 +170,7 @@
             <p>放到</p>
             <p>桌面</p>
         </div>
-        <v-slider :bannerList='bannerList'></v-slider>
+        <v-slider :bannerList='bannerList' v-show="bannerList.length>0"></v-slider>
         <!--首页-->
         <div class="index_center" v-show="$store.state.turnOn!=0">
             <div class="carousel" style="margin-top: 0.24rem;">
