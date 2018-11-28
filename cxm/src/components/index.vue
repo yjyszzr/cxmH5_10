@@ -183,8 +183,9 @@
                     </ul>
                 </div>
             </div>
+            <!-- 活动广告位 -->
             <v-activity :activity='activity'></v-activity>
-            <!--<router-link to='http://localhost:3000/daletou/selectnum/selectnumber'>啦啦啦啦啦(测试入口)</router-link>-->
+            <!-- 玩法入口 -->
             <div class="section center">
                 <ul>
                     <li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.redirectUrl,item)">
@@ -255,24 +256,25 @@
             "v-loading": Loading
         },
         computed: {
-            top() {
+            top() {  //播报滚动距离计算
                 return -this.activeIndex * 0.81333 + "rem";
             }
         },
         methods: {
-            shortClick() {
-                //location.href = 'http://www.baidu.com'
+            shortClick() {  //放到桌面弹窗
                 this.$store.commit('MARKSHORTCUT', true)
             },
-            goFreebuy(url, s) {
-                if (s.status == '1') {
+            goFreebuy(url, s) {  //进入玩法
+                if (s.status == '1') {   //敬请期待提示
                     Toast(s.statusReason)
                     return false;
                 }
+                //清空赛事信息
                 this.$store.state.matchObj = {};
                 this.$store.state.mark_playObj.bfIdSaveMapFlag = 0;
                 this.$store.state.mark_playObj.bfIdSaveMap = {};
                 let go_id = getUrlStr('id', url)
+                //区分跳转玩法页面
                 if (go_id == '1') {
                     this.$store.commit('FREEBUYID', '6')
                     this.$router.push({
@@ -284,7 +286,33 @@
                     });
                 }
             },
-            fetchData() {
+            hallData(){ //大厅请求
+                let data = {};
+                api.getHallData(data).then(res => {
+                    //console.log(res)
+                    if (res.code == 0) {
+                        this.bannerList = res.data.dlHallDTO.navBanners;
+                        this.activity = res.data.dlHallDTO.activity;
+                        this.y_Carousel = res.data.dlHallDTO.winningMsgs;
+                        this.dlPlay = res.data.dlHallDTO.lotteryClassifys;
+                        if (this.y_Carousel.length == 0) {
+                            this.show = true;
+                            this.hide = false;
+                        } else {
+                            this.show = false;
+                            this.hide = true;
+                            setInterval(_ => {
+                                if (this.activeIndex < this.y_Carousel.length - 1) {
+                                    this.activeIndex += 1;
+                                } else {
+                                    this.activeIndex = 0;
+                                }
+                            }, 3000);
+                        }
+                    }
+                });
+            },
+            fetchData() {  //资讯请求
                 let data = {
                     page: this.page,
                     size: 20
@@ -314,12 +342,13 @@
                         }, 800);
                     });
             },
-            cxLoadClick() {
+            cxLoadClick() {  //加载失败，重新加载
                 this.trFlag = true;
                 this.cxLoadFlag = false;
+                this.hallData();
                 this.fetchData();
             },
-            carouselMoney(c) {
+            carouselMoney(c) {  //播报
                 return (
                     c.winningMsg +
                     '<b style="color:#ea5504;font-weight:400;">' +
@@ -327,7 +356,7 @@
                     "</b>元"
                 );
             },
-            handleScroll(e) {
+            handleScroll(e) {    //滚动加载
                 if (
                     document.querySelector("#content").scrollHeight -
                     document.querySelector("#content").clientHeight -
@@ -343,43 +372,21 @@
                     }
                 }
             },
-            goDownLoad() {
-                this.$router.push({
-                    path: "/activity/down/cxm?ct=2&fr=cxm_h5home"
-                });
-            }
+            // goDownLoad() {  //跳转下载
+            //     this.$router.push({
+            //         path: "/activity/down/cxm?ct=2&fr=cxm_h5home"
+            //     });
+            // }
         },
         mounted() {
+                //平台
                 this.detect = detect()
-                // location.href = 'caixm://caixiaomi.net'
                 localStorage.removeItem("tab");
+                //监听滚动
                 document
                     .querySelector("#content")
                     .addEventListener("scroll", this.handleScroll);
-                let data = {};
-                api.getHallData(data).then(res => {
-                    //console.log(res)
-                    if (res.code == 0) {
-                        this.bannerList = res.data.dlHallDTO.navBanners;
-                        this.activity = res.data.dlHallDTO.activity;
-                        this.y_Carousel = res.data.dlHallDTO.winningMsgs;
-                        this.dlPlay = res.data.dlHallDTO.lotteryClassifys;
-                        if (this.y_Carousel.length == 0) {
-                            this.show = true;
-                            this.hide = false;
-                        } else {
-                            this.show = false;
-                            this.hide = true;
-                            setInterval(_ => {
-                                if (this.activeIndex < this.y_Carousel.length - 1) {
-                                    this.activeIndex += 1;
-                                } else {
-                                    this.activeIndex = 0;
-                                }
-                            }, 3000);
-                        }
-                    }
-                });
+                this.hallData();
                 this.fetchData();
         },
         activated() {

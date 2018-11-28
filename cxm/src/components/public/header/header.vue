@@ -2,7 +2,13 @@
     <div class="Header" @touchmove.prevent>
         <!--头部-->
         <div class="headerTop" v-show="showTitle">
-            <a @click="return_back()" class="go_return"></a>
+            <!-- 位置 -->
+            <div class="position" v-if="$route.path.split('/')[1]==''">
+                <img src="../../../assets/img/dw@2.png" alt="">
+                <span>位置</span>
+            </div>
+            <!-- 返回 -->
+            <a @click="return_back()" class="go_return" v-else></a>
             <p class="headerText">
                 <!-- <span v-if="!$route.path.split('/')[2]">天天体育·</span> -->
             {{title}}</p>
@@ -417,6 +423,20 @@
                 background-size: px2rem(30px) auto;
                 vertical-align: middle;
             }
+            .position{
+                flex: 1;
+                display: flex;
+                align-items: center;
+                img{
+                    width: px2rem(27px);
+                    margin-left: px2rem(30px);
+                    margin-right: px2rem(6px);
+                }
+                span{
+                    color: #fff;
+                    font-size: px2rem(28px);
+                }
+            }
             .filter {
                 flex: 1;
                 display: flex;
@@ -497,7 +517,7 @@
                             width: px2rem(30px);
                         }
                     }
-                    .data-img:last-of-type{
+                    span:last-of-type{
                         margin-right: px2rem(20px);
                     }
                 }
