@@ -1,8 +1,10 @@
 <template>
     <!--2018.7.18-->
     <div id="app">
+        <!-- 头 -->
         <v-headertop :title='title()' :showTitle='showTitle()' :menu-display="menuDisplay()"
                      v-show='isShowHeader'></v-headertop>
+        <!-- 骨架屏 -->
         <mainSkeleton v-show="!consultinit"></mainSkeleton>
         <transition name="fade">
             <v-shortcut v-if="this.$store.state.mark_shortcut"></v-shortcut>
@@ -200,15 +202,7 @@
                             return '模拟投注确认';
                     }
                 } else {
-                    if (
-                        this.$route.path.split("/")[1] == "user" ||
-                        this.$route.path.split("/")[1] == "lotteryResult" ||
-                        this.$route.path.split("/")[1] == "find"
-                    ) {
-                        this.isShowHeader = true;
-                    } else {
-                        this.isShowHeader = false;
-                    }
+                    this.isShowHeader = true;
                     switch (this.$route.path.split("/")[1]) {
                         case "user":
                             return "我的";
@@ -216,6 +210,8 @@
                             return "比赛";
                         case "find":
                             return "发现";
+                        default:
+                            return "彩种大厅";
                     }
                 }
             },
