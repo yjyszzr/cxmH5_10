@@ -23,6 +23,11 @@ const state = {
         timer: ''
     },
     findphone: '', //找回密码手机号
+    city: '位置',  //当前城市位置
+    position: {
+        lat: '', //纬度
+        lng: ''  //经度
+    }, //经纬度保存
     userInfo: {}, //个人信息
     mark_show: false, //控制遮罩
     mark_Reset: 0, //重制赛事数据
@@ -86,7 +91,7 @@ const state = {
 let storageArr = []
 if (typeof localStorage === 'object') {
     try{
-        storageArr = [createPersistedState({'key':'issue','paths':['userInfo','matchObj','matchSelectedList','freebuyId','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','chushihuaObj','findObj','daletouActive'],storage: window.sessionStorage})]
+        storageArr = [createPersistedState({'key':'issue','paths':['userInfo','matchObj','matchSelectedList','freebuyId','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','chushihuaObj','findObj','daletouActive','position','city'],storage: window.sessionStorage})]
     }catch(e){
         
     };

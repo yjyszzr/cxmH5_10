@@ -5,11 +5,11 @@
             <!-- 位置 -->
             <div class="position" v-if="$route.path.split('/')[1]==''">
                 <img src="../../../assets/img/dw@2.png" alt="">
-                <span>位置</span>
+                <span>{{city}}</span>
             </div>
             <!-- 返回 -->
             <a @click="return_back()" class="go_return" v-else></a>
-            <p class="headerText">
+            <p class="headerText" :class="$route.path.split('/')[1]==''?'homeTitle':''">
                 <!-- <span v-if="!$route.path.split('/')[2]">天天体育·</span> -->
             {{title}}</p>
             <div class="filter" v-show="menuDisplay==true">
@@ -374,6 +374,9 @@
             },
             channelObj(){
                 return this.$store.state.channelObj;
+            },
+            city(){
+                return this.$store.state.city;
             }
         },
         watch:{
@@ -435,6 +438,11 @@
                 span{
                     color: #fff;
                     font-size: px2rem(28px);
+                    overflow: hidden;
+                    width: px2rem(160px);
+                    display: block;
+                    text-overflow:ellipsis;
+                    white-space: nowrap;
                 }
             }
             .filter {
@@ -534,6 +542,9 @@
                 font-size: px2rem(32px);
                 color: #fff;
                 justify-content: center;
+            }
+            .homeTitle{
+                margin-left: px2rem(-74px);
             }
         }
         .send,

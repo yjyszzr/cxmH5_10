@@ -11,6 +11,14 @@ const mutations = {
     TURNON(state, data){
         state.turnOn = data
     },
+    //城市位置赋值
+    CITY(state, data){
+        state.city = data
+    },
+    //城市经纬度
+    POSITION(state, data){
+        state.position = data
+    },
     GETSMSCODE(state, data) {
         //获取验证码  
         api.SendSmsCode(data)

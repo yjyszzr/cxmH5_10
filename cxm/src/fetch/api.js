@@ -7,13 +7,14 @@ import {
     Indicator
 } from 'mint-ui'
 import router from '../router/index'
+import store from '../vuex/store'
 import {getUrlStr} from '../util/common'
 // axios 配置
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
+// axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
 // axios.defaults.baseURL = 'http://yf.caixiaomi.net/api';
-//   axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
+  axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 //拦截 token
 axios.interceptors.request.use(
     config => {
@@ -123,7 +124,6 @@ axios.interceptors.response.use((res) => {
 
     return Promise.reject(error);
 });
-
 //设备信息
 const device = {
     plat: 'h5',
@@ -147,6 +147,9 @@ export function fetchPost(url, body) {
     }else{
         device.channel = 'h5'
     }
+    device.lon = store.state.position.lng
+    device.lat = store.state.position.lat
+    device.city = store.state.city=='位置'?'':store.state.city
     return new Promise((resolve, reject) => {
         axios.post(url, {
                 device,

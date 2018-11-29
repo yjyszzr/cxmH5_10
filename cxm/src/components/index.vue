@@ -31,7 +31,7 @@
 
     /*.mation p*/
 
-    .center {
+    .center{
         margin-bottom: px2rem(20px);
         width: 100%;
         background: #fff;
@@ -74,6 +74,31 @@
             .entry_icon {
                 width: px2rem(93px);
                 margin: 0 auto;
+            }
+        }
+    }
+    .fd-news{
+        background: white;
+        margin: px2rem(20px) 0;
+        ul{
+            overflow: hidden;
+            padding-top: px2rem(34px);
+            li{
+                float: left;
+                width: 33.3%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: px2rem(34px);
+                img{
+                    width: px2rem(109px);
+                    margin-bottom: px2rem(10px);
+                }
+                p{
+                    font-size: px2rem(28px);
+                    color: #505050;
+                }
             }
         }
     }
@@ -185,6 +210,15 @@
             </div>
             <!-- 活动广告位 -->
             <v-activity :activity='activity'></v-activity>
+            <!-- 拓展 -->
+            <div class="fd-news">
+                <ul>
+                    <li v-for='(item,i) in fdNewsList' :key='i'>
+                        <img :src="item.classImg" class="fd-entry_icon">
+                        <p>{{item.className}}</p>
+                    </li>
+                </ul>
+            </div>
             <!-- 玩法入口 -->
             <div class="section center">
                 <ul>
@@ -225,7 +259,7 @@
     import informal from "./public/informal/informalList";
     import Loading from './public/loading/loading.vue'
     import {detect} from '../util/common.js'
-
+    import {getCurrentCityPosition} from '../util/getUserLocation.js'
     export default {
         name: "index",
         data() {
@@ -234,6 +268,7 @@
                 activity: {}, //活动
                 y_Carousel: [], //中奖信息
                 dlPlay: [],
+                fdNewsList: [], //信息区
                 activeIndex: 0,
                 show: true,
                 hide: false,
@@ -243,7 +278,7 @@
                 trFlag: true,
                 isbool: true,
                 cxLoadFlag: false,
-                detect: ''   //判断设备信息
+                detect: '',   //判断设备信息
             };
         },
         beforeCreate() {
@@ -295,6 +330,7 @@
                         this.activity = res.data.dlHallDTO.activity;
                         this.y_Carousel = res.data.dlHallDTO.winningMsgs;
                         this.dlPlay = res.data.dlHallDTO.lotteryClassifys;
+                        this.fdNewsList = res.data.dlHallDTO.discoveryHallClassifyDTOList;
                         if (this.y_Carousel.length == 0) {
                             this.show = true;
                             this.hide = false;
@@ -372,6 +408,22 @@
                     }
                 }
             },
+            //获取城市经位置信息
+            getCurrentPosition(){
+                getCurrentCityPosition().then((pos)=>{
+                    this.$store.commit('POSITION',pos)
+                    this.$store.commit('CITY',pos.city)
+                    this.homeData();
+                }).catch((err)=>{
+                    Toast(err);
+                    this.homeData();
+                })
+            },
+            //首页数据
+            homeData(){
+                this.hallData();
+                this.fetchData();
+            }
             // goDownLoad() {  //跳转下载
             //     this.$router.push({
             //         path: "/activity/down/cxm?ct=2&fr=cxm_h5home"
@@ -386,8 +438,7 @@
                 document
                     .querySelector("#content")
                     .addEventListener("scroll", this.handleScroll);
-                this.hallData();
-                this.fetchData();
+                this.getCurrentPosition();
         },
         activated() {
             document.getElementById("content").scrollTop = this.$root.consultScrolltop;
