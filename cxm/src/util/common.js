@@ -282,6 +282,7 @@ export let saveDtInfo = (list) => {
 //获取资讯版交易版区分
 export let isdeal = ()=>  {
     api.dealQuery({str: ''}).then(res=>{
+        console.log(res);
         if(res.code == '0'){
             store.commit('TURNON',res.data.turnOn);
         }

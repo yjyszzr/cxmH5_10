@@ -200,6 +200,13 @@
                             return '方案详情';
                         case 'touZhuConfirm':
                             return '模拟投注确认';
+                            //店铺
+                        case 'cooperateShop':
+                            return '合作店铺';
+                        case 'shopDetails':
+                            return '店铺';
+                        case 'productDetails':
+                            return '店铺';
                     }
                 } else {
                     this.isShowHeader = true;
@@ -210,6 +217,8 @@
                             return "比赛";
                         case "find":
                             return "发现";
+                        case "shoppingMall":
+                            return "商城";
                         default:
                             return "彩种大厅";
                     }

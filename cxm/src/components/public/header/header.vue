@@ -477,6 +477,7 @@
                 }
                 .iconfont {
                     font-size: px2rem(30px);
+                    color: #ffffff;
                 }
                 .colMenu {
                     width: 100%;

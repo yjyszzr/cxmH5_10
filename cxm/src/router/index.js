@@ -858,6 +858,30 @@ const router = new Router({
           name: 'ticketScheme',
           component: resolve => require(['@/components/daletou/ticketScheme.vue'], resolve)
       },
+      // 合作店铺
+      {
+          path: '/lottery/cooperateShop',
+          name: 'cooperateShop',
+          component: resolve => require(['@/components/shop/cooperateShop.vue'], resolve)
+      },
+      // 店铺详情
+      {
+          path: '/lottery/shopDetails',
+          name: 'shopDetails',
+          component: resolve => require(['@/components/shop/shopDetails.vue'], resolve)
+      },
+      // 商铺
+      {
+          path: '/shoppingMall',
+          name: 'shoppingMall',
+          component: resolve => require(['@/components/shoppingMall/shoppingMall.vue'], resolve)
+      },
+      // 商铺详情
+      {
+          path: '/lottery/productDetails',
+          name: 'productDetails',
+          component: resolve => require(['@/components/shoppingMall/productDetails.vue'], resolve)
+      },
   ]
 })
 
