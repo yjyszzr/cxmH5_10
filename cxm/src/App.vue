@@ -207,6 +207,8 @@
                             return '店铺';
                         case 'productDetails':
                             return '店铺';
+                        case 'orderDetail':
+                            return '订单详情';
                     }
                 } else {
                     this.isShowHeader = true;

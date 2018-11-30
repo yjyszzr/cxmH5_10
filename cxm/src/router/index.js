@@ -870,17 +870,23 @@ const router = new Router({
           name: 'shopDetails',
           component: resolve => require(['@/components/entryMenu/shop/shopDetails.vue'], resolve)
       },
-      // 商铺
+      // 商城
       {
           path: '/shoppingMall',
           name: 'shoppingMall',
           component: resolve => require(['@/components/shoppingMall/shoppingMall.vue'], resolve)
       },
-      // 商铺详情
+      // 商城详情
       {
           path: '/lottery/productDetails',
           name: 'productDetails',
           component: resolve => require(['@/components/shoppingMall/productDetails.vue'], resolve)
+      },
+      // 商品订单
+      {
+          path: '/lottery/orderDetail',
+          name: 'productDetails',
+          component: resolve => require(['@/components/shoppingMall/orderDetail.vue'], resolve)
       },
   ]
 })
