@@ -23,10 +23,11 @@ const state = {
         timer: ''
     },
     findphone: '', //找回密码手机号
-    city: '位置',  //当前城市位置
     position: {
         lat: '', //纬度
-        lng: ''  //经度
+        lng: '',  //经度
+        city: '位置',  //当前城市位置
+        province: '' //省
     }, //经纬度保存
     userInfo: {}, //个人信息
     mark_show: false, //控制遮罩

@@ -221,6 +221,8 @@
                             return "发现";
                         case "shoppingMall":
                             return "商城";
+                        case "servicemd":
+                            return "服务";
                         default:
                             return "彩种大厅";
                     }

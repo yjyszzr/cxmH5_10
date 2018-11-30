@@ -8,7 +8,7 @@
                 <i class="iconfont icon-dibucaidan_svg_huabanfuben"></i>
                 <span>比赛</span>
             </router-link>
-            <router-link to='/lotteryResult' :style="{'color': $route.path.split('/')[1] == 'lotteryResult'?'#ea5504':'#505050'}">
+            <router-link to='/servicemd' :style="{'color': $route.path.split('/')[1] == 'servicemd'?'#d12120':'#505050'}">
                 <i class="iconfont icon-fuwudefuben"></i>
                 <span>服务</span>
             </router-link>

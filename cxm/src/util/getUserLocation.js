@@ -22,6 +22,7 @@ export let getCurrentCityPosition =() =>{
                     obj.lng = r.point.lng
                     obj.lat = r.point.lat
                     obj.city = r.address.city
+                    obj.province = r.address.province
                     resolve(obj)
                 }
             } else {

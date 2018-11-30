@@ -96,6 +96,14 @@ const router = new Router({
           component: resolve => require(['@/components/find/index/index.vue'], resolve)
       },
       {
+        path: '/servicemd',
+        name: 'servicemd',
+        meta: {
+          title: '服务'
+        },
+        component: resolve => require(['@/components/serviceModule/index.vue'], resolve)
+      },
+      {
           path: '/user/recharge',
           name: 'recharge',
           meta: {

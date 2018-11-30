@@ -431,7 +431,6 @@
             getCurrentPosition(){
                 getCurrentCityPosition().then((pos)=>{
                     this.$store.commit('POSITION',pos)
-                    this.$store.commit('CITY',pos.city)
                     this.homeData();
                 }).catch((err)=>{
                     Toast(err);

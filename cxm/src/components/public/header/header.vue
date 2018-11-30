@@ -375,7 +375,7 @@
                 return this.$store.state.channelObj;
             },
             city(){
-                return this.$store.state.city;
+                return this.$store.state.position.city;
             }
         },
         watch:{
