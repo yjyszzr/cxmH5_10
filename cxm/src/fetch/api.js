@@ -518,7 +518,7 @@ export default {
     dealQuery(params){
         return fetchPost('/member/switch/config/query', params)
     },
-    //切换版本
+    //商城轮播图
     bannerList(params){
         return fetchPost('/order/goods/bannerList', params)
     }
