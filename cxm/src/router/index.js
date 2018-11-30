@@ -885,7 +885,7 @@ const router = new Router({
       // 商品订单
       {
           path: '/lottery/orderDetail',
-          name: 'productDetails',
+          name: 'orderDetail',
           component: resolve => require(['@/components/shoppingMall/orderDetail.vue'], resolve)
       },
   ]
