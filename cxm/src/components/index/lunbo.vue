@@ -90,7 +90,7 @@
 	}
 	.mint-swipe{
 		margin-bottom: px2rem(20px);
-		height: px2rem(306px)!important;
+		height: px2rem(306px);
 		overflow: hidden;
 		.mint-swipe-item{
 			//position: relative;
