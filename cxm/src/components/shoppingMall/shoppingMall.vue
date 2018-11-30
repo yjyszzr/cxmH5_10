@@ -3,44 +3,7 @@
         <v-slider :bannerList='bannerList' v-show="bannerList.length>0"></v-slider>
         <div class="commodity-box">
             <ul class="commodity-ul">
-
-                <li class="commodity-li">
-                    <div class="img-box">
-                        <!--<img src="../" alt="">-->
-                    </div>
-                    <div class="detail-box">
-                        <p class="name">Nike/耐克 刺客系列 Vapor12 低帮 AG短钉人草足球鞋 AO9...</p>
-                        <div class="detail">
-                            <p class="price"><span class="now-price">￥459</span><span class="original-price">￥500</span></p>
-                            <p class="pay">8人付款</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="commodity-li">
-                    <div class="img-box">
-                        <!--<img src="../" alt="">-->
-                    </div>
-                    <div class="detail-box">
-                        <p class="name">Nike/耐克 刺客系列 Vapor12 低帮 AG短钉人草足球鞋 AO9...</p>
-                        <div class="detail">
-                            <p class="price"><span class="now-price">￥459</span><span class="original-price">￥500</span></p>
-                            <p class="pay">8人付款</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="commodity-li">
-                    <div class="img-box">
-                        <!--<img src="../" alt="">-->
-                    </div>
-                    <div class="detail-box">
-                        <p class="name">Nike/耐克 刺客系列 Vapor12 低帮 AG短钉人草足球鞋 AO9...</p>
-                        <div class="detail">
-                            <p class="price"><span class="now-price">￥459</span><span class="original-price">￥500</span></p>
-                            <p class="pay">8人付款</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="commodity-li">
+                <li class="commodity-li" @click="goDetail()">
                     <div class="img-box">
                         <!--<img src="../" alt="">-->
                     </div>
@@ -68,6 +31,9 @@
         data(){
             return{
                 bannerList: [], //banner
+                shopList: [
+                    {}
+                ],
             }
         },
         created(){
@@ -97,6 +63,12 @@
                     }
                 });
             },
+            //跳转详情
+            goDetail(){
+                this.$router.push({
+                    path:'/lottery/productDetails'
+                })
+            }
         },
 
     }

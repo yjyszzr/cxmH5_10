@@ -45,9 +45,8 @@
         <div class="foots">
             <div class="box">
                 <p class="price"><span class="now-price">￥459</span><span class="original-price">￥500</span></p>
-                <p class="sub-btn">提交订单</p>
+                <p class="sub-btn" @click="submitOder()">提交订单</p>
             </div>
-
         </div>
     </div>
 </template>
@@ -92,6 +91,12 @@
                     }
                 });
             },
+            //提交订单
+            submitOder(){
+                this.$router.push({
+                    path:'/lottery/orderDetail'
+                })
+            }
         },
     }
 </script>
