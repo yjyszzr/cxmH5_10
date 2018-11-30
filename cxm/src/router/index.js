@@ -233,7 +233,7 @@ const router = new Router({
           meta: {
             title: '投注服务协议'
           },
-          component: resolve => require(['@/components/freebuy/protocol/index.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/freebuy/protocol/index.vue'], resolve)
       },
       {
           path: '/lottery/freebuy/singleNote',
@@ -243,7 +243,7 @@ const router = new Router({
             
             title: '购彩记录'
           },
-          component: resolve => require(['@/components/freebuy/singleNote/singleNote.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/freebuy/singleNote/singleNote.vue'], resolve)
       },
       {
           path: '/freebuy/cathectic',
@@ -251,7 +251,7 @@ const router = new Router({
           meta: {
             title: '投注确认'
           },
-          component: resolve => require(['@/components/freebuy/cathectic/index.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/freebuy/cathectic/index.vue'], resolve)
       },
       {
           path: '/freebuy/payment',
@@ -261,7 +261,7 @@ const router = new Router({
               requireAuth: true,
               title: '支付订单'
           },
-          component: resolve => require(['@/components/freebuy/payment/index.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/freebuy/payment/index.vue'], resolve)
       },
       {
           path: '/users/freebuy/ewmPay',
@@ -271,7 +271,7 @@ const router = new Router({
               requireAuth: true,
               title: '微信支付'
           },
-          component: resolve => require(['@/components/freebuy/ewmPay.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/freebuy/ewmPay.vue'], resolve)
       },
       {
           path: '/users/freebuy/ewmAliPay',
@@ -281,7 +281,7 @@ const router = new Router({
               requireAuth: true,
               title: '支付宝支付'
           },
-          component: resolve => require(['@/components/freebuy/ewmAliPay.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/freebuy/ewmAliPay.vue'], resolve)
       },
       {
           path: '/users/freebuy/ewmYinLianPay',
@@ -291,7 +291,7 @@ const router = new Router({
               requireAuth: true,
               title: '银联支付'
           },
-          component: resolve => require(['@/components/freebuy/ewmYinLianPay.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/freebuy/ewmYinLianPay.vue'], resolve)
       },
       {
           path: '/users/bankList',
@@ -301,7 +301,7 @@ const router = new Router({
               requireAuth: true,
               title: '银行列表'
           },
-          component: resolve => require(['@/components/freebuy/bankList.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/freebuy/bankList.vue'], resolve)
       },
       {
           path: '/lotteryResult',
@@ -365,7 +365,7 @@ const router = new Router({
         meta: {
             title: '玩法介绍'
         },
-        component: resolve => require(['@/components/freebuy/intoplay/index.vue'], resolve)
+        component: resolve => require(['@/components/entrySpecies/freebuy/intoplay/index.vue'], resolve)
       },
       {
           path: '/freebuy/explain',
@@ -373,7 +373,7 @@ const router = new Router({
           meta: {
             title: '胆说明'
           },
-          component: resolve => require(['@/components/freebuy/explain/explain.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/freebuy/explain/explain.vue'], resolve)
       },
       {
         path: '/user/quickinfo',
@@ -820,43 +820,43 @@ const router = new Router({
       {
           path: '/lottery/daletou/selectnumber',
           name: 'selectNumber',
-          component: resolve => require(['@/components/daletou/selectNumber.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/daletou/selectNumber.vue'], resolve)
       },
       // 大乐走势图
       {
         path: '/lottery/daletou/runchart',
         name: 'runchart',
-        component: resolve => require(['@/components/daletou/runChart'], resolve)
+        component: resolve => require(['@/components/entrySpecies/daletou/runChart'], resolve)
       },
       // 大乐投注确认
       {
           path: '/lottery/daletou/touZhuConfirm',
           name: 'touZhuConfirm',
-          component: resolve => require(['@/components/daletou/touZhuConfirm.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/daletou/touZhuConfirm.vue'], resolve)
       },
       // 大乐方案详情
       {
           path: '/daletou/programmeDetails',
           name: 'programmeDetails',
-          component: resolve => require(['@/components/daletou/programmeDetails.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/daletou/programmeDetails.vue'], resolve)
       },
       // 胆拖介绍
       {
           path: '/daletou/whatDantuo',
           name: 'whatDantuo',
-          component: resolve => require(['@/components/daletou/whatDantuo.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/daletou/whatDantuo.vue'], resolve)
       },
       // 玩法帮助
       {
           path: '/daletou/playHelp',
           name: 'playHelp',
-          component: resolve => require(['@/components/daletou/playHelp.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/daletou/playHelp.vue'], resolve)
       },
       // 出票方案
       {
           path: '/daletou/ticketScheme',
           name: 'ticketScheme',
-          component: resolve => require(['@/components/daletou/ticketScheme.vue'], resolve)
+          component: resolve => require(['@/components/entrySpecies/daletou/ticketScheme.vue'], resolve)
       },
       // 合作店铺
       {

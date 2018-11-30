@@ -26,17 +26,6 @@ axios.interceptors.request.use(
     err => {
         return Promise.reject(err);
     });
-
-//POST传参序列化
-// axios.interceptors.request.use((config) => {
-//     if(config.method  === 'post'){
-//         config.data = qs.stringify(config.data);
-//     }
-//     return config;
-// },(error) =>{
-//     //  _.toast("错误的传参", 'fail');
-//     return Promise.reject(error);
-// });
 //返回状态错误处理
 axios.interceptors.response.use((res) => {
     if (res.config.url.indexOf('payment/query') == -1) {
