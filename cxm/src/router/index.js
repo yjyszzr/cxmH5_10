@@ -862,13 +862,13 @@ const router = new Router({
       {
           path: '/lottery/cooperateShop',
           name: 'cooperateShop',
-          component: resolve => require(['@/components/shop/cooperateShop.vue'], resolve)
+          component: resolve => require(['@/components/entryMenu/shop/cooperateShop.vue'], resolve)
       },
       // 店铺详情
       {
           path: '/lottery/shopDetails',
           name: 'shopDetails',
-          component: resolve => require(['@/components/shop/shopDetails.vue'], resolve)
+          component: resolve => require(['@/components/entryMenu/shop/shopDetails.vue'], resolve)
       },
       // 商铺
       {

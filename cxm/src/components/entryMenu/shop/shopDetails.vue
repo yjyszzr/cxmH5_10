@@ -25,7 +25,7 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../../assets/css/function.scss";
+    @import "../../../assets/css/function";
     .shop-Details{
         box-sizing: border-box;
         position: absolute;

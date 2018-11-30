@@ -52,7 +52,7 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../../assets/css/function.scss";
+    @import "../../../assets/css/function";
     .cooperate-shop{
         position: absolute;
         top: 0;

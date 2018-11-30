@@ -213,7 +213,7 @@
             <!-- 拓展 -->
             <div class="fd-news">
                 <ul>
-                    <li v-for='(item,i) in fdNewsList' :key='i'>
+                    <li v-for='(item,i) in fdNewsList' :key='i' @click="goDetails(i)">
                         <img :src="item.classImg" class="fd-entry_icon">
                         <p>{{item.className}}</p>
                     </li>
@@ -298,6 +298,25 @@
         methods: {
             shortClick() {  //放到桌面弹窗
                 this.$store.commit('MARKSHORTCUT', true)
+            },
+            goDetails(index){
+                if(index=='0'){
+                    alert(0)
+                }
+                if(index=='1'){
+                    alert(1)
+                }
+                if(index=='2'){
+                    alert(2)
+                }
+                if(index=='3'){
+                    alert(3)
+                }
+                if(index=='4'){
+                    this.$router.push({
+                        path: "/lottery/cooperateShop"
+                    });
+                }
             },
             goFreebuy(url, s) {  //进入玩法
                 if (s.status == '1') {   //敬请期待提示

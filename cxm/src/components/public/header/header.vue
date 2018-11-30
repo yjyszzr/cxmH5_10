@@ -109,7 +109,6 @@
         },
         data() {
             return {
-
                 activeNames: ['1'],//默认转开第一个
                 flag: true,
                 action:[
@@ -458,7 +457,7 @@
                     display: flex;
                     align-items: center;
                     font-size: px2rem(28px);
-                    color: #787878;
+                    color: #ffffff;
                     li{
                         font-size: px2rem(28px);
                     }
@@ -470,7 +469,7 @@
                     display: flex;
                     align-items: center;
                     font-size: px2rem(28px);
-                    color: #787878;
+                    color: #ffffff;
                 }
                 .actine_sms {
                     font-size: px2rem(18px);
