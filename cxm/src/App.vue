@@ -209,6 +209,9 @@
                             return '店铺';
                         case 'orderDetail':
                             return '订单详情';
+                        //服务
+                        case 'kaijiang':
+                            return '开奖';
                     }
                 } else {
                     this.isShowHeader = true;
