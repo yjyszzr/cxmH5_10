@@ -6,20 +6,24 @@
             </mt-swipe-item>
         </mt-swipe>
         <div class="commodity-box">
-            <ul class="commodity-ul">
-                <li class="commodity-li" @click="goDetail()">
+            <ul class="commodity-ul"
+                v-infinite-scroll="loadMore"
+                infinite-scroll-disabled="loading"
+                infinite-scroll-distance="10">
+                <li class="commodity-li" v-for="(item,index) in shopList" :key=index @click="goDetail(item.goodsId)">
                     <div class="img-box">
-                        <!--<img src="../" alt="">-->
+                        <img :src="item.mainPic" alt="">
                     </div>
                     <div class="detail-box">
-                        <p class="name">Nike/耐克 刺客系列 Vapor12 低帮 AG短钉人草足球鞋 AO9...</p>
+                        <p class="name">{{item.description}}</p>
                         <div class="detail">
-                            <p class="price"><span class="now-price">￥459</span><span class="original-price">￥500</span>
+                            <p class="price"><span class="now-price">￥{{item.presentPrice}}</span><span class="original-price">￥{{item.historyPrice}}</span>
                             </p>
-                            <p class="pay">8人付款</p>
+                            <p class="pay">{{item.paidNum}}人付款</p>
                         </div>
                     </div>
                 </li>
+                <p v-if=loadinged class="loading-more"><v-loading></v-loading> 加载中...</p>
             </ul>
         </div>
     </div>
@@ -27,36 +31,64 @@
 
 <script>
     import api from "../../fetch/api";
+    import loading from  "../public/loading/loading"
     export default {
         name: "shoppingMall",
         components: {
+            "v-loading":loading
         },
         data() {
             return {
+                loadinged:false,
+                page:0,
                 bannerList: [], //banner
-                shopList: [
-                    {}
-                ],
+                shopList: [], //商品列表
             }
         },
         created() {
             this.hallData()
         },
         methods: {
-            hallData() { //大厅请求
+            // 轮播图
+            hallData() {
                 let data = {};
                 api.bannerList(data).then(res => {
-                    console.log(res)
                     if (res.code == 0) {
                         this.bannerList = res.data.bannerList;
                     }
                 });
             },
             //跳转详情
-            goDetail() {
+            goDetail(shopId) {
                 this.$router.push({
-                    path: '/lottery/productDetails'
+                    path: '/lottery/productDetails',
+                    query:{goodsId:shopId}
                 })
+            },
+            //获取商品列表
+            getShopList(){
+                let data = {
+                    page: this.page ,
+                    size: 10
+                }
+                api.goodsList(data).then(res=>{
+                    console.log(res);
+                    if(res.code == 0){
+                        this.shopList = this.shopList.concat(res.data.list)
+                        this.loadinged = false;
+                    }
+                })
+            },
+            //下拉加载更多
+            loadMore(){
+                this.page=this.page+1
+                if(!this.loadinged){
+                    this.loadinged = true;
+                    setTimeout(() => {
+                        this.getShopList()
+                    }, 1000);
+                }
+
             }
         },
 
@@ -74,6 +106,12 @@
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
+                justify-content: center;
+                .loading-more{
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row;
+                }
 
                 .commodity-li {
                     box-sizing: border-box;
@@ -82,14 +120,18 @@
                     .img-box {
                         width: 100%;
                         height: px2rem(360px);
-                        background-color: red;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                        }
+                        /*background-color: red;*/
                     }
                     .detail-box {
                         padding: px2rem(8px);
                         background-color: rgba(244, 244, 244, 1);
                         border: 1px solid rgba(245, 243, 248, 1);
                         .name {
-                            line-height: px2rem(36px);
+                            line-height: px2rem(40px);
                             color: rgba(64, 64, 64, 1);
                             font-size: px2rem(30px);
                             font-weight: 700;
@@ -112,6 +154,9 @@
                                 color: rgba(64, 64, 64, 1);
                                 text-decoration: line-through;
                                 font-size: px2rem(24px);
+                            }
+                            .pay{
+                                 font-size: px2rem(24px);
                             }
                         }
                     }

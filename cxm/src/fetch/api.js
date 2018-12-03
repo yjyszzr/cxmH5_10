@@ -522,6 +522,26 @@ export default {
     bannerList(params){
         return fetchPost('/order/goods/bannerList', params)
     },
+    //获取商品列表
+    goodsList(params){
+        return fetchPost('/order/goods/goodsList', params)
+    },
+    //获取商品详情
+    goodsDetail(params){
+        return fetchPost('/order/goods/goodsDetail', params)
+    },
+    //提交订单
+    goodsAdd(params){
+        return fetchPost('/order/goods/goodsAdd', params)
+    },
+    //订单详情
+    orderDetail(params){
+        return fetchPost('/order/goods/orderDetail', params)
+    },
+    //提交收件人信息
+    goodsUpdate(params){
+        return fetchPost('/order/goods/goodsUpdate', params)
+    },
     //发现开奖列表
     openPrize(params) {
         return fetchPost('/lottery/discoveryPage/openPrize', params)
@@ -547,5 +567,4 @@ export default {
         return fetchPost('/order/serv/servlist', params)
     },
 }
-
 
