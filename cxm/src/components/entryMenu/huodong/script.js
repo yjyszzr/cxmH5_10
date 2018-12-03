@@ -13,6 +13,9 @@ export default {
         }
     },
     methods:{
+        goBack(){
+            this.$router.go(-1)
+        },
         hdtab(c){
             this.selectedLabelDefault = c.target.innerText
         },

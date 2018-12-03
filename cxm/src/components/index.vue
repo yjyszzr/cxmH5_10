@@ -213,7 +213,7 @@
             <!-- 拓展 -->
             <div class="fd-news">
                 <ul>
-                    <li v-for='(item,i) in fdNewsList' :key='i' @click="goDetails(i)">
+                    <li v-for='(item,i) in fdNewsList' :key='i' @click="goDetails(item)">
                         <img :src="item.classImg" class="fd-entry_icon">
                         <p>{{item.className}}</p>
                     </li>
@@ -253,7 +253,7 @@
     // import http from '../api/http'
     import api from "../fetch/api";
     import {Toast, Indicator} from "mint-ui";
-    import {getUrlStr, nativeApp} from '../util/common'
+    import {getUrlStr, nativeApp,fx_link_rule} from '../util/common'
     import silder from "./index/lunbo";
     import activity from "./index/activity";
     import informal from "./public/informal/informalList";
@@ -299,24 +299,11 @@
             shortClick() {  //放到桌面弹窗
                 this.$store.commit('MARKSHORTCUT', true)
             },
-            goDetails(index){
-                if(index=='0'){
-                    alert(0)
-                }
-                if(index=='1'){
-                    alert(1)
-                }
-                if(index=='2'){
-                    alert(2)
-                }
-                if(index=='3'){
-                    alert(3)
-                }
-                if(index=='4'){
-                    this.$router.push({
-                        path: "/lottery/cooperateShop"
-                    });
-                }
+            goDetails(item){
+                let path = fx_link_rule(getUrlStr('id',item.redirectUrl))
+                this.$router.push({
+                    path: path
+                })
             },
             goFreebuy(url, s) {  //进入玩法
                 if (s.status == '1') {   //敬请期待提示

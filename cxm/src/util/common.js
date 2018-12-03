@@ -288,3 +288,29 @@ export let isdeal = ()=>  {
         }
     });
 }
+
+//发现板块跳转规则
+export let fx_link_rule = (id) => {
+    switch(Number(id)){
+        case 1:  //开奖结果
+            return '/servicemd/kaijiang';break;
+        case 2:  //专家广场
+            return '';break;
+        case 3:  //彩票学堂
+            return '';break;
+        case 4:  //活动中心
+            return '/lottery/menu/huodong';break;
+        case 5:  //资讯信息
+            return '/find';break;
+        case 6:  //晒单公园
+            return '';break;
+        case 7:  //联赛资料
+            return '';break;
+        case 8:  //更多
+            return '';break;
+        case 9:  //比分直播
+            return '/lotteryResult?frm=h';break;
+        case 10:  //线下店铺
+            return '/lottery/cooperateShop';break;
+    }
+}

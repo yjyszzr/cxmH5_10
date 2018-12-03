@@ -37,7 +37,7 @@ export default {
 	methods: {
 		isShowTabbar () {
             let routeLength = this.$route.path.split('/').length
-			return routeLength > 2||this.$route.name=='404' ? false : true
+			return routeLength > 2||this.$route.name=='404'||this.$route.query.frm=='h' ? false : true
 		}
 	}
 }

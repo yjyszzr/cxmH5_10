@@ -14,6 +14,7 @@
 <script>
 import api from '../../fetch/api'
 import { Indicator } from 'mint-ui'
+import {fx_link_rule,getUrlStr} from '../../util/common'
 export default {
     name: 'service',
     data(){
@@ -26,11 +27,10 @@ export default {
     },
     methods:{
       goItem(item){
-        if(item.name == '开奖大厅'){
-          this.$router.push({
-            path:'/servicemd/kaijiang'
-          })
-        }
+        let path = fx_link_rule(getUrlStr('id',item.url))
+        this.$router.push({
+            path: path
+        })
       }
     },
     mounted(){
