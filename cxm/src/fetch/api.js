@@ -518,22 +518,10 @@ export default {
     dealQuery(params){
         return fetchPost('/member/switch/config/query', params)
     },
-    //发现开奖列表
-    openPrize(params) {
-        return fetchPost('/lottery/discoveryPage/openPrize', params)
-    },
-    //数字彩开奖列表
-    szcDetailList(params) {
-        return fetchPost('/lottery/discoveryPage/szcDetailList', params)
-    },
-    //数字彩开奖详情
-    querySzcOpenPrizesByDate(params) {
-        return fetchPost('/lottery/discoveryPage/querySzcOpenPrizesByDate', params)
-    },
-    //球彩玩法开奖历史
-    queryJcOpenPrizesByDate(params) {
-        return fetchPost('/lottery/discoveryPage/queryJcOpenPrizesByDate', params)
-    },
+    //商城轮播图
+    bannerList(params){
+        return fetchPost('/order/goods/bannerList', params)
+    }
 }
 
 

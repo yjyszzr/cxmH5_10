@@ -1,6 +1,10 @@
 <template>
     <div class="product-details">
-        <v-slider :bannerList='bannerList' v-show="bannerList.length>0"></v-slider>
+        <mt-swipe :show-indicators="true">
+            <mt-swipe-item v-for="(data,i) in bannerList" :key="i">
+                <img :src="data.bannerImage" />
+            </mt-swipe-item>
+        </mt-swipe>
         <div class="main">
             <div class="detail-box">
                 <p class="name">Nike/耐克 刺客系列 Vapor12 低帮 AG短钉人草足球鞋 AO9...</p>
@@ -53,11 +57,10 @@
 
 <script>
     import api from "../../fetch/api";
-    import silder from "../public/lunbo";
     export default {
         name: "productDetails",
         components: {
-            "v-slider": silder
+
         },
         data(){
             return{
@@ -100,7 +103,23 @@
         },
     }
 </script>
+<style lang="scss">
+    @import "../../assets/css/function.scss";
+    .product-details{
+        .mint-swipe {
+            margin-bottom: 0;
+            height: px2rem(640px);
+            .mint-swipe-item {
+                height: px2rem(640px);
+                img{
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
 
+</style>
 <style scoped lang="scss">
     @import "../../assets/css/function.scss";
     .product-details{

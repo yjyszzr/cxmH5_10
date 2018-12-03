@@ -80,11 +80,12 @@
             .link{
                 margin-top: px2rem(40px);
                 font-size: px2rem(30px);
-                line-height: px2rem(50px);
+                line-height: px2rem(90px);
+                width:px2rem(600px);
                 background-color: rgba(211, 30, 20, 1);
                 color: #ffffff;
                 font-weight: 700;
-                padding: px2rem(20px) 120px;
+                text-align: center;
                 border-radius: px2rem(5px);
             }
         }
