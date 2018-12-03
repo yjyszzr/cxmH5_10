@@ -566,5 +566,14 @@ export default {
     servlist(params) {
         return fetchPost('/order/serv/servlist', params)
     },
+    //线下店铺列表
+    storelist(params) {
+        return fetchPost('/order/store/storelist', params)
+    },
+    //线下店铺详情
+    storedetail(params) {
+        return fetchPost('/order/store/storedetail', params)
+    },
 }
+
 

@@ -2,11 +2,11 @@
     <!--合作店铺-->
     <div class="cooperate-shop">
         <ul class="shop-ul">
-            <li class="shop-li" v-for="(item,index) in shopList" :key = index @click="goDetail()">
-                <div class="shop-log"><img src="./img/dp192@3.png" alt=""></div>
+            <li class="shop-li" v-for="(item,index) in shopList" :key = index @click="goDetail(item.storeId)">
+                <div class="shop-log"><img :src="item.logo" alt=""></div>
                 <div class="shop-descrip">
-                    <p class="shop-name">{{item.name}} <span class="collet-img"><img src="./img/shop1_03.png" alt=""></span></p>
-                    <p class="collet">{{item.collet}}</p>
+                    <p class="shop-name">{{item.name}} <span v-if="item.cooperAuth=='1'" class="collet-img"><img src="./img/shop1_03.png" alt=""></span></p>
+                    <p class="collet">有{{item.collNum}}名用户搜藏此店铺</p>
                 </div>
             </li>
         </ul>
@@ -15,36 +15,38 @@
 </template>
 
 <script>
+    import api from "../../../fetch/api";
+
     export default {
         name: "cooperateShop",
         data() {
             return{
-                shopList:[
-                    {
-                        name:'西安生合理中国体育彩票',
-                        collet:"有1234577名用户搜藏此店铺"
-                    },
-                    {
-                        name:'西安生合理中国体育彩票',
-                        collet:"有1234577名用户搜藏此店铺"
-                    },
-                    {
-                        name:'西安生合理中国体育彩票',
-                        collet:"有1234577名用户搜藏此店铺"
-                    }
-                ]
+                shopList:[]
             }
         },
         created(){
-
+            this.getStorelist()
         },
         methods:{
+            //获取线下店铺列表
+            getStorelist(){
+                let data = ''
+                api.storelist(data).then(res=>{
+                    console.log(res);
+                    if(res.code==0){
+                        this.shopList = res.data
+                    }
+                })
+            },
+            //什么是合作店铺
             whatShop(){
                 alert("合作店铺")
             },
-            goDetail(){
+            //去店铺详情
+            goDetail(id){
                 this.$router.push({
-                    path:'/lottery/shopDetails'
+                    path:'/lottery/shopDetails',
+                    query:{id:id}
                 })
             }
         }
