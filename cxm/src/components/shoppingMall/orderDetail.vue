@@ -2,10 +2,10 @@
     <div class="order-detail">
         <div class="item bgw">
             <div class="imgs-box">
-                <!--<img src="../" alt="">-->
+                <img :src="dataed.orderPic" alt="">
             </div>
             <div class="mes ">
-                <p class="name">Nike/耐克 刺客系列客系列客系列客客系列客系列客系列客客系列客系列客系列客客系列客系列客系列客客系列客系列客系列客客系列客系列客系列客客系列客系列客系列客客系列客系列客系列客客系列客系列客系列客系列客系列客系列客系列客系列客系列客系列客系列客系列客系列客系列客系列客系列客系列</p>
+                <p class="name">{{dataed.description}}</p>
                 <div class="money">
                     <p>￥{{money}}</p>
                     <div class="num">
@@ -17,42 +17,87 @@
             </div>
         </div>
         <div class="base-mes bgw">
-            <div class="title"><span class="line"></span><span>收货地址</span></div>
-            <p><span class="address">收件人</span><input type="text" placeholder="请输入姓名"></p>
-            <p><span class="address">联系电话</span><input type="tel" placeholder="请输入联系电话"></p>
-            <p class="area"><span>收货地址</span> <textarea name="" id="" cols="30" rows="10" placeholder="请输入详细收货地址"></textarea></p>
+            <div class="title"><span class="line"></span><span>收货信息</span></div>
+            <p><span class="address">收件人</span><input type="text" placeholder="请输入姓名" v-model=baseMes.linkName></p>
+            <p><span class="address">联系电话</span><input type="tel" placeholder="请输入联系电话" v-model=baseMes.phoneNum></p>
+            <p class="area"><span>收货地址</span> <textarea name="" id="" cols="30" rows="10" placeholder="请输入详细收货地址" v-model=baseMes.address></textarea></p>
         </div>
         <div class="base-mes bgw">
             <div class="title"><span class="line"></span><span>结算明细</span></div>
             <p><span>商品数量</span><span class="number">{{shopNum}}</span></p>
             <p><span>商品总价</span><span class="number">￥{{money}}</span></p>
         </div>
-        <p class="btn-kefu">联系客服</p>
+        <p class="btn-kefu" @click="subOrder()">联系客服</p>
     </div>
 </template>
 
 <script>
+    import api from "../../fetch/api";
+    import {Toast} from "mint-ui";
+
     export default {
         name: "orderDetail",
         data(){
             return{
-                shopNum:'1',
-                baseMoney:'437',
-                money:'437'
+                baseMes:{
+                    linkName:'',
+                    phoneNum:'',
+                    address:''
+                },
+                shopNum:1,//商品数量
+                money:'',//商品总价
+                baseMoney:'',
+                orderId:'',
+                dataed:''
             }
         },
         created(){
-
+            this.orderId = this.$route.query.orderId
+            this.getOrderDetail()
         },
         methods:{
+            //商品增加或减少
             addOrreduce(type){
-                if(type=='reduce'&& parseInt(this.shopNum) > 1){
-                    this.shopNum = parseInt(this.shopNum)-1
+                if(type=='reduce'&& parseFloat(this.shopNum) > 1){
+                    this.shopNum = parseFloat(this.shopNum)-1
                 }
                 if(type=='add'){
-                    this.shopNum = parseInt(this.shopNum)+1
+                    this.shopNum = parseFloat(this.shopNum)+1
                 }
-                this.money = parseInt(this.baseMoney)*parseInt(this.shopNum)
+                this.money = (parseFloat(this.baseMoney)*parseFloat(this.shopNum)).toFixed(2)
+            },
+            //获取订单详情
+            getOrderDetail(){
+                let data = {
+                    orderId:this.orderId
+                }
+                api.orderDetail(data).then(res=>{
+                    if(res.code==0){
+                        this.baseMoney = res.data.price
+                        this.money = res.data.price
+                        this.dataed = res.data
+                    }
+                })
+            },
+            //提交订单
+            subOrder(){
+                if(this.baseMes.linkName!=''&&this.baseMes.phoneNum!=''&&this.baseMes.address!=''){
+                    let data = {
+                        address: this.baseMes.address,
+                        contactsName: this.baseMes.linkName,
+                        goodsId: this.$route.query.goodsId,
+                        num: this.shopNum,
+                        phone: this.baseMes.phoneNum
+                    }
+                    api.goodsUpdate(data).then(res=>{
+                        console.log(res);
+                        if(res.code==0){
+
+                        }
+                    })
+                }else {
+                    Toast('请将收货基本信息填写完整！')
+                }
             }
         }
     }

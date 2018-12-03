@@ -7,40 +7,25 @@
         </mt-swipe>
         <div class="main">
             <div class="detail-box">
-                <p class="name">Nike/耐克 刺客系列 Vapor12 低帮 AG短钉人草足球鞋 AO9...</p>
+                <p class="name">{{datas.description}}</p>
                 <div class="detail">
                     <p class="price">
                         <img src="./img/baozheng@3x.png" alt=""><span>正品保证</span>
                         <img src="./img/baozheng@3x.png" alt=""><span>无忧售后</span>
                     </p>
-                    <p class="pay">8人付款</p>
+                    <p class="pay">{{datas.paidNum}}人付款</p>
                 </div>
             </div>
             <div class="mes-body">
                 <p class="title"><span class="line"></span><span>基本信息</span></p>
-                <ul class="base-mes">
-                    <li>鞋钉：TF碎钉</li>
-                    <li>鞋钉：TF碎钉</li>
-                    <li>鞋钉：TF碎钉</li>
-                    <li>鞋钉：TF碎钉</li>
+                <ul class="base-mes" >
+                    <li class="base-li" v-for="(item,index) in datas.baseAttributeList" :key=index>{{item}}</li>
                 </ul>
             </div>
             <div class="mes-body">
                 <p class="title"><span class="line"></span><span>尺码参照</span></p>
                 <ul class="base-mes">
-                    <li>鞋钉：TF碎钉</li>
-                    <li>鞋钉：TF碎钉</li>
-                    <li>鞋钉：TF碎钉</li>
-                    <li>鞋钉：TF碎钉</li>
-                </ul>
-            </div>
-            <div class="mes-body">
-                <p class="title"><span class="line"></span><span>尺码参照</span></p>
-                <ul class="base-mes">
-                    <li>鞋钉：TF碎钉</li>
-                    <li>鞋钉：TF碎钉</li>
-                    <li>鞋钉：TF碎钉</li>
-                    <li>鞋钉：TF碎钉</li>
+                    <li v-for="(item,index) in datas.detailPicList" :key=index><img :src="item.bannerImage" alt=""></li>
                 </ul>
             </div>
         </div>
@@ -48,7 +33,7 @@
 
         <div class="foots">
             <div class="box">
-                <p class="price"><span class="now-price">￥459</span><span class="original-price">￥500</span></p>
+                <p class="price"><span class="now-price">￥{{datas.presentPrice}}</span><span class="original-price">￥{{datas.historyPrice}}</span></p>
                 <p class="sub-btn" @click="submitOder()">提交订单</p>
             </div>
         </div>
@@ -65,40 +50,41 @@
         data(){
             return{
                 bannerList: [], //banner
+                goodsId:'',
+                datas:''
             }
         },
         created(){
-            this.hallData()
+            this.goodsId = this.$route.query.goodsId
+            this.getShopDetail()
         },
         methods:{
-            hallData(){ //大厅请求
-                let data = {};
-                api.getHallData(data).then(res => {
-                    //console.log(res)
-                    if (res.code == 0) {
-                        this.bannerList = res.data.dlHallDTO.navBanners;
-                        if (this.y_Carousel.length == 0) {
-                            this.show = true;
-                            this.hide = false;
-                        } else {
-                            this.show = false;
-                            this.hide = true;
-                            setInterval(_ => {
-                                if (this.activeIndex < this.y_Carousel.length - 1) {
-                                    this.activeIndex += 1;
-                                } else {
-                                    this.activeIndex = 0;
-                                }
-                            }, 3000);
-                        }
+            //获取商品详情
+            getShopDetail(){
+                let data = {
+                    goodsId:this.goodsId
+                }
+                api.goodsDetail(data).then(res => {
+                    if(res.code==0){
+                        this.datas = res.data
+                        this.bannerList = res.data.bannerList
                     }
-                });
+                })
             },
             //提交订单
-            submitOder(){
-                this.$router.push({
-                    path:'/lottery/orderDetail'
+            submitOder(orderId){
+                let data = {
+                    goodsId:this.goodsId
+                }
+                api.goodsAdd(data).then(res => {
+                    if(res.code==0){
+                        this.$router.push({
+                            path:'/lottery/orderDetail',
+                            query:{goodsId:this.goodsId,orderId:res.data}
+                        })
+                    }
                 })
+
             }
         },
     }
@@ -165,6 +151,7 @@
             background-color: #ffffff;
             margin-top: px2rem(20px);
             padding-left: px2rem(10px);
+            padding-right: px2rem(10px);
             overflow: hidden;
             .title{
                 margin: px2rem(20px) auto px2rem(20px) px2rem(10px);
@@ -189,8 +176,13 @@
                 overflow: hidden;
                 li{
                     float: left;
-                    margin-right: px2rem(40px);
                     margin-bottom: px2rem(20px);
+                    img{
+                        width: 100%;
+                    }
+                }
+                .base-li{
+                    margin-right: px2rem(30px);
                 }
             }
         }
