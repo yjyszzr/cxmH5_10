@@ -462,6 +462,7 @@
             document.getElementById("content").scrollTop = this.$root.consultScrolltop;
         },
         destroyed() {
+            document.querySelector("#content").removeEventListener("scroll", this.handleScroll);
             this.$store.commit('MARKSHORTCUT', false)
         }
     };

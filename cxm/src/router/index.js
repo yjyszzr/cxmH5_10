@@ -120,6 +120,14 @@ const router = new Router({
         component: resolve => require(['@/components/serviceModule/kaijiang/playname/index.vue'], resolve)
       },
       {
+        path: '/servicemd/kaijiang/:playname/:termNum',
+        name: 'termNum',
+        meta: {
+          title: '期次详情'
+        },
+        component: resolve => require(['@/components/serviceModule/kaijiang/playname/_detail.vue'], resolve)
+      },
+      {
           path: '/user/recharge',
           name: 'recharge',
           meta: {

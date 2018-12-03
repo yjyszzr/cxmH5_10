@@ -2,7 +2,7 @@
     <div class="kj-detail">
         <!--头部开始-->
         <div class="head">
-            <span class="back-img" @click="goBack()"><img src="~/assets/img/ret.png" alt=""></span>
+            <span class="back-img" @click="goBack()"><img src="../../../../assets/img/ret.png" alt=""></span>
             <div class="head-text">
                 {{numsObj.lotteryName}}期次详情
             </div>
@@ -64,7 +64,7 @@
     </div>
 </template>
 <style lang='scss' scoped>
-@import '~/assets/css/function.scss';
+@import '../../../../assets/css/function.scss';
 .kj-detail{
     .head {
         position: fixed;
@@ -74,7 +74,7 @@
         width: 100%;
         overflow: hidden;
         height: px2rem(100px);
-        background: #f4f4f4;
+        background: #d12120;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -91,7 +91,7 @@
           display: flex;
           align-items: center;
           font-size: px2rem(32px);
-          color: #505050;
+          color: #fff;
         }
         .data-img{
             img{
@@ -204,34 +204,37 @@
 }
 </style>
 <script>
-import axios from '~/plugins/axios'
+import api from '../../../../fetch/api'
+import { Indicator } from 'mint-ui'
 export default {
     name: 'termnum',
-    head(){
+    data(){
         return {
-            title: `${this.numsObj.period}${this.numsObj.lotteryName}开奖结果查询_${this.numsObj.lotteryName}开奖结果公告 - 彩小秘彩票`,
-            meta: [
-              { name: 'keywords', content: `${this.numsObj.period}${this.numsObj.lotteryName}开奖结果，${this.numsObj.period}${this.numsObj.lotteryName}开奖公告，${this.numsObj.period}${this.numsObj.lotteryName}开奖查询`},
-              { hid: 'description', name: 'description', content: `彩小秘彩票网为您提供最新最快的${this.numsObj.lotteryName}开奖结果，${this.numsObj.period}${this.numsObj.lotteryName}开奖结果查询，包括${this.numsObj.lotteryName}历史中奖结果查询，历史走势查询等信息！` }
-            ]
+            numsObj: {}
         }
     },
-    async asyncData({ params,query }) {
-        let pam = {
-            lotteryClassify: query.lotteryId,
-            termNum: params.detail
-        }
-        let { data } = await axios.querySzcOpenPrizesByDate(pam);
-        if(data.code==0){
-            return {
-                numsObj: data.data
-            };
-        }
+    beforeCreate() {
+        Indicator.open()
     },
     methods:{
         goBack(){
             this.$router.go(-1)
         },
+        fetchData(){
+            let pam = {
+                lotteryClassify: this.$route.query.lotteryId,
+                termNum: this.$route.params.termNum
+            }
+            api.querySzcOpenPrizesByDate(pam)
+            .then(res => {
+                if(res.code == 0 ){
+                    this.numsObj = res.data
+                }
+            })
+        }
+    },
+    mounted(){
+        this.fetchData()
     }
 }
 </script>

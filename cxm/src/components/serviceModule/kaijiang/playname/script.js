@@ -39,13 +39,18 @@ export default {
             api.szcDetailList(pam)
             .then(res => {
                 if(res.code == 0 ){
-                    setTimeout(() => {
-                        this.trFlag = false;
-                        this.isbool = true;
-                        this.title = res.data.lotteryName
-                        this.dltobj = res.data.szcPrizePageInfo
+                    this.title = res.data.lotteryName
+                    this.dltobj = res.data.szcPrizePageInfo
+                    if (this.page == 1) {
                         this.dltList = this.dltList.concat(res.data.szcPrizePageInfo.list);
-                      }, 800);
+                        this.trFlag = false;
+                    } else {
+                        setTimeout(() => {
+                            this.trFlag = false;
+                            this.isbool = true;
+                            this.dltList = this.dltList.concat(res.data.szcPrizePageInfo.list);
+                        }, 800);
+                    }
                 }
             })
         },
@@ -65,10 +70,10 @@ export default {
         },
         handleScroll(e) {
             if (
-              document.querySelector("body").scrollHeight -
-                document.querySelector("body").clientHeight -
-                window.pageYOffset <=
-                100 &&
+              document.querySelector("#content").scrollHeight -
+              document.querySelector("#content").clientHeight -
+              document.querySelector("#content").scrollTop <=
+                0 &&
               this.isbool == true
             ) {
               if (this.dltobj.isLastPage == "false") {
@@ -97,12 +102,14 @@ export default {
     mounted(){
         if(this.params!='jingcailanqiu'&&this.params!='jingcaizuqiu'){
             this.fetchData()
-            window.addEventListener("scroll", this.handleScroll);
+            document
+                    .querySelector("#content")
+                    .addEventListener("scroll", this.handleScroll);
         }else{
             this.datefetchData('')
         }
     },
     destroyed() {
-        window.removeEventListener("scroll", this.handleScroll);
+        document.querySelector("#content").removeEventListener("scroll", this.handleScroll);
     }
 }
