@@ -70,9 +70,9 @@ export default {
         },
         handleScroll(e) {
             if (
-              document.querySelector("#content").scrollHeight -
-              document.querySelector("#content").clientHeight -
-              document.querySelector("#content").scrollTop <=
+              document.querySelector("#dlt-content").scrollHeight -
+              document.querySelector("#dlt-content").clientHeight -
+              document.querySelector("#dlt-content").scrollTop <=
                 0 &&
               this.isbool == true
             ) {
@@ -103,13 +103,13 @@ export default {
         if(this.params!='jingcailanqiu'&&this.params!='jingcaizuqiu'){
             this.fetchData()
             document
-                    .querySelector("#content")
+                    .querySelector("#dlt-content")
                     .addEventListener("scroll", this.handleScroll);
         }else{
             this.datefetchData('')
         }
     },
     destroyed() {
-        document.querySelector("#content").removeEventListener("scroll", this.handleScroll);
+        document.querySelector("#dlt-content").removeEventListener("scroll", this.handleScroll);
     }
 }

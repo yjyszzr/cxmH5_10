@@ -890,6 +890,12 @@ const router = new Router({
           name: 'ticketScheme',
           component: resolve => require(['@/components/entrySpecies/daletou/ticketScheme.vue'], resolve)
       },
+      // 活动中心
+      {
+        path: '/lottery/menu/huodong',
+        name: 'huodong',
+        component: resolve => require(['@/components/entryMenu/huodong/index.vue'], resolve)
+      },
       // 合作店铺
       {
           path: '/lottery/cooperateShop',

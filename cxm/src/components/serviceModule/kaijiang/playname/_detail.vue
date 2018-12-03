@@ -67,11 +67,6 @@
 @import '../../../../assets/css/function.scss';
 .kj-detail{
     .head {
-        position: fixed;
-        z-index: 10;
-        top: 0;
-        left: 0;
-        width: 100%;
         overflow: hidden;
         height: px2rem(100px);
         background: #d12120;
@@ -101,6 +96,9 @@
     }
     .d-content{
         position: absolute;
+        -webkit-overflow-scrolling: touch !important;
+        overflow: scroll;
+        bottom: 0;
         top: px2rem(100px);
         width: 100%;
         .d-info{

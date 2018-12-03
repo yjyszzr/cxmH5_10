@@ -1,0 +1,117 @@
+@import '../../../assets/css/function.scss';
+.huodong{
+    .head {
+        overflow: hidden;
+        height: px2rem(100px);
+        background: #d12120;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .back-img {
+          display: inline-block;
+          height: px2rem(30px);
+          width: px2rem(30px);
+          margin-left: px2rem(30px);
+          img {
+            width: 100%;
+          }
+        }
+        .head-text {
+          display: flex;
+          align-items: center;
+          font-size: px2rem(32px);
+          color: #fff;
+        }
+        .data-img{
+            img{
+                width: px2rem(36px);
+            }
+        }
+    }
+    .huodong-nav{
+        background: white;
+        height: px2rem(82px);
+        font-size: px2rem(24px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .huodong-tab{
+            height: 100%;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            p{
+                height: 100%;
+                width: px2rem(262px);
+                text-align: center;
+                box-sizing: border-box;
+                line-height: px2rem(82px);
+                color: #505050;
+            }
+        }
+        .huodong-active{
+            p{
+                border-bottom: 2px solid #ea5504;
+                color: #ea5504;
+            }
+        }
+    }
+    .huodong-list{
+        overflow: scroll;
+        width: 100%;
+        bottom: 0;
+        z-index: 1;
+        position: absolute;
+        top: px2rem(182px);
+        left: 0;
+        .huodong-jxz,.huodong-yjs{
+            .huodong-item{
+                position: relative;
+                width: px2rem(707px);
+                margin: px2rem(20px) auto 0;
+                overflow: hidden;
+                a{
+                    display: block;
+                    background: white;
+                    padding: px2rem(16px);
+                    width: 100%;
+                    box-sizing: border-box;
+                    img{
+                        width: 100%;
+                        height: px2rem(277px);
+                    }
+                    span{
+                        display: block;
+                        margin-top: px2rem(18px);
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        b:first-of-type{
+                            font-size: px2rem(28px);
+                            color: #1c1c1c;
+                        }
+                        b:last-of-type{
+                            font-size: px2rem(24px);
+                            color: #656565;
+                        }
+                    }
+                }
+                .huodong-mark{
+                    position: absolute;
+                    top: px2rem(16px);
+                    height: px2rem(277px);
+                    left: px2rem(16px);
+                    width: 95.5%;
+                    background: rgba(0,0,0,0.7);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #fff;
+                    span{
+                        font-size: px2rem(44px);
+                    }
+                }
+            }
+        }
+    }
+}

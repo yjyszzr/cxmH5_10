@@ -1,11 +1,6 @@
 @import '../../../../assets/css/function.scss';
 .kj-daletou{
     .head {
-        position: fixed;
-        z-index: 10;
-        top: 0;
-        left: 0;
-        width: 100%;
         overflow: hidden;
         height: px2rem(100px);
         background: #d12120;
@@ -34,6 +29,9 @@
         }
     }
     .dlt-content{
+        -webkit-overflow-scrolling: touch !important;
+        overflow: scroll;
+        bottom: 0;
         position: absolute;
         width: 100%;
         box-sizing: border-box;
@@ -121,6 +119,7 @@
         bottom: 0;
         overflow: auto;
         -webkit-overflow-scrolling: touch !important;
+        z-index: 10;
         .ball-nav{
             background: #F0EFF5;
             height: px2rem(79px);

@@ -7,7 +7,7 @@
                 {{title}}<span v-show="$route.params.playname!='jingcaizuqiu'&&$route.params.playname!='jingcailanqiu'">历史</span>开奖
             </div>
             <div style="width:0.9rem;">
-                <span class="data-img"  v-show="playType==1||playType==3" @click="openPicker()"><img src="../../../../assets/img/date@3x.png" alt=""></span>
+                <span class="data-img"  v-show="playType==1||playType==3" @click="openPicker()"><img src="../../../public/header/images/date@3x.png" alt=""></span>
             </div>
         </div>
         <div class="ball-content" v-show="playType==1||playType==3">
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <div class="dlt-content" v-show="playType!=1||playType!=3">
+        <div class="dlt-content" id='dlt-content' v-show="playType!=1&&playType!=3">
             <div @click='goDltdetail(item)' class="dlt-item" v-for="(item,i) in dltList" :key=i>
                 <div class="dlt-itemTop">
                     <p>{{item.period}}</p>
