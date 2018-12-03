@@ -1,26 +1,55 @@
 <template>
     <div class="shop-Details">
         <div class="title">
-            <p class="name">西安圣和路第2011394号中国体育彩票投注店</p>
+            <p class="name">{{dataed.name}}</p>
             <div class="card">
-                <p><img src="./img/shop1_03.png" alt=""> <span>合作认证</span></p>
-                <p><img src="./img/shopDetails1_03.png" alt=""> <span>营业许可证</span></p>
+                <p v-if="dataed.cooperAuth == '1'"><img src="./img/shop1_03.png" alt=""> <span>合作认证</span></p>
+                <p @click="mark()"><img src="./img/shopDetails1_03.png" alt=""> <span>营业许可证</span></p>
             </div>
         </div>
         <div class="ewm-body">
             <div class="ewm-box">
-                <img src="./img/店铺-详情1_07.png" alt="">
+                <img :src="dataed.imgWechat" alt="">
             </div>
-            <p class="shop-main">店主微信：SDJDJHUU</p>
-            <p class="link">联系店主</p>
+            <p class="shop-main">店主微信：{{dataed.wechat}}</p>
+            <a class="link" :href="dataed.jumpUrl">联系店主</a>
         </div>
 
     </div>
 </template>
 
 <script>
+    import api from "../../../fetch/api";
     export default {
-        name: "shopDetails"
+        name: "shopDetails",
+        data(){
+            return{
+                dataed:''
+            }
+        },
+        created(){
+            this.getStoreDetail()
+        },
+        methods:{
+            //营业许可弹窗
+            mark(){
+                this.$store.dispatch("getMarkShow", true)
+                this.$store.state.mark_showObj.mark_show_type = 5
+                this.$store.state.shopDetails.yingyezhizhao = this.dataed.bizPermitUrl
+            },
+            //获取线下店铺详情
+            getStoreDetail(){
+                let data ={
+                    id:this.$route.query.id
+                }
+                api.storedetail(data).then(res=>{
+                    console.log(res);
+                    if(res.code==0){
+                        this.dataed = res.data
+                    }
+                })
+            },
+        }
     }
 </script>
 
@@ -78,6 +107,7 @@
                 font-size: px2rem(28px);
             }
             .link{
+                display: inline-block;
                 margin-top: px2rem(40px);
                 font-size: px2rem(30px);
                 line-height: px2rem(90px);

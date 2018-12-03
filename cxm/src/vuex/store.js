@@ -88,6 +88,9 @@ const state = {
         orderNum:'',//订单号
         addFriendsQRBarUrl:'',//微信好友二维码
     },
+    shopDetails:{ //线下店铺详情
+        yingyezhizhao:''//营业执照图片
+    }
 }
 let storageArr = []
 if (typeof localStorage === 'object') {
