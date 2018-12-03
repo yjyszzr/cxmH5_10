@@ -1,28 +1,31 @@
 <template>
     <div class="mark">
-        <div class="mark_box">
-            
-        </div>
+        <div class="mark_box"></div>
         <!-- 赛事筛选 -->
-        <v-matchfilter></v-matchfilter>
+        <v-matchfilter  v-if='$store.state.mark_showObj.mark_show_type == 2'></v-matchfilter>
+        <v-data v-if="$store.state.mark_showObj.mark_show_type == 1"></v-data>
+        <v-ewm v-if="$store.state.mark_showObj.mark_show_type == 3"></v-ewm>
+        <v-olderNum v-if="$store.state.mark_showObj.mark_show_type == 4"></v-olderNum>
+        <!-- 线下店铺营业许可证-->
+        <v-yingye v-if="$store.state.mark_showObj.mark_show_type == 5"></v-yingye>
     </div>
 </template>
 
 <script>
     import matchFilter from './match_fliter/match_filter.vue'
+    import data from './data/data.vue'
+    import ewm from './orderMark/ewm.vue'
+    import olderNum from './orderMark/oderNum.vue'
+    import yingye from './yingye/yingye.vue'
 	export default {
         name: 'mark',
         components: {
-            'v-matchfilter': matchFilter
+            'v-matchfilter': matchFilter,
+            'v-data': data,
+            'v-ewm' :ewm,
+            'v-olderNum':olderNum,
+            'v-yingye':yingye
         },
-		data() {
-			return {
-				
-			}
-		},
-		methods: {
-			
-		}
 	}
 </script>
 

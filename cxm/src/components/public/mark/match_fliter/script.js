@@ -1,8 +1,4 @@
 import api from '../../../../fetch/api.js'
-import time from '../data/data.vue'
-import ewm from '../orderMark/ewm.vue'
-import olderNum from '../orderMark/oderNum.vue'
-import yingye from '../yingye/yingye.vue'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 import {mapState} from 'vuex'
@@ -13,12 +9,6 @@ export default {
         matchFilterList: []
     };
   },
-    components:{
-      'v-time': time,
-       'v-ewm' :ewm,
-       'v-olderNum':olderNum,
-       'v-yingye':yingye
-    },
   methods: {
     cancel() {
       this.$store.dispatch("getMarkShow",false)

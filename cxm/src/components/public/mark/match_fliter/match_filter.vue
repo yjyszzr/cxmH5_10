@@ -1,7 +1,7 @@
 <template>
             <!-- 赛事筛选 -->
             <div class="matchFilter">
-                <div class="match_f" v-if='$store.state.mark_showObj.mark_show_type == 2'>
+                <div class="match_f">
                     <div class="ft_title">
                         赛事筛选
                     </div>
@@ -21,10 +21,7 @@
                         <p @click="cancel()">取消</p>
                     </div>
                 </div>
-                <v-time v-if="$store.state.mark_showObj.mark_show_type == 1"></v-time>
-                <v-ewm v-if="$store.state.mark_showObj.mark_show_type == 3"></v-ewm>
-                <v-olderNum v-if="$store.state.mark_showObj.mark_show_type == 4"></v-olderNum>
-                <v-yingye v-if="$store.state.mark_showObj.mark_show_type == 5"></v-yingye>
+
             </div>
 </template>
 
