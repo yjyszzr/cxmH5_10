@@ -89,14 +89,13 @@
                     let data = {
                         address: this.baseMes.address,
                         contactsName: this.baseMes.linkName,
-                        goodsId: this.$route.query.goodsId,
+                        orderId: this.$route.query.orderId,
                         num: this.shopNum,
                         phone: this.baseMes.phoneNum
                     }
                     api.goodsUpdate(data).then(res=>{
-                        console.log(res);
                         if(res.code==0){
-
+                            window.location.href = "https://www.sobot.com/chat/h5/index.html?sysNum=1a549fa1ac1b4c0f9eeda9953f62b9b2&titleFlag=3"
                         }
                     })
                 }else {

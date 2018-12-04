@@ -532,7 +532,7 @@ export default {
     },
     //提交订单
     goodsAdd(params){
-        return fetchPost('/order/goods/goodsAdd', params)
+        return fetchPost('/order/goods/orderAdd', params)
     },
     //订单详情
     orderDetail(params){
@@ -540,7 +540,7 @@ export default {
     },
     //提交收件人信息
     goodsUpdate(params){
-        return fetchPost('/order/goods/goodsUpdate', params)
+        return fetchPost('/order/goods/orderUpdate', params)
     },
     //发现开奖列表
     openPrize(params) {

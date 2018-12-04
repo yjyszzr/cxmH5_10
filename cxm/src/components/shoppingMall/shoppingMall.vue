@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </li>
-                <p v-if=loadinged class="loading-more"><v-loading></v-loading> 加载中...</p>
+                <p v-if=loadinged class="loading-more"><v-loading></v-loading> {{lodMes}}</p>
             </ul>
         </div>
     </div>
@@ -43,6 +43,7 @@
                 page:0,
                 bannerList: [], //banner
                 shopList: [], //商品列表
+                lodMes:'加载中...',
             }
         },
         created() {
