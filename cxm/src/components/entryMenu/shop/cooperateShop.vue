@@ -10,7 +10,7 @@
                 </div>
             </li>
         </ul>
-        <p class="what-shop" @click="whatShop">什么是合作店铺</p>
+        <a v-if="protocalUrl!=''" class="what-shop" :href="protocalUrl">什么是合作店铺</a>
     </div>
 </template>
 
@@ -21,7 +21,8 @@
         name: "cooperateShop",
         data() {
             return{
-                shopList:[]
+                shopList:[],
+                protocalUrl:'',
             }
         },
         created(){
@@ -34,13 +35,10 @@
                 api.storelist(data).then(res=>{
                     console.log(res);
                     if(res.code==0){
-                        this.shopList = res.data
+                        this.shopList = res.data.list
+                        this.protocalUrl = res.data.protocalUrl
                     }
                 })
-            },
-            //什么是合作店铺
-            whatShop(){
-                alert("合作店铺")
             },
             //去店铺详情
             goDetail(id){
@@ -101,6 +99,7 @@
             }
         }
         .what-shop{
+            display: block;
             margin-top: px2rem(30px);
             text-align: center;
             font-size: px2rem(24px);
