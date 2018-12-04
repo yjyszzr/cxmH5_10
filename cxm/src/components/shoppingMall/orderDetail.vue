@@ -39,6 +39,7 @@
         name: "orderDetail",
         data(){
             return{
+                pp:'',
                 baseMes:{
                     linkName:'',
                     phoneNum:'',
@@ -54,6 +55,9 @@
         created(){
             this.orderId = this.$route.query.orderId
             this.getOrderDetail()
+
+
+
         },
         methods:{
             //商品增加或减少
