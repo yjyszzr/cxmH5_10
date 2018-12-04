@@ -896,6 +896,24 @@ const router = new Router({
         name: 'huodong',
         component: resolve => require(['@/components/entryMenu/huodong/index.vue'], resolve)
       },
+      // 联赛
+      {
+        path: '/lottery/liansai',
+        name: 'liansai',
+        component: resolve => require(['@/components/entryMenu/liansai/index.vue'], resolve)
+      },
+      // 联赛详情
+      {
+        path: '/lottery/liansai/:pyname',
+        name: 'liansaiDetail',
+        component: resolve => require(['@/components/entryMenu/liansai/_details/index.vue'], resolve)
+      },
+      // 球队详情
+      {
+        path: '/lottery/liansai/:pyname/:teamid',
+        name: 'teamDetail',
+        component: resolve => require(['@/components/entryMenu/liansai/_details/_ballTeamDetalls.vue'], resolve)
+      },
       // 合作店铺
       {
           path: '/lottery/cooperateShop',

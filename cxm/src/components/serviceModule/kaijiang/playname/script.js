@@ -108,8 +108,5 @@ export default {
         }else{
             this.datefetchData('')
         }
-    },
-    destroyed() {
-        document.querySelector("#dlt-content").removeEventListener("scroll", this.handleScroll);
     }
 }

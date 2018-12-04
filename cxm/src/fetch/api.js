@@ -562,6 +562,18 @@ export default {
     activeCenter(params) {
         return fetchPost('/lottery/discoveryPage/activeCenter', params)
     },
+    //国家联赛列表
+    leagueHomePageByGroupId(params) {
+        return fetchPost('/lottery/discoveryPage/leagueHomePageByGroupId', params)
+    },
+    //联赛详情
+    leagueDetailForDiscovery(params){
+        return fetchPost('/lottery/discoveryPage/leagueDetailForDiscovery', params)
+    },
+    //联赛球队详情
+    teamDetailForDiscovery(params){
+        return fetchPost('/lottery/discoveryPage/teamDetailForDiscovery', params)
+    },
     //服务列表
     servlist(params) {
         return fetchPost('/order/serv/servlist', params)

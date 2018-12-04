@@ -209,6 +209,8 @@
                             return '店铺';
                         case 'orderDetail':
                             return '订单详情';
+                        case 'liansai':
+                            return '联赛资料';
                         //服务
                         case 'kaijiang':
                             return '开奖';
