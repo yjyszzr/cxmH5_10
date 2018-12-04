@@ -182,7 +182,6 @@
 }
 .plan {
   padding: 0 px2rem(20px) 0 px2rem(30px);
-  margin-bottom: px2rem(100px);
   .solecd {
     font-size: px2rem(28px);
     color: #A0A0A0;
@@ -205,6 +204,45 @@
       span {
         color: #505050;
       }
+    }
+  }
+}
+.hedp{
+  background: white;
+  margin: px2rem(20px) 0 px2rem(100px);
+  a{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: px2rem(26px) 0;
+    .left{
+      display: flex;
+      align-items: center;
+      img:first-of-type{
+        width: px2rem(120px);
+        margin: 0 px2rem(30px);
+      }
+      span{
+        font-size: px2rem(30px);
+        color: #505050;
+        margin-right: px2rem(20px);
+      }
+      img:last-of-type{
+        width: px2rem(32px);
+      }
+    }
+    .right{
+      margin-right: px2rem(30px);
+      width: px2rem(207px);
+      height: px2rem(71px);
+      border-radius: px2rem(36px);
+      border: 1px solid #d0d0d0;
+      font-size: px2rem(30px);
+      color: #505050;
+      text-align: center;
+      line-height: px2rem(71px);
+      box-sizing: border-box;
     }
   }
 }

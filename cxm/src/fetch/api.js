@@ -574,6 +574,14 @@ export default {
     teamDetailForDiscovery(params){
         return fetchPost('/lottery/discoveryPage/teamDetailForDiscovery', params)
     },
+    //查看更多
+    moreDiscoveryClass(params){
+        return fetchPost('/lottery/lottery/hall/moreDiscoveryClass', params)
+    },
+    //彩票课堂
+    noviceClassroom(params){
+        return fetchPost('/lottery/discoveryPage/noviceClassroom', params)
+    },
     //服务列表
     servlist(params) {
         return fetchPost('/order/serv/servlist', params)

@@ -106,6 +106,18 @@
                     <p>店主出票：<span>{{orderObj.ticketTime}}</span></p> -->
                 </div>
             </div>
+            <div class="hedp" v-show="orderObj.showStore=='1'">
+                <router-link to='/lottery/cooperateShop'>
+                    <div class="left">
+                        <img src="../../../assets/img/dp128@2.png" alt="">
+                        <span>合作店铺</span>
+                        <img src="../../../assets/img/renzheng@2x.png" alt="">
+                    </div>
+                    <div class="right">
+                        进店逛逛
+                    </div>
+                </router-link>
+            </div>
         </div>
         <!--<button :style="{'background':color()}" class="jxtz" :class="orderObj!=''?'Fixed':''" @click="jxtz()">-->
             <!--继续模拟投注-->

@@ -211,6 +211,10 @@
                             return '订单详情';
                         case 'liansai':
                             return '联赛资料';
+                        case 'seemore':
+                            return '查看更多';
+                        case 'ketang':
+                            return '彩票学堂';
                         //服务
                         case 'kaijiang':
                             return '开奖';

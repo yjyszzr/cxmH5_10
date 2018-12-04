@@ -1,0 +1,43 @@
+@import '../../../assets/css/function.scss';
+.ketang{
+    .ketang-list{
+        position: absolute;
+        top: px2rem(20px);
+        left: 0;
+        width: 100%;
+        .ketang-jxz{
+            .ketang-item{
+                position: relative;
+                width: px2rem(707px);
+                margin: 0 auto px2rem(20px);
+                overflow: hidden;
+                a{
+                    display: block;
+                    background: white;
+                    padding: px2rem(16px);
+                    width: 100%;
+                    box-sizing: border-box;
+                    img{
+                        width: 100%;
+                        height: px2rem(277px);
+                    }
+                    span{
+                        display: block;
+                        margin-top: px2rem(18px);
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        b:first-of-type{
+                            font-size: px2rem(28px);
+                            color: #1c1c1c;
+                        }
+                        b:last-of-type{
+                            font-size: px2rem(24px);
+                            color: #656565;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

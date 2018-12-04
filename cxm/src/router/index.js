@@ -914,6 +914,18 @@ const router = new Router({
         name: 'teamDetail',
         component: resolve => require(['@/components/entryMenu/liansai/_details/_ballTeamDetalls.vue'], resolve)
       },
+      // 查看更多
+      {
+        path: '/lottery/seemore',
+        name: 'seemore',
+        component: resolve => require(['@/components/entryMenu/seemore/index.vue'], resolve)
+      },
+      // 彩票课堂
+      {
+        path: '/lottery/ketang',
+        name: 'ketang',
+        component: resolve => require(['@/components/entryMenu/ketang/index.vue'], resolve)
+      },
       // 合作店铺
       {
           path: '/lottery/cooperateShop',

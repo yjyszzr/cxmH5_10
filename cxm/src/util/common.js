@@ -292,12 +292,14 @@ export let isdeal = ()=>  {
 //发现板块跳转规则
 export let fx_link_rule = (id) => {
     switch(Number(id)){
+        case 0: //查看更多
+            return '/lottery/seemore';break;
         case 1:  //开奖结果
             return '/servicemd/kaijiang';break;
         case 2:  //专家广场
             return '';break;
         case 3:  //彩票学堂
-            return '';break;
+            return '/lottery/ketang';break;
         case 4:  //活动中心
             return '/lottery/menu/huodong';break;
         case 5:  //资讯信息
