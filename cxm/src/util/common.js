@@ -305,7 +305,7 @@ export let fx_link_rule = (id) => {
         case 6:  //晒单公园
             return '';break;
         case 7:  //联赛资料
-            return '';break;
+            return '/lottery/liansai';break;
         case 8:  //更多
             return '';break;
         case 9:  //比分直播
