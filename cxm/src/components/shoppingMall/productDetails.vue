@@ -72,7 +72,7 @@
                 })
             },
             //提交订单
-            submitOder(orderId){
+            submitOder(){
                 let data = {
                     goodsId:this.goodsId
                 }
