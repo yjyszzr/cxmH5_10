@@ -8,8 +8,8 @@
         <div class="commodity-box">
             <ul class="commodity-ul"
                 v-infinite-scroll="loadMore"
-                infinite-scroll-disabled="loading"
-                infinite-scroll-distance="10">
+                infinite-scroll-disabled=true
+                infinite-scroll-distance="0">
                 <li class="commodity-li" v-for="(item,index) in shopList" :key=index @click="goDetail(item.goodsId)">
                     <div class="img-box">
                         <img :src="item.mainPic" alt="">
@@ -44,6 +44,7 @@
                 bannerList: [], //banner
                 shopList: [], //商品列表
                 lodMes:'加载中...',
+                isLastPage:'false'
             }
         },
         created() {
@@ -75,18 +76,30 @@
                 api.goodsList(data).then(res=>{
                     console.log(res);
                     if(res.code == 0){
+                        this.isLastPage = res.data.isLastPage
                         this.shopList = this.shopList.concat(res.data.list)
                         this.loadinged = false;
                     }
                 })
             },
+
             //下拉加载更多
             loadMore(){
-                this.page=this.page+1
+
                 if(!this.loadinged){
                     this.loadinged = true;
                     setTimeout(() => {
+
+                        this.page=this.page+1
                         this.getShopList()
+
+                        // if(this.isLastPage == 'false'){
+                        //
+                        // }else {
+                        //     // this.lodMes = "没有数据了..."
+                        //     // this.loadinged = false;
+                        //     // return false
+                        // }
                     }, 1000);
                 }
 
