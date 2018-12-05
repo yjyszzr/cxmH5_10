@@ -35,7 +35,7 @@
             </ul>
             <div class="container">
                 <!--积分榜-->
-                <div class="containered score" v-if='navBodyIndex =="0"'>
+                <div class="containered liansai-score" v-if='navBodyIndex =="0"'>
                     <ul class="score-nav-ul" v-if="leagueScore.matchType=='1'">
                         <li class="score-nav-li" v-for="(item,index) in scoreNavArr" :key=index><span
                                 :class="item.cur?'scorecurtab':''"
@@ -432,10 +432,6 @@
     @import '../../../../assets/css/function.scss';
 
     .detail {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        bottom: 0;
         background-color: #ffffff;
         .curtab {
             border-bottom: 2px solid RGBA(234, 85, 4, 1) !important;
@@ -485,7 +481,9 @@
             background: #ffffff;
             position: absolute;
             top: px2rem(100px);
-            /*bottom: 0;*/
+            bottom: 0;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch !important;
             .tops {
                 box-sizing: border-box;
                 padding: px2rem(20px) px2rem(10px) 0 px2rem(10px);
@@ -590,7 +588,7 @@
                         width: 100%;
                     }
                 }
-                .score {
+                .liansai-score {
                     .score-main {
                         margin-top: px2rem(20px);
                     }

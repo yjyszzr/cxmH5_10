@@ -15,7 +15,7 @@
                         <img :src="item.mainPic" alt="">
                     </div>
                     <div class="detail-box">
-                        <p class="name">{{item.description}}</p>
+                        <p class="name" style="-webkit-box-orient: vertical;">{{item.description}}</p>
                         <div class="detail">
                             <p class="price"><span class="now-price">￥{{item.presentPrice}}</span><span class="original-price">￥{{item.historyPrice}}</span>
                             </p>
@@ -74,7 +74,7 @@
                     size: 10
                 }
                 api.goodsList(data).then(res=>{
-                    console.log(res);
+                    //console.log(res);
                     if(res.code == 0){
                         this.isLastPage = res.data.isLastPage
                         this.shopList = this.shopList.concat(res.data.list)
@@ -150,7 +150,6 @@
                             font-size: px2rem(30px);
                             font-weight: 700;
                             display: -webkit-box;
-                            -webkit-box-orient: vertical;
                             -webkit-line-clamp: 2;
                             overflow: hidden;
                         }

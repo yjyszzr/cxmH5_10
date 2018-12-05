@@ -195,7 +195,7 @@
             <p>放到</p>
             <p>桌面</p>
         </div>
-        <v-slider :bannerList='bannerList' v-show="bannerList.length>0"></v-slider>
+        <v-slider :bannerList='bannerList' v-if="bannerList.length!=0"></v-slider>
         <!--首页-->
         <div class="index_center" v-show="$store.state.turnOn!=0">
             <div class="carousel" style="margin-top: 0.24rem;">
@@ -300,6 +300,10 @@
                 this.$store.commit('MARKSHORTCUT', true)
             },
             goDetails(item){
+                if (item.status == '1') {   //敬请期待提示
+                    Toast(item.statusReason)
+                    return false;
+                }
                 let path = fx_link_rule(getUrlStr('id',item.redirectUrl))
                 this.$router.push({
                     path: path
@@ -420,7 +424,7 @@
                     this.$store.commit('POSITION',pos)
                     this.homeData();
                 }).catch((err)=>{
-                    Toast(err);
+                    //Toast(err);
                     this.homeData();
                 })
             },

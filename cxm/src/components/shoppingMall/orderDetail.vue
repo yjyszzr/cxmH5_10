@@ -1,31 +1,33 @@
 <template>
     <div class="order-detail">
-        <div class="item bgw">
-            <div class="imgs-box">
-                <img :src="dataed.orderPic" alt="">
-            </div>
-            <div class="mes ">
-                <p class="name">{{dataed.description}}</p>
-                <div class="money">
-                    <p>￥{{money}}</p>
-                    <div class="num">
-                        <span @click="addOrreduce('reduce')">-</span>
-                        <span>{{shopNum}}</span>
-                        <span @click="addOrreduce('add')">+</span>
+        <div class="order-box">
+            <div class="item bgw">
+                <div class="imgs-box">
+                    <img :src="dataed.orderPic" alt="">
+                </div>
+                <div class="mes ">
+                    <p class="name">{{dataed.description}}</p>
+                    <div class="money">
+                        <p>￥{{money}}</p>
+                        <div class="num">
+                            <span @click="addOrreduce('reduce')">-</span>
+                            <span>{{shopNum}}</span>
+                            <span @click="addOrreduce('add')">+</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="base-mes bgw">
-            <div class="title"><span class="line"></span><span>收货信息</span></div>
-            <p><span class="address">收件人</span><input type="text" placeholder="请输入姓名" v-model=baseMes.linkName></p>
-            <p><span class="address">联系电话</span><input type="tel" placeholder="请输入联系电话" v-model=baseMes.phoneNum></p>
-            <p class="area"><span>收货地址</span> <textarea name="" id="" cols="30" rows="10" placeholder="请输入详细收货地址" v-model=baseMes.address></textarea></p>
-        </div>
-        <div class="base-mes bgw">
-            <div class="title"><span class="line"></span><span>结算明细</span></div>
-            <p><span>商品数量</span><span class="number">{{shopNum}}</span></p>
-            <p><span>商品总价</span><span class="number">￥{{money}}</span></p>
+            <div class="base-mes bgw">
+                <div class="title"><span class="line"></span><span>收货信息</span></div>
+                <p><span class="address">收件人</span><input type="text" placeholder="请输入姓名" v-model=baseMes.linkName></p>
+                <p><span class="address">联系电话</span><input type="tel" placeholder="请输入联系电话" v-model=baseMes.phoneNum></p>
+                <p class="area"><span>收货地址</span> <textarea name="" id="" cols="30" rows="10" placeholder="请输入详细收货地址" v-model=baseMes.address></textarea></p>
+            </div>
+            <div class="base-mes bgw">
+                <div class="title"><span class="line"></span><span>结算明细</span></div>
+                <p><span>商品数量</span><span class="number">{{shopNum}}</span></p>
+                <p><span>商品总价</span><span class="number">￥{{money}}</span></p>
+            </div>
         </div>
         <p class="btn-kefu" @click="subOrder()">联系客服</p>
     </div>
@@ -110,6 +112,15 @@
     @import "../../assets/css/function.scss";
 
     .order-detail {
+        .order-box{
+            width: 100%;
+            background: #ffffff;
+            position: absolute;
+            top: px2rem(0px);
+            bottom: px2rem(90px);
+            overflow: auto;
+            -webkit-overflow-scrolling: touch !important;
+        }
         .bgw{
             background-color: #ffffff;
         }
@@ -121,7 +132,7 @@
                 float: left;
                 height: px2rem(153px);
                 width: px2rem(211px);
-                background-color: red;
+               // background-color: red;
                 img {
                     width: 100%;
                     height: 100%;
@@ -225,7 +236,7 @@
             }
         }
         .btn-kefu{
-            position: fixed;
+            position: absolute;
             bottom: 0;
             color: #ffffff;
             line-height: px2rem(90px);

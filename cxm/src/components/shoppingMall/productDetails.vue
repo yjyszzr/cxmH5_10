@@ -1,35 +1,36 @@
 <template>
     <div class="product-details">
-        <mt-swipe :show-indicators="true">
-            <mt-swipe-item v-for="(data,i) in bannerList" :key="i">
-                <img :src="data.bannerImage" />
-            </mt-swipe-item>
-        </mt-swipe>
-        <div class="main">
-            <div class="detail-box">
-                <p class="name">{{datas.description}}</p>
-                <div class="detail">
-                    <p class="price">
-                        <img src="./img/baozheng@3x.png" alt=""><span>正品保证</span>
-                        <img src="./img/baozheng@3x.png" alt=""><span>无忧售后</span>
-                    </p>
-                    <p class="pay">{{datas.paidNum}}人付款</p>
+        <div class="product-box">
+            <mt-swipe class="pd-swipe" :show-indicators="true">
+                <mt-swipe-item v-for="(data,i) in bannerList" :key="i">
+                    <img :src="data.bannerImage" />
+                </mt-swipe-item>
+            </mt-swipe>
+            <div class="main">
+                <div class="detail-box">
+                    <p class="name">{{datas.description}}</p>
+                    <div class="detail">
+                        <p class="price">
+                            <img src="./img/baozheng@3x.png" alt=""><span>正品保证</span>
+                            <img src="./img/baozheng@3x.png" alt=""><span>无忧售后</span>
+                        </p>
+                        <p class="pay">{{datas.paidNum}}人付款</p>
+                    </div>
+                </div>
+                <div class="mes-body">
+                    <p class="title"><span class="line"></span><span>基本信息</span></p>
+                    <ul class="base-mes" >
+                        <li class="base-li" v-for="(item,index) in datas.baseAttributeList" :key=index>{{item}}</li>
+                    </ul>
+                </div>
+                <div class="mes-body">
+                    <p class="title"><span class="line"></span><span>尺码参照</span></p>
+                    <ul class="base-mes">
+                        <li v-for="(item,index) in datas.detailPicList" :key=index><img :src="item.bannerImage" alt=""></li>
+                    </ul>
                 </div>
             </div>
-            <div class="mes-body">
-                <p class="title"><span class="line"></span><span>基本信息</span></p>
-                <ul class="base-mes" >
-                    <li class="base-li" v-for="(item,index) in datas.baseAttributeList" :key=index>{{item}}</li>
-                </ul>
-            </div>
-            <div class="mes-body">
-                <p class="title"><span class="line"></span><span>尺码参照</span></p>
-                <ul class="base-mes">
-                    <li v-for="(item,index) in datas.detailPicList" :key=index><img :src="item.bannerImage" alt=""></li>
-                </ul>
-            </div>
         </div>
-
 
         <div class="foots">
             <div class="box">
@@ -92,9 +93,9 @@
 <style lang="scss">
     @import "../../assets/css/function.scss";
     .product-details{
-        .mint-swipe {
+        .pd-swipe {
             margin-bottom: 0;
-            height: px2rem(640px);
+            height: px2rem(640px)!important;
             .mint-swipe-item {
                 height: px2rem(640px);
                 img{
@@ -109,6 +110,16 @@
 <style scoped lang="scss">
     @import "../../assets/css/function.scss";
     .product-details{
+        height: 100%;
+        .product-box{
+            width: 100%;
+            background: #ffffff;
+            position: absolute;
+            top: px2rem(0px);
+            bottom: px2rem(0px);
+            overflow: auto;
+            -webkit-overflow-scrolling: touch !important;
+        }
         .main{
             margin-bottom: px2rem(120px);
         }
@@ -187,7 +198,7 @@
             }
         }
         .foots{
-            position: fixed;
+            position: absolute;
             bottom: 0;
             .box{
                 box-sizing: border-box;
