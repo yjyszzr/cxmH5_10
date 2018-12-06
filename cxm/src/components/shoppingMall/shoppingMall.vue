@@ -147,8 +147,7 @@
                         .name {
                             line-height: px2rem(40px);
                             color: rgba(64, 64, 64, 1);
-                            font-size: px2rem(30px);
-                            font-weight: 700;
+                            font-size: px2rem(28px);
                             display: -webkit-box;
                             -webkit-line-clamp: 2;
                             overflow: hidden;

@@ -19,18 +19,18 @@
                 </div>
             </div>
             <div class="money clearfix" v-show="$store.state.turnOn!=0">
-                <div class="left">
+                <div class="left" v-show="userInfo.recharegeTurnOn=='1'">
                     <span><b>{{userInfo.totalMoney}}</b><i>元</i></span>
                     <p>账户余额</p>
                 </div>
-                <div class="left">
+                <div class="left" v-show="userInfo.withdrawTurnOn=='1'">
                     <span><b>{{userInfo.userMoney}}</b><i>元</i></span>
                     <p>可提现余额</p>
                 </div>
             </div>
             <div class="nav" v-show="$store.state.turnOn!=0">
-                <a @click="goRecharge()">充值</a>
-                <a @click="goWithdraw(userInfo.isReal)">提现</a>
+                <a @click="goRecharge()" v-show="userInfo.recharegeTurnOn=='1'">充值</a>
+                <a @click="goWithdraw(userInfo.isReal)" v-show="userInfo.withdrawTurnOn=='1'">提现</a>
             </div>
         </div>
         <div class="section" v-show="$store.state.turnOn!=0">
@@ -43,13 +43,13 @@
                             <span class="message">投注记录</span>
                         </div>
                     </router-link>
-                    <!-- <router-link to='/user/account'>
+                    <router-link to='/user/account' v-show="userInfo.recharegeTurnOn=='1'">
                         <div>
                             <i class="iconfont icon-icon-2"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">账户明细</span>
                         </div>
-                    </router-link> -->
+                    </router-link>
                     <router-link to='/user/detail'>
                         <div>
                             <i class="iconfont icon-icon-3"></i>

@@ -233,7 +233,7 @@
                         case "servicemd":
                             return "服务";
                         default:
-                            return "彩种大厅";
+                            return "球多多";
                     }
                 }
             },
