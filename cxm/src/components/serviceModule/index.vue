@@ -49,6 +49,7 @@ export default {
         ul{
             background: white;
             li{
+                border-bottom: 1px solid #f0f0f0;
                 height: px2rem(120px);
                 display: flex;
                 align-items: center;
@@ -66,6 +67,9 @@ export default {
                     width: px2rem(42px);
                     margin: 0 px2rem(35px) 0 px2rem(44px);
                 }
+            }
+            li:last-of-type{
+                border: none;
             }
         }
     }

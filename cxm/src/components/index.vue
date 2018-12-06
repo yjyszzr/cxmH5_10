@@ -197,8 +197,8 @@
         </div>
         <v-slider :bannerList='bannerList' v-if="bannerList.length!=0"></v-slider>
         <!--首页-->
-        <div class="index_center" v-show="$store.state.turnOn!=0">
-            <div class="carousel" style="margin-top: 0.24rem;" v-if="y_Carousel.length>0">
+        <div class="index_center">
+            <div class="carousel" style="margin-top: 0.24rem;" v-if="y_Carousel.length>0&&$store.state.turnOn!=0">
                 <div class="scroll-wrap">
                     <i class="iconfont icon-icon-"></i>
                     <!-- <p v-if='show'>温馨提示:理性投注,长跟长红</p> -->
@@ -209,7 +209,7 @@
                 </div>
             </div>
             <!-- 活动广告位 -->
-            <v-activity :activity='activity'></v-activity>
+            <v-activity :activity='activity' v-show="$store.state.turnOn!=0"></v-activity>
             <!-- 拓展 -->
             <div class="fd-news">
                 <ul>
@@ -220,7 +220,7 @@
                 </ul>
             </div>
             <!-- 玩法入口 -->
-            <div class="section center">
+            <div class="section center" v-show="$store.state.turnOn!=0">
                 <ul>
                     <li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.redirectUrl,item)">
                         <img :src="item.lotteryImg" class="entry_icon">
@@ -300,7 +300,7 @@
                 this.$store.commit('MARKSHORTCUT', true)
             },
             goDetails(item){
-                if (item.status == '1') {   //敬请期待提示
+                if (item.status == '0') {   //敬请期待提示
                     Toast(item.statusReason)
                     return false;
                 }
