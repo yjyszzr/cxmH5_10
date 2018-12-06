@@ -10,7 +10,7 @@
             <!-- 返回 -->
             <a @click="return_back()" class="go_return" v-else></a>
             <p class="headerText" :class="$route.path.split('/')[1]==''?'homeTitle':''">
-                <!-- <span v-if="!$route.path.split('/')[2]">天天体育·</span> -->
+                <!-- <span v-if="!$route.path.split('/')[2]">球多多·</span> -->
             {{title}}</p>
             <div class="filter" v-show="menuDisplay==true">
                 <span v-if="$route.path.split('/')[2]=='consult'" style="opacity:0;">分享</span>
@@ -59,7 +59,7 @@
             <li :class="$store.state.recordTab=='m2'?'cur3':''"><p @click='curClick3($event)'>消息</p></li>
         </ul>
         <p class="matchHeader"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='cathectic'">已选{{$store.state.matchSelectedList.length}}场比赛&nbsp;&nbsp;&nbsp;模拟投注截止时间：<span>{{$store.state.arrTime.length==0?'00-00 00:00':datePd($store.state.arrTime[0])}}</span></p>
-        <div v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'">
+        <!-- <div v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'">
             <ul class="help_ul" >
                 <li><a href="" @click.prevent="custormAnchor('a1')">账户问题</a></li>
                 <li><a href="" @click.prevent="custormAnchor('a2')">充值问题</a></li>
@@ -69,7 +69,7 @@
                 <li><a href="" @click.prevent="custormAnchor('a6')">玩法帮助</a></li>
             </ul>
             <div v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'" style="height: 10px; background: #f1f1f1;width: 100%"></div>
-        </div>
+        </div> -->
         <!--比赛结果 未结束、已结束、我的比赛-->
         <ul class="list" v-if="$route.path.split('/')[1]=='lotteryResult'">
             <li v-for="item in lotteryResultTable" @click="lotteryTable($event,item.key)" :key='item.key' :class="item.key==activeIndex?'findactive':''">

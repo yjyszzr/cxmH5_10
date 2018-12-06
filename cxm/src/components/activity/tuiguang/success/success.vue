@@ -5,7 +5,7 @@
     <div class="hdCg">
         <div  class="success">
             <img  src="../tuiguang/img8.png">
-            <p>恭喜您已成为天天体育推广员</p>
+            <p>恭喜您已成为球多多推广员</p>
         </div>
         <section class="button buton" @click="go_btn()">
             <a class="determine">立即下载</a>

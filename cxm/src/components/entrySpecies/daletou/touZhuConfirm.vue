@@ -4,7 +4,7 @@
         <div class="head" v-show="isWeb()">
             <span class="back-img" @click="goBack()"><img src="../../../assets/img/ret.png" alt=""></span>
             <div class="head-text">
-                <span>天天体育·投注确认</span>
+                <span>球多多·投注确认</span>
             </div>
             <div class="memu"></div>
         </div>
@@ -43,7 +43,7 @@
                         <span class="go-detalis" @click="goSelect(item,index)"><img src="../../../assets/img/arange.png" alt=""></span>
                     </li>
                 </ul>
-                <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"> </i> <p> 我已阅读并同意<router-link to="/freebuy/protocol">《天天体育投注服务协议》</router-link></p></div>
+                <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"> </i> <p> 我已阅读并同意<router-link to="/freebuy/protocol">《球多多投注服务协议》</router-link></p></div>
             </div>
         </div>
         <div class="footer">

@@ -26,7 +26,7 @@ const state = {
     position: {
         lat: '', //纬度
         lng: '',  //经度
-        city: '位置',  //当前城市位置
+        city: '中国',  //当前城市位置
         province: '' //省
     }, //经纬度保存
     userInfo: {}, //个人信息
@@ -82,7 +82,7 @@ const state = {
     runchartData: {},  //走势图数据
     channelObj: {
         color: '#ea5504',
-        channelNmae: '天天体育'
+        channelNmae: '球多多'
     },
     order:{
         orderNum:'',//订单号

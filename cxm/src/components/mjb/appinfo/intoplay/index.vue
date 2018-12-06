@@ -79,7 +79,7 @@ export default {
     mounted(){
 			nativeApp({'methodName':'showTitle','title':'玩法帮助'})
         window.getCxmTitle = function(){
-            return '天天体育彩票·玩法帮助'
+            return '球多多彩票·玩法帮助'
         }
         this.$store.state.matchObj = {};
     }

@@ -6,7 +6,7 @@
                 <div class="shop-log"><img :src="item.logo" alt=""></div>
                 <div class="shop-descrip">
                     <p class="shop-name">{{item.name}} <span v-if="item.cooperAuth=='1'" class="collet-img"><img src="./img/shop1_03.png" alt=""></span></p>
-                    <p class="collet">有{{item.collNum}}名用户搜藏此店铺</p>
+                    <p class="collet">有{{item.collNum}}名用户访问过此店铺</p>
                 </div>
             </li>
         </ul>
@@ -33,7 +33,7 @@
             getStorelist(){
                 let data = ''
                 api.storelist(data).then(res=>{
-                    console.log(res);
+                    //console.log(res);
                     if(res.code==0){
                         this.shopList = res.data.list
                         this.protocalUrl = res.data.protocalUrl

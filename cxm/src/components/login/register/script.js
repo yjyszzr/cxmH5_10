@@ -30,7 +30,7 @@ export default {
             Toast('请填写完整')
             return
         }else if(this.$refs.xySelected.className == 'icon-icon-29 iconfont'){
-            Toast('尊敬的用户,注册需同意并接受《天天体育注册服务协议》')
+            Toast('尊敬的用户,注册需同意并接受《球多多注册服务协议》')
             return
         }
         let data = {

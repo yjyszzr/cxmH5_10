@@ -184,7 +184,7 @@
         <!--<div class="downDrop" @click="goDownLoad()">
             <div class="downLeft">
                 <img src="../assets/img/downIocn.png" alt="">
-                <span>下载天天体育APP 购彩更轻松</span>
+                <span>下载球多多APP 购彩更轻松</span>
             </div>
             <div class="downRight">
                 <span>立即打开</span>
@@ -198,7 +198,7 @@
         <v-slider :bannerList='bannerList' v-if="bannerList.length!=0"></v-slider>
         <!--首页-->
         <div class="index_center" v-show="$store.state.turnOn!=0">
-            <div class="carousel" style="margin-top: 0.24rem;">
+            <div class="carousel" style="margin-top: 0.24rem;" v-if="y_Carousel.length>0">
                 <div class="scroll-wrap">
                     <i class="iconfont icon-icon-"></i>
                     <!-- <p v-if='show'>温馨提示:理性投注,长跟长红</p> -->
@@ -424,6 +424,13 @@
                     this.$store.commit('POSITION',pos)
                     this.homeData();
                 }).catch((err)=>{
+                    let obj = {
+                        lat: '', //纬度
+                        lng: '',  //经度
+                        city: '中国',  //当前城市位置
+                        province: '' //省
+                    }
+                    this.$store.commit('POSITION',obj)
                     //Toast(err);
                     this.homeData();
                 })

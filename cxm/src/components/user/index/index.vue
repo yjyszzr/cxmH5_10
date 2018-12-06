@@ -43,13 +43,13 @@
                             <span class="message">投注记录</span>
                         </div>
                     </router-link>
-                    <router-link to='/user/account'>
+                    <!-- <router-link to='/user/account'>
                         <div>
                             <i class="iconfont icon-icon-2"></i>
                             <span class="arrow_right float_right"></span>
                             <span class="message">账户明细</span>
                         </div>
-                    </router-link>
+                    </router-link> -->
                     <router-link to='/user/detail'>
                         <div>
                             <i class="iconfont icon-icon-3"></i>

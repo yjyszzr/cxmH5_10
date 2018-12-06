@@ -543,7 +543,7 @@ const router = new Router({
         },
         component: resolve => require(['@/components/activity/wheel'], resolve)
      },
-      //app天天体育彩票
+      //app球多多彩票
       //帮助中心：appinfo/help
       //购彩协议：appinfo/protocol
       //服务协议：appinfo/service
@@ -736,7 +736,7 @@ const router = new Router({
           name: 'insurancemjbs',
           component: resolve => require(['@/components/mjb/appball/insurance/insurance.vue'], resolve)
       },
-      //天天体育
+      //球多多
       {
           path: '/appty/help',
           name: 'helpmjby',
