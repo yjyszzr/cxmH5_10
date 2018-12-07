@@ -36,7 +36,7 @@ export let nativeApp = (obj)=>{
 export let channel = (str,s)=>{
     let channelObj = {
         channelNmae: '球多多',
-        color: '#ea5504'
+        color: '#d12120'
     }
     if(str=='c26013'){
         channelObj.channelNmae='乐得体育'

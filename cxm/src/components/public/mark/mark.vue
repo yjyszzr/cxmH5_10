@@ -106,7 +106,7 @@
                         text-align: center;
                         line-height: px2rem(72px);
                         font-size: px2rem(26px);
-                        color: #e85504;
+                        color: #d12120;
                     }
                     p:last-of-type{
                         border: none;

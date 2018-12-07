@@ -101,7 +101,7 @@
                                     <td>{{sunitem.matchL}}</td>
                                     <td>{{sunitem.ballIn}}</td>
                                     <td>{{sunitem.ballIn}}</td>
-                                    <td :style="{color:'RGBA(234, 85, 4, 1)'}">{{sunitem.score}}</td>
+                                    <td :style="{color:'#d12120'}">{{sunitem.score}}</td>
                                 </tr>
                             </table>
                         </div>
@@ -434,11 +434,11 @@
     .detail {
         background-color: #ffffff;
         .curtab {
-            border-bottom: 2px solid RGBA(234, 85, 4, 1) !important;
-            color: RGBA(234, 85, 4, 1) !important;
+            border-bottom: 2px solid #d12120 !important;
+            color: #d12120 !important;
         }
         .scorecurtab {
-            background-color: RGBA(234, 85, 4, 1);
+            background-color: #d12120;
             color: #ffffff !important;
         }
         .line-row {
@@ -508,7 +508,7 @@
                             background: rgba(247, 247, 247, 1);
                             height: px2rem(60px);
                             line-height: px2rem(60px);
-                            color: RGBA(234, 85, 4, 1);
+                            color: #d12120;
                             text-align: center;
                             font-size: px2rem(25px);
                         }
@@ -536,7 +536,7 @@
                         text-overflow: ellipsis;
                     }
                     .detail-btn {
-                        color: RGBA(252, 111, 28, 1);
+                        color: #d12120;
                         font-size: px2rem(26px);
                     }
                 }

@@ -248,7 +248,7 @@
                                 color: #505050;
                             }
                             p:nth-child(2){
-                                color: #EA5504;
+                                color: #d12120;
                             }
                         }
                     }
@@ -354,7 +354,7 @@
                 text-align: center;
                 color: #ffffff;
                 width: 49.7%;
-                background-color: #EA5504;
+                background-color: #d12120;
                 font-size: px2rem(28px);
             }
         }
@@ -544,7 +544,7 @@
                 }
             },
             color(){
-                let channelcolor = "#ea5504"
+                let channelcolor = "#d12120"
                 if(isWebview()){
                 channelcolor = this.channelObj.color
                 }

@@ -193,17 +193,17 @@
             border: 1px solid #0081cc !important;
         }
         .cur {
-            color: #ea5504 !important;
-            border: 1px solid #ea5504 !important;
+            color: #d12120 !important;
+            border: 1px solid #d12120 !important;
         }
         .redBall {
-            color: #ea5504 !important;
+            color: #d12120 !important;
         }
         .blueBall {
             color: #0081cc !important;
         }
         .okcur {
-            background-color: #ea5504 !important;
+            background-color: #d12120 !important;
         }
         .head {
             overflow: hidden;
@@ -483,7 +483,7 @@
                     font-size: px2rem(26px);
                     color: #787878;
                     span {
-                        color: #ea5504;
+                        color: #d12120;
                     }
                 }
             }
@@ -568,7 +568,7 @@
                     font-size: px2rem(26px);
                 }
                 .red {
-                    color: #EA5504;
+                    color: #d12120;
                 }
                 .blue {
                     color: #0081cc;

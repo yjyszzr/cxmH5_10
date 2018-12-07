@@ -68,8 +68,8 @@
         }
         li.active{
             span{
-                color: #ea5504;
-                border-bottom: 3px solid #ea5504;
+                color: #d12120;
+                border-bottom: 3px solid #d12120;
                 box-sizing: border-box;
             }
         }
@@ -362,7 +362,7 @@
                 .hz-fbright{
                     flex: 3.2;
                     height: 100%;
-                    background: #ea5504;
+                    background: #d12120;
                     color: white;
                     font-size: px2rem(30px);
                     border: none;
@@ -467,8 +467,8 @@
                         margin: 0;
                     }
                     .mint-radio-input:checked + .mint-radio-core{
-                        border-color: #ea5504;
-                        background-color: #ea5504;
+                        border-color: #d12120;
+                        background-color: #d12120;
                     }
                 }
             }
@@ -490,7 +490,7 @@
         }
         p:first-of-type{
             border-right: 1px solid #f0f0f0;
-            color: #ea5504;
+            color: #d12120;
         }
     }
 }

@@ -81,7 +81,7 @@ const state = {
     },
     runchartData: {},  //走势图数据
     channelObj: {
-        color: '#ea5504',
+        color: '#d12120',
         channelNmae: '球多多'
     },
     order:{

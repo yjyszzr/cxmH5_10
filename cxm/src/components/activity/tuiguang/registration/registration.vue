@@ -40,7 +40,7 @@
                 </li>
             </ul>
         </div>
-        <section class="button" :style="{'background':passwordVal===''||telVal===''||mobileVal===''?'#9f9f9f':'#ea5504'}">
+        <section class="button" :style="{'background':passwordVal===''||telVal===''||mobileVal===''?'#9f9f9f':'#d12120'}">
             <a class="determine" @click="reg_btn">注册成为推广员</a>
             <p v-if="passwordVal===''||telVal===''||mobileVal===''"></p>
         </section>

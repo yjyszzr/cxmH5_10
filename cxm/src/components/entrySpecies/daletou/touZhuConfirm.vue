@@ -103,7 +103,7 @@
         }
         .body {
             .xySelected{
-                color: #e95504!important;
+                color: #d12120!important;
             }
             .redBall {
                 color: #eb1c24 !important;
@@ -284,7 +284,7 @@
                     font-size: px2rem(28px);
                     flex: 2;
                     span {
-                        color: #ea5504;
+                        color: #d12120;
                     }
                     p{
                         width: 95%;
@@ -298,8 +298,8 @@
                     /*width: px2rem(250px);*/
                     text-align: center;
                     line-height: px2rem(100px);
-                    background-color: #ea5504;
-                    border: 1px solid #ea5504;
+                    background-color: #d12120;
+                    border: 1px solid #d12120;
                     color: #ffffff;
                     font-size: px2rem(28px);
                 }
@@ -647,7 +647,7 @@
                 }
             },
             color(c){
-                let channelcolor = "#ea5504"
+                let channelcolor = "#d12120"
                 if(c){
                     if(isWebview()){
                         channelcolor = this.channelObj.color

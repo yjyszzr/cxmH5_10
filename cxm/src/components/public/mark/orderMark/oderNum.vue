@@ -2,7 +2,7 @@
     <div class="oder">
         <div class="title">
             <p class="order-text">预测订单号: </p>
-            <p class="order-nun"> {{oderNum}}</p>
+            <p class="order-nun"> {{orderLink}}</p>
         </div>
         <div class="body">
             <div>
@@ -18,11 +18,12 @@
 </template>
 
 <script>
+    import {getCsUrl} from '../../../../util/common.js'
     export default {
         name: "oderNum",
         data(){
             return{
-                oderNum : this.$store.state.order.orderNum
+                orderLink : getCsUrl()+'/user/analogOrder?id='+this.$store.state.order.orderNum
             }
         },
         methods:{
@@ -44,17 +45,21 @@
         align-items: center;
         border-radius: px2rem(10px);
         .title{
-            line-height: px2rem(100px);
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            padding: px2rem(15px);
+            p{
+                width: 90%;
+                word-wrap:break-word;  
+                word-break:break-all;  
+                overflow: hidden;
+            }
             .order-text{
                 color: RGBA(80, 80, 80, 1);
                 font-size: px2rem(28px);
-                margin-right: px2rem(10px);
             }
             .order-nun{
-                color:RGBA(234, 85, 4, 1) ;
+                color:#d12120 ;
                 font-size: px2rem(28px);
             }
         }
@@ -74,7 +79,7 @@
             width: 100%;
             padding-bottom: px2rem(20px);
             padding-top: px2rem(20px);
-            color:RGBA(234, 85, 4, 1);
+            color:#d12120;
             font-size: px2rem(35px);
         }
     }

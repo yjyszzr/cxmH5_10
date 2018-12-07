@@ -11,7 +11,7 @@
             <div class="ddbh">
                 <p>
                     <span>预测订单编号:</span>
-                    <span style="color:#ea5504;" id='copyText'>{{orderObj.programmeSn}}</span>
+                    <span style="color:#d12120;" id='copyText'>{{orderObj.programmeSn}}</span>
                 </p>
                 <p class="copy" @click="copy()">
                     复制
@@ -45,7 +45,7 @@
                             </div>
                             <div class="item">
                                 <p v-for='(data,index) in item.cathecticResults' :key='index'>
-                                    <span v-for='(data1,index1) in data.cathectics' :key='index1' :style='{"color":data1.isGuess=="1"?"#ea5504":"#505050"}'>{{data1.cathectic}}</span>
+                                    <span v-for='(data1,index1) in data.cathectics' :key='index1' :style='{"color":data1.isGuess=="1"?"#d12120":"#505050"}'>{{data1.cathectic}}</span>
                                 </p>
                             </div>
                             <div class="item">
@@ -64,7 +64,7 @@
                             <div class="item1"><span>{{item.match}}</span></div>
                             <div class="item1">
                                 <p v-for='(data,index) in item.cathecticResults' :key='index'>
-                                    <span v-for='(data1,index1) in data.cathectics' :key='index1' :style='{"color":data1.isGuess=="1"?"#ea5504":"#505050"}'>{{data1.cathectic}}</span>
+                                    <span v-for='(data1,index1) in data.cathectics' :key='index1' :style='{"color":data1.isGuess=="1"?"#d12120":"#505050"}'>{{data1.cathectic}}</span>
                                 </p>
                             </div>
                             <div class="item1">

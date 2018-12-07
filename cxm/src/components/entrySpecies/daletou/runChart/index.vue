@@ -197,7 +197,7 @@
                             
                         </div>
                     </div>
-                    <button @click="goTouzhu()" class="hz-fbright" :disabled='disabled' :style="{'background':disabled?'#ccc':'#ea5504'}">
+                    <button @click="goTouzhu()" class="hz-fbright" :disabled='disabled' :style="{'background':disabled?'#ccc':'#d12120'}">
                         确定
                     </button>
                 </div>

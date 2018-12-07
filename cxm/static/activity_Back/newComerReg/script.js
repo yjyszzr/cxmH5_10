@@ -142,7 +142,7 @@ function getCode() {
 		validCode = false;
 		var t = setInterval(function () {
 			time--;
-			$('.codebtn').html("<span style='color: #ea5504;'>" + time + "s</span>后重新获取");
+			$('.codebtn').html("<span style='color: #d12120;'>" + time + "s</span>后重新获取");
 			if (time == 0) {
 				clearInterval(t);
 				$('.codebtn').html("<span onClick='getSmsCode()'>重新获取</span>");

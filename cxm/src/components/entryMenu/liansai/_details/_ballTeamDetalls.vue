@@ -259,8 +259,8 @@
                     box-sizing: border-box;
                 }
                 .active{
-                    color: #EA5504;
-                    border-bottom: 2px solid #EA5504;
+                    color: #d12120;
+                    border-bottom: 2px solid #d12120;
                 }
             }
         }
@@ -324,7 +324,7 @@
                     p:last-of-type{
                         font-size: px2rem(24px);
                         span:first-of-type{
-                            color: #EA5504;
+                            color: #d12120;
                         }
                         span:nth-child(2){
                             color: #0099d9;
@@ -443,7 +443,7 @@ export default {
             switch (c){
                 case '负': return '#44ae35';
                 case '平': return '#0099d9';
-                case '胜': return '#EA5504';
+                case '胜': return '#d12120';
             }
         },
         fetchData(){

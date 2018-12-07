@@ -21,7 +21,7 @@
         right: px2rem(20px);
         bottom: px2rem(190px);
         z-index: 200;
-        background: #ea5504;
+        background: #d12120;
         padding: px2rem(10px) px2rem(15px);
         font-size: px2rem(24px);
         color: #fff;
@@ -112,7 +112,7 @@
         overflow: hidden;
         position: relative;
         i {
-            color: #ea5504;
+            color: #d12120;
             vertical-align: middle;
             font-size: px2rem(30px);
             display: inline-block;
@@ -225,7 +225,7 @@
                     <li v-for='(item,i) in dlPlay' :key='i' @click="goFreebuy(item.redirectUrl,item)">
                         <img :src="item.lotteryImg" class="entry_icon">
                         <p>{{item.lotteryName}}</p>
-                        <div class="subTitle" :style="{'color':item.status=='0'?'#ea5504':'#9f9f9f'}">
+                        <div class="subTitle" :style="{'color':item.status=='0'?'#d12120':'#9f9f9f'}">
                             {{item.subTitle}}
                         </div>
                     </li>
@@ -397,7 +397,7 @@
             carouselMoney(c) {  //播报
                 return (
                     c.winningMsg +
-                    '<b style="color:#ea5504;font-weight:400;">' +
+                    '<b style="color:#d12120;font-weight:400;">' +
                     c.winningMoney +
                     "</b>元"
                 );

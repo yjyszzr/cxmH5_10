@@ -300,7 +300,7 @@
           text-align: center;
         }
         p:nth-child(1) {
-          color: RGBA(234, 85, 4, 1);
+          color: #d12120;
         }
         p:nth-child(2) {
           border-left: 1px solid #c7c7c7;
@@ -308,8 +308,8 @@
       }
     }
     .curtab {
-      border-bottom: 2px solid RGBA(234, 85, 4, 1) !important;
-      color: RGBA(234, 85, 4, 1) !important;
+      border-bottom: 2px solid #d12120 !important;
+      color: #d12120 !important;
     }
     .line-clow {
       display: inline-block;

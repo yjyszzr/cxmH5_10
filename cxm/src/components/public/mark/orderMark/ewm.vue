@@ -49,7 +49,7 @@
                 margin-right: px2rem(10px);
             }
             .order-nun{
-                color:RGBA(234, 85, 4, 1) ;
+                color:#d12120 ;
             }
         }
         .body{
@@ -74,7 +74,7 @@
             width: 100%;
             padding-bottom: px2rem(20px);
             padding-top: px2rem(20px);
-            color:RGBA(234, 85, 4, 1);
+            color:#d12120;
             font-size: px2rem(35px);
 
         }
