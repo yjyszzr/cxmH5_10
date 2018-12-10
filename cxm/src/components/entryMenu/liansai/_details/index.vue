@@ -148,7 +148,7 @@
                                     :key=index
                                     @click="openMore()">
                                     <span>{{item.turnGroupName}}</span>
-                                    <span ref="downImg"><img src="../../../../assets/img/freebuy_img/Collapse@3x.png"
+                                    <span ref="downImg"><img src="../../../../assets/img/freebuy_img/Collapse1.jpg"
                                                              alt=""></span>
                                 </li>
                             </ul>
@@ -706,7 +706,8 @@
                         width: px2rem(300px);
                         text-align: center;
                         .mach-select-li {
-                            width: px2rem(200px);
+
+                            /*width: px2rem(200px);*/
                             margin: 0 auto;
                             color: RGBA(111, 111, 111, 1);
                             font-size: px2rem(30px);
