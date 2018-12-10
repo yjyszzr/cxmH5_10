@@ -5,26 +5,26 @@
                 <img :src="data.bannerImage" />
             </mt-swipe-item>
         </mt-swipe>
-        <div class="commodity-box">
-            <ul class="commodity-ul"
-                v-infinite-scroll="loadMore"
-                infinite-scroll-disabled=true
-                infinite-scroll-distance="0">
-                <li class="commodity-li" v-for="(item,index) in shopList" :key=index @click="goDetail(item.goodsId)">
-                    <div class="img-box">
-                        <img :src="item.mainPic" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <p class="name" style="-webkit-box-orient: vertical;">{{item.description}}</p>
-                        <div class="detail">
-                            <p class="price"><span class="now-price">￥{{item.presentPrice}}</span><span class="original-price">￥{{item.historyPrice}}</span>
-                            </p>
-                            <p class="pay">{{item.paidNum}}人付款</p>
+        <div class="commodity-box" ref="wrapper" :style="{ height: (wrapperHeight-50) + 'px' }">
+            <mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore" :autoFill="isAutoFill" :bottomDistance=10>
+                <ul class="commodity-ul">
+                    <li class="commodity-li" v-for="(item,index) in shopList" :key=index @click="goDetail(item.goodsId)">
+                        <div class="img-box">
+                            <img :src="item.mainPic" alt="">
                         </div>
-                    </div>
-                </li>
-                <p v-if=loadinged class="loading-more"><v-loading></v-loading> {{lodMes}}</p>
-            </ul>
+                        <div class="detail-box">
+                            <p class="name" style="-webkit-box-orient: vertical;">{{item.description}}</p>
+                            <div class="detail">
+                                <p class="price"><span class="now-price">￥{{item.presentPrice}}</span><span class="original-price">￥{{item.historyPrice}}</span>
+                                </p>
+                                <p class="pay">{{item.paidNum}}人付款</p>
+                            </div>
+                        </div>
+                    </li>
+                    <p v-if=loadinged class="loading-more">已全部加载完...</p>
+                </ul>
+            </mt-loadmore>
+
         </div>
     </div>
 </template>
@@ -39,16 +39,27 @@
         },
         data() {
             return {
+                allLoaded: false,
                 loadinged:false,
-                page:0,
+                isAutoFill:false,
+                page:1,
                 bannerList: [], //banner
                 shopList: [], //商品列表
-                lodMes:'加载中...',
-                isLastPage:'false'
+                isLastPage:'false',
+                wrapperHeight: 0,
             }
         },
         created() {
             this.hallData()
+            // this.page=1
+            // this.getShopList()
+            this.loadBottom()
+        },
+        mounted() {
+            // 父控件要加上高度，否则会出现上拉不动的情况
+            // this.wrapperHeight =
+            //     document.documentElement.clientHeight -
+            //     this.$refs.wrapper.getBoundingClientRect().top;
         },
         methods: {
             // 轮播图
@@ -67,43 +78,25 @@
                     query:{goodsId:shopId}
                 })
             },
-            //获取商品列表
-            getShopList(){
+            //上拉加载更多
+            loadBottom() {
                 let data = {
                     page: this.page ,
-                    size: 10
+                    size: 20
                 }
                 api.goodsList(data).then(res=>{
-                    //console.log(res);
                     if(res.code == 0){
+                        if(res.data.isLastPage == 'true'){
+                            this.allLoaded = true;// 若数据已全部获取完毕
+                            this.loadinged = true;
+                        }
                         this.isLastPage = res.data.isLastPage
                         this.shopList = this.shopList.concat(res.data.list)
-                        this.loadinged = false;
+                        this.page=this.page+1
+                        this.$refs.loadmore.onBottomLoaded();
                     }
                 })
             },
-
-            //下拉加载更多
-            loadMore(){
-
-                if(!this.loadinged){
-                    this.loadinged = true;
-                    setTimeout(() => {
-
-                        this.page=this.page+1
-                        this.getShopList()
-
-                        // if(this.isLastPage == 'false'){
-                        //
-                        // }else {
-                        //     // this.lodMes = "没有数据了..."
-                        //     // this.loadinged = false;
-                        //     // return false
-                        // }
-                    }, 1000);
-                }
-
-            }
         },
 
     }
@@ -131,9 +124,11 @@
                     box-sizing: border-box;
                     width: px2rem(375px);
                     padding: px2rem(10px);
+                    overflow: hidden;
                     .img-box {
                         width: 100%;
                         height: px2rem(360px);
+                        overflow: hidden;
                         img{
                             width: 100%;
                             height: 100%;
@@ -141,6 +136,8 @@
                         /*background-color: red;*/
                     }
                     .detail-box {
+                        overflow: hidden;
+                        height: px2rem(120px);
                         padding: px2rem(8px);
                         background-color: rgba(244, 244, 244, 1);
                         border: 1px solid rgba(245, 243, 248, 1);

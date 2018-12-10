@@ -941,6 +941,9 @@ const router = new Router({
       // 商城
       {
           path: '/shoppingMall',
+          meta:{
+              keepAlive: false
+          },
           name: 'shoppingMall',
           component: resolve => require(['@/components/shoppingMall/shoppingMall.vue'], resolve)
       },
