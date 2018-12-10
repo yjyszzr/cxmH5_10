@@ -211,7 +211,7 @@
             <!-- 活动广告位 -->
             <v-activity :activity='activity' v-show="$store.state.turnOn!=0"></v-activity>
             <!-- 拓展 -->
-            <div class="fd-news">
+            <div class="fd-news" v-if="fdNewsList.length>0">
                 <ul>
                     <li v-for='(item,i) in fdNewsList' :key='i' @click="goDetails(item)">
                         <img :src="item.classImg" class="fd-entry_icon">
@@ -399,7 +399,7 @@
                     c.winningMsg +
                     '<b style="color:#d12120;font-weight:400;">' +
                     c.winningMoney +
-                    "</b>元"
+                    "</b>"
                 );
             },
             handleScroll(e) {    //滚动加载

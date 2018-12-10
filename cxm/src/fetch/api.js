@@ -138,8 +138,8 @@ export function fetchPost(url, body) {
     }
     device.lon = store.state.position.lng
     device.lat = store.state.position.lat
-    device.city = store.state.position.city=='中国'?'':store.state.position.city
-    device.province = store.state.position.province
+    device.city = store.state.position.city=='中国'?'':window.encodeURI(store.state.position.city)
+    device.province = window.encodeURI(store.state.position.province)
     return new Promise((resolve, reject) => {
         axios.post(url, {
                 device,

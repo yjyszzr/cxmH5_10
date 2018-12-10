@@ -560,7 +560,7 @@
                         float: left;
                         font-size: px2rem(40px);
                         margin-right: px2rem(15px);
-                        color: #d12120;
+                        color: #ea5504;
                     }
                     .text {
                         width: 90%;
