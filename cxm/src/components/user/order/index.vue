@@ -24,7 +24,7 @@
                     <!--<div class="box2">-->
                         <!--<p>-->
                             <!--<span style="color: #999;">方案状态</span>-->
-                            <!--<span :style="{'color':orderObj.orderStatus=='2'?'#f7931e':'#505050'}">{{orderObj.orderStatusDesc}}</span>-->
+                            <!--<span :style="{'color':orderObj.orderStatus=='2'?'#d12120':'#505050'}">{{orderObj.orderStatusDesc}}</span>-->
                         <!--</p>-->
                         <!--<p>-->
                             <!--<span v-if="orderObj.orderStatus=='5'">中奖金额</span>-->

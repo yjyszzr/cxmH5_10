@@ -685,7 +685,7 @@
     .prompt {
         width: px2rem(540px);
         height: px2rem(80px);
-        color: #f7931e;
+        color: #d12120;
         font-size: px2rem(26px);
         background: #eaeaea;
         text-align: center;
@@ -706,7 +706,7 @@
     }
 
     .forget .x_sel {
-        color: #f7931e;
+        color: #d12120;
         font-size: px2rem(26px);
         float: right;
     }
