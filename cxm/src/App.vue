@@ -299,6 +299,7 @@
 </script>
 
 <style lang='scss'>
+
     @import "./assets/css/public.scss";
     @import "./assets/css/function.scss";
 

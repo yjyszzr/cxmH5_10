@@ -1,5 +1,11 @@
 @import '../../../assets/css/function.scss';
 .about{
+    .log{
+        margin-top: px2rem(20px);
+        font-size: px2rem(50px);
+        color: #d12120;
+        font-weight: 700;
+    }
     .logo{
         height: px2rem(385px);
         text-align: center;
