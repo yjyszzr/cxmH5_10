@@ -106,17 +106,29 @@
                     <p>店主出票：<span>{{orderObj.ticketTime}}</span></p> -->
                 </div>
             </div>
-            <div class="hedp" v-show="orderObj.showStore=='1'">
-                <router-link to='/lottery/cooperateShop'>
-                    <div class="left">
-                        <img src="../../../assets/img/dp128@2.png" alt="">
-                        <span>合作店铺</span>
-                        <img src="../../../assets/img/renzheng@2x.png" alt="">
+            <div class="dp-box">
+                <div class="section dpxx" v-for="(item,i) in orderObj.appendInfoList" :key='i'>
+                    <div class="dzxx" v-show="item.type==1">
+                        <div class="solecd" >店主信息</div>
+                        <div class="dpxx-box">
+                            <img class="ecode" :src=item.imgurl alt="">
+                            <div class="dzwx">店主微信: {{item.wechat}}</div>
+                            <div class="dzsj">店主手机: <a :href="'tel:'+item.phone">{{item.phone}}<img v-show="!$route.query.cxmxc" class="dianhua" src="../../../assets/img/dianhua@2x.png" alt=""></a></div>
+                        </div>
                     </div>
-                    <div class="right">
-                        进店逛逛
+                    <div class="hedp" v-show="item.type==0">
+                        <router-link to='/lottery/cooperateShop'>
+                            <div class="left">
+                                <img src="../../../assets/img/dp128@2.png" alt="">
+                                <span>合作店铺</span>
+                                <img src="../../../assets/img/renzheng@2x.png" alt="">
+                            </div>
+                            <div class="right">
+                                进店逛逛
+                            </div>
+                        </router-link>
                     </div>
-                </router-link>
+                </div>
             </div>
         </div>
         <!--<button :style="{'background':color()}" class="jxtz" :class="orderObj!=''?'Fixed':''" @click="jxtz()">-->

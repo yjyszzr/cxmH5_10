@@ -8,6 +8,8 @@
         <v-olderNum v-if="$store.state.mark_showObj.mark_show_type == 4"></v-olderNum>
         <!-- 线下店铺营业许可证-->
         <v-yingye v-if="$store.state.mark_showObj.mark_show_type == 5"></v-yingye>
+        <!-- 引导 -->
+        <v-guide v-if="$store.state.mark_showObj.mark_show_type == 6"></v-guide>
     </div>
 </template>
 
@@ -17,6 +19,7 @@
     import ewm from './orderMark/ewm.vue'
     import olderNum from './orderMark/oderNum.vue'
     import yingye from './yingye/yingye.vue'
+    import guide from './orderMark/guide.vue'
 	export default {
         name: 'mark',
         components: {
@@ -24,7 +27,8 @@
             'v-data': data,
             'v-ewm' :ewm,
             'v-olderNum':olderNum,
-            'v-yingye':yingye
+            'v-yingye':yingye,
+            'v-guide': guide
         },
 	}
 </script>

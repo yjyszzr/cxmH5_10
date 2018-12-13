@@ -50,7 +50,12 @@ export default {
         sharOder(){
             this.$store.dispatch("getMarkShow", true);
             this.$store.dispatch("getMarkShowType", 4);
-        }
+        },
+        //引导
+        initGuide(){
+          this.$store.dispatch("getMarkShow", true);
+          this.$store.dispatch("getMarkShowType", 6);
+      }
     },
     mounted(){
         let data = {
@@ -64,10 +69,17 @@ export default {
                 this.$store.state.order.addFriendsQRBarUrl = res.data.addFriendsQRBarUrl
             }
         })
+        if(!localStorage.getItem('guide')){
+          localStorage.setItem('guide',1)
+          this.initGuide()
+        }
     },
     computed: {
       ...mapState({
            channelObj: state => state.channelObj
       })
+    },
+    destroyed() {
+      this.$store.dispatch("getMarkShow", false)
     }
 }

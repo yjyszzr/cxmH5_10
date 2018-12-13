@@ -9,6 +9,7 @@
                 <p>第一步：长按复制订单预测码</p>
                 <p>第二步：打开微信分享给微信好友</p>
                 <p>第三步：发送成功等待预测结果</p>
+                <p>提示:若长按无法复制,请<a @click="reload()">刷新页面</a>再试</p>
             </div>
         </div>
         <div class="ok" @click="okClick()">
@@ -29,6 +30,9 @@
         methods:{
             okClick(){
                 this.$store.dispatch("getMarkShow", false)
+            },
+            reload(){
+                location.reload();
             }
         }
     }
@@ -73,6 +77,17 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            div{
+                p{
+                    text-align: center;
+                }
+                p:last-of-type{
+                    margin-top: px2rem(10px);
+                    a{
+                        color: #d12120;
+                    }
+                }
+            }
         }
         .ok{
             text-align: center;
