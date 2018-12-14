@@ -290,12 +290,31 @@
             "v-informal": informal,
             "v-loading": Loading
         },
+        mounted() {
+            //平台
+            this.detect = detect()
+            localStorage.removeItem("tab");
+            //监听滚动
+            document
+                .querySelector("#content")
+                .addEventListener("scroll", this.handleScroll);
+            this.getCurrentPosition();
+            this.upDateMark()
+        },
         computed: {
             top() {  //播报滚动距离计算
                 return -this.activeIndex * 0.81333 + "rem";
             }
         },
         methods: {
+            //升级弹窗显示
+            upDateMark(){
+                if(!localStorage.getItem('upDateMark')){
+                    this.$store.dispatch("getMarkShow", true)
+                    this.$store.state.mark_showObj.mark_show_type = 7
+                    localStorage.setItem('upDateMark',1)
+                }
+            },
             shortClick() {  //放到桌面弹窗
                 this.$store.commit('MARKSHORTCUT', true)
             },
@@ -445,16 +464,6 @@
             //         path: "/activity/down/cxm?ct=2&fr=cxm_h5home"
             //     });
             // }
-        },
-        mounted() {
-                //平台
-                this.detect = detect()
-                localStorage.removeItem("tab");
-                //监听滚动
-                document
-                    .querySelector("#content")
-                    .addEventListener("scroll", this.handleScroll);
-                this.getCurrentPosition();
         },
         activated() {
             document.getElementById("content").scrollTop = this.$root.consultScrolltop;

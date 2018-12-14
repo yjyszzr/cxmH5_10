@@ -1,15 +1,17 @@
 <template>
     <div class="mark">
         <div class="mark_box"></div>
+        <v-data v-if="$store.state.mark_showObj.mark_show_type == 1"></v-data>
         <!-- 赛事筛选 -->
         <v-matchfilter  v-if='$store.state.mark_showObj.mark_show_type == 2'></v-matchfilter>
-        <v-data v-if="$store.state.mark_showObj.mark_show_type == 1"></v-data>
         <v-ewm v-if="$store.state.mark_showObj.mark_show_type == 3"></v-ewm>
         <v-olderNum v-if="$store.state.mark_showObj.mark_show_type == 4"></v-olderNum>
         <!-- 线下店铺营业许可证-->
         <v-yingye v-if="$store.state.mark_showObj.mark_show_type == 5"></v-yingye>
         <!-- 引导 -->
         <v-guide v-if="$store.state.mark_showObj.mark_show_type == 6"></v-guide>
+        <!-- 首页升级弹窗 -->
+        <v-shengji v-if="$store.state.mark_showObj.mark_show_type == 7"></v-shengji>
     </div>
 </template>
 
@@ -20,6 +22,7 @@
     import olderNum from './orderMark/oderNum.vue'
     import yingye from './yingye/yingye.vue'
     import guide from './orderMark/guide.vue'
+    import shengji from './shou_ye/sheng_ji.vue'
 	export default {
         name: 'mark',
         components: {
@@ -28,7 +31,8 @@
             'v-ewm' :ewm,
             'v-olderNum':olderNum,
             'v-yingye':yingye,
-            'v-guide': guide
+            'v-guide': guide,
+            'v-shengji': shengji
         },
 	}
 </script>
