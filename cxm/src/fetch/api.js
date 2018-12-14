@@ -37,7 +37,12 @@ axios.interceptors.response.use((res) => {
             if(getUrlStr('from',location.href)=='app'||getUrlStr('cfrom',location.href)=='app'){
                 location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5'
             }else{
-                localStorage.clear()
+                if(localStorage.guide){
+                    localStorage.clear()
+                    localStorage.setItem('guide',1)
+                }else{
+                    localStorage.clear()
+                }
                 if(res.config.url.indexOf('match/queryMatchResultNew') != -1||res.config.url.indexOf('recharge/countUserRecharge') != -1||res.config.url.indexOf('collect/add') != -1||res.config.url.indexOf('match/nSaveBetInfo') != -1||res.config.url.indexOf('lotto/saveBetInfo') != -1){
                     router.push({
                         path: '/user/sms',

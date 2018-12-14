@@ -26,7 +26,12 @@ export default {
           .then(res => {
               if(res.code==0) {
                 //  console.log(res)
-                localStorage.clear()
+                if(localStorage.guide){
+                    localStorage.clear()
+                    localStorage.setItem('guide',1)
+                }else{
+                    localStorage.clear()
+                }
                 this.$router.push({
                     path: '/user/sms',
                     replace: true
