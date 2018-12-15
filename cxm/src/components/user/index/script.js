@@ -29,6 +29,9 @@ export default {
                 if(localStorage.guide){
                     localStorage.clear()
                     localStorage.setItem('guide',1)
+                }else if(localStorage.upDateMark){ //控制首页升级弹窗只谈一次
+                    localStorage.clear()
+                    localStorage.setItem('upDateMark',1)
                 }else{
                     localStorage.clear()
                 }
