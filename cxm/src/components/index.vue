@@ -298,7 +298,12 @@
             document
                 .querySelector("#content")
                 .addEventListener("scroll", this.handleScroll);
-            this.getCurrentPosition();
+            if(!sessionStorage.getItem('pos')){
+                this.getCurrentPosition();
+                sessionStorage.setItem('pos',1)
+            }else{
+                this.homeData();
+            }
             this.upDateMark()
         },
         computed: {
