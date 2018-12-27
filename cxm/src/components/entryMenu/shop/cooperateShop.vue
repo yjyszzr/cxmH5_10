@@ -2,7 +2,7 @@
     <!--合作店铺-->
     <div class="cooperate-shop">
         <ul class="shop-ul">
-            <li class="shop-li" v-for="(item,index) in shopList" :key = index @click="goDetail(item.storeId)">
+            <li class="shop-li" v-for="(item,index) in shopList" :key = index @click="goDetail(item)">
                 <div class="shop-log"><img :src="item.logo" alt=""></div>
                 <div class="shop-descrip">
                     <p class="shop-name">{{item.name}} <span v-if="item.cooperAuth=='1'" class="collet-img"><img src="./img/shop1_03.png" alt=""></span></p>
@@ -41,11 +41,12 @@
                 })
             },
             //去店铺详情
-            goDetail(id){
-                this.$router.push({
-                    path:'/lottery/shopDetails',
-                    query:{id:id}
-                })
+            goDetail(item){
+                // this.$router.push({
+                //     path:'/lottery/shopDetails',
+                //     query:{id:item.storeId}
+                // })
+                window.open(item.jumpUrl);    
             }
         }
     }
