@@ -959,6 +959,12 @@ const router = new Router({
           name: 'orderDetail',
           component: resolve => require(['@/components/shoppingMall/orderDetail.vue'], resolve)
       },
+      //用户引导流程（运营推广）
+      {
+        path: '/activity/sq/processGuide',
+        name: 'processGuide',
+        component: resolve => require(['@/components/index/processGuidance.vue'], resolve)
+    },
   ]
 })
 
