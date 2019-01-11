@@ -26,12 +26,16 @@ export default {
           .then(res => {
               if(res.code==0) {
                 //  console.log(res)
-                if(localStorage.guide){
+                if(localStorage.guide||localStorage.upDateMark){
+                    let saveDateMark =  localStorage.upDateMark;
+                    let saveGuide = localStorage.guide;
                     localStorage.clear()
-                    localStorage.setItem('guide',1)
-                }else if(localStorage.upDateMark){ //控制首页升级弹窗只谈一次
-                    localStorage.clear()
-                    localStorage.setItem('upDateMark',1)
+                    if(saveGuide){
+                      localStorage.setItem('guide',1)
+                    }
+                    if(saveDateMark){
+                      localStorage.setItem('upDateMark',1)
+                    }
                 }else{
                     localStorage.clear()
                 }

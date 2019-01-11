@@ -12,9 +12,9 @@ import {getUrlStr} from '../util/common'
 // axios 配置
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
+// axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
 // axios.defaults.baseURL = 'http://yf.caixiaomi.net/api';
-//   axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
+  axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 //拦截 token
 axios.interceptors.request.use(
     config => {
@@ -37,12 +37,16 @@ axios.interceptors.response.use((res) => {
             if(getUrlStr('from',location.href)=='app'||getUrlStr('cfrom',location.href)=='app'){
                 location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5'
             }else{
-                if(localStorage.guide){
+                if(localStorage.guide||localStorage.upDateMark){
+                    let saveDateMark =  localStorage.upDateMark;
+                    let saveGuide = localStorage.guide;
                     localStorage.clear()
-                    localStorage.setItem('guide',1)
-                }else if(localStorage.upDateMark){ //控制首页升级弹窗只谈一次
-                    localStorage.clear()
-                    localStorage.setItem('upDateMark',1)
+                    if(saveGuide){
+                      localStorage.setItem('guide',1)
+                    }
+                    if(saveDateMark){
+                      localStorage.setItem('upDateMark',1)
+                    }
                 }else{
                     localStorage.clear()
                 }
