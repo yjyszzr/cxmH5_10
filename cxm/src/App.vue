@@ -722,4 +722,10 @@
     .mint-indicator-wrapper{
         z-index: 999;
     }
+    
+
+
+
+
+
 </style>
