@@ -208,7 +208,7 @@
         .head {
             overflow: hidden;
             height: px2rem(100px);
-            background: #f4f4f4;
+            background: #d12120;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -225,7 +225,7 @@
                 display: flex;
                 align-items: center;
                 font-size: px2rem(32px);
-                color: #505050;
+                color: #ffffff;
                 .header-down {
                     display: inline-block;
                     margin-left: px2rem(10px);

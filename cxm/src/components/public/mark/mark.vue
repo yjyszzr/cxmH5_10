@@ -4,7 +4,9 @@
         <v-data v-if="$store.state.mark_showObj.mark_show_type == 1"></v-data>
         <!-- 赛事筛选 -->
         <v-matchfilter  v-if='$store.state.mark_showObj.mark_show_type == 2'></v-matchfilter>
+        <!--模拟订单详情内  点击二维码弹窗-->
         <v-ewm v-if="$store.state.mark_showObj.mark_show_type == 3"></v-ewm>
+        <!--模拟订单详情内 分享订单弹窗-->
         <v-olderNum v-if="$store.state.mark_showObj.mark_show_type == 4"></v-olderNum>
         <!-- 线下店铺营业许可证-->
         <v-yingye v-if="$store.state.mark_showObj.mark_show_type == 5"></v-yingye>

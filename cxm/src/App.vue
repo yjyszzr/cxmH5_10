@@ -197,7 +197,7 @@
                         case 'whatDantuo':
                             return '胆拖介绍';
                         case 'programmeDetails':
-                            return '方案详情';
+                            return '模拟订单详情';
                         case 'touZhuConfirm':
                             return '模拟投注确认';
                             //店铺
@@ -250,7 +250,8 @@
                     this.$route.path.split("/")[2] == "account" ||
                     this.$route.path.split("/")[1] == "user" ||
                     this.$route.path.split("/")[1] == "lotteryResult"||
-                    this.$route.path.split("/")[2] == "selectNumber"
+                    this.$route.path.split("/")[2] == "selectNumber"||
+                    this.$route.path.split("/")[2] == "programmeDetails"
                 ) {
                     return true;
                 } else {
@@ -722,7 +723,7 @@
     .mint-indicator-wrapper{
         z-index: 999;
     }
-    
+
 
 
 

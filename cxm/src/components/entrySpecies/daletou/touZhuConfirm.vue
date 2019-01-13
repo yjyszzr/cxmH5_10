@@ -634,9 +634,9 @@
                                     nativeApp({'methodName':'pushPayment','payToken':res.data,'pushUrl':getCsUrl()+'/daletou/programmeDetails'})
                                 }else{
                                     this.$router.push({
-                                        path: '/freebuy/payment',
+                                        path: '/daletou/programmeDetails',
                                         query:{
-                                            ptk: res.data
+                                            id: res.data.orderId
                                         }
                                     })
                                 }
