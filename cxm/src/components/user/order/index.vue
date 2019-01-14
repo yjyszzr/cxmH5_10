@@ -18,7 +18,6 @@
                                 <span>{{orderObj.ticketAmount}}</span>
                                 <span style="color:#d12120;">{{orderObj.forecastMoney}}</span>
                             </p>
-
                         </div>
                     </div>
                     <!--<div class="box2">-->

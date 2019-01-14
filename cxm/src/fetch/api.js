@@ -476,7 +476,8 @@ export default {
     },
     //保存投注信息
     saveBetInfoDlt(params) {
-        return fetchPost('/lotto/lotto/saveBetInfo', params)
+        // return fetchPost('/lotto/lotto/saveBetInfo', params)
+        return fetchPost('/lotto/lotto/createOrderBySimulate', params)//模拟投注确认
     },
     //走势图数据
     getChartData(params) {
@@ -484,7 +485,8 @@ export default {
     },
     //方案详情
     getLottoOrderDetail(params) {
-        return fetchPost('/order/order/getLottoOrderDetail', params)
+        // return fetchPost('/order/order/getLottoOrderDetail', params)
+        return fetchPost('/order/order/getLottoOrderDetailSimulat', params)
     },
     //支付订单信息
     unifiedPayBefore(params) {

@@ -27,7 +27,7 @@
                     <span @click='more()'><i class="iconfont icon-icon-21"></i></span>
                 </div>
                 <!--订单详情 头-->
-                <div class="lottery-select" v-if="$route.path.split('/')[2]=='order'" >
+                <div class="lottery-select" v-if="$route.path.split('/')[2]=='order'||$route.path.split('/')[2]=='programmeDetails'" >
                     <!--<span @click='oder()' v-show="!$route.query.cxmxc" class="data-img" ><img src="./images/fenxing@3x.png" alt=""></span>-->
                     <span @click='ewm()' class="data-img" ><img src="./images/ewm@3x.png" alt=""></span>
                 </div>

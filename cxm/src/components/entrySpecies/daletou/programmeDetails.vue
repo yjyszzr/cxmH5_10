@@ -92,21 +92,21 @@
                     <div class="my-num-main">
                         <ul class="prgram-detail">
                             <li>
-                                <p>方案编号：</p>
+                                <p>模拟编号：</p>
                                 <p>{{orderObj.programmeSn}}</p>
                             </li>
                             <li>
                                 <p>创建时间：</p>
                                 <p>{{orderObj.createTime}}</p>
                             </li>
-                            <li>
-                                <p>店主接单：</p>
-                                <p>{{orderObj.acceptTime}}</p>
-                            </li>
-                            <li>
-                                <p>店主出票：</p>
-                                <p>{{orderObj.ticketTime}}</p>
-                            </li>
+                            <!--<li>-->
+                                <!--<p>店主接单：</p>-->
+                                <!--<p>{{orderObj.acceptTime}}</p>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<p>店主出票：</p>-->
+                                <!--<p>{{orderObj.ticketTime}}</p>-->
+                            <!--</li>-->
                         </ul>
                     </div>
                 </div>
@@ -115,8 +115,9 @@
 
 
         <div class="footer">
-            <p :style="{'background':color()}" @click="goOnBuy()">继续购买此号</p>
-            <p :style="{'background':color()}" @click="goSelectNum()">继续购买大乐透</p>
+            <!--<p :style="{'background':color()}" @click="goOnBuy()">继续购买此号</p>-->
+            <!--<p :style="{'background':color()}" @click="goSelectNum()">继续购买大乐透</p>-->
+            <p class="share-btn" :style="{'background':color()}" @click="shareOder()">分享模拟订单</p>
         </div>
 
 
@@ -357,6 +358,9 @@
                 background-color: #d12120;
                 font-size: px2rem(28px);
             }
+            .share-btn{
+                width: 100%;
+            }
         }
     }
 </style>
@@ -365,7 +369,7 @@
     import {Indicator} from 'mint-ui';
     import SelectionBox from "./images/SelectionBox1@3x.png"
     import Selected from "./images/Selected1@3x.png"
-    import {nativeApp,isWebview} from '../../../util/common.js'
+    import {nativeApp,isWebview,isShare} from '../../../util/common.js'
     import {mapState} from 'vuex'
     export default {
         name: "programmeDetails",
@@ -386,6 +390,7 @@
             }
         },
         created(){
+            isShare(this.$route.query.orderSn, '', '/user/analogOrder?id='+this.$route.query.orderSn, '/static/activity_Back/newComerReg/img/ttlogo.png')
             nativeApp({'methodName':'showTitle','title':'方案详情'})
             this.getLottoOrderDetailFn()
         },
@@ -401,10 +406,15 @@
             },
             //获取详情
             getLottoOrderDetailFn() {
+                Indicator.open()
                 api.getLottoOrderDetail({
-                    orderId: this.$route.query.id
+                    bonusId: '',
+                    orderId: this.$route.query.id,
+                    storeId: ''
                 }).then(res => {
                         if (res.code == 0) {
+                            this.$store.state.order.orderNum = res.data.orderSn,
+                            this.$store.state.order.addFriendsQRBarUrl = res.data.addFriendsQRBarUrl
                             this.orderObj = res.data
                             this.dataHandel(res.data.cathecticResults)
                         }
@@ -549,6 +559,11 @@
                 channelcolor = this.channelObj.color
                 }
                 return channelcolor;
+            },
+            //分享模拟定案
+            shareOder(){
+                this.$store.dispatch("getMarkShow", true);
+                this.$store.dispatch("getMarkShowType", 4);
             }
         },
         computed: {
