@@ -116,7 +116,7 @@ export default {
             if(this.l_nums.length>=2&&this.h_nums.length>=5){
                 this.disabled = false
                 this.zhushu =  getCombinationCount(this.h_nums.length, 5) * getCombinationCount(this.l_nums.length, 2)
-                this.text = `共计<span>${this.zhushu}</span>注&nbsp;合计<span style='color:#eb1c25;'>${this.zhushu*2}</span>元`
+                this.text = `共计<span>${this.zhushu}</span>注&nbsp;合计<span style='color:#eb1c25;'>${this.zhushu*2}</span>`
             }else{
                 this.disabled = true
                 this.text = `请至少选择<span>5</span>个红球&nbsp;<span>2</span>个蓝球`
@@ -150,7 +150,7 @@ export default {
                 return false;
             }
             if(this.zhushu*2>20000){
-                Toast('单次投注最多2万元')
+                Toast('单次投注最多2万')
                 return false;
             }
             Indicator.open()
@@ -191,9 +191,9 @@ export default {
             .then(res => {
                     if (res.code == 0) {
                         this.$router.push({
-                            path: '/freebuy/payment',
+                            path: '/daletou/programmeDetails',
                             query:{
-                                ptk: res.data
+                                id: res.data.orderId
                             }
                         })
                     }

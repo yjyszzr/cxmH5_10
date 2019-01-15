@@ -4,7 +4,7 @@
         <div class="head">
             <span class="back-img" @click="goBack()"><img src="../../../assets/img/ret.png" alt=""></span>
             <div class="head-text" @click="openOrclose()">
-                <span>球多多·<span v-if="selectedIndex=='0'">标准选号</span><span v-if="selectedIndex=='1'">胆拖选号</span></span>
+                <span><span v-if="selectedIndex=='0'">标准选号</span><span v-if="selectedIndex=='1'">胆拖选号</span></span>
                 <span class="header-down"><img id="downImg" src="../../../assets/img/freebuy_img/Collapse@3x.png"
                                                alt=""></span>
             </div>
@@ -55,7 +55,7 @@
                         <div class="selection dantuo-selection">
                             <p class="desceibe">胆码-红球，至多选4个，至少选1个</p>
                             <div class="bonus-box">
-                                奖池： <span>{{data.prizes}}</span>元
+                                奖池： <span>{{data.prizes}}</span>
                             </div>
                         </div>
                         <ul class="red-ball-ul ball-ul">
@@ -105,12 +105,12 @@
                 <div class="text">
                     <template v-if="selectedIndex == '0'">
                         <p v-if="textType">请至少选择 <span class="red">5</span>个红球，<span class="blue">2</span>个蓝球</p>
-                        <p v-if="!textType">共<span class="red">{{selectZhu.zhuNum}}</span>注，合计<span class="red">{{selectZhu.zhuNum*2}}</span>元
+                        <p v-if="!textType">共<span class="red">{{selectZhu.zhuNum}}</span>注，合计<span class="red">{{selectZhu.zhuNum*2}}</span>
                         </p>
                     </template>
                     <template v-if="selectedIndex =='1'">
                         <p v-if="danTuotextType">请至少选择 <span class="red">6</span>个红球，<span class="blue">2</span>个蓝球</p>
-                        <p v-if="!danTuotextType">共<span class="red">{{danTuoZhu.zhuNum}}</span>注，合计<span class="blue">{{danTuoZhu.zhuNum*2}}</span>元
+                        <p v-if="!danTuotextType">共<span class="red">{{danTuoZhu.zhuNum}}</span>注，合计<span class="blue">{{danTuoZhu.zhuNum*2}}</span>
                         </p>
                     </template>
                 </div>
@@ -878,7 +878,7 @@
             moreTwoWan(ballType, item) {
                 var that = this
                 if (parseInt(this.selectZhu.zhuNum) * 2 > 20000) {
-                    Toast('单次投注最多2万元')
+                    Toast('单次投注最多2万')
                     setTimeout(function () {
                         that.$set(item, 'selected', !item.selected)
                         if (ballType == 'preList') {
@@ -1147,16 +1147,18 @@
                         path: '/lottery/daletou/runchart'
                     })
                 } else if (item.name == '开奖结果') {
-                    // this.$router.push({
-                    //     path: '/daletou/programmeDetails'
-                    // })
-                    Toast('暂未开放此功能')
+                    this.$router.push({
+                        path: '/servicemd/kaijiang/daletou',
+                        query:{
+                            lotteryId: '2'
+                        }
+                    })
                 }
             },
             // 投注确认
             goTouZhuConfirm(key, key2) {
                 if ((this.danTuoZhu.zhuNum * 2) > 20000 && this.selectedIndex == '1') {
-                    Toast("投注金额不得超过2万元！")
+                    Toast("投注金额不得超过2万！")
                     return
                 }
                 if (key && key2) {

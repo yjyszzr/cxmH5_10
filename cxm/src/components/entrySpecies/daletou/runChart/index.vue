@@ -4,7 +4,7 @@
         <div class="head">
             <span class="back-img" @click="goBack()"><img src="../../../../assets/img/ret.png" alt=""></span>
             <div class="head-text">
-                <span>球多多·走势图</span>
+                <span>走势图</span>
             </div>
             <div>
                 <span class="memu-btn" @click="runsetflag=!runsetflag"><img src="../images/TrendSetting@3x.png" alt=""></span>

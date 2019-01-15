@@ -4,7 +4,7 @@
         <div class="head" v-show="isWeb()">
             <span class="back-img" @click="goBack()"><img src="../../../assets/img/ret.png" alt=""></span>
             <div class="head-text">
-                <span>球多多·投注确认</span>
+                <span>投注确认</span>
             </div>
             <div class="memu"></div>
         </div>
@@ -38,7 +38,7 @@
                                 </ul>
                             </div>
                             <p class="item-describe">{{item.msg.danFn}} {{item.msg.zhuNum}}注 {{item.msg.bei}}倍
-                                {{item.msg.money+'.00'}} 元</p>
+                                {{item.msg.money+'.00'}} </p>
                         </div>
                         <span class="go-detalis" @click="goSelect(item,index)"><img src="../../../assets/img/arange.png" alt=""></span>
                     </li>
@@ -53,13 +53,13 @@
                         <span class="add-goOn"><img :src="adds.imgUrl" alt=""></span>
                         <span>追加投注</span>
                     </div>
-                    <p>每注追加1元，单注最高奖金1600万</p>
+                    <p>每注追加1.00，单注最高奖金1600万</p>
                 </div>
                 <p class="multiple" @click='mupClick()'>倍数 {{adds.bei}} 倍 <i></i></p>
             </div>
             <div class="two">
                 <div class="p1">
-                    <p>{{adds.zhuNum}}注 {{adds.bei}}倍 共需：<span>￥{{adds.money+'.00'}}</span> 元</p>
+                    <p>{{adds.zhuNum}}注 {{adds.bei}}倍 共需：<span>￥{{adds.money+'.00'}}</span></p>
                 </div>
                 <p :style="{'background':color(canPay),'borderColor':color(canPay)}" class="ok" :class="canPay?'canpay':'nopay'" @click="confirm()">确定</p>
             </div>
@@ -77,7 +77,7 @@
         .head {
             overflow: hidden;
             height: px2rem(100px);
-            background: #f4f4f4;
+            background: #d12120;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -94,7 +94,7 @@
                 display: flex;
                 align-items: center;
                 font-size: px2rem(32px);
-                color: #505050;
+                color: #fff;
 
             }
             .memu {
