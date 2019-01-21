@@ -204,9 +204,17 @@ const router = new Router({
         path: '/user/analogOrder',
         name: 'analogOrder',
         meta: {
-          title: '模拟订单详情'
+          title: '足球模拟订单详情'
         },
         component: resolve => require(['@/components/user/analogOrder/index.vue'], resolve)
+      },
+      {
+        path: '/user/dltshareOrder',
+        name: 'dltshareOrder',
+        meta: {
+          title: '大乐透模拟订单详情'
+        },
+        component: resolve => require(['@/components/entrySpecies/daletou/dltshareOrder/index.vue'], resolve)
       },
       {
           path: '/user/certification',

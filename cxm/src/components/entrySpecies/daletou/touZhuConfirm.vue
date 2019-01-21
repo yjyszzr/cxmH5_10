@@ -51,7 +51,7 @@
                 <div class="add-box" @click="addOne(true)">
                     <div class='add-in'>
                         <span class="add-goOn"><img :src="adds.imgUrl" alt=""></span>
-                        <span>追加模拟投注</span>
+                        <span>模拟追加投注</span>
                     </div>
                     <p>每注追加1.00，单注最高奖金1600万</p>
                 </div>

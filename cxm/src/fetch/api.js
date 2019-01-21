@@ -50,7 +50,7 @@ axios.interceptors.response.use((res) => {
                 }else{
                     localStorage.clear()
                 }
-                if(res.config.url.indexOf('match/queryMatchResultNew') != -1||res.config.url.indexOf('recharge/countUserRecharge') != -1||res.config.url.indexOf('collect/add') != -1||res.config.url.indexOf('match/nSaveBetInfo') != -1||res.config.url.indexOf('lotto/saveBetInfo') != -1){
+                if(res.config.url.indexOf('match/queryMatchResultNew') != -1||res.config.url.indexOf('recharge/countUserRecharge') != -1||res.config.url.indexOf('collect/add') != -1||res.config.url.indexOf('match/createOrderBySimulate ') != -1||res.config.url.indexOf('lotto/createOrderBySimulate') != -1){
                     router.push({
                         path: '/user/sms',
                     })
@@ -254,9 +254,13 @@ export default {
     getOrderDetail(params) {
         return fetchPost('order/order/getOrderDetail', params)
     },
-    //查询模拟订单详情
+    //查询足球模拟订单详情
     getOrderDetailByOrderSn(params) {
         return fetchPost('order/order/getOrderDetailByOrderSn', params)
+    },
+    //查询大乐透模拟订单详情
+    getOrderDetailByShare(params) {
+        return fetchPost('order/order/getOrderDetailByShare', params)
     },
     //查询出票方案
     getTicketScheme(params) {

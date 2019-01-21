@@ -107,6 +107,8 @@
                             return "模拟订单详情";
                         case "analogOrder":
                             return "模拟订单详情";
+                        case "dltshareOrder":
+                            return "模拟订单详情";
                         case "draw":
                             return "模拟方案";
                         case "payment":
