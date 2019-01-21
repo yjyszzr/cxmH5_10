@@ -24,7 +24,7 @@
         name: "oderNum",
         data(){
             return{
-                orderLink : getCsUrl()+'/user/analogOrder?id='+this.$store.state.order.orderNum
+                orderLink : location.href.indexOf('programmeDetails')==-1?getCsUrl()+'/user/analogOrder?id='+this.$store.state.order.orderNum:getCsUrl()+'/user/dltshareOrder?id='+this.$store.state.order.orderNum
             }
         },
         methods:{
