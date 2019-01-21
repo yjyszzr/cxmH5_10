@@ -195,7 +195,7 @@
                         case 'playHelp':
                             return '玩法帮助';
                         case 'ticketScheme':
-                            return '出票方案';
+                            return '模拟方案';
                         case 'whatDantuo':
                             return '胆拖介绍';
                         case 'programmeDetails':

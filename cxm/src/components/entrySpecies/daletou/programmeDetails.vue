@@ -86,7 +86,7 @@
                     <div class="my-num-title">
                         <span>方案信息</span>
                         <div class="look-programme" @click = "goProm()">
-                            <span>查看出票方案</span><img src="../../../assets/img/arange.png" alt="">
+                            <span>模拟方案</span><img src="../../../assets/img/arange.png" alt="">
                         </div>
                     </div>
                     <div class="my-num-main">
