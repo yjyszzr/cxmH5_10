@@ -51,7 +51,7 @@
                 <div class="add-box" @click="addOne(true)">
                     <div class='add-in'>
                         <span class="add-goOn"><img :src="adds.imgUrl" alt=""></span>
-                        <span>追加投注</span>
+                        <span>追加模拟投注</span>
                     </div>
                     <p>每注追加1.00，单注最高奖金1600万</p>
                 </div>
@@ -59,7 +59,7 @@
             </div>
             <div class="two">
                 <div class="p1">
-                    <p>{{adds.zhuNum}}注 {{adds.bei}}倍 共需：<span>￥{{adds.money+'.00'}}</span></p>
+                    <p>{{adds.zhuNum}}注 {{adds.bei}}倍 共需：<span>{{adds.money+'.00'}}</span></p>
                 </div>
                 <p :style="{'background':color(canPay),'borderColor':color(canPay)}" class="ok" :class="canPay?'canpay':'nopay'" @click="confirm()">确定</p>
             </div>

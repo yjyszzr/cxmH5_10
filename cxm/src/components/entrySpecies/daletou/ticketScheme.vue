@@ -13,7 +13,7 @@
                         <div class="num-box">
                             —
                         </div>
-                        <p class="tickt-status">待出票</p>
+                        <p class="tickt-status">模拟中</p>
                     </li>
                 </ul>
                 <ul class="my-num-ul" v-else>
@@ -183,10 +183,10 @@
             },
             status(c){
                 switch (c){
-                    case '0': return '等待出票';
-                    case '1': return '出票成功';
-                    case '2': return '出票失败';
-                    case '3': return '出票中';
+                    case '0' : return '模拟中'
+                    case '1' : return '模拟成功'
+                    case '2' : return '模拟失败'
+                    case '3' : return '模拟中'
                 }
             }
         },

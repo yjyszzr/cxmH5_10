@@ -9,7 +9,7 @@
                             <img class="ltto-log" :src="orderObj.lotteryClassifyImg" alt="">
                             <div class="log-text">
                                 <p>大乐透  {{orderObj.termNum}}期</p>
-                                <p>￥ {{orderObj.ticketAmount}}</p>
+                                <p>{{orderObj.ticketAmount}}</p>
                             </div>
                         </div>
                         <img v-if="orderObj.orderStatus=='5'||orderObj.orderStatus=='6'||orderObj.orderStatus=='7'" class="ltto-log" src="./images/Prize@3x.png" alt="">
@@ -58,7 +58,7 @@
                                         <span v-if="item.playType == '1'">复式</span>
                                         <span>{{item.betNum}}注</span>
                                         <span>{{item.cathectic}}倍</span>
-                                        <span>{{item.amount+'.00'}}元</span>
+                                        <span>{{item.amount+'.00'}}</span>
                                         <span v-if="item.isAppend == '1'">已追加</span>
                                     </p>
                                 </template>
@@ -72,7 +72,7 @@
                                         <span v-if="item.playType == '2'">胆拖</span>
                                         <span>{{item.betNum}}注</span>
                                         <span>{{item.cathectic}}倍</span>
-                                        <span>{{item.amount+'.00'}}元</span>
+                                        <span>{{item.amount+'.00'}}</span>
                                         <span v-if="item.isAppend == '1'">已追加</span>
                                     </p>
                                 </template>
@@ -394,7 +394,12 @@
             nativeApp({'methodName':'showTitle','title':'方案详情'})
             this.getLottoOrderDetailFn()
         },
-        mounted(){},
+        mounted(){
+            if(!localStorage.getItem('guide')){
+                localStorage.setItem('guide',1)
+                this.initGuide()
+            }
+        },
         methods:{
             goProm(){
                 this.$router.push({
@@ -564,6 +569,11 @@
             shareOder(){
                 this.$store.dispatch("getMarkShow", true);
                 this.$store.dispatch("getMarkShowType", 4);
+            },
+            //引导
+            initGuide(){
+            this.$store.dispatch("getMarkShow", true);
+            this.$store.dispatch("getMarkShowType", 6);
             }
         },
         computed: {

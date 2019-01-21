@@ -3,6 +3,7 @@
         <!--躯干-->
         <div class="body">
             <div class="body-in">
+                <p style="text-align:center;font-size:0.38rem;font-weight:700;">中国体彩大乐透玩法规则</p>
                 <p class="body-in-title">投注截止时间</p>
                 <p class="p">每周一、三、六19：30截止投注</p>
                 <p class="body-in-title">开奖时间</p>
