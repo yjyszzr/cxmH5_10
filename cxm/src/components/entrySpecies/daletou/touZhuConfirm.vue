@@ -4,7 +4,7 @@
         <div class="head" v-show="isWeb()">
             <span class="back-img" @click="goBack()"><img src="../../../assets/img/ret.png" alt=""></span>
             <div class="head-text">
-                <span>投注确认</span>
+                <span>模拟投注</span>
             </div>
             <div class="memu"></div>
         </div>
@@ -43,7 +43,7 @@
                         <span class="go-detalis" @click="goSelect(item,index)"><img src="../../../assets/img/arange.png" alt=""></span>
                     </li>
                 </ul>
-                <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"> </i> <p> 我已阅读并同意<router-link to="/freebuy/protocol">《球多多投注服务协议》</router-link></p></div>
+                <div class="ment"><i class="iconfont icon-icon-29 xySelected" ref='xySelected' @click="xySelectedClick()"> </i> <p> 我已阅读并同意<router-link to="/freebuy/protocol">《模拟投注服务协议》</router-link></p></div>
             </div>
         </div>
         <div class="footer">
@@ -51,7 +51,7 @@
                 <div class="add-box" @click="addOne(true)">
                     <div class='add-in'>
                         <span class="add-goOn"><img :src="adds.imgUrl" alt=""></span>
-                        <span>追加模拟投注</span>
+                        <span>模拟追加投注</span>
                     </div>
                     <p>每注追加1.00，单注最高奖金1600万</p>
                 </div>

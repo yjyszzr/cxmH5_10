@@ -3,9 +3,9 @@
         <!--躯干-->
         <div class="body">
             <div class="body-in">
-                <p class="body-in-title">方案编号：{{orderSn}}</p>
+                <p class="body-in-title">模拟编号：{{orderSn}}</p>
                 <div class="message">
-                    <p>投注信息</p>
+                    <p>模拟投注信息</p>
                     <p>状态</p>
                 </div>
                 <ul class="my-num-ul" v-if="ticketList.length<=0">
