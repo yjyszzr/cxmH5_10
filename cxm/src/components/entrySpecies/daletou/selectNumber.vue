@@ -602,6 +602,7 @@
     }
 </style>
 <script>
+    import SelectionBox from "./images/SelectionBox1@3x.png"
     import {getCombinationCount, getArrayItems, danTuoCount} from '../../../util/common'
     import {MessageBox, Popup, Indicator, Toast} from 'mint-ui';
     import api from '../../../fetch/api'
@@ -1277,12 +1278,22 @@
                 }
                 sessionStorage.setItem('conformBallList', JSON.stringify(conformBallList))
             },
+            //投注确认页面 投注信息清空
+            init(){
+                sessionStorage.setItem('conformBallList', JSON.stringify([]))
+                let adds = {}
+                adds.bei=1
+                adds.add=false
+                adds.imgUrl=SelectionBox
+                sessionStorage.setItem('adds', JSON.stringify(adds))
+            }
         },
         beforeRouteEnter(to, from, next){
-            if(from.name=='index'||from.path=='/daletou/programmeDetails'){
-                sessionStorage.setItem('conformBallList',JSON.stringify([]))
-            }
-            next()
+            next(vm=>{
+                if(from.name=='index'||from.path=='/daletou/programmeDetails'){
+                    vm.init()
+                }
+            })
         },
         beforeRouteLeave(to, from, next) {
             if (to.path == '/lottery/daletou/touZhuConfirm') {

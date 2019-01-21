@@ -656,6 +656,14 @@
                     channelcolor = "#c7c7c7"
                 }
                 return channelcolor;
+            },
+            //投注确认页面 投注信息清空
+            init(){
+                sessionStorage.setItem('conformBallList', JSON.stringify([]))
+                this.adds.bei=1
+                this.adds.add=false
+                this.adds.imgUrl=SelectionBox
+                sessionStorage.setItem('adds', JSON.stringify(this.adds))
             }
         },
         computed:{
@@ -688,6 +696,7 @@
             this.$store.state.mark_playObj.mupNum = 5
             this.$emit('closeMarkCz')
         },
+
         beforeRouteLeave(to, from, next) {
             if(to.name == 'selectNumber'&&this.routerOpen){
                 MessageBox.confirm('',{
@@ -695,11 +704,7 @@
                     message: '确定清空所选号码吗?',
                     closeOnClickModal: false
                 }).then(action => {
-                    sessionStorage.setItem('conformBallList', JSON.stringify([]))
-                    this.adds.bei=1
-                    this.adds.add=false
-                    this.adds.imgUrl=SelectionBox
-                    sessionStorage.setItem('adds', JSON.stringify(this.adds))
+                    this.init()
                     next()
                 }).catch(function () {
                     next(false)
