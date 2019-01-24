@@ -51,10 +51,10 @@ export default {
             // $('#databox1').css("background-color",'red')
             // this.$refs.dataUl.style.background="red"
             $('#databox1').scrollTop(200)
-            console.log($('#databox1 li'))
+            // console.log($('#databox1 li'))
             // document.getElementById("databox1").scrollTop = 100;
             // console.log();
-            console.log($('#databox1').scrollTop(200));
+            // console.log($('#databox1').scrollTop(200));
         },
         getDate() {
             var that = this

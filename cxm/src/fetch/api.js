@@ -12,9 +12,9 @@ import {getUrlStr} from '../util/common'
 // axios 配置
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-// axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
+axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
 // axios.defaults.baseURL = 'http://yf.caixiaomi.net/api';
-  axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
+//   axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 //拦截 token
 axios.interceptors.request.use(
     config => {
@@ -611,6 +611,10 @@ export default {
     //线下店铺详情
     storedetail(params) {
         return fetchPost('/order/store/storedetail', params)
+    },
+    //大厅开屏
+    openNavs(params) {
+        return fetchPost('lottery/lottery/nav/banner/openNavs', params)
     },
 }
 
