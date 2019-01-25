@@ -15,6 +15,7 @@ const state = {
     },
     turnOn: '0', // 默认资讯版
     freebuyId: '6',
+    kpData: {}, //开屏页数据
     //验证码初始化
     smsCode: {
         changeNumber: 60,

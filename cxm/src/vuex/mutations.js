@@ -15,6 +15,10 @@ const mutations = {
     POSITION(state, data){
         state.position = data
     },
+    //开屏页数据保存
+    KPDATA(state, data){
+        state.kpData = data
+    },
     GETSMSCODE(state, data) {
         //获取验证码  
         api.SendSmsCode(data)

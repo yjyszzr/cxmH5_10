@@ -45,7 +45,7 @@ axios.interceptors.response.use((res) => {
                       localStorage.setItem('guide',1)
                     }
                     if(saveDateMark){
-                      localStorage.setItem('upDateMark',1)
+                      localStorage.setItem('upDateMark',saveDateMark)
                     }
                 }else{
                     localStorage.clear()

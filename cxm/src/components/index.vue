@@ -304,7 +304,6 @@
             }else{
                 this.homeData();
             }
-            this.upDateMark()
         },
         computed: {
             top() {  //播报滚动距离计算
@@ -312,13 +311,19 @@
             }
         },
         methods: {
-            //升级弹窗显示
-            upDateMark(){
-                if(!localStorage.getItem('upDateMark')){
-                    this.$store.dispatch("getMarkShow", true)
-                    this.$store.state.mark_showObj.mark_show_type = 7
-                    localStorage.setItem('upDateMark',1)
-                }
+            //开平弹窗
+            kqMark(){
+                api.openNavs({str: ''})
+                .then(res=>{
+                    if(res.code==0) {
+                        if(res.data.bannerImage!=''&&localStorage.getItem('upDateMark')!=res.data.bannerImage){
+                            this.$store.commit('KPDATA',res.data);
+                            this.$store.dispatch("getMarkShow", true)
+                            this.$store.state.mark_showObj.mark_show_type = 7
+                            localStorage.setItem('upDateMark',res.data.bannerImage)
+                        }
+                    }
+                })
             },
             shortClick() {  //放到桌面弹窗
                 this.$store.commit('MARKSHORTCUT', true)
@@ -381,6 +386,7 @@
                         }
                     }
                 });
+                this.kqMark()
             },
             fetchData() {  //资讯请求
                 let data = {

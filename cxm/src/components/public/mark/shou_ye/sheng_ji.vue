@@ -1,6 +1,6 @@
 <template>
     <div class="oder">
-        <img src="./images/WechatIMG5.png" alt="" @click="bannerLink()">
+        <img :src="kpData.bannerImage" alt="" @click="bannerLink(kpData.bannerLink)">
         <div class="ok" @click="okClick()">
             <img src="./images/close.jpg" alt="">
         </div>
@@ -9,6 +9,7 @@
 
 <script>
     import api from '../../../../fetch/api.js'
+    import {mapState} from 'vuex'
     export default {
         name: "oderNum",
         data(){
@@ -20,20 +21,14 @@
             okClick(){
                 this.$store.dispatch("getMarkShow", false)
             },
-            fetchData(){
-                api.openNavs({str: ''})
-                .then(res=>{
-                    if(res.code==0) {
-                        console.log(res)
-                    }
-                })
-            },
-            bannerLink(){
-                location.href = 'https://m.caixiaomi.net/index/consult?id=1600'
+            bannerLink(link){
+                location.href = link
             }
         },
-        mounted(){
-            // this.fetchData()
+        computed: {
+            ...mapState({
+                kpData: state => state.kpData
+            })
         }
     }
 </script>
