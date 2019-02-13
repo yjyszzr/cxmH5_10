@@ -50,15 +50,17 @@ export let channel = (str,s)=>{
 		channelObj.channelNmae='多多体育'
 	}else if(str.indexOf('c27')!=-1){
 		channelObj.channelNmae='人人体育'
-	}else if(str.indexOf('c10')!=-1){
-		channelObj.channelNmae='球多多'
 	}else if(str.indexOf('c20')!=-1){
 		channelObj.channelNmae='必中彩'
 	}else if(str.indexOf('c22')!=-1){
 		channelObj.channelNmae='天天体育'
 	}else if(str.indexOf('c23')!=-1){
 		channelObj.channelNmae='天空体育'
-	}
+	}else if(str.indexOf('c10')!=-1){
+		channelObj.channelNmae='彩小秘'
+    }else if(str.indexOf('c21')!=-1){
+		channelObj.channelNmae='足球资讯'
+    }
     return channelObj;
 }
 //app h5方法

@@ -1,6 +1,5 @@
 import api from '../../../fetch/api'
-import { Toast } from 'mint-ui'
-import {Indicator} from 'mint-ui'
+import { Toast,Indicator } from 'mint-ui'
 export default {
     name: 'certification',
     data () {
@@ -8,9 +7,6 @@ export default {
         userName: '',
         userToken: ''
       }
-    },
-    created(){
-      
     },
     methods: {
         rzBtn(){
@@ -47,8 +43,5 @@ export default {
                 this.$refs.card.style.color = '#9f9f9f'
             }
         },
-    },
-    mounted(){
-        
     }
 }
