@@ -53,7 +53,7 @@
                         <span class="add-goOn"><img :src="adds.imgUrl" alt=""></span>
                         <span>模拟追加投注</span>
                     </div>
-                    <p>每注追加1.00，单注最高奖金1600万</p>
+                    <p>每注追加1.00，单注最高奖金1800万</p>
                 </div>
                 <p class="multiple" @click='mupClick()'>倍数 {{adds.bei}} 倍 <i></i></p>
             </div>
