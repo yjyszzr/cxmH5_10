@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "better-scroll": "^1.12.6",
+    "better-scroll": "^1.14.1",
     "cropperjs": "^1.4.0",
     "element-ui": "^2.3.npm 2",
     "localscrollfix": "^2.2.0",
