@@ -219,7 +219,14 @@
                             return '彩票学堂';
                         //服务
                         case 'kaijiang':
-                            return '开奖';
+                            return '开奖'
+                        //电竞
+                        case 'gameList':
+                            return '电竞单关';
+                        case 'touzhuList':
+                            return '英雄联盟';
+                        case 'touzhu':
+                            return '玩法投注';
                     }
                 } else {
                     this.isShowHeader = true;
