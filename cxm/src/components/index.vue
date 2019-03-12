@@ -172,8 +172,10 @@
     box-sizing: border-box;
     border-radius: px2rem(5px);
     span {
-      color: #fff;
-      font-size: px2rem(26px);
+      a{
+        color: #fff;
+        font-size: px2rem(26px);
+      }
     }
   }
 }
@@ -181,15 +183,18 @@
 <!--首页-->
 <template>
   <div class="wrap">
-    <!--<div class="downDrop" @click="goDownLoad()">
+    <div v-if="detect!='ios'&&!wxPd" class="downDrop">
             <div class="downLeft">
-                <img src="../assets/img/downIocn.png" alt="">
+                <!-- <img src="../assets/img/downIcon.png" alt=""> -->
                 <span>下载球多多APP 购彩更轻松</span>
             </div>
             <div class="downRight">
-                <span>立即打开</span>
+                <span>
+                  <a href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/%E6%B8%A0%E9%81%931_c30039_3.1.0.apk" v-if="$route.query.fr=='c30039'">立即下载</a>
+                  <a href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/%E6%B8%A0%E9%81%932_c30040_3.1.0.apk" v-else>立即下载</a>
+                </span>
             </div>
-    </div>-->
+    </div>
     <!-- 桌面引导 -->
     <div v-if="detect=='ios'" class="fixedRight" @click="shortClick()">
       <p>放到</p>
@@ -257,7 +262,7 @@
 // import http from '../api/http'
 import api from "../fetch/api";
 import { Toast, Indicator } from "mint-ui";
-import { getUrlStr, nativeApp, fx_link_rule, detect } from "../util/common";
+import { getUrlStr, nativeApp, fx_link_rule, detect,wxPd } from "../util/common";
 import silder from "./index/lunbo";
 import activity from "./index/activity";
 import informal from "./public/informal/informalList";
@@ -282,7 +287,8 @@ export default {
       trFlag: true,  //正在加载显示开关
       isbool: true,   //最后一页停止加载控制
       cxLoadFlag: false, //重新加载显示开关
-      detect: "" //判断设备信息
+      detect: "", //判断设备信息
+      wxPd: ""
     };
   },
   beforeCreate() {
@@ -297,6 +303,8 @@ export default {
   mounted() {
     //平台
     this.detect = detect();
+    //wx
+    this.wxPd = wxPd();
     localStorage.removeItem("tab");
     //监听滚动
     document
