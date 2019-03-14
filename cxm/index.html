@@ -35,10 +35,30 @@
   <!-- built files will be auto injected -->
 </body>
 <script>
+  //获取url参数
+  function showWindowHref(url,name){
+			var args = url.split('?')
+			if(args[0] == url){
+				return ''
+			}
+			var obj = {}
+			var arr = args[1].split('&')
+			for(var i=0;i<arr.length;i++){
+				obj[arr[i].split('=')[0]] = arr[i].split('=')[1];
+			}
+			return obj[name]?obj[name]:'';
+	}
+  // 百度统计
   var _hmt = _hmt || [];
   (function () {
     var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?add59b43ed799751ac06c40214d0b5b7";
+    if(showWindowHref(location.href,'fr')=='c30039'){ //渠道1
+      hm.src = "https://hm.baidu.com/hm.js?f97220867f427ed8e82cd5895e0f1259";
+    }else if(showWindowHref(location.href,'fr')=='c30040'){ //渠道2
+      hm.src = "https://hm.baidu.com/hm.js?17256b5766564b60de16fac7341bb703";
+    }else{ //主站
+      hm.src = "https://hm.baidu.com/hm.js?add59b43ed799751ac06c40214d0b5b7";
+    }
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();

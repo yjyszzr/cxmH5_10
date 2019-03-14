@@ -21,7 +21,8 @@
                     </div>
                     <div class="wheel-app">
                         <p>红包已放入您的账户</p>
-                        <p>请登录{{detect==='ios'?'球多多':fr=='c039'||fr=='c239'?'必中彩':'球多多'}}APP使用</p>
+                        <!-- <p>请登录{{detect==='ios'?'球多多':fr=='c039'||fr=='c239'?'必中彩':'球多多'}}APP使用</p> -->
+                        <p>请登录球多多APP使用</p>
                     </div>
                 </div>
             </div>
@@ -145,14 +146,14 @@ export default {
             ],
             markshow: false,
             mbanShow: false,
-            detect: '',
+            // detect: '',
             fr: this.$route.query.fr
         }
     },
     created(){
-      if(this.fr=='c039'||this.fr=='c239'){
-          document.title = '必中彩'
-      }
+    //   if(this.fr=='c039'||this.fr=='c239'){
+    //       document.title = '必中彩'
+    //   }
     },
     methods: {
       go(seconds) {
@@ -192,42 +193,43 @@ export default {
           this.markshow = false
       },
       lqbtn(){
-            if (detect() === 'ios') {
-                if(this.fr == 'c039'){
-                    countLog.init(()=>{
-                        location.href="https://itunes.apple.com/app/apple-store/id1402481777?pt=118446425&ct=tuia&mt=8"
-                    });
-                }else if(this.fr == 'c046'||this.fr == 'c047'){
-                    nicetuiLog.init(()=>{
-                        location.href="https://itunes.apple.com/app/apple-store/id1402481777?pt=118446425&ct=nicetui1&mt=8"
-                    });
-                }else{
-                    location.href="https://itunes.apple.com/cn/app/id1402481777?mt=8"
-                }
-            } else {
-                if(wxPd()){
-                    location.href = 'https://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
-                }else{
-                    if(this.fr == 'c039'){
-                        countLog.init(()=>{
-                            location.href="https://static.caixiaomi.net/softs/"+this.fr+"/caixiaomi_"+this.fr+".apk"
-                        });
-                    }else if(this.fr == 'c239'){
-                        location.href = 'https://static.caixiaomi.net/softs/oppo/bizhongcai_c20039.apk'
-                    }else if(this.fr == 'c046'||this.fr == 'c047'){
-                        nicetuiLog.init(()=>{
-                            location.href="https://static.caixiaomi.net/softs/"+this.fr+"/caixiaomi_"+this.fr+".apk"
-                        });
-                    }else{
-                        location.href="https://m.caixiaomi.net/down/cxm106_j"+this.$route.query.fr+".apk"
-                    }
-                }
-            }
+          location.href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/20190314/%E6%B8%A0%E9%81%936_c30044_3.1.0.apk"
+            // if (detect() === 'ios') {
+            //     if(this.fr == 'c039'){
+            //         countLog.init(()=>{
+            //             location.href="https://itunes.apple.com/app/apple-store/id1402481777?pt=118446425&ct=tuia&mt=8"
+            //         });
+            //     }else if(this.fr == 'c046'||this.fr == 'c047'){
+            //         nicetuiLog.init(()=>{
+            //             location.href="https://itunes.apple.com/app/apple-store/id1402481777?pt=118446425&ct=nicetui1&mt=8"
+            //         });
+            //     }else{
+            //         location.href="https://itunes.apple.com/cn/app/id1402481777?mt=8"
+            //     }
+            // } else {
+            //     if(wxPd()){
+            //         location.href = 'https://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
+            //     }else{
+            //         if(this.fr == 'c039'){
+            //             countLog.init(()=>{
+            //                 location.href="https://static.caixiaomi.net/softs/"+this.fr+"/caixiaomi_"+this.fr+".apk"
+            //             });
+            //         }else if(this.fr == 'c239'){
+            //             location.href = 'https://static.caixiaomi.net/softs/oppo/bizhongcai_c20039.apk'
+            //         }else if(this.fr == 'c046'||this.fr == 'c047'){
+            //             nicetuiLog.init(()=>{
+            //                 location.href="https://static.caixiaomi.net/softs/"+this.fr+"/caixiaomi_"+this.fr+".apk"
+            //             });
+            //         }else{
+            //             location.href="https://m.caixiaomi.net/down/cxm106_j"+this.$route.query.fr+".apk"
+            //         }
+            //     }
+            // }
       }
     },
     mounted () {
         // console.log(nicetuiLog,countLog)
-      this.detect = detect()
+    //   this.detect = detect()
     }
 }
 </script>
