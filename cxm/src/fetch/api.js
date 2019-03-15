@@ -145,9 +145,10 @@ const device = {
 export function fetchPost(url, body) {
     if(getUrlStr('fr', location.href)){
         device.channel = getUrlStr('fr', location.href)
-    }else{
-        device.channel = 'h5'
     }
+    // else{
+    //     device.channel = 'h5'
+    // }
     device.lon = store.state.position.lng
     device.lat = store.state.position.lat
     device.city = store.state.position.city=='中国'?'':window.encodeURI(store.state.position.city)

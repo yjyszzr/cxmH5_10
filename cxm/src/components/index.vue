@@ -190,8 +190,8 @@
             </div>
             <div class="downRight">
                 <span>
-                  <a href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/%E6%B8%A0%E9%81%931_c30039_3.1.0.apk" v-if="$route.query.fr=='c30039'">立即下载</a>
-                  <a href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/%E6%B8%A0%E9%81%932_c30040_3.1.0.apk" v-else-if="$route.query.fr=='c30040'">立即下载</a>
+                  <a href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/20190314/%E6%B8%A0%E9%81%931_c30039_3.1.0.apk" v-if="$route.query.fr=='c30039'">立即下载</a>
+                  <a href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/20190314/%E6%B8%A0%E9%81%932_c30040_3.1.0.apk" v-else-if="$route.query.fr=='c30040'">立即下载</a>
                   <a href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/qiuduoduocp_c11111.apk" v-else>立即下载</a>
                 </span>
             </div>
