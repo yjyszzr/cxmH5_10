@@ -31,14 +31,16 @@
     var _hmt = _hmt || [];
     (function () {
       var hm = document.createElement("script");
+      var hm_id = 'add59b43ed799751ac06c40214d0b5b7'
       // console.log(location.pathname)
       if(location.pathname=='/c30039'){ //渠道1
-        hm.src = "https://hm.baidu.com/hm.js?cb33c8d07107499e30771b08c2cb32cb";
+        hm_id = "cb33c8d07107499e30771b08c2cb32cb";
       }else if(location.pathname=='/c30040'){ //渠道2
-        hm.src = "https://hm.baidu.com/hm.js?0b0cd8c088801f61554c996f3a0dde75";
-      }else if(location.pathname=='/'){ //主站
-        hm.src = "https://hm.baidu.com/hm.js?add59b43ed799751ac06c40214d0b5b7";
+        hm_id = "0b0cd8c088801f61554c996f3a0dde75";
+      }else if(location.pathname=='/activity/wheel'){ //转盘
+        hm_id = "eadaf5456f54a23ae09289a0c7a6f93e";
       }
+      hm.src = "https://hm.baidu.com/hm.js?"+hm_id;
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
