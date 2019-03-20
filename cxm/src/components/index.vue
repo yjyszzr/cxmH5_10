@@ -188,6 +188,7 @@
                 <!-- <img src="../assets/img/downIcon.png" alt=""> -->
                 <span>下载球多多APP 购彩更轻松</span>
             </div>
+            <!-- 下载不同渠道安卓包 -->
             <div class="downRight">
                 <span>
                   <a href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/20190314/%E6%B8%A0%E9%81%931_c30039_3.1.0.apk" v-if="$route.query.fr=='c30039'">立即下载</a>
@@ -351,10 +352,14 @@ export default {
         Toast(item.statusReason);
         return false;
       }
-      let path = fx_link_rule(getUrlStr("id", item.redirectUrl));
-      this.$router.push({
-        path: path
-      });
+      if(item.classifyId==='9'){ //线下店铺直接打开店铺
+        window.open(item.redirectUrl); 
+      }else{
+        let path = fx_link_rule(getUrlStr("id", item.redirectUrl));
+        this.$router.push({
+          path: path
+        });
+      }
     },
     goFreebuy(url, s) {
       //进入玩法
