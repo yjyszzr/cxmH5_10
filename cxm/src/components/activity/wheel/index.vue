@@ -193,7 +193,11 @@ export default {
           this.markshow = false
       },
       lqbtn(){
-          location.href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/20190314/%E6%B8%A0%E9%81%936_c30044_3.1.0.apk"
+          if(this.fr == 'c045'){
+              location.href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/20190314/%E6%B8%A0%E9%81%937_c30045_3.1.0.apk"
+          }else{
+              location.href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/20190314/%E6%B8%A0%E9%81%936_c30044_3.1.0.apk"
+          }
             // if (detect() === 'ios') {
             //     if(this.fr == 'c039'){
             //         countLog.init(()=>{
