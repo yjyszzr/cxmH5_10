@@ -26,6 +26,23 @@
   <script type="text/javascript" src="//api.nicetui.cn/public/log.js" id="send_log"></script>
   <script type="text/javascript" src="//yun.tuisnake.com/h5-mami/log.js" id="send_log"></script>
   <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=lC9zSnVzGNFc5nEGimIpGigGh7yxRlhj"></script>
+  <script>
+    // 百度统计
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      // console.log(location.pathname)
+      if(location.pathname=='/c30039'){ //渠道1
+        hm.src = "https://hm.baidu.com/hm.js?cb33c8d07107499e30771b08c2cb32cb";
+      }else if(location.pathname=='/c30040'){ //渠道2
+        hm.src = "https://hm.baidu.com/hm.js?0b0cd8c088801f61554c996f3a0dde75";
+      }else if(location.pathname=='/'){ //主站
+        hm.src = "https://hm.baidu.com/hm.js?add59b43ed799751ac06c40214d0b5b7";
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 </head>
 
 <body>
@@ -34,35 +51,6 @@
   </div>
   <!-- built files will be auto injected -->
 </body>
-<script>
-  //获取url参数
-  function showWindowHref(url,name){
-			var args = url.split('?')
-			if(args[0] == url){
-				return ''
-			}
-			var obj = {}
-			var arr = args[1].split('&')
-			for(var i=0;i<arr.length;i++){
-				obj[arr[i].split('=')[0]] = arr[i].split('=')[1];
-			}
-			return obj[name]?obj[name]:'';
-	}
-  // 百度统计
-  var _hmt = _hmt || [];
-  (function () {
-    var hm = document.createElement("script");
-    if(showWindowHref(location.href,'fr')=='c30039'){ //渠道1
-      hm.src = "https://hm.baidu.com/hm.js?f97220867f427ed8e82cd5895e0f1259";
-    }else if(showWindowHref(location.href,'fr')=='c30040'){ //渠道2
-      hm.src = "https://hm.baidu.com/hm.js?17256b5766564b60de16fac7341bb703";
-    }else{ //主站
-      hm.src = "https://hm.baidu.com/hm.js?add59b43ed799751ac06c40214d0b5b7";
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-  })();
-</script>
 <!-- <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script> -->
 
 </html>

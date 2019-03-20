@@ -999,6 +999,15 @@ NProgress.configure({ showSpinner: false });
 
 router.beforeEach(async(to, from, next) => {
     isdeal();
+    //百度统计渠道加载完后跳到主页
+    if(to.fullPath.indexOf('/c3')!=-1){
+        await next(
+			{
+				path: '/'
+			}
+		)
+    }
+    //app老版webview内去掉#
 	if(to.fullPath.indexOf('#')!=-1){
 		await next(
 			{
