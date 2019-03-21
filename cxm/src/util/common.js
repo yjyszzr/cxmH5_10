@@ -1,12 +1,12 @@
 // const expUrl = 'http://192.168.31.205:8080'  //本地ip地址
-const expUrl = 'http://t1.caixiaomi.net:9805'    //测试环境地址
+//const expUrl = 'http://t1.caixiaomi.net:9805'    //测试环境地址
 //线上地址
-// var expUrl = ''
-// if(location.href.indexOf('.cn')!=-1){
-//     expUrl = 'http://a1.caixiaomi.cn'
-// }else{
-//     expUrl = 'https://m.caixiaomi.net'
-// }
+var expUrl = ''
+if(location.href.indexOf('.cn')!=-1){
+    expUrl = 'http://a1.caixiaomi.cn'
+}else{
+    expUrl = 'https://m.caixiaomi.net'
+}
 var moment = require('moment');  //时间组件
 import api from '../fetch/api'
 import store from '../vuex/store'
