@@ -581,22 +581,33 @@ export default {
 				Toast(this.maxButNumMsg)
 				return
 			}
-			Indicator.open()
-            api.nSaveBetInfo(this.matchSave)
-                .then(res => {
-                    if (res.code == 0) {
-						if(this.$route.query.cfrom=='app'){
-							location.href = `/user/order?id=${res.data.orderId}&cmshare=1&cxmxc=scm&orderSn=${res.data.orderSn}&qd=${this.$route.query.qd}`
-						}else{
-							this.$router.push({
-								path: '/user/order',
-								query: {
-									id: res.data.orderId,
-								}
-							})
-						}
-                    }
-                })
+			//限制只能选一种玩法
+			let limitCc = true;
+			this.$store.state.matchSelectedList.forEach(item=>{
+					if(item.selectedList.length>1){
+							limitCc = false
+					}
+			})
+			if(limitCc){
+				Indicator.open()
+				api.nSaveBetInfo(this.matchSave)
+				    .then(res => {
+				        if (res.code == 0) {
+							if(this.$route.query.cfrom=='app'){
+								location.href = `/user/order?id=${res.data.orderId}&cmshare=1&cxmxc=scm&orderSn=${res.data.orderSn}&qd=${this.$route.query.qd}`
+							}else{
+								this.$router.push({
+									path: '/user/order',
+									query: {
+										id: res.data.orderId,
+									}
+								})
+							}
+				        }
+				    })
+			}else{
+				Toast('每场比赛只能选择一种玩法')
+			}
 		},
 		bfClick(c) {
 			this.$store.state.mark_playObj.mark_playBox = true
