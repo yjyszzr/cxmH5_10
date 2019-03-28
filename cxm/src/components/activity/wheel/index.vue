@@ -146,7 +146,7 @@ export default {
             ],
             markshow: false,
             mbanShow: false,
-            // detect: '',
+            detect: '',
             fr: this.$route.query.fr
         }
     },
@@ -193,10 +193,14 @@ export default {
           this.markshow = false
       },
       lqbtn(){
-          if(this.fr == 'c045'){
-              location.href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/20190314/%E6%B8%A0%E9%81%937_c30045_3.1.0.apk"
+          if (detect() === 'ios') {
+              location.href="itms-services://?action=download-manifest&url=https://szcq-apk.oss-cn-beijing.aliyuncs.com/manifest.plist"
           }else{
-              location.href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/20190314/%E6%B8%A0%E9%81%936_c30044_3.1.0.apk"
+                if(this.fr == 'c045'){
+                    location.href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/20190314/%E6%B8%A0%E9%81%937_c30045_3.1.0.apk"
+                }else{
+                    location.href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/20190314/%E6%B8%A0%E9%81%936_c30044_3.1.0.apk"
+                }
           }
             // if (detect() === 'ios') {
             //     if(this.fr == 'c039'){
@@ -233,7 +237,7 @@ export default {
     },
     mounted () {
         // console.log(nicetuiLog,countLog)
-    //   this.detect = detect()
+        //this.detect = detect()
     }
 }
 </script>

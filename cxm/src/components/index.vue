@@ -183,14 +183,17 @@
 <!--首页-->
 <template>
   <div class="wrap">
-    <div v-if="detect!='ios'&&!wxPd" class="downDrop">
+    <div class="downDrop">
             <div class="downLeft">
                 <!-- <img src="../assets/img/downIcon.png" alt=""> -->
                 <span>下载球多多APP 购彩更轻松</span>
             </div>
             <!-- 下载不同渠道安卓包 -->
             <div class="downRight">
-                <span>
+                <span v-if="detect=='ios'">
+                  <a href="itms-services://?action=download-manifest&url=https://szcq-apk.oss-cn-beijing.aliyuncs.com/manifest.plist">立即下载</a>
+                </span>
+                <span v-else>
                   <a href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/20190314/%E6%B8%A0%E9%81%931_c30039_3.1.0.apk" v-if="$route.query.fr=='c30039'">立即下载</a>
                   <a href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/20190314/%E6%B8%A0%E9%81%932_c30040_3.1.0.apk" v-else-if="$route.query.fr=='c30040'">立即下载</a>
                   <a href="https://szcq-apk.oss-cn-beijing.aliyuncs.com/qiuduoduocp_c11111.apk" v-else>立即下载</a>

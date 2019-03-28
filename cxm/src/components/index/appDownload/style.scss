@@ -1,41 +1,69 @@
 @import '../../../assets/css/function.scss';
 .appdownLoad{
-    height: 100%;
-    background: url('../../../assets/img/downBg.png') no-repeat;
-    background-size: 100% 100%;
-    .loadBox{
-        overflow: auto;
-        height: 40%;
+    background: white;
+    min-height: 100%;
+    height: auto;
+    .loadTop{
+        img{
+            width: 100%;
+        }
     }
-    .loadImg{
-        padding-top: px2rem(30px);
-        height: 50%;
-    }
-    .downText{
-        width: 90%;
-        display: block;
-        margin: 0 auto;
-    }
-    button,.ios{
-        display: block;
-        width: 80%;
-        height: px2rem(88px);
-        margin: 0 auto;
-        border-radius: px2rem(5px);
-        border: none;
-        font-size: px2rem(28px);
-    }
-    .andr{
-        margin-top: 30%;
-        background: white;
-        color: #d12120;
-    }
-    .ios{
-        margin-top: 30%;
-        background: white;
-        color: #d12120;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .loadContent{
+        .app-info{
+            .h5_04{
+                display: block;
+                width: px2rem(300px);
+                margin: px2rem(30px) auto px2rem(15px);
+            }
+            .app-name{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .h5_08{
+                    width: px2rem(38px);
+                    display: block;
+                }
+                p:first-of-type{
+                    font-size: px2rem(48px);
+                    margin: 0 px2rem(14px);
+                }
+                p:last-of-type{
+                    background: #3cadf9;
+                    padding: px2rem(3px) px2rem(10px);
+                    color: white;
+                    border-radius: px2rem(5px);
+                    font-size: px2rem(26px);
+                }
+            }
+            .loadBtn{
+                width: px2rem(400px);
+                height: px2rem(80px);
+                background: #e20107;
+                color: white;
+                font-size: px2rem(34px);
+                border: none;
+                border-radius: px2rem(60px);
+                display: block;
+                margin: px2rem(40px) auto;
+            }
+        }
+        .ios-alert{
+            p{
+                font-size: px2rem(32px);
+            }
+            p:first-of-type{
+                text-align: center;
+                color: #e20107;
+            }
+            p:last-of-type{
+                width: 80%;
+                margin: px2rem(20px) auto;
+            }
+            img{
+                display: block;
+                width: 50%;
+                margin: 0 auto;
+            }
+        }
     }
 }
