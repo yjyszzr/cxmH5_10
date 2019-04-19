@@ -21,7 +21,7 @@
             <div class="ios-alert" v-show="detect==='ios'">
                 <p>(未受信任的企业级开发者) 的解决办法</p>
                 <p>进入「Silver…」→「信任」即可使用（详情如图)</p>
-                <img src="./img/h5_12.png" alt="">
+                <img src="./img/h5_12.jpg" alt="">
             </div>
         </section>
     </div>
