@@ -47,7 +47,7 @@ export let channel = (str,s)=>{
         channelObj.color='#da5f55'
 	}else if(str=='c26011'){
         channelObj.channelNmae='天天体育'
-	}else if(str=='c46016'||str=='c11010'){
+	}else if(str=='c46016'||str=='c11010'||str=='c11110'){
         channelObj.channelNmae='圣和彩店'
     }else if(str.indexOf('c25')!=-1){
 		channelObj.channelNmae='多多体育'

@@ -293,6 +293,7 @@
             }
             document.title = this.channelObj.channelNmae
             window.getChannel = (str)=> {
+                Toast(str)
                 this.$store.commit('CHANNELOBJ',channel(str))
             }
             nativeApp({'methodName':'channel'})

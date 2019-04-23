@@ -43,6 +43,14 @@ const router = new Router({
             component: resolve => require(['@/components/index/appDownload/index.vue'], resolve)
         },
         {
+            path: '/activity/down/appsh',
+            name: 'down',
+            meta: {
+                title: 'APP下载'
+            },
+            component: resolve => require(['@/components/index/appDownload_sh/index.vue'], resolve)
+        },
+        {
             path: '/user/sms',
             name: 'sms',
             meta: {
