@@ -14,7 +14,7 @@
             {{title}}</p>
             <div class="filter" v-show="menuDisplay==true">
                 <span v-if="$route.path.split('/')[2]=='consult'" style="opacity:0;">分享</span>
-                <span v-if="$route.path.split('/')[2]=='consult'&&getUrl()&&getQd()" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
+                <span v-if="$route.path.split('/')[2]=='consult'&&getUrl()" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
                 <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="danxm">胆</span>
                 <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="setting" v-show="$store.state.turnOn!=0">设置</span>
@@ -324,17 +324,6 @@
                 } else {
                     if (getUrlStr("frz", location.href) == "1") {
                         return true;
-                    } else {
-                        return false;
-                    }
-                }
-            },
-            getQd(){
-                if (getUrlStr("qd", location.href) == undefined) {
-                    return true;
-                } else {
-                    if (getUrlStr("qd", location.href) == "c46016"||getUrlStr("qd", location.href) == "c11110") {
-                        return false;
                     } else {
                         return false;
                     }
