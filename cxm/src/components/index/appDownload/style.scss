@@ -49,10 +49,15 @@
         }
         .ios-alert{
             p{
+                text-align: center;
+            }
+            p{
                 font-size: px2rem(32px);
             }
             p:first-of-type{
-                text-align: center;
+                color: #e20107;
+            }
+            p:nth-child(2){
                 color: #e20107;
             }
             p:last-of-type{
