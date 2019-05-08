@@ -25,9 +25,11 @@ export let isShare = (arg, text, url, thumbUrl) => {
 //调用app方法
 export let nativeApp = (obj)=>{
 	if(isWebview()){
+		//ios
 		if(window.webkit){
 			return window.webkit.messageHandlers.appNative.postMessage(obj);
 		}
+		//andrios
 		if(typeof test==='object'){
 			test.appNative(JSON.stringify(obj))
 		}
