@@ -83,6 +83,8 @@
                             return "关于我们";
                         case "detail":
                             return "优惠券";
+                        case "bounsrule":
+                            return "优惠券规则";
                         case "certification":
                             return "实名认证";
                         case "insurance":

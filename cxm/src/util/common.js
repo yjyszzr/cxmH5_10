@@ -41,20 +41,12 @@ export let channel = (str,s)=>{
         channelNmae: '球多多',
         color: '#d12120'
     }
-    if(str=='c26013'){
-        channelObj.channelNmae='乐得体育'
-        channelObj.color='#f78f14'
-    }else if(str=='c26014'){
-        channelObj.channelNmae='多多体育'
-        channelObj.color='#da5f55'
-	}else if(str=='c26011'){
+    if(str=='c26011'){
         channelObj.channelNmae='天天体育'
-	}else if(str=='c46016'||str=='c11010'||str=='c11110'){
+	}else if(str=='c46016'||str.indexOf('c11')!=-1){
         channelObj.channelNmae='圣和彩店'
-    }else if(str.indexOf('c25')!=-1){
-		channelObj.channelNmae='多多体育'
-	}else if(str.indexOf('c27')!=-1){
-		channelObj.channelNmae='人人体育'
+    }else if(str.indexOf('c120')!=-1){
+		channelObj.channelNmae='圣和体育'
 	}else if(str.indexOf('c20')!=-1){
 		channelObj.channelNmae='必中彩'
 	}else if(str.indexOf('c22')!=-1){
@@ -63,8 +55,6 @@ export let channel = (str,s)=>{
 		channelObj.channelNmae='天空体育'
 	}else if(str.indexOf('c10')!=-1){
 		channelObj.channelNmae='彩小秘'
-    }else if(str.indexOf('c21')!=-1){
-		channelObj.channelNmae='足球资讯'
     }
     return channelObj;
 }

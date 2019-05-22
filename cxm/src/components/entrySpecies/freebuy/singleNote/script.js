@@ -509,13 +509,13 @@ export default {
         });
       }
 			//限制只能选一种玩法
-      let limitCc = true;
-      this.$store.state.matchSelectedList.forEach(item=>{
-          if(item.selectedList.length>1){
-              limitCc = false
-          }
-      })
-      if(limitCc){
+//       let limitCc = true;
+//       this.$store.state.matchSelectedList.forEach(item=>{
+//           if(item.selectedList.length>1){
+//               limitCc = false
+//           }
+//       })
+//       if(limitCc){
 				//console.log(this.$store.state.matchObj)
 				this.$router.push({
 					path: '/freebuy/cathectic',
@@ -530,9 +530,9 @@ export default {
 					},
 					replace: false
 				})
-			}else{
-				Toast('每场比赛只能选择一种玩法')
-			}
+// 			}else{
+// 				Toast('每场比赛只能选择一种玩法')
+// 			}
     },
     matchDetail(c, s) {
       if (s.target.parentElement.children[4].lastChild.className == '') {
