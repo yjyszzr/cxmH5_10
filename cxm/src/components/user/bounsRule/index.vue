@@ -22,7 +22,7 @@ import {nativeApp} from '../../../util/common'
 export default {
     name: 'bounsRule',
     mounted(){
-      nativeApp({'methodName':'showTitle','title':'帮助中心'})
+      nativeApp({'methodName':'showTitle','title':'使用规则'})
     }
 }
 </script>

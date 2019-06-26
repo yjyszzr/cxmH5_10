@@ -6,6 +6,8 @@
         </div>
         <div class="body">
             <div>
+				<p>店主微信号：wx15010341354</p>
+				<img :src="$store.state.order.addFriendsQRBarUrl" alt="">
                 <p>第一步：长按复制链接</p>
                 <p>第二步：打开微信分享给微信好友</p>
                 <p>第三步：发送成功等待预测结果</p>
@@ -88,6 +90,11 @@
                     }
                 }
             }
+			img{
+				display: block;
+				width: 80%;
+				margin: px2rem(10px) auto;
+			}
         }
         .ok{
             text-align: center;
