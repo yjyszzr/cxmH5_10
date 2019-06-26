@@ -7,14 +7,13 @@ import {
     Indicator
 } from 'mint-ui'
 import router from '../router/index'
-import store from '../vuex/store'
 import {getUrlStr} from '../util/common'
 // axios 配置
 axios.defaults.timeout = 15000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
+// axios.defaults.baseURL = 'https://api.caixiaomi.net/api';
 // axios.defaults.baseURL = 'http://yf.caixiaomi.net/api';
-// axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
+ axios.defaults.baseURL = 'http://39.106.18.39:8765/api';
 //拦截 token
 axios.interceptors.request.use(
     config => {
@@ -26,6 +25,17 @@ axios.interceptors.request.use(
     err => {
         return Promise.reject(err);
     });
+
+//POST传参序列化
+// axios.interceptors.request.use((config) => {
+//     if(config.method  === 'post'){
+//         config.data = qs.stringify(config.data);
+//     }
+//     return config;
+// },(error) =>{
+//     //  _.toast("错误的传参", 'fail');
+//     return Promise.reject(error);
+// });
 //返回状态错误处理
 axios.interceptors.response.use((res) => {
     if (res.config.url.indexOf('payment/query') == -1) {
@@ -37,20 +47,8 @@ axios.interceptors.response.use((res) => {
             if(getUrlStr('from',location.href)=='app'||getUrlStr('cfrom',location.href)=='app'){
                 location.href = 'http://m.caixiaomi.net?cxmxc=scm&type=5'
             }else{
-                if(localStorage.guide||localStorage.upDateMark){
-                    let saveDateMark =  localStorage.upDateMark;
-                    let saveGuide = localStorage.guide;
-                    localStorage.clear()
-                    if(saveGuide){
-                      localStorage.setItem('guide',1)
-                    }
-                    if(saveDateMark){
-                      localStorage.setItem('upDateMark',saveDateMark)
-                    }
-                }else{
-                    localStorage.clear()
-                }
-                if(res.config.url.indexOf('match/queryMatchResultNew') != -1||res.config.url.indexOf('recharge/countUserRecharge') != -1||res.config.url.indexOf('collect/add') != -1||res.config.url.indexOf('match/createOrderBySimulate ') != -1||res.config.url.indexOf('lotto/createOrderBySimulate') != -1){
+                localStorage.clear()
+                if(res.config.url.indexOf('match/queryMatchResultNew') != -1||res.config.url.indexOf('recharge/countUserRecharge') != -1||res.config.url.indexOf('collect/add') != -1||res.config.url.indexOf('match/nSaveBetInfo') != -1||res.config.url.indexOf('lotto/saveBetInfo') != -1){
                     router.push({
                         path: '/user/sms',
                     })
@@ -125,11 +123,12 @@ axios.interceptors.response.use((res) => {
 
     return Promise.reject(error);
 });
+
 //设备信息
 const device = {
     plat: 'h5',
     apiv: 1,
-    appv: '2.1.2',
+    appv: '2.1.1',
     appid: '',
     mac: '',
     w: window.screen.availWidth,
@@ -145,14 +144,9 @@ const device = {
 export function fetchPost(url, body) {
     if(getUrlStr('fr', location.href)){
         device.channel = getUrlStr('fr', location.href)
+    }else{
+        device.channel = 'h5'
     }
-    // else{
-    //     device.channel = 'h5'
-    // }
-    device.lon = store.state.position.lng
-    device.lat = store.state.position.lat
-    device.city = store.state.position.city=='中国'?'':window.encodeURI(store.state.position.city)
-    device.province = window.encodeURI(store.state.position.province)
     return new Promise((resolve, reject) => {
         axios.post(url, {
                 device,
@@ -249,19 +243,11 @@ export default {
     },
     //查询订单列表状态
     getOrderInfoList(params) {
-        return fetchPost('order/order/ngetOrderInfoListV2', params)
+        return fetchPost('order/order/ngetOrderInfoList', params)
     },
     //查询订单详情
     getOrderDetail(params) {
         return fetchPost('order/order/getOrderDetail', params)
-    },
-    //查询足球模拟订单详情
-    getOrderDetailByOrderSn(params) {
-        return fetchPost('order/order/getOrderDetailByOrderSn', params)
-    },
-    //查询大乐透模拟订单详情
-    getOrderDetailByShare(params) {
-        return fetchPost('order/order/getOrderDetailByShare', params)
     },
     //查询出票方案
     getTicketScheme(params) {
@@ -281,7 +267,7 @@ export default {
     },
     //支付订单
     nSaveBetInfo(params) {
-        return fetchPost('lottery/lottery/match/createOrderBySimulate', params)
+        return fetchPost('lottery/lottery/match/nSaveBetInfo', params)
     },
     //计算投注信息
     getBetInfo(params) {
@@ -481,8 +467,7 @@ export default {
     },
     //保存投注信息
     saveBetInfoDlt(params) {
-        // return fetchPost('/lotto/lotto/saveBetInfo', params)
-        return fetchPost('/lotto/lotto/createOrderBySimulate', params)//模拟投注确认
+        return fetchPost('/lotto/lotto/saveBetInfo', params)
     },
     //走势图数据
     getChartData(params) {
@@ -490,8 +475,7 @@ export default {
     },
     //方案详情
     getLottoOrderDetail(params) {
-        // return fetchPost('/order/order/getLottoOrderDetail', params)
-        return fetchPost('/order/order/getLottoOrderDetailSimulat', params)
+        return fetchPost('/order/order/getLottoOrderDetail', params)
     },
     //支付订单信息
     unifiedPayBefore(params) {
@@ -532,91 +516,7 @@ export default {
     // //获取银行信息
     nUnifiedOrderUbey(params) {
         return fetchPost('/payment/payment/Ubey/nUnifiedOrderUbey', params)
-    },
-    //切换版本
-    dealQuery(params){
-        return fetchPost('/member/switch/config/query', params)
-    },
-    //商城轮播图
-    bannerList(params){
-        return fetchPost('/order/goods/bannerList', params)
-    },
-    //获取商品列表
-    goodsList(params){
-        return fetchPost('/order/goods/goodsList', params)
-    },
-    //获取商品详情
-    goodsDetail(params){
-        return fetchPost('/order/goods/goodsDetail', params)
-    },
-    //提交订单
-    goodsAdd(params){
-        return fetchPost('/order/goods/orderAdd', params)
-    },
-    //订单详情
-    orderDetail(params){
-        return fetchPost('/order/goods/orderDetail', params)
-    },
-    //提交收件人信息
-    goodsUpdate(params){
-        return fetchPost('/order/goods/orderUpdate', params)
-    },
-    //发现开奖列表
-    openPrize(params) {
-        return fetchPost('/lottery/discoveryPage/openPrize', params)
-    },
-    //数字彩开奖列表
-    szcDetailList(params) {
-        return fetchPost('/lottery/discoveryPage/szcDetailList', params)
-    },
-    //数字彩开奖详情
-    querySzcOpenPrizesByDate(params) {
-        return fetchPost('/lottery/discoveryPage/querySzcOpenPrizesByDate', params)
-    },
-    //球彩玩法开奖历史
-    queryJcOpenPrizesByDate(params) {
-        return fetchPost('/lottery/discoveryPage/queryJcOpenPrizesByDate', params)
-    },
-    //发现活动列表
-    activeCenter(params) {
-        return fetchPost('/lottery/discoveryPage/activeCenter', params)
-    },
-    //国家联赛列表
-    leagueHomePageByGroupId(params) {
-        return fetchPost('/lottery/discoveryPage/leagueHomePageByGroupId', params)
-    },
-    //联赛详情
-    leagueDetailForDiscovery(params){
-        return fetchPost('/lottery/discoveryPage/leagueDetailForDiscovery', params)
-    },
-    //联赛球队详情
-    teamDetailForDiscovery(params){
-        return fetchPost('/lottery/discoveryPage/teamDetailForDiscovery', params)
-    },
-    //查看更多
-    moreDiscoveryClass(params){
-        return fetchPost('/lottery/lottery/hall/moreDiscoveryClass', params)
-    },
-    //彩票课堂
-    noviceClassroom(params){
-        return fetchPost('/lottery/discoveryPage/noviceClassroom', params)
-    },
-    //服务列表
-    servlist(params) {
-        return fetchPost('/order/serv/servlist', params)
-    },
-    //线下店铺列表
-    storelist(params) {
-        return fetchPost('/order/store/storelist', params)
-    },
-    //线下店铺详情
-    storedetail(params) {
-        return fetchPost('/order/store/storedetail', params)
-    },
-    //大厅开屏
-    openNavs(params) {
-        return fetchPost('lottery/lottery/nav/banner/openNavs', params)
-    },
+    }
 }
 
 

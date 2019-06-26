@@ -13,9 +13,7 @@ const state = {
     skeletion: {
         consultInit: true,  //初始化骨架屏
     },
-    turnOn: '0', // 默认资讯版
     freebuyId: '6',
-    kpData: {}, //开屏页数据
     //验证码初始化
     smsCode: {
         changeNumber: 60,
@@ -24,12 +22,6 @@ const state = {
         timer: ''
     },
     findphone: '', //找回密码手机号
-    position: {
-        lat: '', //纬度
-        lng: '',  //经度
-        city: '中国',  //当前城市位置
-        province: '' //省
-    }, //经纬度保存
     userInfo: {}, //个人信息
     mark_show: false, //控制遮罩
     mark_Reset: 0, //重制赛事数据
@@ -82,21 +74,14 @@ const state = {
     },
     runchartData: {},  //走势图数据
     channelObj: {
-        color: '#d12120',
-        channelNmae: '球多多'
-    },
-    order:{
-        orderNum:'',//订单号
-        addFriendsQRBarUrl:'',//微信好友二维码
-    },
-    shopDetails:{ //线下店铺详情
-        yingyezhizhao:''//营业执照图片
+        color: '#ea5504',
+        channelNmae: '彩小秘'
     }
 }
 let storageArr = []
 if (typeof localStorage === 'object') {
     try{
-        storageArr = [createPersistedState({'key':'issue','paths':['userInfo','matchObj','matchSelectedList','freebuyId','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','chushihuaObj','findObj','daletouActive','position','city'],storage: window.sessionStorage})]
+        storageArr = [createPersistedState({'key':'issue','paths':['userInfo','matchObj','matchSelectedList','freebuyId','mark_playObj.playtList','mark_playObj.playutText','mark_playObj.yhList','mark_playObj.mybounsId','mark_playObj.bfmatchId','mark_playObj.bfIdSaveMap','mark_playObj.bfIdSaveMapFlag','mark_playObj.matchDetailFlag','chushihuaObj','findObj','daletouActive'],storage: window.sessionStorage})]
     }catch(e){
         
     };

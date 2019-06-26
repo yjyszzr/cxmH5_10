@@ -1,4 +1,5 @@
 import api from '../../../../fetch/api.js'
+import time from '../data/data.vue'
 import { Toast } from 'mint-ui'
 import { Indicator } from 'mint-ui'
 import {mapState} from 'vuex'
@@ -9,6 +10,9 @@ export default {
         matchFilterList: []
     };
   },
+    components:{
+      'v-time': time
+    },
   methods: {
     cancel() {
       this.$store.dispatch("getMarkShow",false)

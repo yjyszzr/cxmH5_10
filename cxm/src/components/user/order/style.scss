@@ -111,7 +111,7 @@
         top: 0;
         width: px2rem(30px);
         height: px2rem(30px);
-        background: #d12120;
+        background: #ea5504;
         color: #fff;
         font-size: px2rem(14px);
         border-radius: 50%;
@@ -180,9 +180,9 @@
 
   }
 }
-.plan,.dpxx {
+.plan {
   padding: 0 px2rem(20px) 0 px2rem(30px);
-  margin-bottom: px2rem(20px);
+  margin-bottom: px2rem(100px);
   .solecd {
     font-size: px2rem(28px);
     color: #A0A0A0;
@@ -190,7 +190,6 @@
     line-height: px2rem(72px);
     border-bottom: 1px solid #f1f1f1;
     display: block;
-    padding: 0!important;
     span {
       float: right;
       color: #505050;
@@ -208,83 +207,10 @@
     }
   }
 }
-.dp-box{
-  margin-bottom: px2rem(100px);
-}
-.dpxx{
-  div{
-    padding: 0; 
-  }
-  .ecode{
-    width: px2rem(400px);
-    display: block;
-    margin: 0 auto;
-  }
-  .dpxx-box{
-    padding-bottom: px2rem(30px);
-  }
-  .dzsj,.dzwx{
-    display: flex;
-    align-items: center;
-    font-size: px2rem(30px);
-    color: #505050!important;
-    justify-content: center;
-    margin-top: px2rem(10px);
-    padding: 0;
-    a{
-      display: flex;
-      align-items: center;
-      img{
-        width: px2rem(38px);
-        height: px2rem(38px);
-        margin-left: px2rem(20px);
-      }
-    }
-  }
-}
-.hedp{
-  background: white;
-  margin: px2rem(20px) 0 0;
-  a{
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: space-between;
-    padding: px2rem(26px) 0;
-    .left{
-      display: flex;
-      align-items: center;
-      img:first-of-type{
-        width: px2rem(120px);
-        margin: 0 px2rem(30px);
-      }
-      span{
-        font-size: px2rem(30px);
-        color: #505050;
-        margin-right: px2rem(20px);
-      }
-      img:last-of-type{
-        width: px2rem(32px);
-      }
-    }
-    .right{
-      margin-right: px2rem(30px);
-      width: px2rem(207px);
-      height: px2rem(71px);
-      border-radius: px2rem(36px);
-      border: 1px solid #d0d0d0;
-      font-size: px2rem(30px);
-      color: #505050;
-      text-align: center;
-      line-height: px2rem(71px);
-      box-sizing: border-box;
-    }
-  }
-}
 .jxtz{
   width: 100%;
   height: px2rem(98px);
-  background: #d12120;
+  background: #ea5504;
   border: none;
   color: white;
   font-size: px2rem(30px);

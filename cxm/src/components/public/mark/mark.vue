@@ -1,41 +1,28 @@
 <template>
     <div class="mark">
-        <div class="mark_box"></div>
-        <v-data v-if="$store.state.mark_showObj.mark_show_type == 1"></v-data>
+        <div class="mark_box">
+            
+        </div>
         <!-- 赛事筛选 -->
-        <v-matchfilter  v-if='$store.state.mark_showObj.mark_show_type == 2'></v-matchfilter>
-        <!--模拟订单详情内  点击二维码弹窗-->
-        <v-ewm v-if="$store.state.mark_showObj.mark_show_type == 3"></v-ewm>
-        <!--模拟订单详情内 分享订单弹窗-->
-        <v-olderNum v-if="$store.state.mark_showObj.mark_show_type == 4"></v-olderNum>
-        <!-- 线下店铺营业许可证-->
-        <v-yingye v-if="$store.state.mark_showObj.mark_show_type == 5"></v-yingye>
-        <!-- 引导 -->
-        <v-guide v-if="$store.state.mark_showObj.mark_show_type == 6"></v-guide>
-        <!-- 首页升级弹窗 -->
-        <v-shengji v-if="$store.state.mark_showObj.mark_show_type == 7"></v-shengji>
+        <v-matchfilter></v-matchfilter>
     </div>
 </template>
 
 <script>
     import matchFilter from './match_fliter/match_filter.vue'
-    import data from './data/data.vue'
-    import ewm from './orderMark/ewm.vue'
-    import olderNum from './orderMark/oderNum.vue'
-    import yingye from './yingye/yingye.vue'
-    import guide from './orderMark/guide.vue'
-    import shengji from './shou_ye/sheng_ji.vue'
 	export default {
         name: 'mark',
         components: {
-            'v-matchfilter': matchFilter,
-            'v-data': data,
-            'v-ewm' :ewm,
-            'v-olderNum':olderNum,
-            'v-yingye':yingye,
-            'v-guide': guide,
-            'v-shengji': shengji
+            'v-matchfilter': matchFilter
         },
+		data() {
+			return {
+				
+			}
+		},
+		methods: {
+			
+		}
 	}
 </script>
 
@@ -116,7 +103,7 @@
                         text-align: center;
                         line-height: px2rem(72px);
                         font-size: px2rem(26px);
-                        color: #d12120;
+                        color: #e85504;
                     }
                     p:last-of-type{
                         border: none;

@@ -1,12 +1,12 @@
 <style lang='scss' scoped src='./style.scss'>
 
 </style>
+
 <!--关于我们-->
 <template>
     <div class="wrap about" >
         <div class="logo">
-            <!--<img src="../../../assets/img/logo.png" alt="球多多"/><i>v2.1.1</i>-->
-            <span class="log">球多多</span><i>v2.1.2</i>
+            <img src="../../../assets/img/logo.png" alt="彩小秘"/><i>v2.1.1</i>
         </div>
         <section style="background: #fff">
             <section class=" wechat">
@@ -29,7 +29,7 @@
 
         <section class="guanwang">
             <p>客服热线：<span>400-012-6600</span></p>
-            <p>官网：<span>http://www.renrentiyua.com</span></p>
+            <p>官网：<span>http://www.caixiaomi.com</span></p>
         </section>
     </div>
 </template>

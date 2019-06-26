@@ -1,11 +1,5 @@
 @import '../../../assets/css/function.scss';
 .about{
-    .log{
-        margin-top: px2rem(20px);
-        font-size: px2rem(58px);
-        color: #d12120;
-        font-weight: 700;
-    }
     .logo{
         height: px2rem(385px);
         text-align: center;
@@ -20,7 +14,7 @@
         }
         i{
             font-style: normal;
-            color: #d12120;
+            color: #e95504;
             margin-left: px2rem(10px);
             font-size: px2rem(32px);
             display: flex;
@@ -46,7 +40,7 @@
             color: #787878;
             margin-top: px2rem(10px);
             span{
-                color: #d12120;
+                color: #f7931e;
             }
         }
     }

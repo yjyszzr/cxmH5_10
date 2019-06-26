@@ -17,7 +17,7 @@
         mounted(){
 			nativeApp({'methodName':'showTitle','title':'胆说明'})
             window.getCxmTitle = function(){
-                return '球多多·胆说明'
+                return '天天体育·胆说明'
             }
         }
     }

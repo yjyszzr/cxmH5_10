@@ -1,10 +1,8 @@
 <template>
     <!--2018.7.18-->
     <div id="app">
-        <!-- 头 -->
         <v-headertop :title='title()' :showTitle='showTitle()' :menu-display="menuDisplay()"
                      v-show='isShowHeader'></v-headertop>
-        <!-- 骨架屏 -->
         <mainSkeleton v-show="!consultinit"></mainSkeleton>
         <transition name="fade">
             <v-shortcut v-if="this.$store.state.mark_shortcut"></v-shortcut>
@@ -83,8 +81,6 @@
                             return "关于我们";
                         case "detail":
                             return "优惠券";
-                        case "bounsrule":
-                            return "优惠券规则";
                         case "certification":
                             return "实名认证";
                         case "insurance":
@@ -96,7 +92,7 @@
                         case "withdraw":
                             return "提现";
                         case "record":
-                            return "模拟投注记录";
+                            return "投注记录";
                         case "add_card":
                             return "添加银行卡";
                         case "credit_card":
@@ -106,19 +102,15 @@
                         case "message":
                             return "消息中心";
                         case "order":
-                            return "模拟订单详情";
-                        case "analogOrder":
-                            return "模拟订单详情";
-                        case "dltshareOrder":
-                            return "模拟订单详情";
+                            return "订单详情";
                         case "draw":
-                            return "模拟方案";
+                            return "出票方案";
                         case "payment":
                             return "支付订单";
                         case "ewmPay":
                             return "二维码支付";
                         case "cathectic":
-                            return "模拟投注";
+                            return "投注确认";
                         case "teamDetail":
                             return "查看详情";
                         case "consult":
@@ -134,7 +126,7 @@
                         case 'inToplay':
                             return "玩法帮助";
                         case 'protocol':
-                            return "模拟投注服务协议";
+                            return "投注服务协议";
                         case 'activity':
                             return "活动详情";
                         case 'give_details':
@@ -182,7 +174,7 @@
                         case 'success':
                             return "注册推广员";
                         case 'world_explain':
-                            return "模拟投注服务协议";
+                            return "投注服务协议";
                         case 'setup':
                             return "个人信息";
                         case 'setlogin':
@@ -197,41 +189,24 @@
                         case 'playHelp':
                             return '玩法帮助';
                         case 'ticketScheme':
-                            return '模拟方案';
+                            return '出票方案';
                         case 'whatDantuo':
                             return '胆拖介绍';
                         case 'programmeDetails':
-                            return '模拟订单详情';
+                            return '方案详情';
                         case 'touZhuConfirm':
-                            return '模拟投注确认';
-                            //店铺
-                        case 'cooperateShop':
-                            return '合作店铺';
-                        case 'shopDetails':
-                            return '店铺';
-                        case 'productDetails':
-                            return '店铺';
-                        case 'orderDetail':
-                            return '订单详情';
-                        case 'liansai':
-                            return '联赛资料';
-                        case 'seemore':
-                            return '查看更多';
-                        case 'ketang':
-                            return '彩票学堂';
-                        //服务
-                        case 'kaijiang':
-                            return '开奖'
-                        //电竞
-                        case 'gameList':
-                            return '电竞单关';
-                        case 'touzhuList':
-                            return '英雄联盟';
-                        case 'touzhu':
-                            return '玩法投注';
+                            return '投注确认';
                     }
                 } else {
-                    this.isShowHeader = true;
+                    if (
+                        this.$route.path.split("/")[1] == "user" ||
+                        this.$route.path.split("/")[1] == "lotteryResult" ||
+                        this.$route.path.split("/")[1] == "find"
+                    ) {
+                        this.isShowHeader = true;
+                    } else {
+                        this.isShowHeader = false;
+                    }
                     switch (this.$route.path.split("/")[1]) {
                         case "user":
                             return "我的";
@@ -239,12 +214,6 @@
                             return "比赛";
                         case "find":
                             return "发现";
-                        case "shoppingMall":
-                            return "商城";
-                        case "servicemd":
-                            return "服务";
-                        default:
-                            return "球多多";
                     }
                 }
             },
@@ -261,8 +230,7 @@
                     this.$route.path.split("/")[2] == "account" ||
                     this.$route.path.split("/")[1] == "user" ||
                     this.$route.path.split("/")[1] == "lotteryResult"||
-                    this.$route.path.split("/")[2] == "selectNumber"||
-                    this.$route.path.split("/")[2] == "programmeDetails"
+                    this.$route.path.split("/")[2] == "selectNumber"
                 ) {
                     return true;
                 } else {
@@ -311,7 +279,6 @@
 </script>
 
 <style lang='scss'>
-
     @import "./assets/css/public.scss";
     @import "./assets/css/function.scss";
 
@@ -395,7 +362,7 @@
         line-height: px2rem(98px);
         text-align: center;
         font-size: px2rem(30px);
-        background: #d12120;
+        background: #e95504;
         display: block;
         border: none;
         border-radius: px2rem(10px);
@@ -481,7 +448,7 @@
             font-size: px2rem(26px);
         }
         .mint-msgbox-confirm {
-            color: #d12120;
+            color: #ea5504;
         }
         .mint-msgbox-cancel {
             color: #505050;
@@ -644,7 +611,7 @@
             em {
                 width: px2rem(18px);
                 height: px2rem(18px);
-                background: #d12120;
+                background: #e95504;
                 border-radius: 50%;
                 margin-top: px2rem(35px);
             }
@@ -698,7 +665,7 @@
     .prompt {
         width: px2rem(540px);
         height: px2rem(80px);
-        color: #d12120;
+        color: #f7931e;
         font-size: px2rem(26px);
         background: #eaeaea;
         text-align: center;
@@ -719,7 +686,7 @@
     }
 
     .forget .x_sel {
-        color: #d12120;
+        color: #f7931e;
         font-size: px2rem(26px);
         float: right;
     }
@@ -734,10 +701,4 @@
     .mint-indicator-wrapper{
         z-index: 999;
     }
-
-
-
-
-
-
 </style>

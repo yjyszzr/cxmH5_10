@@ -1,15 +1,12 @@
-// const expUrl = 'http://192.168.31.205:8080'  //本地ip地址
-//const expUrl = 'http://t1.caixiaomi.net:9805'    //测试环境地址
-//线上地址
-var expUrl = ''
-if(location.href.indexOf('.cn')!=-1){
-    expUrl = 'http://a1.caixiaomi.cn'
-}else{
-    expUrl = 'https://m.caixiaomi.net'
-}
-var moment = require('moment');  //时间组件
-import api from '../fetch/api'
-import store from '../vuex/store'
+const expUrl = 'http://192.168.31.205:8080'
+// const expUrl = 'http://t1.caixiaomi.net:9805'
+//  var expUrl = ''
+// if(location.href.indexOf('.cn')!=-1){
+//     expUrl = 'http://a1.caixiaomi.cn'
+// }else{
+//     expUrl = 'https://m.caixiaomi.net'
+// }
+var moment = require('moment');
 //app h5页面分享
 export let isShare = (arg, text, url, thumbUrl) => {
     let obj = {}
@@ -25,11 +22,9 @@ export let isShare = (arg, text, url, thumbUrl) => {
 //调用app方法
 export let nativeApp = (obj)=>{
 	if(isWebview()){
-		//ios
 		if(window.webkit){
 			return window.webkit.messageHandlers.appNative.postMessage(obj);
 		}
-		//andrios
 		if(typeof test==='object'){
 			test.appNative(JSON.stringify(obj))
 		}
@@ -38,24 +33,28 @@ export let nativeApp = (obj)=>{
 //app mjb渠道区分
 export let channel = (str,s)=>{
     let channelObj = {
-        channelNmae: '球多多',
-        color: '#d12120'
+        channelNmae: '彩小秘',
+        color: '#ea5504'
     }
-    if(str=='c26011'){
-        channelObj.channelNmae='天天体育'
-	}else if(str=='c46016'||str.indexOf('c11')!=-1){
-        channelObj.channelNmae='圣和彩店'
-    }else if(str.indexOf('c120')!=-1){
-		channelObj.channelNmae='圣和体育'
+    if(str=='c26013'){
+        channelObj.channelNmae='乐得体育'
+        channelObj.color='#f78f14'
+    }else if(str=='c26014'){
+        channelObj.channelNmae='多多体育'
+        channelObj.color='#da5f55'
+	}else if(str.indexOf('c25')!=-1){
+		channelObj.channelNmae='多多体育'
+	}else if(str.indexOf('c27')!=-1){
+		channelObj.channelNmae='人人体育'
+	}else if(str.indexOf('c10')!=-1){
+		channelObj.channelNmae='彩小秘'
 	}else if(str.indexOf('c20')!=-1){
 		channelObj.channelNmae='必中彩'
 	}else if(str.indexOf('c22')!=-1){
 		channelObj.channelNmae='天天体育'
 	}else if(str.indexOf('c23')!=-1){
 		channelObj.channelNmae='天空体育'
-	}else if(str.indexOf('c10')!=-1){
-		channelObj.channelNmae='彩小秘'
-    }
+	}
     return channelObj;
 }
 //app h5方法
@@ -67,7 +66,7 @@ export let means = (arg) => {
         },
         //app title
         isTitle: window.getCxmTitle = function () {
-            return '球多多·' + arg
+            return '彩小秘·' + arg
         }
     }
     return appMeans
@@ -274,42 +273,4 @@ export let saveDtInfo = (list) => {
         arr.push(objinfos)
     })
     return arr;
-}
-
-//获取资讯版交易版区分
-export let isdeal = ()=>  {
-    api.dealQuery({str: ''}).then(res=>{
-        //console.log(res);
-        if(res.code == '0'){
-            store.commit('TURNON',res.data.turnOn);
-        }
-    });
-}
-
-//发现板块跳转规则
-export let fx_link_rule = (id) => {
-    switch(Number(id)){
-        case 0: //查看更多
-            return '/lottery/seemore';break;
-        case 1:  //开奖结果
-            return '/servicemd/kaijiang';break;
-        case 2:  //专家广场
-            return '';break;
-        case 3:  //彩票学堂
-            return '/lottery/ketang';break;
-        case 4:  //活动中心
-            return '/lottery/menu/huodong';break;
-        case 5:  //资讯信息
-            return '/find';break;
-        case 6:  //晒单公园
-            return '';break;
-        case 7:  //联赛资料
-            return '/lottery/liansai';break;
-        case 8:  //更多
-            return '';break;
-        case 9:  //比分直播
-            return '/lotteryResult?frm=h';break;
-        case 10:  //线下店铺
-            return '/lottery/cooperateShop';break;
-    }
 }

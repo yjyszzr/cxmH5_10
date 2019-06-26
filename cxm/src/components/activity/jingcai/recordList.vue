@@ -78,7 +78,7 @@
                     margin-top: px2rem(50px);
                 }
                 .now-canjia{
-                    color: #d12120;
+                    color: #ea5504;
                 }
             }
 

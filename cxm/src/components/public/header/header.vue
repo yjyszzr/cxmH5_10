@@ -2,22 +2,14 @@
     <div class="Header" @touchmove.prevent>
         <!--头部-->
         <div class="headerTop" v-show="showTitle">
-            <!-- 位置 -->
-            <div class="position" v-if="$route.path.split('/')[1]==''">
-                <img src="../../../assets/img/dw@2.png" alt="">
-                <span>{{city}}</span>
-            </div>
-            <!-- 返回 -->
-            <a @click="return_back()" class="go_return" v-else></a>
-            <p class="headerText" :class="$route.path.split('/')[1]==''?'homeTitle':''">
-                <!-- <span v-if="!$route.path.split('/')[2]">球多多·</span> -->
-            {{title}}</p>
+            <a @click="return_back()" class="go_return"></a>
+            <p class="headerText"><span v-if="!$route.path.split('/')[2]">彩小秘·</span>{{title}}</p>
             <div class="filter" v-show="menuDisplay==true">
                 <span v-if="$route.path.split('/')[2]=='consult'" style="opacity:0;">分享</span>
                 <span v-if="$route.path.split('/')[2]=='consult'&&getUrl()" :class="$store.state.zxDetailObj.isCollect=='1'?'icon-icon-32':'icon-icon-34'" class="iconfont" @click="collection($event)"></span>
                 <span v-if="$route.path.split('/')[2]=='collection'" @click="colMenu($event)" class="colMenu">{{deleteFlag?'取消':'编辑'}}</span>
                 <span v-if="$route.path.split('/')[2]=='cathectic'" @click="onGal()" class="danxm">胆</span>
-                <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="setting" v-show="$store.state.turnOn!=0">设置</span>
+                <span v-if="$route.path.split('/')[1]=='user'&&!$route.path.split('/')[2]" @click="setUp()" class="setting">设置</span>
                 <ul class="djs" @click="actionSheet()"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='account'">
                     <li class="tas">{{timeTypeShow(this.timeTypeStatus)}}<i style="font-size: 0.3rem;" class="iconfont icon-icon-22"></i></li>
                 </ul>
@@ -25,11 +17,6 @@
                 <div class="lottery-select" v-if="$route.path.split('/')[1]=='lotteryResult'" >
                     <span @click='data_time()' class="data-img" ><img src="./images/date@3x.png" alt=""></span>
                     <span @click='more()'><i class="iconfont icon-icon-21"></i></span>
-                </div>
-                <!--订单详情 头-->
-                <div class="lottery-select" v-if="$route.path.split('/')[2]=='order'||$route.path.split('/')[2]=='programmeDetails'" >
-                    <!--<span @click='oder()' v-show="!$route.query.cxmxc" class="data-img" ><img src="./images/fenxing@3x.png" alt=""></span>-->
-                    <span @click='ewm()' class="data-img" ><img src="./images/ewm@3x.png" alt=""></span>
                 </div>
             </div>
             <p class="filter" v-show="menuDisplay==false"></p>
@@ -58,8 +45,8 @@
             <li :class="$store.state.recordTab==''||$store.state.recordTab=='m1'?'cur3':''"><p @click='curClick3($event)'>通知</p></li>
             <li :class="$store.state.recordTab=='m2'?'cur3':''"><p @click='curClick3($event)'>消息</p></li>
         </ul>
-        <p class="matchHeader"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='cathectic'">已选{{$store.state.matchSelectedList.length}}场比赛&nbsp;&nbsp;&nbsp;模拟投注截止时间：<span>{{$store.state.arrTime.length==0?'00-00 00:00':datePd($store.state.arrTime[0])}}</span></p>
-        <!-- <div v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'">
+        <p class="matchHeader"  v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='cathectic'">已选{{$store.state.matchSelectedList.length}}场比赛&nbsp;&nbsp;&nbsp;投注截止时间：<span>{{$store.state.arrTime.length==0?'00-00 00:00':datePd($store.state.arrTime[0])}}</span></p>
+        <div v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'">
             <ul class="help_ul" >
                 <li><a href="" @click.prevent="custormAnchor('a1')">账户问题</a></li>
                 <li><a href="" @click.prevent="custormAnchor('a2')">充值问题</a></li>
@@ -69,7 +56,7 @@
                 <li><a href="" @click.prevent="custormAnchor('a6')">玩法帮助</a></li>
             </ul>
             <div v-if="$route.path.split('/')[2]&&$route.path.split('/')[2]=='help'" style="height: 10px; background: #f1f1f1;width: 100%"></div>
-        </div> -->
+        </div>
         <!--比赛结果 未结束、已结束、我的比赛-->
         <ul class="list" v-if="$route.path.split('/')[1]=='lotteryResult'">
             <li v-for="item in lotteryResultTable" @click="lotteryTable($event,item.key)" :key='item.key' :class="item.key==activeIndex?'findactive':''">
@@ -109,6 +96,7 @@
         },
         data() {
             return {
+
                 activeNames: ['1'],//默认转开第一个
                 flag: true,
                 action:[
@@ -310,14 +298,6 @@
                 this.$store.dispatch("getMarkShow", true);
                 this.$store.dispatch("getMarkShowType", 2);
             },
-            ewm() {
-                this.$store.dispatch("getMarkShow", true);
-                this.$store.dispatch("getMarkShowType", 3);
-            },
-            // oder() {
-            //     this.$store.dispatch("getMarkShow", true);
-            //     this.$store.dispatch("getMarkShowType", 4);
-            // },
             getUrl() {
                 if (getUrlStr("frz", location.href) == undefined) {
                     return true;
@@ -373,9 +353,6 @@
             },
             channelObj(){
                 return this.$store.state.channelObj;
-            },
-            city(){
-                return this.$store.state.position.city;
             }
         },
         watch:{
@@ -412,7 +389,7 @@
         .headerTop {
             overflow: hidden;
             height: px2rem(100px);
-            background: #d12120;
+            background: #f4f4f4;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -424,25 +401,6 @@
                 background-position: px2rem(34px) center;
                 background-size: px2rem(30px) auto;
                 vertical-align: middle;
-            }
-            .position{
-                flex: 1;
-                display: flex;
-                align-items: center;
-                img{
-                    width: px2rem(27px);
-                    margin-left: px2rem(30px);
-                    margin-right: px2rem(6px);
-                }
-                span{
-                    color: #fff;
-                    font-size: px2rem(28px);
-                    overflow: hidden;
-                    width: px2rem(160px);
-                    display: block;
-                    text-overflow:ellipsis;
-                    white-space: nowrap;
-                }
             }
             .filter {
                 flex: 1;
@@ -457,7 +415,7 @@
                     display: flex;
                     align-items: center;
                     font-size: px2rem(28px);
-                    color: #ffffff;
+                    color: #787878;
                     li{
                         font-size: px2rem(28px);
                     }
@@ -469,14 +427,13 @@
                     display: flex;
                     align-items: center;
                     font-size: px2rem(28px);
-                    color: #ffffff;
+                    color: #787878;
                 }
                 .actine_sms {
                     font-size: px2rem(18px);
                 }
                 .iconfont {
                     font-size: px2rem(30px);
-                    color: #ffffff;
                 }
                 .colMenu {
                     width: 100%;
@@ -517,16 +474,12 @@
                 .lottery-select{
                     height: 100%;
                     display: flex;
-                    justify-content: flex-end;
-                    width: 100%;
+                    justify-content: center;
                     .data-img{
                         img{
                             height: px2rem(30px);
                             width: px2rem(30px);
                         }
-                    }
-                    span:last-of-type{
-                        margin-right: px2rem(20px);
                     }
                 }
                 .daletou-menu{
@@ -540,11 +493,8 @@
                 align-items: center;
                 //width: px2rem(500px);
                 font-size: px2rem(32px);
-                color: #fff;
+                color: #505050;
                 justify-content: center;
-            }
-            .homeTitle{
-                margin-left: px2rem(-74px);
             }
         }
         .send,
@@ -573,9 +523,9 @@
             .cur1 p,
             .cur2 p,
             .cur3 p {
-                color: #d12120;
+                color: #e95504;
                 width: 50%;
-                border-bottom: 2px solid #d12120;
+                border-bottom: 2px solid #e95504;
                 display: block;
             }
             li:last-child {
@@ -610,7 +560,7 @@
             width: 100%;
             border-bottom: 1px solid #f0f0f0;
             span {
-                color: #d12120;
+                color: #e95504;
             }
         }
         .help_ul {
@@ -656,7 +606,7 @@
                 font-size: px2rem(28px);
                 position: relative;
                 i {
-                    color: #d12120;
+                    color: #ea5504;
                     font-size: px2rem(20px);
                     right: 0;
                     position: absolute;
@@ -688,9 +638,9 @@
             }
         }
         .findactive {
-            color: #d12120!important;
+            color: #ea5504!important;
             p {
-                border-bottom: px2rem(4px) solid #d12120;
+                border-bottom: px2rem(4px) solid #ea5504;
             }
             span {
                 background-color: rgba(200,85,4,.6);

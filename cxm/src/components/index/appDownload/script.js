@@ -1,33 +1,36 @@
-import {detect,wxPd} from '../../../util/common'
+import {getUrlStr,detect,wxPd} from '../../../util/common'
+import api from "../../../fetch/api";
 export default{
     name: 'appdownLoad',
     data(){
         return {
-            detect: '',  //平台
-            flag: 0  //控制按钮切换
+            detect: ''
         }
     },
     mounted(){
-        this.detect = detect();
+        this.detect = detect()
+        let data = {
+            clickTypeId: 'cxmxz_'+getUrlStr('fr',location.href)
+        }
+        api.clickNum(data)
+            .then(res => {
+                // this.andrClick()
+            })
     },
     methods:{
-        androidload(){
-            location.href = 'https://szcq-apk.oss-cn-beijing.aliyuncs.com/qiuduoduocp_c11111.apk';
-        },
-        iosload(){
+        andrClick(){
             if(wxPd()){
-                this.$store.commit("MARKSHORTCUT", true);
-                return false;
-            }
-            if(this.flag==2){
-                location.href = 'https://szcq-apk.oss-cn-beijing.aliyuncs.com/embedded.mobileprovision';
+                location.href = 'https://a.app.qq.com/o/simple.jsp?pkgname=net.caixiaomi.info'
             }else{
-                location.href = 'itms-services://?action=download-manifest&url=https://szcq-apk.oss-cn-beijing.aliyuncs.com/manifest.plist';
-                this.flag = 1;
-                setTimeout(()=>{
-                    this.flag = 2;
-                },12000)
+                if(getUrlStr('ct',location.href)=='2'){
+                    location.href = 'https://m.caixiaomi.net/down/cxm106_jc035.apk'
+                }else{
+                    location.href = 'https://m.caixiaomi.net/down/cxm106_zc037.apk'
+                }
             }
+        },
+        iosClick(){
+            location.href="https://itunes.apple.com/cn/app/id1402481777?mt=8"
         }
     }
 }

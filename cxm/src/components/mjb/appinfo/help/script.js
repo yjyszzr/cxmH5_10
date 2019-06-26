@@ -8,7 +8,7 @@ export default {
     mounted(){
 			nativeApp({'methodName':'showTitle','title':'帮助中心'})
       window.getCxmTitle = function(){
-          return '球多多彩票·帮助中心'
+          return '彩小秘彩票·帮助中心'
       }
     }
 }

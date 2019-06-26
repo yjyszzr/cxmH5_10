@@ -26,19 +26,7 @@ export default {
           .then(res => {
               if(res.code==0) {
                 //  console.log(res)
-                if(localStorage.guide||localStorage.upDateMark){
-                    let saveDateMark =  localStorage.upDateMark;
-                    let saveGuide = localStorage.guide;
-                    localStorage.clear()
-                    if(saveGuide){
-                      localStorage.setItem('guide',1)
-                    }
-                    if(saveDateMark){
-                      localStorage.setItem('upDateMark',saveDateMark)
-                    }
-                }else{
-                    localStorage.clear()
-                }
+                localStorage.clear()
                 this.$router.push({
                     path: '/user/sms',
                     replace: true

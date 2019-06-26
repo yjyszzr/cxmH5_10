@@ -7,18 +7,6 @@ const mutations = {
     COSULTINIT(state, data){
         state.skeletion.consultInit = data
     },
-    //版本切换状态
-    TURNON(state, data){
-        state.turnOn = data
-    },
-    //城市经纬度
-    POSITION(state, data){
-        state.position = data
-    },
-    //开屏页数据保存
-    KPDATA(state, data){
-        state.kpData = data
-    },
     GETSMSCODE(state, data) {
         //获取验证码  
         api.SendSmsCode(data)
@@ -34,7 +22,7 @@ const mutations = {
                             state.smsCode.changeNumber = 60
                             state.smsCode.disabled = false
                         } else {
-                            state.smsCode.changeText = '<b style="color: #d12120;font-weight:400;">'+state.smsCode.changeNumber + 's</b>后重新获取'
+                            state.smsCode.changeText = '<b style="color: #ea5504;font-weight:400;">'+state.smsCode.changeNumber + 's</b>后重新获取'
                         }
                     }, 1000)
                     Toast(res.msg)
@@ -103,7 +91,7 @@ const mutations = {
         state.matchObj = data
     },
     MATCHSELECTEDLIST(state, data) {
-        if (data.length==0) {
+        if (data == []) {
             state.matchSelectedList = []
         } else {
             state.matchSelectedList.push(data)

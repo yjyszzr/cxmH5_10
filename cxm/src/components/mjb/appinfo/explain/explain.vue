@@ -17,7 +17,7 @@
         mounted(){
 			nativeApp({'methodName':'showTitle','title':'胆说明'})
             window.getCxmTitle = function(){
-                return '球多多彩票·胆说明'
+                return '彩小秘彩票·胆说明'
             }
         }
     }

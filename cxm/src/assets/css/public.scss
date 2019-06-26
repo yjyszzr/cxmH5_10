@@ -7,10 +7,7 @@
 body,
 html {
   background-color: #f5f5f5;
-  height: 100%!important;
-}
-iframe{
-  display: none;
+  height: 100%;
 }
 
 .v-modal{
@@ -118,7 +115,7 @@ input::-webkit-inner-spin-button {
 }
 
 .liActive{
-  color: #d12120!important;
+  color: #ea5504!important;
 }
 
 .mybox-leave-active, .mybox-enter-active {
