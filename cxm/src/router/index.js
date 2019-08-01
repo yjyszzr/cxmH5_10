@@ -852,6 +852,10 @@ const router = new Router({
             component: resolve => require(['@/components/mjb/mjpublic/help/index.vue'], resolve)
         },
         {
+            path: '/mjpublic/lcbz',
+            component: resolve => require(['@/components/mjb/mjpublic/lcbz/index.vue'], resolve)
+        },
+        {
             path: '/mjpublic/protocol',
             component: resolve => require(['@/components/mjb/mjpublic/protocol/index.vue'], resolve)
         },
