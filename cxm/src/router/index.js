@@ -1018,6 +1018,7 @@ const router = new Router({
 NProgress.configure({ showSpinner: false });
 
 router.beforeEach(async(to, from, next) => {
+    //资讯交易版
     isdeal();
     //百度统计渠道加载完后跳到主页
     if(to.fullPath.indexOf('/c3')!=-1){
